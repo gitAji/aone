@@ -112,7 +112,7 @@ const AboutPage = () => {
         <div className="testimonials-grid container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="testimonial-item bg-white p-8 rounded-lg shadow-md flex flex-col justify-between">
             <p className="review-text text-lg italic text-gray-700 mb-6">
-              "The team at AOne is simply the best. They are professional, knowledgeable, and dedicated to helping their clients succeed."
+              &quot;The team at AOne is simply the best. They are professional, knowledgeable, and dedicated to helping their clients succeed.&quot;
             </p>
             <p className="client-name text-right font-semibold text-gray-900">
               - John Doe, CEO of Acme Inc.
@@ -120,7 +120,7 @@ const AboutPage = () => {
           </div>
           <div className="testimonial-item bg-white p-8 rounded-lg shadow-md flex flex-col justify-between">
             <p className="review-text text-lg italic text-gray-700 mb-6">
-              "I have been working with AOne for over a year now, and I am consistently impressed with their level of service and expertise."
+              &quot;I have been working with AOne for over a year now, and I am consistently impressed with their level of service and expertise.&quot;
             </p>
             <p className="client-name text-right font-semibold text-gray-900">
               - Jane Smith, Marketing Manager at XYZ Corp.
@@ -128,7 +128,7 @@ const AboutPage = () => {
           </div>
           <div className="testimonial-item bg-white p-8 rounded-lg shadow-md flex flex-col justify-between">
             <p className="review-text text-lg italic text-gray-700 mb-6">
-              "AOne has been instrumental in helping us achieve our marketing goals. We are very happy with the results."
+              &quot;AOne has been instrumental in helping us achieve our marketing goals. We are very happy with the results.&quot;
             </p>
             <p className="client-name text-right font-semibold text-gray-900">
               - Peter Jones, CEO of 123 LLC

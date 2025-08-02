@@ -32,7 +32,7 @@ const HamburgerMenu = () => {
   }, [dropdownRef, flagRef]);
 
   return (
-    <div className="hamburger-menu">
+    <div className="hamburger-menu flex items-center space-x-4">
       <div className="language-switch-container">
         <div
           className="current-language-flag"
@@ -75,7 +75,7 @@ const HamburgerMenu = () => {
           </div>
         )}
       </div>
-      <button className="menu-icon" onClick={toggleMenu}>
+      <button className="menu-icon text-2xl" onClick={toggleMenu}>
         +
       </button>
 

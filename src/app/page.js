@@ -72,7 +72,9 @@ const HomePage = () => {
 
       <section className="featured-projects py-16 bg-gray-100">
         <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">Featured Projects</h2>
-        <div className="project-gallery flex overflow-x-hidden whitespace-nowrap animate-scroll">
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 container mx-auto px-4"
+        >
           <ProjectCard
             title="E-commerce Platform Redesign"
             imageUrl="/images/projects/project1.jpeg"
@@ -101,37 +103,6 @@ const HomePage = () => {
           <ProjectCard
             title="Educational Portal Redesign for a University"
             imageUrl="/images/projects/project1.jpeg"
-            projectLink={`/references/project-3`}
-          />
-          {/* Duplicated cards for continuous loop */}
-          <ProjectCard
-            title="E-commerce Platform Redesign"
-            imageUrl="/images/projects/project2.jpeg"
-            projectLink={`/references/project-1`}
-          />
-          <ProjectCard
-            title="Mobile App Development for a FinTech Startup"
-            imageUrl="/images/projects/project3.jpeg"
-            projectLink={`/references/project-2`}
-          />
-          <ProjectCard
-            title="Brand Identity and Website Launch for a Creative Agency"
-            imageUrl="/images/projects/project4.jpeg"
-            projectLink={`/references/project-3`}
-          />
-          <ProjectCard
-            title="SaaS Platform UI/UX Overhaul"
-            imageUrl="/images/projects/project5.jpeg"
-            projectLink={`/references/project-1`}
-          />
-          <ProjectCard
-            title="Healthcare App Development for a Telemedicine Provider"
-            imageUrl="/images/projects/project1.jpeg"
-            projectLink={`/references/project-2`}
-          />
-          <ProjectCard
-            title="Educational Portal Redesign for a University"
-            imageUrl="/images/projects/project2.jpeg"
             projectLink={`/references/project-3`}
           />
         </div>
@@ -142,7 +113,7 @@ const HomePage = () => {
         <div className="testimonials-grid container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="testimonial-item bg-gray-50 p-8 rounded-lg shadow-md flex flex-col justify-between">
             <p className="review-text text-lg italic text-gray-700 mb-6">
-              "The team at AOne is simply the best. They are professional, knowledgeable, and dedicated to helping their clients succeed."
+              &quot;The team at AOne is simply the best. They are professional, knowledgeable, and dedicated to helping their clients succeed.&quot;
             </p>
             <p className="client-name text-right font-semibold text-gray-900">
               - John Doe, CEO of Acme Inc.
@@ -150,7 +121,7 @@ const HomePage = () => {
           </div>
           <div className="testimonial-item bg-gray-50 p-8 rounded-lg shadow-md flex flex-col justify-between">
             <p className="review-text text-lg italic text-gray-700 mb-6">
-              "I have been working with AOne for over a year now, and I am consistently impressed with their level of service and expertise."
+              &quot;I have been working with AOne for over a year now, and I am consistently impressed with their level of service and expertise.&quot;
             </p>
             <p className="client-name text-right font-semibold text-gray-900">
               - Jane Smith, Marketing Manager at XYZ Corp.
@@ -158,7 +129,7 @@ const HomePage = () => {
           </div>
           <div className="testimonial-item bg-gray-50 p-8 rounded-lg shadow-md flex flex-col justify-between">
             <p className="review-text text-lg italic text-gray-700 mb-6">
-              "AOne has been instrumental in helping us achieve our marketing goals. We are very happy with the results."
+              &quot;AOne has been instrumental in helping us achieve our marketing goals. We are very happy with the results.&quot;
             </p>
             <p className="client-name text-right font-semibold text-gray-900">
               - Peter Jones, CEO of 123 LLC

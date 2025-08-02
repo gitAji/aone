@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import HamburgerMenu from "@/components/HamburgerMenu";
 import Logo from "@/components/Logo";
-import TopUtilityBar from "@/components/TopUtilityBar";
+
 
 const inter = Inter({
   subsets: ["latin"],
@@ -43,8 +43,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${pacifico.variable} ${bebasNeue.variable} ${raleway.variable} antialiased`}
       >
-        <Logo />
-        <HamburgerMenu />
+        
         {children}
         <Footer />
         <ScrollToTopButton />

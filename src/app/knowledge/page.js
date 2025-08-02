@@ -99,7 +99,7 @@ const KnowledgePage = () => {
 
       <section className="bg-blue-700 text-white py-16 mt-16">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">Can't find what you're looking for?</h2>
+          <h2 className="text-4xl font-bold mb-6">Can&apos;t find what you&apos;re looking for?</h2>
           <p className="text-xl max-w-3xl mx-auto leading-relaxed mb-8">
             Our knowledge base is constantly growing. If you have a specific question, feel free to reach out to us.
           </p>
