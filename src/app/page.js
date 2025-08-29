@@ -72,39 +72,70 @@ const HomePage = () => {
 
       <section className="featured-projects py-16 bg-gray-100">
         <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">Featured Projects</h2>
-        <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 container mx-auto px-4"
-        >
-          <ProjectCard
-            title="E-commerce Platform Redesign"
-            imageUrl="/images/projects/project1.jpeg"
-            projectLink={`/references/project-1`}
-          />
-          <ProjectCard
-            title="Mobile App Development for a FinTech Startup"
-            imageUrl="/images/projects/project2.jpeg"
-            projectLink={`/references/project-2`}
-          />
-          <ProjectCard
-            title="Brand Identity and Website Launch for a Creative Agency"
-            imageUrl="/images/projects/project3.jpeg"
-            projectLink={`/references/project-3`}
-          />
-          <ProjectCard
-            title="SaaS Platform UI/UX Overhaul"
-            imageUrl="/images/projects/project4.jpeg"
-            projectLink={`/references/project-1`}
-          />
-          <ProjectCard
-            title="Healthcare App Development for a Telemedicine Provider"
-            imageUrl="/images/projects/project5.jpeg"
-            projectLink={`/references/project-2`}
-          />
-          <ProjectCard
-            title="Educational Portal Redesign for a University"
-            imageUrl="/images/projects/project1.jpeg"
-            projectLink={`/references/project-3`}
-          />
+        <div className="scrolling-container">
+          <div className="scrolling-wrapper grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
+            <ProjectCard
+              title="E-commerce Platform Redesign"
+              imageUrl="/images/projects/project1.jpeg"
+              projectLink={`/references/project-1`}
+            />
+            <ProjectCard
+              title="Mobile App Development for a FinTech Startup"
+              imageUrl="/images/projects/project2.jpeg"
+              projectLink={`/references/project-2`}
+            />
+            <ProjectCard
+              title="Brand Identity and Website Launch for a Creative Agency"
+              imageUrl="/images/projects/project3.jpeg"
+              projectLink={`/references/project-3`}
+            />
+            <ProjectCard
+              title="SaaS Platform UI/UX Overhaul"
+              imageUrl="/images/projects/project4.jpeg"
+              projectLink={`/references/project-1`}
+            />
+            <ProjectCard
+              title="Healthcare App Development for a Telemedicine Provider"
+              imageUrl="/images/projects/project5.jpeg"
+              projectLink={`/references/project-2`}
+            />
+            <ProjectCard
+              title="Educational Portal Redesign for a University"
+              imageUrl="/images/projects/project1.jpeg"
+              projectLink={`/references/project-3`}
+            />
+            {/* Duplicate the cards for a seamless loop */}
+            <ProjectCard
+              title="E-commerce Platform Redesign"
+              imageUrl="/images/projects/project1.jpeg"
+              projectLink={`/references/project-1`}
+            />
+            <ProjectCard
+              title="Mobile App Development for a FinTech Startup"
+              imageUrl="/images/projects/project2.jpeg"
+              projectLink={`/references/project-2`}
+            />
+            <ProjectCard
+              title="Brand Identity and Website Launch for a Creative Agency"
+              imageUrl="/images/projects/project3.jpeg"
+              projectLink={`/references/project-3`}
+            />
+            <ProjectCard
+              title="SaaS Platform UI/UX Overhaul"
+              imageUrl="/images/projects/project4.jpeg"
+              projectLink={`/references/project-1`}
+            />
+            <ProjectCard
+              title="Healthcare App Development for a Telemedicine Provider"
+              imageUrl="/images/projects/project5.jpeg"
+              projectLink={`/references/project-2`}
+            />
+            <ProjectCard
+              title="Educational Portal Redesign for a University"
+              imageUrl="/images/projects/project1.jpeg"
+              projectLink={`/references/project-3`}
+            />
+          </div>
         </div>
       </section>
 
@@ -138,10 +169,10 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="cta py-16 bg-blue-700 text-white text-center">
+      <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-8">Ready to start your next project?</h2>
-          <Link href={`/contact`} className="inline-block bg-white text-blue-700 py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
+          <Link href={`/contact`} className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
               Contact Us
           </Link>
         </div>

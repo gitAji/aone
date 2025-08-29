@@ -8,7 +8,7 @@ const ProjectCard = ({ title, imageUrl, projectLink }) => {
   return (
     <Link href={projectLink} passHref>
       <motion.div
-        className="project-card"
+        className="project-card aspect-w-1 aspect-h-1"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}

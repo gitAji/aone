@@ -68,21 +68,21 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gray-200">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">Why Choose Us?</h2>
+          <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">Why Partner With Us?</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="p-8 rounded-lg shadow-md bg-gray-50">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Expertise & Experience</h3>
-              <p className="text-gray-700">Our team comprises seasoned professionals with years of experience in their respective fields, ensuring top-notch quality and innovative solutions.</p>
+            <div className="p-8 rounded-lg shadow-md bg-white text-gray-800">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Tailored Solutions</h3>
+              <p className="text-gray-700">We don&apos;t believe in one-size-fits-all. Our solutions are custom-built to meet your unique challenges and goals.</p>
             </div>
-            <div className="p-8 rounded-lg shadow-md bg-gray-50">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Client-Centric Approach</h3>
-              <p className="text-gray-700">We prioritize your vision and goals, working closely with you throughout the project to deliver tailored solutions that exceed expectations.</p>
+            <div className="p-8 rounded-lg shadow-md bg-white text-gray-800">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Dedicated Partnership</h3>
+              <p className="text-gray-700">We work as an extension of your team, providing continuous support and collaboration every step of the way.</p>
             </div>
-            <div className="p-8 rounded-lg shadow-md bg-gray-50">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Proven Track Record</h3>
-              <p className="text-gray-700">Our portfolio showcases a diverse range of successful projects and satisfied clients, demonstrating our ability to deliver tangible results.</p>
+            <div className="p-8 rounded-lg shadow-md bg-white text-gray-800">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Measurable Impact</h3>
+              <p className="text-gray-700">Our strategies are designed to deliver tangible results, ensuring a clear return on your investment.</p>
             </div>
           </div>
         </div>

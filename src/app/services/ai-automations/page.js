@@ -9,7 +9,6 @@ const AIAuomationsPage = () => {
     <div className="service-detail-page bg-gray-50 min-h-screen">
       <HeroSection
         title="AI Automations"
-        subtitle="Transforming businesses with intelligent automation for unparalleled efficiency and growth."
       />
 
       <section className="container mx-auto px-4 py-16 text-center">
@@ -64,10 +63,10 @@ const AIAuomationsPage = () => {
         </div>
       </section>
 
-      <section className="cta py-16 bg-blue-700 text-white text-center">
+      <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-8">Ready to automate your business for success?</h2>
-          <Link href="/contact" className="inline-block bg-white text-blue-700 py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
+          <Link href="/contact" className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
             Get a Free Consultation
           </Link>
         </div>

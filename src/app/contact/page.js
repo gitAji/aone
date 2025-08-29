@@ -2,6 +2,7 @@
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import CountUp from 'react-countup';
 
 const ContactPage = () => {
   return (
@@ -108,23 +109,23 @@ const ContactPage = () => {
       </section>
 
       {/* Why Choose Us Section - Replaces the map placeholder */}
-      <section className="bg-blue-700 text-white py-16 mt-16">
+      <section className="bg-gray-200 text-gray-800 py-16 mt-16">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-8">Why Choose Us?</h2>
+          <h2 className="text-4xl font-bold mb-8">Our Strengths</h2>
           <p className="text-xl max-w-3xl mx-auto leading-relaxed">
-            We are a team of passionate professionals dedicated to providing the best solutions for our clients.
+            We are a team of passionate professionals dedicated to delivering exceptional results and building lasting partnerships.
           </p>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-6 bg-blue-800 rounded-lg shadow-lg">
-              <h3 className="text-5xl font-bold mb-2">10+</h3>
-              <p className="text-xl">Years of Experience</p>
+            <div className="p-6 bg-white rounded-lg shadow-lg text-gray-800">
+              <h3 className="text-5xl font-bold mb-2"><CountUp end={10} duration={2.5} />+</h3>
+              <p className="text-xl">Years of Expertise</p>
             </div>
-            <div className="p-6 bg-blue-800 rounded-lg shadow-lg">
-              <h3 className="text-5xl font-bold mb-2">500+</h3>
-              <p className="text-xl">Projects Completed</p>
+            <div className="p-6 bg-white rounded-lg shadow-lg text-gray-800">
+              <h3 className="text-5xl font-bold mb-2"><CountUp end={500} duration={2.5} />+</h3>
+              <p className="text-xl">Innovative Projects</p>
             </div>
-            <div className="p-6 bg-blue-800 rounded-lg shadow-lg">
-              <h3 className="text-5xl font-bold mb-2">99%</h3>
+            <div className="p-6 bg-white rounded-lg shadow-lg text-gray-800">
+              <h3 className="text-5xl font-bold mb-2"><CountUp end={99} duration={2.5} />%</h3>
               <p className="text-xl">Client Satisfaction</p>
             </div>
           </div>

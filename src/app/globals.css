@@ -4,7 +4,7 @@
 :root {
   --primary-color: #007bff; /* A vibrant blue for primary actions and highlights */
   --secondary-color: #6c757d; /* A muted gray for secondary elements */
-  --accent-color: #28a745; /* A fresh green for success or positive indicators */
+  --accent-color: #1E2940; /* A fresh green for success or positive indicators */
   --background-color: #f8f9fa; /* Lightest gray for general backgrounds */
   --text-color: #343a40; /* Dark charcoal for primary text */
   --light-gray: #e9ecef; /* Slightly darker light gray for subtle distinctions */
@@ -217,12 +217,14 @@ p {
 .project-card {
   /* @extend .card; */ /* Apply card styles */
   width: 100%; /* Make it responsive */
+  min-width: 400px;
   min-height: 350px;
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  margin: 0 20px;
 }
 
 .project-card img {
@@ -620,3 +622,27 @@ p {
     font-size: 2rem;
   }
 } */
+
+.scrolling-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.scrolling-wrapper {
+  display: flex;
+  width: fit-content;
+  animation: scroll 40s linear infinite;
+}
+
+.scrolling-container:hover .scrolling-wrapper {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
