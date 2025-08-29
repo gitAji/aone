@@ -2,7 +2,7 @@
 @import "@fortawesome/fontawesome-svg-core/styles.css";
 
 :root {
-  --primary-color: #007bff; /* A vibrant blue for primary actions and highlights */
+  --primary-color: #ab1c24; /* A vibrant blue for primary actions and highlights */
   --secondary-color: #6c757d; /* A muted gray for secondary elements */
   --accent-color: #1E2940; /* A fresh green for success or positive indicators */
   --background-color: #f8f9fa; /* Lightest gray for general backgrounds */
@@ -16,7 +16,7 @@
   :root {
     --primary-color: #66b3ff; /* Lighter blue for dark mode */
     --secondary-color: #adb5bd; /* Lighter gray for dark mode */
-    --accent-color: #20c997; /* Brighter green for dark mode */
+    --accent-color: #101010; /* Brighter green for dark mode */
     --background-color: #212529; /* Dark charcoal for dark mode background */
     --text-color: #f8f9fa; /* Lightest gray for dark mode text */
     --light-gray: #343a40; /* Darker gray for subtle distinctions in dark mode */
@@ -338,7 +338,7 @@ p {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: black; /* Black background */
+  background-color: rgb(16, 16, 16); /* Black background */
   display: flex;
   flex-direction: column;
   align-items: center;
