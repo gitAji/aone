@@ -9,7 +9,6 @@ const Project4Page = () => {
     <div className="project-detail-page bg-gray-50 min-h-screen">
       <HeroSection
         title="SaaS Platform UI/UX Redesign"
-        subtitle="Revamping the user interface and experience of a complex SaaS platform to improve user engagement and satisfaction."
       />
 
       <section className="py-16 bg-white">
@@ -22,7 +21,7 @@ const Project4Page = () => {
             We conducted extensive user research, including usability testing and stakeholder interviews, to identify pain points and opportunities for improvement. The redesign focused on creating a clean, modern aesthetic, optimizing navigation, and implementing consistent design patterns across the platform. The result was a more efficient and enjoyable user experience that significantly boosted user satisfaction.
           </p>
           <div className="mt-8">
-            <Image src="/images/projects/project4.jpeg" alt="SaaS Platform UI/UX Redesign" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/project4.png" alt="SaaS Platform UI/UX Redesign" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
@@ -77,15 +76,15 @@ const Project4Page = () => {
             The UI/UX redesign significantly improved user engagement and satisfaction. The client reported a **20% increase in daily active users** and a **10% reduction in support tickets** related to usability issues. The new design was well-received by the user community, leading to higher retention rates.
           </p>
           <div className="mt-8">
-            <Image src="/images/placeholders/results.png" alt="Project Results" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/project4.png" alt="Project Results" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
 
-      <section className="cta py-16 bg-blue-700 text-white text-center">
+      <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-8">Ready for a user-centric design?</h2>
-          <Link href={`/contact`} className="inline-block bg-white text-blue-700 py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
+          <Link href={`/contact`} className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
               Discuss Your Design Project
           </Link>
         </div>

@@ -11,7 +11,7 @@ const articles = [
     category: 'AI & Marketing',
     date: 'July 26, 2024',
     excerpt: 'Explore how artificial intelligence is revolutionizing digital marketing strategies and consumer engagement.',
-    image: '/images/project1.jpeg',
+    image: '/images/project1.png',
     link: '#',
   },
   {
@@ -20,7 +20,7 @@ const articles = [
     category: 'SEO',
     date: 'July 20, 2024',
     excerpt: 'Dive deep into the world of Search Engine Optimization and learn the best practices to rank higher.',
-    image: '/images/project2.jpeg',
+    image: '/images/project2.png',
     link: '#',
   },
   {
@@ -29,7 +29,7 @@ const articles = [
     category: 'UI/UX',
     date: 'July 15, 2024',
     excerpt: 'Stay ahead of the curve with the latest trends in user interface and user experience design.',
-    image: '/images/project3.jpeg',
+    image: '/images/project3.png',
     link: '#',
   },
   {
@@ -38,7 +38,7 @@ const articles = [
     category: 'Branding',
     date: 'July 10, 2024',
     excerpt: 'Learn the essential steps to create a memorable and impactful brand presence in the digital space.',
-    image: '/images/project4.jpeg',
+    image: '/images/project4.png',
     link: '#',
   },
   {
@@ -47,7 +47,7 @@ const articles = [
     category: 'Videography',
     date: 'July 5, 2024',
     excerpt: 'Discover how compelling video content can captivate your audience and convey your message effectively.',
-    image: '/images/project5.jpeg',
+    image: '/images/project5.png',
     link: '#',
   },
   {
@@ -56,7 +56,7 @@ const articles = [
     category: 'Web Development',
     date: 'June 28, 2024',
     excerpt: 'Optimize your website for speed and efficiency with these crucial web development tips.',
-    image: '/images/project1.jpeg',
+    image: '/images/project1.png',
     link: '#',
   },
 ];

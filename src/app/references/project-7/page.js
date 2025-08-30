@@ -9,7 +9,6 @@ const Project7Page = () => {
     <div className="project-detail-page bg-gray-50 min-h-screen">
       <HeroSection
         title="Custom CRM Development"
-        subtitle="Developing a bespoke CRM solution tailored to the unique needs of a sales team, improving lead tracking and customer relations."
       />
 
       <section className="py-16 bg-white">
@@ -22,7 +21,7 @@ const Project7Page = () => {
             Our solution provided a centralized platform for managing customer data, automating sales processes, tracking communications, and generating insightful reports. We focused on creating an intuitive and efficient system that would empower the sales team to build stronger customer relationships and close deals more effectively. The CRM was built with scalability in mind, allowing for future integrations and feature expansions.
           </p>
           <div className="mt-8">
-            <Image src="/images/projects/project2.jpeg" alt="Custom CRM Development" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/project2.png" alt="Custom CRM Development" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
@@ -77,15 +76,15 @@ const Project7Page = () => {
             The custom CRM solution significantly improved the sales team&apos;s efficiency and effectiveness. They reported a **35% increase in lead conversion rates** and a **20% reduction in sales cycle time**. The centralized data and automated processes empowered the team to build stronger customer relationships and close deals more effectively.
           </p>
           <div className="mt-8">
-            <Image src="/images/placeholders/results.png" alt="Project Results" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/project2.png" alt="Project Results" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
 
-      <section className="cta py-16 bg-blue-700 text-white text-center">
+      <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-8">Ready for a tailored CRM solution?</h2>
-          <Link href={`/contact`} className="inline-block bg-white text-blue-700 py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
+          <Link href={`/contact`} className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
               Get a Free Consultation
           </Link>
         </div>

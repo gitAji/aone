@@ -9,7 +9,6 @@ const Project8Page = () => {
     <div className="project-detail-page bg-gray-50 min-h-screen">
       <HeroSection
         title="Mobile Game Design & Development"
-        subtitle="Designing and developing an engaging mobile game with intuitive controls and captivating graphics for a broad audience."
       />
 
       <section className="py-16 bg-white">
@@ -22,7 +21,7 @@ const Project8Page = () => {
             We meticulously crafted the game&apos;s narrative, character designs, level progression, and monetization strategies. The development process emphasized performance optimization for various mobile devices and platforms, ensuring a smooth and enjoyable user experience. Post-launch, we provided ongoing support and updates based on player feedback and performance analytics.
           </p>
           <div className="mt-8">
-            <Image src="/images/projects/project3.jpeg" alt="Mobile Game Design & Development" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/project3.png" alt="Mobile Game Design & Development" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
@@ -77,15 +76,15 @@ const Project8Page = () => {
             The mobile game achieved significant success post-launch, with over **500,000 downloads** in the first month and a **4.8-star rating** on app stores. User engagement metrics were high, and the monetization strategy proved effective, generating substantial revenue. The game fostered a strong community of players.
           </p>
           <div className="mt-8">
-            <Image src="/images/placeholders/results.png" alt="Project Results" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/project3.png" alt="Project Results" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
 
-      <section className="cta py-16 bg-blue-700 text-white text-center">
+      <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-8">Ready to create your next hit game?</h2>
-          <Link href={`/contact`} className="inline-block bg-white text-blue-700 py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
+          <Link href={`/contact`} className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
               Get a Free Consultation
           </Link>
         </div>

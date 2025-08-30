@@ -9,7 +9,6 @@ const Project6Page = () => {
     <div className="project-detail-page bg-gray-50 min-h-screen">
       <HeroSection
         title="Educational Portal Redesign"
-        subtitle="Modernizing an online educational portal, enhancing its usability and accessibility for students and educators."
       />
 
       <section className="py-16 bg-white">
@@ -22,7 +21,7 @@ const Project6Page = () => {
             Our work included revamping the user interface, optimizing content presentation, and implementing new features such as interactive quizzes, progress tracking, and a personalized learning dashboard. We focused on creating a seamless and intuitive experience that would encourage active participation and improve learning outcomes. The redesign also ensured full responsiveness across various devices.
           </p>
           <div className="mt-8">
-            <Image src="/images/projects/project1.jpeg" alt="Educational Portal Redesign" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/project1.png" alt="Educational Portal Redesign" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
@@ -77,15 +76,15 @@ const Project6Page = () => {
             The redesigned educational portal received positive feedback from both students and educators. Student engagement increased by **25%**, and the platform&apos;s accessibility improvements led to a **significant increase in usage by students with disabilities**. The modernized interface and new features created a more dynamic and effective learning environment.
           </p>
           <div className="mt-8">
-            <Image src="/images/placeholders/results.png" alt="Project Results" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/project1.png" alt="Project Results" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
 
-      <section className="cta py-16 bg-blue-700 text-white text-center">
+      <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-8">Ready to enhance your educational platform?</h2>
-          <Link href={`/contact`} className="inline-block bg-white text-blue-700 py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
+          <Link href={`/contact`} className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
               Get a Free Consultation
           </Link>
         </div>

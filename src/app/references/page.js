@@ -1,54 +1,54 @@
-'use client';
-import React from 'react';
-import HeroSection from '@/components/HeroSection';
-import Link from 'next/link';
-import Image from 'next/image';
+"use client";
+import React from "react";
+import HeroSection from "@/components/HeroSection";
+import Link from "next/link";
+import ProjectCard from "@/components/ProjectCard";
 
 const projects = [
   {
-    id: 'project-1',
+    id: "project-1",
     title: "E-commerce Platform Redesign",
-    imageUrl: '/images/projects/project1.jpeg',
+    imageUrl: "/images/projects/saraystange.png",
   },
   {
-    id: 'project-2',
+    id: "project-2",
     title: "Mobile App Development for a FinTech Startup",
-    imageUrl: '/images/projects/project2.jpeg',
+    imageUrl: "/images/projects/kidsportals.png",
   },
   {
-    id: 'project-3',
+    id: "project-3",
     title: "Brand Identity and Website Launch for a Creative Agency",
-    imageUrl: '/images/projects/project3.jpeg',
+    imageUrl: "/images/projects/saray.png",
   },
   {
-    id: 'project-4',
+    id: "project-4",
     title: "SaaS Platform UI/UX Overhaul",
-    imageUrl: '/images/projects/project4.jpeg',
+    imageUrl: "/images/projects/tulips.png",
   },
   {
-    id: 'project-5',
+    id: "project-5",
     title: "Healthcare App Development for a Telemedicine Provider",
-    imageUrl: '/images/projects/project5.jpeg',
+    imageUrl: "/images/projects/cleanmasters.png",
   },
   {
-    id: 'project-6',
+    id: "project-6",
     title: "Educational Portal Redesign for a University",
-    imageUrl: '/images/projects/project1.jpeg',
+    imageUrl: "/images/projects/saraystange.png",
   },
   {
-    id: 'project-7',
+    id: "project-7",
     title: "E-commerce Platform Redesign",
-    imageUrl: '/images/projects/project2.jpeg',
+    imageUrl: "/images/projects/kidsportals.png",
   },
   {
-    id: 'project-8',
+    id: "project-8",
     title: "Mobile App Development for a FinTech Startup",
-    imageUrl: '/images/projects/project3.jpeg',
+    imageUrl: "/images/projects/saray.png",
   },
   {
-    id: 'project-9',
+    id: "project-9",
     title: "Brand Identity and Website Launch for a Creative Agency",
-    imageUrl: '/images/projects/project4.jpeg',
+    imageUrl: "/images/projects/tulips.png",
   },
 ];
 
@@ -62,26 +62,17 @@ const ReferencesPage = () => {
 
       <section className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">Our Projects</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">
+            Our Projects
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
             {projects.map((project) => (
-              <Link href={`/references/${project.id}`} key={project.id}>
-                <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-xl cursor-pointer">
-                  <div className="relative w-full h-60">
-                    <Image
-                      src={project.imageUrl}
-                      alt={project.title}
-                      layout="fill"
-                      objectFit="cover"
-                      className="rounded-t-lg"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-2xl font-semibold text-gray-900 mb-2">{project.title}</h3>
-                    <p className="text-blue-600 hover:underline">View Details</p>
-                  </div>
-                </div>
-              </Link>
+              <ProjectCard
+                key={project.id}
+                title={project.title}
+                imageUrl={project.imageUrl}
+                projectLink={`/references/${project.id}`}
+              />
             ))}
           </div>
         </div>

@@ -9,7 +9,6 @@ const Project3Page = () => {
     <div className="project-detail-page bg-gray-50 min-h-screen">
       <HeroSection
         title="Brand Identity & Website Launch"
-        subtitle="Creating a cohesive brand identity and launching a new responsive website for a growing creative agency."
       />
 
       <section className="py-16 bg-white">
@@ -22,7 +21,7 @@ const Project3Page = () => {
             Our work encompassed logo design, color palette selection, typography, and comprehensive brand guidelines. The website was built with a focus on showcasing their portfolio, highlighting their services, and providing an intuitive user experience that reflects their creative ethos. We ensured the site was fully responsive and optimized for performance across all devices.
           </p>
           <div className="mt-8">
-            <Image src="/images/projects/project3.jpeg" alt="Brand Identity & Website Launch" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/project3.png" alt="Brand Identity & Website Launch" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
@@ -77,15 +76,15 @@ const Project3Page = () => {
             The new brand identity and website significantly enhanced the agency&apos;s market position and client acquisition efforts. They reported a **25% increase in qualified leads** and a **15% improvement in brand recognition** within six months of the launch. The cohesive brand presence resonated well with their target audience.
           </p>
           <div className="mt-8">
-            <Image src="/images/placeholders/results.png" alt="Project Results" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/project3.png" alt="Project Results" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
 
-      <section className="cta py-16 bg-blue-700 text-white text-center">
+      <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-8">Ready to elevate your brand?</h2>
-          <Link href={`/contact`} className="inline-block bg-white text-blue-700 py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
+          <Link href={`/contact`} className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
               Get a Free Consultation
           </Link>
         </div>

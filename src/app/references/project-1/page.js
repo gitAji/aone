@@ -9,7 +9,6 @@ const Project1Page = () => {
     <div className="project-detail-page bg-gray-50 min-h-screen">
       <HeroSection
         title="E-commerce Platform Redesign"
-        subtitle="A comprehensive overhaul of an existing e-commerce platform to enhance user experience and boost sales."
       />
 
       <section className="py-16 bg-white">
@@ -22,7 +21,7 @@ const Project1Page = () => {
             Key features included a new product catalog system, integrated payment gateways, personalized user dashboards, and advanced search functionalities. We worked closely with the client&apos;s team to ensure the new platform aligned perfectly with their business objectives and brand identity.
           </p>
           <div className="mt-8">
-            <Image src="/images/projects/project1.jpeg" alt="E-commerce Platform Redesign" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/project1.png" alt="E-commerce Platform Redesign" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
@@ -77,15 +76,15 @@ const Project1Page = () => {
             The redesigned e-commerce platform led to a **30% increase in conversion rates** and a **25% reduction in bounce rate** within the first three months post-launch. User feedback was overwhelmingly positive, highlighting the improved usability and modern aesthetics. The scalable architecture also ensured smooth performance during peak traffic periods.
           </p>
           <div className="mt-8">
-            <Image src="/images/placeholders/results.png" alt="Project Results" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/project1.png" alt="Project Results" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
 
-      <section className="cta py-16 bg-blue-700 text-white text-center">
+      <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-8">Ready to transform your e-commerce presence?</h2>
-          <Link href={`/contact`} className="inline-block bg-white text-blue-700 py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
+          <Link href={`/contact`} className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
               Get a Free Consultation
           </Link>
         </div>

@@ -9,7 +9,6 @@ const Project9Page = () => {
     <div className="project-detail-page bg-gray-50 min-h-screen">
       <HeroSection
         title="AI-Powered Analytics Dashboard"
-        subtitle="Implementing an AI-driven analytics dashboard providing real-time insights and predictive modeling for business intelligence."
       />
 
       <section className="py-16 bg-white">
@@ -22,7 +21,7 @@ const Project9Page = () => {
             Key features included automated data ingestion from various sources, machine learning models for predictive analytics, interactive data visualizations, and customizable reporting. We focused on creating a user-friendly interface that would allow business users to easily explore complex data and uncover hidden patterns without requiring deep technical expertise. The dashboard was built to be scalable and integrate seamlessly with existing data ecosystems.
           </p>
           <div className="mt-8">
-            <Image src="/images/projects/project4.jpeg" alt="AI-Powered Analytics Dashboard" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/project4.png" alt="AI-Powered Analytics Dashboard" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
@@ -77,15 +76,15 @@ const Project9Page = () => {
             The AI-powered analytics dashboard provided businesses with unprecedented insights, leading to more informed decision-making. Clients reported a **15% increase in operational efficiency** and a **10% improvement in forecasting accuracy**. The dashboard empowered users to easily explore complex data and uncover hidden patterns, driving significant business value.
           </p>
           <div className="mt-8">
-            <Image src="/images/placeholders/results.png" alt="Project Results" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/project4.png" alt="Project Results" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
 
-      <section className="cta py-16 bg-blue-700 text-white text-center">
+      <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-8">Ready to unlock insights with AI?</h2>
-          <Link href={`/contact`} className="inline-block bg-white text-blue-700 py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
+          <Link href={`/contact`} className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
               Get a Free Consultation
           </Link>
         </div>

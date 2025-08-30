@@ -9,7 +9,6 @@ const Project2Page = () => {
     <div className="project-detail-page bg-gray-50 min-h-screen">
       <HeroSection
         title="Mobile App Development for Fintech"
-        subtitle="Developing a secure and intuitive mobile application for a fintech startup, streamlining financial transactions."
       />
 
       <section className="py-16 bg-white">
@@ -22,7 +21,7 @@ const Project2Page = () => {
             Key functionalities included real-time transaction tracking, personalized financial insights, secure biometric authentication, and seamless integration with banking services. We prioritized robust security measures and a user-friendly interface to ensure a trustworthy and engaging experience for all users.
           </p>
           <div className="mt-8">
-            <Image src="/images/projects/project2.jpeg" alt="Mobile App Development for Fintech" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/project2.png" alt="Mobile App Development for Fintech" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
@@ -77,15 +76,15 @@ const Project2Page = () => {
             The mobile app received overwhelmingly positive feedback from early users, praising its intuitive interface and robust security. It has significantly streamlined financial management for users, leading to a **40% increase in user engagement** and a **20% growth in new user acquisition** within the first quarter.
           </p>
           <div className="mt-8">
-            <Image src="/images/placeholders/results.png" alt="Project Results" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/project2.png" alt="Project Results" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
 
-      <section className="cta py-16 bg-blue-700 text-white text-center">
+      <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-8">Ready to innovate in the fintech space?</h2>
-          <Link href={`/contact`} className="inline-block bg-white text-blue-700 py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
+          <Link href={`/contact`} className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
               Get a Free Consultation
           </Link>
         </div>

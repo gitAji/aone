@@ -9,7 +9,6 @@ const Project5Page = () => {
     <div className="project-detail-page bg-gray-50 min-h-screen">
       <HeroSection
         title="Healthcare App Development"
-        subtitle="Building a HIPAA-compliant mobile application for healthcare providers, facilitating secure patient data management."
       />
 
       <section className="py-16 bg-white">
@@ -22,7 +21,7 @@ const Project5Page = () => {
             Key features included secure patient record access, appointment scheduling, prescription management, and a secure messaging system. We implemented stringent security protocols and data encryption to ensure the privacy and integrity of sensitive patient information. The app was designed to be intuitive and user-friendly, minimizing the learning curve for busy healthcare professionals.
           </p>
           <div className="mt-8">
-            <Image src="/images/projects/project5.jpeg" alt="Healthcare App Development" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/project5.png" alt="Healthcare App Development" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
@@ -77,15 +76,15 @@ const Project5Page = () => {
             The healthcare app significantly improved the efficiency of patient data management and communication for healthcare providers. It led to a **20% reduction in administrative tasks** and a **15% improvement in patient engagement**. The secure and compliant platform was well-received, enhancing the overall quality of care.
           </p>
           <div className="mt-8">
-            <Image src="/images/placeholders/results.png" alt="Project Results" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/project5.png" alt="Project Results" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
 
-      <section className="cta py-16 bg-blue-700 text-white text-center">
+      <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-8">Ready to build a secure healthcare solution?</h2>
-          <Link href={`/contact`} className="inline-block bg-white text-blue-700 py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
+          <Link href={`/contact`} className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
               Get a Free Consultation
           </Link>
         </div>
