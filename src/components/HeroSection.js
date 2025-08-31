@@ -9,25 +9,6 @@ const WaveLayers = dynamic(() => import('./WaveLayers'), { ssr: false });
 const FloatingDots = dynamic(() => import('./FloatingDots'), { ssr: false });
 
 const HeroSection = ({ title, isHomePage = false }) => {
-  const [heroDimensions, setHeroDimensions] = useState({ width: 0, height: 0 });
-
-  useEffect(() => {
-    const updateDimensions = () => {
-      if (typeof window !== 'undefined') {
-        setHeroDimensions({ width: window.innerWidth, height: window.innerHeight });
-      }
-    };
-
-    updateDimensions();
-    if (typeof window !== 'undefined') {
-      window.addEventListener('resize', updateDimensions);
-    }
-    return () => {
-      if (typeof window !== 'undefined') {
-        window.removeEventListener('resize', updateDimensions);
-      }
-    };
-  }, []);
 
   return (
     <section className="hero">
@@ -37,7 +18,7 @@ const HeroSection = ({ title, isHomePage = false }) => {
         <HamburgerMenu />
       </div>
       <WaveLayers />
-      {typeof window !== 'undefined' && <FloatingDots containerWidth={heroDimensions.width} containerHeight={heroDimensions.height} />}
+      {typeof window !== 'undefined' && <FloatingDots containerWidth={window.innerWidth} containerHeight={window.innerHeight} />}
       <motion.div
         className="hero-content"
         initial={{ opacity: 0, y: 50 }}

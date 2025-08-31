@@ -8,20 +8,20 @@ const Project5Page = () => {
   return (
     <div className="project-detail-page bg-gray-50 min-h-screen">
       <HeroSection
-        title="Healthcare App Development"
+        title="Clean Masters Renhold Website"
       />
 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">Project Overview</h2>
           <p className="text-lg text-gray-700 mb-6">
-            This project involved the development of a secure and robust mobile application designed specifically for healthcare providers. The primary goal was to streamline patient data management, improve communication between medical staff, and enhance the overall efficiency of healthcare operations, all while adhering strictly to HIPAA compliance regulations.
+            This project focused on creating a professional and user-friendly website for Clean Masters Renhold, a leading cleaning service provider. Our goal was to establish a strong online presence that effectively showcases their services, facilitates easy booking, and builds client trust.
           </p>
           <p className="text-lg text-gray-700 mb-6">
-            Key features included secure patient record access, appointment scheduling, prescription management, and a secure messaging system. We implemented stringent security protocols and data encryption to ensure the privacy and integrity of sensitive patient information. The app was designed to be intuitive and user-friendly, minimizing the learning curve for busy healthcare professionals.
+            Key features included a detailed service catalog, an intuitive online booking form, a gallery of their work, and client testimonials. We designed the website to be fully responsive and optimized for local search, ensuring potential clients can easily find and engage with their services.
           </p>
           <div className="mt-8">
-            <Image src="/images/projects/project5.png" alt="Healthcare App Development" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/cleanmasters.png" alt="Clean Masters Renhold Website" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
@@ -58,13 +58,13 @@ const Project5Page = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">Key Features & Compliance</h2>
           <ul className="list-disc list-inside text-lg text-gray-700 space-y-2">
-            <li>HIPAA Compliance for all data handling and communication.</li>
-            <li>Secure Patient Records with encrypted access.</li>
-            <li>Appointment Management and Reminders.</li>
-            <li>Secure Messaging for medical staff and patient inquiries.</li>
-            <li>Prescription Management System.</li>
-            <li>Intuitive User Interface for busy healthcare professionals.</li>
-            <li>Technologies Used: Swift (iOS), Kotlin (Android), Firebase, AWS.</li>
+            <li>Comprehensive Service Catalog with clear pricing.</li>
+            <li>Online Booking and Scheduling System for convenience.</li>
+            <li>Photo Gallery showcasing before-and-after cleaning results.</li>
+            <li>Client Testimonials and Reviews Section.</li>
+            <li>Responsive Design for seamless access on any device.</li>
+            <li>Integrated Contact Forms and Service Inquiry options.</li>
+            <li>Technologies Used: Next.js, React, Booking API, CMS.</li>
           </ul>
         </div>
       </section>
@@ -73,17 +73,17 @@ const Project5Page = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">Results & Impact</h2>
           <p className="text-lg text-gray-700 mb-6">
-            The healthcare app significantly improved the efficiency of patient data management and communication for healthcare providers. It led to a **20% reduction in administrative tasks** and a **15% improvement in patient engagement**. The secure and compliant platform was well-received, enhancing the overall quality of care.
+            The new website for Clean Masters Renhold led to a **35% increase in online booking inquiries** and a significant improvement in client acquisition. The professional online presence and user-friendly booking system contributed to increased customer satisfaction and business growth.
           </p>
           <div className="mt-8">
-            <Image src="/images/projects/project5.png" alt="Project Results" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/cleanmasters.png" alt="Clean Masters Renhold Website" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
 
       <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-8">Ready to build a secure healthcare solution?</h2>
+          <h2 className="text-4xl font-bold mb-8">Ready for a spotless online presence?</h2>
           <Link href={`/contact`} className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
               Get a Free Consultation
           </Link>

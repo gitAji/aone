@@ -8,20 +8,20 @@ const Project6Page = () => {
   return (
     <div className="project-detail-page bg-gray-50 min-h-screen">
       <HeroSection
-        title="Educational Portal Redesign"
+        title="Saray Steakhouse Website"
       />
 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">Project Overview</h2>
           <p className="text-lg text-gray-700 mb-6">
-            This project involved a comprehensive redesign of an existing online educational portal. The primary objective was to modernize the platform&apos;s appearance, improve its usability for both students and educators, and ensure accessibility for a diverse user base. We aimed to create a more engaging and efficient learning environment.
+            This project focused on developing a comprehensive online presence for Saray Steakhouse, a premium restaurant. Our goal was to create a visually appealing and highly functional website that would enhance customer experience, streamline online reservations, and showcase their exquisite menu.
           </p>
           <p className="text-lg text-gray-700 mb-6">
-            Our work included revamping the user interface, optimizing content presentation, and implementing new features such as interactive quizzes, progress tracking, and a personalized learning dashboard. We focused on creating a seamless and intuitive experience that would encourage active participation and improve learning outcomes. The redesign also ensured full responsiveness across various devices.
+            Key functionalities included an interactive menu display, an intuitive table booking system, and a gallery to highlight the restaurant's ambiance. We aimed to create a digital platform that truly reflects the quality and elegance of Saray Steakhouse.
           </p>
           <div className="mt-8">
-            <Image src="/images/projects/project1.png" alt="Educational Portal Redesign" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/saraystange.png" alt="Saray Steakhouse Website" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
@@ -58,13 +58,13 @@ const Project6Page = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">Key Features & Enhancements</h2>
           <ul className="list-disc list-inside text-lg text-gray-700 space-y-2">
-            <li>Intuitive User Interface for an improved learning experience.</li>
-            <li>Personalized Learning Paths and Progress Tracking.</li>
-            <li>Interactive Content Integration (quizzes, multimedia).</li>
-            <li>Accessibility Compliance (WCAG 2.1 AA).</li>
-            <li>Performance Optimization for fast loading times.</li>
-            <li>Robust Admin Dashboard for educators.</li>
-            <li>Technologies Used: React, Next.js, Moodle, SCORM.</li>
+            <li>Interactive Menu Display with high-quality images.</li>
+            <li>Online Table Booking System for seamless reservations.</li>
+            <li>Responsive Design for optimal viewing on all devices.</li>
+            <li>High-Resolution Photo Gallery showcasing ambiance and dishes.</li>
+            <li>SEO Optimization for local search visibility.</li>
+            <li>Integration with Restaurant Management Systems (if applicable).</li>
+            <li>Technologies Used: Next.js, React, Node.js, WordPress (headless CMS).</li>
           </ul>
         </div>
       </section>
@@ -73,17 +73,17 @@ const Project6Page = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">Results & Impact</h2>
           <p className="text-lg text-gray-700 mb-6">
-            The redesigned educational portal received positive feedback from both students and educators. Student engagement increased by **25%**, and the platform&apos;s accessibility improvements led to a **significant increase in usage by students with disabilities**. The modernized interface and new features created a more dynamic and effective learning environment.
+            The new website significantly enhanced Saray Steakhouse's online presence, leading to a **20% increase in online reservations** and improved customer engagement. The visually appealing design and user-friendly interface received positive feedback, contributing to a stronger brand image and increased customer satisfaction.
           </p>
           <div className="mt-8">
-            <Image src="/images/projects/project1.png" alt="Project Results" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/saraystange.png" alt="Saray Steakhouse Website" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
 
       <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-8">Ready to enhance your educational platform?</h2>
+          <h2 className="text-4xl font-bold mb-8">Ready to elevate your restaurant's online presence?</h2>
           <Link href={`/contact`} className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
               Get a Free Consultation
           </Link>

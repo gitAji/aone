@@ -32,7 +32,7 @@ const HomePage = () => {
               href={`/services/web-development`}
               className="group block p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white hover:-translate-y-1 flex flex-col items-center text-center"
             >
-              <FaLaptopCode className="text-5xl text-gray-500 mb-4 group-hover:text-gray-700 transition-colors duration-300" />
+              <FaLaptopCode className="text-5xl text-blue-600 mb-4 group-hover:text-blue-700 transition-colors duration-300" />
               <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-blue-800 transition-colors duration-300">
                 Web Development
               </h3>
@@ -44,7 +44,7 @@ const HomePage = () => {
               href={`/services/branding`}
               className="group block p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white hover:-translate-y-1 flex flex-col items-center text-center"
             >
-              <FaPaintBrush className="text-5xl text-gray-500 mb-4 group-hover:text-gray-700 transition-colors duration-300" />
+              <FaPaintBrush className="text-5xl text-green-600 mb-4 group-hover:text-green-700 transition-colors duration-300" />
               <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-green-800 transition-colors duration-300">
                 Branding
               </h3>
@@ -56,7 +56,7 @@ const HomePage = () => {
               href={`/services/digital-marketing`}
               className="group block p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white hover:-translate-y-1 flex flex-col items-center text-center"
             >
-              <FaChartLine className="text-5xl text-gray-500 mb-4 group-hover:text-gray-700 transition-colors duration-300" />
+              <FaChartLine className="text-5xl text-yellow-600 mb-4 group-hover:text-yellow-700 transition-colors duration-300" />
               <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-yellow-800 transition-colors duration-300">
                 Digital Marketing
               </h3>
@@ -68,7 +68,7 @@ const HomePage = () => {
               href={`/services/ai-automations`}
               className="group block p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white hover:-translate-y-1 flex flex-col items-center text-center"
             >
-              <FaRobot className="text-5xl text-gray-500 mb-4 group-hover:text-gray-700 transition-colors duration-300" />
+              <FaRobot className="text-5xl text-indigo-600 mb-4 group-hover:text-indigo-700 transition-colors duration-300" />
               <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-indigo-800 transition-colors duration-300">
                 AI Automations
               </h3>
@@ -81,7 +81,7 @@ const HomePage = () => {
               href={`/services/photography`}
               className="group block p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white hover:-translate-y-1 flex flex-col items-center text-center"
             >
-              <FaCameraRetro className="text-5xl text-gray-500 mb-4 group-hover:text-gray-700 transition-colors duration-300" />
+              <FaCameraRetro className="text-5xl text-pink-600 mb-4 group-hover:text-pink-700 transition-colors duration-300" />
               <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-pink-800 transition-colors duration-300">
                 Photography
               </h3>
@@ -93,7 +93,7 @@ const HomePage = () => {
               href={`/services/videography`}
               className="group block p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white hover:-translate-y-1 flex flex-col items-center text-center"
             >
-              <FaVideo className="text-5xl text-gray-500 mb-4 group-hover:text-gray-700 transition-colors duration-300" />
+              <FaVideo className="text-5xl text-teal-600 mb-4 group-hover:text-teal-700 transition-colors duration-300" />
               <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-teal-800 transition-colors duration-300">
                 Videography
               </h3>
@@ -192,8 +192,8 @@ const HomePage = () => {
               <Image
                 src="/images/clients/clean.png"
                 alt="Clean Masters Renhold Logo"
-                width={48}
-                height={48}
+                width={50}
+                height={40}
                 className="h-12 w-12 mr-2 grayscale-logo"
               />
               Clean Masters Renhold
@@ -207,10 +207,10 @@ const HomePage = () => {
             </p>
             <p className="client-name text-right font-semibold text-gray-900 flex items-center justify-end">
               <Image
-                src="/images/clients/saray.png"
+                src="/images/clients/saraysange.png"
                 alt="Saray Steakhouse Logo"
-                width={48}
-                height={48}
+                width={50}
+                height={40}
                 className="h-12 w-12 mr-2 grayscale-logo"
               />
               Saray Steakhouse
@@ -226,8 +226,8 @@ const HomePage = () => {
               <Image
                 src="/images/clients/shop-front.png"
                 alt="Go Local Logo"
-                width={48}
-                height={48}
+                width={50}
+                height={40}
                 className="h-12 w-12 mr-2 grayscale-logo"
               />
               Go Local

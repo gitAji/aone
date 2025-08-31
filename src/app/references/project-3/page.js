@@ -8,20 +8,20 @@ const Project3Page = () => {
   return (
     <div className="project-detail-page bg-gray-50 min-h-screen">
       <HeroSection
-        title="Brand Identity & Website Launch"
+        title="Saray Beauty Parlour Website"
       />
 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">Project Overview</h2>
           <p className="text-lg text-gray-700 mb-6">
-            This project focused on developing a strong and memorable brand identity for a burgeoning creative agency, followed by the design and launch of their new responsive website. The goal was to visually articulate their unique approach to creativity and innovation, ensuring a consistent and engaging brand presence across all digital touchpoints.
+            This project involved creating a sophisticated online presence for Saray Beauty Parlour, a leading beauty and wellness center. Our objective was to design a visually appealing and user-friendly website that effectively showcases their services, facilitates online bookings, and reflects their brand's elegance.
           </p>
           <p className="text-lg text-gray-700 mb-6">
-            Our work encompassed logo design, color palette selection, typography, and comprehensive brand guidelines. The website was built with a focus on showcasing their portfolio, highlighting their services, and providing an intuitive user experience that reflects their creative ethos. We ensured the site was fully responsive and optimized for performance across all devices.
+            Key features included a detailed service menu, an integrated booking system, a portfolio of their work, and client testimonials. We focused on creating a seamless digital experience that enhances the parlour's reputation and attracts new clients.
           </p>
           <div className="mt-8">
-            <Image src="/images/projects/project3.png" alt="Brand Identity & Website Launch" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/saray.png" alt="Saray Beauty Parlour Website" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
@@ -58,13 +58,13 @@ const Project3Page = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">Key Features & Deliverables</h2>
           <ul className="list-disc list-inside text-lg text-gray-700 space-y-2">
-            <li>Comprehensive Brand Guidelines.</li>
-            <li>Custom Responsive Website Design & Development.</li>
-            <li>Engaging Portfolio Showcase.</li>
-            <li>SEO Best Practices Implementation.</li>
-            <li>Content Management System (CMS) Integration.</li>
-            <li>Social Media Integration.</li>
-            <li>Technologies Used: React, Next.js, Tailwind CSS, Sanity CMS.</li>
+            <li>Detailed Service Menu with pricing and descriptions.</li>
+            <li>Online Appointment Booking System for convenience.</li>
+            <li>Responsive Design for seamless access on any device.</li>
+            <li>Before & After Photo Gallery showcasing transformations.</li>
+            <li>Client Testimonials Section for social proof.</li>
+            <li>Integrated Contact Forms and Location Map.</li>
+            <li>Technologies Used: Next.js, React, Booking API, CMS.</li>
           </ul>
         </div>
       </section>
@@ -73,17 +73,17 @@ const Project3Page = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">Results & Impact</h2>
           <p className="text-lg text-gray-700 mb-6">
-            The new brand identity and website significantly enhanced the agency&apos;s market position and client acquisition efforts. They reported a **25% increase in qualified leads** and a **15% improvement in brand recognition** within six months of the launch. The cohesive brand presence resonated well with their target audience.
+            The new website for Saray Beauty Parlour led to a **30% increase in online bookings** and improved client engagement. The enhanced online presence attracted new customers and reinforced the parlour's image as a modern and professional establishment.
           </p>
           <div className="mt-8">
-            <Image src="/images/projects/project3.png" alt="Project Results" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/saray.png" alt="Saray Beauty Parlour Website" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
 
       <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-8">Ready to elevate your brand?</h2>
+          <h2 className="text-4xl font-bold mb-8">Ready to enhance your beauty business?</h2>
           <Link href={`/contact`} className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
               Get a Free Consultation
           </Link>

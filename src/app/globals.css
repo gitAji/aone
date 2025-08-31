@@ -217,8 +217,6 @@ p {
 .project-card {
   /* @extend .card; */ /* Apply card styles */
   width: 100%; /* Make it responsive */
-  min-width: 400px;
-  min-height: 350px;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -235,6 +233,7 @@ p {
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
+  z-index: 0;
 }
 
 .project-card:hover img {

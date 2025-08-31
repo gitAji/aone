@@ -8,20 +8,20 @@ const Project7Page = () => {
   return (
     <div className="project-detail-page bg-gray-50 min-h-screen">
       <HeroSection
-        title="Custom CRM Development"
+        title="Kids Learning Portal Development"
       />
 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">Project Overview</h2>
           <p className="text-lg text-gray-700 mb-6">
-            This project involved the development of a custom Customer Relationship Management (CRM) system designed to meet the specific operational needs of a growing sales team. The existing off-the-shelf solutions were not providing the flexibility and tailored functionalities required to optimize their lead tracking, customer interaction, and sales pipeline management.
+            This project focused on developing an interactive and engaging online learning portal specifically designed for children. The primary objective was to create a safe, fun, and educational environment where kids could explore various subjects through games, videos, and interactive lessons.
           </p>
           <p className="text-lg text-gray-700 mb-6">
-            Our solution provided a centralized platform for managing customer data, automating sales processes, tracking communications, and generating insightful reports. We focused on creating an intuitive and efficient system that would empower the sales team to build stronger customer relationships and close deals more effectively. The CRM was built with scalability in mind, allowing for future integrations and feature expansions.
+            Key functionalities included age-appropriate content, progress tracking for parents, interactive quizzes, and a reward system to encourage learning. We prioritized a colorful and intuitive user interface to ensure an enjoyable and effective learning experience for young users.
           </p>
           <div className="mt-8">
-            <Image src="/images/projects/project2.png" alt="Custom CRM Development" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/kidsleraning.png" alt="Kids Learning Portal Development" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
@@ -58,13 +58,13 @@ const Project7Page = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">Key Features & Benefits</h2>
           <ul className="list-disc list-inside text-lg text-gray-700 space-y-2">
-            <li>Centralized Customer Database for all client information.</li>
-            <li>Automated Sales Workflows for lead assignment and follow-ups.</li>
-            <li>Customizable Reporting & Analytics for sales performance tracking.</li>
-            <li>Communication Tracking (emails, calls, meetings).</li>
-            <li>Integration Capabilities with existing marketing and accounting systems.</li>
-            <li>User-Friendly Interface for quick adoption by the sales team.</li>
-            <li>Technologies Used: Salesforce Platform, Apex, Lightning Web Components.</li>
+            <li>Age-Appropriate Educational Content across various subjects.</li>
+            <li>Interactive Games and Quizzes for engaging learning.</li>
+            <li>Parental Dashboard for progress monitoring and content control.</li>
+            <li>Reward System and Gamification to motivate learners.</li>
+            <li>Safe and Secure Environment with content filtering.</li>
+            <li>Cross-Platform Accessibility (Web, Tablet, Mobile).</li>
+            <li>Technologies Used: React, Next.js, Firebase, Educational APIs.</li>
           </ul>
         </div>
       </section>
@@ -73,17 +73,17 @@ const Project7Page = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">Results & Impact</h2>
           <p className="text-lg text-gray-700 mb-6">
-            The custom CRM solution significantly improved the sales team&apos;s efficiency and effectiveness. They reported a **35% increase in lead conversion rates** and a **20% reduction in sales cycle time**. The centralized data and automated processes empowered the team to build stronger customer relationships and close deals more effectively.
+            The Kids Learning Portal received enthusiastic feedback from both children and parents, praising its engaging content and user-friendly design. It led to a **30% increase in daily active users** and a **25% improvement in learning engagement** among children. The platform successfully created a fun and effective learning environment.
           </p>
           <div className="mt-8">
-            <Image src="/images/projects/project2.png" alt="Project Results" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/kidsleraning.png" alt="Kids Learning Portal Development" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
 
       <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-8">Ready for a tailored CRM solution?</h2>
+          <h2 className="text-4xl font-bold mb-8">Ready to build an engaging learning platform?</h2>
           <Link href={`/contact`} className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
               Get a Free Consultation
           </Link>

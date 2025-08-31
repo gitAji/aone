@@ -2,6 +2,7 @@
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import CountUp from 'react-countup';
+import Image from 'next/image';
 
 const AboutPage = () => {
   return (
@@ -61,7 +62,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <section className="our-story container mx-auto px-4 py-16">
+      <section className="our-story container mx-auto px-4 py-16 bg-white">
         <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">Our Story</h2>
         <div className="story-content max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed space-y-6">
           <p>Our company was founded with a simple mission: to help businesses succeed online.</p>
@@ -69,69 +70,62 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <section className="team bg-white py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">Meet Our Team</h2>
-          <div className="team-members grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="team-member-card bg-gray-50 p-8 rounded-lg shadow-md text-center transform transition duration-300 hover:scale-105 hover:shadow-xl">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2">John Doe</h3>
-              <p className="text-blue-600 font-medium mb-4">CEO</p>
-              <p className="text-gray-700">John is a visionary leader with a passion for innovation.</p>
-            </div>
-            <div className="team-member-card bg-gray-50 p-8 rounded-lg shadow-md text-center transform transition duration-300 hover:scale-105 hover:shadow-xl">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2">Jane Smith</h3>
-              <p className="text-green-600 font-medium mb-4">CTO</p>
-              <p className="text-gray-700">Jane is a technology enthusiast with a knack for problem-solving.</p>
-            </div>
-            <div className="team-member-card bg-gray-50 p-8 rounded-lg shadow-md text-center transform transition duration-300 hover:scale-105 hover:shadow-xl">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2">Peter Jones</h3>
-              <p className="text-purple-600 font-medium mb-4">COO</p>
-              <p className="text-gray-700">Peter is an operations expert with a focus on efficiency.</p>
-            </div>
-            <div className="team-member-card bg-gray-50 p-8 rounded-lg shadow-md text-center transform transition duration-300 hover:scale-105 hover:shadow-xl">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2">Emily White</h3>
-              <p className="text-yellow-600 font-medium mb-4">CFO</p>
-              <p className="text-gray-700">Emily is a finance professional with a strategic mindset.</p>
-            </div>
-            <div className="team-member-card bg-gray-50 p-8 rounded-lg shadow-md text-center transform transition duration-300 hover:scale-105 hover:shadow-xl">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2">David Green</h3>
-              <p className="text-red-600 font-medium mb-4">CMO</p>
-              <p className="text-gray-700">David is a marketing guru with a creative flair.</p>
-            </div>
-            <div className="team-member-card bg-gray-50 p-8 rounded-lg shadow-md text-center transform transition duration-300 hover:scale-105 hover:shadow-xl">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2">Sarah Brown</h3>
-              <p className="text-indigo-600 font-medium mb-4">CHRO</p>
-              <p className="text-gray-700">Sarah is a people person with a passion for talent development.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
-      <section className="testimonials-section py-16 bg-gray-100">
-        <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">What Our Clients Say</h2>
+      <section className="testimonials-section py-16 bg-white">
+        <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">
+          What Our Clients Say
+        </h2>
         <div className="testimonials-grid container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="testimonial-item bg-white p-8 rounded-lg shadow-md flex flex-col justify-between">
-            <p className="review-text text-lg italic text-gray-700 mb-6">
-              &quot;The team at AOne is simply the best. They are professional, knowledgeable, and dedicated to helping their clients succeed.&quot;
+          <div className="testimonial-item bg-gray-100 p-8 rounded-lg shadow-md flex flex-col justify-between">
+            <p className="review-text text-lg italic text-gray-800 mb-6">
+              &quot;Excellent designs that made our website look more
+              professional. All the gaps were filled with highest prerequisites.
+              100% endorsed and a good choice for restaurant businesses.&quot;
             </p>
-            <p className="client-name text-right font-semibold text-gray-900">
-              - John Doe, CEO of Acme Inc.
+            <p className="client-name text-right font-semibold text-gray-900 flex items-center justify-end">
+              <Image
+                src="/images/clients/clean.png"
+                alt="Clean Masters Renhold Logo"
+                width={50}
+                height={40}
+                className="h-12 w-12 mr-2 grayscale-logo"
+              />
+              Clean Masters Renhold
             </p>
           </div>
-          <div className="testimonial-item bg-white p-8 rounded-lg shadow-md flex flex-col justify-between">
-            <p className="review-text text-lg italic text-gray-700 mb-6">
-              &quot;I have been working with AOne for over a year now, and I am consistently impressed with their level of service and expertise.&quot;
+          <div className="testimonial-item bg-gray-100 p-8 rounded-lg shadow-md flex flex-col justify-between">
+            <p className="review-text text-lg italic text-gray-800 mb-6">
+              &quot;Saray Steakhouse, and arguably one of the best places for
+              grabbing the all-in-one bundle for web solutions. Unquestionably a
+              5 stars digital firm with huge potential.&quot;
             </p>
-            <p className="client-name text-right font-semibold text-gray-900">
-              - Jane Smith, Marketing Manager at XYZ Corp.
+            <p className="client-name text-right font-semibold text-gray-900 flex items-center justify-end">
+              <Image
+                src="/images/clients/saraysange.png"
+                alt="Saray Steakhouse Logo"
+                width={50}
+                height={40}
+                className="h-12 w-12 mr-2 grayscale-logo"
+              />
+              Saray Steakhouse
             </p>
           </div>
-          <div className="testimonial-item bg-white p-8 rounded-lg shadow-md flex flex-col justify-between">
-            <p className="review-text text-lg italic text-gray-700 mb-6">
-              &quot;AOne has been instrumental in helping us achieve our marketing goals. We are very happy with the results.&quot;
+          <div className="testimonial-item bg-gray-100 p-8 rounded-lg shadow-md flex flex-col justify-between">
+            <p className="review-text text-lg italic text-gray-800 mb-6">
+              &quot;A website that is visually appealing, easy to use, and
+              provides a good user experience can help to increase customer
+              engagement and drive conversions.&quot;
             </p>
-            <p className="client-name text-right font-semibold text-gray-900">
-              - Peter Jones, CEO of 123 LLC
+            <p className="client-name text-right font-semibold text-gray-900 flex items-center justify-end">
+              <Image
+                src="/images/clients/shop-front.png"
+                alt="Go Local Logo"
+                width={50}
+                height={40}
+                className="h-12 w-12 mr-2 grayscale-logo"
+              />
+              Go Local
             </p>
           </div>
         </div>

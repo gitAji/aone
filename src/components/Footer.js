@@ -18,6 +18,7 @@ const Footer = () => {
             <li><Link href="/services">Services</Link></li>
             <li><Link href="/projects">Projects</Link></li>
             <li><Link href="/contact">Contact</Link></li>
+            <li><Link href="https://aone.no/oldsite" target="_blank" rel="noopener noreferrer">Old Site</Link></li>
           </ul>
         </div>
         <div className="footer-section contact-info">

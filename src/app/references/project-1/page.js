@@ -8,17 +8,17 @@ const Project1Page = () => {
   return (
     <div className="project-detail-page bg-gray-50 min-h-screen">
       <HeroSection
-        title="E-commerce Platform Redesign"
+        title="Saray Steakhouse Website"
       />
 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">Project Overview</h2>
           <p className="text-lg text-gray-700 mb-6">
-            This project involved a complete redesign and re-platforming of a large-scale e-commerce website. Our goal was to create a modern, intuitive, and high-performing online store that would significantly improve user engagement and conversion rates. We focused on streamlining the user journey, enhancing visual appeal, and optimizing for mobile responsiveness.
+            This project focused on developing a comprehensive online presence for Saray Steakhouse, a premium restaurant. Our goal was to create a visually appealing and highly functional website that would enhance customer experience, streamline online reservations, and showcase their exquisite menu.
           </p>
           <p className="text-lg text-gray-700 mb-6">
-            Key features included a new product catalog system, integrated payment gateways, personalized user dashboards, and advanced search functionalities. We worked closely with the client&apos;s team to ensure the new platform aligned perfectly with their business objectives and brand identity.
+            Key functionalities included an interactive menu display, an intuitive table booking system, and a gallery to highlight the restaurant's ambiance. We aimed to create a digital platform that truly reflects the quality and elegance of Saray Steakhouse.
           </p>
           <div className="mt-8">
             <Image src="/images/projects/project1.png" alt="E-commerce Platform Redesign" width={1200} height={600} className="rounded-lg shadow-lg" />
@@ -58,13 +58,13 @@ const Project1Page = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">Key Features & Technologies</h2>
           <ul className="list-disc list-inside text-lg text-gray-700 space-y-2">
-            <li>Responsive Design for seamless experience across all devices.</li>
-            <li>Intuitive User Interface for effortless navigation and product discovery.</li>
-            <li>Secure Payment Gateway integration with multiple options.</li>
-            <li>Scalable Architecture built for high traffic and future expansions.</li>
-            <li>SEO Optimization for improved search engine visibility.</li>
-            <li>Personalized User Experience with recommendations and wishlists.</li>
-            <li>Technologies Used: Next.js, React, Node.js, MongoDB, Stripe API.</li>
+            <li>Interactive Menu Display with high-quality images.</li>
+            <li>Online Table Booking System for seamless reservations.</li>
+            <li>Responsive Design for optimal viewing on all devices.</li>
+            <li>High-Resolution Photo Gallery showcasing ambiance and dishes.</li>
+            <li>SEO Optimization for local search visibility.</li>
+            <li>Integration with Restaurant Management Systems (if applicable).</li>
+            <li>Technologies Used: Next.js, React, Node.js, WordPress (headless CMS).</li>
           </ul>
         </div>
       </section>
@@ -73,17 +73,17 @@ const Project1Page = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">Results & Impact</h2>
           <p className="text-lg text-gray-700 mb-6">
-            The redesigned e-commerce platform led to a **30% increase in conversion rates** and a **25% reduction in bounce rate** within the first three months post-launch. User feedback was overwhelmingly positive, highlighting the improved usability and modern aesthetics. The scalable architecture also ensured smooth performance during peak traffic periods.
+            The new website significantly enhanced Saray Steakhouse's online presence, leading to a **20% increase in online reservations** and improved customer engagement. The visually appealing design and user-friendly interface received positive feedback, contributing to a stronger brand image and increased customer satisfaction.
           </p>
           <div className="mt-8">
-            <Image src="/images/projects/project1.png" alt="Project Results" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/saraystange.png" alt="Saray Steakhouse Website" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
 
       <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-8">Ready to transform your e-commerce presence?</h2>
+          <h2 className="text-4xl font-bold mb-8">Ready to elevate your restaurant's online presence?</h2>
           <Link href={`/contact`} className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
               Get a Free Consultation
           </Link>

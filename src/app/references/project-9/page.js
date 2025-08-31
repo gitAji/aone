@@ -8,20 +8,20 @@ const Project9Page = () => {
   return (
     <div className="project-detail-page bg-gray-50 min-h-screen">
       <HeroSection
-        title="AI-Powered Analytics Dashboard"
+        title="Tulips Beauty Parlour Website"
       />
 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">Project Overview</h2>
           <p className="text-lg text-gray-700 mb-6">
-            This project involved the development of an advanced AI-powered analytics dashboard designed to provide businesses with real-time insights and predictive capabilities. The goal was to transform raw data into actionable intelligence, enabling more informed decision-making and proactive strategy adjustments.
+            This project focused on developing a vibrant and user-friendly online platform for Tulips Beauty Parlour. Our aim was to create a digital space that reflects the parlour's modern aesthetic, provides easy access to services, and enhances client engagement.
           </p>
           <p className="text-lg text-gray-700 mb-6">
-            Key features included automated data ingestion from various sources, machine learning models for predictive analytics, interactive data visualizations, and customizable reporting. We focused on creating a user-friendly interface that would allow business users to easily explore complex data and uncover hidden patterns without requiring deep technical expertise. The dashboard was built to be scalable and integrate seamlessly with existing data ecosystems.
+            Key features included a comprehensive service menu, an intuitive online booking system, a stunning photo gallery of their work, and client testimonials. We designed the website to be fully responsive, ensuring a seamless experience across all devices and attracting a wider clientele.
           </p>
           <div className="mt-8">
-            <Image src="/images/projects/project4.png" alt="AI-Powered Analytics Dashboard" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/tulips.png" alt="Tulips Beauty Parlour Website" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
@@ -58,13 +58,13 @@ const Project9Page = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">Key Features & Technologies</h2>
           <ul className="list-disc list-inside text-lg text-gray-700 space-y-2">
-            <li>Real-time Data Processing and Analysis.</li>
-            <li>Predictive Modeling with Machine Learning Algorithms.</li>
-            <li>Interactive Data Visualizations and Customizable Reporting.</li>
-            <li>Scalable Cloud Infrastructure (AWS/Azure/GCP).</li>
-            <li>Seamless Data Integration with various sources.</li>
-            <li>User-Friendly Interface for business intelligence.</li>
-            <li>Technologies Used: Python, TensorFlow, Power BI, Tableau, AWS Sagemaker.</li>
+            <li>Comprehensive Service Listings with detailed descriptions.</li>
+            <li>Integrated Online Booking System for client convenience.</li>
+            <li>Visually Appealing Photo Gallery showcasing services and results.</li>
+            <li>Responsive Design for optimal viewing on all devices.</li>
+            <li>Client Testimonials and Reviews Section.</li>
+            <li>Easy-to-Use Contact Forms and Location Map.</li>
+            <li>Technologies Used: Next.js, React, Booking API, CMS.</li>
           </ul>
         </div>
       </section>
@@ -73,17 +73,17 @@ const Project9Page = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">Results & Impact</h2>
           <p className="text-lg text-gray-700 mb-6">
-            The AI-powered analytics dashboard provided businesses with unprecedented insights, leading to more informed decision-making. Clients reported a **15% increase in operational efficiency** and a **10% improvement in forecasting accuracy**. The dashboard empowered users to easily explore complex data and uncover hidden patterns, driving significant business value.
+            The new website for Tulips Beauty Parlour led to a **25% increase in online appointments** and a significant boost in client inquiries. The enhanced online presence and user-friendly booking system contributed to improved customer satisfaction and business growth.
           </p>
           <div className="mt-8">
-            <Image src="/images/projects/project4.png" alt="Project Results" width={1200} height={600} className="rounded-lg shadow-lg" />
+            <Image src="/images/projects/tulips.png" alt="Tulips Beauty Parlour Website" width={1200} height={600} className="rounded-lg shadow-lg" />
           </div>
         </div>
       </section>
 
       <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-8">Ready to unlock insights with AI?</h2>
+          <h2 className="text-4xl font-bold mb-8">Ready to bloom online?</h2>
           <Link href={`/contact`} className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
               Get a Free Consultation
           </Link>
