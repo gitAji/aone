@@ -2,15 +2,16 @@
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import ProjectCard from "@/components/ProjectCard";
+import projects from "@/app/data/projects.js";
 import Link from "next/link";
 import Image from "next/image";
 import CountUp from "react-countup";
 import {
-  FaLaptopCode,
-  FaPaintBrush,
-  FaChartLine,
-  FaRobot,
-  FaCameraRetro,
+  FaServer,
+  FaLightbulb,
+  FaSearch,
+  FaCogs,
+  FaImage,
   FaVideo,
 } from "react-icons/fa";
 
@@ -27,13 +28,13 @@ const HomePage = () => {
           Our Comprehensive Digital Services
         </h2>
         <div className="services-content-container container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <Link
               href={`/services/web-development`}
-              className="group block p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white hover:-translate-y-1 flex flex-col items-center text-center"
+              className="group w-full md:w-1/2 lg:col-span-1 p-8 transition-all duration-300 flex flex-col items-center text-center hover:bg-gray-200"
             >
-              <FaLaptopCode className="text-5xl text-blue-600 mb-4 group-hover:text-blue-700 transition-colors duration-300" />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-blue-800 transition-colors duration-300">
+              <FaServer className="text-5xl text-black mb-4" />
+              <h3 className="text-2xl font-semibold text-gray-900 mb-2">
                 Web Development
               </h3>
               <p className="text-gray-700 text-base leading-relaxed">
@@ -42,10 +43,10 @@ const HomePage = () => {
             </Link>
             <Link
               href={`/services/branding`}
-              className="group block p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white hover:-translate-y-1 flex flex-col items-center text-center"
+              className="group w-full md:w-1/2 lg:col-span-1 p-8 transition-all duration-300 flex flex-col items-center text-center hover:bg-gray-200"
             >
-              <FaPaintBrush className="text-5xl text-green-600 mb-4 group-hover:text-green-700 transition-colors duration-300" />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-green-800 transition-colors duration-300">
+              <FaLightbulb className="text-5xl text-black mb-4" />
+              <h3 className="text-2xl font-semibold text-gray-900 mb-2">
                 Branding
               </h3>
               <p className="text-gray-700 text-base leading-relaxed">
@@ -54,10 +55,10 @@ const HomePage = () => {
             </Link>
             <Link
               href={`/services/digital-marketing`}
-              className="group block p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white hover:-translate-y-1 flex flex-col items-center text-center"
+              className="group w-full md:w-1/2 lg:col-span-1 p-8 transition-all duration-300 flex flex-col items-center text-center hover:bg-gray-200"
             >
-              <FaChartLine className="text-5xl text-yellow-600 mb-4 group-hover:text-yellow-700 transition-colors duration-300" />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-yellow-800 transition-colors duration-300">
+              <FaSearch className="text-5xl text-black mb-4" />
+              <h3 className="text-2xl font-semibold text-gray-900 mb-2">
                 Digital Marketing
               </h3>
               <p className="text-gray-700 text-base leading-relaxed">
@@ -66,10 +67,10 @@ const HomePage = () => {
             </Link>
             <Link
               href={`/services/ai-automations`}
-              className="group block p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white hover:-translate-y-1 flex flex-col items-center text-center"
+              className="group w-full md:w-1/2 lg:col-span-1 p-8 transition-all duration-300 flex flex-col items-center text-center hover:bg-gray-200"
             >
-              <FaRobot className="text-5xl text-indigo-600 mb-4 group-hover:text-indigo-700 transition-colors duration-300" />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-indigo-800 transition-colors duration-300">
+              <FaCogs className="text-5xl text-black mb-4" />
+              <h3 className="text-2xl font-semibold text-gray-900 mb-2">
                 AI Automations
               </h3>
               <p className="text-gray-700 text-base leading-relaxed">
@@ -79,10 +80,10 @@ const HomePage = () => {
             </Link>
             <Link
               href={`/services/photography`}
-              className="group block p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white hover:-translate-y-1 flex flex-col items-center text-center"
+              className="group w-full md:w-1/2 lg:col-span-1 p-8 transition-all duration-300 flex flex-col items-center text-center hover:bg-gray-200"
             >
-              <FaCameraRetro className="text-5xl text-pink-600 mb-4 group-hover:text-pink-700 transition-colors duration-300" />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-pink-800 transition-colors duration-300">
+              <FaImage className="text-5xl text-black mb-4" />
+              <h3 className="text-2xl font-semibold text-gray-900 mb-2">
                 Photography
               </h3>
               <p className="text-gray-700 text-base leading-relaxed">
@@ -91,10 +92,10 @@ const HomePage = () => {
             </Link>
             <Link
               href={`/services/videography`}
-              className="group block p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white hover:-translate-y-1 flex flex-col items-center text-center"
+              className="group w-full md:w-1/2 lg:col-span-1 p-8 transition-all duration-300 flex flex-col items-center text-center hover:bg-gray-200"
             >
-              <FaVideo className="text-5xl text-teal-600 mb-4 group-hover:text-teal-700 transition-colors duration-300" />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-teal-800 transition-colors duration-300">
+              <FaVideo className="text-5xl text-black mb-4" />
+              <h3 className="text-2xl font-semibold text-gray-900 mb-2">
                 Videography
               </h3>
               <p className="text-gray-700 text-base leading-relaxed">
@@ -105,75 +106,35 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="featured-projects py-16 bg-gray-100">
-        <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">
-          Featured Projects
-        </h2>
+      <section className="featured-projects py-16 bg-white">
+        <div className="text-center">
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">
+            Our Work
+          </h2>
+          <p className="text-lg text-gray-600 mb-12">
+            A Glimpse into Our Proudest Moments
+          </p>
+        </div>
         <div className="scrolling-container">
-          <div className="scrolling-wrapper grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
-            <ProjectCard
-              title="E-commerce Platform Redesign"
-              imageUrl="/images/projects/saraystange.png"
-              projectLink={`/references/project-1`}
-            />
-            <ProjectCard
-              title="Mobile App Development for a FinTech Startup"
-              imageUrl="/images/projects/kidsportals.png"
-              projectLink={`/references/project-2`}
-            />
-            <ProjectCard
-              title="Brand Identity and Website Launch for a Creative Agency"
-              imageUrl="/images/projects/saray.png"
-              projectLink={`/references/project-3`}
-            />
-            <ProjectCard
-              title="SaaS Platform UI/UX Overhaul"
-              imageUrl="/images/projects/tulips.png"
-              projectLink={`/references/project-1`}
-            />
-            <ProjectCard
-              title="Healthcare App Development for a Telemedicine Provider"
-              imageUrl="/images/projects/cleanmasters.png"
-              projectLink={`/references/project-2`}
-            />
-            <ProjectCard
-              title="Educational Portal Redesign for a University"
-              imageUrl="/images/projects/tulips.png"
-              projectLink={`/references/project-3`}
-            />
-            {/* Duplicate the cards for a seamless loop */}
-            <ProjectCard
-              title="E-commerce Platform Redesign"
-              imageUrl="/images/projects/saray.png"
-              projectLink={`/references/project-1`}
-            />
-            <ProjectCard
-              title="Mobile App Development for a FinTech Startup"
-              imageUrl="/images/projects/kidsportals.png"
-              projectLink={`/references/project-2`}
-            />
-            <ProjectCard
-              title="Brand Identity and Website Launch for a Creative Agency"
-              imageUrl="/images/projects/saraystange.png"
-              projectLink={`/references/project-3`}
-            />
-
-            <ProjectCard
-              title="SaaS Platform UI/UX Overhaul"
-              imageUrl="/images/projects/tulips.png"
-              projectLink={`/references/project-1`}
-            />
-            <ProjectCard
-              title="Healthcare App Development for a Telemedicine Provider"
-              imageUrl="/images/projects/cleanmasters.png"
-              projectLink={`/references/project-2`}
-            />
-            <ProjectCard
-              title="Educational Portal Redesign for a University"
-              imageUrl="/images/projects/tulips.png"
-              projectLink={`/references/project-3`}
-            />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project, index) => (
+              <ProjectCard
+                key={index}
+                title={project.title}
+                subtitle={project.subtitle}
+                imageUrl={project.imageUrl}
+                projectLink={project.projectLink}
+              />
+            ))}
           </div>
+        </div>
+        <div className="text-center mt-12">
+          <Link
+            href={`/references`}
+            className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg"
+          >
+            View All Projects
+          </Link>
         </div>
       </section>
 
