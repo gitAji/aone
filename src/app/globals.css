@@ -216,7 +216,7 @@ p {
 
 .project-card {
   /* @extend .card; */ /* Apply card styles */
-  width: 100%; /* Make it responsive */
+  width: 400px; /* Make it responsive */
   position: relative;
   overflow: hidden;
   display: flex;
@@ -225,7 +225,7 @@ p {
   margin: 0 20px;
 }
 
-.project-card img {
+.project-card-image {
   position: absolute;
   top: 0;
   left: 0;
@@ -237,18 +237,42 @@ p {
 }
 
 .project-card:hover img {
-  transform: scale(1); /* Subtle zoom on hover */
+  transform: scale(1.05); /* Subtle zoom on hover */
 }
 
 .project-card:hover .project-title-overlay {
-  background: rgba(128, 128, 128, 0); /* Clear gray overlay on hover */
+  background: rgba(128, 128, 128, 0.5); /* Clear gray overlay on hover */
 }
 
 .project-card:hover img {
-  filter: brightness(1); /* Make image brighter on hover */
+  filter: brightness(1.2); /* Make image brighter on hover */
 }
 
+.project-title-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%);
+  padding: 1.5rem;
+  color: #FFFFFF;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  transition: background 0.3s ease;
+}
 
+.project-title-overlay h3 {
+  font-size: 1.5rem;
+  margin: 0;
+  text-align: left;
+  color: #FFFFFF;
+  font-weight: bold;
+  line-height: 1.3;
+}
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
@@ -603,26 +627,6 @@ p {
   filter: grayscale(0%);
 }
 
-.scrolling-container {
-  overflow: hidden;
-  width: 100%;
-}
 
-.scrolling-wrapper {
-  /* display: flex; */
-  /* width: fit-content; */
-  /* animation: scroll 40s linear infinite; */
-}
 
-.scrolling-container:hover .scrolling-wrapper {
-  animation-play-state: paused;
-}
 
-@keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}

@@ -1,19 +1,24 @@
 "use client";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
-import ProjectCard from "@/components/ProjectCard";
+import Projects from "@/components/Projects";
+
 import projects from "@/app/data/projects.js";
 import Link from "next/link";
 import Image from "next/image";
 import CountUp from "react-countup";
 import {
-  FaServer,
-  FaLightbulb,
-  FaSearch,
-  FaCogs,
-  FaImage,
+  FaLaptopCode,
+  FaPaintBrush,
+  FaChartLine,
+  FaRobot,
+  FaCameraRetro,
   FaVideo,
 } from "react-icons/fa";
+
+
+
+import { Button } from "@/components/ui/button";
 
 const HomePage = () => {
   return (
@@ -24,17 +29,24 @@ const HomePage = () => {
       />
 
       <section className="services-overview py-16 bg-gray-100">
-        <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">
-          Our Comprehensive Digital Services
-        </h2>
+        <div className="text-center">
+          <div className="text-center">
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">
+            Our Work
+          </h2>
+          <p className="text-lg text-gray-600 mb-12">
+            A Glimpse into Our Proudest Moments
+          </p>
+        </div>
+        </div>
         <div className="services-content-container container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Link
               href={`/services/web-development`}
-              className="group w-full md:w-1/2 lg:col-span-1 p-8 transition-all duration-300 flex flex-col items-center text-center hover:bg-gray-200"
+              className="group block p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white hover:-translate-y-1 flex flex-col items-center text-center"
             >
-              <FaServer className="text-5xl text-black mb-4" />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+              <FaLaptopCode className="text-5xl text-blue-600 mb-4 group-hover:text-blue-700 transition-colors duration-300" />
+              <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-blue-800 transition-colors duration-300">
                 Web Development
               </h3>
               <p className="text-gray-700 text-base leading-relaxed">
@@ -43,10 +55,10 @@ const HomePage = () => {
             </Link>
             <Link
               href={`/services/branding`}
-              className="group w-full md:w-1/2 lg:col-span-1 p-8 transition-all duration-300 flex flex-col items-center text-center hover:bg-gray-200"
+              className="group block p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white hover:-translate-y-1 flex flex-col items-center text-center"
             >
-              <FaLightbulb className="text-5xl text-black mb-4" />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+              <FaPaintBrush className="text-5xl text-green-600 mb-4 group-hover:text-green-700 transition-colors duration-300" />
+              <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-green-800 transition-colors duration-300">
                 Branding
               </h3>
               <p className="text-gray-700 text-base leading-relaxed">
@@ -55,10 +67,10 @@ const HomePage = () => {
             </Link>
             <Link
               href={`/services/digital-marketing`}
-              className="group w-full md:w-1/2 lg:col-span-1 p-8 transition-all duration-300 flex flex-col items-center text-center hover:bg-gray-200"
+              className="group block p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white hover:-translate-y-1 flex flex-col items-center text-center"
             >
-              <FaSearch className="text-5xl text-black mb-4" />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+              <FaChartLine className="text-5xl text-yellow-600 mb-4 group-hover:text-yellow-700 transition-colors duration-300" />
+              <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-yellow-800 transition-colors duration-300">
                 Digital Marketing
               </h3>
               <p className="text-gray-700 text-base leading-relaxed">
@@ -67,10 +79,10 @@ const HomePage = () => {
             </Link>
             <Link
               href={`/services/ai-automations`}
-              className="group w-full md:w-1/2 lg:col-span-1 p-8 transition-all duration-300 flex flex-col items-center text-center hover:bg-gray-200"
+              className="group block p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white hover:-translate-y-1 flex flex-col items-center text-center"
             >
-              <FaCogs className="text-5xl text-black mb-4" />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+              <FaRobot className="text-5xl text-indigo-600 mb-4 group-hover:text-indigo-700 transition-colors duration-300" />
+              <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-indigo-800 transition-colors duration-300">
                 AI Automations
               </h3>
               <p className="text-gray-700 text-base leading-relaxed">
@@ -80,10 +92,10 @@ const HomePage = () => {
             </Link>
             <Link
               href={`/services/photography`}
-              className="group w-full md:w-1/2 lg:col-span-1 p-8 transition-all duration-300 flex flex-col items-center text-center hover:bg-gray-200"
+              className="group block p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white hover:-translate-y-1 flex flex-col items-center text-center"
             >
-              <FaImage className="text-5xl text-black mb-4" />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+              <FaCameraRetro className="text-5xl text-pink-600 mb-4 group-hover:text-pink-700 transition-colors duration-300" />
+              <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-pink-800 transition-colors duration-300">
                 Photography
               </h3>
               <p className="text-gray-700 text-base leading-relaxed">
@@ -92,10 +104,10 @@ const HomePage = () => {
             </Link>
             <Link
               href={`/services/videography`}
-              className="group w-full md:w-1/2 lg:col-span-1 p-8 transition-all duration-300 flex flex-col items-center text-center hover:bg-gray-200"
+              className="group block p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white hover:-translate-y-1 flex flex-col items-center text-center"
             >
-              <FaVideo className="text-5xl text-black mb-4" />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+              <FaVideo className="text-5xl text-teal-600 mb-4 group-hover:text-teal-700 transition-colors duration-300" />
+              <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-teal-800 transition-colors duration-300">
                 Videography
               </h3>
               <p className="text-gray-700 text-base leading-relaxed">
@@ -106,42 +118,19 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="featured-projects py-16 bg-white">
+      <Projects />
+
+      
+
+      <section className="testimonials-section py-16 bg-white">
         <div className="text-center">
           <h2 className="text-4xl font-bold text-gray-800 mb-4">
-            Our Work
+            what our customers say
           </h2>
           <p className="text-lg text-gray-600 mb-12">
             A Glimpse into Our Proudest Moments
           </p>
         </div>
-        <div className="scrolling-container">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <ProjectCard
-                key={index}
-                title={project.title}
-                subtitle={project.subtitle}
-                imageUrl={project.imageUrl}
-                projectLink={project.projectLink}
-              />
-            ))}
-          </div>
-        </div>
-        <div className="text-center mt-12">
-          <Link
-            href={`/references`}
-            className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg"
-          >
-            View All Projects
-          </Link>
-        </div>
-      </section>
-
-      <section className="testimonials-section py-16 bg-white">
-        <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">
-          What Our Clients Say
-        </h2>
         <div className="testimonials-grid container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="testimonial-item bg-gray-100 p-8 rounded-lg shadow-md flex flex-col justify-between">
             <p className="review-text text-lg italic text-gray-800 mb-6">
@@ -197,17 +186,16 @@ const HomePage = () => {
         </div>
       </section>
 
+      
+
       <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-8">
             Ready to start your next project?
           </h2>
-          <Link
-            href={`/contact`}
-            className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg"
-          >
-            Contact Us
-          </Link>
+          <Button asChild>
+            <Link href={`/contact`}>Contact Us</Link>
+          </Button>
         </div>
       </section>
     </div>

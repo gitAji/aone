@@ -1,0 +1,23 @@
+.projects-scrolling-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.projects-scrolling-wrapper {
+  display: flex;
+  width: fit-content;
+  animation: scroll-right-to-left 40s linear infinite;
+}
+
+.projects-scrolling-container:hover .projects-scrolling-wrapper {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-right-to-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

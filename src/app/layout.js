@@ -1,5 +1,5 @@
 import { Inter, Pacifico, Bebas_Neue, Raleway } from "next/font/google";
-import "./globals.css";
+import "./globals.css?v=1";
 import Footer from "@/components/Footer";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import HamburgerMenu from "@/components/HamburgerMenu";
