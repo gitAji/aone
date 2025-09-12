@@ -3,6 +3,7 @@ import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import Link from 'next/link';
 import { FaRobot, FaLightbulb, FaRocket, FaCogs, FaChartLine, FaShieldAlt } from 'react-icons/fa';
+import Testimonials from "@/components/Testimonials";
 
 const AIAuomationsPage = () => {
   return (
@@ -63,14 +64,7 @@ const AIAuomationsPage = () => {
         </div>
       </section>
 
-      <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-8">Ready to automate your business for success?</h2>
-          <Link href="/contact" className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
-            Get a Free Consultation
-          </Link>
-        </div>
-      </section>
+      <Testimonials />
     </div>
   );
 };

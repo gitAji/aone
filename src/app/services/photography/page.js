@@ -14,8 +14,8 @@ const PhotographyPage = () => {
       <section className="container mx-auto px-4 py-16 text-center">
         <h2 className="text-4xl font-bold text-gray-800 mb-12">The Power of Professional Photography</h2>
         <p className="text-lg text-gray-700 leading-relaxed mb-8 max-w-3xl mx-auto">
-          In a world saturated with visuals, high-quality photography is crucial for making a lasting impression. Whether it&apos;s for your brand, products, or special events, professional images elevate your message, evoke emotion, and build credibility. We transform ordinary scenes into extraordinary visual narratives.
-        </p>
+            In a world saturated with visuals, high-quality photography is crucial for making a lasting impression. Whether it&apos;s for your brand, products, or special events, professional images elevate your message, evoke emotion, and build credibility. We transform ordinary scenes into extraordinary visual narratives.
+          </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
           <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
             <FaImage className="text-5xl text-blue-600 mb-4" />

@@ -14,8 +14,8 @@ const VideographyPage = () => {
       <section className="container mx-auto px-4 py-16 text-center">
         <h2 className="text-4xl font-bold text-gray-800 mb-12">The Impact of Professional Videography</h2>
         <p className="text-lg text-gray-700 leading-relaxed mb-8 max-w-3xl mx-auto">
-          Video is the most powerful medium for storytelling in the digital age. It allows you to connect with your audience on a deeper level, convey complex messages with clarity, and leave a lasting impression. From brand narratives to product showcases, professional videography elevates your content and drives engagement.
-        </p>
+            Video is the most powerful medium for storytelling in the digital age. It allows you to connect with your audience on a deeper level, convey complex messages with clarity, and leave a lasting impression. From brand narratives to product showcases, professional videography elevates your content and drives engagement.
+          </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
           <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
             <FaFilm className="text-5xl text-blue-600 mb-4" />

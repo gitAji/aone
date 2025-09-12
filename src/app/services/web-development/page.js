@@ -1,81 +1,195 @@
-'use client';
-import React from 'react';
-import HeroSection from '@/components/HeroSection';
-import Link from 'next/link';
-import { FaLaptopCode, FaShoppingCart, FaWordpress, FaMobileAlt, FaCloud, FaCode, FaChartLine } from 'react-icons/fa';
+"use client";
+import React from "react";
+import HeroSection from "@/components/HeroSection";
+import Link from "next/link";
+import {
+  FaLaptopCode,
+  FaShoppingCart,
+  FaWordpress,
+  FaMobileAlt,
+  FaCloud,
+  FaCode,
+  FaChartLine,
+  FaStar,
+} from "react-icons/fa";
+import { motion } from "framer-motion"; // Added for subtle animations
+import Testimonials from "@/components/Testimonials";
 
 const WebDevelopmentPage = () => {
   return (
     <div className="service-detail-page bg-gray-50 min-h-screen">
-      <HeroSection
-        title="Web Development"
-        subtitle="Building robust, scalable, and visually stunning web solutions tailored to your unique business needs."
-      />
+      {/* Compact Hero Section */}
+      <HeroSection title="Web Development Solutions" />
 
-      <section className="container mx-auto px-4 py-16 text-center">
-        <h2 className="text-4xl font-bold text-gray-800 mb-12">Why a Powerful Online Presence Matters</h2>
-        <p className="text-lg text-gray-700 leading-relaxed mb-8 max-w-3xl mx-auto">
-          Your website is your digital storefront, your primary communication channel, and often the first impression potential customers have of your business. A well-crafted website not only looks great but also performs flawlessly, drives engagement, and converts visitors into loyal customers. We build web solutions that are designed for impact and growth.
+      {/* Why Choose Us Section */}
+      <section className="container mx-auto px-4 py-12 text-center">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-3xl font-bold text-gray-800 mb-8"
+        >
+          Why Your Website Matters
+        </motion.h2>
+        <p className="text-lg text-gray-700 leading-relaxed mb-10 max-w-2xl mx-auto">
+          Your website is the cornerstone of your digital presence. We create
+          solutions that combine stunning design, seamless functionality, and
+          performance to drive growth and engagement.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
-            <FaMobileAlt className="text-5xl text-blue-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Responsive Design</h3>
-            <p className="text-gray-700">Ensuring your website looks and functions perfectly on any device, from desktops to smartphones.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
-            <FaCloud className="text-5xl text-green-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Scalability & Performance</h3>
-            <p className="text-gray-700">Building robust and optimized websites that can grow with your business and handle high traffic.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
-            <FaCode className="text-5xl text-purple-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Custom Solutions</h3>
-            <p className="text-gray-700">Developing bespoke web applications and features tailored precisely to your unique requirements.</p>
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            {
+              icon: <FaMobileAlt className="text-4xl text-blue-600 mb-4" />,
+              title: "Responsive Design",
+              description:
+                "Flawless performance across all devices, from phones to desktops.",
+            },
+            {
+              icon: <FaCloud className="text-4xl text-green-600 mb-4" />,
+              title: "Scalability & Speed",
+              description:
+                "Optimized websites built to handle growth and high traffic.",
+            },
+            {
+              icon: <FaCode className="text-4xl text-purple-600 mb-4" />,
+              title: "Custom Development",
+              description:
+                "Tailored solutions to meet your unique business needs.",
+            },
+          ].map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3, delay: index * 0.1 }}
+              className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+            >
+              {item.icon}
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                {item.title}
+              </h3>
+              <p className="text-gray-700 text-sm">{item.description}</p>
+            </motion.div>
+          ))}
         </div>
       </section>
 
-      <section className="container mx-auto px-4 py-16 bg-gray-100">
-        <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">Our Comprehensive Web Development Services</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 items-start">
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
-            <FaLaptopCode className="text-5xl text-blue-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Custom Website Development</h3>
-            <p className="text-gray-700">From concept to launch, we build unique websites that reflect your brand and engage your audience.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
-            <FaShoppingCart className="text-5xl text-green-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">E-commerce Solutions</h3>
-            <p className="text-gray-700">Powerful and secure online stores designed to maximize sales and provide a seamless shopping experience.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
-            <FaWordpress className="text-5xl text-red-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">CMS Development (WordPress, etc.)</h3>
-            <p className="text-gray-700">Empowering you with easy-to-use content management systems to update and maintain your site effortlessly.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
-            <FaCode className="text-5xl text-purple-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Web Application Development</h3>
-            <p className="text-gray-700">Building custom web applications to streamline your business processes and enhance user interaction.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
-            <FaMobileAlt className="text-5xl text-orange-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Website Maintenance & Support</h3>
-            <p className="text-gray-700">Ensuring your website remains secure, up-to-date, and performs optimally with ongoing support.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
-            <FaChartLine className="text-5xl text-teal-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Performance Optimization</h3>
-            <p className="text-gray-700">Optimizing your website for speed, SEO, and overall performance to improve user experience and search rankings.</p>
-          </div>
+      {/* Services Section */}
+      <section className="container mx-auto px-4 py-12 bg-gray-100">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-3xl font-bold text-gray-800 mb-8 text-center"
+        >
+          Our Web Development Services
+        </motion.h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            {
+              icon: <FaLaptopCode className="text-4xl text-blue-600 mb-4" />,
+              title: "Custom Website Development",
+              description:
+                "Unique websites designed to reflect your brand and engage users.",
+            },
+            {
+              icon: <FaShoppingCart className="text-4xl text-green-600 mb-4" />,
+              title: "E-commerce Solutions",
+              description:
+                "Secure, user-friendly online stores to boost sales.",
+            },
+            {
+              icon: <FaWordpress className="text-4xl text-red-600 mb-4" />,
+              title: "CMS Development",
+              description:
+                "Easy-to-manage content systems like WordPress for flexibility.",
+            },
+            {
+              icon: <FaCode className="text-4xl text-purple-600 mb-4" />,
+              title: "Web Applications",
+              description:
+                "Custom apps to streamline processes and enhance interactivity.",
+            },
+            {
+              icon: <FaMobileAlt className="text-4xl text-orange-600 mb-4" />,
+              title: "Maintenance & Support",
+              description:
+                "Ongoing support to keep your site secure and up-to-date.",
+            },
+            {
+              icon: <FaChartLine className="text-4xl text-teal-600 mb-4" />,
+              title: "Performance Optimization",
+              description:
+                "Boost speed, SEO, and user experience with expert optimization.",
+            },
+          ].map((service, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3, delay: index * 0.1 }}
+              className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+            >
+              {service.icon}
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                {service.title}
+              </h3>
+              <p className="text-gray-700 text-sm">{service.description}</p>
+            </motion.div>
+          ))}
         </div>
       </section>
 
+      {/* Testimonial Section */}
+      <section className="container mx-auto px-4 py-12 text-center">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-3xl font-bold text-gray-800 mb-8"
+        >
+          What Our Clients Say
+        </motion.h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {[
+            {
+              quote:
+                "Their team transformed our online presence with a stunning, high-performing website!",
+              author: "Jane Doe, CEO of TechCorp",
+            },
+            {
+              quote:
+                "The e-commerce platform they built doubled our conversion rates. Highly recommend!",
+              author: "John Smith, Founder of ShopEasy",
+            },
+          ].map((testimonial, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: index * 0.2 }}
+              className="p-6 bg-white rounded-lg shadow-md"
+            >
+              <FaStar className="text-yellow-500 text-2xl mb-2" />
+              <p className="text-gray-700 italic mb-4">{testimonial.quote}</p>
+              <p className="text-gray-900 font-semibold">
+                {testimonial.author}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA Section */}
       <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-8">Ready to build your dream website?</h2>
-          <Link href="/contact" className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
+          <h2 className="text-4xl font-bold mb-8">
+            Ready to Transform Your Online Presence?
+          </h2>
+          <Link
+            href="/contact"
+            className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg"
+          >
             Get a Free Consultation
           </Link>
         </div>

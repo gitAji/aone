@@ -27,15 +27,15 @@ const projects = [
     projectLink: "/references/project-4",
   },
   {
-    title: "Project 5",
-    description: "Description for project 5.",
-    imageUrl: "/images/projects/project5.jpeg",
+    title: "QFS accountants",
+    description: "Website for QFS accountants.",
+    imageUrl: "/images/projects/qfs.png",
     projectLink: "/references/project-5",
   },
   {
-    title: "Project 6",
-    description: "Description for project 6.",
-    imageUrl: "/images/projects/saray.png",
+    title: "RentMyProperty",
+    description: "property management website.",
+    imageUrl: "/images/projects/rentmypropertyuk.png",
     projectLink: "/references/project-6",
   },
 ];

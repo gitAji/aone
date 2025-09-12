@@ -14,8 +14,8 @@ const UIUXDesignPage = () => {
       <section className="container mx-auto px-4 py-16 text-center">
         <h2 className="text-4xl font-bold text-gray-800 mb-12">The Art & Science of UI/UX Design</h2>
         <p className="text-lg text-gray-700 leading-relaxed mb-8 max-w-3xl mx-auto">
-          User Interface (UI) and User Experience (UX) design are the cornerstones of successful digital products. UI focuses on the visual elements users interact with, while UX ensures those interactions are meaningful and enjoyable. Together, they create a seamless journey that delights your audience and achieves your business goals.
-        </p>
+            User Interface (UI) and User Experience (UX) design are the cornerstones of successful digital products. UI focuses on the visual elements users interact with, while UX ensures those interactions are meaningful and enjoyable. Together, they create a seamless journey that delights your audience and achieves your business goals.
+          </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
           <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
             <FaPalette className="text-5xl text-blue-600 mb-4" />
