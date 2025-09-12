@@ -15,10 +15,10 @@ const Project3Page = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">Project Overview</h2>
           <p className="text-lg text-gray-700 mb-6">
-            This project involved creating a sophisticated online presence for Saray Beauty Parlour, a leading beauty and wellness center. Our objective was to design a visually appealing and user-friendly website that effectively showcases their services, facilitates online bookings, and reflects their brand's elegance.
+            This project involved creating a sophisticated online presence for Saray Beauty Parlour, a leading beauty and wellness center. Our objective was to design a visually appealing and user-friendly website that effectively showcases their services, facilitates online bookings, and reflects their brand&apos;s elegance.
           </p>
           <p className="text-lg text-gray-700 mb-6">
-            Key features included a detailed service menu, an integrated booking system, a portfolio of their work, and client testimonials. We focused on creating a seamless digital experience that enhances the parlour's reputation and attracts new clients.
+            Key features included a detailed service menu, an integrated booking system, a portfolio of their work, and client testimonials. We focused on creating a seamless digital experience that enhances the parlour&apos;s reputation and attracts new clients.
           </p>
           <div className="mt-8">
             <Image src="/images/projects/saray.png" alt="Saray Beauty Parlour Website" width={1200} height={600} className="rounded-lg shadow-lg" />

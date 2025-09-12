@@ -18,7 +18,7 @@ const Project6Page = () => {
             This project focused on developing a comprehensive online presence for Saray Steakhouse, a premium restaurant. Our goal was to create a visually appealing and highly functional website that would enhance customer experience, streamline online reservations, and showcase their exquisite menu.
           </p>
           <p className="text-lg text-gray-700 mb-6">
-            Key functionalities included an interactive menu display, an intuitive table booking system, and a gallery to highlight the restaurant's ambiance. We aimed to create a digital platform that truly reflects the quality and elegance of Saray Steakhouse.
+            Key functionalities included an interactive menu display, an intuitive table booking system, and a gallery to highlight the restaurant&apos;s ambiance. We aimed to create a digital platform that truly reflects the quality and elegance of Saray Steakhouse.
           </p>
           <div className="mt-8">
             <Image src="/images/projects/saraystange.png" alt="Saray Steakhouse Website" width={1200} height={600} className="rounded-lg shadow-lg" />
@@ -73,7 +73,7 @@ const Project6Page = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">Results & Impact</h2>
           <p className="text-lg text-gray-700 mb-6">
-            The new website significantly enhanced Saray Steakhouse's online presence, leading to a **20% increase in online reservations** and improved customer engagement. The visually appealing design and user-friendly interface received positive feedback, contributing to a stronger brand image and increased customer satisfaction.
+            The new website significantly enhanced Saray Steakhouse&apos;s online presence, leading to a **20% increase in online reservations** and improved customer engagement. The visually appealing design and user-friendly interface received positive feedback, contributing to a stronger brand image and increased customer satisfaction.
           </p>
           <div className="mt-8">
             <Image src="/images/projects/saraystange.png" alt="Saray Steakhouse Website" width={1200} height={600} className="rounded-lg shadow-lg" />
