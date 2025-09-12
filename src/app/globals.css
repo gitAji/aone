@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "@fortawesome/fontawesome-svg-core/styles.css";
+@import "../components/Header.css";
 
 :root {
   --primary-color: #ab1c24; /* A vibrant blue for primary actions and highlights */

@@ -13,14 +13,13 @@ const ProjectCard = ({ title, description, imageUrl, projectLink }) => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.5 }}
-        whileHover={{ scale: 1.05 }}
       >
         <Image
           src={imageUrl}
           alt={title}
           width={400}
           height={300}
-          className="project-card-image object-cover w-full h-full transition-transform duration-300 ease-in-out"
+          className="project-card-image object-cover w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out">
           <h3 className="text-white text-2xl font-bold text-center p-4">

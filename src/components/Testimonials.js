@@ -1,0 +1,63 @@
+import React from "react";
+import Image from "next/image";
+
+const TestimonialCard = ({ text, imgSrc, imgAlt, client }) => {
+  return (
+    <div className="relative bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group">
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-300"></div>
+      <div className="relative">
+        <img
+          src={imgSrc}
+          alt={imgAlt}
+          className="w-16 h-16 mx-auto mb-4 rounded-full object-contain border-1 border-pink-200"
+        />
+        <p className="text-gray-600 italic mb-4 text-center">"{text}"</p>
+        <p className="text-pink-400 font-semibold text-center">{client}</p>
+      </div>
+    </div>
+  );
+};
+
+const TestimonialsSection = () => {
+  return (
+    <section
+      className="py-12 bg-gradient-to-b from-gray-50 to-white"
+      aria-labelledby="testimonials"
+    >
+      <header className="text-center mb-16">
+        <h2
+          id="testimonials"
+          className="text-5xl font-extrabold text-gray-900 mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-500"
+        >
+          What Our Customers Say
+        </h2>
+        <p className="text-xl text-gray-500 max-w-2xl mx-auto">
+          Discover the experiences of our valued clients who trust us to bring
+          their visions to life.
+        </p>
+      </header>
+      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <TestimonialCard
+          text="Excellent designs that made our website look more professional. All the gaps were filled with highest prerequisites. 100% endorsed and a good choice for restaurant businesses."
+          imgSrc="/images/clients/clean.png"
+          imgAlt="Clean Masters Renhold Logo"
+          client="Clean Masters Renhold"
+        />
+        <TestimonialCard
+          text="Saray Steakhouse, and arguably one of the best places for grabbing the all-in-one bundle for web solutions. Unquestionably a 5 stars digital firm with huge potential."
+          imgSrc="/images/clients/saraysange.png"
+          imgAlt="Saray Steakhouse Logo"
+          client="Saray Steakhouse"
+        />
+        <TestimonialCard
+          text="A website that is visually appealing, easy to use, and provides a good user experience can help to increase customer engagement and drive conversions."
+          imgSrc="/images/clients/shop-front.png"
+          imgAlt="Go Local Logo"
+          client="Go Local"
+        />
+      </div>
+    </section>
+  );
+};
+
+export default TestimonialsSection;
