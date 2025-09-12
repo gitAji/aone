@@ -20,7 +20,7 @@ const Projects = () => {
       </div>
 
       {/* Masonry-like grid */}
-      <div className="projects-grid container mx-auto px-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="projects-grid container mx-auto grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project, index) => {
           const heightClass = cardHeights[index % cardHeights.length];
           return (
