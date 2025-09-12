@@ -73,7 +73,7 @@ const Project3Page = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">Results & Impact</h2>
           <p className="text-lg text-gray-700 mb-6">
-            The new website for Saray Beauty Parlour led to a **30% increase in online bookings** and improved client engagement. The enhanced online presence attracted new customers and reinforced the parlour's image as a modern and professional establishment.
+            The new website for Saray Beauty Parlour led to a **30% increase in online bookings** and improved client engagement. The enhanced online presence attracted new customers and reinforced the parlour&apos;s image as a modern and professional establishment.
           </p>
           <div className="mt-8">
             <Image src="/images/projects/saray.png" alt="Saray Beauty Parlour Website" width={1200} height={600} className="rounded-lg shadow-lg" />

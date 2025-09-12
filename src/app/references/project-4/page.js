@@ -15,7 +15,7 @@ const Project4Page = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">Project Overview</h2>
           <p className="text-lg text-gray-700 mb-6">
-            This project focused on developing a vibrant and user-friendly online platform for Tulips Beauty Parlour. Our aim was to create a digital space that reflects the parlour's modern aesthetic, provides easy access to services, and enhances client engagement.
+            This project focused on developing a vibrant and user-friendly online platform for Tulips Beauty Parlour. Our aim was to create a digital space that reflects the parlour&apos;s modern aesthetic, provides easy access to services, and enhances client engagement.
           </p>
           <p className="text-lg text-gray-700 mb-6">
             Key features included a comprehensive service menu, an intuitive online booking system, a stunning photo gallery of their work, and client testimonials. We designed the website to be fully responsive, ensuring a seamless experience across all devices and attracting a wider clientele.

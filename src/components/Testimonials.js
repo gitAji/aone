@@ -6,12 +6,14 @@ const TestimonialCard = ({ text, imgSrc, imgAlt, client }) => {
     <div className="relative bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group">
       <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-300"></div>
       <div className="relative">
-        <img
+                <Image
           src={imgSrc}
           alt={imgAlt}
+          width={64}
+          height={64}
           className="w-16 h-16 mx-auto mb-4 rounded-full object-contain border-1 border-pink-200"
         />
-        <p className="text-gray-600 italic mb-4 text-center">"{text}"</p>
+        <p className="text-gray-600 italic mb-4 text-center">&quot;{text}&quot;</p>
         <p className="text-pink-400 font-semibold text-center">{client}</p>
       </div>
     </div>
