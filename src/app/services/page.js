@@ -3,6 +3,7 @@ import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import Link from 'next/link';
 import { FaLaptopCode, FaPaintBrush, FaChartLine, FaRobot, FaCameraRetro, FaVideo } from 'react-icons/fa';
+import Testimonials from "@/components/Testimonials";
 
 const ServicesPage = () => {
   return (
