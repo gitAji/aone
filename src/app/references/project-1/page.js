@@ -1,15 +1,13 @@
-'use client';
-import React from 'react';
-import HeroSection from '@/components/HeroSection';
-import Image from 'next/image';
-import Link from 'next/link';
+"use client";
+import React from "react";
+import HeroSection from "@/components/HeroSection";
+import Image from "next/image";
+import Link from "next/link";
 
 const Project1Page = () => {
   return (
     <div className="project-detail-page bg-gray-50 min-h-screen">
-      <HeroSection
-        title="Kids Learning Portal"
-      />
+      <HeroSection title="Kids Learning Portal" />
 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -26,12 +24,15 @@ const Project1Page = () => {
             learning materials.
           </p>
           <p className="text-lg text-gray-700 mb-6">
-            Key functionalities included an interactive menu display, an intuitive table booking system, and a gallery to highlight the restaurant&apos;s ambiance. We aimed to create a digital platform that truly reflects the quality and elegance of Saray Steakhouse.
+            Key functionalities included an interactive menu display, an
+            intuitive table booking system, and a gallery to highlight the
+            restaurant&apos;s ambiance. We aimed to create a digital platform
+            that truly reflects the quality and elegance of Saray Steakhouse.
           </p>
           <div className="mt-8">
             <Image
-              src="/images/projects/project1.jpeg"
-              alt="E-commerce Platform Redesign"
+              src="/images/projects/kidsportal/project1.png"
+              alt="Kids Learning Portal Development"
               width={1200}
               height={600}
               className="rounded-lg shadow-lg"
@@ -55,7 +56,7 @@ const Project1Page = () => {
                 competitor analysis, and defining project scope and objectives.
               </p>
               <Image
-                src="/images/placeholders/wireframe.png"
+                src="/images/projects/kidsportal/plan.png"
                 alt="Wireframe"
                 width={600}
                 height={400}
@@ -73,7 +74,7 @@ const Project1Page = () => {
                 aesthetically pleasing design.
               </p>
               <Image
-                src="/images/placeholders/ui-ux.png"
+                src="/images/projects/kidsportal/wireframe.png"
                 alt="UI/UX Design"
                 width={600}
                 height={400}
@@ -91,7 +92,7 @@ const Project1Page = () => {
                 user authentication, and implementing interactive features.
               </p>
               <Image
-                src="/images/placeholders/development.png"
+                src="/images/projects/kidsportal/dev.png"
                 alt="Development"
                 width={600}
                 height={400}
@@ -109,7 +110,7 @@ const Project1Page = () => {
                 securely deployed.
               </p>
               <Image
-                src="/images/placeholders/testing.png"
+                src="/images/projects/kidsportal/deploy.png"
                 alt="Testing"
                 width={600}
                 height={400}
@@ -157,7 +158,7 @@ const Project1Page = () => {
           </p>
           <div className="mt-8">
             <Image
-              src="/images/projects/saraystange.png"
+              src="/images/projects/kidsportal/result.png"
               alt="Saray Steakhouse Website"
               width={1200}
               height={600}
