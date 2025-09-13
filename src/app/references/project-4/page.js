@@ -30,7 +30,7 @@ const Project4Page = () => {
             site is built using Next.js to ensure fast load times and a
             responsive design that works seamlessly across all devices.
             Additionally, SEO best practices were implemented to enhance the
-            parlour's visibility in search engine results, attracting more
+            parlour&apos;s visibility in search engine results, attracting more
             visitors and potential clients.
           </p>
           <div className="mt-8">

@@ -29,7 +29,7 @@ const Project5Page = () => {
             industry insights and updates, and a contact form for inquiries. The
             website was built using Next.js to ensure fast performance and
             responsiveness across all devices. Additionally, SEO best practices
-            were implemented to enhance the firm's online visibility and attract
+            were implemented to enhance the             firm&apos;s online visibility and attract
             more potential clients.
           </p>
           <div className="mt-8">

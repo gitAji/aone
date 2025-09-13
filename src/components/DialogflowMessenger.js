@@ -1,11 +1,12 @@
 
 'use client';
 import React from 'react';
+import Script from 'next/script';
 
 const DialogflowMessenger = () => {
   return (
     <>
-      <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+      <Script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1" strategy="afterInteractive" />
       <df-messenger
         intent="WELCOME"
         chat-title="Aone"
