@@ -12,7 +12,7 @@ const ClientLayoutWrapper = ({ children }) => {
   return (
     <>
       {children}
-      <DynamicDialogflowMessenger />
+      <DynamicDialogflowMessenger isChatVisible={true} />
     </>
   );
 };

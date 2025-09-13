@@ -1,7 +1,6 @@
 import { Inter, Pacifico, Bebas_Neue, Raleway } from "next/font/google";
 import "./globals.css?v=1";
 import Footer from "@/components/Footer";
-import ScrollToTopButton from "@/components/ScrollToTopButton";
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 
 
@@ -49,7 +48,6 @@ export default function RootLayout({ children }) {
         <ClientLayoutWrapper>
         {children}
         <Footer />
-        <ScrollToTopButton />
         </ClientLayoutWrapper>
       </body>
     </html>
