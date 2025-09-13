@@ -6,7 +6,7 @@ import Image from "next/image";
 const Logo = () => {
   return (
     <div className="logo-container">
-      <Link href="/">
+      <Link href="/" className="cursor-pointer transition-all hover:opacity-80">
         <Image src="/images/logo.png" alt="Your Brand Logo" width={150} height={50} />
       </Link>
     </div>

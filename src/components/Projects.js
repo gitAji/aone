@@ -7,11 +7,11 @@ import { motion } from "framer-motion";
 import projects from "@/app/data/projects.js";
 import "./Projects.css";
 
-const cardHeights = ["h-64", "h-80", "h-72", "h-96"];
+const cardHeights = ["h-68", "h-76", "h-72", "h-78"];
 
 const Projects = () => {
   return (
-    <section className="projects-section py-24 bg-gray-50">
+    <section className="projects-section py-20 bg-gray-50">
       <div className="text-center mb-12">
         <h2 className="text-4xl font-bold text-gray-800 mb-4">Our Projects</h2>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -50,7 +50,9 @@ const Projects = () => {
                     <h3 className="text-white text-xl font-semibold">
                       {project.title}
                     </h3>
-                    <span className="text-white w-6 h-6 transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300">-&gt;</span>
+                    <span className="text-white w-6 h-6 transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300">
+                      -&gt;
+                    </span>
                   </div>
                   <p className="text-gray-200 text-sm mt-2 opacity-80 line-clamp-2">
                     {project.description}

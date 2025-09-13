@@ -33,15 +33,14 @@ const Project2Page = () => {
             special offers and events.
           </p>
           <p className="text-lg text-gray-700 mb-6">
-            Key functionalities included age-appropriate content, progress
-            tracking for parents, interactive quizzes, and a reward system to
-            encourage learning. We prioritized a colorful and intuitive user
-            interface to ensure an enjoyable and effective learning experience
-            for young users.
+            Key functionalities included an interactive menu display, an
+            intuitive table booking system, and a gallery to highlight the
+            restaurant&apos;s ambiance. We aimed to create a digital platform
+            that truly reflects the quality and elegance of Saray Steakhouse.
           </p>
           <div className="mt-8">
             <Image
-              src="/images/projects/kidsleraning.png"
+              src="/images/projects/saray/project2.png"
               alt="Kids Learning Portal Development"
               width={1200}
               height={600}
@@ -65,7 +64,7 @@ const Project2Page = () => {
                 sessions and defining the app&apos;s core functionalities.
               </p>
               <Image
-                src="/images/placeholders/wireframe.png"
+                src="/images/projects/saray/dev.png"
                 alt="Strategy"
                 width={600}
                 height={400}
@@ -83,7 +82,7 @@ const Project2Page = () => {
                 testing.
               </p>
               <Image
-                src="/images/placeholders/ui-ux.png"
+                src="/images/projects/saray/ui.png"
                 alt="UI/UX Design"
                 width={600}
                 height={400}
@@ -100,7 +99,7 @@ const Project2Page = () => {
                 protect sensitive financial data.
               </p>
               <Image
-                src="/images/placeholders/development.png"
+                src="/images/projects/saray/plan.png"
                 alt="Development"
                 width={600}
                 height={400}
@@ -117,7 +116,7 @@ const Project2Page = () => {
                 ensured a bug-free and high-performing application.
               </p>
               <Image
-                src="/images/placeholders/testing.png"
+                src="/images/projects/saray/test.png"
                 alt="Testing"
                 width={600}
                 height={400}
@@ -166,7 +165,7 @@ const Project2Page = () => {
           </p>
           <div className="mt-8">
             <Image
-              src="/images/projects/kidsleraning.png"
+              src="/images/projects/saray/result.png"
               alt="Kids Learning Portal Development"
               width={1200}
               height={600}

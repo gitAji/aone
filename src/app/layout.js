@@ -2,6 +2,12 @@ import { Inter, Pacifico, Bebas_Neue, Raleway } from "next/font/google";
 import "./globals.css?v=1";
 import Footer from "@/components/Footer";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
+import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
+
+
+
+
+
 
 const inter = Inter({
   subsets: ["latin"],
@@ -40,9 +46,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${pacifico.variable} ${bebasNeue.variable} ${raleway.variable} antialiased`}
       >
+        <ClientLayoutWrapper>
         {children}
         <Footer />
         <ScrollToTopButton />
+        </ClientLayoutWrapper>
       </body>
     </html>
   );

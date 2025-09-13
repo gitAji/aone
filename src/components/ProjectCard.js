@@ -19,7 +19,7 @@ const ProjectCard = ({ title, description, imageUrl, projectLink }) => {
           alt={title}
           width={400}
           height={300}
-          className="project-card-image object-cover w-full h-full transition-all duration-300 ease-in-out filter blur-md group-hover:scale-110 group-hover:filter-none"
+          className="project-card-image object-cover w-full h-full transition-all duration-300 ease-in-out filter grayscale group-hover:filter-none group-hover:scale-110"
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center transition-all duration-300 ease-in-out group-hover:bg-gray-800 group-hover:bg-opacity-70 group-hover:backdrop-blur-sm">
           {/* Arrow button */}
