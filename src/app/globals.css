@@ -19,7 +19,7 @@
     --secondary-color: #adb5bd; /* Lighter gray for dark mode */
     --accent-color: #101010; /* Brighter green for dark mode */
     --background-color: #212529; /* Dark charcoal for dark mode background */
-    --text-color: #f8f9fa; /* Lightest gray for dark mode text */
+    --text-color: #FFFFFF; /* White for dark mode text */
     --light-gray: #343a40; /* Darker gray for subtle distinctions in dark mode */
     --border-color: #495057; /* Darker border color */
     --shadow-color: rgba(255, 255, 255, 0.1); /* Lighter shadow for dark mode */
