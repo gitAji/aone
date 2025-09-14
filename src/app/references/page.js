@@ -7,48 +7,48 @@ import Image from "next/image"; // Import Image component
 const projects = [
   {
     id: "project-1",
-    title: "Saray Steakhouse Website",
-    imageUrl: "/images/projects/saraystange.png", // Revert to .jpeg
+    title: "Kids Learning Portal Development",
+    imageUrl: "/images/projects/kids-portal.png", // Revert to .jpeg
   },
   {
     id: "project-2",
-    title: "Kids Learning Portal Development",
-    imageUrl: "/images/projects/kidsportals.png", // Revert to .jpeg
-  },
-  {
-    id: "project-3",
-    title: "Saray Beauty Parlour Website",
+    title: "Saray Steakhouse & Kro",
     imageUrl: "/images/projects/saray.png", // Revert to .jpeg
   },
   {
-    id: "project-4",
-    title: "Tulips Beauty Parlour Website",
-    imageUrl: "/images/projects/tulips.png", // Revert to .jpeg
-  },
-  {
-    id: "project-5",
+    id: "project-3",
     title: "Clean Masters Renhold Website",
     imageUrl: "/images/projects/cleanmasters.png", // Revert to .jpeg
   },
   {
+    id: "project-4",
+    title: "Tulips Beauty Parlour Branding",
+    imageUrl: "/images/projects/tulips.png", // Revert to .jpeg
+  },
+  {
+    id: "project-5",
+    title: "QFS Accountants Branding & Website",
+    imageUrl: "/images/projects/qfs.png", // Revert to .jpeg
+  },
+  {
     id: "project-6",
-    title: "Educational Portal Redesign for a University",
-    imageUrl: "/images/projects/saraystange.png", // Revert to .jpeg
+    title: "RentMyProperty Website",
+    imageUrl: "/images/projects/rentproperty.png", // Revert to .jpeg
   },
   {
     id: "project-7",
-    title: "Saray Steakhouse Website",
-    imageUrl: "/images/projects/kidsportals.png", // Revert to .jpeg
+    title: "Rent Cars Branding & Website",
+    imageUrl: "/images/projects/rentcars.png", // Revert to .jpeg
   },
   {
     id: "project-8",
-    title: "Kids Learning Portal Development",
-    imageUrl: "/images/projects/saray.png", // Revert to .jpeg
+    title: "Shop Front convienience store template",
+    imageUrl: "/images/projects/shop-front.png", // Revert to .jpeg
   },
   {
     id: "project-9",
-    title: "Saray Beauty Parlour Website",
-    imageUrl: "/images/projects/tulips.png", // Revert to .jpeg
+    title: "TrendifyTools ",
+    imageUrl: "/images/projects/trendify.png", // Revert to .jpeg
   },
 ];
 
@@ -63,7 +63,7 @@ const ReferencesPage = () => {
       <section className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">
-            Our Projects
+            Our References
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {" "}

@@ -1,8 +1,8 @@
-'use client';
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
+"use client";
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 const ProjectCard = ({ title, description, imageUrl, projectLink }) => {
   return (
@@ -21,9 +21,12 @@ const ProjectCard = ({ title, description, imageUrl, projectLink }) => {
           height={300}
           className="project-card-image object-cover w-full h-full transition-all duration-300 ease-in-out filter grayscale group-hover:filter-none group-hover:scale-110"
         />
-        <div className="absolute inset-0 flex flex-col items-center justify-center transition-all duration-300 ease-in-out group-hover:bg-gray-800 group-hover:bg-opacity-70 group-hover:backdrop-blur-sm">
+        <div className="absolute inset-0 flex flex-col items-center justify-center transition-all duration-300 ease-in-out group-hover:bg-gray-900 group-hover:bg-opacity-20 group-hover:backdrop-blur-sm">
           {/* Arrow button */}
-          <Link href={projectLink} className="absolute bottom-4 right-4 p-2 bg-white rounded-full opacity-100 group-hover:opacity-0 transition-opacity duration-300 ease-in-out">
+          <Link
+            href={projectLink}
+            className="absolute bottom-4 right-4 p-2 bg-white rounded-full opacity-100 group-hover:opacity-0 transition-opacity duration-300 ease-in-out"
+          >
             <span className="text-gray-800 text-2xl">&rarr;</span>
           </Link>
 

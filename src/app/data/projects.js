@@ -2,14 +2,14 @@ const projects = [
   {
     title: "Kids Learning Portal",
     description: "learning portal for kids.",
-    imageUrl: "/images/projects/kidsportals.png",
+    imageUrl: "/images/projects/kids-portal.png",
     projectLink: "/references/project-1",
     featured: true,
   },
   {
     title: "Saray steakhouse",
     description: "Restaurant website for Saray steakhouse.",
-    imageUrl: "/images/projects/saraystange.png",
+    imageUrl: "/images/projects/saray.png",
     projectLink: "/references/project-2",
     featured: true,
   },
@@ -35,7 +35,7 @@ const projects = [
   {
     title: "RentMyProperty",
     description: "property management website.",
-    imageUrl: "/images/projects/rentmypropertyuk.png",
+    imageUrl: "/images/projects/rentproperty.png",
     projectLink: "/references/project-6",
   },
 ];
