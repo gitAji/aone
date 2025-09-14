@@ -10,6 +10,7 @@ import "./Projects.css";
 const cardHeights = ["h-68", "h-76", "h-72", "h-78"];
 
 const Projects = () => {
+  console.log('Projects component rendered');
   return (
     <section className="projects-section py-20 bg-gray-50">
       <div className="text-center mb-12">
@@ -26,7 +27,7 @@ const Projects = () => {
           return (
             <motion.div
               key={index}
-              className={`project-card relative overflow-hidden rounded-2xl shadow-lg`}
+              className={`project-card relative overflow-hidden rounded-2xl shadow-lg ${heightClass}`}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}

@@ -96,3 +96,20 @@
     font-size: 0.8rem;
   }
 }
+
+.projects-scrolling-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+.projects-scrolling-container::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+}
+
+.projects-scrolling-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: 1.5rem;
+}

@@ -43,7 +43,6 @@ const HomePage = () => {
 
       {/* Projects */}
       <Projects />
-
       {/* Testimonials */}
       <Testimonials />
       {/* Call to Action */}
