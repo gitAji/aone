@@ -35,7 +35,7 @@ const ServiceCard = ({ href, icon: Icon, title, description, color }) => (
 
 const HomePage = () => {
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="min-h-screen">
       {/* Hero */}
       <HeroSection isHomePage={true} />
       {/* Services */}

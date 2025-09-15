@@ -15,8 +15,9 @@ const DesktopNav = () => {
       <Link href={`/about`} className="text-gray-600 hover:text-gray-900 transition-colors">
         Knowledge
       </Link>
-      <Link href={`/faq`} className="text-gray-600 hover:text-gray-900 transition-colors">
-        FAQ
+      
+      <Link href={`/blog`} className="text-gray-600 hover:text-gray-900 transition-colors">
+        Blog
       </Link>
       
       <Link href={`/contact`} className="text-gray-600 hover:text-gray-900 transition-colors">
