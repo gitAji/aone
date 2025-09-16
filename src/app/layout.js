@@ -2,6 +2,7 @@ import { Inter, Pacifico, Bebas_Neue, Raleway } from "next/font/google";
 import "./globals.css?v=1";
 import Footer from "@/components/Footer";
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
+import Script from "next/script";
 
 
 
@@ -38,14 +39,24 @@ export const metadata = {
   icons: {
     icon: "/assets/images/favicon.ico",
   },
+  verification: {
+    other: {
+      "ahrefs-site-verification": "e0ddcbd585d6a2bedc5fcbcf2e8ca5da13defcef5a3694a39043b02d01728335",
+    },
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${pacifico.variable} ${bebasNeue.variable} ${raleway.variable} antialiased`}
+        className={`${inter.variable} ${pacifico.variable} ${bebasNeue.variable} ${raleway.variable} antialiased}`}
       >
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="qcIvZEZSEISGNKyE5Gp7cQ"
+          strategy="afterInteractive"
+        />
         <ClientLayoutWrapper>
         {children}
         <Footer />

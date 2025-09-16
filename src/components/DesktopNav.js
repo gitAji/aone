@@ -12,10 +12,11 @@ const DesktopNav = () => {
       <Link href={`/references`} className="text-gray-600 hover:text-gray-900 transition-colors">
         References
       </Link>
-      <Link href={`/about`} className="text-gray-600 hover:text-gray-900 transition-colors">
+      
+      
+      <Link href={`/knowledge`} className="text-gray-600 hover:text-gray-900 transition-colors">
         Knowledge
       </Link>
-      
       <Link href={`/blog`} className="text-gray-600 hover:text-gray-900 transition-colors">
         Blog
       </Link>

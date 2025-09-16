@@ -97,8 +97,10 @@ const HamburgerMenu = () => {
                 </Link>
               </li>
 
+              
+              
               <li>
-                <Link href={`/about`} onClick={toggleMenu}>
+                <Link href={`/knowledge`} onClick={toggleMenu}>
                   Knowledge
                 </Link>
               </li>

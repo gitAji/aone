@@ -5,7 +5,6 @@ export default function sitemap() {
     '/about',
     '/client-login',
     '/contact',
-    '/faq',
     '/knowledge',
     '/references',
     '/references/project-1',
