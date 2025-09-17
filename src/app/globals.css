@@ -17,12 +17,60 @@
   :root {
     --primary-color: #66b3ff; /* Lighter blue for dark mode */
     --secondary-color: #adb5bd; /* Lighter gray for dark mode */
-    --accent-color: #101010; /* Brighter green for dark mode */
-    --background-color: #212529; /* Dark charcoal for dark mode background */
-    --text-color: #FFFFFF; /* White for dark mode text */
-    --light-gray: #343a40; /* Darker gray for subtle distinctions in dark mode */
-    --border-color: #495057; /* Darker border color */
-    --shadow-color: rgba(255, 255, 255, 0.1); /* Lighter shadow for dark mode */
+    --accent-color: #1E2940; /* Darker accent for dark mode */
+    --background-color: #121212; /* True black for high contrast */
+    --text-color: #E0E0E0; /* Light gray for reduced eye strain */
+    --light-gray: #1E1E1E; /* Slightly lighter gray for surfaces */
+    --border-color: #444444; /* Mid-gray for borders */
+    --shadow-color: rgba(255, 255, 255, 0.05); /* Very subtle white shadow */
+  }
+
+  body {
+    background: var(--background-color);
+    color: var(--text-color);
+  }
+
+  .card {
+    background-color: var(--light-gray);
+    border: 1px solid var(--border-color);
+  }
+
+  .hero {
+    background: linear-gradient(135deg, var(--background-color) 0%, #1a1a1a 100%);
+  }
+
+  .btn-primary {
+    background-color: var(--primary-color);
+    color: #000000; /* Black text on light blue buttons for contrast */
+  }
+
+  .btn-outline {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+
+  .fullscreen-menu {
+    background-color: rgba(18, 18, 18, 0.98); /* Slightly transparent black */
+  }
+
+  .footer {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+  }
+
+  .footer-section h3,
+  .footer-section a,
+  .social-icons a {
+    color: var(--text-color);
+  }
+
+  .footer-section a:hover,
+  .social-icons a:hover {
+    color: var(--primary-color);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border-color);
   }
 }
 

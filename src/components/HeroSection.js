@@ -17,12 +17,14 @@ const phrases = [
 
 const HeroSection = ({ isHomePage = false }) => {
   const [index, setIndex] = useState(0);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
     const interval = setInterval(
       () => setIndex((prev) => (prev + 1) % phrases.length),
       3000 // change every 3 seconds
     );
+    setDimensions({ width: window.innerWidth, height: window.innerHeight });
     return () => clearInterval(interval);
   }, []);
 
@@ -38,12 +40,10 @@ const HeroSection = ({ isHomePage = false }) => {
 
       {/* Background Layers */}
       <WaveLayers />
-      {typeof window !== "undefined" && (
-        <FloatingDots
-          containerWidth={window.innerWidth}
-          containerHeight={window.innerHeight}
-        />
-      )}
+      <FloatingDots
+        containerWidth={dimensions.width}
+        containerHeight={dimensions.height}
+      />
 
       {/* Hero Content */}
       <motion.div

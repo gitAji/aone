@@ -34,6 +34,9 @@ const Footer = () => {
               <Link href="/contact">Contact</Link>
             </li>
             <li>
+              <Link href="/privacy-policy">Privacy Policy</Link>
+            </li>
+            <li>
               <Link
                 href="https://aone.no/oldsite"
                 target="_blank"

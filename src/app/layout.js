@@ -3,7 +3,7 @@ import "./globals.css?v=1";
 import Footer from "@/components/Footer";
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 import Script from "next/script";
-
+import CookieBanner from "@/components/CookieBanner";
 
 
 
@@ -34,7 +34,7 @@ const raleway = Raleway({
 
 export const metadata = {
   title: "Web Design in Bergen, Norway | Webdesign i Bergen",
-  description: "Discover expert web design in Bergen, Norway. Create captivating websites to attract users to grow your business! | Oppdag profesjonell webdesign i Bergen, Norge.",
+  description: "Aone is a leading web design and digital marketing agency in Bergen, Norway. We create stunning websites and effective digital strategies to help your business grow.",
   keywords: "Web Design Bergen, Logo Design, SEO Services, Marketing, Printing, Affordable Websites, Netsider, Netbutikk, Søkemotoroptimalisering, Digital Markedsføring, Nettbutikk utvikling, Webutvikling, Grafisk design",
   icons: {
     icon: "/assets/images/favicon.ico",
@@ -57,10 +57,22 @@ export default function RootLayout({ children }) {
           data-key="qcIvZEZSEISGNKyE5Gp7cQ"
           strategy="afterInteractive"
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                  document.documentElement.classList.add('dark');
+                }
+              })();
+            `,
+          }}
+        />
         <ClientLayoutWrapper>
         {children}
         <Footer />
         </ClientLayoutWrapper>
+        <CookieBanner />
       </body>
     </html>
   );

@@ -4,9 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import HeroSection from '@/components/HeroSection';
 
-export const metadata = {
-  description: "Stay updated with the latest news, insights, and articles from Aone. Explore our blog for expert advice on web design, digital marketing, and AI automations.",
-};
+
 
 const BlogPage = () => {
   const [posts, setPosts] = useState([]);

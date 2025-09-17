@@ -17,10 +17,6 @@ import {
 } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 
-export const metadata = {
-  description: "Aone is a leading web design and digital marketing agency in Bergen, Norway. We create stunning websites and effective digital strategies to help your business grow.",
-};
-
 // ✅ Reusable Service Card Component
 const ServiceCard = ({ href, icon: Icon, title, description, color }) => (
   <Link

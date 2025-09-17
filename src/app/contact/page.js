@@ -12,9 +12,7 @@ import {
 } from "react-icons/fa";
 import CountUp from "react-countup";
 
-export const metadata = {
-  description: "Get in touch with Aone for expert web design, digital marketing, and AI automation services in Bergen, Norway. Contact us for inquiries, support, or to start your project.",
-};
+
 
 const ContactPage = () => {
   return (

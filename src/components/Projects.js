@@ -46,7 +46,8 @@ const Projects = () => {
                     src={project.imageUrl}
                     alt={project.title}
                     fill
-                    className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
+                    objectFit="cover" // Original objectFit
+                    className="rounded-t-lg"
                   />
 
                   {/* Overlay */}

@@ -87,7 +87,7 @@
 /* Responsive */
 @media (max-width: 768px) {
   .projects-grid {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: 1fr;
     gap: 1rem;
   }
 

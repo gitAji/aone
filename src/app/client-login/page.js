@@ -3,9 +3,7 @@ import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import { FaGoogle, FaFacebook } from 'react-icons/fa';
 
-export const metadata = {
-  description: "Client login portal for Aone. Access your projects, invoices, and communicate with our team securely.",
-};
+
 
 const ClientLoginPage = () => {
   return (
