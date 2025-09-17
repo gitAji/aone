@@ -102,7 +102,7 @@ const HamburgerMenu = () => {
 
               <li>
                 <Link href={`/about`} onClick={toggleMenu}>
-                  Knowledge
+                  About
                 </Link>
               </li>
 

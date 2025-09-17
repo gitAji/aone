@@ -1,6 +1,12 @@
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
 
+export const metadata = {
+  title: "Privacy Policy | Aone",
+  description: "Read Aone's comprehensive Privacy Policy to understand how we collect, use, and protect your personal information. Learn about your data choices and how to contact us.",
+  keywords: "privacy policy, data protection, personal information, data collection, data usage, data sharing, user rights, Aone, Norway",
+};
+
 const PrivacyPolicyPage = () => {
   return (
     <div>

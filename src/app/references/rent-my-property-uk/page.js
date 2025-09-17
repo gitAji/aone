@@ -4,10 +4,10 @@ import HeroSection from "@/components/HeroSection";
 import Image from "next/image";
 import Link from "next/link";
 
-const Project5Page = () => {
+const Project6Page = () => {
   return (
     <div className="project-detail-page bg-gray-50 min-h-screen">
-      <HeroSection title="Complete digital solutions for QFS Accountants " />
+      <HeroSection title="Rent My Property UK" />
 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -15,27 +15,16 @@ const Project5Page = () => {
             Project Overview
           </h2>
           <p className="text-lg text-gray-700 mb-6">
-            This project involved designing and developing a professional
-            website for QFS Accountants, a reputable accounting firm. The
-            objective was to create a modern, user-friendly online platform that
-            effectively showcases their services, expertise, and client
-            testimonials, while also providing easy access to contact
-            information and resources for potential clients.
+            This project focused on developing a comprehensive online presence
+            for Rent My Property UK, a property management service. Our goal was
+            to create a user-friendly and visually appealing website that would
+            facilitate property listings, inquiries, and bookings.
           </p>
-          <p className="text-lg text-gray-700 mb-6">
-            Key features of the website include a clean and intuitive design
-            that reflects the professionalism of QFS Accountants, a detailed
-            service section outlining their offerings, a blog for sharing
-            industry insights and updates, and a contact form for inquiries. The
-            website was built using Next.js to ensure fast performance and
-            responsiveness across all devices. Additionally, SEO best practices
-            were implemented to enhance the             firm&apos;s online visibility and attract
-            more potential clients.
-          </p>
+          <p className="text-lg text-gray-700 mb-6"></p>
           <div className="mt-8">
             <Image
-              src="/images/projects/QFS/cover.png"
-              alt="Clean Masters Renhold Website"
+              src="/images/projects/saraystange.png"
+              alt="Saray Steakhouse Website"
               width={1200}
               height={600}
               className="rounded-lg shadow-lg"
@@ -50,18 +39,16 @@ const Project5Page = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="process-step bg-white p-8 rounded-lg shadow-md">
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-                1. Requirements & Compliance Analysis
+                1. User Needs Assessment
               </h3>
               <p className="text-gray-700 mb-4">
-                We collaborated closely with QFS Accountants to gather detailed
-                requirements, ensuring the app met all relevant financial
-                regulations and compliance standards.we use public API to get
-                latest news about accounting updates and HMRC forms to the site
-                so that user can get latest updates.
+                We conducted surveys and interviews with students and educators
+                to identify their needs, challenges, and preferences for an
+                online learning platform.
               </p>
               <Image
-                src="/images/projects/QFS/requirements.png"
-                alt="Compliance Analysis"
+                src="/images/placeholders/wireframe.png"
+                alt="User Needs Assessment"
                 width={600}
                 height={400}
                 className="rounded-lg shadow-md mt-4"
@@ -69,16 +56,17 @@ const Project5Page = () => {
             </div>
             <div className="process-step bg-white p-8 rounded-lg shadow-md">
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-                2. Secure Architecture Design
+                2. UI/UX Redesign & Prototyping
               </h3>
               <p className="text-gray-700 mb-4">
-                We designed a robust architecture prioritizing data security,
-                user authentication, and secure communication protocols to
-                protect sensitive financial information.
+                Our design team created a modern, intuitive, and accessible user
+                interface, focusing on clear navigation and engaging content
+                presentation. Interactive prototypes were developed for
+                feedback.
               </p>
               <Image
-                src="/images/projects/QFS/mood board.png"
-                alt="Architecture Design"
+                src="/images/placeholders/ui-ux.png"
+                alt="UI/UX Redesign"
                 width={600}
                 height={400}
                 className="rounded-lg shadow-md mt-4"
@@ -86,15 +74,15 @@ const Project5Page = () => {
             </div>
             <div className="process-step bg-white p-8 rounded-lg shadow-md">
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-                3. Development & Integration
+                3. Development & Feature Implementation
               </h3>
               <p className="text-gray-700 mb-4">
-                The site was developed using the latest Technologies,
-                integrating secure APIs for data handling and ensuring
-                compliance with industry standards.
+                The development team implemented the new design and integrated
+                features like interactive quizzes, progress tracking, and a
+                personalized learning dashboard.
               </p>
               <Image
-                src="/images/projects/QFS/dev.png"
+                src="/images/placeholders/development.png"
                 alt="Development"
                 width={600}
                 height={400}
@@ -103,16 +91,16 @@ const Project5Page = () => {
             </div>
             <div className="process-step bg-white p-8 rounded-lg shadow-md">
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-                4. Security Testing & Deployment
+                4. Accessibility & Performance Testing
               </h3>
               <p className="text-gray-700 mb-4">
-                Rigorous security testing, penetration testing, and user
-                acceptance testing were conducted before a secure and compliant
-                deployment to app stores.
+                Rigorous testing was performed to ensure the portal was
+                accessible to all users and optimized for fast loading times and
+                smooth performance across devices.
               </p>
               <Image
-                src="/images/projects/QFS/test.png"
-                alt="Security Testing"
+                src="/images/placeholders/testing.png"
+                alt="Testing"
                 width={600}
                 height={400}
                 className="rounded-lg shadow-md mt-4"
@@ -125,16 +113,23 @@ const Project5Page = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">
-            Key Features & Compliance
+            Key Features & Enhancements
           </h2>
           <ul className="list-disc list-inside text-lg text-gray-700 space-y-2">
-            <li>Comprehensive Service Catalog with clear pricing.</li>
-            <li>Online Booking and Scheduling System for convenience.</li>
-            <li>Photo Gallery showcasing before-and-after cleaning results.</li>
-            <li>Client Testimonials and Reviews Section.</li>
-            <li>Responsive Design for seamless access on any device.</li>
-            <li>Integrated Contact Forms and Service Inquiry options.</li>
-            <li>Technologies Used: Next.js, React, Booking API, CMS.</li>
+            <li>Interactive Menu Display with high-quality images.</li>
+            <li>Online Table Booking System for seamless reservations.</li>
+            <li>Responsive Design for optimal viewing on all devices.</li>
+            <li>
+              High-Resolution Photo Gallery showcasing ambiance and dishes.
+            </li>
+            <li>SEO Optimization for local search visibility.</li>
+            <li>
+              Integration with Restaurant Management Systems (if applicable).
+            </li>
+            <li>
+              Technologies Used: Next.js, React, Node.js, WordPress (headless
+              CMS).
+            </li>
           </ul>
         </div>
       </section>
@@ -145,17 +140,17 @@ const Project5Page = () => {
             Results & Impact
           </h2>
           <p className="text-lg text-gray-700 mb-6">
-            The website launch resulted in a significant increase in online
-            appointments and client inquiries for QFS Accountants. The
-            user-friendly design and integrated booking system enhanced customer
-            satisfaction, leading to positive feedback and repeat business.
-            Overall, the new website played a crucial role in boosting the firm
-            online presence and supporting its growth objectives.
+            The new website significantly enhanced Saray Steakhouse&apos;s
+            online presence, leading to a **20% increase in online
+            reservations** and improved customer engagement. The visually
+            appealing design and user-friendly interface received positive
+            feedback, contributing to a stronger brand image and increased
+            customer satisfaction.
           </p>
           <div className="mt-8">
             <Image
-              src="/images/projects/QFS/cover.png"
-              alt="Clean Masters Renhold Website"
+              src="/images/projects/saraystange.png"
+              alt="Saray Steakhouse Website"
               width={1200}
               height={600}
               className="rounded-lg shadow-lg"
@@ -167,7 +162,7 @@ const Project5Page = () => {
       <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-8">
-            Ready for a spotless online presence?
+            Ready to elevate your restaurant&apos;s online presence?
           </h2>
           <Link
             href={`/contact`}
@@ -181,4 +176,4 @@ const Project5Page = () => {
   );
 };
 
-export default Project5Page;
+export default Project6Page;

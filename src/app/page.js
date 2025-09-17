@@ -1,21 +1,14 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import HeroSection from "@/components/HeroSection";
-import Services from "@/components/Services";
-import Projects from "@/components/Projects";
-import Testimonials from "@/components/Testimonials";
-import CTA from "@/components/CTA";
 import Link from "next/link";
-import Image from "next/image";
-import {
-  FaLaptopCode,
-  FaPaintBrush,
-  FaChartLine,
-  FaRobot,
-  FaCameraRetro,
-  FaVideo,
-} from "react-icons/fa";
 import { Button } from "@/components/ui/button";
+
+const DynamicServices = dynamic(() => import("@/components/Services"));
+const DynamicProjects = dynamic(() => import("@/components/Projects"));
+const DynamicTestimonials = dynamic(() => import("@/components/Testimonials"));
+const DynamicCTA = dynamic(() => import("@/components/CTA"));
 
 // ✅ Reusable Service Card Component
 const ServiceCard = ({ href, icon: Icon, title, description, color }) => (
@@ -39,14 +32,14 @@ const HomePage = () => {
       {/* Hero */}
       <HeroSection isHomePage={true} />
       {/* Services */}
-      <Services />
+      <DynamicServices />
 
       {/* Projects */}
-      <Projects />
+      <DynamicProjects />
       {/* Testimonials */}
-      <Testimonials />
+      <DynamicTestimonials />
       {/* Call to Action */}
-      <CTA />
+      <DynamicCTA />
     </div>
   );
 };

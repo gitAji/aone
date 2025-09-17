@@ -33,12 +33,24 @@ const Project8Page = () => {
             <div className="process-step bg-white p-8 rounded-lg shadow-md">
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">1. Concept & Game Design</h3>
               <p className="text-gray-700 mb-4">We started by defining the game&apos;s core mechanics, narrative, and target audience. This involved creating detailed game design documents, character concepts, and level layouts.</p>
-              <Image src="/images/placeholders/wireframe.png" alt="Game Design" width={600} height={400} className="rounded-lg shadow-md mt-4" />
+              <Image
+                src="/images/placeholders/wireframe.png"
+                alt="Project Wireframe"
+                width={600}
+                height={400}
+                className="rounded-lg shadow-md mt-4"
+              />
             </div>
             <div className="process-step bg-white p-8 rounded-lg shadow-md">
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">2. Art & Asset Creation</h3>
               <p className="text-gray-700 mb-4">Our artists created captivating 2D/3D assets, character models, environments, and animations, ensuring a visually stunning and cohesive game world.</p>
-              <Image src="/images/placeholders/ui-ux.png" alt="Asset Creation" width={600} height={400} className="rounded-lg shadow-md mt-4" />
+              <Image
+                src="/images/placeholders/ui-ux.png"
+                alt="UI/UX Design Mockup"
+                width={600}
+                height={400}
+                className="rounded-lg shadow-md mt-4"
+              />
             </div>
             <div className="process-step bg-white p-8 rounded-lg shadow-md">
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">3. Development & Prototyping</h3>

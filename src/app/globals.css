@@ -680,3 +680,6 @@ p {
 
 
 
+.logo-container a {
+  cursor: pointer !important;
+}

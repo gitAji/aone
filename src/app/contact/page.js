@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react"; // Import useState
 import HeroSection from "@/components/HeroSection";
 import {
   FaPhone,
@@ -12,9 +12,55 @@ import {
 } from "react-icons/fa";
 import CountUp from "react-countup";
 
-
-
 const ContactPage = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [statusMessage, setStatusMessage] = useState("");
+  const [isError, setIsError] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatusMessage("");
+    setIsError(false);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatusMessage(data.message || "Message sent successfully!");
+        setIsError(false);
+        setFormData({ name: "", email: "", subject: "", message: "" }); // Clear form
+      } else {
+        setStatusMessage(data.message || "Error sending message.");
+        setIsError(true);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setStatusMessage("An unexpected error occurred.");
+      setIsError(true);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="contact-page bg-gray-100 min-h-screen">
       <HeroSection title="Contact Us" subtitle="Get in touch with us" />
@@ -26,7 +72,7 @@ const ContactPage = () => {
             <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
               Let &apos;s connect
             </h2>
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label
                   htmlFor="name"
@@ -39,7 +85,10 @@ const ContactPage = () => {
                   id="name"
                   name="name"
                   placeholder="Your Name"
+                  value={formData.name}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 border border-gray-400 rounded-md focus:ring-2 focus:ring-blue-400 focus:border-transparent transition duration-300 ease-in-out"
+                  required
                 />
               </div>
               <div>
@@ -54,7 +103,10 @@ const ContactPage = () => {
                   id="email"
                   name="email"
                   placeholder="Your Email"
+                  value={formData.email}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 border border-gray-400 rounded-md focus:ring-2 focus:ring-blue-400 focus:border-transparent transition duration-300 ease-in-out"
+                  required
                 />
               </div>
               <div>
@@ -69,7 +121,10 @@ const ContactPage = () => {
                   id="subject"
                   name="subject"
                   placeholder="Subject"
+                  value={formData.subject}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 border border-gray-400 rounded-md focus:ring-2 focus:ring-blue-400 focus:border-transparent transition duration-300 ease-in-out"
+                  required
                 />
               </div>
               <div>
@@ -84,15 +139,24 @@ const ContactPage = () => {
                   name="message"
                   rows="6"
                   placeholder="Your Message"
+                  value={formData.message}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 border border-gray-400 rounded-md focus:ring-2 focus:ring-blue-400 focus:border-transparent transition duration-300 ease-in-out"
+                  required
                 ></textarea>
               </div>
               <button
                 type="submit"
+                disabled={loading}
                 className="w-full bg-red-700 text-white py-3 px-6 rounded-full hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300 ease-in-out text-lg font-semibold"
               >
-                Send Message
+                {loading ? "Sending..." : "Send Message"}
               </button>
+              {statusMessage && (
+                <p className={`text-center mt-4 ${isError ? "text-red-500" : "text-green-500"}`}>
+                  {statusMessage}
+                </p>
+              )}
             </form>
           </div>
 

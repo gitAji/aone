@@ -34,7 +34,7 @@ const raleway = Raleway({
 
 export const metadata = {
   title: "Web Design in Bergen, Norway | Webdesign i Bergen",
-  description: "Aone is a leading web design and digital marketing agency in Bergen, Norway. We create stunning websites and effective digital strategies to help your business grow.",
+  description: "Aone: Leading web design & digital marketing in Bergen, Norway. Stunning websites, effective strategies to grow your business.",
   keywords: "Web Design Bergen, Logo Design, SEO Services, Marketing, Printing, Affordable Websites, Netsider, Netbutikk, Søkemotoroptimalisering, Digital Markedsføring, Nettbutikk utvikling, Webutvikling, Grafisk design",
   icons: {
     icon: "/assets/images/favicon.ico",

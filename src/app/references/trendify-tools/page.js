@@ -33,17 +33,17 @@ const Project9Page = () => {
             <div className="process-step bg-white p-8 rounded-lg shadow-md">
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">1. Data Source Integration & Ingestion</h3>
               <p className="text-gray-700 mb-4">We began by connecting to various data sources and implementing robust data pipelines for automated ingestion, ensuring real-time data availability for analysis.</p>
-              <Image src="/images/placeholders/wireframe.png" alt="Data Ingestion" width={600} height={400} className="rounded-lg shadow-md mt-4" />
+              <Image src="/images/placeholders/wireframe.png"               alt="Project Wireframe" width={600} height={400} className="rounded-lg shadow-md mt-4" />
             </div>
             <div className="process-step bg-white p-8 rounded-lg shadow-md">
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">2. Machine Learning Model Development</h3>
               <p className="text-gray-700 mb-4">Our data scientists developed and trained machine learning models for predictive analytics, identifying key trends and forecasting future outcomes based on historical data.</p>
-              <Image src="/images/placeholders/ui-ux.png" alt="ML Model Development" width={600} height={400} className="rounded-lg shadow-md mt-4" />
+              <Image src="/images/placeholders/ui-ux.png"               alt="UI/UX Design Mockup" width={600} height={400} className="rounded-lg shadow-md mt-4" />
             </div>
             <div className="process-step bg-white p-8 rounded-lg shadow-md">
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">3. Dashboard UI/UX Design & Development</h3>
               <p className="text-gray-700 mb-4">We designed an intuitive and interactive dashboard interface, focusing on clear data visualizations and customizable reporting features to empower business users.</p>
-              <Image src="/images/placeholders/development.png" alt="Dashboard Design" width={600} height={400} className="rounded-lg shadow-md mt-4" />
+              <Image src="/images/placeholders/development.png" alt="Development Process" width={600} height={400} className="rounded-lg shadow-md mt-4" />
             </div>
             <div className="process-step bg-white p-8 rounded-lg shadow-md">
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">4. Deployment & Performance Optimization</h3>

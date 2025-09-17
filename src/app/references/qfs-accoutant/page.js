@@ -4,10 +4,10 @@ import HeroSection from "@/components/HeroSection";
 import Image from "next/image";
 import Link from "next/link";
 
-const Project1Page = () => {
+const Project5Page = () => {
   return (
     <div className="project-detail-page bg-gray-50 min-h-screen">
-      <HeroSection title="Kids Learning Portal" />
+      <HeroSection title="Complete digital solutions for QFS Accountants " />
 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -15,24 +15,27 @@ const Project1Page = () => {
             Project Overview
           </h2>
           <p className="text-lg text-gray-700 mb-6">
-            This project involved designing and developing a modern,
-            user-friendly website for kids learning portal. The goal was to
-            create an engaging platform that offers educational resources,
-            interactive activities, and a safe online environment for children.
-            where parents create account and add kids to the portal & create
-            kids login credentials and then kids can login and access the
-            learning materials.
+            This project involved designing and developing a professional
+            website for QFS Accountants, a reputable accounting firm. The
+            objective was to create a modern, user-friendly online platform that
+            effectively showcases their services, expertise, and client
+            testimonials, while also providing easy access to contact
+            information and resources for potential clients.
           </p>
           <p className="text-lg text-gray-700 mb-6">
-            Key functionalities included an interactive menu display, an
-            intuitive table booking system, and a gallery to highlight the
-            restaurant&apos;s ambiance. We aimed to create a digital platform
-            that truly reflects the quality and elegance of Saray Steakhouse.
+            Key features of the website include a clean and intuitive design
+            that reflects the professionalism of QFS Accountants, a detailed
+            service section outlining their offerings, a blog for sharing
+            industry insights and updates, and a contact form for inquiries. The
+            website was built using Next.js to ensure fast performance and
+            responsiveness across all devices. Additionally, SEO best practices
+            were implemented to enhance the             firm&apos;s online visibility and attract
+            more potential clients.
           </p>
           <div className="mt-8">
             <Image
-              src="/images/projects/kidsportal/project1.png"
-              alt="Kids Learning Portal Development"
+              src="/images/projects/QFS/cover.png"
+              alt="QFS Accountants Website Cover"
               width={1200}
               height={600}
               className="rounded-lg shadow-lg"
@@ -47,17 +50,18 @@ const Project1Page = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="process-step bg-white p-8 rounded-lg shadow-md">
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-                1. Discovery & Planning
+                1. Requirements & Compliance Analysis
               </h3>
               <p className="text-gray-700 mb-4">
-                We began with in-depth consultations to understand the
-                client&apos;s business, target audience, and pain points with
-                the existing platform. This phase involved market research,
-                competitor analysis, and defining project scope and objectives.
+                We collaborated closely with QFS Accountants to gather detailed
+                requirements, ensuring the app met all relevant financial
+                regulations and compliance standards.we use public API to get
+                latest news about accounting updates and HMRC forms to the site
+                so that user can get latest updates.
               </p>
               <Image
-                src="/images/projects/kidsportal/plan.png"
-                alt="Wireframe"
+                src="/images/projects/QFS/requirements.png"
+                alt="Compliance Analysis"
                 width={600}
                 height={400}
                 className="rounded-lg shadow-md mt-4"
@@ -65,17 +69,16 @@ const Project1Page = () => {
             </div>
             <div className="process-step bg-white p-8 rounded-lg shadow-md">
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-                2. Wireframing & UI/UX Design
+                2. Secure Architecture Design
               </h3>
               <p className="text-gray-700 mb-4">
-                Based on the discovery phase, we created wireframes and
-                interactive prototypes to visualize the new user flows and
-                interface. Our UI/UX team focused on creating an intuitive and
-                aesthetically pleasing design.
+                We designed a robust architecture prioritizing data security,
+                user authentication, and secure communication protocols to
+                protect sensitive financial information.
               </p>
               <Image
-                src="/images/projects/kidsportal/wireframe.png"
-                alt="UI/UX Design"
+                src="/images/projects/QFS/mood board.png"
+                alt="Architecture Design"
                 width={600}
                 height={400}
                 className="rounded-lg shadow-md mt-4"
@@ -86,13 +89,12 @@ const Project1Page = () => {
                 3. Development & Integration
               </h3>
               <p className="text-gray-700 mb-4">
-                Our development team brought the designs to life, building a
-                robust and scalable learning platform. This was including
-                integrating a headless CMS for content management, setting up
-                user authentication, and implementing interactive features.
+                The site was developed using the latest Technologies,
+                integrating secure APIs for data handling and ensuring
+                compliance with industry standards.
               </p>
               <Image
-                src="/images/projects/kidsportal/dev.png"
+                src="/images/projects/QFS/dev.png"
                 alt="Development"
                 width={600}
                 height={400}
@@ -101,17 +103,16 @@ const Project1Page = () => {
             </div>
             <div className="process-step bg-white p-8 rounded-lg shadow-md">
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-                4. Testing & Deployment
+                4. Security Testing & Deployment
               </h3>
               <p className="text-gray-700 mb-4">
-                Rigorous testing was conducted across various devices and
-                browsers to ensure functionality, performance, and
-                responsiveness. After successful testing, the platform was
-                securely deployed.
+                Rigorous security testing, penetration testing, and user
+                acceptance testing were conducted before a secure and compliant
+                deployment to app stores.
               </p>
               <Image
-                src="/images/projects/kidsportal/deploy.png"
-                alt="Testing"
+                src="/images/projects/QFS/test.png"
+                alt="Security Testing"
                 width={600}
                 height={400}
                 className="rounded-lg shadow-md mt-4"
@@ -124,21 +125,16 @@ const Project1Page = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">
-            Key Features & Technologies
+            Key Features & Compliance
           </h2>
           <ul className="list-disc list-inside text-lg text-gray-700 space-y-2">
-            <li>Firebase Authentication for secure user management.</li>
-            <li>User login with Google </li>
-            <li>Responsive Design for optimal viewing on all devices.</li>
-            <li>Parents dashboard & children dashboard.</li>
-            <li>SEO Optimization for local search visibility.</li>
-            <li>
-              Interactive learning activities including quizzes and video
-              lessons.
-            </li>
-            <li>
-              Technologies Used: Next.js, React, Node.js,Strapi (headless CMS).
-            </li>
+            <li>Comprehensive Service Catalog with clear pricing.</li>
+            <li>Online Booking and Scheduling System for convenience.</li>
+            <li>Photo Gallery showcasing before-and-after cleaning results.</li>
+            <li>Client Testimonials and Reviews Section.</li>
+            <li>Responsive Design for seamless access on any device.</li>
+            <li>Integrated Contact Forms and Service Inquiry options.</li>
+            <li>Technologies Used: Next.js, React, Booking API, CMS.</li>
           </ul>
         </div>
       </section>
@@ -149,17 +145,17 @@ const Project1Page = () => {
             Results & Impact
           </h2>
           <p className="text-lg text-gray-700 mb-6">
-            The new website significantly enhanced Saray Steakhouse&apos;s
-            online presence, leading to a **20% increase in online
-            reservations** and improved customer engagement. The visually
-            appealing design and user-friendly interface received positive
-            feedback, contributing to a stronger brand image and increased
-            customer satisfaction.
+            The website launch resulted in a significant increase in online
+            appointments and client inquiries for QFS Accountants. The
+            user-friendly design and integrated booking system enhanced customer
+            satisfaction, leading to positive feedback and repeat business.
+            Overall, the new website played a crucial role in boosting the firm
+            online presence and supporting its growth objectives.
           </p>
           <div className="mt-8">
             <Image
-              src="/images/projects/kidsportal/result.png"
-              alt="Saray Steakhouse Website"
+              src="/images/projects/QFS/cover.png"
+              alt="QFS Accountants Website Cover"
               width={1200}
               height={600}
               className="rounded-lg shadow-lg"
@@ -171,7 +167,7 @@ const Project1Page = () => {
       <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-8">
-            Ready to elevate your restaurant&apos;s online presence?
+            Ready for a spotless online presence?
           </h2>
           <Link
             href={`/contact`}
@@ -185,4 +181,4 @@ const Project1Page = () => {
   );
 };
 
-export default Project1Page;
+export default Project5Page;
