@@ -22,28 +22,19 @@ const Footer = () => {
           <h3>Quick Links</h3>
           <ul>
             <li>
-              <Link href="/about">About</Link>
+              <Link href="/about">Knowledge</Link>
             </li>
             <li>
               <Link href="/services">Services</Link>
             </li>
             <li>
-              <Link href="/projects">Projects</Link>
+              <Link href="/references">References</Link>
             </li>
             <li>
-              <Link href="/contact">Contact</Link>
+              <Link href="/contact">Get in Touch</Link>
             </li>
             <li>
               <Link href="/privacy-policy">Privacy Policy</Link>
-            </li>
-            <li>
-              <Link
-                href="https://aone.no/oldsite"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Old Site
-              </Link>
             </li>
           </ul>
         </div>
