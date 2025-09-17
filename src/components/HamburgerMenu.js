@@ -1,6 +1,6 @@
 "use client";
-import React, { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
+import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import ReactCountryFlag from "react-country-flag";
 
 const HamburgerMenu = () => {
@@ -20,14 +20,19 @@ const HamburgerMenu = () => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target) && flagRef.current && !flagRef.current.contains(event.target)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target) &&
+        flagRef.current &&
+        !flagRef.current.contains(event.target)
+      ) {
         setShowLanguageDropdown(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [dropdownRef, flagRef]);
 
@@ -46,9 +51,8 @@ const HamburgerMenu = () => {
               width: "30px",
               height: "20px",
               cursor: "pointer",
-              border: '2px solid transparent',
-              boxShadow:
-                '0 0 5px rgba(0, 0, 0, 0.2)',
+              border: "2px solid transparent",
+              boxShadow: "0 0 5px rgba(0, 0, 0, 0.2)",
               borderRadius: "3px",
             }}
             title="English"
@@ -64,12 +68,11 @@ const HamburgerMenu = () => {
                 width: "30px",
                 height: "20px",
                 cursor: "pointer",
-                border: '2px solid transparent',
-                boxShadow:
-                  '0 0 5px rgba(0, 0, 0, 0.2)',
+                border: "2px solid transparent",
+                boxShadow: "0 0 5px rgba(0, 0, 0, 0.2)",
                 borderRadius: "3px",
               }}
-              onClick={() => handleLanguageChange('en')}
+              onClick={() => handleLanguageChange("en")}
               title="English"
             />
           </div>
@@ -97,20 +100,18 @@ const HamburgerMenu = () => {
                 </Link>
               </li>
 
-              
-              
               <li>
-                <Link href={`/knowledge`} onClick={toggleMenu}>
+                <Link href={`/about`} onClick={toggleMenu}>
                   Knowledge
                 </Link>
               </li>
-              
+
               <li>
                 <Link href={`/blog`} onClick={toggleMenu}>
                   Blog
                 </Link>
               </li>
-              
+
               <li>
                 <Link href={`/contact`} onClick={toggleMenu}>
                   Get in Touch
