@@ -4,9 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import Link from "next/link";
 import Image from "next/image"; // Import Image component
 
-export const metadata = {
-  description: "Explore Aone's portfolio of successful web design and digital marketing projects. See our work in web development, branding, and more.",
-};
+
 
 const projects = [
   {

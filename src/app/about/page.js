@@ -4,9 +4,7 @@ import HeroSection from '@/components/HeroSection';
 import CountUp from 'react-countup';
 import Image from 'next/image';
 
-export const metadata = {
-  description: "Learn more about Aone, our achievements, mission, vision, values, and our story. Discover why we are the right partner for your digital success.",
-};
+
 
 const AboutPage = () => {
   return (

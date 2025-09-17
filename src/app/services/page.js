@@ -5,9 +5,7 @@ import Link from 'next/link';
 import { FaLaptopCode, FaPaintBrush, FaChartLine, FaRobot, FaCameraRetro, FaVideo } from 'react-icons/fa';
 import Testimonials from "@/components/Testimonials";
 
-export const metadata = {
-  description: "Explore the comprehensive range of digital solutions offered by Aone, including web development, branding, digital marketing, AI automations, photography, and videography.",
-};
+
 
 const ServicesPage = () => {
   return (
