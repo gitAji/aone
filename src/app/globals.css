@@ -15,7 +15,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --primary-color: #66b3ff; /* Lighter blue for dark mode */
+    --primary-color: #3388CC; /* Lighter blue for dark mode */
     --secondary-color: #adb5bd; /* Lighter gray for dark mode */
     --accent-color: #1E2940; /* Darker accent for dark mode */
     --background-color: #121212; /* True black for high contrast */
