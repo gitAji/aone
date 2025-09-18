@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react"; // Import useState
+import React, { useState } from "react"; // Re-import useState
 import HeroSection from "@/components/HeroSection";
 import {
   FaPhone,
@@ -33,23 +33,23 @@ const ContactPage = () => {
     setStatusMessage("");
     setIsError(false);
 
+    const form = e.target;
+    const data = new FormData(form);
+    const formName = form.getAttribute("name");
+
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("/", { // Submit to current page for Netlify
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(data).toString(),
       });
 
-      const data = await response.json();
-
       if (response.ok) {
-        setStatusMessage(data.message || "Message sent successfully!");
+        setStatusMessage("Message sent successfully!");
         setIsError(false);
         setFormData({ name: "", email: "", subject: "", message: "" }); // Clear form
       } else {
-        setStatusMessage(data.message || "Error sending message.");
+        setStatusMessage("Failed to send message. Please try again.");
         setIsError(true);
       }
     } catch (error) {
@@ -72,7 +72,15 @@ const ContactPage = () => {
             <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
               Let &apos;s connect
             </h2>
-            <form className="space-y-6" onSubmit={handleSubmit}>
+            <form className="space-y-6" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onSubmit={handleSubmit}>
+              {/* Hidden field for Netlify Forms */}
+              <input type="hidden" name="form-name" value="contact" />
+              <div hidden>
+                <label>
+                  Don’t fill this out: <input name="bot-field" onChange={() => {}} />
+                </label>
+              </div>
+
               <div>
                 <label
                   htmlFor="name"
