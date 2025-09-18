@@ -3,7 +3,7 @@ import "./globals.css?v=1";
 import Footer from "@/components/Footer";
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 import Script from "next/script";
-import CookieBanner from "@/components/CookieBanner";
+
 
 const inter = Inter({
   subsets: ["latin"],
@@ -77,7 +77,7 @@ export default function RootLayout({ children }) {
           {children}
           <Footer />
         </ClientLayoutWrapper>
-        <CookieBanner />
+        
       </body>
     </html>
   );
