@@ -44,6 +44,27 @@ const projects = [
     imageUrl: "/images/projects/rentproperty.png",
     projectLink: "/references/rent-my-property-uk",
   },
+  {
+    id: "rent-cars",
+    title: "Rent Cars",
+    description: "car rental website.",
+    imageUrl: "/images/projects/rentcars.png",
+    projectLink: "/references/rent-cars",
+  },
+  {
+    id: "shop-front",
+    title: "Shop Front",
+    description: "convienience store template.",
+    imageUrl: "/images/projects/shop-front.png",
+    projectLink: "/references/shop-front",
+  },
+  {
+    id: "trendifytools",
+    title: "TrendifyTools",
+    description: "SaaS product website.",
+    imageUrl: "/images/projects/trendify.png",
+    projectLink: "/references/trendifytools",
+  },
 ];
 
 export default projects;
