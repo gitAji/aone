@@ -1,5 +1,6 @@
 const projects = [
   {
+    id: "kids-learning-portal",
     title: "Kids Learning Portal",
     description: "learning portal for kids.",
     imageUrl: "/images/projects/kids-portal.png",
@@ -7,6 +8,7 @@ const projects = [
     featured: true,
   },
   {
+    id: "saray-steakhouse-kro",
     title: "Saray steakhouse",
     description: "Restaurant website for Saray steakhouse.",
     imageUrl: "/images/projects/saray.png",
@@ -14,6 +16,7 @@ const projects = [
     featured: true,
   },
   {
+    id: "clean-masters-renhold",
     title: "Clean Masters Renhold",
     description: "Website for Clean Masters Renhold.",
     imageUrl: "/images/projects/cleanmasters.png",
@@ -21,18 +24,21 @@ const projects = [
     featured: true,
   },
   {
+    id: "tulips",
     title: "Tulips Beauty Salon",
     description: "Website for Tulips Beauty Salon.",
     imageUrl: "/images/projects/tulips.png",
     projectLink: "/references/tulips",
   },
   {
+    id: "qfs-accoutant",
     title: "QFS accountant",
     description: "Website for QFS accountant.",
     imageUrl: "/images/projects/qfs.png",
     projectLink: "/references/qfs-accountant",
   },
   {
+    id: "rent-my-property-uk",
     title: "RentMyProperty",
     description: "property management website.",
     imageUrl: "/images/projects/rentproperty.png",

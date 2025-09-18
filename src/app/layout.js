@@ -5,10 +5,6 @@ import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 import Script from "next/script";
 import CookieBanner from "@/components/CookieBanner";
 
-
-
-
-
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -34,14 +30,17 @@ const raleway = Raleway({
 
 export const metadata = {
   title: "Web Design in Bergen, Norway | Webdesign i Bergen",
-  description: "Aone: Leading web design & digital marketing in Bergen, Norway. Stunning websites, effective strategies to grow your business.",
-  keywords: "Web Design Bergen, Logo Design, SEO Services, Marketing, Printing, Affordable Websites, Netsider, Netbutikk, Søkemotoroptimalisering, Digital Markedsføring, Nettbutikk utvikling, Webutvikling, Grafisk design",
+  description:
+    "Aone: Leading web design & digital marketing in Bergen, Norway. Stunning websites, effective strategies to grow your business.",
+  keywords:
+    "Web Design Bergen, Logo Design, SEO Services, Marketing, Printing, Affordable Websites, Netsider, Netbutikk, Søkemotoroptimalisering, Digital Markedsføring, Nettbutikk utvikling, Webutvikling, Grafisk design",
   icons: {
     icon: "/assets/images/favicon.ico",
   },
   verification: {
     other: {
-      "ahrefs-site-verification": "e0ddcbd585d6a2bedc5fcbcf2e8ca5da13defcef5a3694a39043b02d01728335",
+      "ahrefs-site-verification":
+        "e0ddcbd585d6a2bedc5fcbcf2e8ca5da13defcef5a3694a39043b02d01728335",
     },
   },
 };
@@ -57,6 +56,12 @@ export default function RootLayout({ children }) {
           data-key="qcIvZEZSEISGNKyE5Gp7cQ"
           strategy="afterInteractive"
         />
+        <Script
+          id="Cookiebot"
+          src="https://consent.cookiebot.com/uc.js"
+          data-cbid="ca4883b8-7492-4efe-8775-24794bf63af0"
+          strategy="beforeInteractive" // Recommended for Cookiebot to load before other scripts
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -69,8 +74,8 @@ export default function RootLayout({ children }) {
           }}
         />
         <ClientLayoutWrapper>
-        {children}
-        <Footer />
+          {children}
+          <Footer />
         </ClientLayoutWrapper>
         <CookieBanner />
       </body>
