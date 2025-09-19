@@ -91,7 +91,7 @@ const ClientLoginPage = () => {
               <div>
                 <a
                   href="#"
-                  className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition duration-300 ease-in-out"
+                  className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-s_500 hover:bg-gray-50 transition duration-300 ease-in-out"
                 >
                   <FaFacebook className="mr-2 text-lg" />
                   Facebook

@@ -35,7 +35,7 @@ const projects = [
     title: "QFS accountant",
     description: "Website for QFS accountant.",
     imageUrl: "/images/projects/qfs.png",
-    projectLink: "/references/qfs-accountant",
+    projectLink: "/references/qfs-accoutant",
   },
   {
     id: "rent-my-property-uk",
@@ -63,7 +63,7 @@ const projects = [
     title: "TrendifyTools",
     description: "SaaS product website.",
     imageUrl: "/images/projects/trendify.png",
-    projectLink: "/references/trendifytools",
+    projectLink: "/references/trendify-tools",
   },
 ];
 

@@ -3,56 +3,7 @@ import React from "react";
 import HeroSection from "@/components/HeroSection";
 import Link from "next/link";
 import Image from "next/image"; // Import Image component
-
-
-
-const projects = [
-  {
-    id: "project-1",
-    title: "Kids Learning Portal Development",
-    imageUrl: "/images/projects/kids-portal.png", // Revert to .jpeg
-  },
-  {
-    id: "project-2",
-    title: "Saray Steakhouse & Kro",
-    imageUrl: "/images/projects/saray.png", // Revert to .jpeg
-  },
-  {
-    id: "project-3",
-    title: "Clean Masters Renhold Website",
-    imageUrl: "/images/projects/cleanmasters.png", // Revert to .jpeg
-  },
-  {
-    id: "project-4",
-    title: "Tulips Beauty Parlour Branding",
-    imageUrl: "/images/projects/tulips.png", // Revert to .jpeg
-  },
-  {
-    id: "project-5",
-    title: "QFS Accountants Branding & Website",
-    imageUrl: "/images/projects/qfs.png", // Revert to .jpeg
-  },
-  {
-    id: "project-6",
-    title: "RentMyProperty Website",
-    imageUrl: "/images/projects/rentproperty.png", // Revert to .jpeg
-  },
-  {
-    id: "project-7",
-    title: "Rent Cars Branding & Website",
-    imageUrl: "/images/projects/rentcars.png", // Revert to .jpeg
-  },
-  {
-    id: "project-8",
-    title: "Shop Front convienience store template",
-    imageUrl: "/images/projects/shop-front.png", // Revert to .jpeg
-  },
-  {
-    id: "project-9",
-    title: "TrendifyTools ",
-    imageUrl: "/images/projects/trendify.png", // Revert to .jpeg
-  },
-];
+import projects from "../data/projects";
 
 const ReferencesPage = () => {
   return (
@@ -71,7 +22,7 @@ const ReferencesPage = () => {
             {" "}
             {/* Revert grid */}
             {projects.map((project) => (
-              <Link href={`/references/${project.id}`} key={project.id}>
+              <Link href={`${project.projectLink}`} key={project.id}>
                 <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-xl cursor-pointer">
                   <div className="relative w-full h-60">
                     {" "}
