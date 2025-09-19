@@ -18,16 +18,16 @@ const AboutPage = () => {
         <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">Our Achievements</h2>
         <div className="metrics grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           <div className="metric bg-white p-8 rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:shadow-xl">
-            <h3 className="text-5xl font-bold text-blue-600 mb-2"><CountUp end={100} duration={2.5} />+</h3>
-            <p className="text-xl text-gray-700">Projects Completed</p>
+            <h3 className="text-5xl font-bold text-blue-600 mb-2"><CountUp end={15} duration={2.5} />+</h3>
+            <p className="text-xl text-gray-700">Years of Expertise</p>
           </div>
           <div className="metric bg-white p-8 rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:shadow-xl">
-            <h3 className="text-5xl font-bold text-green-600 mb-2"><CountUp end={50} duration={2.5} />+</h3>
+            <h3 className="text-5xl font-bold text-green-600 mb-2"><CountUp end={200} duration={2.5} />+</h3>
             <p className="text-xl text-gray-700">Happy Clients</p>
           </div>
           <div className="metric bg-white p-8 rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:shadow-xl">
-            <h3 className="text-5xl font-bold text-purple-600 mb-2"><CountUp end={5} duration={2.5} />+</h3>
-            <p className="text-xl text-gray-700">Years in Business</p>
+            <h3 className="text-5xl font-bold text-purple-600 mb-2"><CountUp end={250} duration={2.5} />+</h3>
+            <p className="text-xl text-gray-700">Projects are done</p>
           </div>
         </div>
       </section>
@@ -67,8 +67,7 @@ const AboutPage = () => {
       <section className="our-story container mx-auto px-4 py-16 bg-white">
         <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">Our Story</h2>
         <div className="story-content max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed space-y-6">
-          <p>Our company was founded with a simple mission: to help businesses succeed online.</p>
-          <p>Over the years, we have grown into a full-service digital agency, serving clients from all over the world.</p>
+          <p>Our company was founded in 2012 in england as interwebdevelopers with a simple mission: to help businesses succeed online now operates as aone in Norway from 2018.</p>
         </div>
       </section>
 

@@ -3,6 +3,7 @@ import "./globals.css?v=1";
 import Footer from "@/components/Footer";
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 import Script from "next/script";
+import ReferralPopup from "@/components/ReferralPopup";
 
 
 const inter = Inter({
@@ -75,6 +76,7 @@ export default function RootLayout({ children }) {
         />
         <ClientLayoutWrapper>
           {children}
+          <ReferralPopup />
           <Footer />
         </ClientLayoutWrapper>
         
