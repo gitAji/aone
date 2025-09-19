@@ -37,7 +37,7 @@ const Projects = () => {
                     alt={project.title}
                     fill
                     style={{ objectFit: "cover" }}
-                    className="rounded-t-lg opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-500"
+                    className="rounded-t-lg opacity-100 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-500"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
 

@@ -2,7 +2,7 @@ const projects = [
   {
     id: "kids-learning-portal",
     title: "Kids Learning Portal",
-    description: "learning portal for kids.",
+    description: "Learning portal for kids.",
     imageUrl: "/images/projects/kidsportal.png",
     projectLink: "/references/kids-learning-portal",
     featured: true,
@@ -40,21 +40,21 @@ const projects = [
   {
     id: "rent-my-property-uk",
     title: "RentMyProperty",
-    description: "property management website.",
+    description: "Property management website.",
     imageUrl: "/images/projects/rentproperty.png",
     projectLink: "/references/rent-my-property-uk",
   },
   {
     id: "rent-cars",
     title: "Rent Cars",
-    description: "car rental website.",
+    description: "Car rental website.",
     imageUrl: "/images/projects/rentcars.png",
     projectLink: "/references/rent-cars",
   },
   {
     id: "shop-front",
     title: "Shop Front",
-    description: "convienience store template.",
+    description: "Convienience store template.",
     imageUrl: "/images/projects/shop-front.png",
     projectLink: "/references/shop-front",
   },
