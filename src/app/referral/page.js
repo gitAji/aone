@@ -122,7 +122,7 @@ const ReferralPage = () => {
             <fieldset className="border border-gray-300 p-4 rounded-md">
               <legend className="text-xl font-semibold text-gray-800 px-2">Referee Details</legend>
               <div>
-                <label htmlFor="refereeName" className="block text-sm font-medium text-gray-700 mb-2">Client's Name</label>
+                <label htmlFor="refereeName" className="block text-sm font-medium text-gray-700 mb-2">Client&apos;s Name</label>
                 <input
                   type="text"
                   id="refereeName"
@@ -134,7 +134,7 @@ const ReferralPage = () => {
                 />
               </div>
               <div>
-                <label htmlFor="refereeEmail" className="block text-sm font-medium text-gray-700 mb-2">Client's Email</label>
+                <label htmlFor="refereeEmail" className="block text-sm font-medium text-gray-700 mb-2">Client&apos;s Email</label>
                 <input
                   type="email"
                   id="refereeEmail"
@@ -146,7 +146,7 @@ const ReferralPage = () => {
                 />
               </div>
               <div>
-                <label htmlFor="refereePhone" className="block text-sm font-medium text-gray-700 mb-2">Client's Phone (Optional)</label>
+                <label htmlFor="refereePhone" className="block text-sm font-medium text-gray-700 mb-2">Client&apos;s Phone (Optional)</label>
                 <input
                   type="tel"
                   id="refereePhone"
