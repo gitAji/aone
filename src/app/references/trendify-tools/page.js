@@ -33,8 +33,8 @@ const Project9Page = () => {
             trust with potential users. The site is built using Next.js to
             ensure fast load times and a responsive design that works seamlessly
             across all devices. Additionally, SEO best practices were
-            implemented to enhance the platform's visibility in search engine
-            results, attracting more visitors and potential users.
+            implemented to enhance the platform &apos;s visibility in search
+            engine results, attracting more visitors and potential users.
           </p>
           <div className="mt-8">
             <Image
