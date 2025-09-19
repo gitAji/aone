@@ -12,6 +12,7 @@ const TestimonialCard = ({ text, imgSrc, imgAlt, client }) => {
           width={64}
           height={64}
           className="w-16 h-16 mx-auto mb-4 rounded-full object-contain border-1 border-gray-200"
+          sizes="64px"
         />
         <p className="text-gray-600 italic mb-4 text-center">
           &quot;{text}&quot;

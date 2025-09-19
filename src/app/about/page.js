@@ -92,6 +92,7 @@ const AboutPage = () => {
                 width={50}
                 height={40}
                 className="h-12 w-12 mr-2 grayscale-logo"
+                sizes="50px"
               />
               Clean Masters Renhold
             </p>
@@ -109,6 +110,7 @@ const AboutPage = () => {
                 width={50}
                 height={40}
                 className="h-12 w-12 mr-2 grayscale-logo"
+                sizes="50px"
               />
               Saray Steakhouse
             </p>
@@ -126,6 +128,7 @@ const AboutPage = () => {
                 width={50}
                 height={40}
                 className="h-12 w-12 mr-2 grayscale-logo"
+                sizes="50px"
               />
               Go Local
             </p>

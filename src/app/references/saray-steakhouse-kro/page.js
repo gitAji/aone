@@ -45,6 +45,7 @@ const Project2Page = () => {
               width={1200}
               height={600}
               className="rounded-lg shadow-lg"
+              sizes="100vw"
             />
           </div>
         </div>
@@ -69,6 +70,7 @@ const Project2Page = () => {
                 width={600}
                 height={400}
                 className="rounded-lg shadow-md mt-4"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
             <div className="process-step bg-white p-8 rounded-lg shadow-md">
@@ -87,6 +89,7 @@ const Project2Page = () => {
                 width={600}
                 height={400}
                 className="rounded-lg shadow-md mt-4"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
             <div className="process-step bg-white p-8 rounded-lg shadow-md">
@@ -104,6 +107,7 @@ const Project2Page = () => {
                 width={600}
                 height={400}
                 className="rounded-lg shadow-md mt-4"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
             <div className="process-step bg-white p-8 rounded-lg shadow-md">
@@ -121,6 +125,7 @@ const Project2Page = () => {
                 width={600}
                 height={400}
                 className="rounded-lg shadow-md mt-4"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
           </div>
@@ -170,6 +175,7 @@ const Project2Page = () => {
               width={1200}
               height={600}
               className="rounded-lg shadow-lg"
+              sizes="100vw"
             />
           </div>
         </div>

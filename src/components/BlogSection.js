@@ -34,6 +34,7 @@ const BlogSection = () => {
                   layout="fill"
                   objectFit="cover"
                   className="rounded-t-lg"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
               <div className="p-6">

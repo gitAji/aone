@@ -7,7 +7,7 @@ const Logo = () => {
   return (
     <div className="logo-container">
       <Link href="/" className="cursor-pointer transition-all hover:opacity-80">
-        <Image src="/images/logo.png" alt="Your Brand Logo" width={150} height={50} />
+        <Image src="/images/logo.png" alt="Your Brand Logo" width={150} height={50} sizes="150px" />
       </Link>
     </div>
   );
