@@ -35,7 +35,7 @@ const DesktopNav = () => {
         href={`/contact`}
         className="text-gray-600 hover:text-gray-900 transition-colors"
       >
-        Get in Touch
+        Contact
       </Link>
       <Link
         href={`/client-login`}

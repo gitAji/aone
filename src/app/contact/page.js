@@ -63,7 +63,7 @@ const ContactPage = () => {
 
   return (
     <div className="contact-page bg-gray-100 min-h-screen">
-      <HeroSection title="Contact Us" subtitle="Get in touch with us" />
+      <HeroSection title="Contact Us" subtitle="Contact us" />
 
       <section className="container mx-auto px-4 py-16">
         <div className="flex flex-col lg:flex-row gap-12">

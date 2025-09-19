@@ -17,7 +17,7 @@ const CTASection = () => {
           href="/contact"
           className="inline-block px-8 py-3 text-lg font-semibold text-white bg-pink-700 rounded-lg shadow-md hover:bg-pink-800 hover:scale-105 transition-all duration-300"
         >
-          Get in Touch
+          Contact
         </a>
       </div>
     </section>

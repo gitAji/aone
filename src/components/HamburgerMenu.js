@@ -114,7 +114,7 @@ const HamburgerMenu = () => {
 
               <li>
                 <Link href={`/contact`} onClick={toggleMenu}>
-                  Get in Touch
+                  Contact
                 </Link>
               </li>
               <li>
