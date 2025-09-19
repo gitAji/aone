@@ -3,7 +3,7 @@ const projects = [
     id: "kids-learning-portal",
     title: "Kids Learning Portal",
     description: "learning portal for kids.",
-    imageUrl: "/images/projects/kids-portal.png",
+    imageUrl: "/images/projects/kidsportal.png",
     projectLink: "/references/kids-learning-portal",
     featured: true,
   },
