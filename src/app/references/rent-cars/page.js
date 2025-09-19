@@ -26,7 +26,7 @@ const Project7Page = () => {
             secure payment gateway. The website was built using Next.js to
             ensure fast load times and a responsive design that works seamlessly
             across all devices. Additionally, SEO best practices were
-            implemented to enhance the website &apos;s visibility in search
+            implemented to enhance the website &#39;s visibility in search
             engine results, attracting more visitors and potential customers.
           </p>
           <div className="mt-8">
