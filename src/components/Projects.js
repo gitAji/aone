@@ -20,12 +20,12 @@ const Projects = () => {
         </div>
 
         {/* Masonry-like grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mx-auto w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto w-full">
           {projects.slice(0, 6).map((project, index) => {
             return (
               <div
                 key={index}
-                className={`project-card relative overflow-hidden rounded-2xl shadow-lg bg-white aspect-[4/3] md:h-80 box-border`}
+                className={`project-card relative overflow-hidden rounded-2xl shadow-lg bg-white aspect-[4/3] box-border`}
               >
                 <Link
                   href={project.projectLink}
@@ -43,19 +43,17 @@ const Projects = () => {
 
                   {/* Overlay */}
                   <div className="overlay absolute inset-0 bg-white/80 flex flex-col justify-end p-4 md:p-6 opacity-100 group-hover:opacity-0 group-focus-within:opacity-0 transition-opacity duration-500">
-                    <div className="absolute bottom-0 left-0 right-0 bg-white/80 p-4 md:p-6">
-                      <div className="flex items-center justify-between w-full">
-                        <h3 className="text-black text-lg md:text-xl font-semibold">
-                          {project.title}
-                        </h3>
-                        <span className="text-black w-6 h-6 transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300">
-                          -&gt;
-                        </span>
-                      </div>
-                      <p className="text-black text-sm mt-2 opacity-80 line-clamp-2">
-                        {project.description}
-                      </p>
+                    <div className="flex items-center justify-between w-full">
+                      <h3 className="text-black text-lg md:text-xl font-semibold">
+                        {project.title}
+                      </h3>
+                      <span className="text-black w-6 h-6 transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300">
+                        -&gt;
+                      </span>
                     </div>
+                    <p className="text-black text-sm mt-2 opacity-80 line-clamp-2">
+                      {project.description}
+                    </p>
                   </div>
                 </Link>
               </div>
