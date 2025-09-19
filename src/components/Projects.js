@@ -1,16 +1,9 @@
-
-
 "use client";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-
 import projects from "@/app/data/projects.js";
-
-
-
-
 
 const Projects = () => {
   return (
@@ -29,11 +22,10 @@ const Projects = () => {
         {/* Masonry-like grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mx-auto">
           {projects.slice(0, 6).map((project, index) => {
-            
             return (
               <div
                 key={index}
-                className={`project-card relative overflow-hidden rounded-2xl shadow-lg h-80`}
+                className={`project-card relative overflow-hidden rounded-2xl shadow-lg h-80 bg-white`}
               >
                 <Link
                   href={project.projectLink}
@@ -49,7 +41,7 @@ const Projects = () => {
                   />
 
                   {/* Overlay */}
-                  <div className="overlay absolute inset-0 bg-gradient-to-t from-gray-700/90 via-gray-500/70 to-gray-300/50 flex flex-col justify-end p-6 opacity-100 group-hover:opacity-0 group-focus-within:opacity-0 transition-opacity duration-500">
+                  <div className="overlay absolute inset-0 bg-white/80 flex flex-col justify-end p-6 opacity-100 group-hover:opacity-0 group-focus-within:opacity-0 transition-opacity duration-500">
                     <div className="absolute bottom-0 left-0 right-0 bg-white/80 p-6">
                       <div className="flex items-center justify-between w-full">
                         <h3 className="text-black text-xl font-semibold">
@@ -71,7 +63,9 @@ const Projects = () => {
         </div>
         <div className="text-center mt-12">
           <Link href="/references">
-            <button className="inline-block bg-blue-600 text-white py-3 px-8 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out text-lg font-semibold">View all projects</button>
+            <button className="inline-block px-8 py-3 text-lg font-semibold text-white bg-pink-700 rounded-lg shadow-md hover:bg-pink-800 hover:scale-105 transition-all duration-300">
+              View all projects
+            </button>
           </Link>
         </div>
       </div>
