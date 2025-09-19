@@ -17,6 +17,7 @@ const Footer = () => {
             We are a creative agency dedicated to building stunning websites and
             digital experiences that drive results.
           </p>
+          <p>Org nr: 922103682</p>
         </div>
         <div className="footer-section quick-links">
           <h3>Quick Links</h3>
