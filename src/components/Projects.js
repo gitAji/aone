@@ -7,7 +7,7 @@ import projects from "@/app/data/projects.js";
 
 const Projects = () => {
   return (
-    <section className="projects-section py-12 md:py-20 bg-gray-50 flex justify-center items-center w-full min-h-screen max-w-full overflow-x-hidden">
+    <section className="projects-section py-12 md:py-20 bg-gray-50 flex justify-center items-center w-full min-h-screen">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {/* Heading Section */}
         <div className="text-center mb-8 md:mb-12">
@@ -20,11 +20,11 @@ const Projects = () => {
         </div>
 
         {/* Masonry-like Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {projects.slice(0, 6).map((project, index) => (
             <div
               key={index}
-              className="project-card relative overflow-hidden rounded-2xl shadow-lg bg-white aspect-[4/3] min-w-[250px] max-w-[450px] mx-auto"
+              className="project-card relative overflow-hidden rounded-2xl shadow-lg bg-white aspect-[4/3] w-full"
             >
               <Link
                 href={project.projectLink}

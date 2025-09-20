@@ -36,7 +36,7 @@ export const metadata = {
   keywords:
     "Web Design Bergen, Logo Design, SEO Services, Marketing, Printing, Affordable Websites, Netsider, Netbutikk, Søkemotoroptimalisering, Digital Markedsføring, Nettbutikk utvikling, Webutvikling, Grafisk design",
   icons: {
-    icon: "/assets/images/favicon.ico",
+    icon: "/images/favicon.ico",
   },
   verification: {
     other: {
