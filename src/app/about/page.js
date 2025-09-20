@@ -1,32 +1,35 @@
-'use client';
-import React from 'react';
-import HeroSection from '@/components/HeroSection';
-import CountUp from 'react-countup';
-import Image from 'next/image';
-
-
+"use client";
+import React from "react";
+import HeroSection from "@/components/HeroSection";
+import CountUp from "react-countup";
+import Image from "next/image";
 
 const AboutPage = () => {
   return (
     <div className="about-page bg-gray-50 min-h-screen">
-      <HeroSection
-        title="About Us"
-        subtitle="Learn more about our company"
-      />
+      <HeroSection title="About Us" subtitle="Learn more about our company" />
 
       <section className="why-choose-us container mx-auto px-4 py-16">
-        <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">Our Achievements</h2>
+        <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">
+          Our Achievements
+        </h2>
         <div className="metrics grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           <div className="metric bg-white p-8 rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:shadow-xl">
-            <h3 className="text-5xl font-bold text-blue-600 mb-2"><CountUp end={15} duration={2.5} />+</h3>
+            <h3 className="text-5xl font-bold text-blue-600 mb-2">
+              <CountUp end={15} duration={2.5} />+
+            </h3>
             <p className="text-xl text-gray-700">Years of Expertise</p>
           </div>
           <div className="metric bg-white p-8 rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:shadow-xl">
-            <h3 className="text-5xl font-bold text-green-600 mb-2"><CountUp end={200} duration={2.5} />+</h3>
+            <h3 className="text-5xl font-bold text-green-600 mb-2">
+              <CountUp end={200} duration={2.5} />+
+            </h3>
             <p className="text-xl text-gray-700">Happy Clients</p>
           </div>
           <div className="metric bg-white p-8 rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:shadow-xl">
-            <h3 className="text-5xl font-bold text-purple-600 mb-2"><CountUp end={250} duration={2.5} />+</h3>
+            <h3 className="text-5xl font-bold text-purple-600 mb-2">
+              <CountUp end={250} duration={2.5} />+
+            </h3>
             <p className="text-xl text-gray-700">Projects are done</p>
           </div>
         </div>
@@ -34,44 +37,76 @@ const AboutPage = () => {
 
       <section className="mission-vision bg-white py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">Our Mission, Vision & Values</h2>
+          <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">
+            Our Mission, Vision & Values
+          </h2>
           <div className="values-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="value-item bg-gray-50 p-8 rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:shadow-lg">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Innovation</h3>
-              <p className="text-gray-700">We are committed to continuous innovation to provide the best solutions.</p>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3">
+                Innovation
+              </h3>
+              <p className="text-gray-700">
+                We are committed to continuous innovation to provide the best
+                solutions.
+              </p>
             </div>
             <div className="value-item bg-gray-50 p-8 rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:shadow-lg">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Integrity</h3>
-              <p className="text-gray-700">We believe in honesty and transparency in all our dealings.</p>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3">
+                Integrity
+              </h3>
+              <p className="text-gray-700">
+                We believe in honesty and transparency in all our dealings.
+              </p>
             </div>
             <div className="value-item bg-gray-50 p-8 rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:shadow-lg">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Collaboration</h3>
-              <p className="text-gray-700">We work together with our clients to achieve common goals.</p>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3">
+                Collaboration
+              </h3>
+              <p className="text-gray-700">
+                We work together with our clients to achieve common goals.
+              </p>
             </div>
             <div className="value-item bg-gray-50 p-8 rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:shadow-lg">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Excellence</h3>
-              <p className="text-gray-700">We strive for excellence in everything we do.</p>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3">
+                Excellence
+              </h3>
+              <p className="text-gray-700">
+                We strive for excellence in everything we do.
+              </p>
             </div>
             <div className="value-item bg-gray-50 p-8 rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:shadow-lg">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Client-Centricity</h3>
-              <p className="text-gray-700">Our clients are at the heart of everything we do.</p>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3">
+                Client-Centricity
+              </h3>
+              <p className="text-gray-700">
+                Our clients are at the heart of everything we do.
+              </p>
             </div>
             <div className="value-item bg-gray-50 p-8 rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:shadow-lg">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Sustainability</h3>
-              <p className="text-gray-700">We are committed to sustainable practices.</p>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3">
+                Sustainability
+              </h3>
+              <p className="text-gray-700">
+                We are committed to sustainable practices.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       <section className="our-story container mx-auto px-4 py-16 bg-white">
-        <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">Our Story</h2>
+        <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">
+          Our Story
+        </h2>
         <div className="story-content max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed space-y-6">
-          <p>Our company was founded in 2012 in england as interwebdevelopers with a simple mission: to help businesses succeed online now operates as aone in Norway from 2018.</p>
+          <p>
+            Founded in 2012 in England with a mission to help businesses succeed
+            online, we re-branded as <b>Aone.no</b> in Norway in 2018, and our
+            commitment to customer success drives our work today.
+          </p>
         </div>
+        ,
       </section>
-
-      
 
       <section className="testimonials-section py-16 bg-white">
         <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">
