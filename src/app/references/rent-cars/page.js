@@ -31,7 +31,7 @@ const Project7Page = () => {
           </p>
           <div className="mt-8">
             <Image
-              src="/images/projects/rentcars/cover.png"
+              src="/images/projects/rentcars/cover.jpeg"
               alt="Rent Cars Website"
               width={1200}
               height={600}

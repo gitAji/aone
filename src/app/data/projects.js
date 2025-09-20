@@ -48,7 +48,7 @@ const projects = [
     id: "rent-cars",
     title: "Rent Cars",
     description: "Car rental website.",
-    imageUrl: "/images/projects/rentcars.png",
+    imageUrl: "/images/projects/rentcars.jpeg",
     projectLink: "/references/rent-cars",
   },
   {

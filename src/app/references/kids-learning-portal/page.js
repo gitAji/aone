@@ -3,17 +3,53 @@ import React from "react";
 import HeroSection from "@/components/HeroSection";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter, usePathname } from 'next/navigation'; // Import hooks
+import projects from "@/app/data/projects"; // Import projects data
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'; // Import icons
 
 const Project1Page = () => {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  // Extract current project ID from pathname (e.g., /references/kids-learning-portal -> kids-learning-portal)
+  const currentProjectId = pathname.split('/').pop();
+
+  // Find the index of the current project
+  const currentIndex = projects.findIndex(p => p.id === currentProjectId);
+
+  // Determine previous and next projects
+  const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
+  const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
+
   return (
     <div className="project-detail-page bg-gray-50 min-h-screen">
       <HeroSection title="Kids Learning Portal" />
 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-gray-800 mb-8">
-            Project Overview
-          </h2>
+          <div className="flex justify-between items-center mb-8">
+            {prevProject ? (
+              <Link href={prevProject.projectLink} passHref>
+                <button className="flex items-center text-gray-800 hover:text-blue-600 transition-colors duration-300 text-lg font-semibold">
+                  <FaArrowLeft className="mr-2" /> {prevProject.title}
+                </button>
+              </Link>
+            ) : (
+              <div />
+            )}
+            <h2 className="text-4xl font-bold text-gray-800 text-center">
+              Project Overview
+            </h2>
+            {nextProject ? (
+              <Link href={nextProject.projectLink} passHref>
+                <button className="flex items-center text-gray-800 hover:text-blue-600 transition-colors duration-300 text-lg font-semibold">
+                  {nextProject.title} <FaArrowRight className="ml-2" />
+                </button>
+              </Link>
+            ) : (
+              <div />
+            )}
+          </div>
           <p className="text-lg text-gray-700 mb-6">
             This project involved designing and developing a modern,
             user-friendly website for kids learning portal. The goal was to
