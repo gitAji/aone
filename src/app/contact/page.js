@@ -35,7 +35,6 @@ const ContactPage = () => {
 
     const form = e.target;
     const data = new FormData(form);
-    data.append("form-name", formName);
 
     try {
       const response = await fetch("/", { // Submit to current page for Netlify
