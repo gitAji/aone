@@ -38,7 +38,7 @@ const Projects = () => {
                     fill
                     style={{ objectFit: "cover" }}
                     className="rounded-t-2xl opacity-100 group-hover:opacity-90 transition-opacity duration-500"
-                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 33vw"
+                    sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1023px) 50vw, 33vw"
                     priority={index < 3} // Prioritize first three images for faster loading
                   />
 

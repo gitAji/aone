@@ -266,13 +266,11 @@ p {
 
 .project-card {
   /* @extend .card; */ /* Apply card styles */
-  width: 400px; /* Make it responsive */
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  margin: 0 20px;
 }
 
 .project-card-image {
