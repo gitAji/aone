@@ -19,44 +19,45 @@ const Projects = () => {
           </p>
         </div>
 
-        {/* Masonry-like Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* Flexbox-based Grid */}
+        <div className="flex flex-wrap -mx-4">
           {projects.slice(0, 6).map((project, index) => (
-            <div
-              key={index}
-              className="project-card relative overflow-hidden rounded-2xl shadow-lg bg-white aspect-[4/3] w-full"
-            >
-              <Link
-                href={project.projectLink}
-                className="relative w-full h-full group block overflow-hidden focus:outline-none focus:ring-2 focus:ring-pink-700 focus:ring-offset-2"
-                aria-label={`View details for ${project.title}`}
+            <div key={index} className="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
+              <div
+                className="project-card relative overflow-hidden rounded-2xl shadow-lg bg-white aspect-[4/3] w-full"
               >
-                {/* Background Image */}
-                <Image
-                  src={project.imageUrl}
-                  alt={project.title}
-                  fill
-                  style={{ objectFit: "cover" }}
-                  className="rounded-t-2xl opacity-100 group-hover:opacity-90 transition-opacity duration-500"
-                  sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 33vw"
-                  priority={index < 3} // Prioritize first three images for faster loading
-                />
+                <Link
+                  href={project.projectLink}
+                  className="relative w-full h-full group block overflow-hidden focus:outline-none focus:ring-2 focus:ring-pink-700 focus:ring-offset-2"
+                  aria-label={`View details for ${project.title}`}
+                >
+                  {/* Background Image */}
+                  <Image
+                    src={project.imageUrl}
+                    alt={project.title}
+                    fill
+                    style={{ objectFit: "cover" }}
+                    className="rounded-t-2xl opacity-100 group-hover:opacity-90 transition-opacity duration-500"
+                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 33vw"
+                    priority={index < 3} // Prioritize first three images for faster loading
+                  />
 
-                {/* Overlay */}
-                <div className="overlay absolute inset-0 bg-white/80 flex flex-col justify-end p-4 sm:p-6 opacity-100 group-hover:opacity-0 group-focus:opacity-0 transition-opacity duration-500">
-                  <div className="flex items-center justify-between w-full">
-                    <h3 className="text-black text-base sm:text-lg md:text-xl font-semibold">
-                      {project.title}
-                    </h3>
-                    <span className="text-black w-6 h-6 transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300">
-                      -&gt;
-                    </span>
+                  {/* Overlay */}
+                  <div className="overlay absolute inset-0 bg-white/80 flex flex-col justify-end p-4 sm:p-6 opacity-100 group-hover:opacity-0 group-focus:opacity-0 transition-opacity duration-500">
+                    <div className="flex items-center justify-between w-full">
+                      <h3 className="text-black text-base sm:text-lg md:text-xl font-semibold">
+                        {project.title}
+                      </h3>
+                      <span className="text-black w-6 h-6 transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300">
+                        -&gt;
+                      </span>
+                    </div>
+                    <p className="text-black text-xs sm:text-sm mt-2 opacity-80 line-clamp-2">
+                      {project.description}
+                    </p>
                   </div>
-                  <p className="text-black text-xs sm:text-sm mt-2 opacity-80 line-clamp-2">
-                    {project.description}
-                  </p>
-                </div>
-              </Link>
+                </Link>
+              </div>
             </div>
           ))}
         </div>
