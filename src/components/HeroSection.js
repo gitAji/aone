@@ -15,18 +15,20 @@ const phrases = [
   "Innovating with technology for growth.",
 ];
 
-const HeroSection = ({ isHomePage = false }) => {
+const HeroSection = ({ isHomePage = false, title, subtitle }) => {
   const [index, setIndex] = useState(0);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
-    const interval = setInterval(
-      () => setIndex((prev) => (prev + 1) % phrases.length),
-      3000 // change every 3 seconds
-    );
-    setDimensions({ width: window.innerWidth, height: window.innerHeight });
-    return () => clearInterval(interval);
-  }, []);
+    if (isHomePage) {
+      const interval = setInterval(
+        () => setIndex((prev) => (prev + 1) % phrases.length),
+        3000 // change every 3 seconds
+      );
+      setDimensions({ width: window.innerWidth, height: window.innerHeight });
+      return () => clearInterval(interval);
+    }
+  }, [isHomePage]);
 
   return (
     <section className="hero">
@@ -52,19 +54,29 @@ const HeroSection = ({ isHomePage = false }) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <AnimatePresence mode="wait">
+        {isHomePage ? (
+          <AnimatePresence mode="wait">
+            <motion.h1
+              key={phrases[index]}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.8 }}
+            >
+              {phrases[index]}
+            </motion.h1>
+          </AnimatePresence>
+        ) : (
           <motion.h1
-            key={phrases[index]}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.8 }}
           >
-            {phrases[index]}
+            {title}
           </motion.h1>
-        </AnimatePresence>
+        )}
 
-        {isHomePage && (
+        {isHomePage ? (
           <p className="hero-tagline">
             We’re all about challenging the norm to bring fresh, creative, and
             unforgettable digital solutions.
@@ -86,6 +98,8 @@ const HeroSection = ({ isHomePage = false }) => {
               &darr;
             </motion.span>
           </p>
+        ) : (
+          subtitle && <p className="hero-tagline">{subtitle}</p>
         )}
       </motion.div>
     </section>

@@ -1,9 +1,8 @@
 export const metadata = {
-  title: "QFS Accountants Website & Digital Solutions | Aone Project",
-  description: "Case study: Aone's complete digital solution for QFS Accountants. We developed a professional Next.js website with detailed services, industry insights blog, and SEO optimization, significantly boosting client inquiries and online presence.",
-  keywords: "QFS Accountants, accounting firm website, digital solutions for accountants, Next.js development, SEO for accounting firms, financial website, web development case study, Aone, Norway",
+  title: "Aone Project | QFS Accountants",
+  description: "See the QFS Accountants project by Aone. A professional and secure website for a reputable accounting firm, designed to attract and inform clients.",
 };
 
-export default function Project5Layout({ children }) {
+export default function QFSAccountantLayout({ children }) {
   return <>{children}</>;
 }

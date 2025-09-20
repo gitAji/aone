@@ -29,8 +29,7 @@ const BlogPage = () => {
         title="Our Blog"
         subtitle="Stay updated with our latest insights and news"
       />
-      <section className="container mx-auto px-4">
-        <h1 className="text-5xl font-bold text-gray-800 mb-12 text-center">Our Blog</h1>
+      <section className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {posts.map((post) => (
             <Link key={post.id} href={post.link} passHref>

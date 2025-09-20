@@ -1,6 +1,6 @@
 export const metadata = {
   title: "Our Blog | Aone",
-  description: "Stay updated with the latest news, insights, and articles from Aone. Explore our blog for expert advice on web design, digital marketing, AI automations, and industry trends.",
+  description: "Read the latest insights from the Aone blog. Stay updated on web design trends, digital marketing tips, and news from our Bergen team.",
   keywords: "Aone blog, digital agency blog, web design articles, digital marketing insights, AI automation news, industry trends, technology blog, Norway",
 };
 

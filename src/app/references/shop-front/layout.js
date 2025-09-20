@@ -1,9 +1,8 @@
 export const metadata = {
-  title: "Saray Beauty Parlour Website | Aone Project",
-  description: "Case study: Aone's development of Saray Beauty Parlour's website. We created a sophisticated, user-friendly platform with online booking, service menus, and a portfolio, boosting client engagement and bookings.",
-  keywords: "Saray Beauty Parlour, beauty salon website, online booking system, beauty and wellness center, web design case study, Aone, Norway",
+  title: "Aone Project | Shop-front Theme",
+  description: "Discover the Shop-front theme project by Aone. A modern, user-friendly, and affordable website theme designed for local corner shops.",
 };
 
-export default function Project8Layout({ children }) {
+export default function ShopFrontLayout({ children }) {
   return <>{children}</>;
 }

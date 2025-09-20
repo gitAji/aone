@@ -15,7 +15,7 @@ export default function sitemap() {
     "/references/rent-my-property-uk",
     "/references/rent-cars",
     "/references/shop-front",
-    "/references/trendifytools",
+    "/references/trendify-tools",
     "/services",
     "/services/ai-automations",
     "/services/branding",

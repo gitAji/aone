@@ -1,6 +1,6 @@
 export const metadata = {
   title: "Contact Us | Aone",
-  description: "Contact Aone for expert web design, digital marketing, and AI automation services in Bergen, Norway. Contact us for inquiries, support, or to start your project.",
+  description: "Get in touch with Aone in Bergen. Contact us for a consultation on web design, digital marketing, or our other digital services. Let's connect today.",
   keywords: "contact Aone, digital agency contact, web design Bergen contact, digital marketing Norway contact, AI automation contact, phone number, email, Bergen, Norway",
 };
 
