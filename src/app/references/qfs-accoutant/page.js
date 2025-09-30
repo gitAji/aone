@@ -4,7 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, usePathname } from 'next/navigation'; // Import hooks
-import projects from "../../../data/projects"; // Import projects data
+import projects from "../../data/projects"; // Import projects data
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'; // Import icons
 
 const Project5Page = () => {

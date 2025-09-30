@@ -25,6 +25,22 @@ const Project1Page = () => {
     <div className="project-detail-page bg-gray-50 min-h-screen">
       <HeroSection title="Kids Learning Portal" />
 
+      <nav className="container mx-auto px-4 py-4 text-gray-600">
+        <ol className="list-none p-0 inline-flex">
+          <li className="flex items-center">
+            <Link href="/" className="hover:underline">Home</Link>
+            <span className="mx-2">/</span>
+          </li>
+          <li className="flex items-center">
+            <Link href="/references" className="hover:underline">References</Link>
+            <span className="mx-2">/</span>
+          </li>
+          <li className="flex items-center text-gray-800 font-semibold">
+            {projects[currentIndex]?.title || "Project"}
+          </li>
+        </ol>
+      </nav>
+
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-8">

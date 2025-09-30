@@ -30,6 +30,22 @@ const Project3Page = () => {
     <div className="project-detail-page bg-gray-50 min-h-screen">
       <HeroSection title="Clean masters Renhold Website" />
 
+      <nav className="container mx-auto px-4 py-4 text-gray-600">
+        <ol className="list-none p-0 inline-flex">
+          <li className="flex items-center">
+            <Link href="/" className="hover:underline">Home</Link>
+            <span className="mx-2">/</span>
+          </li>
+          <li className="flex items-center">
+            <Link href="/references" className="hover:underline">References</Link>
+            <span className="mx-2">/</span>
+          </li>
+          <li className="flex items-center text-gray-800 font-semibold">
+            {projects[currentIndex]?.title || "Project"}
+          </li>
+        </ol>
+      </nav>
+
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
@@ -55,39 +71,8 @@ const Project3Page = () => {
               <div />
             )}
           </div>
-          <p className="text-lg text-gray-700 mb-6">
-            This project is involves in creating a modern, user-friendly website
-            for cleaning company who offers a range of cleaning services for
-            residential and commercial clients. The goal was to design an
-            engaging platform that effectively showcases the company&apos;s
-            services, highlights customer testimonials, and provides an easy way
-            for potential clients to request quotes or book services online.
-          </p>
-          <p className="text-lg text-gray-700 mb-6">
-            Key features included a contact form for service inquiries, a
-            detailed service menu, customer testimonials section, and a blog for
-            cleaning tips and industry news. The website was built using
-            Html,CSS and Javascript to ensure fast load times and a responsive
-            design that works seamlessly across all devices. We also integrated
-            SEO best practices to improve the site&apos;s visibility on search
-            engines, helping to attract more visitors and potential clients.
-            Overall, the project aimed to create a professional online presence
-            that reflects the quality and reliability of Clean Masters
-            Renhold&apos;s services.
-          </p>
-          <div className="mt-8">
-            <Image
-              src="/images/projects/cleanmasters/project3.png"
-              alt="Clean Masters Renhold Website Wireframe"
-              width={1200}
-              height={600}
-              className="rounded-lg shadow-lg"
-              sizes="100vw"
-            />
-          </div>
         </div>
       </section>
-
       <section className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">Our Process</h2>
