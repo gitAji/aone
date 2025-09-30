@@ -7,6 +7,7 @@ const TawkToMessenger = () => {
   return (
     <>
       <Script
+        id="tawk-to-script"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
