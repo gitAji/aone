@@ -3,24 +3,18 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import HeroSection from '@/components/HeroSection';
-
-
+import { fetchPosts } from '@/lib/wordpress';
 
 const BlogPage = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await fetch('https://blog.aone.no/wp-json/wp/v2/posts?per_page=9&orderby=date&_embed');
-        const data = await response.json();
-        setPosts(data);
-      } catch (error) {
-        console.error('Error fetching blog posts:', error);
-      }
+    const getPosts = async () => {
+      const data = await fetchPosts();
+      setPosts(data);
     };
 
-    fetchPosts();
+    getPosts();
   }, []);
 
   return (

@@ -33,22 +33,21 @@ const ContactPage = () => {
     setStatusMessage("");
     setIsError(false);
 
-    const form = e.target;
-    const data = new FormData(form);
-
     try {
-      const response = await fetch("/", { // Submit to current page for Netlify
+      const response = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(data).toString(),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
+
+      const result = await response.json();
 
       if (response.ok) {
         setStatusMessage("Message sent successfully!");
         setIsError(false);
         setFormData({ name: "", email: "", subject: "", message: "" }); // Clear form
       } else {
-        setStatusMessage("Failed to send message. Please try again.");
+        setStatusMessage(result.error || "Failed to send message. Please try again.");
         setIsError(true);
       }
     } catch (error) {
@@ -71,14 +70,12 @@ const ContactPage = () => {
             <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
               Let &apos;s connect
             </h2>
-            <form className="space-y-6" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onSubmit={handleSubmit}>
-              {/* Hidden field for Netlify Forms */}
-              <input type="hidden" name="form-name" value="contact" />
-              <div hidden>
-                <label>
-                  Don’t fill this out: <input name="bot-field" onChange={() => {}} />
-                </label>
-              </div>
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              {statusMessage && (
+                <div className={`p-4 mb-4 text-center rounded-md ${statusMessage.includes('successfully') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                  {statusMessage}
+                </div>
+              )}
 
               <div>
                 <label
@@ -94,7 +91,7 @@ const ContactPage = () => {
                   placeholder="Your Name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-400 rounded-md focus:ring-2 focus:ring-blue-400 focus:border-transparent transition duration-300 ease-in-out"
+                  className="w-full px-4 py-3 border border-gray-400 rounded-md focus:ring-2 focus:ring-indigo-400 focus:border-transparent transition duration-300 ease-in-out"
                   required
                 />
               </div>
@@ -112,7 +109,7 @@ const ContactPage = () => {
                   placeholder="Your Email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-400 rounded-md focus:ring-2 focus:ring-blue-400 focus:border-transparent transition duration-300 ease-in-out"
+                  className="w-full px-4 py-3 border border-gray-400 rounded-md focus:ring-2 focus:ring-indigo-400 focus:border-transparent transition duration-300 ease-in-out"
                   required
                 />
               </div>
@@ -130,7 +127,7 @@ const ContactPage = () => {
                   placeholder="Subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-400 rounded-md focus:ring-2 focus:ring-blue-400 focus:border-transparent transition duration-300 ease-in-out"
+                  className="w-full px-4 py-3 border border-gray-400 rounded-md focus:ring-2 focus:ring-indigo-400 focus:border-transparent transition duration-300 ease-in-out"
                   required
                 />
               </div>
@@ -148,22 +145,17 @@ const ContactPage = () => {
                   placeholder="Your Message"
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-400 rounded-md focus:ring-2 focus:ring-blue-400 focus:border-transparent transition duration-300 ease-in-out"
+                  className="w-full px-4 py-3 border border-gray-400 rounded-md focus:ring-2 focus:ring-indigo-400 focus:border-transparent transition duration-300 ease-in-out"
                   required
                 ></textarea>
               </div>
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-red-700 text-white py-3 px-6 rounded-full hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300 ease-in-out text-lg font-semibold"
+                className="w-full flex justify-center py-4 px-8 text-xl border border-transparent rounded-lg shadow-lg text-white font-bold bg-indigo-600 hover:bg-indigo-700 transition duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? "Sending..." : "Send Message"}
               </button>
-              {statusMessage && (
-                <p className={`text-center mt-4 ${isError ? "text-red-500" : "text-green-500"}`}>
-                  {statusMessage}
-                </p>
-              )}
             </form>
           </div>
 

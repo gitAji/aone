@@ -6,6 +6,8 @@ import ReactCountryFlag from "react-country-flag";
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
+  const [isVisible, setIsVisible] = useState(true); // State for button visibility
+  const lastScrollY = useRef(0);
   const dropdownRef = useRef(null);
   const flagRef = useRef(null);
 
@@ -19,6 +21,17 @@ const HamburgerMenu = () => {
   };
 
   useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY.current && window.scrollY > 100) { // scrolled down
+        setIsVisible(false);
+      } else { // scrolled up or at top
+        setIsVisible(true);
+      }
+      lastScrollY.current = window.scrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
     const handleClickOutside = (event) => {
       if (
         dropdownRef.current &&
@@ -31,13 +44,20 @@ const HamburgerMenu = () => {
     };
 
     document.addEventListener("mousedown", handleClickOutside);
+
     return () => {
+      window.removeEventListener('scroll', handleScroll);
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [dropdownRef, flagRef]);
 
   return (
     <div className="hamburger-menu flex items-center space-x-4">
+      <Link href="/request-quote" passHref>
+        <button className={`bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg text-xl hover:bg-indigo-700 transition duration-300 shadow-lg transform hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full pointer-events-none'}`}>
+          Get a Quote
+        </button>
+      </Link>
       <div className="language-switch-container">
         <div
           className="current-language-flag"

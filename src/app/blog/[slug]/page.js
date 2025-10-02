@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Head from 'next/head';
 import HeroSection from '@/components/HeroSection';
+import { fetchPostBySlug } from '@/lib/wordpress';
 
 const PostPage = () => {
   const [post, setPost] = useState(null);
@@ -13,21 +14,13 @@ const PostPage = () => {
 
   useEffect(() => {
     if (slug) {
-      const fetchPost = async () => {
-        try {
-          const response = await fetch(`https://blog.aone.no/wp-json/wp/v2/posts?slug=${slug}&_embed`);
-          const data = await response.json();
-          if (data.length > 0) {
-            setPost(data[0]);
-          }
-          setLoading(false);
-        } catch (error) {
-          console.error('Error fetching blog post:', error);
-          setLoading(false);
-        }
+      const getPost = async () => {
+        const data = await fetchPostBySlug(slug);
+        setPost(data);
+        setLoading(false);
       };
 
-      fetchPost();
+      getPost();
     }
   }, [slug]);
 

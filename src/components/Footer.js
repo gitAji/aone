@@ -23,19 +23,19 @@ const Footer = () => {
           <h3>Quick Links</h3>
           <ul>
             <li>
-              <Link href="/about">About</Link>
-            </li>
-            <li>
-              <Link href="/services">Services</Link>
-            </li>
-            <li>
-              <Link href="/references">References</Link>
-            </li>
-            <li>
-              <Link href="/contact">Contact</Link>
-            </li>
-            <li>
               <Link href="/privacy-policy">Privacy Policy</Link>
+            </li>
+            <li>
+              <Link href="/terms-and-conditions">Terms & Conditions</Link>
+            </li>
+            <li>
+              <Link href="/feedback">Feedback</Link>
+            </li>
+            <li>
+              <Link href="/support">Support</Link>
+            </li>
+            <li>
+              <Link href="/referral">Referral</Link>
             </li>
           </ul>
         </div>

@@ -19,7 +19,7 @@ const ServiceCard = ({ href, icon: Icon, title, description, color }) => (
     <Icon
       className={`text-5xl ${color} mb-4 group-hover:brightness-110 transition-colors duration-300`}
     />
-    <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-blue-800 transition-colors duration-300">
+    <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-purple-800 transition-colors duration-300">
       {title}
     </h3>
     <p className="text-gray-700 text-base leading-relaxed">{description}</p>
