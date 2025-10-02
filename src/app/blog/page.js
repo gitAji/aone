@@ -32,7 +32,7 @@ const BlogPage = () => {
       <section className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {posts.map((post) => (
-            <Link key={post.id} href={post.link} passHref>
+            <Link key={post.id} href={`/blog/${post.slug}`} passHref>
               <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-xl cursor-pointer">
                 <div className="relative w-full h-52">
                   <Image
