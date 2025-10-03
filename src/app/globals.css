@@ -678,6 +678,11 @@ p {
 
 
 
+
 .logo-container a {
   cursor: pointer !important;
+}
+
+button {
+  cursor: pointer;
 }
