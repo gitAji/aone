@@ -1,14 +1,33 @@
-import React from 'react';
+'use client';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Logo from './Logo';
 import HamburgerMenu from './HamburgerMenu';
 
 const Header = () => {
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  const handleScroll = () => {
+    const currentScrollPos = window.pageYOffset;
+    setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
+    setPrevScrollPos(currentScrollPos);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [prevScrollPos, visible, handleScroll]);
+
   return (
-    <header className="flex justify-between items-center bg-white shadow-md">
+    <header
+      className={`sticky top-0 z-50 flex justify-between items-center bg-white shadow-md transition-transform duration-300 ${
+        visible ? 'translate-y-0' : '-translate-y-full'
+      }`}
+    >
       <Logo />
       <div className="flex items-center">
-        
         <HamburgerMenu />
       </div>
     </header>
