@@ -12,6 +12,14 @@ const services = [
   'Videography',
   'Branding',
   'Search Engine Optimization',
+  'WordPress Development',
+  'Custom-Coded Website',
+  'Admin Dashboard/Login',
+  'Content Management System (CMS)',
+  'Static Website',
+  'Logo Design',
+  'Social Media Management',
+  'Website Maintenance',
 ];
 
 const budgetOptions = [
@@ -250,7 +258,7 @@ const RequestQuotePage = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex justify-center py-4 px-8 text-xl border border-transparent rounded-lg shadow-lg text-white font-bold bg-indigo-600 hover:bg-indigo-700 transition duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex justify-center py-4 px-8 text-xl border border-[#ab1c24] text-[#ab1c24] font-bold rounded-lg shadow-lg hover:bg-[#ab1c24] hover:text-white transition duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? 'Submitting...' : 'Submit Quote Request'}
               </button>

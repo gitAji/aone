@@ -5,7 +5,7 @@ import HeroSection from '@/components/HeroSection';
 
 const DesignRequirementsPage = () => {
   const [formData, setFormData] = useState({
-    fullName: '',
+    contactPerson: '',
     email: '',
     phone: '',
     companyName: '',
@@ -61,7 +61,7 @@ const DesignRequirementsPage = () => {
       if (response.ok) {
         setMessage('Your design requirements have been submitted successfully!');
         setFormData({
-          fullName: '',
+          contactPerson: '',
           email: '',
           phone: '',
           companyName: '',
@@ -107,8 +107,8 @@ const DesignRequirementsPage = () => {
             {/* Contact Information */}
             <h3 className="text-2xl font-semibold text-gray-800 pt-4 pb-2 border-b border-gray-200">Contact Information</h3>
             <div>
-              <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">Full Name <span className="text-red-500">*</span></label>
-              <input type="text" name="fullName" id="fullName" required value={formData.fullName} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              <label htmlFor="contactPerson" className="block text-sm font-medium text-gray-700">Contact Person <span className="text-red-500">*</span></label>
+              <input type="text" name="contactPerson" id="contactPerson" required value={formData.contactPerson} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
             </div>
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email <span className="text-red-500">*</span></label>
@@ -130,16 +130,16 @@ const DesignRequirementsPage = () => {
               <input type="file" name="logo" id="logo" accept="image/*" onChange={handleFileChange} className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100" />
             </div>
             <div>
-              <label htmlFor="primaryColor" className="block text-sm font-medium text-gray-700">Primary Color (Hex Code)</label>
-              <input type="text" name="primaryColor" id="primaryColor" value={formData.primaryColor} onChange={handleChange} placeholder="#RRGGBB" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              <label htmlFor="primaryColor" className="block text-sm font-medium text-gray-700">Primary Color</label>
+              <input type="color" name="primaryColor" id="primaryColor" value={formData.primaryColor} onChange={handleChange} className="mt-1 block w-full h-10 px-1 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
             </div>
             <div>
-              <label htmlFor="secondaryColor" className="block text-sm font-medium text-gray-700">Secondary Color (Hex Code)</label>
-              <input type="text" name="secondaryColor" id="secondaryColor" value={formData.secondaryColor} onChange={handleChange} placeholder="#RRGGBB" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              <label htmlFor="secondaryColor" className="block text-sm font-medium text-gray-700">Secondary Color</label>
+              <input type="color" name="secondaryColor" id="secondaryColor" value={formData.secondaryColor} onChange={handleChange} className="mt-1 block w-full h-10 px-1 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
             </div>
             <div>
-              <label htmlFor="accentColor" className="block text-sm font-medium text-gray-700">Accent Color (Hex Code)</label>
-              <input type="text" name="accentColor" id="accentColor" value={formData.accentColor} onChange={handleChange} placeholder="#RRGGBB" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              <label htmlFor="accentColor" className="block text-sm font-medium text-gray-700">Accent Color</label>
+              <input type="color" name="accentColor" id="accentColor" value={formData.accentColor} onChange={handleChange} className="mt-1 block w-full h-10 px-1 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
             </div>
             <div>
               <label htmlFor="primaryFont" className="block text-sm font-medium text-gray-700">Primary Font Choice</label>

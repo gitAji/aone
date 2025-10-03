@@ -14,7 +14,7 @@ const TermsAndConditionsPage = () => {
       <section className="container mx-auto px-4 py-16">
         <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
           <Accordion title="1. Introduction">
-            <p className="mb-4">Welcome to Aone.no. These terms and conditions outline the rules and regulations for the use of Aone.no's Website.</p>
+            <p className="mb-4">Welcome to Aone.no. These terms and conditions outline the rules and regulations for the use of Aone.no&apos;s Website.</p>
           </Accordion>
 
           <Accordion title="2. Intellectual Property Rights">

@@ -32,6 +32,9 @@ const Footer = () => {
               <Link href="/design-requirements">Design Requirements</Link>
             </li>
             <li>
+              <Link href="/free-consultation">Free Consultation</Link>
+            </li>
+            <li>
               <Link href="/feedback">Feedback</Link>
             </li>
             <li>

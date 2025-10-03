@@ -5,7 +5,7 @@ export async function POST(request) {
   try {
     const formData = await request.formData();
 
-    const fullName = formData.get('fullName');
+    const contactPerson = formData.get('contactPerson');
     const email = formData.get('email');
     const phone = formData.get('phone');
     const companyName = formData.get('companyName');
@@ -23,8 +23,8 @@ export async function POST(request) {
     const logoFile = formData.get('logo');
 
     // Basic validation
-    if (!fullName || !email || !projectDescription) {
-      return NextResponse.json({ error: 'Full Name, Email, and Project Description are required.' }, { status: 400 });
+    if (!contactPerson || !email || !projectDescription) {
+      return NextResponse.json({ error: 'Contact Person, Email, and Project Description are required.' }, { status: 400 });
     }
 
     let logoUrl = null;
@@ -48,7 +48,7 @@ export async function POST(request) {
       .from('design_requirements')
       .insert([
         {
-          full_name: fullName,
+          full_name: contactPerson,
           email,
           phone,
           company_name: companyName,

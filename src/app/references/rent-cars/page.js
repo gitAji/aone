@@ -193,7 +193,7 @@ const Project7Page = () => {
             Ready to build an engaging learning platform?
           </h2>
           <Link
-            href={`/contact`}
+            href={`/free-consultation`}
             className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg"
           >
             Get a Free Consultation

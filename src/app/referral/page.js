@@ -91,15 +91,15 @@ const ReferralPage = () => {
             {/* Referred Client Information */}
             <h3 className="text-2xl font-semibold text-gray-800 pt-4 pb-2 border-b border-gray-200">Client You Are Referring</h3>
             <div>
-              <label htmlFor="referredName" className="block text-sm font-medium text-gray-700">Client's Name <span className="text-red-500">*</span></label>
+              <label htmlFor="referredName" className="block text-sm font-medium text-gray-700">Client&apos;s Name <span className="text-red-500">*</span></label>
               <input type="text" name="referredName" id="referredName" required value={formData.referredName} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
             </div>
             <div>
-              <label htmlFor="referredEmail" className="block text-sm font-medium text-gray-700">Client's Email <span className="text-red-500">*</span></label>
+              <label htmlFor="referredEmail" className="block text-sm font-medium text-gray-700">Client&apos;s Email <span className="text-red-500">*</span></label>
               <input type="email" name="referredEmail" id="referredEmail" required value={formData.referredEmail} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
             </div>
             <div>
-              <label htmlFor="referredCompany" className="block text-sm font-medium text-gray-700">Client's Company (Optional)</label>
+              <label htmlFor="referredCompany" className="block text-sm font-medium text-gray-700">Client&apos;s Company (Optional)</label>
               <input type="text" name="referredCompany" id="referredCompany" value={formData.referredCompany} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
             </div>
             <div>
@@ -115,7 +115,7 @@ const ReferralPage = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex justify-center py-4 px-8 text-xl border border-transparent rounded-lg shadow-lg text-white font-bold bg-indigo-600 hover:bg-indigo-700 transition duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex justify-center py-4 px-8 text-xl border border-transparent rounded-lg shadow-lg text-white font-bold bg-gradient-to-r from-red-500 via-yellow-500 to-blue-500 hover:from-red-600 hover:via-yellow-600 hover:to-blue-600 transition duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? 'Submitting...' : 'Submit Referral'}
               </button>
