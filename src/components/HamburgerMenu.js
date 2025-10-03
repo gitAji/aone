@@ -21,16 +21,29 @@ const HamburgerMenu = () => {
   };
 
   useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > lastScrollY.current && window.scrollY > 100) { // scrolled down
+      if (window.scrollY > lastScrollY.current && window.scrollY > 100) {
+        // scrolled down
         setIsVisible(false);
-      } else { // scrolled up or at top
+      } else {
+        // scrolled up or at top
         setIsVisible(true);
       }
       lastScrollY.current = window.scrollY;
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     const handleClickOutside = (event) => {
       if (
@@ -46,7 +59,7 @@ const HamburgerMenu = () => {
     document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [dropdownRef, flagRef]);
@@ -54,7 +67,13 @@ const HamburgerMenu = () => {
   return (
     <div className="hamburger-menu flex items-center space-x-4">
       <Link href="/request-quote" passHref>
-        <button className={`bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg text-xl hover:bg-indigo-700 transition duration-300 shadow-lg transform hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full pointer-events-none'}`}>
+        <button
+          className={`bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg text-xl hover:bg-indigo-700 transition duration-300 shadow-lg transform hover:scale-105 ${
+            isVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-full pointer-events-none"
+          }`}
+        >
           Get a Quote
         </button>
       </Link>
@@ -98,12 +117,22 @@ const HamburgerMenu = () => {
           </div>
         )}
       </div>
-      <button className="menu-icon text-2xl" onClick={toggleMenu}>
-        +
+      <button
+        className="menu-icon text-2xl"
+        onClick={toggleMenu}
+        aria-expanded={isOpen}
+        aria-controls="fullscreen-menu"
+        aria-label={isOpen ? "Close menu" : "Open menu"}
+      >
+        {isOpen ? <span>&times;</span> : <span>+</span>}
       </button>
 
       {isOpen && (
-        <div className="fullscreen-menu">
+        <div
+          id="fullscreen-menu"
+          className="fullscreen-menu"
+          style={{ backgroundColor: 'black', zIndex: 9999, position: 'fixed', top: 0, left: 0, width: '100vw', minHeight: '100vh' }}
+        >
           <button className="close-icon" onClick={toggleMenu}>
             &times;
           </button>

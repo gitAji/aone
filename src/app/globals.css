@@ -49,10 +49,6 @@
     border-color: var(--primary-color);
   }
 
-  .fullscreen-menu {
-    background-color: rgba(18, 18, 18, 0.98); /* Slightly transparent black */
-  }
-
   .footer {
     background-color: var(--accent-color);
     color: var(--text-color);
@@ -85,6 +81,10 @@ body {
   line-height: 1.7; /* Improved readability with more space */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body.no-scroll {
+  overflow: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -399,15 +399,22 @@ p {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw; /* Use viewport width */
   height: 100%;
-  background-color: rgb(16, 16, 16); /* Black background */
-  display: flex;
+  background-color: #000 !important; /* Force solid black */
+  z-index: 9999; /* Ensure it's on top with a very high value */
+  display: flex !important;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 1200;
-  animation: fadeIn 0.3s ease-out;
+  animation: fadeIn 0.3s ease-in-out;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.fullscreen-menu.closing {
+  animation: fadeOut 0.3s ease-in-out;
 }
 
 .fullscreen-menu .close-icon {
@@ -433,15 +440,27 @@ p {
 }
 
 .fullscreen-menu nav li {
+  animation: fadeIn 0.5s ease-in-out forwards;
+  /* opacity: 0; */ /* Removed to ensure visibility */
   margin: 1.5rem 0;
 }
 
+.fullscreen-menu nav li:nth-child(1) { animation-delay: 0.2s; }
+.fullscreen-menu nav li:nth-child(2) { animation-delay: 0.4s; }
+.fullscreen-menu nav li:nth-child(3) { animation-delay: 0.6s; }
+.fullscreen-menu nav li:nth-child(4) { animation-delay: 0.8s; }
+.fullscreen-menu nav li:nth-child(5) { animation-delay: 1s; }
+.fullscreen-menu nav li:nth-child(6) { animation-delay: 1.2s; }
+
+
 .fullscreen-menu nav a {
-  color: #FFFFFF; /* White text */
-  font-family: var(--font-playfair-display);
-  font-size: 3rem;
+  color: #FFFFFF;
+  font-family: var(--font-raleway);
+  font-size: 2.5rem;
   text-decoration: none;
   transition: color 0.3s ease;
+  position: relative;
+  padding: 10px 0;
 }
 
 .fullscreen-menu nav a:hover {
@@ -453,24 +472,17 @@ p {
   to { opacity: 1; }
 }
 
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
 @media (max-width: 768px) {
-  .hero-content {
-    padding: 0 20px;
-  }
-
-  .hero h1 {
-    font-size: 4rem;
-  }
-
-  .hero-tagline {
-    font-size: 1.2rem;
-  }
-
-  .scroll-down-arrow {
-    font-size: 1.5rem;
-    bottom: 30px;
-  }
-
   .hamburger-menu {
     top: 10px;
     right: 10px;
@@ -605,66 +617,6 @@ p {
   left: 20px;
   z-index: 1100;
 }
-
-/* Original hamburger menu styles */
-/* .hamburger-menu {
-  position: fixed;
-  top: 30px;
-  right: 30px;
-  z-index: 1100;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 15px;
-} */
-
-/* Original menu-icon styles */
-/* .menu-icon {
-  background: none;
-  border: none;
-  font-size: 2.5rem;
-  color: var(--text-color);
-  cursor: pointer;
-  transition: transform 0.3s ease;
-} */
-
-/* Original fullscreen-menu styles */
-/* .fullscreen-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.95);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 1200;
-  animation: fadeIn 0.3s ease-out;
-} */
-
-/* Original fullscreen-menu .close-icon styles */
-/* .fullscreen-menu .close-icon {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: none;
-  border: none;
-  font-size: 3rem;
-  color: #FFFFFF;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-} */
-
-/* Original fullscreen-menu nav a styles */
-/* .fullscreen-menu nav a {
-  color: #FFFFFF;
-  font-family: var(--font-playfair-display);
-  font-size: 3rem;
-  text-decoration: none;
-  transition: color 0.3s ease;
-} */
 
 .grayscale-logo {
   filter: grayscale(100%);
