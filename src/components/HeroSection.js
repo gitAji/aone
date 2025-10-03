@@ -55,13 +55,11 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
 
       {/* Background Layers */}
       <WaveLayers />
-      {!isHomePage && (
-        <FloatingDots
+      <FloatingDots
           containerWidth={dimensions.width}
           containerHeight={dimensions.height}
-          style={{ zIndex: 2 }}
+          style={{ zIndex: 99 }}
         />
-      )}
 
       {/* Hero Content */}
       <motion.div

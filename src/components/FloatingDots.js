@@ -2,6 +2,23 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
+// Helper function to calculate distance between two points
+const getDistance = (x1, y1, x2, y2) => {
+  const dx = x2 - x1;
+  const dy = y2 - y1;
+  return Math.sqrt(dx * dx + dy * dy);
+};
+
+const rainbowColors = [
+  "#FFB3BA", // Pastel Red
+  "#FFDFBA", // Pastel Orange
+  "#FFFFBA", // Pastel Yellow
+  "#BAFFC9", // Pastel Green
+  "#BAE1FF", // Pastel Blue
+  "#CBAACB", // Pastel Indigo
+  "#E0BBE4", // Pastel Violet
+];
+
 const FloatingDot = ({ size, color, delay, duration, startX, startY, onClick }) => {
   return (
     <motion.div
@@ -75,15 +92,29 @@ const FloatingDots = ({ containerWidth, containerHeight }) => {
         {dots.map((dot, index) => {
           const nextDot = dots[index + 1];
           if (nextDot) {
+            const length = getDistance(
+              dot.startX + dot.size / 2,
+              dot.startY + dot.size / 2,
+              nextDot.startX + nextDot.size / 2,
+              nextDot.startY + nextDot.size / 2
+            );
             return (
-              <line
+              <motion.line
                 key={`line-${index}`}
                 x1={dot.startX + dot.size / 2}
                 y1={dot.startY + dot.size / 2}
                 x2={nextDot.startX + nextDot.size / 2}
                 y2={nextDot.startY + nextDot.size / 2}
-                stroke="var(--light-gray)"
                 strokeWidth="1"
+                initial={{ strokeDasharray: length, strokeDashoffset: length, stroke: rainbowColors[0] }}
+                animate={{
+                  strokeDashoffset: 0,
+                  stroke: rainbowColors,
+                }}
+                transition={{
+                  strokeDashoffset: { duration: 3, ease: "easeInOut", repeat: Infinity, repeatType: "reverse", delay: dot.delay, repeatDelay: 1 },
+                  stroke: { duration: 5, ease: "easeInOut", repeat: Infinity, repeatType: "reverse", delay: dot.delay + 2, repeatDelay: 1 }, // Start color animation after drawing
+                }}
               />
             );
           }

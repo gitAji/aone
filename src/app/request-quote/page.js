@@ -113,7 +113,7 @@ const RequestQuotePage = () => {
         title="Request a Quote"
         subtitle="Tell us about your project and get a personalized quote."
       />
-      <section className="container mx-auto px-4 py-16">
+      <section className="container mx-auto px-4 py-8">
         <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Project Details</h2>
           {message && (
@@ -258,7 +258,7 @@ const RequestQuotePage = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`btn-gradient-primary ${isSubmitting ? 'disabled' : ''}`}
+                className={`w-full btn-gradient-primary ${isSubmitting ? 'disabled' : ''}`}
               >
                 {isSubmitting ? 'Submitting...' : 'Submit Quote Request'}
               </button>
