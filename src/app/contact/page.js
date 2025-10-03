@@ -152,7 +152,7 @@ const ContactPage = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex justify-center py-4 px-8 text-xl border border-transparent rounded-lg shadow-lg text-white font-bold bg-indigo-600 hover:bg-indigo-700 transition duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                className={`btn-gradient-primary ${loading ? 'disabled' : ''}`}
               >
                 {loading ? "Sending..." : "Send Message"}
               </button>

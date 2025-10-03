@@ -68,7 +68,7 @@ const HamburgerMenu = () => {
     <div className="hamburger-menu flex items-center space-x-4">
       <Link href="/request-quote" passHref>
         <button
-          className={`bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg text-xl hover:bg-indigo-700 transition duration-300 shadow-lg transform hover:scale-105 ${
+          className={`btn-outline-gradient ${
             isVisible
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-full pointer-events-none"
@@ -77,46 +77,9 @@ const HamburgerMenu = () => {
           Get a Quote
         </button>
       </Link>
-      <div className="language-switch-container">
-        <div
-          className="current-language-flag"
-          ref={flagRef}
-          onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
-        >
-          <ReactCountryFlag
-            countryCode="GB"
-            svg
-            style={{
-              width: "30px",
-              height: "20px",
-              cursor: "pointer",
-              border: "2px solid transparent",
-              boxShadow: "0 0 5px rgba(0, 0, 0, 0.2)",
-              borderRadius: "3px",
-            }}
-            title="English"
-          />
-        </div>
-        {showLanguageDropdown && (
-          <div className="language-dropdown" ref={dropdownRef}>
-            {/* Only English is supported in this revert */}
-            <ReactCountryFlag
-              countryCode="GB"
-              svg
-              style={{
-                width: "30px",
-                height: "20px",
-                cursor: "pointer",
-                border: "2px solid transparent",
-                boxShadow: "0 0 5px rgba(0, 0, 0, 0.2)",
-                borderRadius: "3px",
-              }}
-              onClick={() => handleLanguageChange("en")}
-              title="English"
-            />
-          </div>
-        )}
-      </div>
+      {/*
+      
+      */}
       <button
         className="menu-icon text-2xl"
         onClick={toggleMenu}

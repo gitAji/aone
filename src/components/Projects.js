@@ -65,7 +65,7 @@ const Projects = () => {
         {/* View All Button */}
         <div className="text-center mt-8 md:mt-12">
           <Link href="/references">
-            <button className="inline-block px-6 py-2 sm:px-8 sm:py-3 text-base sm:text-lg font-semibold text-white bg-pink-700 rounded-lg shadow-md hover:bg-pink-800 hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-pink-700 focus:ring-offset-2">
+            <button className="btn-outline-gradient">
               View all projects
             </button>
           </Link>

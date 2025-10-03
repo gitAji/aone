@@ -21,14 +21,26 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
+    const updateDimensions = () => {
+      setDimensions({ width: window.innerWidth, height: window.innerHeight });
+    };
+
+    updateDimensions(); // Set initial dimensions
+    window.addEventListener('resize', updateDimensions);
+
     if (isHomePage) {
       const interval = setInterval(
         () => setIndex((prev) => (prev + 1) % phrases.length),
         3000 // change every 3 seconds
       );
-      setDimensions({ width: window.innerWidth, height: window.innerHeight });
-      return () => clearInterval(interval);
+      return () => {
+        clearInterval(interval);
+        window.removeEventListener('resize', updateDimensions);
+      };
     }
+    return () => {
+      window.removeEventListener('resize', updateDimensions);
+    };
   }, [isHomePage]);
 
   return (
@@ -43,10 +55,13 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
 
       {/* Background Layers */}
       <WaveLayers />
-      <FloatingDots
-        containerWidth={dimensions.width}
-        containerHeight={dimensions.height}
-      />
+      {!isHomePage && (
+        <FloatingDots
+          containerWidth={dimensions.width}
+          containerHeight={dimensions.height}
+          style={{ zIndex: 2 }}
+        />
+      )}
 
       {/* Hero Content */}
       <motion.div

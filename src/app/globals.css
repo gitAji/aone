@@ -4,6 +4,7 @@
 
 :root {
   --primary-color: #ab1c24; /* A vibrant blue for primary actions and highlights */
+  --primary-color-darker: #8a161c; /* Darker shade for hover */
   --secondary-color: #6c757d; /* A muted gray for secondary elements */
   --accent-color: #1E2940; /* A fresh green for success or positive indicators */
   --background-color: #f8f9fa; /* Lightest gray for general backgrounds */
@@ -11,6 +12,17 @@
   --light-gray: #e9ecef; /* Slightly darker light gray for subtle distinctions */
   --border-color: #dee2e6; /* Light border color */
   --shadow-color: rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+
+  /* Tailwind-like color variables for gradients */
+  --red-500: #ef4444;
+  --red-600: #dc2626;
+  --yellow-500: #f59e0b;
+  --yellow-600: #d97706;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --red-700: #b91c1c;
+  --yellow-700: #a16207;
+  --blue-700: #1d4ed8;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -196,28 +208,103 @@ p {
   border: 2px solid transparent;
 }
 
-.btn-primary {
-  background-color: var(--primary-color);
-  color: #FFFFFF;
+/* New Button Styles */
+.btn-gradient-primary {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 2rem; /* py-4 px-8 */
+  font-size: 1.25rem; /* text-xl */
+  border: 2px solid transparent; /* border border-transparent */
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+  color: #FFFFFF; /* text-white */
+  font-weight: 700; /* font-bold */
+  background-image: linear-gradient(to right, var(--red-500), var(--yellow-500), var(--blue-500)); /* bg-gradient-to-r from-red-500 via-yellow-500 to-blue-500 */
+  transition: all 0.3s ease; /* transition duration-300 */
+  transform: scale(1); /* initial transform */
 }
 
-.btn-primary:hover {
-  background-color: darken(var(--primary-color), 10%); /* Darken on hover */
-  box-shadow: 0 5px 15px var(--shadow-color);
-  transform: translateY(-2px);
+.btn-gradient-primary:hover {
+  background-image: linear-gradient(to right, var(--red-600), var(--yellow-600), var(--blue-600)); /* hover:from-red-600 hover:via-yellow-600 hover:to-blue-600 */
+  transform: scale(1.05); /* hover:scale-105 */
 }
 
-.btn-outline {
+.btn-gradient-primary.disabled {
+  opacity: 0.5; /* disabled:opacity-50 */
+  cursor: not-allowed; /* disabled:cursor-not-allowed */
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  border: 2px solid var(--secondary-color);
+  color: var(--secondary-color);
   background-color: transparent;
-  color: var(--primary-color);
-  border-color: var(--primary-color);
+  transition: all 0.3s ease;
 }
 
-.btn-outline:hover {
-  background-color: var(--primary-color);
+.btn-secondary:hover {
+  background-color: var(--secondary-color);
   color: #FFFFFF;
-  box-shadow: 0 5px 15px var(--shadow-color);
   transform: translateY(-2px);
+  box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+/* New Outline Gradient Button */
+.btn-outline-gradient {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  isolation: isolate; /* Creates a new stacking context */
+  cursor: pointer;
+
+  /* Gradient Text */
+  background-image: linear-gradient(to right, var(--red-500), var(--yellow-500), var(--blue-500));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+
+  /* Gradient Border using pseudo-element */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 0.5rem;
+    padding: 2px; /* Border thickness */
+    background: linear-gradient(to right, var(--red-500), var(--yellow-500), var(--blue-500));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1;
+  }
+
+  /* Hover state */
+  &:hover {
+    color: #000000; /* Black text on hover for better contrast */
+    background-image: linear-gradient(to right, var(--red-700), var(--yellow-700), var(--blue-700));
+    -webkit-background-clip: border-box; /* Ensure background fills the button */
+    background-clip: border-box; /* Ensure background fills the button */
+    -webkit-text-fill-color: #000000; /* Ensure text is solid black */
+    text-fill-color: #000000; /* Ensure text is solid black */
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px var(--shadow-color);
+  }
+
+  &:hover::before {
+    background: linear-gradient(to right, var(--red-700), var(--yellow-700), var(--blue-700));
+  }
 }
 
 /* Cards & Sections */

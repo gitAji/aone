@@ -63,7 +63,7 @@ const ClientLoginPage = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-pink-700 text-white py-3 px-6 rounded-full hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 transition duration-300 ease-in-out text-lg font-semibold"
+              className="btn-gradient-primary"
             >
               Login
             </button>

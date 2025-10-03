@@ -129,7 +129,7 @@ const FeedbackPage = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex justify-center py-4 px-8 text-xl border border-transparent rounded-lg shadow-lg text-white font-bold bg-gradient-to-r from-red-500 via-yellow-500 to-blue-500 hover:from-red-600 hover:via-yellow-600 hover:to-blue-600 transition duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                className={`btn-gradient-primary ${isSubmitting ? 'disabled' : ''}`}
               >
                 {isSubmitting ? 'Sending...' : 'Send Feedback'}
               </button>

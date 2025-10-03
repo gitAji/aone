@@ -15,7 +15,7 @@ const CTASection = () => {
         </h2>
         <a
           href="/request-quote"
-          className="inline-block py-4 px-8 text-xl font-bold text-white bg-indigo-600 rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-105"
+          className="btn-outline-gradient"
         >
           Get Your Free Quote Today!
         </a>
