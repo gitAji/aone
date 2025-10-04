@@ -30,47 +30,34 @@ const Project3Page = () => {
     <div className="project-detail-page bg-gray-50 min-h-screen">
       <HeroSection title="Clean masters Renhold Website" />
 
-      <nav className="container mx-auto px-4 py-4 text-gray-600">
-        <ol className="list-none p-0 inline-flex">
-          <li className="flex items-center">
-            <Link href="/" className="hover:underline">Home</Link>
-            <span className="mx-2">/</span>
-          </li>
-          <li className="flex items-center">
-            <Link href="/references" className="hover:underline">References</Link>
-            <span className="mx-2">/</span>
-          </li>
-          <li className="flex items-center text-gray-800 font-semibold">
-            {projects[currentIndex]?.title || "Project"}
-          </li>
-        </ol>
-      </nav>
+      
+
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        {prevProject ? (
+          <Link href={prevProject.projectLink} passHref>
+            <button className="flex items-center text-gray-800 hover:text-blue-600 transition-colors duration-300">
+              <FaArrowLeft className="mr-2" /> {prevProject.title}
+            </button>
+          </Link>
+        ) : (
+          <div /> // Empty div to maintain spacing
+        )}
+        {nextProject ? (
+          <Link href={nextProject.projectLink} passHref>
+            <button className="flex items-center text-gray-800 hover:text-blue-600 transition-colors duration-300">
+              {nextProject.title} <FaArrowRight className="ml-2" />
+            </button>
+          </Link>
+        ) : (
+          <div /> // Empty div to maintain spacing
+        )}
+      </div>
 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center mb-8">
-            {prevProject ? (
-              <Link href={prevProject.projectLink} passHref>
-                <button className="flex items-center text-gray-800 hover:text-blue-600 transition-colors duration-300 text-lg font-semibold">
-                  <FaArrowLeft className="mr-2" /> {prevProject.title}
-                </button>
-              </Link>
-            ) : (
-              <div />
-            )}
-            <h2 className="text-4xl font-bold text-gray-800 text-center">
-              Project Overview
-            </h2>
-            {nextProject ? (
-              <Link href={nextProject.projectLink} passHref>
-                <button className="flex items-center text-gray-800 hover:text-blue-600 transition-colors duration-300 text-lg font-semibold">
-                  {nextProject.title} <FaArrowRight className="ml-2" />
-                </button>
-              </Link>
-            ) : (
-              <div />
-            )}
-          </div>
+          <h2 className="text-4xl font-bold text-gray-800 mb-8 text-center">
+            {projects[currentIndex]?.title} - Project Overview
+          </h2>
         </div>
       </section>
       <section className="py-16 bg-gray-100">
@@ -185,12 +172,12 @@ const Project3Page = () => {
             company&apos;s reputation as a trusted cleaning service provider in
             their market.
           </p>
-          <div className="mt-8">
+          <div className="mt-8 mx-auto">
             <Image
-              src="/images/projects/cleanmasters/result.png"
+              src="/images/projects/cleanmasters/cover.png"
               alt="Clean Masters Renhold Website Wireframe"
-              width={1200}
-              height={600}
+              width={800}
+              height={400}
               className="rounded-lg shadow-lg"
               sizes="100vw"
             />
@@ -205,7 +192,7 @@ const Project3Page = () => {
           </h2>
           <Link
             href={`/free-consultation`}
-            className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg"
+            className="btn-gradient-primary"
           >
             Get a Free Consultation
           </Link>

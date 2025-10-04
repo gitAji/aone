@@ -3,17 +3,59 @@ import React from "react";
 import HeroSection from "@/components/HeroSection";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation"; // Import hooks
+import projects from "@/app/data/projects"; // Import projects data
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa"; // Import icons
 
 const Project6Page = () => {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  // Extract current project ID from pathname (e.g., /references/rent-my-property-uk -> rent-my-property-uk)
+  const currentProjectId = pathname.split("/").pop();
+
+  // Find the index of the current project
+  const currentIndex = projects.findIndex((p) => p.id === currentProjectId);
+
+  // Determine previous and next projects
+  const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
+  const nextProject =
+    currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
   return (
     <div className="project-detail-page bg-gray-50 min-h-screen">
       <HeroSection title="Rent My Property UK" />
 
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        {prevProject ? (
+          <Link href={prevProject.projectLink} passHref>
+            <button className="flex items-center text-gray-800 hover:text-blue-600 transition-colors duration-300">
+              <FaArrowLeft className="mr-2" /> {prevProject.title}
+            </button>
+          </Link>
+        ) : (
+          <div /> // Empty div to maintain spacing
+        )}
+        {nextProject ? (
+          <Link href={nextProject.projectLink} passHref>
+            <button className="flex items-center text-gray-800 hover:text-blue-600 transition-colors duration-300">
+              {nextProject.title} <FaArrowRight className="ml-2" />
+            </button>
+          </Link>
+        ) : (
+          <div /> // Empty div to maintain spacing
+        )}
+      </div>
+
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-gray-800 mb-8">
-            Project Overview
+          <h2 className="text-4xl font-bold text-gray-800 mb-8 text-center">
+            {projects[currentIndex]?.title} - Project Overview
           </h2>
+        </div>
+      </section>
+
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
           <p className="text-lg text-gray-700 mb-6">
             This project focused on developing a comprehensive online presence
             for Rent My Property UK, a property management service. Our goal was
@@ -21,7 +63,7 @@ const Project6Page = () => {
             facilitate property listings, inquiries, and bookings.
           </p>
           <p className="text-lg text-gray-700 mb-6"></p>
-          <div className="mt-8">
+          <div className="mt-8 mx-auto">
             <Image
               src="/images/projects/rentmyproperty/cover.png"
               alt="rent my property uk"
@@ -172,7 +214,7 @@ const Project6Page = () => {
             Ready to elevate your restaurant&apos;s online presence?
           </h2>
           <Link
-            href={`/free-consultation`}
+            href={`/request-quote`}
             className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg"
           >
             Get a Free Consultation

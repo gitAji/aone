@@ -235,9 +235,8 @@ p {
   cursor: not-allowed; /* disabled:cursor-not-allowed */
 }
 
-.btn-secondary {
-  display: inline-block;
-  padding: 1rem 2rem;
+  .btn-secondary {
+  padding: 0.8rem 1.8rem;
   font-size: 1.25rem;
   font-weight: 700;
   border-radius: 0.5rem;
@@ -257,11 +256,38 @@ p {
 /* New Outline Gradient Button */
 .btn-outline-gradient {
   display: inline-block;
-  padding: .75rem 2rem;
-  font-size: 1.20rem;
+  padding: 0.8rem 1.8rem;
+  font-size: 1.25rem;
   font-weight: 700;
   border-radius: 0.5rem;
   background-color: transparent;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  isolation: isolate; /* Creates a new stacking context */
+  cursor: pointer;
+
+  /* Gradient Text */
+  background-image: linear-gradient(to right, var(--red-500), var(--yellow-500), var(--blue-500));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+
+  /* Gradient Border using pseudo-element */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 0.5rem;
+    padding: 2px; /* Border thickness */
+    background: linear-gradient(to right, var(--red-500), var(--yellow-500), var(--blue-500));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1;
+  }
   transition: all 0.3s ease;
   position: relative;
   z-index: 1;
@@ -429,6 +455,10 @@ p {
 
   .hero-tagline {
     font-size: 1.2rem;
+  }
+
+  .hero-content {
+    padding-top: 8rem; /* Increased space from the top on mobile */
   }
 
   .btn {

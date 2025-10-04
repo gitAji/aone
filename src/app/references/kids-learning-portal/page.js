@@ -25,47 +25,34 @@ const Project1Page = () => {
     <div className="project-detail-page bg-gray-50 min-h-screen">
       <HeroSection title="Kids Learning Portal" />
 
-      <nav className="container mx-auto px-4 py-4 text-gray-600">
-        <ol className="list-none p-0 inline-flex">
-          <li className="flex items-center">
-            <Link href="/" className="hover:underline">Home</Link>
-            <span className="mx-2">/</span>
-          </li>
-          <li className="flex items-center">
-            <Link href="/references" className="hover:underline">References</Link>
-            <span className="mx-2">/</span>
-          </li>
-          <li className="flex items-center text-gray-800 font-semibold">
-            {projects[currentIndex]?.title || "Project"}
-          </li>
-        </ol>
-      </nav>
+      
+
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        {prevProject ? (
+          <Link href={prevProject.projectLink} passHref>
+            <button className="flex items-center text-gray-800 hover:text-blue-600 transition-colors duration-300">
+              <FaArrowLeft className="mr-2" /> {prevProject.title}
+            </button>
+          </Link>
+        ) : (
+          <div /> // Empty div to maintain spacing
+        )}
+        {nextProject ? (
+          <Link href={nextProject.projectLink} passHref>
+            <button className="flex items-center text-gray-800 hover:text-blue-600 transition-colors duration-300">
+              {nextProject.title} <FaArrowRight className="ml-2" />
+            </button>
+          </Link>
+        ) : (
+          <div /> // Empty div to maintain spacing
+        )}
+      </div>
 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center mb-8">
-            {prevProject ? (
-              <Link href={prevProject.projectLink} passHref>
-                <button className="flex items-center text-gray-800 hover:text-blue-600 transition-colors duration-300 text-lg font-semibold">
-                  <FaArrowLeft className="mr-2" /> {prevProject.title}
-                </button>
-              </Link>
-            ) : (
-              <div />
-            )}
-            <h2 className="text-4xl font-bold text-gray-800 text-center">
-              Project Overview
-            </h2>
-            {nextProject ? (
-              <Link href={nextProject.projectLink} passHref>
-                <button className="flex items-center text-gray-800 hover:text-blue-600 transition-colors duration-300 text-lg font-semibold">
-                  {nextProject.title} <FaArrowRight className="ml-2" />
-                </button>
-              </Link>
-            ) : (
-              <div />
-            )}
-          </div>
+          <h2 className="text-4xl font-bold text-gray-800 mb-8 text-center">
+            {projects[currentIndex]?.title} - Project Overview
+          </h2>
           <p className="text-lg text-gray-700 mb-6">
             This project involved designing and developing a modern,
             user-friendly website for kids learning portal. The goal was to
@@ -81,7 +68,7 @@ const Project1Page = () => {
             restaurant&apos;s ambiance. We aimed to create a digital platform
             that truly reflects the quality and elegance of Saray Steakhouse.
           </p>
-          <div className="mt-8">
+          <div className="mt-8 mx-auto">
             <Image
               src="/images/projects/kidsportal/project1.png"
               alt="Kids Learning Portal Development"

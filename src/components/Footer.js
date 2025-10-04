@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "next/image";
 import {
   faFacebookF,
   faXTwitter,
@@ -56,13 +57,28 @@ const Footer = () => {
             <a href="#" aria-label="Facebook">
               <FontAwesomeIcon icon={faFacebookF} />
             </a>
-            <a href="#" aria-label="X (Twitter)">
-              <FontAwesomeIcon icon={faXTwitter} />
-            </a>
+
             <a href="#" aria-label="Instagram">
               <FontAwesomeIcon icon={faInstagram} />
             </a>
           </div>
+        </div>
+        <div className="footer-section partner">
+          <h3>Our Partner</h3>
+          <a
+            href="https://www.seoexpert.no/"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+            aria-label="SEO Expert Norway"
+          >
+            <Image
+              src="/images/seoexpert.png" // Correct path for the logo
+              alt="SEO Expert Norway Logo"
+              width={150} // Adjust width as needed
+              height={50} // Adjust height as needed
+              className="mt-4"
+            />
+          </a>
         </div>
       </div>
       <div className="footer-bottom">

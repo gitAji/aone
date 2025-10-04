@@ -49,9 +49,14 @@ const Project5Page = () => {
 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-gray-800 mb-8">
-            Project Overview
+          <h2 className="text-4xl font-bold text-gray-800 mb-8 text-center">
+            {projects[currentIndex]?.title} - Project Overview
           </h2>
+        </div>
+      </section>
+
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
           <p className="text-lg text-gray-700 mb-6">
             This project involved designing and developing a professional
             website for QFS Accountants, a reputable accounting firm. The
@@ -70,7 +75,7 @@ const Project5Page = () => {
             were implemented to enhance the             firm&apos;s online visibility and attract
             more potential clients.
           </p>
-          <div className="mt-8">
+          <div className="mt-8 mx-auto">
             <Image
               src="/images/projects/QFS/cover.png"
               alt="QFS Accountants Website Cover"

@@ -6,11 +6,12 @@ export async function fetchPosts(perPage = 9, page = 1) {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
+    const totalPages = parseInt(response.headers.get('X-WP-TotalPages') || '1', 10);
     const data = await response.json();
-    return data;
+    return { posts: data, totalPages };
   } catch (error) {
     console.error('Error fetching blog posts:', error);
-    return [];
+    return { posts: [], totalPages: 1 };
   }
 }
 

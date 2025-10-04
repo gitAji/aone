@@ -7,15 +7,23 @@ import { fetchPosts } from '@/lib/wordpress';
 
 const BlogPage = () => {
   const [posts, setPosts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const postsPerPage = 6; // Number of posts per page
 
   useEffect(() => {
     const getPosts = async () => {
-      const data = await fetchPosts();
-      setPosts(data);
+      const { posts: fetchedPosts, totalPages: fetchedTotalPages } = await fetchPosts(postsPerPage, currentPage);
+      if (currentPage === 1) {
+        setPosts(fetchedPosts);
+      } else {
+        setPosts(prevPosts => [...prevPosts, ...fetchedPosts]);
+      }
+      setTotalPages(fetchedTotalPages);
     };
 
     getPosts();
-  }, []);
+  }, [currentPage]);
 
   return (
     <div className="blog-page bg-gray-50 min-h-screen">
@@ -45,6 +53,17 @@ const BlogPage = () => {
             </Link>
           ))}
         </div>
+
+        {totalPages > currentPage && (
+          <div className="flex justify-center mt-8">
+            <button
+              onClick={() => setCurrentPage(prev => prev + 1)}
+              className="btn-outline-gradient"
+            >
+              Load More
+            </button>
+          </div>
+        )}
       </section>
     </div>
   );
