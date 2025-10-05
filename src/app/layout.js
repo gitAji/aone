@@ -32,7 +32,7 @@ const raleway = Raleway({
 export const metadata = {
   title: "Web Design in Bergen, Norway | Webdesign i Bergen",
   description:
-    "Aone: Leading web design & digital marketing in Bergen, Norway. Stunning websites, effective strategies to grow your business.",
+    "Aone: Web design & digital marketing in Bergen. We create stunning websites to grow your business.",
   keywords:
     "Web Design Bergen, Logo Design, SEO Services, Marketing, Printing, Affordable Websites, Netsider, Netbutikk, Søkemotoroptimalisering, Digital Markedsføring, Nettbutikk utvikling, Webutvikling, Grafisk design",
   icons: {
@@ -43,6 +43,20 @@ export const metadata = {
       "ahrefs-site-verification":
         "e0ddcbd585d6a2bedc5fcbcf2e8ca5da13defcef5a3694a39043b02d01728335",
     },
+  },
+  openGraph: {
+    title: "Web Design in Bergen, Norway | Webdesign i Bergen",
+    description: "Aone: Web design & digital marketing in Bergen. We create stunning websites to grow your business.",
+    url: "https://aone.no",
+    type: "website",
+    images: [
+      {
+        url: "/images/logo.png",
+        width: 800,
+        height: 600,
+        alt: "Aone Logo",
+      },
+    ],
   },
 };
 

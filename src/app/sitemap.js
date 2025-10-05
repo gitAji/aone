@@ -1,11 +1,18 @@
 export default function sitemap() {
-  const baseUrl = "https://www.aone.no";
+  const baseUrl = "https://aone.no";
   const pages = [
     "/",
     "/about",
     "/client-login",
     "/contact",
-
+    "/design-requirements",
+    "/feedback",
+    "/free-consultation",
+    "/privacy-policy",
+    "/referral",
+    "/request-quote",
+    "/support",
+    "/terms-and-conditions",
     "/references",
     "/references/kids-learning-portal",
     "/references/saray-steakhouse-kro",
