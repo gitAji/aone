@@ -6,6 +6,17 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.aone.no',
+          },
+        ],
+        destination: 'https://aone.no/:path*',
+        permanent: true,
+      },
+      {
         source: '/oldsite',
         destination: '/',
         permanent: true,
