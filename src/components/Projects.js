@@ -27,7 +27,7 @@ const Projects = () => {
                 className="project-card relative overflow-hidden rounded-2xl shadow-lg bg-white aspect-[4/3] w-full"
               >
                 <Link
-                  href={project.projectLink}
+                  href={`/references/${project.id}`}
                   className="relative w-full h-full group block overflow-hidden focus:outline-none focus:ring-2 focus:ring-pink-700 focus:ring-offset-2"
                   aria-label={`View details for ${project.title}`}
                 >
