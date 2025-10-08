@@ -1,7 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['blog.aone.no'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'blog.aone.no',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
   async redirects() {
     return [
