@@ -6,6 +6,8 @@ import {
   FaRobot,
   FaCameraRetro,
   FaVideo,
+  FaSearchDollar,
+  FaObjectGroup,
 } from "react-icons/fa";
 
 const ServiceCard = ({ href, icon: Icon, title, description, color }) => {
@@ -71,18 +73,18 @@ const ServicesSection = () => {
           color="text-indigo-600 group-hover:text-indigo-700"
         />
         <ServiceCard
-          href="/services/photography"
-          icon={FaCameraRetro}
-          title="Photography"
-          description="We capture stunning images that tell your story."
-          color="text-pink-600 group-hover:text-pink-700"
+          href="/services/geo"
+          icon={FaSearchDollar}
+          title="Generative Engine Optimization"
+          description="Optimize your content for AI-powered search engines and chatbots."
+          color="text-cyan-600 group-hover:text-cyan-700"
         />
         <ServiceCard
-          href="/services/videography"
-          icon={FaVideo}
-          title="Videography"
-          description="We create compelling videos that engage your audience."
-          color="text-teal-600 group-hover:text-teal-700"
+          href="/services/ui-ux-design"
+          icon={FaObjectGroup}
+          title="UI/UX Design"
+          description="We design intuitive and user-friendly interfaces."
+          color="text-purple-600 group-hover:text-purple-700"
         />
       </div>
     </section>

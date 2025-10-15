@@ -6,6 +6,7 @@ import {
   faFacebookF,
   faXTwitter,
   faInstagram,
+  faGithub,
 } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
@@ -18,7 +19,7 @@ const Footer = () => {
             We are a creative agency dedicated to building stunning websites and
             digital experiences that drive results.
           </p>
-          <p>Org nr: 922103682</p>
+          <p>Org nr: <span title="The last 4 digits are hidden to avoid scams. Contact us for more details.">92210XXXX</span></p>
         </div>
         <div className="footer-section quick-links">
           <h3>Quick Links</h3>
@@ -54,31 +55,17 @@ const Footer = () => {
         <div className="footer-section social-media">
           <h3>Follow Us</h3>
           <div className="social-icons">
-            <a href="#" aria-label="Facebook">
+            <a href="https://www.facebook.com/profile.php?id=100063719223439" aria-label="Facebook">
               <FontAwesomeIcon icon={faFacebookF} />
             </a>
 
-            <a href="#" aria-label="Instagram">
+            <a href="https://www.instagram.com/aone.no/" aria-label="Instagram">
               <FontAwesomeIcon icon={faInstagram} />
             </a>
+            <a href="#" aria-label="Github">
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
           </div>
-        </div>
-        <div className="footer-section partner">
-          <h3>Our Partner</h3>
-          <a
-            href="https://www.seoexpert.no/"
-            target="_blank"
-            rel="nofollow noopener noreferrer"
-            aria-label="SEO Expert Norway"
-          >
-            <Image
-              src="/images/seoexpert.png" // Correct path for the logo
-              alt="SEO Expert Norway Logo"
-              width={150} // Adjust width as needed
-              height={50} // Adjust height as needed
-              className="mt-4"
-            />
-          </a>
         </div>
       </div>
       <div className="footer-bottom">

@@ -2,7 +2,7 @@
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import Link from 'next/link';
-import { FaLaptopCode, FaPaintBrush, FaChartLine, FaRobot, FaCameraRetro, FaVideo, FaObjectGroup, FaSearch } from 'react-icons/fa';
+import { FaLaptopCode, FaPaintBrush, FaChartLine, FaRobot, FaCameraRetro, FaVideo, FaObjectGroup, FaSearch, FaSearchDollar } from 'react-icons/fa';
 import Testimonials from "@/components/Testimonials";
 
 
@@ -50,6 +50,14 @@ const ServicesPage = () => {
               <FaRobot className="text-5xl text-indigo-600 mb-4 group-hover:text-indigo-700 transition-colors duration-300" />
               <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-indigo-800 transition-colors duration-300">AI Automations</h3>
               <p className="text-gray-700 text-base leading-relaxed">We build AI-powered automations to streamline your business processes.</p>
+            </Link>
+            <Link
+              href={`/services/geo`}
+              className="group block p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white hover:-translate-y-1 flex flex-col items-center text-center"
+            >
+              <FaSearchDollar className="text-5xl text-cyan-600 mb-4 group-hover:text-cyan-700 transition-colors duration-300" />
+              <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-cyan-800 transition-colors duration-300">GEO</h3>
+              <p className="text-gray-700 text-base leading-relaxed">We provide GEO services to help you with your business.</p>
             </Link>
             <Link
               href={`/services/photography`}
