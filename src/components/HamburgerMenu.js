@@ -66,20 +66,6 @@ const HamburgerMenu = () => {
 
   return (
     <div className="hamburger-menu flex items-center space-x-4">
-      <Link href="/request-quote" passHref>
-        <button
-          className={`btn-outline-gradient ${
-            isVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-full pointer-events-none"
-          }`}
-        >
-          Get a Quote
-        </button>
-      </Link>
-      {/*
-      
-      */}
       <button
         className="menu-icon text-2xl"
         onClick={toggleMenu}
