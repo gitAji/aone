@@ -7,6 +7,7 @@ import {
   faXTwitter,
   faInstagram,
   faGithub,
+  faGoogle,
 } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
@@ -62,10 +63,14 @@ const Footer = () => {
             <a href="https://www.instagram.com/aone.no/" aria-label="Instagram">
               <FontAwesomeIcon icon={faInstagram} />
             </a>
+            <a href="https://share.google/LnZ6WBbDLAwypBM65" aria-label="Google">
+              <FontAwesomeIcon icon={faGoogle} />
+            </a>
             <a href="#" aria-label="Github">
               <FontAwesomeIcon icon={faGithub} />
             </a>
           </div>
+          
         </div>
       </div>
       <div className="footer-bottom">
