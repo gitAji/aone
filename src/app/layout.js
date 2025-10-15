@@ -93,7 +93,45 @@ export default function RootLayout({ children }) {
           <ReferralPopup />
           <Footer />
         </ClientLayoutWrapper>
-        
+        <script type="application/ld+json" dangerouslySetInnerHTML={{
+            __html: `
+              {
+                "@context": "https://schema.org",
+                "@graph": [
+                  {
+                    "@type": "Organization",
+                    "@id": "https://aone.no/#organization",
+                    "name": "Aone",
+                    "url": "https://aone.no",
+                    "logo": "https://aone.no/images/logo.png",
+                    "contactPoint": {
+                      "@type": "ContactPoint",
+                      "telephone": "+47-40071654",
+                      "contactType": "Customer Service"
+                    },
+                    "sameAs": [
+                      "https://www.facebook.com/profile.php?id=100063719223439",
+                      "https://www.instagram.com/aone.no/"
+                    ]
+                  },
+                  {
+                    "@type": "WebSite",
+                    "@id": "https://aone.no/#website",
+                    "url": "https://aone.no",
+                    "name": "Aone",
+                    "publisher": {
+                      "@id": "https://aone.no/#organization"
+                    },
+                    "potentialAction": {
+                      "@type": "SearchAction",
+                      "target": "https://aone.no/?s={search_term_string}",
+                      "query-input": "required name=search_term_string"
+                    }
+                  }
+                ]
+              }
+            `,
+          }} />
       </body>
     </html>
   );

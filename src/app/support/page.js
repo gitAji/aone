@@ -56,7 +56,7 @@ const SupportPage = () => {
           priority: '',
         });
       } else {
-        setMessage(data.error || 'Something went wrong. Please try again.');
+        setMessage('Something went wrong. Please try again.');
       }
     } catch (error) {
       console.error('Error submitting support form:', error);

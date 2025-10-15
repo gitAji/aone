@@ -1,8 +1,15 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import HeroSection from "@/components/HeroSection";
 
 const ClientLoginPage = () => {
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setMessage("Please contact the admin to login.");
+  };
+
   return (
     <div className="client-login-page bg-gray-50 min-h-screen">
       <HeroSection title="Client Login" subtitle="Access your client portal" />
@@ -12,7 +19,12 @@ const ClientLoginPage = () => {
           <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
             Access Your Portal
           </h2>
-          <form className="space-y-6">
+          {message && (
+            <div className="p-4 mb-4 text-center rounded-md bg-blue-100 text-blue-800">
+              {message}
+            </div>
+          )}
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label
                 htmlFor="email"

@@ -47,7 +47,7 @@ const ContactPage = () => {
         setIsError(false);
         setFormData({ name: "", email: "", subject: "", message: "" }); // Clear form
       } else {
-        setStatusMessage(result.error || "Failed to send message. Please try again.");
+        setStatusMessage("Failed to send message. Please try again.");
         setIsError(true);
       }
     } catch (error) {
