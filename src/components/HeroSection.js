@@ -112,6 +112,11 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
               &darr;
             </motion.span>
           </p>
+          <Link href="/request-quote" passHref>
+            <button className="btn-gradient-primary mt-8">
+              Get a Quote
+            </button>
+          </Link>
         ) : (
           subtitle && <p className="hero-tagline">{subtitle}</p>
         )}
