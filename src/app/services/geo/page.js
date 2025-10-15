@@ -15,7 +15,7 @@ const GEOPage = () => {
       <section className="container mx-auto px-4 py-16 text-center">
         <h2 className="text-4xl font-bold text-gray-800 mb-12">Why Generative Engine Optimization?</h2>
         <p className="text-lg text-gray-700 leading-relaxed mb-8 max-w-3xl mx-auto">
-          In the age of AI, how people search for information is changing. Generative Engine Optimization (GEO) is the practice of optimizing your content to be found and recommended by AI-powered search engines and chatbots. It's about creating content that not only ranks high but also provides direct, accurate, and helpful answers to user queries.
+          In the age of AI, how people search for information is changing. Generative Engine Optimization (GEO) is the practice of optimizing your content to be found and recommended by AI-powered search engines and chatbots. It&apos;s about creating content that not only ranks high but also provides direct, accurate, and helpful answers to user queries.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
           <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
