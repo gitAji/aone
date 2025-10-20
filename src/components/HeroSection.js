@@ -91,32 +91,35 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
         )}
 
         {isHomePage ? (
-          <p className="hero-tagline">
-            We’re all about challenging the norm to bring fresh, creative, and
-            unforgettable digital solutions.
-            <motion.span
-              className="scroll-down-arrow"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.8,
-                ease: "easeOut",
-                delay: 1,
-                repeat: Infinity,
-                repeatType: "reverse",
-              }}
-              onClick={() =>
-                window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
-              }
-            >
-              &darr;
-            </motion.span>
-          </p>
-          <Link href="/request-quote" passHref>
-            <button className="btn-gradient-primary mt-8">
-              Get a Quote
-            </button>
-          </Link>
+          <>
+            <p className="hero-tagline">
+              We’re all about challenging the norm to bring fresh, creative, and
+              unforgettable digital solutions.
+              <motion.span
+                className="scroll-down-arrow"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.8,
+                  ease: "easeOut",
+                  delay: 1,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
+                onClick={() =>
+                  window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
+                }
+              >
+                &darr;
+              </motion.span>
+            </p>
+            <Link href="/request-quote" passHref>
+              <button className="btn-outline-quote mt-8">
+                Get a Quote
+              </button>
+            </Link>
+            
+          </>
         ) : (
           subtitle && <p className="hero-tagline">{subtitle}</p>
         )}
