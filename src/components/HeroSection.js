@@ -114,7 +114,7 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
               </motion.span>
             </p>
             <Link href="/request-quote" passHref>
-              <button className="btn-outline-quote mt-8">
+              <button className="btn-outline-gradient mt-8">
                 Get a Quote
               </button>
             </Link>
