@@ -17,7 +17,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' app.cal.com analytics.ahrefs.com consent.cookiebot.com https://consentcdn.cookiebot.com embed.tawk.to; style-src 'self' 'unsafe-inline'; connect-src 'self' https://consentcdn.cookiebot.com embed.tawk.to; img-src 'self' https://imgsct.cookiebot.com;",
+            value: "default-src 'self'; script-src 'self' app.cal.com analytics.ahrefs.com consent.cookiebot.com https://consentcdn.cookiebot.com embed.tawk.to; style-src 'self'; connect-src 'self' https://consentcdn.cookiebot.com embed.tawk.to https://va.tawk.to; frame-src 'self' https://consentcdn.cookiebot.com; img-src 'self' https://imgsct.cookiebot.com;",
           },
           {
             key: 'X-Content-Type-Options',
