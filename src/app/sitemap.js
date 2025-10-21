@@ -1,6 +1,8 @@
+import projects from "@/app/data/projects";
+
 export default function sitemap() {
   const baseUrl = "https://aone.no";
-  const pages = [
+  const staticPages = [
     "/",
     "/about",
     "/client-login",
@@ -13,16 +15,6 @@ export default function sitemap() {
     "/request-quote",
     "/support",
     "/terms-and-conditions",
-    "/references",
-    "/references/kids-learning-portal",
-    "/references/saray-steakhouse-kro",
-    "/references/clean-masters-renhold",
-    "/references/tulips-beauty",
-    "/references/qfs-accountants",
-    "/references/rent-my-property-uk",
-    "/references/rent-cars",
-    "/references/shop-front",
-    "/references/trendify-tools",
     "/services",
     "/services/ai-automations",
     "/services/branding",
@@ -35,7 +27,11 @@ export default function sitemap() {
     "/services/web-development",
   ];
 
-  const urls = pages.map((page) => ({
+  const projectPages = projects.map((project) => project.projectLink);
+
+  const allPages = [...staticPages, ...projectPages];
+
+  const urls = allPages.map((page) => ({
     url: `${baseUrl}${page}`,
     lastModified: new Date(),
     changeFrequency: "daily",
