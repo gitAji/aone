@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import HeroSection from "@/components/HeroSection";
 import Accordion from "@/components/Accordion";
