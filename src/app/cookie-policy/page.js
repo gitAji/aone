@@ -74,10 +74,10 @@ const CookiePolicyPage = () => {
           </p>
           <ul className="list-disc list-inside mb-4 pl-5">
             <li>
-              For strictly necessary cookies, we do not need your consent, as these cookies are essential to the operation of our website.
+                            For &quot;strictly necessary cookies,&quot; we do not need your consent, as these cookies are essential to the operation of our website.
             </li>
             <li>
-              For other cookies, we rely on your consent, which you can provide when you first visit our site or modify through the Cookiebot interface.
+              For &quot;other cookies,&quot; we rely on your consent, which you can provide when you first visit our site or modify through the Cookiebot interface.
             </li>
           </ul>
           <p className="mb-4">
