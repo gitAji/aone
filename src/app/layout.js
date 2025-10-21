@@ -63,19 +63,39 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.variable} ${pacifico.variable} ${bebasNeue.variable} ${raleway.variable} antialiased}`}
-      >
-        <Script
-          src="https://analytics.ahrefs.com/analytics.js"
-          data-key="qcIvZEZSEISGNKyE5Gp7cQ"
-          strategy="afterInteractive"
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-TB2VFWDP');
+            `,
+          }}
         />
         <Script
           id="Cookiebot"
           src="https://consent.cookiebot.com/uc.js"
           data-cbid="ca4883b8-7492-4efe-8775-24794bf63af0"
-          strategy="beforeInteractive" // Recommended for Cookiebot to load before other scripts
+          strategy="beforeInteractive"
+          type="text/javascript" // Adding type attribute
+        />
+      </head>
+      <body
+        className={`${inter.variable} ${pacifico.variable} ${bebasNeue.variable} ${raleway.variable} antialiased}`}
+      >
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TB2VFWDP"
+              height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+          }}
+        />
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="qcIvZEZSEISGNKyE5Gp7cQ"
+          strategy="afterInteractive"
         />
         <script
           dangerouslySetInnerHTML={{
@@ -132,6 +152,7 @@ export default function RootLayout({ children }) {
               }
             `,
           }} />
+        
       </body>
     </html>
   );

@@ -255,25 +255,8 @@ p {
   box-shadow: 0 5px 15px var(--shadow-color);
 }
 
-.btn-outline-quote {
-  padding: 0.8rem 1.8rem;
-  font-size: 1.25rem;
-  font-weight: 700;
-  border-radius: 0.5rem;
-  border: 2px solid var(--primary-color);
-  color: var(--primary-color);
-  background-color: transparent;
-  transition: all 0.3s ease;
-}
 
-.btn-outline-quote:hover {
-  background-color: var(--primary-color);
-  color: #FFFFFF;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px var(--shadow-color);
-}
 
-/* New Outline Gradient Button */
 .btn-outline-gradient {
   display: inline-block;
   padding: 0.8rem 1.8rem;
@@ -284,73 +267,42 @@ p {
   transition: all 0.3s ease;
   position: relative;
   z-index: 1;
-  isolation: isolate; /* Creates a new stacking context */
+  isolation: isolate;
   cursor: pointer;
-
-  /* Gradient Text */
   background-image: linear-gradient(to right, var(--red-500), var(--yellow-500), var(--blue-500));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
+}
 
-  /* Gradient Border using pseudo-element */
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 0.5rem;
-    padding: 2px; /* Border thickness */
-    background: linear-gradient(to right, var(--red-500), var(--yellow-500), var(--blue-500));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    z-index: -1;
-  }
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 1;
-  isolation: isolate; /* Creates a new stacking context */
-  cursor: pointer;
+.btn-outline-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 0.5rem;
+  padding: 2px;
+  background: linear-gradient(to right, var(--red-500), var(--yellow-500), var(--blue-500));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+}
 
-  /* Gradient Text */
+.btn-outline-gradient:hover {
+  color: #000000;
   background-image: linear-gradient(to right, var(--red-500), var(--yellow-500), var(--blue-500));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: #000000;
+  text-fill-color: #000000;
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px var(--shadow-color);
+}
 
-  /* Gradient Border using pseudo-element */
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 0.5rem;
-    padding: 2px; /* Border thickness */
-    background: linear-gradient(to right, var(--red-500), var(--yellow-500), var(--blue-500));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    z-index: -1;
-  }
-
-  /* Hover state */
-  &:hover {
-    color: #000000; /* Black text on hover for better contrast */
-    background-image: linear-gradient(to right, var(--red-500), var(--yellow-500), var(--blue-500));
-    -webkit-background-clip: border-box; /* Ensure background fills the button */
-    background-clip: border-box; /* Ensure background fills the button */
-    -webkit-text-fill-color: #000000; /* Ensure text is solid black */
-    text-fill-color: #000000; /* Ensure text is solid black */
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px var(--shadow-color);
-  }
-
-  &:hover::before {
-    background: linear-gradient(to right, var(--red-500), var(--yellow-500), var(--blue-500));
-  }
+.btn-outline-gradient:hover::before {
+  background: linear-gradient(to right, var(--red-500), var(--yellow-500), var(--blue-500));
 }
 
 /* Cards & Sections */
