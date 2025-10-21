@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
 import Link from 'next/link';
@@ -18,11 +18,17 @@ const phrases = [
 
 const HeroSection = ({ isHomePage = false, title, subtitle }) => {
   const [index, setIndex] = useState(0);
+  const heroRef = useRef(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
     const updateDimensions = () => {
-      setDimensions({ width: window.innerWidth, height: window.innerHeight });
+      if (heroRef.current) {
+        setDimensions({
+          width: heroRef.current.offsetWidth,
+          height: heroRef.current.offsetHeight,
+        });
+      }
     };
 
     updateDimensions(); // Set initial dimensions
@@ -39,17 +45,13 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
       };
     }
 
-    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-    Cal("init", "30min", {origin:"https://app.cal.com"});
-    Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
-
     return () => {
       window.removeEventListener('resize', updateDimensions);
     };
   }, [isHomePage]);
 
   return (
-    <section className="hero">
+    <section className="hero" ref={heroRef}>
       <div className="hero-background"></div>
 
       {/* Top Nav */}
