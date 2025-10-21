@@ -2,7 +2,7 @@
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import Link from 'next/link';
-import { FaSearch, FaShareAlt, FaEnvelopeOpenText, FaChartLine, FaBullhorn, FaUsers } from 'react-icons/fa';
+import { FaSearch, FaShareAlt, FaEnvelopeOpenText, FaChartLine, FaBullhorn, FaUsers, FaArrowDown } from 'react-icons/fa';
 import Testimonials from "@/components/Testimonials";
 
 const DigitalMarketingPage = () => {
@@ -10,7 +10,11 @@ const DigitalMarketingPage = () => {
     <div className="service-detail-page bg-gray-50 min-h-screen">
       <HeroSection
         title="Digital Marketing"
+        description="Driving online growth and maximizing your reach through strategic digital marketing campaigns."
       />
+      <div className="flex justify-center py-8 bg-gray-50">
+        <FaArrowDown className="text-gray-700 text-3xl animate-bounce" />
+      </div>
 
       <section className="container mx-auto px-4 py-16 text-center">
         <h2 className="text-4xl font-bold text-gray-800 mb-12">Why Digital Marketing is Essential</h2>

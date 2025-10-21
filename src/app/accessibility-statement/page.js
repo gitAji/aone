@@ -3,6 +3,11 @@ import HeroSection from '@/components/HeroSection';
 import Accordion from '@/components/Accordion';
 import Link from 'next/link';
 
+export const metadata = {
+  title: "Accessibility Statement | Aone",
+  description: "Read Aone's Accessibility Statement outlining our commitment to making our website and services accessible to everyone.",
+};
+
 const AccessibilityStatementPage = () => {
   return (
     <div className="accessibility-statement-page bg-gray-100 min-h-screen">

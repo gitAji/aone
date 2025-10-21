@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
 import projects from "@/app/data/projects";
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight, FaArrowDown } from 'react-icons/fa';
 import { notFound } from 'next/navigation';
 
 const ProjectDetailPage = () => {
@@ -23,7 +23,11 @@ const ProjectDetailPage = () => {
 
   return (
     <div className="project-detail-page bg-gray-50 min-h-screen">
-      <HeroSection title={project.title} />
+      <HeroSection title={project.title} description={project.description} />
+
+      <div className="flex justify-center py-8 bg-gray-50">
+        <FaArrowDown className="text-gray-700 text-3xl animate-bounce" />
+      </div>
 
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link href={prevProject.projectLink} passHref>

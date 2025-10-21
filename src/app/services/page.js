@@ -2,7 +2,7 @@
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import Link from 'next/link';
-import { FaLaptopCode, FaPaintBrush, FaChartLine, FaRobot, FaCameraRetro, FaVideo, FaObjectGroup, FaSearch, FaSearchDollar } from 'react-icons/fa';
+import { FaLaptopCode, FaPaintBrush, FaChartLine, FaRobot, FaCameraRetro, FaVideo, FaObjectGroup, FaSearch, FaSearchDollar, FaChevronDown } from 'react-icons/fa';
 import Testimonials from "@/components/Testimonials";
 
 
@@ -13,7 +13,11 @@ const ServicesPage = () => {
       <HeroSection
         title="Our Services"
         subtitle="Explore the range of digital solutions we offer"
+        description="Discover our comprehensive suite of digital solutions designed to elevate your brand and drive measurable results."
       />
+      <div className="flex justify-center py-8 bg-gray-50">
+        <FaChevronDown className="text-gray-700 text-3xl animate-bounce" />
+      </div>
 
       <section className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">

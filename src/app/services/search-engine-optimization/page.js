@@ -2,7 +2,7 @@
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import Link from 'next/link';
-import { FaSearch, FaChartLine, FaGlobe, FaCogs, FaMapMarkerAlt, FaLightbulb } from 'react-icons/fa';
+import { FaSearch, FaChartLine, FaGlobe, FaCogs, FaMapMarkerAlt, FaLightbulb, FaArrowDown } from 'react-icons/fa';
 import Testimonials from "@/components/Testimonials";
 
 const SearchEngineOptimizationPage = () => {
@@ -10,7 +10,11 @@ const SearchEngineOptimizationPage = () => {
     <div className="service-detail-page bg-gray-50 min-h-screen">
       <HeroSection
         title="Search Engine Optimization"
+        description="Boosting your online visibility and driving organic traffic to your website through expert SEO strategies."
       />
+      <div className="flex justify-center py-8 bg-gray-50">
+        <FaArrowDown className="text-gray-700 text-3xl animate-bounce" />
+      </div>
 
       <section className="container mx-auto px-4 py-16 text-center">
         <h2 className="text-4xl font-bold text-gray-800 mb-12">Why SEO is Crucial for Your Business</h2>

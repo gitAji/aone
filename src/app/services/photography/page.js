@@ -2,14 +2,19 @@
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import Link from 'next/link';
-import { FaCameraRetro, FaLightbulb, FaMagic, FaUsers, FaImage, FaVideo } from 'react-icons/fa';
+import { FaCameraRetro, FaLightbulb, FaMagic, FaUsers, FaImage, FaVideo, FaArrowDown } from 'react-icons/fa';
+import Testimonials from "@/components/Testimonials";
 
 const PhotographyPage = () => {
   return (
     <div className="service-detail-page bg-gray-50 min-h-screen">
       <HeroSection
         title="Photography"
+        description="Capturing moments and telling stories through high-quality, professional photography tailored to your needs."
       />
+      <div className="flex justify-center py-8 bg-gray-50">
+        <FaArrowDown className="text-gray-700 text-3xl animate-bounce" />
+      </div>
 
       <section className="container mx-auto px-4 py-16 text-center">
         <h2 className="text-4xl font-bold text-gray-800 mb-12">The Power of Professional Photography</h2>
@@ -70,6 +75,8 @@ const PhotographyPage = () => {
           </div>
         </div>
       </section>
+
+      <Testimonials />
 
       <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
         <div className="container mx-auto px-4">

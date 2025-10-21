@@ -4,6 +4,11 @@ import React from "react";
 import HeroSection from "@/components/HeroSection";
 import Accordion from "@/components/Accordion";
 
+export const metadata = {
+  title: "Terms and Conditions | Aone",
+  description: "Read Aone's Terms and Conditions governing the use of our website and services.",
+};
+
 const TermsAndConditionsPage = () => {
   return (
     <div className="terms-and-conditions-page bg-gray-50 min-h-screen">

@@ -2,14 +2,19 @@
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import Link from 'next/link';
-import { FaPaintBrush, FaLightbulb, FaBullhorn, FaUsers, FaChartLine, FaRegLightbulb, FaRocket } from 'react-icons/fa';
+import { FaPaintBrush, FaLightbulb, FaBullhorn, FaUsers, FaChartLine, FaRegLightbulb, FaRocket, FaArrowDown } from 'react-icons/fa';
+import Testimonials from "@/components/Testimonials";
 
 const BrandingPage = () => {
   return (
     <div className="service-detail-page bg-gray-50 min-h-screen">
       <HeroSection
         title="Branding"
+        description="Building a powerful and memorable brand identity that resonates with your audience and sets you apart."
       />
+      <div className="flex justify-center py-8 bg-gray-50">
+        <FaArrowDown className="text-gray-700 text-3xl animate-bounce" />
+      </div>
 
       <section className="container mx-auto px-4 py-16 text-center">
         <h2 className="text-4xl font-bold text-gray-800 mb-12">Why Strong Branding Matters</h2>
@@ -62,6 +67,8 @@ const BrandingPage = () => {
           </div>
         </div>
       </section>
+
+      <Testimonials />
 
       <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
         <div className="container mx-auto px-4">

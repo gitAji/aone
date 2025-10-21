@@ -2,16 +2,7 @@
 import React from "react";
 import HeroSection from "@/components/HeroSection";
 import Link from "next/link";
-import {
-  FaLaptopCode,
-  FaShoppingCart,
-  FaWordpress,
-  FaMobileAlt,
-  FaCloud,
-  FaCode,
-  FaChartLine,
-  FaStar,
-} from "react-icons/fa";
+import { FaLaptopCode, FaShoppingCart, FaWordpress, FaMobileAlt, FaCloud, FaCode, FaChartLine, FaStar, FaArrowDown } from "react-icons/fa";
 import { motion } from "framer-motion"; // Added for subtle animations
 import Testimonials from "@/components/Testimonials";
 
@@ -19,7 +10,13 @@ const WebDevelopmentPage = () => {
   return (
     <div className="service-detail-page bg-gray-50 min-h-screen">
       {/* Compact Hero Section */}
-      <HeroSection title="Web Development Solutions" />
+      <HeroSection
+        title="Web Development Solutions"
+        description="Crafting responsive, high-performance websites and web applications tailored to your business needs."
+      />
+      <div className="flex justify-center py-8 bg-gray-50">
+        <FaArrowDown className="text-gray-700 text-3xl animate-bounce" />
+      </div>
 
       {/* Why Choose Us Section */}
       <section className="container mx-auto px-4 py-12 text-center">
@@ -141,44 +138,7 @@ const WebDevelopmentPage = () => {
       </section>
 
       {/* Testimonial Section */}
-      <section className="container mx-auto px-4 py-12 text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-3xl font-bold text-gray-800 mb-8"
-        >
-          What Our Clients Say
-        </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {[
-            {
-              quote:
-                "Their team transformed our online presence with a stunning, high-performing website!",
-              author: "Jane Doe, CEO of TechCorp",
-            },
-            {
-              quote:
-                "The e-commerce platform they built doubled our conversion rates. Highly recommend!",
-              author: "John Smith, Founder of ShopEasy",
-            },
-          ].map((testimonial, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.2 }}
-              className="p-6 bg-white rounded-lg shadow-md"
-            >
-              <FaStar className="text-yellow-500 text-2xl mb-2" />
-              <p className="text-gray-700 italic mb-4">{testimonial.quote}</p>
-              <p className="text-gray-900 font-semibold">
-                {testimonial.author}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+      <Testimonials />
 
       {/* CTA Section */}
       <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
