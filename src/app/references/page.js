@@ -4,7 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import Link from "next/link";
 import Image from "next/image"; // Import Image component
 import projects from "../data/projects";
-import { FaArrowDown } from 'react-icons/fa';
+import { FaChevronDown } from 'react-icons/fa';
 
 const ReferencesPage = () => {
   return (
@@ -15,7 +15,7 @@ const ReferencesPage = () => {
         description="Showcasing our successful collaborations and the impactful solutions we've delivered for our clients."
       />
       <div className="flex justify-center py-8 bg-gray-50">
-        <FaArrowDown className="text-gray-700 text-3xl animate-bounce" />
+        <FaChevronDown className="text-gray-700 text-3xl animate-bounce" />
       </div>
 
       <section className="py-16 bg-gray-100">
