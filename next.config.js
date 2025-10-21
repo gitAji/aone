@@ -10,31 +10,31 @@ const nextConfig = {
       },
     ],
   },
-  // async headers() {
-  //   return [
-  //     {
-  //       source: '/(.*)',
-  //       headers: [
-  //         {
-  //           key: 'Content-Security-Policy',
-  //           value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' app.cal.com analytics.ahrefs.com consent.cookiebot.com https://consentcdn.cookiebot.com embed.tawk.to; style-src 'self' 'unsafe-inline'; connect-src 'self' https://consentcdn.cookiebot.com embed.tawk.to; img-src 'self' https://imgsct.cookiebot.com;",
-  //         },
-  //         {
-  //           key: 'X-Content-Type-Options',
-  //           value: 'nosniff',
-  //         },
-  //         {
-  //           key: 'X-Frame-Options',
-  //           value: 'DENY',
-  //         },
-  //         {
-  //           key: 'Strict-Transport-Security',
-  //           value: 'max-age=63072000; includeSubDomains; preload',
-  //         },
-  //       ],
-  //     },
-  //   ];
-  // },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' app.cal.com analytics.ahrefs.com consent.cookiebot.com https://consentcdn.cookiebot.com embed.tawk.to; style-src 'self' 'unsafe-inline'; connect-src 'self' https://consentcdn.cookiebot.com embed.tawk.to; img-src 'self' https://imgsct.cookiebot.com;",
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
       {

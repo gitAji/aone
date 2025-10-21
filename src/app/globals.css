@@ -1,11 +1,11 @@
 @import "tailwindcss";
-@import "@fortawesome/fontawesome-svg-core/styles.css";
+
 @import "../components/Header.css";
 
 :root {
-  --primary-color: #ab1c24; /* A vibrant blue for primary actions and highlights */
+  --primary-color: #9a1a20; /* Adjusted for better contrast */
   --primary-color-darker: #8a161c; /* Darker shade for hover */
-  --secondary-color: #6c757d; /* A muted gray for secondary elements */
+  --secondary-color: #5a6268; /* Adjusted for better contrast */
   --accent-color: #1E2940; /* A fresh green for success or positive indicators */
   --background-color: #f8f9fa; /* Lightest gray for general backgrounds */
   --text-color: #343a40; /* Dark charcoal for primary text */
@@ -27,8 +27,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --primary-color: #3388CC; /* Lighter blue for dark mode */
-    --secondary-color: #adb5bd; /* Lighter gray for dark mode */
+    --primary-color: #4a90d9; /* Adjusted for better contrast */
+    --secondary-color: #9fa8b0; /* Adjusted for better contrast */
     --accent-color: #1E2940; /* Darker accent for dark mode */
     --background-color: #121212; /* True black for high contrast */
     --text-color: #E0E0E0; /* Light gray for reduced eye strain */
