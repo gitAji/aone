@@ -19,7 +19,7 @@ const TermsAndConditionsPage = () => {
           <strong>Effective Date: October 21, 2025</strong>
         </p>
         <p className="mb-4">
-          These Terms and Conditions ("Terms") govern your use of the website
+          These Terms and Conditions (&quot;Terms&quot;) govern your use of the website
           located at <strong>Aone.no</strong>, The bound registered in Norway
           with organization number 922103682. By accessing or using this
           website, or engaging our services, you agree to be bound by these
@@ -82,7 +82,7 @@ const TermsAndConditionsPage = () => {
 
         <Accordion title="4. Client Content & Data">
           <p className="mb-4">
-            "Client Content" refers to any material you provide to us, including
+            &quot;Client Content&quot; refers to any material you provide to us, including
             logos, images, text, or data, for the purpose of developing or
             managing your project. By providing such materials, you confirm that
             you own or have the necessary rights to use them.
@@ -101,8 +101,8 @@ const TermsAndConditionsPage = () => {
 
         <Accordion title="5. No Warranties">
           <p className="mb-4">
-            This website and our services are provided "as is" and "as
-            available." Aone.no makes no representations or warranties of any
+            This website and our services are provided &quot;as is&quot; and &quot;as
+            available.&quot; Aone.no makes no representations or warranties of any
             kind, express or implied, regarding the accuracy, reliability, or
             suitability of the website or services for any particular purpose.
             We do not guarantee specific outcomes for SEO rankings, AI

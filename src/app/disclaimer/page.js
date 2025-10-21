@@ -13,7 +13,7 @@ const DisclaimerPage = () => {
           <strong>Effective Date: October 21, 2025</strong>
         </p>
         <p className="mb-4">
-          The information provided on this website aone.no (the "Site") is for general informational purposes only. By using our website and services, you agree to the terms outlined in this Disclaimer. If you do not agree with any part of this Disclaimer, you should discontinue the use of our website and services.
+          The information provided on this website aone.no (the &quot;Site&quot;) is for general informational purposes only. By using our website and services, you agree to the terms outlined in this Disclaimer. If you do not agree with any part of this Disclaimer, you should discontinue the use of our website and services.
         </p>
 
         <Accordion title="1. No Professional Advice">
@@ -54,7 +54,7 @@ const DisclaimerPage = () => {
 
         <Accordion title="7. No Warranty">
           <p className="mb-4">
-            The content and services provided on this website are offered "as is" and "as available" without any representations or warranties, express or implied, regarding their accuracy, completeness, or functionality. We do not warrant that the website will be error-free, uninterrupted, or free of viruses or other harmful components. Your use of the website is at your own risk.
+            The content and services provided on this website are offered &quot;as is&quot; and &quot;as available&quot; without any representations or warranties, express or implied, regarding their accuracy, completeness, or functionality. We do not warrant that the website will be error-free, uninterrupted, or free of viruses or other harmful components. Your use of the website is at your own risk.
           </p>
         </Accordion>
 

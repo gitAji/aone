@@ -12,7 +12,7 @@ const CookiePolicyPage = () => {
           <strong>Effective Date: October 21, 2025</strong>
         </p>
         <p className="mb-4">
-          This Cookie Policy explains how aone.no ("we," "us," or "our") uses cookies and similar tracking technologies when you visit our website aone.no (the "Site"). We are committed to protecting your privacy and ensuring that your experience on our website is transparent and user-friendly.
+          This Cookie Policy explains how aone.no (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) uses cookies and similar tracking technologies when you visit our website aone.no (the &quot;Site&quot;). We are committed to protecting your privacy and ensuring that your experience on our website is transparent and user-friendly.
         </p>
 
         <Accordion title="What Are Cookies?">
@@ -49,7 +49,7 @@ const CookiePolicyPage = () => {
 
         <Accordion title="Consent to Cookies">
           <p className="mb-4">
-            When you visit our website, you will be prompted to provide consent to the use of cookies. By clicking "Accept," you consent to the use of all cookies as described in this policy. You may also manage your cookie preferences and withdraw consent at any time through the Cookiebot interface on our website.
+            When you visit our website, you will be prompted to provide consent to the use of cookies. By clicking &quot;Accept,&quot; you consent to the use of all cookies as described in this policy. You may also manage your cookie preferences and withdraw consent at any time through the Cookiebot interface on our website.
           </p>
         </Accordion>
 
