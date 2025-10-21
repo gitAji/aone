@@ -30,7 +30,7 @@ const raleway = Raleway({
   weight: ["400", "500", "600", "700"],
 });
 
-const metadata = {
+export const metadata = {
   title: "Web Design in Bergen, Norway | Webdesign i Bergen",
   description:
     "Aone: Web design & digital marketing in Bergen. We create stunning websites to grow your business.",
@@ -105,7 +105,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -127,19 +129,17 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${pacifico.variable} ${bebasNeue.variable} ${raleway.variable} antialiased}`}
       >
-        <noscript
-          dangerouslySetInnerHTML={{
-            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TB2VFWDP"
-              height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
-          }}
-        />
-        <Script
-          src="https://analytics.ahrefs.com/analytics.js"
-          data-key="qcIvZEZSEISGNKyE5Gp7cQ"
-          strategy="afterInteractive"
-          type="text/plain"
-          data-cookieconsent="statistics"
-        />
+        <ClientLayoutWrapper>
+          <noscript
+            dangerouslySetInnerHTML={{
+              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TB2VFWDP"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+            }}
+          />
+          {children}
+          {showReferralPopup && <DynamicReferralPopup />}
+          <Footer />
+        </ClientLayoutWrapper>
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -151,11 +151,6 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
-        <ClientLayoutWrapper>
-          {children}
-          {showReferralPopup && <DynamicReferralPopup />}
-          <Footer />
-        </ClientLayoutWrapper>
         {hasTawkToConsent && <DynamicTawkToMessenger />}
         <script type="application/ld+json" dangerouslySetInnerHTML={{
             __html: `
