@@ -80,18 +80,18 @@ const ReferralPage = () => {
             {/* Referrer Information */}
             <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 pt-4 pb-2 border-b border-gray-200 dark:border-gray-700">Your Information</h3>
             <div>
-              <label htmlFor="referrerName" className="block text-sm font-medium text-gray-700">Your Name <span className="text-red-500">*</span></label>
+              <label htmlFor="referrerName" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Your Name <span className="text-red-500 dark:text-red-400">*</span></label>
               <input type="text" name="referrerName" id="referrerName" required value={formData.referrerName} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
             </div>
             <div>
-              <label htmlFor="referrerEmail" className="block text-sm font-medium text-gray-700">Your Email <span className="text-red-500">*</span></label>
+              <label htmlFor="referrerEmail" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Your Email <span className="text-red-500 dark:text-red-400">*</span></label>
               <input type="email" name="referrerEmail" id="referrerEmail" required value={formData.referrerEmail} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
             </div>
 
             {/* Referred Client Information */}
             <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 pt-4 pb-2 border-b border-gray-200 dark:border-gray-700">Client You Are Referring</h3>
             <div>
-              <label htmlFor="referredName" className="block text-sm font-medium text-gray-700">Client&apos;s Name <span className="text-red-500">*</span></label>
+              <label htmlFor="referredName" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Client&apos;s Name <span className="text-red-500 dark:text-red-400">*</span></label>
               <input type="text" name="referredName" id="referredName" required value={formData.referredName} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
             </div>
             <div>

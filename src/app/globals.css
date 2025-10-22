@@ -5,6 +5,7 @@
   --foreground: #171717;
 }
 
+<<<<<<< Updated upstream
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -79,6 +80,62 @@ body {
   color: var(--text-color);
 }
 
+=======
+.dark {
+  --primary-color: #BB86FC; /* A subtle, accessible purple for primary actions */
+  --primary-color-darker: #9A67D9;
+  --secondary-color: #A0A0A0; /* A medium gray for secondary elements */
+  --accent-color: #000000; /* Black for accent background */
+  --background-color: #000000; /* True black */
+  --text-color: #FFFFFF; /* Pure white */
+  --light-gray: #1A1A1A; /* Very dark gray for surfaces */
+  --border-color: #333333; /* Dark gray for borders */
+  --shadow-color: rgba(255, 255, 255, 0.1); /* Subtle white shadow */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--font-inter); /* Inter for body */
+  line-height: 1.7; /* Improved readability with more space */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dark body {
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+.dark .card {
+  background-color: var(--light-gray);
+  border: 1px solid var(--border-color);
+}
+
+.dark .hero {
+  background-color: var(--background-color);
+}
+
+.dark .btn-primary {
+  background-color: var(--primary-color);
+  color: #000000; /* Black text on light blue buttons for contrast */
+}
+
+.dark .btn-outline {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.dark .footer {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+>>>>>>> Stashed changes
 .dark .footer-section h3,
 .dark .footer-section a,
 .dark .social-icons a {
