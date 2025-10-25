@@ -6,6 +6,8 @@ import Script from "next/script";
 import ReferralPopup from "@/components/ReferralPopup";
 
 
+
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -77,7 +79,13 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
-        
+        <Script
+          id="Cookiebot"
+          src="https://consent.cookiebot.com/uc.js"
+          data-cbid="ca4883b8-7492-4efe-8775-24794bf63af0"
+          strategy="beforeInteractive"
+        />
+        <script>console.log("Cookiebot script rendered");</script>
       </head>
       <body
         className={`${inter.variable} ${pacifico.variable} ${bebasNeue.variable} ${raleway.variable} antialiased}`}

@@ -8,7 +8,7 @@ const Logo = ({ theme = 'light' }) => {
 
   return (
     <div className="logo-container">
-      <Link href="/" className="cursor-pointer transition-all hover:opacity-80">
+      <Link href="/" className="cursor-pointer transition-all hover:opacity-80" style={{ cursor: 'pointer' }}>
         <Image src={logoSrc} alt="Your Brand Logo" width={150} height={50} sizes="150px" />
       </Link>
     </div>

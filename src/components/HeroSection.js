@@ -51,6 +51,8 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
     };
   }, [isHomePage]);
 
+  console.log('isHomePage:', isHomePage);
+
   return (
     <section className="hero" ref={heroRef}>
       <div className="hero-background"></div>
