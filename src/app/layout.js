@@ -120,36 +120,36 @@ export default function RootLayout({ children }) {
         <script type="application/ld+json" dangerouslySetInnerHTML={{
             __html: `
               {
-                "@context": "https://schema.org",
-                "@graph": [
+                &quot;@context&quot;: &quot;https://schema.org&quot;,
+                &quot;@graph&quot;: [
                   {
-                    "@type": "Organization",
-                    "@id": "https://aone.no/#organization",
-                    "name": "Aone",
-                    "url": "https://aone.no",
-                    "logo": "https://aone.no/images/logo.png",
-                    "contactPoint": {
-                      "@type": "ContactPoint",
-                      "telephone": "+47-40071654",
-                      "contactType": "Customer Service"
+                    &quot;@type&quot;: &quot;Organization&quot;,
+                    &quot;@id&quot;: &quot;https://aone.no/#organization&quot;,
+                    &quot;name&quot;: &quot;Aone&quot;,
+                    &quot;url&quot;: &quot;https://aone.no&quot;,
+                    &quot;logo&quot;: &quot;https://aone.no/images/logo.png&quot;,
+                    &quot;contactPoint&quot;: {
+                      &quot;@type&quot;: &quot;ContactPoint&quot;,
+                      &quot;telephone&quot;: &quot;+47-40071654&quot;,
+                      &quot;contactType&quot;: &quot;Customer Service&quot;
                     },
-                    "sameAs": [
-                      "https://www.facebook.com/profile.php?id=100063719223439",
-                      "https://www.instagram.com/aone.no/"
+                    &quot;sameAs&quot;: [
+                      &quot;https://www.facebook.com/profile.php?id=100063719223439&quot;,
+                      &quot;https://www.instagram.com/aone.no/&quot;
                     ]
                   },
                   {
-                    "@type": "WebSite",
-                    "@id": "https://aone.no/#website",
-                    "url": "https://aone.no",
-                    "name": "Aone",
-                    "publisher": {
-                      "@id": "https://aone.no/#organization"
+                    &quot;@type&quot;: &quot;WebSite&quot;,
+                    &quot;@id&quot;: &quot;https://aone.no/#website&quot;,
+                    &quot;url&quot;: &quot;https://aone.no&quot;,
+                    &quot;name&quot;: &quot;Aone&quot;,
+                    &quot;publisher&quot;: {
+                      &quot;@id&quot;: &quot;https://aone.no/#organization&quot;
                     },
-                    "potentialAction": {
-                      "@type": "SearchAction",
-                      "target": "https://aone.no/?s={search_term_string}",
-                      "query-input": "required name=search_term_string"
+                    &quot;potentialAction&quot;: {
+                      &quot;@type&quot;: &quot;SearchAction&quot;,
+                      &quot;target&quot;: &quot;https://aone.no/?s={search_term_string}&quot;,
+                      &quot;query-input&quot;: &quot;required name=search_term_string&quot;
                     }
                   }
                 ]
