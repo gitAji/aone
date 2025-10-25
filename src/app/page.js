@@ -30,16 +30,25 @@ const HomePage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <HeroSection isHomePage={true} />
+      <div id="hero-section">
+        <HeroSection isHomePage={true} />
+      </div>
       {/* Services */}
-      <DynamicServices limit={6} />
-
+      <div id="services-section">
+        <DynamicServices limit={6} />
+      </div>
       {/* Projects */}
-      <DynamicProjects />
+      <div id="projects-section">
+        <DynamicProjects />
+      </div>
       {/* Testimonials */}
-      <DynamicTestimonials />
+      <div id="testimonials-section">
+        <DynamicTestimonials />
+      </div>
       {/* Call to Action */}
-      <DynamicCTA />
+      <div id="cta-section">
+        <DynamicCTA />
+      </div>
     </div>
   );
 };

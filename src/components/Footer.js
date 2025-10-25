@@ -9,9 +9,9 @@ import {
   faGoogle,
 } from "@fortawesome/free-brands-svg-icons";
 
-const Footer = () => {
+const Footer = ({ id }) => {
   return (
-    <footer className="footer">
+    <footer className="footer" id={id}>
       <div className="footer-content">
         <div className="footer-section about-us">
           <h3>About Us</h3>

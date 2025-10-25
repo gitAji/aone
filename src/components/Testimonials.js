@@ -32,7 +32,7 @@ const TestimonialsSection = () => {
       <header className="text-center mb-16">
         <h2
           id="testimonials"
-          className="text-5xl font-extrabold text-gray-900 mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-500"
+          className="relative text-5xl font-extrabold text-gray-900 mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-500 after:absolute after:bottom-[-10px] after:left-1/2 after:w-20 after:h-1 after:bg-gradient-to-r from-indigo-500 to-blue-500 after:-translate-x-1/2 after:rounded-full"
         >
           What Our Customers Say
         </h2>

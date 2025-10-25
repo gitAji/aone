@@ -220,7 +220,7 @@ const projects = [
   {
     id: "trendify-tools",
     title: "Trendify Tools Dashboard",
-    description: "An e-commerce fashion platform.",
+    description: "A social media tool for creators.",
     imageUrl: "/images/projects/trendify.png",
     projectLink: "/references/trendify-tools",
     featured: true,

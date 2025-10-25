@@ -2,6 +2,7 @@ import { Inter, Pacifico, Bebas_Neue, Raleway } from "next/font/google";
 import "./globals.css?v=1";
 import Footer from "@/components/Footer";
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
+import ScrollIndicator from "@/components/ScrollIndicator";
 import Script from "next/script";
 import ReferralPopup from "@/components/ReferralPopup";
 
@@ -87,6 +88,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${pacifico.variable} ${bebasNeue.variable} ${raleway.variable} antialiased}`}
       >
+        <ScrollIndicator />
         <noscript
           dangerouslySetInnerHTML={{
             __html:
@@ -112,7 +114,7 @@ export default function RootLayout({ children }) {
         <ClientLayoutWrapper>
           {children}
           <ReferralPopup />
-          <Footer />
+          <Footer id="footer-section" />
         </ClientLayoutWrapper>
         <script
           type="application/ld+json"
