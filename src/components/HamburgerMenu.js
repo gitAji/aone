@@ -116,6 +116,11 @@ const HamburgerMenu = ({ theme = 'light' }) => {
                 </Link>
               </li>
               <li>
+                <Link href={`/ai-chat`} onClick={toggleMenu}>
+                  AI Assistant
+                </Link>
+              </li>
+              <li>
                 <Link href={`/client-login`} onClick={toggleMenu}>
                   Client Login
                 </Link>

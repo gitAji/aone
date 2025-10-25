@@ -1,43 +1,82 @@
-
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
 export async function POST(req) {
   try {
-    const { question } = await req.json();
+    // 1️⃣ Validate Access Token
+    const authToken = req.headers.get("x-ai-access-token");
+    const expectedToken =
+      process.env.AI_ACCESS_TOKEN ||
+      "xai-lBUC5mrjJS0H9yLJUAGdJufLBXJlW8ANzwD7uBRIH596YXpcKoAwXJAWOFxPfxjt8jlDIxGHQ3JHo8W";
 
-    // Access your API key as an environment variable
-    const apiKey = process.env.GOOGLE_API_KEY;
-
-    if (!apiKey) {
-      return NextResponse.json({ error: 'Google API Key not configured.' }, { status: 500 });
+    if (!authToken || authToken !== expectedToken) {
+      return NextResponse.json(
+        { error: "Unauthorized: AI access token missing or invalid." },
+        { status: 401 }
+      );
     }
 
+    // 2️⃣ Parse question from request
+    const { question } = await req.json();
+    if (!question || typeof question !== "string") {
+      return NextResponse.json(
+        { error: "Invalid request: 'question' is required." },
+        { status: 400 }
+      );
+    }
+
+    // 3️⃣ Ensure Google API key exists
+    const apiKey = process.env.GOOGLE_API_KEY;
+    if (!apiKey) {
+      return NextResponse.json(
+        { error: "Google API key not configured." },
+        { status: 500 }
+      );
+    }
+
+    // 4️⃣ Initialize Gemini model
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.0-pro" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
-    const prompt = `You are an AI assistant for a digital agency. Answer the following questions concisely and professionally. If the question is about services, pricing, or general information about a digital agency, use your knowledge. If the question is outside this scope, politely state that you cannot answer.
+    // 5️⃣ Build the AI prompt
+    const prompt = `
+You are an AI assistant for a digital agency. 
+Answer professionally and concisely. 
+If a question is unrelated to digital agency services, politely decline.
 
-Here are some example questions and how you should respond:
-- What is SEO? Search Engine Optimization (SEO) is the process of improving the visibility and ranking of a a website in search engine results pages (SERPs) to attract more organic traffic.
-- What is an AI agent? An AI agent is an autonomous program that uses artificial intelligence to perform tasks or make decisions on behalf of a user or another program, often interacting with its environment.
-- How can I implement AI into my business? Implementing AI into your business can involve automating tasks, analyzing data for insights, enhancing customer service with chatbots, personalizing user experiences, and optimizing operations. We can help you identify opportunities and develop custom AI solutions.
-- How much does it cost to build a website, logo, flyers, etc.? The cost varies significantly based on complexity, features, and design requirements. We offer custom quotes after understanding your specific needs. Contact us for a detailed consultation.
-- What is the cost of domain and hosting? Domain registration typically costs around $10-20 per year, while hosting fees can range from $5 to $50+ per month, depending on the type of hosting and resources required.
+Examples:
+- What is SEO? → SEO (Search Engine Optimization) improves a website’s ranking in search results to increase organic traffic.
+- What is an AI agent? → An AI agent is an intelligent program that performs tasks autonomously.
+- How can I use AI in my business? → You can automate tasks, analyze data, and personalize user experiences. We can help with custom solutions.
+- How much does a website cost? → Prices vary by complexity and design. Contact us for a quote.
 
-Now, answer the user's question:
+Now answer the user’s question:
 
-Question: ${question}`;
+Question: ${question}
+`;
 
-    console.log("Request to Google Generative AI API:", prompt);
-    const result = await model.generateContent(prompt);
+    console.log("📨 Sending to Gemini API:", question);
+
+    // 6️⃣ Generate response
+    let result;
+    try {
+      result = await model.generateContent(prompt);
+    } catch (apiError) {
+      console.error('Error calling Google Generative AI API:', apiError);
+      return NextResponse.json({ error: `Google AI API error: ${apiError.message || 'Unknown error'}` }, { status: 500 });
+    }
     const response = await result.response;
-    const text = response.text();
-    console.log("Response from Google Generative AI API:", text);
+    const text = await response.text();
 
+    console.log("✅ Gemini API Response:", text);
+
+    // 7️⃣ Send AI reply to frontend
     return NextResponse.json({ reply: text });
   } catch (error) {
-    console.error('Error in FAQ AI API:', error);
-    return NextResponse.json({ error: 'Something went wrong' }, { status: 500 });
+    console.error("❌ Error in /api/faq-ai route:", error);
+    return NextResponse.json(
+      { error: error.message || "Something went wrong." },
+      { status: 500 }
+    );
   }
 }
