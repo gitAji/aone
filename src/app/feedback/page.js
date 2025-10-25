@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import HeroSection from '@/components/HeroSection';
+import ScrollDownArrow from "@/components/ScrollDownArrow";
 
 const FeedbackPage = () => {
   const [formData, setFormData] = useState({
@@ -62,6 +63,7 @@ const FeedbackPage = () => {
         title="Provide Feedback"
         subtitle="We'd love to hear your thoughts and suggestions."
       />
+      <ScrollDownArrow color="text-gray-700" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })} />
       <section className="container mx-auto px-4 py-16">
         <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Send Us Your Feedback</h2>

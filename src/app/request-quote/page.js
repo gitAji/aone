@@ -2,24 +2,18 @@
 
 import React, { useState } from 'react';
 import HeroSection from '@/components/HeroSection';
+import ScrollDownArrow from "@/components/ScrollDownArrow";
 
 const services = [
   'Web Development',
-  'AI Automations',
+  'Branding',
   'Digital Marketing',
+  'AI Automations',
+  'Generative Engine Optimization',
   'UI/UX Design',
   'Photography',
   'Videography',
-  'Branding',
   'Search Engine Optimization',
-  'WordPress Development',
-  'Custom-Coded Website',
-  'Admin Dashboard/Login',
-  'Content Management System (CMS)',
-  'Static Website',
-  'Logo Design',
-  'Social Media Management',
-  'Website Maintenance',
 ];
 
 const budgetOptions = [
@@ -113,6 +107,7 @@ const RequestQuotePage = () => {
         title="Request a Quote"
         subtitle="Tell us about your project and get a personalized quote."
       />
+      <ScrollDownArrow color="text-gray-700" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })} />
       <section className="container mx-auto px-4 py-8">
         <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Project Details</h2>

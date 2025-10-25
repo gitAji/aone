@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import HeroSection from '@/components/HeroSection';
+import ScrollDownArrow from "@/components/ScrollDownArrow";
 
 const ReferralPage = () => {
   const [formData, setFormData] = useState({
@@ -68,6 +69,7 @@ const ReferralPage = () => {
         title="Refer a Client"
         subtitle="Help us grow and get rewarded!"
       />
+      <ScrollDownArrow color="text-gray-700" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })} />
       <section className="container mx-auto px-4 py-16">
         <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Referral Form</h2>

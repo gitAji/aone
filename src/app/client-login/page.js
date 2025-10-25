@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import HeroSection from "@/components/HeroSection";
+import ScrollDownArrow from "@/components/ScrollDownArrow";
 
 const ClientLoginPage = () => {
   const [message, setMessage] = useState("");
@@ -13,6 +14,7 @@ const ClientLoginPage = () => {
   return (
     <div className="client-login-page bg-gray-50 min-h-screen">
       <HeroSection title="Client Login" subtitle="Access your client portal" />
+      <ScrollDownArrow color="text-gray-700" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })} />
 
       <section className="container mx-auto px-4 py-16 flex justify-center items-center">
         <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">

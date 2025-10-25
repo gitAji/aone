@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react"; // Re-import useState
 import HeroSection from "@/components/HeroSection";
+import ScrollDownArrow from "@/components/ScrollDownArrow";
 import {
   FaPhone,
   FaEnvelope,
@@ -62,6 +63,7 @@ const ContactPage = () => {
   return (
     <div className="contact-page bg-gray-100 min-h-screen">
       <HeroSection title="Contact Us" subtitle="Contact us" />
+      <ScrollDownArrow color="text-gray-700" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })} />
 
       <section className="container mx-auto px-4 py-16">
         <div className="flex flex-col lg:flex-row gap-12">

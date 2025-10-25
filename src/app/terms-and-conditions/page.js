@@ -1,5 +1,6 @@
 import React from "react";
 import HeroSection from "@/components/HeroSection";
+import ScrollDownArrow from "@/components/ScrollDownArrow";
 import Accordion from "@/components/Accordion";
 
 export const metadata = {
@@ -14,6 +15,7 @@ const TermsAndConditionsPage = () => {
         title="Terms & Conditions"
         subtitle="Please read our terms and conditions carefully before using our website or services."
       />
+      <ScrollDownArrow color="text-gray-700" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })} />
       <main className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-4">
           Terms and Conditions for Aone.no

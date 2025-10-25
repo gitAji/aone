@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import HeroSection from "@/components/HeroSection";
+import ScrollDownArrow from "@/components/ScrollDownArrow";
 import Link from "next/link";
 import Image from "next/image"; // Import Image component
 import projects from "../data/projects";
@@ -14,9 +15,8 @@ const ReferencesPage = () => {
         subtitle="Explore our portfolio of successful projects"
         description="Showcasing our successful collaborations and the impactful solutions we've delivered for our clients."
       />
-      <div className="flex justify-center py-8 bg-gray-50">
-        <FaChevronDown className="text-gray-700 text-3xl animate-bounce" />
-      </div>
+      <ScrollDownArrow color="text-gray-700" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })} />
+      
 
       <section className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">

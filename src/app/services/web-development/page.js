@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import HeroSection from "@/components/HeroSection";
+import ScrollDownArrow from "@/components/ScrollDownArrow";
 import Link from "next/link";
 import { FaLaptopCode, FaShoppingCart, FaWordpress, FaMobileAlt, FaCloud, FaCode, FaChartLine, FaStar, FaArrowDown } from "react-icons/fa";
 import { motion } from "framer-motion"; // Added for subtle animations
@@ -14,9 +15,8 @@ const WebDevelopmentPage = () => {
         title="Web Development Solutions"
         description="Crafting responsive, high-performance websites and web applications tailored to your business needs."
       />
-      <div className="flex justify-center py-8 bg-gray-50">
-        <FaArrowDown className="text-gray-700 text-3xl animate-bounce" />
-      </div>
+      <ScrollDownArrow color="text-gray-700" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })} />
+      
 
       {/* Why Choose Us Section */}
       <section className="container mx-auto px-4 py-12 text-center">

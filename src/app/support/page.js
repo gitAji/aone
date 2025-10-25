@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import HeroSection from '@/components/HeroSection';
+import ScrollDownArrow from "@/components/ScrollDownArrow";
 import SkeletonLoader from '@/components/SkeletonLoader';
 
 const priorityOptions = [
@@ -72,6 +73,7 @@ const SupportPage = () => {
         title="Support Request"
         subtitle="Submit a support request and we'll assist you as soon as possible."
       />
+      <ScrollDownArrow color="text-gray-700" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })} />
       <section className="container mx-auto px-4 py-16">
         <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Submit a Support Ticket</h2>

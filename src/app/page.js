@@ -32,7 +32,7 @@ const HomePage = () => {
       {/* Hero */}
       <HeroSection isHomePage={true} />
       {/* Services */}
-      <DynamicServices />
+      <DynamicServices limit={6} />
 
       {/* Projects */}
       <DynamicProjects />

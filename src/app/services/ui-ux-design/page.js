@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
+import ScrollDownArrow from "@/components/ScrollDownArrow";
 import Link from 'next/link';
 import { FaPalette, FaUserFriends, FaLightbulb, FaLaptopCode, FaMobileAlt, FaAccessibleIcon, FaChartLine, FaArrowDown } from 'react-icons/fa';
 import Testimonials from "@/components/Testimonials";
@@ -12,9 +13,8 @@ const UIUXDesignPage = () => {
         title="UI/UX Design"
         description="Creating intuitive and engaging user interfaces and experiences that delight your audience."
       />
-      <div className="flex justify-center py-8 bg-gray-50">
-        <FaArrowDown className="text-gray-700 text-3xl animate-bounce" />
-      </div>
+      <ScrollDownArrow color="text-gray-700" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })} />
+      
 
       <section className="container mx-auto px-4 py-16 text-center">
         <h2 className="text-4xl font-bold text-gray-800 mb-12">The Art & Science of UI/UX Design</h2>

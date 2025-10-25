@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
+import ScrollDownArrow from "@/components/ScrollDownArrow";
 import Link from 'next/link';
 import { FaPaintBrush, FaLightbulb, FaBullhorn, FaUsers, FaChartLine, FaRegLightbulb, FaRocket, FaArrowDown } from 'react-icons/fa';
 import Testimonials from "@/components/Testimonials";
@@ -12,9 +13,8 @@ const BrandingPage = () => {
         title="Branding"
         description="Building a powerful and memorable brand identity that resonates with your audience and sets you apart."
       />
-      <div className="flex justify-center py-8 bg-gray-50">
-        <FaArrowDown className="text-gray-700 text-3xl animate-bounce" />
-      </div>
+      <ScrollDownArrow color="text-gray-700" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })} />
+      
 
       <section className="container mx-auto px-4 py-16 text-center">
         <h2 className="text-4xl font-bold text-gray-800 mb-12">Why Strong Branding Matters</h2>

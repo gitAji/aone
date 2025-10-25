@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import HeroSection from '@/components/HeroSection';
+import ScrollDownArrow from "@/components/ScrollDownArrow";
 import SkeletonLoader from '@/components/SkeletonLoader'; // Import SkeletonLoader
 import { fetchPosts } from '@/lib/wordpress';
 
@@ -35,6 +36,7 @@ const BlogPage = () => {
         title="Our Blog"
         subtitle="Stay updated with our latest insights and news"
       />
+      <ScrollDownArrow color="text-gray-700" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })} />
       <section className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {loading && posts.length === 0 ? (

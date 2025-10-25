@@ -1,5 +1,6 @@
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
+import ScrollDownArrow from "@/components/ScrollDownArrow";
 import Accordion from '@/components/Accordion';
 import Link from 'next/link';
 
@@ -13,6 +14,7 @@ const PrivacyPolicyPage = () => {
   return (
     <div>
       <HeroSection title="Privacy Policy" subtitle="Your privacy is important to us" />
+      <ScrollDownArrow color="text-gray-700" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })} />
       <main className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-4">Privacy Policy for Aone.no</h1>
         <p className="mb-4">

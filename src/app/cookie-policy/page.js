@@ -1,5 +1,6 @@
 import React from "react";
 import HeroSection from "@/components/HeroSection";
+import ScrollDownArrow from "@/components/ScrollDownArrow";
 import Accordion from '@/components/Accordion';
 
 export const metadata = {
@@ -11,6 +12,7 @@ const CookiePolicyPage = () => {
   return (
     <div className="cookie-policy-page bg-gray-100 min-h-screen">
       <HeroSection title="Cookie Policy" subtitle="Our Cookie Usage" />
+      <ScrollDownArrow color="text-gray-700" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })} />
       <main className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-4">Cookie Policy for Aone.no</h1>
         <p className="mb-4">

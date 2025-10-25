@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
+import ScrollDownArrow from "@/components/ScrollDownArrow";
 import Link from 'next/link';
 import { FaLaptopCode, FaPaintBrush, FaChartLine, FaRobot, FaCameraRetro, FaVideo, FaObjectGroup, FaSearch, FaSearchDollar, FaChevronDown } from 'react-icons/fa';
 import Testimonials from "@/components/Testimonials";
@@ -15,9 +16,8 @@ const ServicesPage = () => {
         subtitle="Explore the range of digital solutions we offer"
         description="Discover our comprehensive suite of digital solutions designed to elevate your brand and drive measurable results."
       />
-      <div className="flex justify-center py-8 bg-gray-50">
-        <FaChevronDown className="text-gray-700 text-3xl animate-bounce" />
-      </div>
+      <ScrollDownArrow color="text-gray-700" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })} />
+      
 
       <section className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">
@@ -29,7 +29,7 @@ const ServicesPage = () => {
             >
               <FaLaptopCode className="text-5xl text-blue-600 mb-4 group-hover:text-blue-700 transition-colors duration-300" />
               <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-blue-800 transition-colors duration-300">Web Development</h3>
-              <p className="text-gray-700 text-base leading-relaxed">We build modern, responsive, and user-friendly websites.</p>
+              <p className="text-gray-700 text-base leading-relaxed">Crafting modern, responsive, and intuitive websites that provide seamless user experiences.</p>
             </Link>
             <Link
               href={`/services/branding`}
@@ -37,7 +37,7 @@ const ServicesPage = () => {
             >
               <FaPaintBrush className="text-5xl text-green-600 mb-4 group-hover:text-green-700 transition-colors duration-300" />
               <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-green-800 transition-colors duration-300">Branding</h3>
-              <p className="text-gray-700 text-base leading-relaxed">We create strong, memorable, and impactful brands.</p>
+              <p className="text-gray-700 text-base leading-relaxed">Building strong, memorable, and impactful brand identities that resonate with your audience.</p>
             </Link>
             <Link
               href={`/services/digital-marketing`}
@@ -45,7 +45,7 @@ const ServicesPage = () => {
             >
               <FaChartLine className="text-5xl text-yellow-600 mb-4 group-hover:text-yellow-700 transition-colors duration-300" />
               <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-yellow-800 transition-colors duration-300">Digital Marketing</h3>
-              <p className="text-gray-700 text-base leading-relaxed">We help you reach your target audience and grow your business.</p>
+              <p className="text-gray-700 text-base leading-relaxed">Executing targeted digital marketing strategies to help you reach your audience and drive growth.</p>
             </Link>
             <Link
               href={`/services/ai-automations`}
@@ -53,15 +53,15 @@ const ServicesPage = () => {
             >
               <FaRobot className="text-5xl text-indigo-600 mb-4 group-hover:text-indigo-700 transition-colors duration-300" />
               <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-indigo-800 transition-colors duration-300">AI Automations</h3>
-              <p className="text-gray-700 text-base leading-relaxed">We build AI-powered automations to streamline your business processes.</p>
+              <p className="text-gray-700 text-base leading-relaxed">Implementing AI-powered automations to streamline your business processes and boost efficiency.</p>
             </Link>
             <Link
               href={`/services/geo`}
               className="group block p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white hover:-translate-y-1 flex flex-col items-center text-center"
             >
               <FaSearchDollar className="text-5xl text-cyan-600 mb-4 group-hover:text-cyan-700 transition-colors duration-300" />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-cyan-800 transition-colors duration-300">GEO</h3>
-              <p className="text-gray-700 text-base leading-relaxed">We provide GEO services to help you with your business.</p>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-cyan-800 transition-colors duration-300">Generative Engine Optimization</h3>
+              <p className="text-gray-700 text-base leading-relaxed">Optimizing your content for AI-driven search engines and conversational chatbots.</p>
             </Link>
             <Link
               href={`/services/photography`}
@@ -69,7 +69,7 @@ const ServicesPage = () => {
             >
               <FaCameraRetro className="text-5xl text-pink-600 mb-4 group-hover:text-pink-700 transition-colors duration-300" />
               <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-pink-800 transition-colors duration-300">Photography</h3>
-              <p className="text-gray-700 text-base leading-relaxed">We capture stunning images that tell your story.</p>
+              <p className="text-gray-700 text-base leading-relaxed">Capturing stunning, high-quality images that tell your story and showcase your brand.</p>
             </Link>
             <Link
               href={`/services/videography`}
@@ -77,7 +77,7 @@ const ServicesPage = () => {
             >
               <FaVideo className="text-5xl text-teal-600 mb-4 group-hover:text-teal-700 transition-colors duration-300" />
               <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-teal-800 transition-colors duration-300">Videography</h3>
-              <p className="text-gray-700 text-base leading-relaxed">We create compelling videos that engage your audience.</p>
+              <p className="text-gray-700 text-base leading-relaxed">Producing professional, engaging videos that captivate your audience and convey your message.</p>
             </Link>
             <Link
               href={`/services/ui-ux-design`}
@@ -85,7 +85,7 @@ const ServicesPage = () => {
             >
               <FaObjectGroup className="text-5xl text-purple-600 mb-4 group-hover:text-purple-700 transition-colors duration-300" />
               <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-purple-800 transition-colors duration-300">UI/UX Design</h3>
-              <p className="text-gray-700 text-base leading-relaxed">We design intuitive and user-friendly interfaces.</p>
+              <p className="text-gray-700 text-base leading-relaxed">Designing intuitive, user-friendly interfaces that enhance engagement and satisfaction.</p>
             </Link>
             <Link
               href={`/services/search-engine-optimization`}
@@ -93,7 +93,7 @@ const ServicesPage = () => {
             >
               <FaSearch className="text-5xl text-red-600 mb-4 group-hover:text-red-700 transition-colors duration-300" />
               <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-red-800 transition-colors duration-300">Search Engine Optimization</h3>
-              <p className="text-gray-700 text-base leading-relaxed">We help you rank higher in search results and drive organic traffic.</p>
+              <p className="text-gray-700 text-base leading-relaxed">Optimizing your website to rank higher in search engine results and drive organic traffic.</p>
             </Link>
           </div>
         </div>

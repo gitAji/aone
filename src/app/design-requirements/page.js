@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import HeroSection from '@/components/HeroSection';
+import ScrollDownArrow from "@/components/ScrollDownArrow";
 
 const DesignRequirementsPage = () => {
   const [formData, setFormData] = useState({
@@ -95,6 +96,7 @@ const DesignRequirementsPage = () => {
         title="Site Design Requirements"
         subtitle="Tell us about your vision for your website."
       />
+      <ScrollDownArrow color="text-gray-700" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })} />
       <section className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Your Design Vision</h2>

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import HeroSection from "@/components/HeroSection";
+import ScrollDownArrow from "@/components/ScrollDownArrow";
 
 const FreeSeoAuditPage = () => {
   const [formData, setFormData] = useState({
@@ -50,6 +51,7 @@ const FreeSeoAuditPage = () => {
   return (
     <div className="free-seo-audit-page bg-gray-100 min-h-screen">
       <HeroSection title="Free SEO Audit" subtitle="Get a free SEO audit for your website" />
+      <ScrollDownArrow color="text-gray-700" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })} />
 
       <section className="container mx-auto px-4 py-16">
         <div className="lg:w-2/3 mx-auto bg-white p-8 rounded-lg shadow-lg">

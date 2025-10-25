@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import Link from 'next/link';
 import Logo from "./Logo";
 import HamburgerMenu from "./HamburgerMenu";
+import ScrollDownArrow from "./ScrollDownArrow";
 
 const WaveLayers = dynamic(() => import("./WaveLayers"), { ssr: false });
 const FloatingDots = dynamic(() => import("./FloatingDots"), { ssr: false });
@@ -102,23 +103,6 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
             <p className="hero-tagline">
               We’re all about challenging the norm to bring fresh, creative, and
               unforgettable digital solutions.
-              <motion.span
-                className="scroll-down-arrow"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.8,
-                  ease: "easeOut",
-                  delay: 1,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-                onClick={() =>
-                  window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
-                }
-              >
-                &darr;
-              </motion.span>
             </p>
             <Link href="/request-quote" passHref>
               <button className="btn-outline-gradient mt-8">
@@ -131,6 +115,15 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
           subtitle && <p className="hero-tagline">{subtitle}</p>
         )}
       </motion.div>
+
+      {/* Scroll Down Arrow */}
+      {isHomePage && (
+        <ScrollDownArrow
+          onClick={() =>
+            window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
+          }
+        />
+      )}
     </section>
   );
 };

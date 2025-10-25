@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Head from 'next/head';
 import HeroSection from '@/components/HeroSection';
+import ScrollDownArrow from "@/components/ScrollDownArrow";
 import { fetchPostBySlug } from '@/lib/wordpress';
 
 const PostPage = () => {
@@ -55,6 +56,7 @@ const PostPage = () => {
           title={post.title.rendered}
           subtitle={`By ${post._embedded.author[0].name} on ${new Date(post.date).toLocaleDateString()}`}
         />
+        <ScrollDownArrow color="text-gray-700" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })} />
         <section className="container mx-auto px-4 py-16">
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
             {post._embedded?.['wp:featuredmedia']?.[0]?.source_url && (

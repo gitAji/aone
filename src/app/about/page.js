@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import HeroSection from "@/components/HeroSection";
+import ScrollDownArrow from "@/components/ScrollDownArrow";
 import CountUp from "react-countup";
 import Image from "next/image";
 
@@ -8,6 +9,7 @@ const AboutPage = () => {
   return (
     <div className="about-page bg-gray-50 min-h-screen">
       <HeroSection title="About Us" subtitle="Learn more about our company" />
+      <ScrollDownArrow color="text-gray-700" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })} />
 
       <section className="why-choose-us container mx-auto px-4 py-16">
         <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">
