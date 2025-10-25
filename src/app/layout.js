@@ -5,9 +5,6 @@ import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 import Script from "next/script";
 import ReferralPopup from "@/components/ReferralPopup";
 
-
-
-
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -48,7 +45,8 @@ export const metadata = {
   },
   openGraph: {
     title: "Web Design in Bergen, Norway | Webdesign i Bergen",
-    description: "Aone: Web design & digital marketing in Bergen. We create stunning websites to grow your business.",
+    description:
+      "Aone: Web design & digital marketing in Bergen. We create stunning websites to grow your business.",
     url: "https://aone.no",
     type: "website",
     images: [
@@ -85,14 +83,14 @@ export default function RootLayout({ children }) {
           data-cbid="ca4883b8-7492-4efe-8775-24794bf63af0"
           strategy="beforeInteractive"
         />
-        <script>console.log("Cookiebot script rendered");</script>
       </head>
       <body
         className={`${inter.variable} ${pacifico.variable} ${bebasNeue.variable} ${raleway.variable} antialiased}`}
       >
         <noscript
           dangerouslySetInnerHTML={{
-            __html: '<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TB2VFWDP" height="0" width="0" style="display:none;visibility:hidden"></iframe>',
+            __html:
+              '<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TB2VFWDP" height="0" width="0" style="display:none;visibility:hidden"></iframe>',
           }}
         />
         <Script
@@ -116,7 +114,9 @@ export default function RootLayout({ children }) {
           <ReferralPopup />
           <Footer />
         </ClientLayoutWrapper>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
             __html: `{
                 "@context": "https://schema.org",
                 "@graph": [
@@ -152,7 +152,8 @@ export default function RootLayout({ children }) {
                   }
                 ]
               }`,
-          }} />
+          }}
+        />
         <Script
           id="tawkto-script"
           strategy="lazyOnload"
