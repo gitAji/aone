@@ -68,12 +68,23 @@ const RequestQuotePage = () => {
     setMessage('');
 
     try {
+      const payload = {
+        fullName: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        companyName: formData.company,
+        services: formData.services,
+        projectDescription: formData.projectDescription,
+        budget: formData.budget,
+        timeline: formData.timeline,
+      };
+
       const response = await fetch('/api/quote', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       });
 
       const data = await response.json();
