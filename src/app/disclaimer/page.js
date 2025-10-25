@@ -5,11 +5,6 @@ import ScrollDownArrow from "@/components/ScrollDownArrow";
 import Accordion from '@/components/Accordion';
 import Link from 'next/link';
 
-export const metadata = {
-  title: "Disclaimer | Aone",
-  description: "Read Aone's Disclaimer for important information regarding the use of our website and services.",
-};
-
 const DisclaimerPage = () => {
   return (
     <div className="disclaimer-page bg-gray-100 min-h-screen">

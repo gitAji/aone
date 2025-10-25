@@ -4,11 +4,6 @@ import HeroSection from "@/components/HeroSection";
 import ScrollDownArrow from "@/components/ScrollDownArrow";
 import Accordion from '@/components/Accordion';
 
-export const metadata = {
-  title: "Cookie Policy | Aone",
-  description: "Our Cookie Policy explains how aone.no uses cookies and similar tracking technologies.",
-};
-
 const CookiePolicyPage = () => {
   return (
     <div className="cookie-policy-page bg-gray-100 min-h-screen">
