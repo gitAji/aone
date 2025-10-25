@@ -62,6 +62,9 @@ const Footer = () => {
             <li>
               <Link href="/referral">Referral</Link>
             </li>
+            <li>
+              <Link href="/careers">Careers</Link>
+            </li>
           </ul>
         </div>
         <div className="footer-section contact-info">

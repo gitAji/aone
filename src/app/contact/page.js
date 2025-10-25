@@ -212,29 +212,25 @@ const ContactPage = () => {
       {/* Why Choose Us Section - Replaces the map placeholder */}
       <section className="bg-gray-200 text-gray-800 py-16 mt-16">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-8">Our Strengths</h2>
-          <p className="text-xl max-w-3xl mx-auto leading-relaxed">
-            We are a team of passionate professionals dedicated to delivering
-            exceptional results and building lasting partnerships.
-          </p>
+          <h2 className="text-4xl font-bold mb-8">Our Achievements</h2>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="p-6 bg-white rounded-lg shadow-lg text-gray-800">
               <h3 className="text-5xl font-bold mb-2">
-                <CountUp end={10} duration={2.5} />+
+                <CountUp end={15} duration={2.5} />+
               </h3>
               <p className="text-xl">Years of Expertise</p>
             </div>
             <div className="p-6 bg-white rounded-lg shadow-lg text-gray-800">
               <h3 className="text-5xl font-bold mb-2">
-                <CountUp end={500} duration={2.5} />+
+                <CountUp end={200} duration={2.5} />+
               </h3>
-              <p className="text-xl">Innovative Projects</p>
+              <p className="text-xl">Happy Clients</p>
             </div>
             <div className="p-6 bg-white rounded-lg shadow-lg text-gray-800">
               <h3 className="text-5xl font-bold mb-2">
-                <CountUp end={99} duration={2.5} />%
+                <CountUp end={250} duration={2.5} />+
               </h3>
-              <p className="text-xl">Client Satisfaction</p>
+              <p className="text-xl">Projects are done</p>
             </div>
           </div>
         </div>
