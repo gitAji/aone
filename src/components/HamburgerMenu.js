@@ -66,6 +66,16 @@ const HamburgerMenu = ({ theme = 'light' }) => {
 
   return (
     <div className="hamburger-menu flex items-center space-x-4">
+      <Link href="/ai-chat">
+        <button
+          className="p-2 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 text-gray-700"
+          aria-label="AI Assistant"
+        >
+          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+          </svg>
+        </button>
+      </Link>
       <button
         className={`menu-icon text-2xl ${theme === 'dark' ? 'menu-icon-dark' : ''}`}
         onClick={toggleMenu}
