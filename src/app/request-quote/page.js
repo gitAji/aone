@@ -44,20 +44,59 @@ const RequestQuotePage = () => {
   });
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  const validateField = (name, value) => {
+    let error = "";
+    switch (name) {
+      case "name":
+        if (!value.trim()) error = "Full Name is required.";
+        else if (!/^[a-zA-Z\s]+$/.test(value)) error = "Full Name can only contain letters and spaces.";
+        break;
+      case "email":
+        if (!value.trim()) error = "Email is required.";
+        else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value)) error = "Invalid email format.";
+        break;
+      case "phone":
+        if (!value.trim()) error = "Phone Number is required.";
+        else if (!/^[0-9]+$/.test(value)) error = "Phone number can only contain numbers.";
+        break;
+      case "projectDescription":
+        if (!value.trim()) error = "Project Description is required.";
+        break;
+      case "budget":
+        if (!value) error = "Estimated Budget is required.";
+        break;
+      case "timeline":
+        if (!value) error = "Desired Timeline is required.";
+        break;
+      default:
+        break;
+    }
+    return error;
+  };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     if (type === 'checkbox') {
-      setFormData((prevData) => ({
-        ...prevData,
-        services: checked
+      setFormData((prevData) => {
+        const newServices = checked
           ? [...prevData.services, value]
-          : prevData.services.filter((service) => service !== value),
-      }));
+          : prevData.services.filter((service) => service !== value);
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          services: newServices.length === 0 ? "Please select at least one service." : "",
+        }));
+        return { ...prevData, services: newServices };
+      });
     } else {
       setFormData((prevData) => ({
         ...prevData,
         [name]: value,
+      }));
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [name]: validateField(name, value),
       }));
     }
   };
@@ -66,6 +105,22 @@ const RequestQuotePage = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setMessage('');
+
+    const newErrors = {};
+    ["name", "email", "phone", "projectDescription", "budget", "timeline"].forEach((name) => {
+      const error = validateField(name, formData[name]);
+      if (error) newErrors[name] = error;
+    });
+    if (formData.services.length === 0) {
+      newErrors.services = "Please select at least one service.";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      setIsSubmitting(false);
+      setMessage("Please correct the errors in the form.");
+      return;
+    }
 
     try {
       const payload = {
@@ -141,6 +196,7 @@ const RequestQuotePage = () => {
                 onChange={handleChange}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
+              {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
             </div>
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
@@ -155,6 +211,7 @@ const RequestQuotePage = () => {
                 onChange={handleChange}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
+              {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
             </div>
             <div>
               <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
@@ -169,6 +226,7 @@ const RequestQuotePage = () => {
                 onChange={handleChange}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
+              {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
             </div>
             <div>
               <label htmlFor="company" className="block text-sm font-medium text-gray-700">
@@ -205,6 +263,7 @@ const RequestQuotePage = () => {
                   </div>
                 ))}
               </div>
+              {errors.services && <p className="text-red-500 text-xs mt-1">{errors.services}</p>}
             </div>
             <div>
               <label htmlFor="projectDescription" className="block text-sm font-medium text-gray-700">
@@ -219,6 +278,7 @@ const RequestQuotePage = () => {
                 onChange={handleChange}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               ></textarea>
+              {errors.projectDescription && <p className="text-red-500 text-xs mt-1">{errors.projectDescription}</p>}
             </div>
             <div>
               <label htmlFor="budget" className="block text-sm font-medium text-gray-700">
@@ -239,6 +299,7 @@ const RequestQuotePage = () => {
                   </option>
                 ))}
               </select>
+              {errors.budget && <p className="text-red-500 text-xs mt-1">{errors.budget}</p>}
             </div>
             <div>
               <label htmlFor="timeline" className="block text-sm font-medium text-gray-700">
@@ -259,6 +320,7 @@ const RequestQuotePage = () => {
                   </option>
                 ))}
               </select>
+              {errors.timeline && <p className="text-red-500 text-xs mt-1">{errors.timeline}</p>}
             </div>
             <div>
               <button

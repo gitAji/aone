@@ -12,9 +12,33 @@ const FloatingDots = dynamic(() => import("./FloatingDots"), { ssr: false });
 
 // Text phrases for rotation
 const phrases = [
-  "Creating digital experiences that inspire.",
-  "Building brands that ordinary people love.",
-  "Innovating with technology for growth.",
+  {
+    text: "Creating digital experiences that inspire.",
+    jsx: (
+      <>
+        Creating digital experiences that{" "}
+        <span className="text-yellow-500">inspire</span>.
+      </>
+    ),
+  },
+  {
+    text: "Building brands that ordinary people love.",
+    jsx: (
+      <>
+        Building brands that ordinary people{" "}
+        <span className="text-yellow-500">love</span>.
+      </>
+    ),
+  },
+  {
+    text: "Innovating with technology for growth.",
+    jsx: (
+      <>
+        Innovating with technology for{" "}
+        <span className="text-yellow-500">growth</span>.
+      </>
+    ),
+  },
 ];
 
 const HeroSection = ({ isHomePage = false, title, subtitle }) => {
@@ -81,13 +105,13 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
         {isHomePage ? (
           <AnimatePresence mode="wait">
             <motion.h1
-              key={phrases[index]}
+              key={phrases[index].text}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.8 }}
             >
-              {phrases[index]}
+              {phrases[index].jsx}
             </motion.h1>
           </AnimatePresence>
         ) : (

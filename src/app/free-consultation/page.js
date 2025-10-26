@@ -29,20 +29,58 @@ const FreeConsultationPage = () => {
   });
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  const validateField = (name, value) => {
+    let error = "";
+    switch (name) {
+      case "fullName":
+        if (!value.trim()) error = "Full Name is required.";
+        else if (!/^[a-zA-Z\s]+$/.test(value)) error = "Full Name can only contain letters and spaces.";
+        break;
+      case "email":
+        if (!value.trim()) error = "Email is required.";
+        else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value)) error = "Invalid email format.";
+        break;
+      case "phone":
+        if (value.trim() && !/^[0-9]+$/.test(value)) error = "Phone number can only contain numbers.";
+        break;
+      case "companyName":
+        if (value.trim() && !/^[a-zA-Z0-9\s.,'-]+$/.test(value)) error = "Company Name contains invalid characters.";
+        break;
+      case "biggestChallenge":
+        if (!value.trim()) error = "Please describe your biggest challenge.";
+        break;
+      case "preferredTime":
+        if (!value) error = "Preferred time is required.";
+        break;
+      default:
+        break;
+    }
+    return error;
+  };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     if (type === 'checkbox') {
-      setFormData((prevData) => ({
-        ...prevData,
-        servicesOfInterest: checked
+      setFormData((prevData) => {
+        const newServices = checked
           ? [...prevData.servicesOfInterest, value]
-          : prevData.servicesOfInterest.filter((service) => service !== value),
-      }));
+          : prevData.servicesOfInterest.filter((service) => service !== value);
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          servicesOfInterest: newServices.length === 0 ? "Please select at least one service." : "",
+        }));
+        return { ...prevData, servicesOfInterest: newServices };
+      });
     } else {
       setFormData((prevData) => ({
         ...prevData,
         [name]: value,
+      }));
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [name]: validateField(name, value),
       }));
     }
   };
@@ -51,6 +89,22 @@ const FreeConsultationPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setMessage('');
+
+    const newErrors = {};
+    Object.keys(formData).forEach((name) => {
+      const error = validateField(name, formData[name]);
+      if (error) newErrors[name] = error;
+    });
+    if (formData.servicesOfInterest.length === 0) {
+      newErrors.servicesOfInterest = "Please select at least one service.";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      setIsSubmitting(false);
+      setMessage("Please correct the errors in the form.");
+      return;
+    }
 
     try {
       const response = await fetch('/api/consultation', {
@@ -104,14 +158,17 @@ const FreeConsultationPage = () => {
             <div>
               <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">Full Name <span className="text-red-500">*</span></label>
               <input type="text" name="fullName" id="fullName" required value={formData.fullName} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              {errors.fullName && <p className="text-red-500 text-xs mt-1">{errors.fullName}</p>}
             </div>
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email <span className="text-red-500">*</span></label>
               <input type="email" name="email" id="email" required value={formData.email} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
             </div>
             <div>
               <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone Number</label>
               <input type="tel" name="phone" id="phone" value={formData.phone} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
             </div>
             <div>
               <label htmlFor="companyName" className="block text-sm font-medium text-gray-700">Company Name</label>
@@ -127,10 +184,12 @@ const FreeConsultationPage = () => {
                   </div>
                 ))}
               </div>
+              {errors.servicesOfInterest && <p className="text-red-500 text-xs mt-1">{errors.servicesOfInterest}</p>}
             </div>
             <div>
               <label htmlFor="biggestChallenge" className="block text-sm font-medium text-gray-700">What is your biggest challenge?</label>
               <textarea name="biggestChallenge" id="biggestChallenge" rows="4" value={formData.biggestChallenge} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+              {errors.biggestChallenge && <p className="text-red-500 text-xs mt-1">{errors.biggestChallenge}</p>}
             </div>
             <div>
               <label htmlFor="preferredTime" className="block text-sm font-medium text-gray-700">Preferred time for a call</label>
@@ -140,6 +199,7 @@ const FreeConsultationPage = () => {
                 <option value="Afternoon">Afternoon</option>
                 <option value="Evening">Evening</option>
               </select>
+              {errors.preferredTime && <p className="text-red-500 text-xs mt-1">{errors.preferredTime}</p>}
             </div>
             <div>
               <button type="submit" disabled={isSubmitting} className="w-full flex justify-center py-4 px-8 text-xl border border-transparent rounded-lg shadow-lg text-white font-bold bg-gradient-to-r from-red-500 via-yellow-500 to-blue-500 hover:from-red-600 hover:via-yellow-600 hover:to-blue-600 transition duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">

@@ -22,6 +22,33 @@ const SupportPage = () => {
   });
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  const validateField = (name, value) => {
+    let error = "";
+    switch (name) {
+      case "name":
+        if (!value.trim()) error = "Full Name is required.";
+        else if (!/^[a-zA-Z\s]+$/.test(value)) error = "Full Name can only contain letters and spaces.";
+        break;
+      case "email":
+        if (!value.trim()) error = "Email is required.";
+        else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value)) error = "Invalid email format.";
+        break;
+      case "subject":
+        if (!value.trim()) error = "Subject is required.";
+        break;
+      case "issueDescription":
+        // Issue Description is now optional
+        break;
+      case "priority":
+        if (!value) error = "Priority is required.";
+        break;
+      default:
+        break;
+    }
+    return error;
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,12 +56,29 @@ const SupportPage = () => {
       ...prevData,
       [name]: value,
     }));
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: validateField(name, value),
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setMessage('');
+
+    const newErrors = {};
+    ["name", "email", "subject", "priority"].forEach((name) => {
+      const error = validateField(name, formData[name]);
+      if (error) newErrors[name] = error;
+    });
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      setIsSubmitting(false);
+      setMessage("Please correct the errors in the form.");
+      return;
+    }
 
     try {
       const response = await fetch('/api/support', {
@@ -100,6 +144,7 @@ const SupportPage = () => {
                     onChange={handleChange}
                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
+                  {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700">
@@ -114,6 +159,7 @@ const SupportPage = () => {
                     onChange={handleChange}
                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
+                  {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                 </div>
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium text-gray-700">
@@ -128,6 +174,7 @@ const SupportPage = () => {
                     onChange={handleChange}
                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
+                  {errors.subject && <p className="text-red-500 text-xs mt-1">{errors.subject}</p>}
                 </div>
                 <div>
                   <label htmlFor="issueDescription" className="block text-sm font-medium text-gray-700">
@@ -137,11 +184,11 @@ const SupportPage = () => {
                     name="issueDescription"
                     id="issueDescription"
                     rows="5"
-                    required
                     value={formData.issueDescription}
                     onChange={handleChange}
                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   ></textarea>
+                  {errors.issueDescription && <p className="text-red-500 text-xs mt-1">{errors.issueDescription}</p>}
                 </div>
                 <div>
                   <label htmlFor="priority" className="block text-sm font-medium text-gray-700">
@@ -162,6 +209,7 @@ const SupportPage = () => {
                       </option>
                     ))}
                   </select>
+                  {errors.priority && <p className="text-red-500 text-xs mt-1">{errors.priority}</p>}
                 </div>
                 <div>
                   <button

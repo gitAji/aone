@@ -23,9 +23,38 @@ const ContactPage = () => {
   const [loading, setLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
   const [isError, setIsError] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  const validateField = (name, value) => {
+    let error = "";
+    switch (name) {
+      case "name":
+        if (!value.trim()) error = "Name is required.";
+        else if (!/^[a-zA-Z\s]+$/.test(value)) error = "Name can only contain letters and spaces.";
+        break;
+      case "email":
+        if (!value.trim()) error = "Email is required.";
+        else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value)) error = "Invalid email format.";
+        break;
+      case "subject":
+        if (!value.trim()) error = "Subject is required.";
+        break;
+      case "message":
+        // Message is now optional
+        break;
+      default:
+        break;
+    }
+    return error;
+  };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: validateField(name, value),
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -33,6 +62,20 @@ const ContactPage = () => {
     setLoading(true);
     setStatusMessage("");
     setIsError(false);
+
+    const newErrors = {};
+    ["name", "email", "subject"].forEach((name) => {
+      const error = validateField(name, formData[name]);
+      if (error) newErrors[name] = error;
+    });
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      setLoading(false);
+      setIsError(true);
+      setStatusMessage("Please correct the errors in the form.");
+      return;
+    }
 
     try {
       const response = await fetch("/api/contact", {
@@ -96,6 +139,7 @@ const ContactPage = () => {
                   className="w-full px-4 py-3 border border-gray-400 rounded-md focus:ring-2 focus:ring-indigo-400 focus:border-transparent transition duration-300 ease-in-out"
                   required
                 />
+                {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
               </div>
               <div>
                 <label
@@ -114,6 +158,7 @@ const ContactPage = () => {
                   className="w-full px-4 py-3 border border-gray-400 rounded-md focus:ring-2 focus:ring-indigo-400 focus:border-transparent transition duration-300 ease-in-out"
                   required
                 />
+                {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
               </div>
               <div>
                 <label
@@ -132,6 +177,7 @@ const ContactPage = () => {
                   className="w-full px-4 py-3 border border-gray-400 rounded-md focus:ring-2 focus:ring-indigo-400 focus:border-transparent transition duration-300 ease-in-out"
                   required
                 />
+                {errors.subject && <p className="text-red-500 text-xs mt-1">{errors.subject}</p>}
               </div>
               <div>
                 <label
@@ -148,8 +194,8 @@ const ContactPage = () => {
                   value={formData.message}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-gray-400 rounded-md focus:ring-2 focus:ring-indigo-400 focus:border-transparent transition duration-300 ease-in-out"
-                  required
                 ></textarea>
+                {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
               </div>
               <button
                 type="submit"

@@ -16,6 +16,33 @@ const ReferralPage = () => {
   });
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  const validateField = (name, value) => {
+    let error = "";
+    switch (name) {
+      case "referrerName":
+      case "referredName":
+        if (!value.trim()) error = `${name.includes("referrer") ? "Your Name" : "Client's Name"} is required.`;
+        else if (!/^[a-zA-Z\s]+$/.test(value)) error = `${name.includes("referrer") ? "Your Name" : "Client's Name"} can only contain letters and spaces.`;
+        break;
+      case "referrerEmail":
+      case "referredEmail":
+        if (!value.trim()) error = `${name.includes("referrer") ? "Your Email" : "Client's Email"} is required.`;
+        else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value)) error = "Invalid email format.";
+        break;
+      case "referredCompany":
+      case "referredService":
+        if (value.trim() && !/^[a-zA-Z0-9\s.,'-]+$/.test(value)) error = `${name.includes("Company") ? "Company Name" : "Service"} contains invalid characters.`;
+        break;
+      case "additionalNotes":
+        // Additional Notes is now optional
+        break;
+      default:
+        break;
+    }
+    return error;
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,12 +50,38 @@ const ReferralPage = () => {
       ...prevData,
       [name]: value,
     }));
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: validateField(name, value),
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setMessage('');
+
+    const newErrors = {};
+    ["referrerName", "referrerEmail", "referredName", "referredEmail"].forEach((name) => {
+      const error = validateField(name, formData[name]);
+      if (error) newErrors[name] = error;
+    });
+    // Validate optional fields only if they have a value
+    if (formData.referredCompany) {
+      const error = validateField("referredCompany", formData.referredCompany);
+      if (error) newErrors.referredCompany = error;
+    }
+    if (formData.referredService) {
+      const error = validateField("referredService", formData.referredService);
+      if (error) newErrors.referredService = error;
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      setIsSubmitting(false);
+      setMessage("Please correct the errors in the form.");
+      return;
+    }
 
     try {
       const response = await fetch('/api/referral', {
@@ -84,10 +137,12 @@ const ReferralPage = () => {
             <div>
               <label htmlFor="referrerName" className="block text-sm font-medium text-gray-700">Your Name <span className="text-red-500">*</span></label>
               <input type="text" name="referrerName" id="referrerName" required value={formData.referrerName} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              {errors.referrerName && <p className="text-red-500 text-xs mt-1">{errors.referrerName}</p>}
             </div>
             <div>
               <label htmlFor="referrerEmail" className="block text-sm font-medium text-gray-700">Your Email <span className="text-red-500">*</span></label>
               <input type="email" name="referrerEmail" id="referrerEmail" required value={formData.referrerEmail} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              {errors.referrerEmail && <p className="text-red-500 text-xs mt-1">{errors.referrerEmail}</p>}
             </div>
 
             {/* Referred Client Information */}
@@ -95,18 +150,22 @@ const ReferralPage = () => {
             <div>
               <label htmlFor="referredName" className="block text-sm font-medium text-gray-700">Client&apos;s Name <span className="text-red-500">*</span></label>
               <input type="text" name="referredName" id="referredName" required value={formData.referredName} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              {errors.referredName && <p className="text-red-500 text-xs mt-1">{errors.referredName}</p>}
             </div>
             <div>
               <label htmlFor="referredEmail" className="block text-sm font-medium text-gray-700">Client&apos;s Email <span className="text-red-500">*</span></label>
               <input type="email" name="referredEmail" id="referredEmail" required value={formData.referredEmail} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              {errors.referredEmail && <p className="text-red-500 text-xs mt-1">{errors.referredEmail}</p>}
             </div>
             <div>
               <label htmlFor="referredCompany" className="block text-sm font-medium text-gray-700">Client&apos;s Company (Optional)</label>
               <input type="text" name="referredCompany" id="referredCompany" value={formData.referredCompany} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              {errors.referredCompany && <p className="text-red-500 text-xs mt-1">{errors.referredCompany}</p>}
             </div>
             <div>
               <label htmlFor="referredService" className="block text-sm font-medium text-gray-700">Service Client is Interested In (Optional)</label>
               <input type="text" name="referredService" id="referredService" value={formData.referredService} onChange={handleChange} placeholder="e.g., Web Development, Digital Marketing" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              {errors.referredService && <p className="text-red-500 text-xs mt-1">{errors.referredService}</p>}
             </div>
             <div>
               <label htmlFor="additionalNotes" className="block text-sm font-medium text-gray-700">Additional Notes (Optional)</label>
