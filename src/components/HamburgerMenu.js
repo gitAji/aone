@@ -68,11 +68,18 @@ const HamburgerMenu = ({ theme = 'light' }) => {
     <div className="hamburger-menu flex items-center space-x-4">
       <Link href="/ai-chat">
         <button
-          className="p-2 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 text-gray-700"
+          className="p-2 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 text-gray-700 hover:text-primary-color"
           aria-label="AI Assistant"
         >
-          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+          <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="ai-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="var(--red-500)" />
+                <stop offset="50%" stopColor="var(--yellow-500)" />
+                <stop offset="100%" stopColor="var(--blue-500)" />
+              </linearGradient>
+            </defs>
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" stroke="url(#ai-gradient)" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
           </svg>
         </button>
       </Link>
@@ -83,7 +90,18 @@ const HamburgerMenu = ({ theme = 'light' }) => {
         aria-controls="fullscreen-menu"
         aria-label={isOpen ? "Close menu" : "Open menu"}
       >
-        {isOpen ? <span>&times;</span> : <span>+</span>}
+        {isOpen ? <span>&times;</span> : (
+          <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="plus-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="var(--red-500)" />
+                <stop offset="50%" stopColor="var(--yellow-500)" />
+                <stop offset="100%" stopColor="var(--blue-500)" />
+              </linearGradient>
+            </defs>
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" stroke="url(#plus-gradient)" d="M12 4v16m8-8H4" />
+          </svg>
+        )}
       </button>
 
       {isOpen && (
