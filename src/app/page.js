@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import HeroSection from "@/components/HeroSection";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import ScrollIndicator from "@/components/ScrollIndicator";
 
 const DynamicServices = dynamic(() => import("@/components/Services"));
 const DynamicProjects = dynamic(() => import("@/components/Projects"));
@@ -29,6 +30,7 @@ const ServiceCard = ({ href, icon: Icon, title, description, color }) => (
 const HomePage = () => {
   return (
     <div className="min-h-screen">
+      <ScrollIndicator />
       {/* Hero */}
       <div id="hero-section">
         <HeroSection isHomePage={true} />

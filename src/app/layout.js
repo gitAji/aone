@@ -88,7 +88,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${pacifico.variable} ${bebasNeue.variable} ${raleway.variable} antialiased}`}
       >
-        <ScrollIndicator />
+        
         <noscript
           dangerouslySetInnerHTML={{
             __html:

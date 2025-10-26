@@ -8,37 +8,53 @@ const sections = [
   { id: 'projects-section', color: 'bg-yellow-500' },
   { id: 'testimonials-section', color: 'bg-purple-500' },
   { id: 'cta-section', color: 'bg-red-500' },
-  { id: 'footer-section', color: 'bg-gray-700' }, // Assuming footer is the last section
 ];
 
 const ScrollIndicator = () => {
-  const [currentColor, setCurrentColor] = useState(sections[0].color);
+  const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 2; // Mid-viewport
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
 
-      let activeColor = sections[0].color;
+      let activeIndex = 0;
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = document.getElementById(sections[i].id);
         if (section && section.offsetTop <= scrollPosition) {
-          activeColor = sections[i].color;
+          activeIndex = i;
           break;
         }
       }
-      setCurrentColor(activeColor);
+      setCurrentSectionIndex(activeIndex);
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Set initial color
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleSegmentClick = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div
-      className={`fixed left-0 top-0 h-full w-1 transition-colors duration-500 ${currentColor}`}
+      className="fixed left-0 top-0 w-full h-0.5 flex"
       style={{ zIndex: 9999 }}
-    ></div>
+    >
+      {sections.map((section, index) => (
+        <div
+          key={section.id}
+          className={`cursor-pointer h-full w-1/5 ${section.color} transition-opacity duration-300 ${
+            currentSectionIndex === index ? 'opacity-100' : 'opacity-25'
+          }`}
+          onClick={() => handleSegmentClick(section.id)}
+        ></div>
+      ))}
+    </div>
   );
 };
 

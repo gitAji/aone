@@ -6,12 +6,12 @@ const TestimonialCard = ({ text, imgSrc, imgAlt, client }) => {
     <div className="relative bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group">
       <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-300"></div>
       <div className="relative">
-        <Image
+                                                                                <Image
           src={imgSrc}
           alt={imgAlt}
           width={64}
           height={64}
-          className="w-16 h-16 mx-auto mb-4 rounded-full object-contain border-1 border-gray-200"
+          className="w-16 h-16 mx-auto mb-4 rounded-full object-contain logo-gradient-border"
           sizes="64px"
         />
         <p className="text-gray-600 italic mb-4 text-center">
@@ -43,13 +43,13 @@ const TestimonialsSection = () => {
       </header>
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <TestimonialCard
-          text="Excellent designs that made our website look more professional. All the gaps were filled with highest prerequisites. 100% endorsed and a good choice for restaurant businesses."
+          text="Excellent designs that made our website look more professional. All the gaps were filled with highest prerequisites. 100% endorsed and a good choice for cleaning businesses."
           imgSrc="/images/clients/clean.png"
           imgAlt="Clean Masters Renhold Logo"
           client="Clean Masters Renhold"
         />
         <TestimonialCard
-          text="Saray Steakhouse, and arguably one of the best places for grabbing the all-in-one bundle for web solutions. Unquestionably a 5 stars digital firm with huge potential."
+          text="A true five-star service! They delivered a sophisticated website that perfectly captures our brand and made booking seamless. Our online bookings are up by 50% and we're seeing steady growth in new customers."
           imgSrc="/images/clients/saraysange.png"
           imgAlt="Saray Steakhouse Logo"
           client="Saray Steakhouse"
