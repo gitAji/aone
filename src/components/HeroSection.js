@@ -16,8 +16,7 @@ const phrases = [
     text: "Creating digital experiences that inspire.",
     jsx: (
       <>
-        Creating digital experiences that{" "}
-        <span className="text-yellow-500">inspire</span>.
+        Creating digital experiences that i<span className="text-yellow-500">n</span>spire.
       </>
     ),
   },
@@ -25,8 +24,7 @@ const phrases = [
     text: "Building brands that ordinary people love.",
     jsx: (
       <>
-        Building brands that ordinary people{" "}
-        <span className="text-yellow-500">love</span>.
+        Building brands that ordinary people lov<span className="text-yellow-500">e</span>.
       </>
     ),
   },
@@ -34,8 +32,7 @@ const phrases = [
     text: "Innovating with technology for growth.",
     jsx: (
       <>
-        Innovating with technology for{" "}
-        <span className="text-yellow-500">growth</span>.
+        Innovating with technology for gr<span className="text-yellow-500">o</span>wth.
       </>
     ),
   },
