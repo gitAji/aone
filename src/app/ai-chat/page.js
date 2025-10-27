@@ -13,7 +13,7 @@ const EXPECTED_AI_TOKEN =
 
 const AIChatPage = () => {
   const [question, setQuestion] = useState("");
-  const [conversation, setConversation] = useState([]);
+  const [conversation, setConversation] = useState([{ type: "ai", text: "Welcome! How can I assist you today?" }]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -22,13 +22,7 @@ const AIChatPage = () => {
   const conversationAreaRef = useRef(null);
   const chatContainerRef = useRef(null);
 
-  // ✅ Check login status on mount
-  useEffect(() => {
-    const storedToken = localStorage.getItem(AI_ACCESS_TOKEN_KEY);
-    if (storedToken === EXPECTED_AI_TOKEN) {
-      setIsLoggedIn(true);
-    }
-  }, []);
+  
 
   // ✅ Auto-scroll to bottom on new messages
   useEffect(() => {
@@ -56,14 +50,7 @@ const AIChatPage = () => {
     chatContainerRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // ✅ Simulated login
-  const handleLogin = () => {
-    localStorage.setItem(AI_ACCESS_TOKEN_KEY, EXPECTED_AI_TOKEN);
-    setIsLoggedIn(true);
-    setConversation([
-      { type: "ai", text: "Welcome! How can I assist you today?" },
-    ]);
-  };
+  
 
   // ✅ Handle sending a question
   const handleAskQuestion = async () => {
@@ -136,19 +123,7 @@ const AIChatPage = () => {
             Your AI Assistant
           </h2>
 
-          {!isLoggedIn ? (
-            // Login View
-            <div className="text-center py-12">
-              <p className="text-lg text-gray-700 mb-6">
-                Please sign in to access the AI Assistant.
-              </p>
-              <button onClick={handleLogin} className="btn-gradient-primary">
-                Sign In to AI
-              </button>
-            </div>
-          ) : (
-            // Chat View
-            <>
+          <>
               <div ref={conversationAreaRef} onScroll={handleConversationScroll} className="conversation-area h-[500px] overflow-y-auto border border-gray-300 rounded-md p-4 mb-6 bg-gray-50">
                 {conversation.length === 0 ? (
                   <p className="text-gray-500 text-center">
@@ -220,7 +195,6 @@ const AIChatPage = () => {
                 </button>
               </div>
             </>
-          )}
         </div>
       </div>
 
