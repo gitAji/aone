@@ -33,19 +33,17 @@ const ReferralPopup = () => {
         </button>
         <div className="text-center">
           <h2 className="text-3xl font-extrabold mb-4 leading-tight">
-            🎉 Exciting Offer! 🎉
+            🎉 Season Greetings! 🎉
           </h2>
           <p className="text-xl mb-6">
-            Refer a client and get{" "}
-            <span className="font-bold text-yellow-300">200kr</span> to your
-            Vipps!
+            Get <span className="font-bold text-yellow-300">10% off</span> on all orders!
           </p>
-          <Link href="/referral">
+          <Link href="/">
             <button
               onClick={handleClose} // Close popup when CTA is clicked
               className="bg-gradient-to-r from-red-500 via-yellow-500 to-blue-500 text-white font-bold py-4 px-8 rounded-full text-xl hover:from-red-600 hover:via-yellow-600 hover:to-blue-600 transition duration-300 shadow-lg transform hover:scale-105"
             >
-              Refer Now!
+              Shop Now!
             </button>
           </Link>
           <p className="text-[0.5rem] pt-4">
