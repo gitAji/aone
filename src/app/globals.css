@@ -7,9 +7,9 @@
   --primary-color-darker: #8a161c; /* Darker shade for hover */
   --secondary-color: #5a6268; /* Adjusted for better contrast */
   --accent-color: #1E2940; /* A fresh green for success or positive indicators */
-  --background-color: #f8f9fa; /* Lightest gray for general backgrounds */
+  --background-color: #FFFFFF; /* white */
   --text-color: #343a40; /* Dark charcoal for primary text */
-  --light-gray: #e9ecef; /* Slightly darker light gray for subtle distinctions */
+  --light-gray: #F5F5F7; /* Apple-like off-white */
   --border-color: #dee2e6; /* Light border color */
   --shadow-color: rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 
