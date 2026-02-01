@@ -5,7 +5,10 @@ import Link from 'next/link';
 import HeroSection from '@/components/HeroSection';
 import { fetchPosts } from '@/lib/wordpress';
 
+import { useLanguage } from "@/context/LanguageContext";
+
 const BlogPage = () => {
+  const { t } = useLanguage();
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -28,8 +31,8 @@ const BlogPage = () => {
   return (
     <div className="blog-page bg-gray-50 min-h-screen">
       <HeroSection
-        title="Our Blog"
-        subtitle="Stay updated with our latest insights and news"
+        title={t('blog.title')}
+        subtitle={t('blog.subtitle')}
       />
       <section className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -58,9 +61,9 @@ const BlogPage = () => {
           <div className="flex justify-center mt-8">
             <button
               onClick={() => setCurrentPage(prev => prev + 1)}
-              className="btn-outline-gradient"
+              className="btn-outline"
             >
-              Load More
+              <span>{t('blog.loadMore')}</span>
             </button>
           </div>
         )}

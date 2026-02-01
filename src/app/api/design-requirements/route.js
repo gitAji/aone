@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { db, storage } from '@/lib/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 export async function POST(request) {
   try {
@@ -31,48 +33,37 @@ export async function POST(request) {
     if (logoFile && logoFile.size > 0) {
       const fileExt = logoFile.name.split('.').pop();
       const fileName = `${Date.now()}.${fileExt}`;
-      const filePath = `design_logos/${fileName}`;
+      const storageRef = ref(storage, `design_logos/${fileName}`);
 
-      const { data: uploadData, error: uploadError } = await supabase.storage
-        .from('design-requirements-logos') // Ensure this bucket exists in Supabase Storage
-        .upload(filePath, logoFile, { cacheControl: '3600', upsert: false });
-
-      if (uploadError) {
-        console.error('Supabase upload error:', uploadError);
-        return NextResponse.json({ error: 'Failed to upload logo.' }, { status: 500 });
-      }
-      logoUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/design-requirements-logos/${filePath}`;
+      const buffer = Buffer.from(await logoFile.arrayBuffer());
+      await uploadBytes(storageRef, buffer, { contentType: logoFile.type });
+      logoUrl = await getDownloadURL(storageRef);
     }
 
-    const { data, error } = await supabase
-      .from('design_requirements')
-      .insert([
-        {
-          full_name: contactPerson,
-          email,
-          phone,
-          company_name: companyName,
-          logo_url: logoUrl,
-          primary_color: primaryColor,
-          secondary_color: secondaryColor,
-          accent_color: accentColor,
-          primary_font: primaryFont,
-          secondary_font: secondaryFont,
-          header_requirements: headerRequirements ? { content: headerRequirements } : null,
-          footer_requirements: footerRequirements ? { content: footerRequirements } : null,
-          navigation_requirements: navigationRequirements ? { content: navigationRequirements } : null,
-          other_sections_requirements: otherSectionsRequirements ? { content: otherSectionsRequirements } : null,
-          project_description: projectDescription,
-          additional_notes: additionalNotes,
-        },
-      ]);
+    const docRef = await addDoc(collection(db, 'design_requirements'), {
+      full_name: contactPerson,
+      email,
+      phone,
+      company_name: companyName,
+      logo_url: logoUrl,
+      primary_color: primaryColor,
+      secondary_color: secondaryColor,
+      accent_color: accentColor,
+      primary_font: primaryFont,
+      secondary_font: secondaryFont,
+      header_requirements: headerRequirements ? { content: headerRequirements } : null,
+      footer_requirements: footerRequirements ? { content: footerRequirements } : null,
+      navigation_requirements: navigationRequirements ? { content: navigationRequirements } : null,
+      other_sections_requirements: otherSectionsRequirements ? { content: otherSectionsRequirements } : null,
+      project_description: projectDescription,
+      additional_notes: additionalNotes,
+      created_at: serverTimestamp(),
+    });
 
-    if (error) {
-      console.error('Supabase insert error:', error);
-      return NextResponse.json({ error: 'Failed to save design requirements.' }, { status: 500 });
-    }
-
-    return NextResponse.json({ message: 'Design requirements submitted successfully!', data }, { status: 200 });
+    return NextResponse.json({
+      message: 'Design requirements submitted successfully!',
+      id: docRef.id
+    }, { status: 200 });
   } catch (error) {
     console.error('Error processing design requirements:', error);
     return NextResponse.json({ error: 'An unexpected error occurred.' }, { status: 500 });

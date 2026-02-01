@@ -10,81 +10,84 @@ import {
   FaObjectGroup,
 } from "react-icons/fa";
 
+import { useLanguage } from "@/context/LanguageContext";
+
 const ServiceCard = ({ href, icon: Icon, title, description, color }) => {
   return (
     <a
       href={href}
-      className="group relative bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100"
+      className="group relative bg-white dark:bg-slate-900 rounded-3xl p-8 transition-all duration-500 hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)] hover:-translate-y-2 border border-slate-100 dark:border-slate-800 overflow-hidden"
     >
-      <div className="absolute inset-0 bg-gradient-to-r from-gray-50 to-transparent opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300"></div>
-      <div className="relative flex items-start space-x-4">
-        <Icon className={`text-3xl ${color} transition-colors duration-300`} />
-        <div>
-          <h3 className="text-xl font-semibold text-gray-800 mb-2">{title}</h3>
-          <p className="text-gray-500 text-sm">{description}</p>
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-transparent dark:from-slate-800/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      <div className="relative">
+        <div className={`w-16 h-16 rounded-2xl ${color.replace('text-', 'bg-').replace('group-hover:', '')}/10 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}>
+          <Icon className={`text-4xl ${color} transition-colors duration-500`} />
         </div>
+        <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">{title}</h3>
+        <p className="text-slate-500 dark:text-slate-400 leading-relaxed font-medium">{description}</p>
       </div>
+      <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-rose-500 to-amber-500 transition-all duration-500 group-hover:w-full"></div>
     </a>
   );
 };
 
 const ServicesSection = () => {
+  const { t } = useLanguage();
   return (
-    <section className="py-20 bg-gray-50" aria-labelledby="our-work">
-      <header className="text-center mb-16">
+    <section className="py-24 bg-slate-50 dark:bg-slate-900/50" aria-labelledby="our-work">
+      <header className="container text-center mb-20">
         <h2
           id="our-work"
-          className="text-4xl font-bold text-gray-900 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-indigo-600"
+          className="text-5xl md:text-6xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 uppercase tracking-tighter"
         >
-          What We Do
+          {t('services.title')}
         </h2>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-          Explore our range of services designed to help your business thrive in
-          the digital age.
+        <p className="text-xl text-slate-500 dark:text-slate-400 max-w-3xl mx-auto font-medium">
+          {t('services.subtitle')}
         </p>
       </header>
-      <div className="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <ServiceCard
           href="/services/web-development"
           icon={FaLaptopCode}
-          title="Web Development"
-          description="We build modern, responsive, and user-friendly websites."
-          color="text-blue-600 group-hover:text-blue-700"
+          title={t('services.webDev.title')}
+          description={t('services.webDev.description')}
+          color="text-rose-500 group-hover:text-rose-600"
         />
         <ServiceCard
           href="/services/branding"
           icon={FaPaintBrush}
-          title="Branding"
-          description="We create strong, memorable, and impactful brands."
-          color="text-green-600 group-hover:text-green-700"
+          title={t('services.branding.title')}
+          description={t('services.branding.description')}
+          color="text-amber-500 group-hover:text-amber-600"
         />
         <ServiceCard
           href="/services/digital-marketing"
           icon={FaChartLine}
-          title="Digital Marketing"
-          description="We help you reach your target audience and grow your business."
-          color="text-yellow-600 group-hover:text-yellow-700"
+          title={t('services.marketing.title')}
+          description={t('services.marketing.description')}
+          color="text-blue-500 group-hover:text-blue-600"
         />
         <ServiceCard
           href="/services/ai-automations"
           icon={FaRobot}
-          title="AI Automations"
-          description="We build AI-powered automations to streamline your business processes."
-          color="text-indigo-600 group-hover:text-indigo-700"
+          title={t('services.ai.title')}
+          description={t('services.ai.description')}
+          color="text-emerald-500 group-hover:text-emerald-600"
         />
         <ServiceCard
           href="/services/geo"
           icon={FaSearchDollar}
-          title="Generative Engine Optimization"
-          description="Optimize your content for AI-powered search engines and chatbots."
-          color="text-cyan-600 group-hover:text-cyan-700"
+          title={t('services.geo.title')}
+          description={t('services.geo.description')}
+          color="text-indigo-500 group-hover:text-indigo-600"
         />
         <ServiceCard
           href="/services/ui-ux-design"
           icon={FaObjectGroup}
-          title="UI/UX Design"
-          description="We design intuitive and user-friendly interfaces."
-          color="text-purple-600 group-hover:text-purple-700"
+          title={t('services.uiux.title')}
+          description={t('services.uiux.description')}
+          color="text-purple-500 group-hover:text-purple-600"
         />
       </div>
     </section>

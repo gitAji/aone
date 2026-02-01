@@ -8,6 +8,12 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "http",
+        hostname: "blog.aone.no",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
   async headers() {
@@ -18,7 +24,7 @@ const nextConfig = {
           {
             key: "Content-Security-Policy",
             value:
-              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' app.cal.com analytics.ahrefs.com consent.cookiebot.com https://consentcdn.cookiebot.com embed.tawk.to; style-src 'self' 'unsafe-inline'; connect-src 'self' https://consentcdn.cookiebot.com embed.tawk.to https://va.tawk.to; frame-src 'self' https://consentcdn.cookiebot.com; img-src 'self' https://imgsct.cookiebot.com;",
+              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' app.cal.com analytics.ahrefs.com consent.cookiebot.com https://consentcdn.cookiebot.com embed.tawk.to; style-src 'self' 'unsafe-inline'; connect-src 'self' https://blog.aone.no http://blog.aone.no https://consentcdn.cookiebot.com embed.tawk.to https://va.tawk.to; frame-src 'self' https://consentcdn.cookiebot.com; img-src 'self' data: https://imgsct.cookiebot.com https://flagcdn.com https://cdnjs.cloudflare.com https://purecatamphetamine.github.io;",
           },
           {
             key: "X-Content-Type-Options",

@@ -7,8 +7,10 @@ import { usePathname } from 'next/navigation';
 import projects from "@/app/data/projects";
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { notFound } from 'next/navigation';
+import { useLanguage } from "@/context/LanguageContext";
 
 const ProjectDetailPage = () => {
+  const { t } = useLanguage();
   const pathname = usePathname();
   const slug = pathname.split('/').pop();
   const project = projects.find((p) => p.id === slug);
@@ -41,7 +43,7 @@ const ProjectDetailPage = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8 text-center">
-            {project.title} - Project Overview
+            {project.title} - {t('projectDetail.overview')}
           </h2>
           <p className="text-lg text-gray-700 mb-6">
             {project.overview.description1}
@@ -64,7 +66,7 @@ const ProjectDetailPage = () => {
 
       <section className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-gray-800 mb-8">Our Process</h2>
+          <h2 className="text-4xl font-bold text-gray-800 mb-8">{t('projectDetail.process')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {project.process.map((step, index) => (
               <div key={index} className="process-step bg-white p-8 rounded-lg shadow-md">
@@ -91,24 +93,24 @@ const ProjectDetailPage = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">
-            Key Features & Technologies
+            {t('projectDetail.featuresTech')}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Key Features</h3>
-                <ul className="list-disc list-inside text-lg text-gray-700 space-y-2">
-                    {project.features.map((feature, index) => (
-                        <li key={index}>{feature}</li>
-                    ))}
-                </ul>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">{t('projectDetail.features')}</h3>
+              <ul className="list-disc list-inside text-lg text-gray-700 space-y-2">
+                {project.features.map((feature, index) => (
+                  <li key={index}>{feature}</li>
+                ))}
+              </ul>
             </div>
             <div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Technologies Used</h3>
-                <ul className="list-disc list-inside text-lg text-gray-700 space-y-2">
-                    {project.technologies.map((tech, index) => (
-                        <li key={index}>{tech}</li>
-                    ))}
-                </ul>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">{t('projectDetail.technologies')}</h3>
+              <ul className="list-disc list-inside text-lg text-gray-700 space-y-2">
+                {project.technologies.map((tech, index) => (
+                  <li key={index}>{tech}</li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
@@ -117,7 +119,7 @@ const ProjectDetailPage = () => {
       <section className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">
-            Results & Impact
+            {t('projectDetail.results')}
           </h2>
           <p className="text-lg text-gray-700 mb-6">
             {project.results.summary}
@@ -138,13 +140,13 @@ const ProjectDetailPage = () => {
       <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-8">
-            Ready to elevate your online presence?
+            {t('projectDetail.ctaTitle')}
           </h2>
           <Link
             href={`/free-consultation`}
             className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg"
           >
-            Get a Free Consultation
+            {t('projectDetail.ctaButton')}
           </Link>
         </div>
       </section>

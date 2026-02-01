@@ -1,29 +1,30 @@
-
 'use client';
-
 import React, { useState } from 'react';
 import HeroSection from '@/components/HeroSection';
-
-const services = [
-  'Web Development',
-  'AI Automations',
-  'Digital Marketing',
-  'UI/UX Design',
-  'Photography',
-  'Videography',
-  'Branding',
-  'Search Engine Optimization',
-  'WordPress Development',
-  'Custom-Coded Website',
-  'Admin Dashboard/Login',
-  'Content Management System (CMS)',
-  'Static Website',
-  'Logo Design',
-  'Social Media Management',
-  'Website Maintenance',
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 const FreeConsultationPage = () => {
+  const { t } = useLanguage();
+
+  const services = [
+    { key: 'webDev', label: t('consultation.serviceList.webDev') },
+    { key: 'aiAuto', label: t('consultation.serviceList.aiAuto') },
+    { key: 'digitalMarket', label: t('consultation.serviceList.digitalMarket') },
+    { key: 'uiux', label: t('consultation.serviceList.uiux') },
+    { key: 'photo', label: t('consultation.serviceList.photo') },
+    { key: 'video', label: t('consultation.serviceList.video') },
+    { key: 'branding', label: t('consultation.serviceList.branding') },
+    { key: 'seo', label: t('consultation.serviceList.seo') },
+    { key: 'wordpress', label: t('consultation.serviceList.wordpress') },
+    { key: 'customCode', label: t('consultation.serviceList.customCode') },
+    { key: 'adminDash', label: t('consultation.serviceList.adminDash') },
+    { key: 'cms', label: t('consultation.serviceList.cms') },
+    { key: 'staticWeb', label: t('consultation.serviceList.staticWeb') },
+    { key: 'logoDesign', label: t('consultation.serviceList.logoDesign') },
+    { key: 'socialMedia', label: t('consultation.serviceList.socialMedia') },
+    { key: 'maintenance', label: t('consultation.serviceList.maintenance') },
+  ];
+
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -67,10 +68,8 @@ const FreeConsultationPage = () => {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
-
       if (response.ok) {
-        setMessage('Your consultation request has been sent successfully! We will get back to you shortly.');
+        setMessage(t('consultation.success'));
         setFormData({
           fullName: '',
           email: '',
@@ -81,11 +80,11 @@ const FreeConsultationPage = () => {
           preferredTime: '',
         });
       } else {
-        setMessage('Something went wrong. Please try again.');
+        setMessage(t('consultation.error'));
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      setMessage('An unexpected error occurred. Please try again later.');
+      setMessage(t('consultation.unexpected'));
     } finally {
       setIsSubmitting(false);
     }
@@ -94,61 +93,61 @@ const FreeConsultationPage = () => {
   return (
     <div className="free-consultation-page bg-gray-50 min-h-screen">
       <HeroSection
-        title="Get a Free Consultation"
-        subtitle="Let's discuss how we can help you achieve your goals."
+        title={t('consultation.title')}
+        subtitle={t('consultation.subtitle')}
       />
       <section className="container mx-auto px-4 py-16">
         <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Consultation Request</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">{t('consultation.formHeader')}</h2>
           {message && (
-            <div className={`p-4 mb-4 text-center rounded-md ${message.includes('successfully') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+            <div className={`p-4 mb-4 text-center rounded-md ${message === t('consultation.success') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
               {message}
             </div>
           )}
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">Full Name <span className="text-red-500">*</span></label>
+              <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">{t('consultation.fullName')} <span className="text-red-500">*</span></label>
               <input type="text" name="fullName" id="fullName" required value={formData.fullName} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email <span className="text-red-500">*</span></label>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700">{t('consultation.emailAddress')} <span className="text-red-500">*</span></label>
               <input type="email" name="email" id="email" required value={formData.email} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
             </div>
             <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone Number</label>
+              <label htmlFor="phone" className="block text-sm font-medium text-gray-700">{t('consultation.phoneNumber')}</label>
               <input type="tel" name="phone" id="phone" value={formData.phone} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
             </div>
             <div>
-              <label htmlFor="companyName" className="block text-sm font-medium text-gray-700">Company Name</label>
+              <label htmlFor="companyName" className="block text-sm font-medium text-gray-700">{t('consultation.companyName')}</label>
               <input type="text" name="companyName" id="companyName" value={formData.companyName} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Service(s) of Interest</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">{t('consultation.servicesOfInterest')}</label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {services.map((service) => (
-                  <div key={service} className="flex items-center">
-                    <input type="checkbox" id={service} name="servicesOfInterest" value={service} checked={formData.servicesOfInterest.includes(service)} onChange={handleChange} className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
-                    <label htmlFor={service} className="ml-2 block text-sm text-gray-900">{service}</label>
+                  <div key={service.key} className="flex items-center">
+                    <input type="checkbox" id={service.key} name="servicesOfInterest" value={service.label} checked={formData.servicesOfInterest.includes(service.label)} onChange={handleChange} className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
+                    <label htmlFor={service.key} className="ml-2 block text-sm text-gray-900">{service.label}</label>
                   </div>
                 ))}
               </div>
             </div>
             <div>
-              <label htmlFor="biggestChallenge" className="block text-sm font-medium text-gray-700">What is your biggest challenge?</label>
+              <label htmlFor="biggestChallenge" className="block text-sm font-medium text-gray-700">{t('consultation.biggestChallenge')}</label>
               <textarea name="biggestChallenge" id="biggestChallenge" rows="4" value={formData.biggestChallenge} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
             </div>
             <div>
-              <label htmlFor="preferredTime" className="block text-sm font-medium text-gray-700">Preferred time for a call</label>
+              <label htmlFor="preferredTime" className="block text-sm font-medium text-gray-700">{t('consultation.preferredTime')}</label>
               <select name="preferredTime" id="preferredTime" value={formData.preferredTime} onChange={handleChange} className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                <option value="">Select a time</option>
-                <option value="Morning">Morning</option>
-                <option value="Afternoon">Afternoon</option>
-                <option value="Evening">Evening</option>
+                <option value="">{t('consultation.selectTime')}</option>
+                <option value="Morning">{t('consultation.morning')}</option>
+                <option value="Afternoon">{t('consultation.afternoon')}</option>
+                <option value="Evening">{t('consultation.evening')}</option>
               </select>
             </div>
             <div>
-              <button type="submit" disabled={isSubmitting} className="w-full flex justify-center py-4 px-8 text-xl border border-transparent rounded-lg shadow-lg text-white font-bold bg-gradient-to-r from-red-500 via-yellow-500 to-blue-500 hover:from-red-600 hover:via-yellow-600 hover:to-blue-600 transition duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
-                {isSubmitting ? 'Submitting...' : 'Get My Free Consultation'}
+              <button type="submit" disabled={isSubmitting} className="w-full btn-primary h-14">
+                {isSubmitting ? t('consultation.submitting') : t('consultation.submit')}
               </button>
             </div>
           </form>

@@ -5,6 +5,10 @@ import HeroSection from "@/components/HeroSection";
 const ClientLoginPage = () => {
   const [message, setMessage] = useState("");
 
+  React.useEffect(() => {
+    window.location.href = 'https://crm.aone.no';
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setMessage("Please contact the admin to login.");

@@ -9,52 +9,53 @@ import {
   faGithub,
   faGoogle,
 } from "@fortawesome/free-brands-svg-icons";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Footer = () => {
+  const { t } = useLanguage();
   return (
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-section about-us">
-          <h3>About Us</h3>
+          <h3>{t('footer.aboutTitle')}</h3>
           <p>
-            We are a creative agency dedicated to building stunning websites and
-            digital experiences that drive results.
+            {t('footer.aboutText')}
           </p>
-          <p>Org nr: <span title="The last 4 digits are hidden to avoid scams. Contact us for more details.">92210XXXX</span></p>
+          <p>Org nr: 922 103 682</p>
         </div>
         <div className="footer-section quick-links">
-          <h3>Quick Links</h3>
+          <h3>{t('footer.quickLinks')}</h3>
           <ul>
             <li>
-              <Link href="/privacy-policy">Privacy Policy</Link>
+              <Link href="/privacy-policy">{t('footer.privacy')}</Link>
             </li>
             <li>
-              <Link href="/terms-and-conditions">Terms & Conditions</Link>
+              <Link href="/terms-and-conditions">{t('footer.terms')}</Link>
             </li>
             <li>
-              <Link href="/design-requirements">Design Requirements</Link>
+              <Link href="/design-requirements">{t('footer.requirements')}</Link>
             </li>
             <li>
-              <Link href="/free-consultation">Free Consultation</Link>
+              <Link href="/free-consultation">{t('footer.consultation')}</Link>
             </li>
             <li>
-              <Link href="/feedback">Feedback</Link>
+              <Link href="/feedback">{t('footer.feedback')}</Link>
             </li>
             <li>
-              <Link href="/support">Support</Link>
+              <Link href="/support">{t('footer.support')}</Link>
             </li>
             <li>
-              <Link href="/referral">Referral</Link>
+              <Link href="/referral">{t('footer.referral')}</Link>
             </li>
           </ul>
         </div>
         <div className="footer-section contact-info">
-          <h3>Contact Info</h3>
+          <h3>{t('footer.contactInfo')}</h3>
           <p>Email: info@aone.no</p>
           <p>Phone: 40071654</p>
         </div>
         <div className="footer-section social-media">
-          <h3>Follow Us</h3>
+          <h3>{t('footer.followUs')}</h3>
           <div className="social-icons">
             <a href="https://www.facebook.com/profile.php?id=100063719223439" aria-label="Facebook">
               <FontAwesomeIcon icon={faFacebookF} />
@@ -70,11 +71,11 @@ const Footer = () => {
               <FontAwesomeIcon icon={faGithub} />
             </a>
           </div>
-          
+
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; 2025 Aone.no. All rights reserved.</p>
+        <p>&copy; 2025 Aone.no. {t('footer.rights')}</p>
       </div>
     </footer>
   );

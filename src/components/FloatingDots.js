@@ -10,13 +10,11 @@ const getDistance = (x1, y1, x2, y2) => {
 };
 
 const rainbowColors = [
-  "#FFB3BA", // Pastel Red
-  "#FFDFBA", // Pastel Orange
-  "#FFFFBA", // Pastel Yellow
-  "#BAFFC9", // Pastel Green
-  "#BAE1FF", // Pastel Blue
-  "#CBAACB", // Pastel Indigo
-  "#E0BBE4", // Pastel Violet
+  "#fb7185", // Rose 400
+  "#fbbf24", // Amber 400
+  "#60a5fa", // Blue 400
+  "#a78bfa", // Violet 400
+  "#c084fc", // Purple 400
 ];
 
 const FloatingDot = ({ size, color, delay, duration, startX, startY, onClick }) => {
@@ -28,21 +26,20 @@ const FloatingDot = ({ size, color, delay, duration, startX, startY, onClick }) 
         height: size,
         backgroundColor: color,
         borderRadius: '50%',
-        opacity: 0.8, // Increased opacity for brighter appearance
+        opacity: 0.4,
         x: startX,
-        y: startY * 0.6, // Adjusted startY to be higher
+        y: startY * 0.6,
         cursor: 'pointer',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        fontSize: size * 1.0, // Increased arrow size
-        color: 'white', // Arrow color
+        boxShadow: `0 0 20px ${color}44`,
       }}
       animate={{
-        x: [startX, startX + Math.random() * 200 - 100, startX],
-        y: [startY * 0.6, startY * 0.6 + Math.random() * 200 - 100, startY * 0.6], // Adjusted y animation range
-        scale: [1, 1.2, 1],
-        opacity: [0.8, 1, 0.8], // Adjusted opacity animation range
+        x: [startX, startX + Math.random() * 100 - 50, startX],
+        y: [startY * 0.6, startY * 0.6 + Math.random() * 100 - 50, startY * 0.6],
+        scale: [1, 1.1, 1],
+        opacity: [0.3, 0.6, 0.3],
       }}
       transition={{
         duration: duration,
@@ -53,7 +50,7 @@ const FloatingDot = ({ size, color, delay, duration, startX, startY, onClick }) 
       }}
       onClick={onClick}
     >
-      &darr;
+      <span style={{ fontSize: size * 0.6, color: 'white', fontWeight: 'bold' }}>&darr;</span>
     </motion.div>
   );
 };
@@ -63,21 +60,20 @@ const FloatingDots = ({ containerWidth, containerHeight }) => {
   const [dots, setDots] = useState([]);
 
   useEffect(() => {
-    const pastelColors = [
-      '#FDFD96', // Pastel Yellow
-      '#B0B0B0', // Light Gray
-      '#FFD1DC', // Pastel Pink (from original palette)
-      '#A2E1D4', // Mint Green (from original palette)
+    const themeColors = [
+      '#fb7185', // Rose
+      '#fbbf24', // Amber
+      '#60a5fa', // Blue
     ];
 
     if (containerWidth && containerHeight) {
       const newDots = [];
-      for (let i = 0; i < 5; i++) { // Generate 5 dots
+      for (let i = 0; i < 8; i++) {
         newDots.push({
-          size: Math.random() * 20 + 10, // Adjusted size for better visibility (between 10 and 30)
-          color: pastelColors[Math.floor(Math.random() * pastelColors.length)],
-          delay: Math.random() * 5, // Random delay up to 5 seconds
-          duration: Math.random() * 10 + 5, // Duration between 5 and 15 seconds
+          size: Math.random() * 15 + 15,
+          color: themeColors[Math.floor(Math.random() * themeColors.length)],
+          delay: Math.random() * 5,
+          duration: Math.random() * 8 + 6,
           startX: Math.random() * containerWidth,
           startY: Math.random() * containerHeight,
         });
@@ -87,8 +83,8 @@ const FloatingDots = ({ containerWidth, containerHeight }) => {
   }, [containerWidth, containerHeight]);
 
   return (
-    <div ref={containerRef} style={{ position: 'absolute', width: '100%', height: '100%', overflow: 'hidden' }}>
-      <svg className="dots-lines-svg" width="100%" height="100%">
+    <div ref={containerRef} style={{ position: 'absolute', width: '100%', height: '100%', overflow: 'hidden', pointerEvents: 'none' }}>
+      <svg className="dots-lines-svg" width="100%" height="100%" style={{ opacity: 0.2 }}>
         {dots.map((dot, index) => {
           const nextDot = dots[index + 1];
           if (nextDot) {
@@ -105,15 +101,17 @@ const FloatingDots = ({ containerWidth, containerHeight }) => {
                 y1={dot.startY + dot.size / 2}
                 x2={nextDot.startX + nextDot.size / 2}
                 y2={nextDot.startY + nextDot.size / 2}
-                strokeWidth="1"
-                initial={{ strokeDasharray: length, strokeDashoffset: length, stroke: rainbowColors[0] }}
+                strokeWidth="0.5"
+                initial={{ strokeDasharray: length, strokeDashoffset: length, stroke: dot.color }}
                 animate={{
-                  strokeDashoffset: 0,
-                  stroke: rainbowColors,
+                  strokeDashoffset: [length, 0, length],
+                  stroke: [dot.color, nextDot.color, dot.color],
                 }}
                 transition={{
-                  strokeDashoffset: { duration: 3, ease: "easeInOut", repeat: Infinity, repeatType: "reverse", delay: dot.delay, repeatDelay: 1 },
-                  stroke: { duration: 5, ease: "easeInOut", repeat: Infinity, repeatType: "reverse", delay: dot.delay + 2, repeatDelay: 1 }, // Start color animation after drawing
+                  duration: 10,
+                  repeat: Infinity,
+                  ease: "linear",
+                  delay: dot.delay,
                 }}
               />
             );
@@ -122,7 +120,9 @@ const FloatingDots = ({ containerWidth, containerHeight }) => {
         })}
       </svg>
       {dots.map((dot, index) => (
-        <FloatingDot key={index} {...dot} onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })} />
+        <div key={index} style={{ pointerEvents: 'auto' }}>
+          <FloatingDot {...dot} onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })} />
+        </div>
       ))}
     </div>
   );

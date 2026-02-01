@@ -1,6 +1,7 @@
-import React from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const CTASection = () => {
+  const { t } = useLanguage();
   return (
     <section
       className="py-16 bg-gradient-to-b from-gray-50 to-white text-center"
@@ -11,13 +12,13 @@ const CTASection = () => {
           id="cta"
           className="text-4xl font-bold text-gray-900 mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-indigo-600"
         >
-          Ready to Transform Your Digital Presence?
+          {t('cta.title')}
         </h2>
         <a
           href="/request-quote"
-          className="btn-outline-gradient"
+          className="btn-outline h-14"
         >
-          Get Your Free Quote Today!
+          <span>{t('cta.button')}</span>
         </a>
       </div>
     </section>

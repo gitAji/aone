@@ -1,6 +1,6 @@
-
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { db } from '@/lib/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 export async function POST(request) {
   try {
@@ -19,26 +19,21 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Full Name and Email are required.' }, { status: 400 });
     }
 
-    const { data, error } = await supabase
-      .from('consultation_requests')
-      .insert([
-        {
-          full_name: fullName,
-          email,
-          phone,
-          company_name: companyName,
-          services_of_interest: servicesOfInterest,
-          biggest_challenge: biggestChallenge,
-          preferred_time: preferredTime,
-        },
-      ]);
+    const docRef = await addDoc(collection(db, 'consultation_requests'), {
+      full_name: fullName,
+      email,
+      phone,
+      company_name: companyName,
+      services_of_interest: servicesOfInterest,
+      biggest_challenge: biggestChallenge,
+      preferred_time: preferredTime,
+      created_at: serverTimestamp(),
+    });
 
-    if (error) {
-      console.error('Supabase insert error:', error);
-      return NextResponse.json({ error: 'Failed to save consultation request.' }, { status: 500 });
-    }
-
-    return NextResponse.json({ message: 'Consultation request submitted successfully!', data }, { status: 200 });
+    return NextResponse.json({
+      message: 'Consultation request submitted successfully!',
+      id: docRef.id
+    }, { status: 200 });
   } catch (error) {
     console.error('Error processing consultation request:', error);
     return NextResponse.json({ error: 'An unexpected error occurred.' }, { status: 500 });

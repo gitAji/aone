@@ -116,7 +116,7 @@ const ProjectDetail = ({ project }) => {
           </h2>
           <Link
             href={`/free-consultation`}
-            className="btn-gradient-primary"
+            className="btn-primary h-14"
           >
             Get a Free Consultation
           </Link>

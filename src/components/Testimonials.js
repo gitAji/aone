@@ -1,61 +1,65 @@
-import React from "react";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 const TestimonialCard = ({ text, imgSrc, imgAlt, client }) => {
   return (
-    <div className="relative bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group">
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-300"></div>
+    <div className="glass relative rounded-3xl p-8 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 group border border-white/5">
+      <div className="absolute top-6 right-8 text-rose-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H16.017C15.4647 8 15.017 8.44772 15.017 9V12C15.017 12.5523 14.5693 13 14.017 13H13.017V21H14.017ZM6.017 21L6.017 18C6.017 16.8954 6.91243 16 8.017 16H11.017C11.5693 16 12.017 15.5523 12.017 15V9C12.017 8.44772 11.5693 8 11.017 8H8.017C7.46472 8 7.017 8.44772 7.017 9V12C7.017 12.5523 6.56928 13 6.017 13H5.017V21H6.017Z" />
+        </svg>
+      </div>
       <div className="relative">
         <Image
           src={imgSrc}
           alt={imgAlt}
-          width={64}
-          height={64}
-          className="w-16 h-16 mx-auto mb-4 rounded-full object-contain border-1 border-gray-200"
-          sizes="64px"
+          width={80}
+          height={80}
+          className="w-20 h-20 mb-6 rounded-2xl object-contain bg-white p-2 shadow-sm border border-slate-100"
+          sizes="80px"
         />
-        <p className="text-gray-600 italic mb-4 text-center">
+        <p className="text-slate-600 dark:text-slate-300 italic mb-6 text-lg leading-relaxed">
           &quot;{text}&quot;
         </p>
-        <p className="text-gray-400 font-semibold text-center">{client}</p>
+        <p className="text-slate-900 dark:text-white font-bold tracking-tight">{client}</p>
       </div>
     </div>
   );
 };
 
 const TestimonialsSection = () => {
+  const { t } = useLanguage();
   return (
     <section
-      className="py-12 bg-gradient-to-b from-gray-50 to-white"
+      className="py-24 bg-white dark:bg-slate-950"
       aria-labelledby="testimonials"
     >
-      <header className="text-center mb-16">
+      <header className="text-center mb-20 container">
         <h2
           id="testimonials"
-          className="text-5xl font-extrabold text-gray-900 mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-500"
+          className="text-5xl md:text-6xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-rose-500 to-amber-500 uppercase tracking-tighter"
         >
-          What Our Customers Say
+          {t('testimonials.title')}
         </h2>
-        <p className="text-xl text-gray-500 max-w-2xl mx-auto">
-          Discover the experiences of our valued clients who trust us to bring
-          their visions to life.
+        <p className="text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto font-medium">
+          {t('testimonials.subtitle')}
         </p>
       </header>
-      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         <TestimonialCard
-          text="Excellent designs that made our website look more professional. All the gaps were filled with highest prerequisites. 100% endorsed and a good choice for restaurant businesses."
+          text={t('testimonials.cleanMasters')}
           imgSrc="/images/clients/clean.png"
           imgAlt="Clean Masters Renhold Logo"
           client="Clean Masters Renhold"
         />
         <TestimonialCard
-          text="Saray Steakhouse, and arguably one of the best places for grabbing the all-in-one bundle for web solutions. Unquestionably a 5 stars digital firm with huge potential."
+          text={t('testimonials.saray')}
           imgSrc="/images/clients/saraysange.png"
           imgAlt="Saray Steakhouse Logo"
           client="Saray Steakhouse"
         />
         <TestimonialCard
-          text="A website that is visually appealing, easy to use, and provides a good user experience can help to increase customer engagement and drive conversions."
+          text={t('testimonials.goLocal')}
           imgSrc="/images/clients/shop-front.png"
           imgAlt="Go Local Logo"
           client="Go Local"

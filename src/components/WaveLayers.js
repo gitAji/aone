@@ -20,11 +20,11 @@ const WaveLayer = ({ delay, duration, color, zIndex }) => (
 
 const WaveLayers = () => {
   const waveColors = [
-    'rgba(255, 255, 255, 0.1)',
-    'rgba(255, 255, 255, 0.2)',
-    'rgba(255, 255, 255, 0.3)',
-    'rgba(255, 255, 255, 0.4)',
-    'rgba(255, 255, 255, 0.5)',
+    'rgba(244, 63, 94, 0.05)',  /* Rose 500 with low opacity */
+    'rgba(251, 191, 36, 0.05)', /* Amber 400 with low opacity */
+    'rgba(59, 130, 246, 0.05)', /* Blue 500 with low opacity */
+    'rgba(167, 139, 250, 0.05)', /* Violet 400 with low opacity */
+    'rgba(192, 132, 252, 0.05)', /* Purple 400 with low opacity */
   ];
 
   return (

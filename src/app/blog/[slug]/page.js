@@ -69,7 +69,7 @@ const PostPage = () => {
               </div>
             )}
             <div className="p-8" dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
-            {post.tags && post.tags.length > 0 && (
+            {post._embedded?.['wp:term']?.[1] && post._embedded['wp:term'][1].length > 0 && (
               <div className="p-8 border-t border-gray-200">
                 <h4 className="text-lg font-semibold mb-4">Keywords</h4>
                 <div className="flex flex-wrap gap-2">

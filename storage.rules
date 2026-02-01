@@ -1,0 +1,17 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /design_logos/{allPaths=**} {
+      // Allow public uploads of images under 5MB
+      allow write: if request.resource.size < 5 * 1024 * 1024
+                   && request.resource.contentType.matches('image/.*');
+      // Allow reading so getDownloadURL works and logos can be displayed
+      allow read: if true;
+    }
+    
+    // Default deny for all other paths
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

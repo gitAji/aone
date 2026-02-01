@@ -1,0 +1,39 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow public writes to form collections
+    match /consultation_requests/{doc} {
+      allow create: if true;
+      allow read, update, delete: if false;
+    }
+    match /quote_requests/{doc} {
+      allow create: if true;
+      allow read, update, delete: if false;
+    }
+    match /contact_messages/{doc} {
+      allow create: if true;
+      allow read, update, delete: if false;
+    }
+    match /feedback_submissions/{doc} {
+      allow create: if true;
+      allow read, update, delete: if false;
+    }
+    match /support_requests/{doc} {
+      allow create: if true;
+      allow read, update, delete: if false;
+    }
+    match /referrals/{doc} {
+      allow create: if true;
+      allow read, update, delete: if false;
+    }
+    match /design_requirements/{doc} {
+      allow create: if true;
+      allow read, update, delete: if false;
+    }
+    
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

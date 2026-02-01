@@ -4,18 +4,20 @@ import Image from "next/image";
 import Link from "next/link";
 
 import projects from "@/app/data/projects.js";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Projects = () => {
+  const { t } = useLanguage();
   return (
     <section className="projects-section py-12 md:py-20 bg-gray-50 flex justify-center items-center w-full min-h-screen">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {/* Heading Section */}
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
-            Our Latest Projects
+            {t('projects.title')}
           </h2>
           <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
-            A showcase of our most innovative digital solutions for clients.
+            {t('projects.subtitle')}
           </p>
         </div>
 
@@ -66,7 +68,7 @@ const Projects = () => {
         <div className="text-center mt-8 md:mt-12">
           <Link href="/references">
             <button className="btn-outline-gradient">
-              View all projects
+              <span>{t('projects.viewAll')}</span>
             </button>
           </Link>
         </div>
