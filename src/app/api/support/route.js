@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { sendAdminNotification } from '@/lib/mail';
 
 export async function POST(request) {
   try {
@@ -18,6 +19,20 @@ export async function POST(request) {
       issue_description: issueDescription,
       priority,
       created_at: serverTimestamp(),
+    });
+
+    // Send Admin Notification
+    await sendAdminNotification({
+      subject: `New Support Ticket [${priority}]: ${subject}`,
+      text: `
+        A new support ticket has been created.
+        
+        Name: ${name}
+        Email: ${email}
+        Subject: ${subject}
+        Priority: ${priority}
+        Issue: ${issueDescription}
+      `
     });
 
     return NextResponse.json({

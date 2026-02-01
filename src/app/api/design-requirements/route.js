@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { db, storage } from '@/lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { sendAdminNotification } from '@/lib/mail';
 
 export async function POST(request) {
   try {
@@ -58,6 +59,32 @@ export async function POST(request) {
       project_description: projectDescription,
       additional_notes: additionalNotes,
       created_at: serverTimestamp(),
+    });
+
+    // Send Admin Notification
+    await sendAdminNotification({
+      subject: `New Design Requirements: ${contactPerson}`,
+      text: `
+        New design requirements have been submitted.
+        
+        Name: ${contactPerson}
+        Email: ${email}
+        Phone: ${phone || 'N/A'}
+        Company: ${companyName || 'N/A'}
+        Logo: ${logoUrl || 'No logo uploaded'}
+        
+        --- STYLE ---
+        Colors: ${primaryColor}, ${secondaryColor}, ${accentColor}
+        Fonts: ${primaryFont}, ${secondaryFont}
+        
+        --- REQUIREMENTS ---
+        Description: ${projectDescription}
+        Header: ${headerRequirements}
+        Footer: ${footerRequirements}
+        Navigation: ${navigationRequirements}
+        Others: ${otherSectionsRequirements}
+        Notes: ${additionalNotes || 'N/A'}
+      `
     });
 
     return NextResponse.json({

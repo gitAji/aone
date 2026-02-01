@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { sendAdminNotification } from '@/lib/mail';
 
 export async function POST(request) {
   try {
@@ -20,6 +21,25 @@ export async function POST(request) {
       referred_service: referredService,
       additional_notes: additionalNotes,
       created_at: serverTimestamp(),
+    });
+
+    // Send Admin Notification
+    await sendAdminNotification({
+      subject: `New Referral: ${referrerName} referred ${referredName}`,
+      text: `
+        A new referral has been submitted.
+        
+        --- REFERRER ---
+        Name: ${referrerName}
+        Email: ${referrerEmail}
+        
+        --- REFERRED PARTY ---
+        Name: ${referredName}
+        Email: ${referredEmail}
+        Company: ${referredCompany || 'N/A'}
+        Service: ${referredService || 'N/A'}
+        Notes: ${additionalNotes || 'N/A'}
+      `
     });
 
     return NextResponse.json({

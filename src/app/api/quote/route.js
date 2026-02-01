@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { sendAdminNotification } from '@/lib/mail';
 
 export async function POST(request) {
   try {
@@ -21,6 +22,23 @@ export async function POST(request) {
       estimated_budget: budget,
       desired_timeline: timeline,
       created_at: serverTimestamp(),
+    });
+
+    // Send Admin Notification
+    await sendAdminNotification({
+      subject: `New Quote Request: ${fullName}`,
+      text: `
+        A new quote request has been submitted.
+        
+        Name: ${fullName}
+        Email: ${email}
+        Phone: ${phone}
+        Company: ${companyName || 'N/A'}
+        Services: ${services ? services.join(', ') : 'None selected'}
+        Project Description: ${projectDescription}
+        Budget: ${budget}
+        Timeline: ${timeline}
+      `
     });
 
     return NextResponse.json({

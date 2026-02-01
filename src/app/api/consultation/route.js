@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { sendAdminNotification } from '@/lib/mail';
 
 export async function POST(request) {
   try {
@@ -28,6 +29,22 @@ export async function POST(request) {
       biggest_challenge: biggestChallenge,
       preferred_time: preferredTime,
       created_at: serverTimestamp(),
+    });
+
+    // Send Admin Notification
+    await sendAdminNotification({
+      subject: `New Consultation Request: ${fullName}`,
+      text: `
+        A new consultation request has been submitted.
+        
+        Name: ${fullName}
+        Email: ${email}
+        Phone: ${phone || 'N/A'}
+        Company: ${companyName || 'N/A'}
+        Services: ${servicesOfInterest ? servicesOfInterest.join(', ') : 'None selected'}
+        Challenge: ${biggestChallenge || 'N/A'}
+        Preferred Time: ${preferredTime || 'N/A'}
+      `
     });
 
     return NextResponse.json({
