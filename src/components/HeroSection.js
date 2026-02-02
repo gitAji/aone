@@ -72,7 +72,7 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
   }, [isHomePage, phrases.length]);
 
   return (
-    <section className="hero" ref={heroRef}>
+    <section className={`hero ${isHomePage ? '' : 'hero-inner'}`} ref={heroRef}>
       <div className="hero-background"></div>
 
       {/* Background Layers */}
@@ -117,11 +117,13 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
             <p className="hero-tagline">
               {t('hero.subtitle')}
             </p>
-            <Link href="/request-quote" passHref>
-              <button className="btn-outline mt-8 h-14">
-                <span>{t('hero.cta')}</span>
-              </button>
-            </Link>
+            <div className="hero-cta-container">
+              <Link href="/request-quote" passHref>
+                <button className="btn-gradient-primary h-14">
+                  <span>{t('hero.cta')}</span>
+                </button>
+              </Link>
+            </div>
           </>
         ) : (
           subtitle && <p className="hero-tagline">{subtitle}</p>

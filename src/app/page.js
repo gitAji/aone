@@ -5,6 +5,7 @@ import HeroSection from "@/components/HeroSection";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
+const DynamicClientLogos = dynamic(() => import("@/components/ClientLogos"));
 const DynamicServices = dynamic(() => import("@/components/Services"));
 const DynamicProjects = dynamic(() => import("@/components/Projects"));
 const DynamicTestimonials = dynamic(() => import("@/components/Testimonials"));
@@ -31,6 +32,8 @@ const HomePage = () => {
     <div className="min-h-screen">
       {/* Hero */}
       <HeroSection isHomePage={true} />
+      {/* Client Logos - Social Proof */}
+      <DynamicClientLogos />
       {/* Services */}
       <DynamicServices />
 
