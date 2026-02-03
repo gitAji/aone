@@ -101,8 +101,8 @@ const RequestQuotePage = () => {
         title={t('quote.title')}
         subtitle={t('quote.subtitle')}
       />
-      <section className="container mx-auto px-4 py-8">
-        <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+      <section className="container mx-auto px-4 pb-16 pt-36">
+        <div className="max-w-4xl mx-auto bg-white/95 backdrop-blur-sm p-10 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">{t('quote.projectDetails')}</h2>
           {message && (
             <div className={`p-4 mb-4 text-center rounded-md ${message === t('quote.success') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>

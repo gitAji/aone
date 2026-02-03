@@ -17,6 +17,9 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-section about-us">
+          <div className="mb-4">
+            <img src="/images/logo.png" alt="Aone Logo" className="h-12 w-auto" />
+          </div>
           <h3>{t('footer.aboutTitle')}</h3>
           <p>
             {t('footer.aboutText')}
@@ -47,6 +50,7 @@ const Footer = () => {
             <li>
               <Link href="/referral">{t('footer.referral')}</Link>
             </li>
+
           </ul>
         </div>
         <div className="footer-section contact-info">
@@ -67,15 +71,12 @@ const Footer = () => {
             <a href="https://share.google/LnZ6WBbDLAwypBM65" aria-label="Google">
               <FontAwesomeIcon icon={faGoogle} />
             </a>
-            <a href="#" aria-label="Github">
-              <FontAwesomeIcon icon={faGithub} />
-            </a>
           </div>
 
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; 2025 Aone.no. {t('footer.rights')}</p>
+        <p>&copy; {new Date().getFullYear()} Aone.no. {t('footer.rights')}</p>
       </div>
     </footer>
   );

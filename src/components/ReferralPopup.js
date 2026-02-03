@@ -13,14 +13,15 @@ const ReferralPopup = () => {
 
   useEffect(() => {
     const getPopupContent = async () => {
-      const content = await fetchPopupContent();
-      setPopupContent(content);
+      // Hardcoded fallback logic or simplified fetch if needed
+      // const content = await fetchPopupContent(); 
+      // For now we can rely on static or simplified content for the sleek version
 
-      // Delay initial appearance for better UX
+      // Delay initial appearance
       const timer = setTimeout(() => {
         setShouldRender(true);
         setTimeout(() => setIsVisible(true), 100);
-      }, 2000);
+      }, 3000); // 3 seconds delay
       return () => clearTimeout(timer);
     };
 
@@ -29,86 +30,59 @@ const ReferralPopup = () => {
 
   const handleClose = () => {
     setIsVisible(false);
-    setTimeout(() => setShouldRender(false), 500); // Wait for transition
+    setTimeout(() => setShouldRender(false), 500);
   };
 
   if (!shouldRender) return null;
 
-  const title = popupContent?.title?.rendered || t('referral.greetings');
-  const contentHtml = popupContent?.content?.rendered;
-
   return (
     <div
-      className={`fixed bottom-6 right-6 z-[10000] max-w-sm w-[calc(100%-3rem)] transition-all duration-700 ease-out transform ${isVisible ? "translate-y-0 opacity-100 scale-100" : "translate-y-20 opacity-0 scale-95"
+      className={`fixed bottom-6 right-6 z-[9999] max-w-xs w-full transition-all duration-500 ease-out transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0 pointer-events-none"
         }`}
     >
-      <div className="relative overflow-hidden rounded-2xl shadow-[0_25px_50px_rgba(0,0,0,0.15)] border border-gray-100 bg-white/95 backdrop-blur-xl group text-slate-900">
-        {/* Subtle Decorative Glow */}
-        <div className="absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br from-red-100/40 to-blue-100/40 blur-3xl group-hover:scale-125 transition-transform duration-1000"></div>
+      <div className="relative overflow-hidden rounded-xl shadow-2xl border border-slate-200 bg-white/95 backdrop-blur-md p-5 pb-4">
 
-
+        {/* Close Button */}
         <button
           onClick={handleClose}
-          className="absolute top-5 right-5 z-20 p-2.5 rounded-xl bg-gray-50 hover:bg-gray-100 text-gray-400 hover:text-red-500 transition-all duration-300 border border-gray-100 group/close active:scale-90"
+          className="absolute top-2 right-2 text-slate-400 hover:text-slate-600 transition-colors"
           aria-label="Close"
         >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="group-hover/close:rotate-90 transition-transform duration-500">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
 
-        <div className="p-8 relative z-10">
-          <div className="flex items-center gap-4 mb-5">
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-red-500 to-orange-500 flex items-center justify-center text-white text-xl shadow-lg">
-              🎁
-            </div>
-            <div>
-              <h2 className="text-xl font-bold text-slate-900 leading-tight tracking-tight uppercase" dangerouslySetInnerHTML={{ __html: title }} />
-              <div className="h-0.5 w-10 bg-gradient-to-r from-red-500 to-orange-500 rounded-full mt-1"></div>
-            </div>
+        <div className="flex flex-col gap-3">
+          <div>
+            <h3 className="text-sm font-bold uppercase tracking-wide text-rose-500 mb-1">
+              {language === 'no' ? 'Spesialtilbud' : 'Special Offer'}
+            </h3>
+            <p className="text-slate-800 font-semibold text-lg leading-tight">
+              {language === 'no' ? 'Få gratis konsultasjon & 10% rabatt!' : 'Get a Free Consultation & 10% Off!'}
+            </p>
           </div>
 
-          <div className="text-slate-600">
-            {contentHtml ? (
-              <div dangerouslySetInnerHTML={{ __html: contentHtml }} className="mb-6 text-base font-medium leading-relaxed" />
-            ) : (
-              <p className="text-lg mb-6 font-semibold leading-relaxed" dangerouslySetInnerHTML={{ __html: t('referral.offer') }} />
-            )}
-          </div>
+          <p className="text-slate-500 text-xs leading-relaxed">
+            {language === 'no'
+              ? 'Bestill din gratis strategisamtale i dag og start veksten.'
+              : 'Book your free strategy call today and kickstart your growth.'}
+          </p>
 
-          <div className="flex flex-col gap-4">
-            <Link href="/free-consultation" className="w-full">
-              <button
-                onClick={handleClose}
-                className="w-full btn-primary h-14"
-              >
-                <span>{t('referral.orderNow')}</span>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </button>
-            </Link>
-
-            <div className="flex items-center justify-between mt-2">
-              <button
-                onClick={handleClose}
-                className="text-[10px] uppercase font-black tracking-[0.2em] text-slate-400 hover:text-red-500 transition-colors"
-              >
-                {language === 'no' ? 'Ikke nå' : 'Not Now'}
-              </button>
-              <Link
-                href="/privacy-policy"
-                onClick={handleClose}
-                className="text-[10px] uppercase font-black tracking-[0.2em] text-slate-300 hover:text-slate-500 transition-colors"
-              >
-                {t('referral.terms')}
-              </Link>
-            </div>
-          </div>
+          <Link href="/contact" className="w-full mt-1">
+            <button
+              onClick={handleClose}
+              className="w-full bg-slate-900 hover:bg-slate-800 text-white text-sm font-bold py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+            >
+              <span>{language === 'no' ? 'Få Tilbudet' : 'Get Offer'}</span>
+              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </Link>
         </div>
 
-        <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-red-500 to-orange-500 w-full opacity-40"></div>
       </div>
     </div>
   );

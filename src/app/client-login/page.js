@@ -18,7 +18,7 @@ const ClientLoginPage = () => {
     <div className="client-login-page bg-gray-50 min-h-screen">
       <HeroSection title="Client Login" subtitle="Access your client portal" />
 
-      <section className="container mx-auto px-4 py-16 flex justify-center items-center">
+      <section className="container mx-auto px-4 pb-16 pt-36 flex justify-center items-center">
         <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
           <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
             Access Your Portal

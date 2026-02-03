@@ -55,7 +55,7 @@ const PostPage = () => {
           title={post.title.rendered}
           subtitle={`By ${post._embedded.author[0].name} on ${new Date(post.date).toLocaleDateString()}`}
         />
-        <section className="container mx-auto px-4 py-16">
+        <section className="container mx-auto px-4 pb-16 pt-36">
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
             {post._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
               <div className="relative w-full h-96">

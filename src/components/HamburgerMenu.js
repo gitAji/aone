@@ -28,7 +28,7 @@ const HamburgerMenu = () => {
   return (
     <div className="hamburger-menu flex items-center space-x-6">
       {/* Language Switcher - Desktop */}
-      <div className="hidden md:flex items-center gap-4">
+      <div className="hidden md:flex items-center gap-4 px-4 py-2 rounded-full transition-all duration-300 bg-white/10 backdrop-blur-md border border-white/20">
         <button
           onClick={() => changeLanguage('en')}
           className={`flex items-center gap-2 group transition-all duration-300`}
@@ -38,12 +38,12 @@ const HamburgerMenu = () => {
             alt="English"
             className={`w-5 h-auto rounded-[1px] transition-all duration-300 ${language === 'en' ? 'opacity-100 scale-110 shadow-lg' : 'opacity-30 group-hover:opacity-60'}`}
           />
-          <span className={`text-[10px] font-black tracking-[0.2em] uppercase transition-colors duration-300 ${language === 'en' ? 'text-rose-500' : 'text-white/30 group-hover:text-white/60'}`}>
+          <span className={`text-[10px] font-black tracking-[0.2em] uppercase transition-colors duration-300 ${language === 'en' ? 'text-rose-500' : 'text-white/60 group-hover:text-white'}`}>
             EN
           </span>
         </button>
 
-        <div className="w-px h-3 bg-white/10"></div>
+        <div className="w-px h-3 bg-white/20"></div>
 
         <button
           onClick={() => changeLanguage('no')}
@@ -54,14 +54,36 @@ const HamburgerMenu = () => {
             alt="Norsk"
             className={`w-5 h-auto rounded-[1px] transition-all duration-300 ${language === 'no' ? 'opacity-100 scale-110 shadow-lg' : 'opacity-30 group-hover:opacity-60'}`}
           />
-          <span className={`text-[10px] font-black tracking-[0.2em] uppercase transition-colors duration-300 ${language === 'no' ? 'text-rose-500' : 'text-white/30 group-hover:text-white/60'}`}>
+          <span className={`text-[10px] font-black tracking-[0.2em] uppercase transition-colors duration-300 ${language === 'no' ? 'text-rose-500' : 'text-white/60 group-hover:text-white'}`}>
             NO
           </span>
         </button>
       </div>
 
+      <a
+        href="https://crm.aone.no"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hidden md:flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 text-white/70 hover:text-white hover:bg-white/10"
+        aria-label="Client Login"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </a>
+
       <button
-        className="glass w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 shadow-lg border border-white/20"
+        className="glass w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 shadow-lg border border-white/30 hover:bg-white/10 text-white"
         onClick={toggleMenu}
         aria-expanded={isOpen}
         aria-controls="fullscreen-menu"
@@ -88,22 +110,14 @@ const HamburgerMenu = () => {
             height="24"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
+            stroke="white"
+            strokeWidth="2.5"
             strokeLinecap="round"
             strokeLinejoin="round"
             className="w-8 h-8"
-            style={{ stroke: 'url(#menu-gradient)' }}
           >
             <line x1="12" y1="5" x2="12" y2="19"></line>
             <line x1="5" y1="12" x2="19" y2="12"></line>
-            <defs>
-              <linearGradient id="menu-gradient" x1="5" y1="12" x2="19" y2="12" gradientUnits="userSpaceOnUse">
-                <stop stopColor="var(--grad-1)" />
-                <stop offset="0.5" stopColor="var(--grad-2)" />
-                <stop offset="1" stopColor="var(--grad-3)" />
-              </linearGradient>
-            </defs>
           </svg>
         )}
       </button>
@@ -155,7 +169,6 @@ const HamburgerMenu = () => {
                 { name: t('nav.about'), href: '/about' },
                 { name: t('nav.blog'), href: '/blog' },
                 { name: t('nav.contact'), href: '/contact' },
-                { name: t('nav.clientLogin'), href: 'https://crm.aone.no' }
               ].map((link, i) => {
                 const isExternal = link.href.startsWith('http');
                 const commonProps = {

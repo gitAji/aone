@@ -63,7 +63,7 @@ const ContactPage = () => {
     <div className="contact-page bg-gray-100 min-h-screen">
       <HeroSection title={t('contact.title')} subtitle={t('contact.subtitle')} />
 
-      <section className="container mx-auto px-4 py-16">
+      <section className="container mx-auto px-4 pb-16 pt-36">
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Contact Form */}
           <div className="lg:w-2/3 bg-white p-8 rounded-lg shadow-lg">
