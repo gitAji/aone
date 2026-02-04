@@ -57,7 +57,7 @@ export const metadata = {
   },
 };
 
-  export default function RootLayout({ children }) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -94,19 +94,9 @@ export const metadata = {
           />
           {children}
         </LayoutClientWrapper>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                  document.documentElement.classList.add('dark');
-                }
-              })();
-            `,
-          }}
-        />
+
         <script type="application/ld+json" dangerouslySetInnerHTML={{
-            __html: `
+          __html: `
               {
                 "@context": "https://schema.org",
                 "@graph": [
@@ -143,8 +133,8 @@ export const metadata = {
                 ]
               }
             `,
-          }} />
-        
+        }} />
+
       </body>
     </html>
   );

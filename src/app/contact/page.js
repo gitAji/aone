@@ -60,14 +60,14 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="contact-page bg-gray-100 min-h-screen">
+    <div className="contact-page bg-gray-100 dark:bg-slate-950 min-h-screen">
       <HeroSection title={t('contact.title')} subtitle={t('contact.subtitle')} />
 
       <section className="container mx-auto px-4 pb-16 pt-36">
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Contact Form */}
-          <div className="lg:w-2/3 bg-white p-8 rounded-lg shadow-lg">
-            <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
+          <div className="lg:w-2/3 bg-white dark:bg-slate-900 p-8 rounded-lg shadow-lg border border-slate-100 dark:border-slate-800">
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-8 text-center">
               {t('contact.connect')}
             </h2>
             <form className="space-y-6" onSubmit={handleSubmit}>
@@ -80,7 +80,7 @@ const ContactPage = () => {
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-gray-800 mb-2"
+                  className="block text-sm font-medium text-gray-800 dark:text-slate-300 mb-2"
                 >
                   {t('contact.name')}
                 </label>
@@ -91,14 +91,14 @@ const ContactPage = () => {
                   placeholder={t('contact.placeholderName')}
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-400 rounded-md focus:ring-2 focus:ring-indigo-400 focus:border-transparent transition duration-300 ease-in-out"
+                  className="w-full px-4 py-3 border border-gray-400 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white rounded-md focus:ring-2 focus:ring-rose-500 focus:border-transparent transition duration-300 ease-in-out"
                   required
                 />
               </div>
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-gray-800 mb-2"
+                  className="block text-sm font-medium text-gray-800 dark:text-slate-300 mb-2"
                 >
                   {t('contact.email')}
                 </label>
@@ -109,14 +109,14 @@ const ContactPage = () => {
                   placeholder={t('contact.placeholderEmail')}
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-400 rounded-md focus:ring-2 focus:ring-indigo-400 focus:border-transparent transition duration-300 ease-in-out"
+                  className="w-full px-4 py-3 border border-gray-400 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white rounded-md focus:ring-2 focus:ring-rose-500 focus:border-transparent transition duration-300 ease-in-out"
                   required
                 />
               </div>
               <div>
                 <label
                   htmlFor="subject"
-                  className="block text-sm font-medium text-gray-800 mb-2"
+                  className="block text-sm font-medium text-gray-800 dark:text-slate-300 mb-2"
                 >
                   {t('contact.subject')}
                 </label>
@@ -127,14 +127,14 @@ const ContactPage = () => {
                   placeholder={t('contact.placeholderSubject')}
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-400 rounded-md focus:ring-2 focus:ring-indigo-400 focus:border-transparent transition duration-300 ease-in-out"
+                  className="w-full px-4 py-3 border border-gray-400 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white rounded-md focus:ring-2 focus:ring-rose-500 focus:border-transparent transition duration-300 ease-in-out"
                   required
                 />
               </div>
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-gray-800 mb-2"
+                  className="block text-sm font-medium text-gray-800 dark:text-slate-300 mb-2"
                 >
                   {t('contact.message')}
                 </label>
@@ -145,7 +145,7 @@ const ContactPage = () => {
                   placeholder={t('contact.placeholderMessage')}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-400 rounded-md focus:ring-2 focus:ring-indigo-400 focus:border-transparent transition duration-300 ease-in-out"
+                  className="w-full px-4 py-3 border border-gray-400 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white rounded-md focus:ring-2 focus:ring-rose-500 focus:border-transparent transition duration-300 ease-in-out"
                   required
                 ></textarea>
               </div>
@@ -160,18 +160,18 @@ const ContactPage = () => {
           </div>
 
           {/* Contact Information */}
-          <div className="lg:w-1/3 bg-white p-8 rounded-lg shadow-lg flex flex-col justify-between">
+          <div className="lg:w-1/3 bg-white dark:bg-slate-900 p-8 rounded-lg shadow-lg flex flex-col justify-between border border-slate-100 dark:border-slate-800">
             <div>
-              <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
+              <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-8 text-center">
                 {t('contact.contacts')}
               </h2>
-              <div className="space-y-6 text-gray-800">
+              <div className="space-y-6 text-gray-800 dark:text-slate-300">
                 <div className="flex items-center">
-                  <FaPhone className="text-gray-700 text-2xl mr-4" />
+                  <FaPhone className="text-rose-500 text-2xl mr-4" />
                   <p>40071654</p>
                 </div>
                 <div className="flex items-center">
-                  <FaEnvelope className="text-gray-700 text-2xl mr-4" />
+                  <FaEnvelope className="text-rose-500 text-2xl mr-4" />
                   <p>info@aone.no</p>
                 </div>
               </div>
@@ -183,20 +183,20 @@ const ContactPage = () => {
                 <div className="flex justify-center space-x-6">
                   <a
                     href="#"
-                    className="text-gray-800 hover:text-red-700 transition duration-300 ease-in-out"
+                    className="text-gray-800 dark:text-white hover:text-rose-500 dark:hover:text-rose-400 transition duration-300 ease-in-out"
                   >
                     <FaFacebook className="text-4xl" />
                   </a>
 
                   <a
                     href="#"
-                    className="text-gray-800 hover:text-red-700 transition duration-300 ease-in-out"
+                    className="text-gray-800 dark:text-white hover:text-rose-500 dark:hover:text-rose-400 transition duration-300 ease-in-out"
                   >
                     <FaLinkedin className="text-4xl" />
                   </a>
                   <a
                     href="#"
-                    className="text-gray-800 hover:text-red-700 transition duration-300 ease-in-out"
+                    className="text-gray-800 dark:text-white hover:text-rose-500 dark:hover:text-rose-400 transition duration-300 ease-in-out"
                   >
                     <FaInstagram className="text-4xl" />
                   </a>
@@ -208,30 +208,30 @@ const ContactPage = () => {
       </section>
 
       {/* Why Choose Us Section - Replaces the map placeholder */}
-      <section className="bg-gray-200 text-gray-800 py-16 mt-16">
+      <section className="bg-gray-200 dark:bg-slate-900 border-y border-slate-300 dark:border-slate-800 text-gray-800 dark:text-white py-16 mt-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-8">{t('contact.strengths')}</h2>
-          <p className="text-xl max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl max-w-3xl mx-auto dark:text-slate-300 leading-relaxed">
             {t('contact.strengthsText')}
           </p>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-6 bg-white rounded-lg shadow-lg text-gray-800">
+            <div className="p-6 bg-white dark:bg-slate-800 rounded-lg shadow-lg text-gray-800 dark:text-white border border-slate-100 dark:border-slate-700">
               <h3 className="text-5xl font-bold mb-2">
                 <CountUp end={10} duration={2.5} />+
               </h3>
-              <p className="text-xl">{t('about.yearsExpertise')}</p>
+              <p className="text-xl dark:text-slate-400">{t('about.yearsExpertise')}</p>
             </div>
-            <div className="p-6 bg-white rounded-lg shadow-lg text-gray-800">
+            <div className="p-6 bg-white dark:bg-slate-800 rounded-lg shadow-lg text-gray-800 dark:text-white border border-slate-100 dark:border-slate-700">
               <h3 className="text-5xl font-bold mb-2">
                 <CountUp end={500} duration={2.5} />+
               </h3>
-              <p className="text-xl">{t('contact.innovativeProjects')}</p>
+              <p className="text-xl dark:text-slate-400">{t('contact.innovativeProjects')}</p>
             </div>
-            <div className="p-6 bg-white rounded-lg shadow-lg text-gray-800">
+            <div className="p-6 bg-white dark:bg-slate-800 rounded-lg shadow-lg text-gray-800 dark:text-white border border-slate-100 dark:border-slate-700">
               <h3 className="text-5xl font-bold mb-2">
                 <CountUp end={99} duration={2.5} />%
               </h3>
-              <p className="text-xl">{t('contact.clientSatisfaction')}</p>
+              <p className="text-xl dark:text-slate-400">{t('contact.clientSatisfaction')}</p>
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import Logo from './Logo';
 import HamburgerMenu from './HamburgerMenu';
+import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -28,6 +29,7 @@ const Header = () => {
     >
       <Logo />
       <div className="flex items-center gap-4">
+        <ThemeToggle />
         <HamburgerMenu />
       </div>
     </header>

@@ -29,7 +29,7 @@ const BlogPage = () => {
   }, [currentPage]);
 
   return (
-    <div className="blog-page bg-gray-50 min-h-screen">
+    <div className="blog-page bg-gray-50 dark:bg-slate-950 min-h-screen">
       <HeroSection
         title={t('blog.title')}
         subtitle={t('blog.subtitle')}
@@ -38,7 +38,7 @@ const BlogPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {posts.map((post) => (
             <Link key={post.id} href={`/blog/${post.slug}`} passHref>
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-xl cursor-pointer">
+              <div className="bg-white dark:bg-slate-900 rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-xl cursor-pointer border border-slate-100 dark:border-slate-800">
                 <div className="relative w-full h-52">
                   <Image
                     src={post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '/images/placeholders/project1.jpeg'}
@@ -50,7 +50,7 @@ const BlogPage = () => {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-2xl font-semibold text-gray-900 mb-2" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+                  <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
                 </div>
               </div>
             </Link>

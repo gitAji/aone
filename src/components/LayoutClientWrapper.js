@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import Footer from "@/components/Footer";
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 const DynamicReferralPopup = dynamic(() =>
   import("@/components/ReferralPopup").then((mod) => mod.default)
@@ -49,12 +50,14 @@ export default function LayoutClientWrapper({ children }) {
 
   return (
     <LanguageProvider>
-      <ClientLayoutWrapper>
-        {children}
-        {showReferralPopup && <DynamicReferralPopup />}
-        <Footer />
-      </ClientLayoutWrapper>
-      {hasTawkToConsent && <DynamicTawkToMessenger />}
+      <ThemeProvider>
+        <ClientLayoutWrapper>
+          {children}
+          {showReferralPopup && <DynamicReferralPopup />}
+          <Footer />
+        </ClientLayoutWrapper>
+        {hasTawkToConsent && <DynamicTawkToMessenger />}
+      </ThemeProvider>
     </LanguageProvider>
   );
 }

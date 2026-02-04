@@ -40,12 +40,12 @@ const ReferralPopup = () => {
       className={`fixed bottom-6 right-6 z-[9999] max-w-xs w-full transition-all duration-500 ease-out transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0 pointer-events-none"
         }`}
     >
-      <div className="relative overflow-hidden rounded-xl shadow-2xl border border-slate-200 bg-white/95 backdrop-blur-md p-5 pb-4">
+      <div className="relative overflow-hidden rounded-xl shadow-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md p-5 pb-4">
 
         {/* Close Button */}
         <button
           onClick={handleClose}
-          className="absolute top-2 right-2 text-slate-400 hover:text-slate-600 transition-colors"
+          className="absolute top-2 right-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
           aria-label="Close"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -59,12 +59,12 @@ const ReferralPopup = () => {
             <h3 className="text-sm font-bold uppercase tracking-wide text-rose-500 mb-1">
               {language === 'no' ? 'Spesialtilbud' : 'Special Offer'}
             </h3>
-            <p className="text-slate-800 font-semibold text-lg leading-tight">
+            <p className="text-slate-800 dark:text-white font-semibold text-lg leading-tight">
               {language === 'no' ? 'Få gratis konsultasjon & 10% rabatt!' : 'Get a Free Consultation & 10% Off!'}
             </p>
           </div>
 
-          <p className="text-slate-500 text-xs leading-relaxed">
+          <p className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">
             {language === 'no'
               ? 'Bestill din gratis strategisamtale i dag og start veksten.'
               : 'Book your free strategy call today and kickstart your growth.'}

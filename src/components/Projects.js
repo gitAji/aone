@@ -9,14 +9,14 @@ import { useLanguage } from "@/context/LanguageContext";
 const Projects = () => {
   const { t } = useLanguage();
   return (
-    <section className="projects-section py-12 md:py-20 bg-gray-50 flex justify-center items-center w-full min-h-screen">
+    <section className="projects-section py-12 md:py-20 bg-gray-50 dark:bg-slate-950 flex justify-center items-center w-full min-h-screen">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {/* Heading Section */}
         <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-white mb-4">
             {t('projects.title')}
           </h2>
-          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 dark:text-slate-400 max-w-2xl mx-auto">
             {t('projects.subtitle')}
           </p>
         </div>
@@ -26,7 +26,7 @@ const Projects = () => {
           {projects.slice(0, 6).map((project, index) => (
             <div key={index} className="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
               <div
-                className="project-card relative overflow-hidden rounded-2xl shadow-lg bg-white aspect-[4/3] w-full"
+                className="project-card relative overflow-hidden rounded-2xl shadow-lg bg-white dark:bg-slate-900 aspect-[4/3] w-full"
               >
                 <Link
                   href={`/references/${project.id}`}
@@ -45,16 +45,16 @@ const Projects = () => {
                   />
 
                   {/* Overlay */}
-                  <div className="overlay absolute inset-0 bg-white/80 flex flex-col justify-end p-4 sm:p-6 opacity-100 group-hover:opacity-0 group-focus:opacity-0 transition-opacity duration-500">
+                  <div className="overlay absolute inset-0 bg-white/80 dark:bg-slate-900/80 flex flex-col justify-end p-4 sm:p-6 opacity-100 group-hover:opacity-0 group-focus:opacity-0 transition-opacity duration-500">
                     <div className="flex items-center justify-between w-full">
-                      <h3 className="text-black text-base sm:text-lg md:text-xl font-semibold">
+                      <h3 className="text-black dark:text-white text-base sm:text-lg md:text-xl font-semibold">
                         {project.title}
                       </h3>
-                      <span className="text-black w-6 h-6 transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300">
+                      <span className="text-black dark:text-white w-6 h-6 transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300">
                         -&gt;
                       </span>
                     </div>
-                    <p className="text-black text-xs sm:text-sm mt-2 opacity-80 line-clamp-2">
+                    <p className="text-black dark:text-white text-xs sm:text-sm mt-2 opacity-80 line-clamp-2">
                       {project.description}
                     </p>
                   </div>

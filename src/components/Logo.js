@@ -9,10 +9,10 @@ const Logo = () => {
         <img
           src="/images/logo.png"
           alt="Aone Logo"
+          className="logo-img"
           style={{
             height: '120px',
             width: 'auto',
-            filter: 'invert(1) brightness(100)',
             display: 'block'
           }}
         />

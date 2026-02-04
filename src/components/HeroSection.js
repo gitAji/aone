@@ -24,7 +24,7 @@ const HighlightedText = ({ text }) => {
     return (
       <>
         {before}
-        <span className="text-yellow-400">{highlightedChar}</span>
+        <span style={{ color: 'var(--hero-highlight)' }}>{highlightedChar}</span>
         {rest}
       </>
     );
