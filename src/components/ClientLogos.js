@@ -3,11 +3,14 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+// Curated logos - professional businesses only, ordered for visual balance
 const clients = [
-    { name: "Saray", logo: "/images/clients/saray.png" },
+    { name: "Quick Consultant", logo: "/images/projects/QFS/logo.png" },
+    { name: "Rent My Property", logo: "/images/projects/rentmyproperty/logo.png" },
+    { name: "Tulips", logo: "/images/projects/tulips/logo.png" },
     { name: "Clean Masters", logo: "/images/clients/clean.png" },
-    { name: "Saray Sange", logo: "/images/clients/saraysange.png" },
-    { name: "Shop Front", logo: "/images/clients/shop-front.png" },
+    { name: "Rent Cars", logo: "/images/projects/rentcars/logo.png" },
+    { name: "Saray", logo: "/images/clients/saray.png" },
 ];
 
 const ClientLogos = () => {
@@ -21,25 +24,25 @@ const ClientLogos = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                 >
-                    Trusted by businesses across Norway
+                    Trusted by businesses across the globe
                 </motion.p>
-                <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+                <div className="flex flex-wrap justify-center items-center gap-10 md:gap-14">
                     {clients.map((client, index) => (
                         <motion.div
                             key={client.name}
-                            className="relative h-12 w-24 md:h-16 md:w-32 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300"
+                            className="relative h-10 w-20 md:h-12 md:w-28 grayscale hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
                             initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 0.6, y: 0 }}
+                            whileInView={{ opacity: 0.5, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            whileHover={{ scale: 1.05 }}
+                            whileHover={{ scale: 1.1 }}
                         >
                             <Image
                                 src={client.logo}
                                 alt={client.name}
                                 fill
                                 className="object-contain"
-                                sizes="(max-width: 768px) 96px, 128px"
+                                sizes="(max-width: 768px) 80px, 112px"
                             />
                         </motion.div>
                     ))}

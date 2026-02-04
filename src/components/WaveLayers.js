@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTheme } from '@/context/ThemeContext';
 
 const WaveLayer = ({ delay, duration, color, zIndex }) => (
   <motion.div
@@ -19,12 +20,17 @@ const WaveLayer = ({ delay, duration, color, zIndex }) => (
 );
 
 const WaveLayers = () => {
+  const { theme } = useTheme();
+
+  // Higher opacity for light mode to be visible against light backgrounds
+  const opacity = theme === 'dark' ? 0.05 : 0.12;
+
   const waveColors = [
-    'rgba(244, 63, 94, 0.05)',  /* Rose 500 with low opacity */
-    'rgba(251, 191, 36, 0.05)', /* Amber 400 with low opacity */
-    'rgba(59, 130, 246, 0.05)', /* Blue 500 with low opacity */
-    'rgba(167, 139, 250, 0.05)', /* Violet 400 with low opacity */
-    'rgba(192, 132, 252, 0.05)', /* Purple 400 with low opacity */
+    `rgba(244, 63, 94, ${opacity})`,  /* Rose 500 */
+    `rgba(251, 191, 36, ${opacity})`, /* Amber 400 */
+    `rgba(59, 130, 246, ${opacity})`, /* Blue 500 */
+    `rgba(167, 139, 250, ${opacity})`, /* Violet 400 */
+    `rgba(192, 132, 252, ${opacity})`, /* Purple 400 */
   ];
 
   return (

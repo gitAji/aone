@@ -44,17 +44,19 @@ const Projects = () => {
                     priority={index < 3} // Prioritize first three images for faster loading
                   />
 
-                  {/* Overlay */}
-                  <div className="overlay absolute inset-0 bg-white/80 dark:bg-slate-900/80 flex flex-col justify-end p-4 sm:p-6 opacity-100 group-hover:opacity-0 group-focus:opacity-0 transition-opacity duration-500">
+                  {/* Overlay - Dark bg with light text in light mode, Light bg with dark text in dark mode */}
+                  <div
+                    className="project-overlay absolute inset-0 flex flex-col justify-end p-4 sm:p-6 opacity-100 group-hover:opacity-0 group-focus:opacity-0 transition-opacity duration-500"
+                  >
                     <div className="flex items-center justify-between w-full">
-                      <h3 className="text-black dark:text-white text-base sm:text-lg md:text-xl font-semibold">
+                      <h3 className="project-overlay-title text-base sm:text-lg md:text-xl font-semibold">
                         {project.title}
                       </h3>
-                      <span className="text-black dark:text-white w-6 h-6 transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300">
+                      <span className="project-overlay-arrow w-6 h-6 transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300">
                         -&gt;
                       </span>
                     </div>
-                    <p className="text-black dark:text-white text-xs sm:text-sm mt-2 opacity-80 line-clamp-2">
+                    <p className="project-overlay-desc text-xs sm:text-sm mt-2 opacity-90 line-clamp-2">
                       {project.description}
                     </p>
                   </div>

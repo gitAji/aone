@@ -104,6 +104,40 @@
   border-color: var(--border-color) !important;
 }
 
+/* Project Card Overlay - Custom styles to avoid global override conflicts */
+.project-overlay {
+  background-color: rgba(15, 23, 42, 0.85);
+  /* Dark overlay in light mode */
+}
+
+.project-overlay-title,
+.project-overlay-arrow {
+  color: #ffffff;
+  /* White text in light mode */
+}
+
+.project-overlay-desc {
+  color: #cbd5e1;
+  /* Light gray text in light mode */
+}
+
+/* Dark mode - flip the colors */
+.dark .project-overlay {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  /* Light overlay in dark mode */
+}
+
+.dark .project-overlay-title,
+.dark .project-overlay-arrow {
+  color: #0f172a !important;
+  /* Dark text in dark mode */
+}
+
+.dark .project-overlay-desc {
+  color: #475569 !important;
+  /* Dark gray text in dark mode */
+}
+
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {

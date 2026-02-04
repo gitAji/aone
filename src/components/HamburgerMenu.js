@@ -28,7 +28,7 @@ const HamburgerMenu = () => {
   return (
     <div className="hamburger-menu flex items-center space-x-6">
       {/* Language Switcher - Desktop */}
-      <div className="hidden md:flex items-center gap-4 px-4 py-2 rounded-full transition-all duration-300 bg-white/10 backdrop-blur-md border border-white/20">
+      <div className="hidden md:flex items-center gap-4 px-4 py-2 rounded-full transition-all duration-300 bg-slate-900/10 dark:bg-white/10 backdrop-blur-md border border-slate-900/20 dark:border-white/20">
         <button
           onClick={() => changeLanguage('en')}
           className={`flex items-center gap-2 group transition-all duration-300`}
@@ -38,12 +38,12 @@ const HamburgerMenu = () => {
             alt="English"
             className={`w-5 h-auto rounded-[1px] transition-all duration-300 ${language === 'en' ? 'opacity-100 scale-110 shadow-lg' : 'opacity-30 group-hover:opacity-60'}`}
           />
-          <span className={`text-[10px] font-black tracking-[0.2em] uppercase transition-colors duration-300 ${language === 'en' ? 'text-rose-500' : 'text-white/60 group-hover:text-white'}`}>
+          <span className={`text-[10px] font-black tracking-[0.2em] uppercase transition-colors duration-300 ${language === 'en' ? 'text-rose-500' : 'text-slate-600 dark:text-white/60 group-hover:text-slate-900 dark:group-hover:text-white'}`}>
             EN
           </span>
         </button>
 
-        <div className="w-px h-3 bg-white/20"></div>
+        <div className="w-px h-3 bg-slate-900/20 dark:bg-white/20"></div>
 
         <button
           onClick={() => changeLanguage('no')}
@@ -54,7 +54,7 @@ const HamburgerMenu = () => {
             alt="Norsk"
             className={`w-5 h-auto rounded-[1px] transition-all duration-300 ${language === 'no' ? 'opacity-100 scale-110 shadow-lg' : 'opacity-30 group-hover:opacity-60'}`}
           />
-          <span className={`text-[10px] font-black tracking-[0.2em] uppercase transition-colors duration-300 ${language === 'no' ? 'text-rose-500' : 'text-white/60 group-hover:text-white'}`}>
+          <span className={`text-[10px] font-black tracking-[0.2em] uppercase transition-colors duration-300 ${language === 'no' ? 'text-rose-500' : 'text-slate-600 dark:text-white/60 group-hover:text-slate-900 dark:group-hover:text-white'}`}>
             NO
           </span>
         </button>
@@ -64,7 +64,7 @@ const HamburgerMenu = () => {
         href="https://crm.aone.no"
         target="_blank"
         rel="noopener noreferrer"
-        className="hidden md:flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 text-white/70 hover:text-white hover:bg-white/10"
+        className="hidden md:flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 text-slate-700 dark:text-white/70 hover:text-slate-900 dark:hover:text-white hover:bg-slate-900/10 dark:hover:bg-white/10"
         aria-label="Client Login"
       >
         <svg
@@ -83,7 +83,7 @@ const HamburgerMenu = () => {
       </a>
 
       <button
-        className="glass w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 shadow-lg border border-white/30 hover:bg-white/10 text-white"
+        className="glass w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 shadow-lg border border-slate-900/30 dark:border-white/30 hover:bg-slate-900/10 dark:hover:bg-white/10 text-slate-900 dark:text-white"
         onClick={toggleMenu}
         aria-expanded={isOpen}
         aria-controls="fullscreen-menu"
@@ -110,7 +110,7 @@ const HamburgerMenu = () => {
             height="24"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="white"
+            stroke="currentColor"
             strokeWidth="2.5"
             strokeLinecap="round"
             strokeLinejoin="round"

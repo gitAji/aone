@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useTheme } from '@/context/ThemeContext';
 
 // Helper function to calculate distance between two points
 const getDistance = (x1, y1, x2, y2) => {
@@ -58,13 +59,16 @@ const FloatingDot = ({ size, color, delay, duration, startX, startY, onClick }) 
 const FloatingDots = ({ containerWidth, containerHeight }) => {
   const containerRef = useRef(null);
   const [dots, setDots] = useState([]);
+  const { theme } = useTheme();
+
+  // Same bright colorful palette for both modes
+  const themeColors = [
+    '#fb7185', // Rose 400
+    '#fbbf24', // Amber 400
+    '#60a5fa', // Blue 400
+  ];
 
   useEffect(() => {
-    const themeColors = [
-      '#fb7185', // Rose
-      '#fbbf24', // Amber
-      '#60a5fa', // Blue
-    ];
 
     if (containerWidth && containerHeight) {
       const newDots = [];
@@ -84,7 +88,7 @@ const FloatingDots = ({ containerWidth, containerHeight }) => {
 
   return (
     <div ref={containerRef} style={{ position: 'absolute', width: '100%', height: '100%', overflow: 'hidden', pointerEvents: 'none' }}>
-      <svg className="dots-lines-svg" width="100%" height="100%" style={{ opacity: 0.2 }}>
+      <svg className="dots-lines-svg" width="100%" height="100%" style={{ opacity: theme === 'dark' ? 0.3 : 0.6 }}>
         {dots.map((dot, index) => {
           const nextDot = dots[index + 1];
           if (nextDot) {
@@ -101,14 +105,14 @@ const FloatingDots = ({ containerWidth, containerHeight }) => {
                 y1={dot.startY + dot.size / 2}
                 x2={nextDot.startX + nextDot.size / 2}
                 y2={nextDot.startY + nextDot.size / 2}
-                strokeWidth="0.5"
+                strokeWidth={theme === 'dark' ? '1' : '2'}
                 initial={{ strokeDasharray: length, strokeDashoffset: length, stroke: dot.color }}
                 animate={{
                   strokeDashoffset: [length, 0, length],
                   stroke: [dot.color, nextDot.color, dot.color],
                 }}
                 transition={{
-                  duration: 10,
+                  duration: 25,
                   repeat: Infinity,
                   ease: "linear",
                   delay: dot.delay,
