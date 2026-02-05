@@ -1,8 +1,19 @@
 const WORDPRESS_API_URL = 'https://blog.aone.no/wp-json/wp/v2';
 
+// Use proxy in browser to avoid SSL/CORS issues
+function getApiUrl(endpoint, params = '') {
+  if (typeof window !== 'undefined') {
+    // Client-side: use proxy
+    return `/api/wp-proxy?endpoint=${endpoint}${params ? '&' + params : ''}`;
+  }
+  // Server-side: direct call
+  return `${WORDPRESS_API_URL}/${endpoint}${params ? '?' + params : ''}`;
+}
+
 export async function fetchPosts(perPage = 9, page = 1) {
   try {
-    const response = await fetch(`${WORDPRESS_API_URL}/posts?per_page=${perPage}&page=${page}&orderby=date&_embed`);
+    const url = getApiUrl('posts', `per_page=${perPage}&page=${page}&orderby=date&_embed`);
+    const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -17,7 +28,8 @@ export async function fetchPosts(perPage = 9, page = 1) {
 
 export async function fetchPostBySlug(slug) {
   try {
-    const response = await fetch(`${WORDPRESS_API_URL}/posts?slug=${slug}&_embed`);
+    const url = getApiUrl('posts', `slug=${slug}&_embed`);
+    const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -63,7 +75,8 @@ export async function handleTableBooking(bookingData) {
 // Fetch homepage popup content
 export async function fetchPopupContent() {
   try {
-    const response = await fetch(`${WORDPRESS_API_URL}/posts?slug=homepage-popup&_embed`);
+    const url = getApiUrl('posts', 'slug=homepage-popup&_embed');
+    const response = await fetch(url);
     if (!response.ok) {
       return null;
     }
