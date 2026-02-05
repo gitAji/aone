@@ -1,5 +1,3 @@
-import { mockPosts } from '../app/data/blog';
-
 const WORDPRESS_API_URL = 'http://blog.aone.no/wp-json/wp/v2';
 
 export async function fetchPosts(perPage = 9, page = 1) {
@@ -11,17 +9,10 @@ export async function fetchPosts(perPage = 9, page = 1) {
     const totalPages = parseInt(response.headers.get('X-WP-TotalPages') || '1', 10);
     const data = await response.json();
     const normalizedData = JSON.parse(JSON.stringify(data).replace(/https:\/\/blog\.aone\.no/g, 'http://blog.aone.no'));
-    return { posts: normalizedData.length > 0 ? normalizedData : mockPosts, totalPages: normalizedData.length > 0 ? totalPages : 1 };
+    return { posts: normalizedData, totalPages, error: null };
   } catch (error) {
-    console.error('Error fetching blog posts, using mock data:', error);
-
-    // Calculate pagination for mock posts
-    const startIndex = (page - 1) * perPage;
-    const endIndex = startIndex + perPage;
-    const paginatedMockPosts = mockPosts.slice(startIndex, endIndex);
-    const mockTotalPages = Math.ceil(mockPosts.length / perPage);
-
-    return { posts: paginatedMockPosts, totalPages: mockTotalPages };
+    console.error('Error fetching blog posts:', error);
+    return { posts: [], totalPages: 0, error: error.message };
   }
 }
 
@@ -34,13 +25,12 @@ export async function fetchPostBySlug(slug) {
     const data = await response.json();
     const normalizedData = JSON.parse(JSON.stringify(data).replace(/https:\/\/blog\.aone\.no/g, 'http://blog.aone.no'));
 
-    if (normalizedData.length > 0) return normalizedData[0];
+    if (normalizedData.length > 0) return { post: normalizedData[0], error: null };
 
-    // Check mock data
-    return mockPosts.find(p => p.slug === slug) || null;
+    return { post: null, error: 'Post not found' };
   } catch (error) {
-    console.error(`Error fetching post by slug ${slug}, checking mock data:`, error);
-    return mockPosts.find(p => p.slug === slug) || null;
+    console.error(`Error fetching post by slug ${slug}:`, error);
+    return { post: null, error: error.message };
   }
 }
 

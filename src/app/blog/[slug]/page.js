@@ -4,19 +4,24 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Head from 'next/head';
+import Link from 'next/link';
 import HeroSection from '@/components/HeroSection';
 import { fetchPostBySlug } from '@/lib/wordpress';
+import { useLanguage } from "@/context/LanguageContext";
 
 const PostPage = () => {
+  const { t } = useLanguage();
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { slug } = useParams();
 
   useEffect(() => {
     if (slug) {
       const getPost = async () => {
-        const data = await fetchPostBySlug(slug);
-        setPost(data);
+        const { post: fetchedPost, error: fetchError } = await fetchPostBySlug(slug);
+        setPost(fetchedPost);
+        setError(fetchError);
         setLoading(false);
       };
 
@@ -25,11 +30,29 @@ const PostPage = () => {
   }, [slug]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-slate-950 flex flex-col items-center justify-center">
+        <div className="w-12 h-12 border-4 border-rose-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+        <p className="text-gray-600 dark:text-gray-400">{t('blog.loading') || 'Loading...'}</p>
+      </div>
+    );
   }
 
-  if (!post) {
-    return <div>Post not found.</div>;
+  if (error || !post) {
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-slate-950 flex flex-col items-center justify-center text-center px-4">
+        <div className="w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mb-4">
+          <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{t('blog.postNotFound') || 'Post not found'}</h3>
+        <p className="text-gray-600 dark:text-gray-400 max-w-md mb-6">{error || (t('blog.postNotFoundMessage') || 'The post you are looking for does not exist or has been removed.')}</p>
+        <Link href="/blog" className="px-6 py-2 bg-rose-500 text-white rounded-full hover:bg-rose-600 transition-colors">
+          {t('blog.backToBlog') || 'Back to Blog'}
+        </Link>
+      </div>
+    );
   }
 
   return (
