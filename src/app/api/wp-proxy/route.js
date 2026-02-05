@@ -61,13 +61,34 @@ export async function GET(request) {
 
         let responseBody = data.body;
 
-        if (responseBody && typeof responseBody === 'object') {
-            const bodyString = JSON.stringify(responseBody);
-            const rewrittenString = bodyString.replace(
-                /https?:\/\/blog\.aone\.no\/wp-content\/uploads\/[^\s\"\'\>]+/g,
-                (match) => `/api/image-proxy?url=${match}`
-            );
-            responseBody = JSON.parse(rewrittenString);
+        // Recursive function to replace URLs in the response object
+        const rewriteUrls = (obj) => {
+            if (!obj || typeof obj !== 'object') return obj;
+
+            if (Array.isArray(obj)) {
+                return obj.map(rewriteUrls);
+            }
+
+            const newObj = {};
+            for (const key in obj) {
+                let value = obj[key];
+
+                if (typeof value === 'string') {
+                    // Check if value is a WordPress image URL
+                    // Also handle escaped slashes that might be present in some contexts
+                    if (value.includes('blog.aone.no/wp-content/uploads/')) {
+                        value = `/api/image-proxy?url=${value.replace(/\\\//g, '/')}`;
+                    }
+                } else if (typeof value === 'object') {
+                    value = rewriteUrls(value);
+                }
+                newObj[key] = value;
+            }
+            return newObj;
+        };
+
+        if (responseBody) {
+            responseBody = rewriteUrls(responseBody);
         }
 
         const response = NextResponse.json(responseBody, { status: data.status });
