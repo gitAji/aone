@@ -1,4 +1,4 @@
-const WORDPRESS_API_URL = 'http://blog.aone.no/wp-json/wp/v2';
+const WORDPRESS_API_URL = 'https://blog.aone.no/wp-json/wp/v2';
 
 export async function fetchPosts(perPage = 9, page = 1) {
   try {
@@ -8,8 +8,7 @@ export async function fetchPosts(perPage = 9, page = 1) {
     }
     const totalPages = parseInt(response.headers.get('X-WP-TotalPages') || '1', 10);
     const data = await response.json();
-    const normalizedData = JSON.parse(JSON.stringify(data).replace(/https:\/\/blog\.aone\.no/g, 'http://blog.aone.no'));
-    return { posts: normalizedData, totalPages, error: null };
+    return { posts: data, totalPages, error: null };
   } catch (error) {
     console.error('Error fetching blog posts:', error);
     return { posts: [], totalPages: 0, error: error.message };
@@ -23,9 +22,8 @@ export async function fetchPostBySlug(slug) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
-    const normalizedData = JSON.parse(JSON.stringify(data).replace(/https:\/\/blog\.aone\.no/g, 'http://blog.aone.no'));
 
-    if (normalizedData.length > 0) return { post: normalizedData[0], error: null };
+    if (data.length > 0) return { post: data[0], error: null };
 
     return { post: null, error: 'Post not found' };
   } catch (error) {
@@ -70,9 +68,8 @@ export async function fetchPopupContent() {
       return null;
     }
     const data = await response.json();
-    const normalizedData = JSON.parse(JSON.stringify(data).replace(/https:\/\/blog\.aone\.no/g, 'http://blog.aone.no'));
 
-    return normalizedData.length > 0 ? normalizedData[0] : null;
+    return data.length > 0 ? data[0] : null;
   } catch (error) {
     console.error('Error fetching popup content:', error);
     return null;

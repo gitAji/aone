@@ -12,7 +12,7 @@ export async function GET(request) {
         return NextResponse.json({ error: 'Endpoint is required' }, { status: 400 });
     }
 
-    const wpApiUrl = `http://blog.aone.no/wp-json/wp/v2/${endpoint}`;
+    const wpApiUrl = `https://blog.aone.no/wp-json/wp/v2/${endpoint}`;
     const targetUrl = new URL(wpApiUrl);
     searchParams.forEach((value, key) => {
         if (key !== 'endpoint') {
