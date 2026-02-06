@@ -31,6 +31,10 @@ export default function OrderPage() {
     // --- handlers ---
 
     const handlePackageSelect = (pkg) => {
+        if (pkg.isCustom) {
+            setToast({ message: 'For custom enterprise solutions, please call us at +47 411 93 111 or email post@aone.no', type: 'info' });
+            return;
+        }
         setSelectedPack(pkg);
         setStep(2);
     };
@@ -124,7 +128,7 @@ export default function OrderPage() {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 {packages.filter(p => !p.isAddon).map(pkg => (
                     <motion.div
                         key={pkg.id}
@@ -135,7 +139,7 @@ export default function OrderPage() {
                             borderColor: selectedPack?.id === pkg.id ? 'var(--rose-500)' : 'transparent'
                         }}
                         whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                        className={`relative p-8 rounded-3xl shadow-xl transition-all duration-300 cursor-pointer bg-white dark:bg-slate-900 group border-2 ${selectedPack?.id === pkg.id ? 'border-rose-500 bg-rose-50/30 dark:bg-rose-950/10' : 'border-transparent'}`}
+                        className={`relative p-8 rounded-3xl shadow-xl transition-all duration-300 cursor-pointer bg-white dark:bg-slate-900 group border-2 flex flex-col ${selectedPack?.id === pkg.id ? 'border-rose-500 bg-rose-50/30 dark:bg-rose-950/10' : 'border-transparent'}`}
                         onClick={() => handlePackageSelect(pkg)}
                     >
                         {pkg.recommended && (
@@ -150,15 +154,21 @@ export default function OrderPage() {
                             </div>
                         </div>
 
-                        <h3 className="text-2xl font-bold text-center text-gray-900 mb-2">{pkg.name}</h3>
-                        <div className="text-3xl font-black text-center text-gray-800 mb-6">
-                            {billingInterval === 'monthly' ? `${pkg.monthlyPrice} NOK` : `${pkg.price} NOK`}
-                            <span className="text-sm font-normal text-gray-500 ml-1">{billingInterval === 'monthly' ? '/mo' : ' one-time'}</span>
+                        <h3 className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-2">{pkg.name}</h3>
+                        <div className="text-2xl font-black text-center text-gray-800 dark:text-white mb-6 h-10 flex items-center justify-center">
+                            {pkg.isCustom ? (
+                                <span className="text-rose-500 uppercase tracking-wider text-xl">Get Quote</span>
+                            ) : (
+                                <>
+                                    {billingInterval === 'monthly' ? `${pkg.monthlyPrice} NOK` : `${pkg.price} NOK`}
+                                    <span className="text-sm font-normal text-gray-500 dark:text-gray-400 ml-1">{billingInterval === 'monthly' ? '/mo' : ' once'}</span>
+                                </>
+                            )}
                         </div>
-                        <ul className="space-y-3 mb-8">
+                        <ul className="space-y-3 mb-8 flex-grow">
                             {pkg.features.map((feat, i) => (
-                                <li key={i} className="flex items-start text-gray-600">
-                                    <FaCheck className="w-4 h-4 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                                <li key={i} className="flex items-start text-gray-600 dark:text-gray-400 text-sm">
+                                    <FaCheck className="w-4 h-4 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
                                     {feat}
                                 </li>
                             ))}
@@ -166,7 +176,7 @@ export default function OrderPage() {
                         <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 transform ${selectedPack?.id === pkg.id
                             ? 'bg-gradient-to-r from-rose-500 to-orange-500 text-white shadow-lg shadow-rose-500/30 scale-[1.05]'
                             : 'bg-slate-900 dark:bg-slate-800 text-white hover:bg-slate-800 dark:hover:bg-slate-700 hover:scale-[1.02]'}`}>
-                            Select {pkg.name}
+                            {pkg.isCustom ? 'Contact Us' : `Select ${pkg.name.split(' ')[0]}`}
                         </button>
                     </motion.div>
                 ))}

@@ -145,5 +145,21 @@ export const packages = [
             'Accessibility audit'
         ],
         description: 'Premium UI/UX analysis featuring user journey mapping, interactive prototypes, and a full accessibility audit.'
+    },
+    {
+        id: 'custom',
+        name: 'Enterprise / Custom',
+        price: 0,
+        monthlyPrice: 0,
+        isCustom: true,
+        features: [
+            'Tailored specific solutions',
+            'Full management',
+            'Dedicated team',
+            'Custom integrations',
+            'SLA guarantees',
+            '24/7 Priority support'
+        ],
+        description: 'Need a custom solution? Contact us for a tailored quote and a dedicated project manager.'
     }
 ];
