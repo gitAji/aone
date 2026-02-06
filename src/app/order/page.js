@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { packages } from '../data/packages';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 import { FaLaptopCode, FaCheck, FaCrown, FaCameraRetro, FaSearch, FaTools, FaPenNib, FaUsers, FaRobot, FaBullhorn, FaPencilRuler, FaVideo, FaInfoCircle } from 'react-icons/fa';
 import Toast from '@/components/Toast';
 
@@ -430,7 +431,7 @@ export default function OrderPage() {
             >
                 <FaCheck className="text-4xl" />
             </motion.div>
-            <h1 className="text-5xl font-black text-slate-800 dark:text-white mb-6 tracking-tighter uppercase">You're all set!</h1>
+            <h1 className="text-5xl font-black text-slate-800 dark:text-white mb-6 tracking-tighter uppercase">You&apos;re all set!</h1>
             <p className="text-xl text-slate-600 dark:text-slate-400 mb-12 max-w-lg mx-auto leading-relaxed">
                 Thank you for your order, <span className="font-bold text-slate-900 dark:text-white">{formData.name}</span>.<br />
                 Your agreement has been sent to <strong>{formData.email}</strong>.
@@ -443,12 +444,12 @@ export default function OrderPage() {
                 >
                     Go to Client Portal
                 </a>
-                <a
+                <Link
                     href="/"
                     className="inline-block bg-white dark:bg-slate-900 text-slate-600 dark:text-white px-12 py-5 rounded-full font-bold shadow-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-300 uppercase tracking-widest text-sm"
                 >
                     Back to Home
-                </a>
+                </Link>
             </div>
         </div>
     );

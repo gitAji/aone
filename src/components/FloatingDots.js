@@ -56,17 +56,16 @@ const FloatingDot = ({ size, color, delay, duration, startX, startY, onClick }) 
   );
 };
 
+const themeColors = [
+  '#fb7185', // Rose 400
+  '#fbbf24', // Amber 400
+  '#60a5fa', // Blue 400
+];
+
 const FloatingDots = ({ containerWidth, containerHeight }) => {
   const containerRef = useRef(null);
   const [dots, setDots] = useState([]);
   const { theme } = useTheme();
-
-  // Same bright colorful palette for both modes
-  const themeColors = [
-    '#fb7185', // Rose 400
-    '#fbbf24', // Amber 400
-    '#60a5fa', // Blue 400
-  ];
 
   useEffect(() => {
 
