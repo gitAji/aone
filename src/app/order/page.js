@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { packages } from '../data/packages';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
@@ -8,6 +9,7 @@ import { FaLaptopCode, FaCheck, FaCrown, FaCameraRetro, FaSearch, FaTools, FaPen
 import Toast from '@/components/Toast';
 
 export default function OrderPage() {
+    const router = useRouter();
     const [step, setStep] = useState(1);
     const [selectedPack, setSelectedPack] = useState(null);
     const [addons, setAddons] = useState([]);
@@ -33,7 +35,7 @@ export default function OrderPage() {
 
     const handlePackageSelect = (pkg) => {
         if (pkg.isCustom) {
-            setToast({ message: 'For custom enterprise solutions, please call us at +47 411 93 111 or email post@aone.no', type: 'info' });
+            router.push('/contact');
             return;
         }
         setSelectedPack(pkg);
