@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 import CountUp from "react-countup";
 import { useLanguage } from "@/context/LanguageContext";
+import Toast from "@/components/Toast";
 
 const ContactPage = () => {
   const { t } = useLanguage();
@@ -20,8 +21,7 @@ const ContactPage = () => {
     message: "",
   });
   const [loading, setLoading] = useState(false);
-  const [statusMessage, setStatusMessage] = useState("");
-  const [isError, setIsError] = useState(false);
+  const [toast, setToast] = useState(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -30,8 +30,7 @@ const ContactPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setStatusMessage("");
-    setIsError(false);
+    setToast(null);
 
     try {
       const response = await fetch("/api/contact", {
@@ -43,17 +42,14 @@ const ContactPage = () => {
       const result = await response.json();
 
       if (response.ok) {
-        setStatusMessage(t('contact.success'));
-        setIsError(false);
+        setToast({ message: t('contact.success'), type: 'success' });
         setFormData({ name: "", email: "", subject: "", message: "" }); // Clear form
       } else {
-        setStatusMessage(t('contact.error'));
-        setIsError(true);
+        setToast({ message: t('contact.error'), type: 'error' });
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      setStatusMessage(t('contact.unexpected'));
-      setIsError(true);
+      setToast({ message: t('contact.unexpected'), type: 'error' });
     } finally {
       setLoading(false);
     }
@@ -61,6 +57,7 @@ const ContactPage = () => {
 
   return (
     <div className="contact-page bg-gray-100 dark:bg-slate-950 min-h-screen">
+      {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
       <HeroSection title={t('contact.title')} subtitle={t('contact.subtitle')} />
 
       <section className="container mx-auto px-4 pb-16 pt-36">
@@ -71,11 +68,6 @@ const ContactPage = () => {
               {t('contact.connect')}
             </h2>
             <form className="space-y-6" onSubmit={handleSubmit}>
-              {statusMessage && (
-                <div className={`p-4 mb-4 text-center rounded-md ${!isError ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
-                  {statusMessage}
-                </div>
-              )}
 
               <div>
                 <label

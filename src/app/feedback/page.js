@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import HeroSection from '@/components/HeroSection';
+import Toast from '@/components/Toast';
 
 const FeedbackPage = () => {
   const [formData, setFormData] = useState({
@@ -10,7 +11,7 @@ const FeedbackPage = () => {
     subject: '',
     message: '',
   });
-  const [message, setMessage] = useState('');
+  const [toast, setToast] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
@@ -24,7 +25,7 @@ const FeedbackPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setMessage('');
+    setToast(null);
 
     try {
       const response = await fetch('/api/feedback', {
@@ -38,7 +39,7 @@ const FeedbackPage = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setMessage('Your feedback has been sent successfully! Thank you.');
+        setToast({ message: 'Your feedback has been sent successfully! Thank you.', type: 'success' });
         setFormData({
           name: '',
           email: '',
@@ -46,11 +47,11 @@ const FeedbackPage = () => {
           message: '',
         });
       } else {
-        setMessage('Something went wrong. Please try again.');
+        setToast({ message: 'Something went wrong. Please try again.', type: 'error' });
       }
     } catch (error) {
       console.error('Error submitting feedback form:', error);
-      setMessage('An unexpected error occurred. Please try again later.');
+      setToast({ message: 'An unexpected error occurred. Please try again later.', type: 'error' });
     } finally {
       setIsSubmitting(false);
     }
@@ -58,6 +59,7 @@ const FeedbackPage = () => {
 
   return (
     <div className="feedback-page bg-gray-50 min-h-screen">
+      {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
       <HeroSection
         title="Provide Feedback"
         subtitle="We'd love to hear your thoughts and suggestions."
@@ -65,11 +67,6 @@ const FeedbackPage = () => {
       <section className="container mx-auto px-4 py-16">
         <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Send Us Your Feedback</h2>
-          {message && (
-            <div className={`p-4 mb-4 text-center rounded-md ${message.includes('successfully') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
-              {message}
-            </div>
-          )}
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700">

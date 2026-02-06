@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import HeroSection from '@/components/HeroSection';
+import Toast from '@/components/Toast';
 
 const DesignRequirementsPage = () => {
   const [formData, setFormData] = useState({
@@ -22,7 +23,7 @@ const DesignRequirementsPage = () => {
     additionalNotes: '',
   });
   const [logoFile, setLogoFile] = useState(null);
-  const [message, setMessage] = useState('');
+  const [toast, setToast] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
@@ -40,7 +41,7 @@ const DesignRequirementsPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setMessage('');
+    setToast(null);
 
     const data = new FormData();
     for (const key in formData) {
@@ -59,7 +60,7 @@ const DesignRequirementsPage = () => {
       const result = await response.json();
 
       if (response.ok) {
-        setMessage('Your design requirements have been submitted successfully!');
+        setToast({ message: 'Your design requirements have been submitted successfully!', type: 'success' });
         setFormData({
           contactPerson: '',
           email: '',
@@ -79,11 +80,11 @@ const DesignRequirementsPage = () => {
         });
         setLogoFile(null);
       } else {
-        setMessage('Something went wrong. Please try again.');
+        setToast({ message: 'Something went wrong. Please try again.', type: 'error' });
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      setMessage('An unexpected error occurred. Please try again later.');
+      setToast({ message: 'An unexpected error occurred. Please try again later.', type: 'error' });
     } finally {
       setIsSubmitting(false);
     }
@@ -91,6 +92,7 @@ const DesignRequirementsPage = () => {
 
   return (
     <div className="design-requirements-page bg-gray-50 min-h-screen">
+      {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
       <HeroSection
         title="Site Design Requirements"
         subtitle="Tell us about your vision for your website."
@@ -98,11 +100,6 @@ const DesignRequirementsPage = () => {
       <section className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Your Design Vision</h2>
-          {message && (
-            <div className={`p-4 mb-4 text-center rounded-md ${message.includes('successfully') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
-              {message}
-            </div>
-          )}
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Contact Information */}
             <h3 className="text-2xl font-semibold text-gray-800 pt-4 pb-2 border-b border-gray-200">Contact Information</h3>

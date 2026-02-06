@@ -52,7 +52,7 @@ const ServicesSection = () => {
           icon={FaLaptopCode}
           title={t('services.webDev.title')}
           description={t('services.webDev.description')}
-          color="text-rose-500 group-hover:text-rose-600"
+          color="text-blue-600 group-hover:text-blue-700"
         />
         <ServiceCard
           href="/services/branding"

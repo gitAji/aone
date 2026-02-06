@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import HeroSection from '@/components/HeroSection';
 import { useLanguage } from "@/context/LanguageContext";
+import Toast from '@/components/Toast';
 
 const FreeConsultationPage = () => {
   const { t } = useLanguage();
@@ -33,8 +34,9 @@ const FreeConsultationPage = () => {
     servicesOfInterest: [],
     biggestChallenge: '',
     preferredTime: '',
+    preferredTime: '',
   });
-  const [message, setMessage] = useState('');
+  const [toast, setToast] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
@@ -57,7 +59,7 @@ const FreeConsultationPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setMessage('');
+    setToast(null);
 
     try {
       const response = await fetch('/api/consultation', {
@@ -69,7 +71,7 @@ const FreeConsultationPage = () => {
       });
 
       if (response.ok) {
-        setMessage(t('consultation.success'));
+        setToast({ message: t('consultation.success'), type: 'success' });
         setFormData({
           fullName: '',
           email: '',
@@ -80,11 +82,12 @@ const FreeConsultationPage = () => {
           preferredTime: '',
         });
       } else {
-        setMessage(t('consultation.error'));
+        setToast({ message: t('consultation.error'), type: 'error' });
       }
     } catch (error) {
+
       console.error('Error submitting form:', error);
-      setMessage(t('consultation.unexpected'));
+      setToast({ message: t('consultation.unexpected'), type: 'error' });
     } finally {
       setIsSubmitting(false);
     }
@@ -97,13 +100,9 @@ const FreeConsultationPage = () => {
         subtitle={t('consultation.subtitle')}
       />
       <section className="container mx-auto px-4 py-16">
+        {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
         <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">{t('consultation.formHeader')}</h2>
-          {message && (
-            <div className={`p-4 mb-4 text-center rounded-md ${message === t('consultation.success') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
-              {message}
-            </div>
-          )}
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">{t('consultation.fullName')} <span className="text-red-500">*</span></label>

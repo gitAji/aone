@@ -251,7 +251,8 @@ p {
 /* Inner page hero - shorter height */
 .hero.hero-inner {
   height: 60vh;
-  min-height: 400px;
+  min-height: 500px;
+  align-items: flex-start;
 }
 
 .hero-background {

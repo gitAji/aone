@@ -27,6 +27,7 @@ const raleway = Raleway({
 });
 
 export const metadata = {
+  metadataBase: new URL('https://aone.no'),
   title: "Web Design in Bergen, Norway | Webdesign i Bergen",
   description:
     "Aone: Web design & digital marketing in Bergen. We create stunning websites to grow your business.",

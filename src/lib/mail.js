@@ -27,3 +27,20 @@ export async function sendAdminNotification({ subject, text, html }) {
         return { success: false, error };
     }
 }
+
+export async function sendClientEmail({ to, subject, html }) {
+    const mailOptions = {
+        from: `"Aone Team" <${process.env.SMTP_USER}>`,
+        to,
+        subject: `[Aone] ${subject}`,
+        html: html,
+    };
+
+    try {
+        await transporter.sendMail(mailOptions);
+        return { success: true };
+    } catch (error) {
+        console.error('Client email error:', error);
+        return { success: false, error };
+    }
+}

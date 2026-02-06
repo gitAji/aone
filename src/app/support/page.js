@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import HeroSection from '@/components/HeroSection';
 import SkeletonLoader from '@/components/SkeletonLoader';
+import Toast from '@/components/Toast';
 
 const priorityOptions = [
   'Low',
@@ -19,7 +20,7 @@ const SupportPage = () => {
     issueDescription: '',
     priority: '',
   });
-  const [message, setMessage] = useState('');
+  const [toast, setToast] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
@@ -33,7 +34,7 @@ const SupportPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setMessage('');
+    setToast(null);
 
     try {
       const response = await fetch('/api/support', {
@@ -47,7 +48,7 @@ const SupportPage = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setMessage('Your support request has been sent successfully! We will get back to you shortly.');
+        setToast({ message: 'Your support request has been sent successfully! We will get back to you shortly.', type: 'success' });
         setFormData({
           name: '',
           email: '',
@@ -56,11 +57,11 @@ const SupportPage = () => {
           priority: '',
         });
       } else {
-        setMessage('Something went wrong. Please try again.');
+        setToast({ message: 'Something went wrong. Please try again.', type: 'error' });
       }
     } catch (error) {
       console.error('Error submitting support form:', error);
-      setMessage('An unexpected error occurred. Please try again later.');
+      setToast({ message: 'An unexpected error occurred. Please try again later.', type: 'error' });
     } finally {
       setIsSubmitting(false);
     }
@@ -68,6 +69,7 @@ const SupportPage = () => {
 
   return (
     <div className="support-page bg-gray-50 min-h-screen">
+      {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
       <HeroSection
         title="Support Request"
         subtitle="Submit a support request and we'll assist you as soon as possible."
@@ -79,11 +81,6 @@ const SupportPage = () => {
             <SkeletonLoader />
           ) : (
             <>
-              {message && (
-                <div className={`p-4 mb-4 text-center rounded-md ${message.includes('successfully') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
-                  {message}
-                </div>
-              )}
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700">

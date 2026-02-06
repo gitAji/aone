@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import HeroSection from '@/components/HeroSection';
 import { useLanguage } from "@/context/LanguageContext";
+import Toast from '@/components/Toast';
 
 const RequestQuotePage = () => {
   const { t } = useLanguage();
@@ -37,8 +38,9 @@ const RequestQuotePage = () => {
     projectDescription: '',
     budget: '',
     timeline: '',
+    timeline: '',
   });
-  const [message, setMessage] = useState('');
+  const [toast, setToast] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
@@ -61,7 +63,7 @@ const RequestQuotePage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setMessage('');
+    setToast(null);
 
     try {
       const response = await fetch('/api/quote', {
@@ -73,7 +75,7 @@ const RequestQuotePage = () => {
       });
 
       if (response.ok) {
-        setMessage(t('quote.success'));
+        setToast({ message: t('quote.success'), type: 'success' });
         setFormData({
           name: '',
           email: '',
@@ -85,11 +87,11 @@ const RequestQuotePage = () => {
           timeline: '',
         });
       } else {
-        setMessage(t('quote.error'));
+        setToast({ message: t('quote.error'), type: 'error' });
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      setMessage(t('quote.unexpected'));
+      setToast({ message: t('quote.unexpected'), type: 'error' });
     } finally {
       setIsSubmitting(false);
     }
@@ -102,13 +104,9 @@ const RequestQuotePage = () => {
         subtitle={t('quote.subtitle')}
       />
       <section className="container mx-auto px-4 pb-16 pt-36">
+        {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
         <div className="max-w-4xl mx-auto bg-white/95 backdrop-blur-sm p-10 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">{t('quote.projectDetails')}</h2>
-          {message && (
-            <div className={`p-4 mb-4 text-center rounded-md ${message === t('quote.success') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
-              {message}
-            </div>
-          )}
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700">
