@@ -30,6 +30,10 @@ service cloud.firestore {
       allow create: if true;
       allow read, update, delete: if false;
     }
+    match /orders/{doc} {
+      allow read, create, update: if true;
+      allow delete: if false;
+    }
     
     // Default deny
     match /{document=**} {

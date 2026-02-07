@@ -1,42 +1,52 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/lib/firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import { doc, setDoc } from 'firebase/firestore';
 import { sendClientEmail, sendAdminNotification } from '@/lib/mail';
+
+const calculatePrice = (pkg, interval, addonsList = []) => {
+    const { packages } = require('@/app/data/packages');
+    let base = interval === 'monthly' ? pkg.monthlyPrice : pkg.price;
+
+    const addonsCost = packages
+        .filter(p => p.isAddon && addonsList.includes(p.id))
+        .reduce((sum, p) => sum + p.price, 0);
+
+    return base + addonsCost;
+};
 
 export async function POST(request) {
     try {
         const body = await request.json();
         console.log('Order received:', body);
 
-        const { selectedPack, formData, billingInterval, addons, paymentMethod } = body;
+        const { orderId: providedOrderId, selectedPack, formData, billingInterval, addons, paymentMethod } = body;
 
         if (!selectedPack || !formData) {
             return NextResponse.json({ error: 'Missing required data' }, { status: 400 });
         }
 
-        const price = billingInterval === 'monthly' ? selectedPack.monthlyPrice : selectedPack.price;
+        const price = calculatePrice(selectedPack, billingInterval, addons || []);
 
         // 1. Store in Firestore (The "Sales Agreement")
+        // Harmonized structure with sync API for consistent hydration
         const orderData = {
-            packageId: selectedPack.id,
-            packageName: selectedPack.name,
-            price,
+            package: selectedPack,
+            formData,
             billingInterval,
             addons,
-            customer: formData,
             paymentMethod,
-            status: 'completed', // In real flow, 'pending' -> 'paid'
-            agreementSigned: true, // Simulated
+            status: 'completed',
+            agreementSigned: true,
             signedAt: new Date().toISOString(),
-            createdAt: new Date().toISOString()
+            createdAt: new Date().toISOString(),
+            totalAmount: price,
+            currentStep: 4
         };
 
-
-
-        let orderId = 'MOCK-' + Date.now();
+        let finalOrderId = providedOrderId || ('MOCK-' + Date.now());
         try {
-            const docRef = await addDoc(collection(db, 'orders'), orderData);
-            orderId = docRef.id;
+            const orderRef = doc(db, 'orders', finalOrderId);
+            await setDoc(orderRef, orderData, { merge: true });
         } catch (dbError) {
             console.error("Firebase save failed:", dbError);
         }
@@ -78,7 +88,7 @@ export async function POST(request) {
 
         return NextResponse.json({
             success: true,
-            orderId: orderId,
+            orderId: finalOrderId,
             message: 'Order stored and confirmed'
         });
 
