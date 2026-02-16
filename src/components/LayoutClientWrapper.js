@@ -53,7 +53,7 @@ export default function LayoutClientWrapper({ children }) {
       <ThemeProvider>
         <ClientLayoutWrapper>
           {children}
-          {showReferralPopup && <DynamicReferralPopup />}
+          {/* {showReferralPopup && <DynamicReferralPopup />} */}
           <Footer />
         </ClientLayoutWrapper>
         {hasChatConsent && <DynamicVoiceflowChat />}

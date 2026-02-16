@@ -37,7 +37,7 @@ const ReferralPopup = () => {
 
   return (
     <div
-      className={`fixed bottom-6 right-6 z-[9999] max-w-xs w-full transition-all duration-500 ease-out transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0 pointer-events-none"
+      className={`fixed bottom-6 left-6 z-[9999] max-w-xs w-full transition-all duration-500 ease-out transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0 pointer-events-none"
         }`}
     >
       <div className="relative overflow-hidden rounded-xl shadow-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md p-5 pb-4">
