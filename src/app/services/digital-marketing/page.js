@@ -3,17 +3,28 @@ import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import Link from 'next/link';
 import { FaSearch, FaShareAlt, FaEnvelopeOpenText, FaChartLine, FaBullhorn, FaUsers } from 'react-icons/fa';
+import { useLanguage } from "@/context/LanguageContext";
+import { motion } from "framer-motion";
 import Testimonials from "@/components/Testimonials";
 
 const DigitalMarketingPage = () => {
+  const { t } = useLanguage();
   return (
     <div className="service-detail-page bg-gray-50 min-h-screen">
       <HeroSection
-        title="Digital Marketing"
+        title={t('services.marketing.title')}
+        subtitle={t('services.marketing.description')}
       />
 
       <section className="container mx-auto px-4 py-16 text-center">
-        <h2 className="text-4xl font-bold text-gray-800 mb-12">Why Digital Marketing is Essential</h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl font-bold text-gray-900 mb-12 uppercase tracking-tighter"
+        >
+          Why Digital Marketing is Essential
+        </motion.h2>
         <p className="text-lg text-gray-700 leading-relaxed mb-8 max-w-3xl mx-auto">
           In today&apos;s digital-first world, a strong online presence is non-negotiable for business success. Digital marketing allows you to connect with your target audience precisely, measure your impact accurately, and adapt your strategies for optimal performance. It&apos;s about reaching the right people, at the right time, with the right message.
         </p>
@@ -37,7 +48,14 @@ const DigitalMarketingPage = () => {
       </section>
 
       <section className="container mx-auto px-4 py-16 bg-gray-100">
-        <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">Our Digital Marketing Services</h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl font-bold text-gray-900 mb-12 text-center uppercase tracking-tighter"
+        >
+          Our Digital Marketing Services
+        </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 items-start">
           <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center min-h-[250px] justify-between">
             <FaSearch className="text-5xl text-blue-600 mb-4" />
@@ -73,6 +91,29 @@ const DigitalMarketingPage = () => {
       </section>
 
       <Testimonials />
+
+      <section className="py-24 bg-gradient-to-br from-orange-600 to-red-600 text-white text-center rounded-3xl mx-4 mb-16 shadow-2xl overflow-hidden relative">
+        <div className="absolute inset-0 bg-[url('/images/grid.png')] opacity-10"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-6xl font-black mb-8 uppercase tracking-tighter"
+          >
+            Ready to Accelerate Your Growth?
+          </motion.h2>
+          <p className="text-xl mb-12 max-w-2xl mx-auto opacity-90 font-medium">
+            Join the elite businesses using AI-driven marketing strategies to dominate their market.
+          </p>
+          <Link
+            href="/request-quote"
+            className="inline-block bg-white text-orange-600 py-4 px-10 rounded-full hover:scale-105 transition-transform duration-300 text-xl font-black shadow-2xl uppercase tracking-tight"
+          >
+            Get Started
+          </Link>
+        </div>
+      </section>
     </div>
   );
 };

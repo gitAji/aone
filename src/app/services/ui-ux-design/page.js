@@ -3,19 +3,31 @@ import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import Link from 'next/link';
 import { FaPalette, FaUserFriends, FaLightbulb, FaLaptopCode, FaMobileAlt, FaAccessibleIcon, FaChartLine } from 'react-icons/fa';
+import { useLanguage } from "@/context/LanguageContext";
+import { motion } from "framer-motion";
+import Testimonials from "@/components/Testimonials";
 
 const UIUXDesignPage = () => {
+  const { t } = useLanguage();
   return (
     <div className="service-detail-page bg-gray-50 min-h-screen">
       <HeroSection
-        title="UI/UX Design"
+        title={t('services.uiux.title')}
+        subtitle={t('services.uiux.description')}
       />
 
       <section className="container mx-auto px-4 py-16 text-center">
-        <h2 className="text-4xl font-bold text-gray-800 mb-12">The Art & Science of UI/UX Design</h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl font-bold text-gray-900 mb-12 uppercase tracking-tighter"
+        >
+          The Art & Science of UI/UX Design
+        </motion.h2>
         <p className="text-lg text-gray-700 leading-relaxed mb-8 max-w-3xl mx-auto">
-            User Interface (UI) and User Experience (UX) design are the cornerstones of successful digital products. UI focuses on the visual elements users interact with, while UX ensures those interactions are meaningful and enjoyable. Together, they create a seamless journey that delights your audience and achieves your business goals.
-          </p>
+          User Interface (UI) and User Experience (UX) design are the cornerstones of successful digital products. UI focuses on the visual elements users interact with, while UX ensures those interactions are meaningful and enjoyable. Together, they create a seamless journey that delights your audience and achieves your business goals.
+        </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
           <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
             <FaPalette className="text-5xl text-blue-600 mb-4" />
@@ -36,7 +48,14 @@ const UIUXDesignPage = () => {
       </section>
 
       <section className="container mx-auto px-4 py-16 bg-gray-100">
-        <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">Our UI/UX Design Process</h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl font-bold text-gray-900 mb-12 text-center uppercase tracking-tighter"
+        >
+          Our UI/UX Design Process
+        </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 items-start">
           <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
             <FaLightbulb className="text-5xl text-blue-600 mb-4" />
@@ -71,11 +90,27 @@ const UIUXDesignPage = () => {
         </div>
       </section>
 
-      <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-8">Ready for a design that truly connects?</h2>
-          <Link href="/free-consultation" className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg">
-            Get a Free Consultation
+      <Testimonials />
+
+      <section className="py-24 bg-gradient-to-br from-violet-600 to-indigo-600 text-white text-center rounded-3xl mx-4 mb-16 shadow-2xl overflow-hidden relative">
+        <div className="absolute inset-0 bg-[url('/images/grid.png')] opacity-10"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-6xl font-black mb-8 uppercase tracking-tighter"
+          >
+            Design for the Future
+          </motion.h2>
+          <p className="text-xl mb-12 max-w-2xl mx-auto opacity-90 font-medium">
+            Join the elite businesses using user-centric design to dominate their market.
+          </p>
+          <Link
+            href="/request-quote"
+            className="inline-block bg-white text-violet-600 py-4 px-10 rounded-full hover:scale-105 transition-transform duration-300 text-xl font-black shadow-2xl uppercase tracking-tight"
+          >
+            Get Started
           </Link>
         </div>
       </section>

@@ -1,7 +1,7 @@
 export const metadata = {
-  title: "Our Services | Aone",
-  description: "Explore digital services by Aone in Bergen: web development, branding, marketing, AI automations, photography, and videography.",
-  keywords: "digital services, web development, branding, digital marketing, AI automations, photography, videography, Aone, Norway",
+  title: "AI-Native Services | Aone",
+  description: "Elite AI-native digital services: AI-Powered Web, Future-Ready Branding, AI Chatbots, GEO, and AI Business Automations for 2026.",
+  keywords: "AI Chatbots, AI Web Design, GEO, Generative Engine Optimization, AI Automations, Norway AI Agency, Future-Ready Branding",
 };
 
 export default function ServicesLayout({ children }) {

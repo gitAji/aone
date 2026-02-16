@@ -17,6 +17,7 @@ export default function sitemap() {
     "/terms-and-conditions",
     "/services",
     "/services/ai-automations",
+    "/services/ai-chatbots",
     "/services/branding",
     "/services/digital-marketing",
     "/services/geo",

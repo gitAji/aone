@@ -3,17 +3,28 @@ import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import Link from 'next/link';
 import { FaRobot, FaLightbulb, FaRocket, FaCogs, FaChartLine, FaShieldAlt } from 'react-icons/fa';
+import { useLanguage } from "@/context/LanguageContext";
+import { motion } from "framer-motion";
 import Testimonials from "@/components/Testimonials";
 
-const AIAuomationsPage = () => {
+const AIAutomationsPage = () => {
+  const { t } = useLanguage();
   return (
     <div className="service-detail-page bg-gray-50 min-h-screen">
       <HeroSection
-        title="AI Automations"
+        title={t('services.ai.title')}
+        subtitle={t('services.ai.description')}
       />
 
       <section className="container mx-auto px-4 py-16 text-center">
-        <h2 className="text-4xl font-bold text-gray-800 mb-12">Why AI Automations?</h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl font-bold text-gray-900 mb-12 uppercase tracking-tighter"
+        >
+          Why AI Automations?
+        </motion.h2>
         <p className="text-lg text-gray-700 leading-relaxed mb-8 max-w-3xl mx-auto">
           In today&apos;s fast-paced digital landscape, businesses are constantly seeking ways to optimize operations, reduce costs, and enhance customer experiences. AI Automations offer a powerful solution, enabling you to delegate repetitive tasks to intelligent systems, freeing up your human talent for strategic initiatives and creative problem-solving.
         </p>
@@ -37,7 +48,14 @@ const AIAuomationsPage = () => {
       </section>
 
       <section className="container mx-auto px-4 py-16 bg-gray-100">
-        <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">Our Approach to AI Automations</h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl font-bold text-gray-900 mb-12 text-center uppercase tracking-tighter"
+        >
+          Our Approach to AI Automations
+        </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="text-lg text-gray-700 leading-relaxed space-y-6">
             <p>Our process begins with a deep dive into your current operations to identify key areas where AI can deliver the most impact. We don&apos;t just implement technology; we craft bespoke solutions that seamlessly integrate with your existing systems and workflows.</p>
@@ -65,8 +83,31 @@ const AIAuomationsPage = () => {
       </section>
 
       <Testimonials />
+
+      <section className="py-24 bg-gradient-to-br from-blue-600 to-cyan-600 text-white text-center rounded-3xl mx-4 mb-16 shadow-2xl overflow-hidden relative">
+        <div className="absolute inset-0 bg-[url('/images/grid.png')] opacity-10"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-6xl font-black mb-8 uppercase tracking-tighter"
+          >
+            Ready to Automate Your Success?
+          </motion.h2>
+          <p className="text-xl mb-12 max-w-2xl mx-auto opacity-90 font-medium">
+            Join the elite businesses using AI agents to streamline their workflows and dominate their market.
+          </p>
+          <Link
+            href="/request-quote"
+            className="inline-block bg-white text-blue-600 py-4 px-10 rounded-full hover:scale-105 transition-transform duration-300 text-xl font-black shadow-2xl uppercase tracking-tight"
+          >
+            Get Started
+          </Link>
+        </div>
+      </section>
     </div>
   );
 };
 
-export default AIAuomationsPage;
+export default AIAutomationsPage;

@@ -8,6 +8,8 @@ import {
   FaVideo,
   FaSearchDollar,
   FaObjectGroup,
+  FaCommentDots,
+  FaSync,
 } from "react-icons/fa";
 
 import { useLanguage } from "@/context/LanguageContext";
@@ -24,7 +26,7 @@ const ServiceCard = ({ href, icon: Icon, title, description, color }) => {
           <Icon className={`text-4xl ${color} transition-colors duration-500`} />
         </div>
         <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">{title}</h3>
-        <p className="text-slate-500 dark:text-slate-400 leading-relaxed font-medium">{description}</p>
+        <p className="text-slate-600 dark:text-slate-300 leading-relaxed font-medium">{description}</p>
       </div>
       <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-rose-500 to-amber-500 transition-all duration-500 group-hover:w-full"></div>
     </a>
@@ -42,7 +44,7 @@ const ServicesSection = () => {
         >
           {t('services.title')}
         </h2>
-        <p className="text-xl text-slate-500 dark:text-slate-400 max-w-3xl mx-auto font-medium">
+        <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto font-medium">
           {t('services.subtitle')}
         </p>
       </header>
@@ -66,11 +68,18 @@ const ServicesSection = () => {
           icon={FaChartLine}
           title={t('services.marketing.title')}
           description={t('services.marketing.description')}
-          color="text-blue-500 group-hover:text-blue-600"
+          color="text-yellow-500 group-hover:text-yellow-600"
+        />
+        <ServiceCard
+          href="/services/ai-chatbots"
+          icon={FaRobot}
+          title={t('services.chatbot.title')}
+          description={t('services.chatbot.description')}
+          color="text-rose-500 group-hover:text-rose-600"
         />
         <ServiceCard
           href="/services/ai-automations"
-          icon={FaRobot}
+          icon={FaSync}
           title={t('services.ai.title')}
           description={t('services.ai.description')}
           color="text-emerald-500 group-hover:text-emerald-600"
@@ -81,13 +90,6 @@ const ServicesSection = () => {
           title={t('services.geo.title')}
           description={t('services.geo.description')}
           color="text-indigo-500 group-hover:text-indigo-600"
-        />
-        <ServiceCard
-          href="/services/ui-ux-design"
-          icon={FaObjectGroup}
-          title={t('services.uiux.title')}
-          description={t('services.uiux.description')}
-          color="text-purple-500 group-hover:text-purple-600"
         />
       </div>
     </section>

@@ -42,7 +42,7 @@
     --footer-background: #020617;
     --hero-background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
     --hero-text: #f1f5f9;
-    --hero-bg-overlay: linear-gradient(to bottom, rgba(2, 6, 23, 0.85) 0%, rgba(15, 23, 42, 0.6) 50%, rgba(2, 6, 23, 0.95) 100%);
+    --hero-bg-overlay: linear-gradient(to bottom, rgba(2, 6, 23, 0.92) 0%, rgba(15, 23, 42, 0.8) 50%, rgba(2, 6, 23, 0.98) 100%);
     --hero-highlight: #facc15;
   }
 }
@@ -313,7 +313,7 @@ p {
 .hero-content {
   position: relative;
   z-index: 1;
-  color: #ffffff;
+  color: var(--hero-text);
   max-width: 90%;
   padding: 0 1.5rem;
   text-align: center;
@@ -323,14 +323,15 @@ p {
   font-size: clamp(3rem, 12vw, 7rem);
   line-height: 1;
   margin-bottom: 1.5rem;
-  color: #ffffff;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  color: var(--hero-text);
+  text-shadow: 0 4px 20px var(--shadow-color);
 }
 
 .hero-tagline {
   font-family: var(--font-raleway);
   font-size: clamp(1rem, 3vw, 1.5rem);
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--hero-text);
+  opacity: 0.8;
   max-width: 800px;
   margin: 0 auto 2.5rem;
 }
@@ -382,6 +383,7 @@ p {
   color: white;
   border: none;
   box-shadow: 0 10px 25px -5px rgba(244, 63, 94, 0.4);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .btn-primary:hover,

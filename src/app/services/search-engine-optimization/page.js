@@ -3,17 +3,28 @@ import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import Link from 'next/link';
 import { FaSearch, FaChartLine, FaGlobe, FaCogs, FaMapMarkerAlt, FaLightbulb } from 'react-icons/fa';
+import { useLanguage } from "@/context/LanguageContext";
+import { motion } from "framer-motion";
 import Testimonials from "@/components/Testimonials";
 
 const SearchEngineOptimizationPage = () => {
+  const { t } = useLanguage();
   return (
     <div className="service-detail-page bg-gray-50 min-h-screen">
       <HeroSection
-        title="Search Engine Optimization"
+        title={t('services.seo.title')}
+        subtitle={t('services.seo.description')}
       />
 
       <section className="container mx-auto px-4 py-16 text-center">
-        <h2 className="text-4xl font-bold text-gray-800 mb-12">Why SEO is Crucial for Your Business</h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl font-bold text-gray-900 mb-12 uppercase tracking-tighter"
+        >
+          Why SEO is Crucial for Your Business
+        </motion.h2>
         <p className="text-lg text-gray-700 leading-relaxed mb-8 max-w-3xl mx-auto">
           In the vast digital landscape, Search Engine Optimization (SEO) is the compass that guides your customers to your doorstep. It&apos;s about more than just rankings; it&apos;s about visibility, credibility, and sustainable growth. A strong SEO strategy ensures your business is found by those actively looking for your products or services.
         </p>
@@ -37,7 +48,14 @@ const SearchEngineOptimizationPage = () => {
       </section>
 
       <section className="container mx-auto px-4 py-16 bg-gray-100">
-        <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">Our Comprehensive SEO Services</h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl font-bold text-gray-900 mb-12 text-center uppercase tracking-tighter"
+        >
+          Our Comprehensive SEO Services
+        </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 items-start">
           <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
             <FaLightbulb className="text-5xl text-blue-600 mb-4" />
@@ -73,6 +91,29 @@ const SearchEngineOptimizationPage = () => {
       </section>
 
       <Testimonials />
+
+      <section className="py-24 bg-gradient-to-br from-slate-800 to-slate-950 text-white text-center rounded-3xl mx-4 mb-16 shadow-2xl overflow-hidden relative">
+        <div className="absolute inset-0 bg-[url('/images/grid.png')] opacity-10"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-6xl font-black mb-8 uppercase tracking-tighter"
+          >
+            Ready to Dominate Search?
+          </motion.h2>
+          <p className="text-xl mb-12 max-w-2xl mx-auto opacity-90 font-medium">
+            Join the elite businesses using AI-enhanced SEO to dominate their market.
+          </p>
+          <Link
+            href="/request-quote"
+            className="inline-block bg-white text-slate-900 py-4 px-10 rounded-full hover:scale-105 transition-transform duration-300 text-xl font-black shadow-2xl uppercase tracking-tight"
+          >
+            Get Started
+          </Link>
+        </div>
+      </section>
     </div>
   );
 };

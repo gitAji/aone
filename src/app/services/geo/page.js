@@ -3,17 +3,28 @@ import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import Link from 'next/link';
 import { FaSearchDollar, FaLightbulb, FaRocket, FaCogs, FaChartLine, FaShieldAlt } from 'react-icons/fa';
+import { useLanguage } from "@/context/LanguageContext";
+import { motion } from "framer-motion";
 import Testimonials from "@/components/Testimonials";
 
 const GEOPage = () => {
+  const { t } = useLanguage();
   return (
     <div className="service-detail-page bg-gray-50 min-h-screen">
       <HeroSection
-        title="Generative Engine Optimization (GEO)"
+        title={t('services.geo.title')}
+        subtitle={t('services.geo.description')}
       />
 
       <section className="container mx-auto px-4 py-16 text-center">
-        <h2 className="text-4xl font-bold text-gray-800 mb-12">Why Generative Engine Optimization?</h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl font-bold text-gray-900 mb-12 uppercase tracking-tighter"
+        >
+          Why Generative Engine Optimization?
+        </motion.h2>
         <p className="text-lg text-gray-700 leading-relaxed mb-8 max-w-3xl mx-auto">
           In the age of AI, how people search for information is changing. Generative Engine Optimization (GEO) is the practice of optimizing your content to be found and recommended by AI-powered search engines and chatbots. It&apos;s about creating content that not only ranks high but also provides direct, accurate, and helpful answers to user queries.
         </p>
@@ -37,7 +48,14 @@ const GEOPage = () => {
       </section>
 
       <section className="container mx-auto px-4 py-16 bg-gray-100">
-        <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">Our Approach to GEO</h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl font-bold text-gray-900 mb-12 text-center uppercase tracking-tighter"
+        >
+          Our Approach to GEO
+        </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="text-lg text-gray-700 leading-relaxed space-y-6">
             <p>Our GEO process starts with understanding your target audience and the questions they ask. We then analyze your existing content and identify opportunities to create new, AI-friendly content that directly answers those questions.</p>
@@ -65,6 +83,29 @@ const GEOPage = () => {
       </section>
 
       <Testimonials />
+
+      <section className="py-24 bg-gradient-to-br from-emerald-600 to-teal-600 text-white text-center rounded-3xl mx-4 mb-16 shadow-2xl overflow-hidden relative">
+        <div className="absolute inset-0 bg-[url('/images/grid.png')] opacity-10"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-6xl font-black mb-8 uppercase tracking-tighter"
+          >
+            Ready to Dominate AI Search?
+          </motion.h2>
+          <p className="text-xl mb-12 max-w-2xl mx-auto opacity-90 font-medium">
+            Join the elite businesses using GEO to stay ahead of the curve and dominate their market.
+          </p>
+          <Link
+            href="/request-quote"
+            className="inline-block bg-white text-emerald-600 py-4 px-10 rounded-full hover:scale-105 transition-transform duration-300 text-xl font-black shadow-2xl uppercase tracking-tight"
+          >
+            Get Started
+          </Link>
+        </div>
+      </section>
     </div>
   );
 };

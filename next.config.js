@@ -82,12 +82,12 @@ const nextConfig = {
       },
       {
         source: "/references/project-4",
-        destination: "/references/tulips",
+        destination: "/references/tulips-beauty",
         permanent: true,
       },
       {
         source: "/references/project-5",
-        destination: "/references/qfs-accoutant",
+        destination: "/references/qfs-accountants",
         permanent: true,
       },
       {

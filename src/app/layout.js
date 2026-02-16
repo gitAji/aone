@@ -28,11 +28,11 @@ const raleway = Raleway({
 
 export const metadata = {
   metadataBase: new URL('https://aone.no'),
-  title: "Web Design in Bergen, Norway | Webdesign i Bergen",
+  title: "Aone | AI-Native Digital Agency in Bergen & Oslo",
   description:
-    "Aone: Web design & digital marketing in Bergen. We create stunning websites to grow your business.",
+    "Aone is an elite AI-native agency specializing in high-performance web development, custom AI chatbots, and Generative Engine Optimization (GEO). We build the future of digital presence.",
   keywords:
-    "Web Design Bergen, Logo Design, SEO Services, Marketing, Printing, Affordable Websites, Netsider, Netbutikk, Søkemotoroptimalisering, Digital Markedsføring, Nettbutikk utvikling, Webutvikling, Grafisk design",
+    "AI Agency Norway, AI-Native Web Design, AI Chatbots Bergen, GEO SEO, Generative Engine Optimization, High Performance Websites, Next.js Development, Digital Transformation, AI Business Automation",
   icons: {
     icon: "/images/favicon.ico",
   },
@@ -43,8 +43,8 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: "Web Design in Bergen, Norway | Webdesign i Bergen",
-    description: "Aone: Web design & digital marketing in Bergen. We create stunning websites to grow your business.",
+    title: "Aone | AI-Native Digital Agency",
+    description: "Elite AI-native agency specializing in high-performance web and custom AI solutions.",
     url: "https://aone.no",
     type: "website",
     images: [

@@ -25,10 +25,13 @@ export default function LayoutClientWrapper({ children }) {
     }, 2000); // 2-second delay
 
     const handleCookiebotConsent = () => {
-      if (window.Cookiebot && window.Cookiebot.consent.marketing) {
-        setHasChatConsent(true);
+      // If Cookiebot isn't loaded yet or user hasn't made a choice, we can show it
+      // or check if they specifically declined marketing.
+      if (window.Cookiebot) {
+        setHasChatConsent(window.Cookiebot.consent.marketing);
       } else {
-        setHasChatConsent(false);
+        // Fallback: show it by default until Cookiebot decides otherwise
+        setHasChatConsent(true);
       }
     };
 

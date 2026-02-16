@@ -14,20 +14,24 @@ import {
 } from "react-icons/fa";
 import { motion } from "framer-motion"; // Added for subtle animations
 import Testimonials from "@/components/Testimonials";
+import { useLanguage } from "@/context/LanguageContext";
 
 const WebDevelopmentPage = () => {
+  const { t } = useLanguage();
   return (
     <div className="service-detail-page bg-gray-50 min-h-screen">
-      {/* Compact Hero Section */}
-      <HeroSection title="Web Development Solutions" />
+      <HeroSection
+        title={t('services.webDev.title')}
+        subtitle={t('services.webDev.description')}
+      />
 
       {/* Why Choose Us Section */}
       <section className="container mx-auto px-4 py-12 text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-3xl font-bold text-gray-800 mb-8"
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl font-bold text-gray-900 mb-8 uppercase tracking-tighter"
         >
           Why Your Website Matters
         </motion.h2>
@@ -78,9 +82,9 @@ const WebDevelopmentPage = () => {
       <section className="container mx-auto px-4 py-12 bg-gray-100">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-3xl font-bold text-gray-800 mb-8 text-center"
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl font-bold text-gray-900 mb-8 text-center uppercase tracking-tighter"
         >
           Our Web Development Services
         </motion.h2>
@@ -143,17 +147,26 @@ const WebDevelopmentPage = () => {
       {/* Testimonial Section */}
       <Testimonials />
 
-      {/* CTA Section */}
-      <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-8">
-            Ready to Transform Your Online Presence?
-          </h2>
-          <Link
-            href="/free-consultation"
-            className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg"
+      {/* Final CTA */}
+      <section className="py-24 bg-gradient-to-br from-indigo-600 to-purple-600 text-white text-center rounded-3xl mx-4 mb-16 shadow-2xl overflow-hidden relative">
+        <div className="absolute inset-0 bg-[url('/images/grid.png')] opacity-10"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-6xl font-black mb-8 uppercase tracking-tighter"
           >
-            Get a Free Consultation
+            Ready to Build the Future?
+          </motion.h2>
+          <p className="text-xl mb-12 max-w-2xl mx-auto opacity-90 font-medium">
+            Join the elite businesses using high-performance web tech to dominate their market.
+          </p>
+          <Link
+            href="/request-quote"
+            className="inline-block bg-white text-indigo-600 py-4 px-10 rounded-full hover:scale-105 transition-transform duration-300 text-xl font-black shadow-2xl uppercase tracking-tight"
+          >
+            Get Started
           </Link>
         </div>
       </section>
