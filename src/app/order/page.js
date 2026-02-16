@@ -63,7 +63,7 @@ function OrderPageContent() {
         } catch (err) {
             console.error('Failed to sync state:', err);
         }
-    }, [orderId, step, selectedPack, addons, formData, billingInterval]);
+    }, [orderId, step, selectedPack, addons, formData, billingInterval, calculateTotal]);
 
     // Re-hydrate state from database on mount if order_id is present
     useEffect(() => {
@@ -163,7 +163,7 @@ function OrderPageContent() {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const calculateTotal = () => {
+    const calculateTotal = useCallback(() => {
         if (!selectedPack) return { base: 0, addons: 0, monthly: 0, total: 0 };
         let base = billingInterval === 'monthly' ? selectedPack.monthlyPrice : selectedPack.price;
 
@@ -183,7 +183,7 @@ function OrderPageContent() {
             monthly: (billingInterval === 'monthly' ? selectedPack.monthlyPrice : 0) + addonsMonthly,
             total
         };
-    };
+    }, [selectedPack, billingInterval, addons]);
 
     const submitOrder = async (method) => {
         if (!formData.name || !formData.email) {

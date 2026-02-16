@@ -2,6 +2,10 @@ import { NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
 
 export async function POST(req) {
+    if (!stripe) {
+        console.error('Stripe is not configured. STRIPE_SECRET_KEY is missing.');
+        return NextResponse.json({ error: 'Stripe is not configured' }, { status: 500 });
+    }
     try {
         const { orderId, package: selectedPack, addons, billingInterval, formData } = await req.json();
 
