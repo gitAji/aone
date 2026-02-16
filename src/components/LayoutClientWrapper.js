@@ -11,13 +11,13 @@ const DynamicReferralPopup = dynamic(() =>
   import("@/components/ReferralPopup").then((mod) => mod.default)
 );
 
-const DynamicTawkToMessenger = dynamic(() =>
-  import("@/components/TawkToMessenger").then((mod) => mod.default)
+const DynamicVoiceflowChat = dynamic(() =>
+  import("@/components/VoiceflowChat").then((mod) => mod.default)
 );
 
 export default function LayoutClientWrapper({ children }) {
   const [showReferralPopup, setShowReferralPopup] = useState(false);
-  const [hasTawkToConsent, setHasTawkToConsent] = useState(false);
+  const [hasChatConsent, setHasChatConsent] = useState(false);
 
   useEffect(() => {
     const referralTimer = setTimeout(() => {
@@ -26,9 +26,9 @@ export default function LayoutClientWrapper({ children }) {
 
     const handleCookiebotConsent = () => {
       if (window.Cookiebot && window.Cookiebot.consent.marketing) {
-        setHasTawkToConsent(true);
+        setHasChatConsent(true);
       } else {
-        setHasTawkToConsent(false);
+        setHasChatConsent(false);
       }
     };
 
@@ -56,7 +56,7 @@ export default function LayoutClientWrapper({ children }) {
           {showReferralPopup && <DynamicReferralPopup />}
           <Footer />
         </ClientLayoutWrapper>
-        {hasTawkToConsent && <DynamicTawkToMessenger />}
+        {hasChatConsent && <DynamicVoiceflowChat />}
       </ThemeProvider>
     </LanguageProvider>
   );
