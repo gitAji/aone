@@ -40,6 +40,7 @@ const HamburgerMenu = () => {
             width={20}
             height={15}
             className={`w-5 h-auto rounded-[1px] transition-all duration-300 ${language === 'en' ? 'opacity-100 scale-110 shadow-lg' : 'opacity-30 group-hover:opacity-60'}`}
+            unoptimized
           />
           <span className={`text-[10px] font-black tracking-[0.2em] uppercase transition-colors duration-300 ${language === 'en' ? 'text-rose-500' : 'text-slate-600 dark:text-white/60 group-hover:text-slate-900 dark:group-hover:text-white'}`}>
             EN
@@ -58,6 +59,7 @@ const HamburgerMenu = () => {
             width={20}
             height={15}
             className={`w-5 h-auto rounded-[1px] transition-all duration-300 ${language === 'no' ? 'opacity-100 scale-110 shadow-lg' : 'opacity-30 group-hover:opacity-60'}`}
+            unoptimized
           />
           <span className={`text-[10px] font-black tracking-[0.2em] uppercase transition-colors duration-300 ${language === 'no' ? 'text-rose-500' : 'text-slate-600 dark:text-white/60 group-hover:text-slate-900 dark:group-hover:text-white'}`}>
             NO
@@ -139,14 +141,14 @@ const HamburgerMenu = () => {
               onClick={() => changeLanguage('en')}
               className={`flex items-center gap-2 text-xl font-bold uppercase tracking-widest transition-all duration-300 ${language === 'en' ? 'text-rose-500 scale-110' : 'text-white/40 hover:text-white'}`}
             >
-              <Image src={getFlagUrl('en')} alt="EN" width={24} height={18} className="w-6 h-auto rounded-[2px]" />
+              <Image src={getFlagUrl('en')} alt="EN" width={24} height={18} className="w-6 h-auto rounded-[2px]" unoptimized />
               EN
             </button>
             <button
               onClick={() => changeLanguage('no')}
               className={`flex items-center gap-2 text-xl font-bold uppercase tracking-widest transition-all duration-300 ${language === 'no' ? 'text-rose-500 scale-110' : 'text-white/40 hover:text-white'}`}
             >
-              <Image src={getFlagUrl('no')} alt="NO" width={24} height={18} className="w-6 h-auto rounded-[2px]" />
+              <Image src={getFlagUrl('no')} alt="NO" width={24} height={18} className="w-6 h-auto rounded-[2px]" unoptimized />
               NO
             </button>
           </div>

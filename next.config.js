@@ -14,6 +14,24 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "flagcdn.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.voiceflow.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "tawk.link",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
   async headers() {
@@ -24,7 +42,7 @@ const nextConfig = {
           {
             key: "Content-Security-Policy",
             value:
-              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: app.cal.com analytics.ahrefs.com consent.cookiebot.com https://consentcdn.cookiebot.com https://cdn.voiceflow.com https://*.voiceflow.com https://embed.tawk.to https://*.tawk.to https://www.googletagmanager.com https://*.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.voiceflow.com https://*.voiceflow.com https://embed.tawk.to https://*.tawk.to; connect-src 'self' https://blog.aone.no http://blog.aone.no https://consentcdn.cookiebot.com https://general-runtime.voiceflow.com https://runtime-api.voiceflow.com https://*.voiceflow.com wss://*.voiceflow.com wss://*.tawk.to https://*.tawk.to https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-src 'self' https://consentcdn.cookiebot.com https://cdn.voiceflow.com https://*.voiceflow.com https://*.tawk.to; img-src 'self' data: https://imgsct.cookiebot.com https://flagcdn.com https://cdnjs.cloudflare.com https://purecatamphetamine.github.io https://*.google-analytics.com https://*.googletagmanager.com https://cdn.voiceflow.com https://*.voiceflow.com https://*.tawk.to https://tawk.link; font-src 'self' https://fonts.gstatic.com https://cdn.voiceflow.com data:; media-src 'self' https://cdn.voiceflow.com https://*.voiceflow.com; worker-src 'self' blob:;",
+              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: app.cal.com analytics.ahrefs.com consent.cookiebot.com https://consentcdn.cookiebot.com https://cdn.voiceflow.com https://*.voiceflow.com https://embed.tawk.to https://*.tawk.to https://www.googletagmanager.com https://*.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.voiceflow.com https://*.voiceflow.com https://embed.tawk.to https://*.tawk.to; connect-src 'self' https://blog.aone.no http://blog.aone.no https://consentcdn.cookiebot.com https://general-runtime.voiceflow.com https://runtime-api.voiceflow.com https://*.voiceflow.com wss://*.voiceflow.com wss://*.tawk.to https://*.tawk.to https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-src 'self' https://consentcdn.cookiebot.com https://cdn.voiceflow.com https://*.voiceflow.com https://*.tawk.to; img-src 'self' data: blob: https://imgsct.cookiebot.com https://flagcdn.com https://cdnjs.cloudflare.com https://purecatamphetamine.github.io https://*.google-analytics.com https://*.googletagmanager.com https://cdn.voiceflow.com https://*.voiceflow.com https://*.tawk.to https://tawk.link; font-src 'self' https://fonts.gstatic.com https://cdn.voiceflow.com data:; media-src 'self' https://cdn.voiceflow.com https://*.voiceflow.com; worker-src 'self' blob:;",
           },
           {
             key: "X-Content-Type-Options",
