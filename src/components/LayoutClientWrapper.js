@@ -11,6 +11,10 @@ const DynamicReferralPopup = dynamic(() =>
   import("@/components/ReferralPopup").then((mod) => mod.default)
 );
 
+const DynamicTawkToMessenger = dynamic(() =>
+  import("@/components/TawkToMessenger").then((mod) => mod.default)
+);
+
 const DynamicVoiceflowChat = dynamic(() =>
   import("@/components/VoiceflowChat").then((mod) => mod.default)
 );
@@ -59,7 +63,8 @@ export default function LayoutClientWrapper({ children }) {
           {/* {showReferralPopup && <DynamicReferralPopup />} */}
           <Footer />
         </ClientLayoutWrapper>
-        {hasChatConsent && <DynamicVoiceflowChat />}
+        <DynamicVoiceflowChat />
+        {/* <DynamicTawkToMessenger /> */}
       </ThemeProvider>
     </LanguageProvider>
   );
