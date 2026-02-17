@@ -40,7 +40,7 @@ const AIChatbotsPage = () => {
                 </motion.h2>
                 <p className="text-xl text-gray-700 leading-relaxed mb-12 max-w-3xl mx-auto font-medium">
                     Static forms are dead. Modern customers expect instant, intelligent, and personalized responses.
-                    Our AI agents don't just "chat"—they solve problems, qualify leads, and close sales.
+                    Our AI agents don&apos;t just &quot;chat&quot;—they solve problems, qualify leads, and close sales.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[

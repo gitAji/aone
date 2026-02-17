@@ -18,7 +18,7 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-section about-us">
           <div className="mb-4">
-            <img src="/images/logo.png" alt="Aone Logo" className="h-12 w-auto" />
+            <Image src="/images/logo.png" alt="Aone Logo" width={150} height={50} className="h-12 w-auto" />
           </div>
           <h3>{t('footer.aboutTitle')}</h3>
           <p>
