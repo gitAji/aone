@@ -14,6 +14,10 @@ const VoiceflowChat = () => {
           verify: { projectID: '699382016bc24417c151dcc6' },
           url: 'https://general-runtime.voiceflow.com',
           versionID: 'production',
+          render: {
+            showFooter: false,
+            hideWatermark: true,
+          },
           voice: {
             url: "https://runtime-api.voiceflow.com"
           }

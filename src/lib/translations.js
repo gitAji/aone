@@ -2,6 +2,7 @@ export const translations = {
     en: {
         nav: {
             services: "Services",
+            products: "Products",
             references: "References",
             about: "About",
             blog: "Blog",
@@ -147,6 +148,10 @@ export const translations = {
             seoTitle: "AI-Enhanced SEO",
             seoDesc: "Traditional and AI-driven SEO strategies to dominate search results.",
         },
+        productsPage: {
+            subtitle: "Explore our dedicated SaaS systems and platforms",
+            header: "Our Cloud Solutions",
+        },
         referencesPage: {
             title: "Our References",
             subtitle: "Explore our portfolio of successful projects",
@@ -288,6 +293,7 @@ export const translations = {
     no: {
         nav: {
             services: "Tjenester",
+            products: "Produkter",
             references: "Referanser",
             about: "Om oss",
             blog: "Blogg",
@@ -432,6 +438,10 @@ export const translations = {
             uiuxDesc: "Brukersentriske grensesnitt optimalisert for moderne brukeratferd og universell utforming.",
             seoTitle: "AI-forbedret SEO",
             seoDesc: "Tradisjonelle og AI-drevne SEO-strategier for å dominere søkeresultatene.",
+        },
+        productsPage: {
+            subtitle: "Utforsk våre dedikerte SaaS-systemer og plattformer",
+            header: "Våre Skyløsninger",
         },
         referencesPage: {
             title: "Våre referanser",

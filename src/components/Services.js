@@ -75,14 +75,14 @@ const ServicesSection = () => {
           icon={FaRobot}
           title={t('services.chatbot.title')}
           description={t('services.chatbot.description')}
-          color="text-rose-500 group-hover:text-rose-600"
+          color="text-slate-500 group-hover:text-slate-600"
         />
         <ServiceCard
           href="/services/ai-automations"
           icon={FaSync}
           title={t('services.ai.title')}
           description={t('services.ai.description')}
-          color="text-emerald-500 group-hover:text-emerald-600"
+          color="text-slate-500 group-hover:text-slate-600"
         />
         <ServiceCard
           href="/services/geo"

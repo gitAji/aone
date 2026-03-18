@@ -178,6 +178,7 @@ const HamburgerMenu = () => {
             <ul className="menu-links flex flex-col items-center gap-8">
               {[
                 { name: t('nav.services'), href: '/services' },
+                { name: t('nav.products'), href: '/products' },
                 { name: t('nav.references'), href: '/references' },
                 { name: t('nav.about'), href: '/about' },
                 { name: t('nav.blog'), href: '/blog' },

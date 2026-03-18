@@ -10,7 +10,7 @@ const projects = [
       description1:
         "This project involved designing and developing a modern, user-friendly website for kids learning portal. The goal was to create an engaging platform that offers educational resources, interactive activities, and a safe online environment for children.",
       description2:
-        "where parents create account and add kids to the portal & create kids login credentials and then kids can login and access the learning materials. Key functionalities included an interactive menu display, an intuitive table booking system, and a gallery to highlight the restaurant's ambiance. We aimed to create a digital platform that truly reflects the quality and elegance of Saray Steakhouse.",
+        "where parents create account and add kids to the portal & create kids login credentials and then kids can login and access the learning materials.",
       imageUrl: "/images/projects/kidsportal/project1.png",
     },
     process: [
@@ -132,13 +132,13 @@ const projects = [
       {
         title: "Visual Identity Design",
         description:
-          "Our design team crafted a sleek, intuitive, and secure user interface, focusing on ease of use for complex financial operations. Interactive prototypes were developed for user testing.",
+          "Our design team crafted a sleek, intuitive, and secure user interface, focusing on ease of use. Interactive prototypes were developed for user testing.",
         imageUrl: "/images/projects/cleanmasters/cover.png",
       },
       {
         title: "Secure Development",
         description:
-          "The app was built with a strong emphasis on security, utilizing encryption, secure APIs, and robust backend infrastructure to protect sensitive financial data.",
+          "The app was built with a strong emphasis on security, utilizing encryption, secure APIs, and robust backend infrastructure.",
         imageUrl: "/images/projects/cleanmasters/dev.png",
       },
       {
@@ -203,12 +203,9 @@ const projects = [
       },
     ],
     features: [
-      "Interactive Menu Display with high-quality images.",
       "Responsive Design for optimal viewing on all devices.",
       "Detailed Property Listings with descriptions and amenities.",
-      "High-Resolution Photo Gallery showcasing ambiance and dishes.",
       "SEO Optimization for local search visibility.",
-      "Integration with Restaurant Management Systems (if applicable).",
     ],
     technologies: ["WordPress (headless CMS)"],
     results: {
@@ -315,7 +312,6 @@ const projects = [
     features: [
       "Comprehensive Service Catalog with clear pricing.",
       "Online Booking and Scheduling System for convenience.",
-      "Photo Gallery showcasing before-and-after cleaning results.",
       "Client Testimonials and Reviews Section.",
       "Responsive Design for seamless access on any device.",
       "Integrated Contact Forms and Service Inquiry options.",
