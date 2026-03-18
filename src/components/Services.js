@@ -1,15 +1,11 @@
 import React from "react";
 import {
-  FaLaptopCode,
-  FaPaintBrush,
+  FaCode,
+  FaMagic,
   FaChartLine,
   FaRobot,
-  FaCameraRetro,
-  FaVideo,
-  FaSearchDollar,
-  FaObjectGroup,
-  FaCommentDots,
   FaSync,
+  FaSearchDollar,
 } from "react-icons/fa";
 
 import { useLanguage } from "@/context/LanguageContext";
@@ -51,45 +47,45 @@ const ServicesSection = () => {
       <div className="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <ServiceCard
           href="/services/web-development"
-          icon={FaLaptopCode}
+          icon={FaCode}
           title={t('services.webDev.title')}
           description={t('services.webDev.description')}
-          color="text-blue-600 group-hover:text-blue-700"
+          color="text-rose-500"
         />
         <ServiceCard
           href="/services/branding"
-          icon={FaPaintBrush}
-          title={t('services.branding.title')}
-          description={t('services.branding.description')}
-          color="text-amber-500 group-hover:text-amber-600"
+          icon={FaMagic}
+          title={t('services.branding.title') || "Brand Experience"}
+          description={t('services.branding.description') || "Cohesive brand identities optimized for the digital age."}
+          color="text-rose-500"
         />
         <ServiceCard
           href="/services/digital-marketing"
           icon={FaChartLine}
-          title={t('services.marketing.title')}
-          description={t('services.marketing.description')}
-          color="text-yellow-500 group-hover:text-yellow-600"
+          title={t('services.marketing.title') || "Digital Marketing"}
+          description={t('services.marketing.description') || "Data-driven marketing strategies that fuel sustainable growth."}
+          color="text-rose-500"
         />
         <ServiceCard
           href="/services/ai-chatbots"
           icon={FaRobot}
           title={t('services.chatbot.title')}
           description={t('services.chatbot.description')}
-          color="text-rose-500 group-hover:text-rose-600"
+          color="text-rose-500"
         />
         <ServiceCard
           href="/services/ai-automations"
           icon={FaSync}
           title={t('services.ai.title')}
           description={t('services.ai.description')}
-          color="text-emerald-500 group-hover:text-emerald-600"
+          color="text-rose-500"
         />
         <ServiceCard
           href="/services/geo"
           icon={FaSearchDollar}
           title={t('services.geo.title')}
           description={t('services.geo.description')}
-          color="text-indigo-500 group-hover:text-indigo-600"
+          color="text-rose-500"
         />
       </div>
     </section>

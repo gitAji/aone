@@ -153,6 +153,18 @@ const HamburgerMenu = () => {
             </button>
           </div>
 
+          {/* Minimalist Close Button in Overlay */}
+          <button
+            className="absolute top-8 right-8 w-14 h-14 rounded-full flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 transition-all duration-300"
+            onClick={toggleMenu}
+            aria-label="Close menu"
+          >
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+
 
 
           <nav>

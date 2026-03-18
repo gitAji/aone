@@ -88,7 +88,7 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Subtle glowing orbs */}
         <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-rose-500/10 blur-[120px]"></div>
-        <div className="absolute top-[20%] -right-[10%] w-[40%] h-[40%] rounded-full bg-blue-500/10 blur-[120px]"></div>
+        <div className="absolute top-[20%] -right-[10%] w-[40%] h-[40%] rounded-full bg-slate-500/10 blur-[120px]"></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10 w-full max-w-5xl flex justify-center items-center text-center">
@@ -145,7 +145,7 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-slate-900 dark:text-white mb-6"
+                className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-slate-950 dark:text-white mb-6"
               >
                 {title}
               </motion.h1>
