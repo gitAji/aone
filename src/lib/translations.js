@@ -15,9 +15,9 @@ export const translations = {
             subtitle: "From AI chatbots to lightning-fast websites, we create digital experiences that drive real business results for Norwegian and international clients.",
             cta: "Get a Quote",
             phrases: [
-                "AI-Native Digital Experiences Built for 2|026",
-                "Building intelligent brands that adapt and con|vert.",
-                "Innovating with AI for predictable gr|owth.",
+                "Empowering businesses with |AI.",
+                "High-Performance |Websites.",
+                "Scale with |Automation.",
             ]
         },
         services: {
@@ -306,9 +306,9 @@ export const translations = {
             subtitle: "Fra AI-chatbots til lynraske nettsteder, vi skaper digitale opplevelser som gir ekte forretningsresultater for norske og internasjonale kunder.",
             cta: "Få et tilbud",
             phrases: [
-                "AI-native digitale opplevelser bygget for 2|026",
-                "Bygger intelligente merkevarer som tilpasser seg og konverte|rer.",
-                "Innovasjon med AI for forutsigbar veks|t.",
+                "Styrker bedrifter med |AI.",
+                "Lynraske |Nettsider.",
+                "Skaler med |Automasjon.",
             ]
         },
         services: {

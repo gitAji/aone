@@ -29,6 +29,41 @@ const HighlightedText = ({ text }) => {
   return <>{text}</>;
 };
 
+const TypewriterTitle = ({ text, delay = 50 }) => {
+  const [displayText, setDisplayText] = useState("");
+  const [isDone, setIsDone] = useState(false);
+
+  useEffect(() => {
+    setDisplayText("");
+    setIsDone(false);
+    let i = 0;
+    const interval = setInterval(() => {
+      if (i < text.length) {
+        // Skip the pipe character conceptually but keep it for highlight logic later
+        // Actually, we should strip the pipe for the typing but keep track of where it was
+        // Optimization: Type the underlying string, then apply highlight.
+        setDisplayText(text.slice(0, i + 1));
+        i++;
+      } else {
+        clearInterval(interval);
+        setIsDone(true);
+      }
+    }, delay);
+    return () => clearInterval(interval);
+  }, [text, delay]);
+
+  return (
+    <h1 className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter text-slate-900 dark:text-white leading-[1.1] min-h-[1.2em]">
+      <HighlightedText text={displayText} />
+      <motion.span
+        animate={{ opacity: [0, 1, 0] }}
+        transition={{ duration: 0.8, repeat: Infinity }}
+        className="inline-block w-1 h-12 md:h-20 bg-rose-500 ml-1 align-middle"
+      />
+    </h1>
+  );
+};
+
 const HeroSection = ({ isHomePage = false, title, subtitle }) => {
   const { t, language } = useLanguage();
   const [index, setIndex] = useState(0);
@@ -39,7 +74,7 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
     if (isHomePage && phrases.length > 0) {
       const interval = setInterval(
         () => setIndex((prev) => (prev + 1) % phrases.length),
-        3500
+        5000 // Increased time to allow typing to finish and be read
       );
       return () => clearInterval(interval);
     }
@@ -66,19 +101,18 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
           {isHomePage ? (
             <>
 
-              {/* Typed Title */}
-              <div className="h-32 md:h-48 flex items-center justify-center mb-6">
+              {/* Typewriter Title */}
+              <div className="h-48 flex items-center justify-center mb-6">
                 <AnimatePresence mode="wait">
-                  <motion.h1
+                  <motion.div
                     key={`${language}-${index}`}
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -15 }}
-                    transition={{ duration: 0.5 }}
-                    className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-slate-900 dark:text-white leading-[1.1]"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
                   >
-                    <HighlightedText text={phrases[index] || ""} />
-                  </motion.h1>
+                    <TypewriterTitle text={phrases[index] || ""} />
+                  </motion.div>
                 </AnimatePresence>
               </div>
 
