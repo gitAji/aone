@@ -26,7 +26,7 @@ const ServiceCard = ({ href, icon: Icon, title, description, color }) => {
           <Icon className={`text-5xl ${color} transition-colors duration-500 drop-shadow-sm`} />
         </div>
         <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">{title}</h3>
-        <p className="text-slate-600 dark:text-slate-300 leading-relaxed font-medium">{description}</p>
+        <p className="text-slate-600 dark:text-white leading-relaxed font-medium">{description}</p>
       </div>
       <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-rose-500 to-amber-500 transition-all duration-500 group-hover:w-full"></div>
     </a>
