@@ -10,21 +10,21 @@ const ProductsPage = () => {
   const { t } = useLanguage();
 
   return (
-    <div className="products-page bg-gray-50 min-h-screen">
+    <div className="products-page bg-slate-50 dark:bg-slate-950 min-h-screen">
       <HeroSection
         title={t('nav.products')}
         subtitle={t('productsPage.subtitle') || "Explore our dedicated SaaS systems and platforms"}
       />
 
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white dark:bg-[#020617] transition-colors duration-500">
         <div className="container mx-auto px-6">
-          <h2 className="text-5xl font-black text-slate-900 mb-16 text-center uppercase tracking-tighter">
+          <h2 className="text-5xl font-black text-slate-900 dark:text-white mb-16 text-center uppercase tracking-tighter">
             {t('productsPage.header') || "Our Cloud Solutions"}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12">
             {products.map((product) => (
-              <div key={product.id} className="group bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col">
-                <div className="relative h-64 w-full overflow-hidden bg-slate-100">
+              <div key={product.id} className="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden shadow-lg border border-slate-100 dark:border-slate-800 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col">
+                <div className="relative h-64 w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
                   {product.imageUrl && (
                     <Image
                       src={product.imageUrl}
@@ -33,14 +33,15 @@ const ProductsPage = () => {
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                  <div className="absolute bottom-4 left-6">
-                    <h3 className="text-3xl font-bold text-white tracking-tight">{product.title}</h3>
+                  {/* Stronger overlay gradient for text visibility */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10 transition-opacity duration-500 group-hover:opacity-90"></div>
+                  <div className="absolute bottom-6 left-6 right-6 z-20">
+                    <h3 className="text-3xl font-bold text-white tracking-tight drop-shadow-md">{product.title}</h3>
                   </div>
                 </div>
                 
                 <div className="p-8 flex-1 flex flex-col">
-                  <p className="text-slate-600 font-medium leading-relaxed mb-6 flex-1">
+                  <p className="text-slate-600 dark:text-white font-medium leading-relaxed mb-6 flex-1">
                     {product.description}
                   </p>
                   
@@ -59,7 +60,7 @@ const ProductsPage = () => {
                       href={product.subdomain}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-slate-900 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-rose-500 transition-colors shadow-md"
+                      className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-rose-500 dark:hover:bg-rose-500 dark:hover:text-white transition-colors shadow-md"
                     >
                       Visit Platform
                     </a>

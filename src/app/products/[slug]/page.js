@@ -24,30 +24,30 @@ const ProductDetailPage = () => {
   const nextProduct = products[(currentIndex + 1) % products.length];
 
   return (
-    <div className="project-detail-page bg-gray-50 min-h-screen">
+    <div className="project-detail-page bg-slate-50 dark:bg-slate-950 min-h-screen">
       <HeroSection title={product.title} subtitle={product.description} />
 
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href={prevProduct.projectLink} className="flex items-center text-gray-800 hover:text-blue-600 transition-colors duration-300">
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center relative z-20">
+        <Link href={prevProduct.projectLink} className="flex items-center text-slate-800 dark:text-slate-200 hover:text-rose-500 transition-colors duration-300">
           <FaArrowLeft className="mr-2" /> {prevProduct.title}
         </Link>
-        <Link href={nextProduct.projectLink} className="flex items-center text-gray-800 hover:text-blue-600 transition-colors duration-300">
+        <Link href={nextProduct.projectLink} className="flex items-center text-slate-800 dark:text-slate-200 hover:text-rose-500 transition-colors duration-300">
           {nextProduct.title} <FaArrowRight className="ml-2" />
         </Link>
       </div>
 
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-[#020617] transition-colors duration-500">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-black text-slate-900 mb-8 text-center uppercase tracking-tighter">
+          <h2 className="text-4xl font-black text-slate-900 dark:text-white mb-8 text-center uppercase tracking-tighter">
             {product.title}
           </h2>
           
           <div className="flex flex-col md:flex-row gap-12 items-center">
             <div className="md:w-1/2">
-              <p className="text-lg text-slate-600 leading-relaxed mb-6 font-medium">
+              <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-6 font-medium">
                 {product.overview.description1}
               </p>
-              <p className="text-lg text-slate-600 leading-relaxed mb-6 font-medium">
+              <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-6 font-medium">
                 {product.overview.description2}
               </p>
               
@@ -76,29 +76,29 @@ const ProductDetailPage = () => {
         </div>
       </section>
 
-      <section className="py-24 bg-slate-50">
+      <section className="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-500">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
             <div>
-              <h3 className="text-3xl font-black text-slate-900 mb-8 tracking-tight border-b-2 border-slate-200 pb-4">Core Features</h3>
+              <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-8 tracking-tight border-b-2 border-slate-200 dark:border-slate-800 pb-4">Core Features</h3>
               <ul className="space-y-4">
                 {product.features.map((feature, index) => (
                   <li key={index} className="flex items-start">
                     <svg className="w-6 h-6 text-emerald-500 mr-3 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-lg text-slate-700 font-medium">{feature}</span>
+                    <span className="text-lg text-slate-700 dark:text-slate-200 font-medium">{feature}</span>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <h3 className="text-3xl font-black text-slate-900 mb-8 tracking-tight border-b-2 border-slate-200 pb-4">Technologies</h3>
+              <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-8 tracking-tight border-b-2 border-slate-200 dark:border-slate-800 pb-4">Technologies</h3>
               <ul className="space-y-4">
                 {product.technologies.map((tech, index) => (
                   <li key={index} className="flex items-start">
                     <div className="w-2 h-2 rounded-full bg-indigo-500 mt-2.5 mr-4 flex-shrink-0"></div>
-                    <span className="text-lg text-slate-700 font-medium">{tech}</span>
+                    <span className="text-lg text-slate-700 dark:text-slate-200 font-medium">{tech}</span>
                   </li>
                 ))}
               </ul>

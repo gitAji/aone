@@ -187,7 +187,7 @@ const HamburgerMenu = () => {
                 const isExternal = link.href.startsWith('http');
                 const commonProps = {
                   onClick: toggleMenu,
-                  className: "text-5xl md:text-7xl font-black text-white hover:text-rose-500 transition-all duration-500 block hover:translate-x-4 tracking-tighter uppercase text-center"
+                  className: "relative text-3xl md:text-5xl font-black text-white transition-all duration-500 ease-out block tracking-tighter hover:tracking-widest uppercase text-center z-20 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-rose-500 hover:to-orange-400 hover:-translate-y-2"
                 };
 
                 return (

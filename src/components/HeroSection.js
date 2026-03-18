@@ -1,14 +1,10 @@
 "use client";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import dynamic from "next/dynamic";
 import Link from 'next/link';
-import Logo from "./Logo";
-import HamburgerMenu from "./HamburgerMenu";
 import { useLanguage } from "@/context/LanguageContext";
-
-const WaveLayers = dynamic(() => import("./WaveLayers"), { ssr: false });
-const FloatingDots = dynamic(() => import("./FloatingDots"), { ssr: false });
+import { FaArrowRight } from "react-icons/fa";
+import AnimatedGrid from "./AnimatedGrid";
 
 // Helper to highlight the marked character (preceded by |)
 const HighlightedText = ({ text }) => {
@@ -24,130 +20,131 @@ const HighlightedText = ({ text }) => {
     return (
       <>
         {before}
-        <span style={{ color: 'var(--hero-highlight)' }}>{highlightedChar}</span>
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-orange-400">{highlightedChar}</span>
         {rest}
       </>
     );
   }
 
-  // Fallback: Return text as is if no marker found
   return <>{text}</>;
 };
 
 const HeroSection = ({ isHomePage = false, title, subtitle }) => {
   const { t, language } = useLanguage();
   const [index, setIndex] = useState(0);
-  const heroRef = useRef(null);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   const phrases = t('hero.phrases') || [];
 
   useEffect(() => {
-    const updateDimensions = () => {
-      if (heroRef.current) {
-        setDimensions({
-          width: heroRef.current.offsetWidth,
-          height: heroRef.current.offsetHeight,
-        });
-      }
-    };
-
-    updateDimensions(); // Set initial dimensions
-    window.addEventListener('resize', updateDimensions);
-
-    if (isHomePage) {
+    if (isHomePage && phrases.length > 0) {
       const interval = setInterval(
         () => setIndex((prev) => (prev + 1) % phrases.length),
-        3000 // change every 3 seconds
+        3500
       );
-      return () => {
-        clearInterval(interval);
-        window.removeEventListener('resize', updateDimensions);
-      };
+      return () => clearInterval(interval);
     }
-
-    return () => {
-      window.removeEventListener('resize', updateDimensions);
-    };
   }, [isHomePage, phrases.length]);
 
   return (
-    <section className={`hero ${isHomePage ? '' : 'hero-inner'}`} ref={heroRef}>
-      <div className="hero-background"></div>
+    <section className={`relative flex items-center justify-center overflow-hidden ${isHomePage ? 'min-h-[100vh]' : 'min-h-[60vh] pt-32'} bg-slate-50 dark:bg-[#020617]`}>
+      
+      {/* Refined Background Elements - Very subtle and professional */}
+      <AnimatedGrid />
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Subtle glowing orbs */}
+        <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-rose-500/10 blur-[120px]"></div>
+        <div className="absolute top-[20%] -right-[10%] w-[40%] h-[40%] rounded-full bg-blue-500/10 blur-[120px]"></div>
+      </div>
 
-      {/* Background Layers */}
-      <WaveLayers />
-      <FloatingDots
-        containerWidth={dimensions.width}
-        containerHeight={dimensions.height}
-        style={{ zIndex: 99 }}
-      />
+      <div className="container mx-auto px-6 relative z-10 w-full max-w-5xl flex justify-center items-center text-center">
+        <motion.div
+          className="flex flex-col items-center justify-center w-full"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          {isHomePage ? (
+            <>
 
-      {/* Hero Content */}
-      <motion.div
-        className={`hero-content ${!isHomePage ? '!pt-48 md:!pt-64' : ''}`}
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        {isHomePage ? (
-          <AnimatePresence mode="wait">
-            <motion.h1
-              key={`${language}-${index}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.8 }}
-            >
-              <HighlightedText text={phrases[index]} />
-            </motion.h1>
-          </AnimatePresence>
-        ) : (
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+              {/* Typed Title */}
+              <div className="h-32 md:h-48 flex items-center justify-center mb-6">
+                <AnimatePresence mode="wait">
+                  <motion.h1
+                    key={`${language}-${index}`}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15 }}
+                    transition={{ duration: 0.5 }}
+                    className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-slate-900 dark:text-white leading-[1.1]"
+                  >
+                    <HighlightedText text={phrases[index] || ""} />
+                  </motion.h1>
+                </AnimatePresence>
+              </div>
+
+              {/* Subtitle */}
+              <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 max-w-3xl mb-12 leading-relaxed font-medium">
+                {t('hero.subtitle')}
+              </p>
+
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full sm:w-auto">
+                <Link 
+                  href="/request-quote" 
+                  className="w-full sm:w-auto px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full font-bold tracking-wide hover:shadow-xl hover:shadow-slate-900/20 dark:hover:shadow-white/20 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 group"
+                >
+                  {t('hero.cta')}
+                  <FaArrowRight className="transform group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link 
+                  href="/services" 
+                  className="w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 rounded-full font-bold tracking-wide hover:border-slate-900 dark:hover:border-white hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-900 transition-all duration-300 flex items-center justify-center"
+                >
+                  {t('nav.services') || "Our Services"}
+                </Link>
+              </div>
+            </>
+          ) : (
+            <>
+              {/* Inner Page Layout */}
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-slate-900 dark:text-white mb-6"
+              >
+                {title}
+              </motion.h1>
+              {subtitle && (
+                <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed font-medium">
+                  {subtitle}
+                </p>
+              )}
+            </>
+          )}
+        </motion.div>
+      </div>
+
+      {/* Down arrow for homepage */}
+      {isHomePage && (
+        <motion.div
+          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 cursor-pointer z-20 flex flex-col items-center gap-2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 1 }}
+          onClick={() => window.scrollTo({ top: window.innerHeight - 80, behavior: "smooth" })}
+        >
+          <span className="text-xs font-bold tracking-[0.2em] text-slate-400 uppercase">Scroll</span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-800 text-slate-400 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm"
           >
-            {title}
-          </motion.h1>
-        )}
-
-        {isHomePage ? (
-          <>
-            <p className="hero-tagline">
-              {t('hero.subtitle')}
-            </p>
-            <div className="hero-cta-container">
-              <Link href="/request-quote" passHref>
-                <button className="btn-gradient-primary h-14">
-                  <span>{t('hero.cta')}</span>
-                </button>
-              </Link>
-            </div>
-          </>
-        ) : (
-          subtitle && <p className="hero-tagline">{subtitle}</p>
-        )}
-      </motion.div>
-
-      <motion.div
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer z-20"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.8,
-          ease: "easeOut",
-          delay: 1,
-          repeat: Infinity,
-          repeatType: "reverse",
-        }}
-        onClick={() =>
-          window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
-        }
-      >
-        <span className="text-3xl text-primary font-bold">&darr;</span>
-      </motion.div>
-    </section >
+            &darr;
+          </motion.div>
+        </motion.div>
+      )}
+    </section>
   );
 };
 
