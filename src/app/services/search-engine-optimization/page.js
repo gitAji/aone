@@ -8,114 +8,142 @@ import { motion } from "framer-motion";
 import Testimonials from "@/components/Testimonials";
 
 const SearchEngineOptimizationPage = () => {
-  const { t } = useLanguage();
-  return (
-    <div className="service-detail-page bg-gray-50 min-h-screen">
-      <HeroSection
-        title={t('services.seo.title')}
-        subtitle={t('services.seo.description')}
-      />
+    const { t } = useLanguage();
 
-      <section className="container mx-auto px-4 py-16 text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-4xl font-bold text-gray-900 mb-12 uppercase tracking-tighter"
-        >
-          Why SEO is Crucial for Your Business
-        </motion.h2>
-        <p className="text-lg text-gray-700 leading-relaxed mb-8 max-w-3xl mx-auto">
-          In the vast digital landscape, Search Engine Optimization (SEO) is the compass that guides your customers to your doorstep. It&apos;s about more than just rankings; it&apos;s about visibility, credibility, and sustainable growth. A strong SEO strategy ensures your business is found by those actively looking for your products or services.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
-            <FaSearch className="text-5xl text-blue-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Increased Visibility</h3>
-            <p className="text-gray-700">Appear higher in search results, making it easier for potential customers to find you.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
-            <FaChartLine className="text-5xl text-green-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Sustainable Growth</h3>
-            <p className="text-gray-700">Attract consistent, high-quality organic traffic that converts into loyal customers.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
-            <FaGlobe className="text-5xl text-purple-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Enhanced Credibility</h3>
-            <p className="text-gray-700">Top rankings build trust and position your brand as an industry authority.</p>
-          </div>
+    return (
+        <div className="service-detail-page bg-slate-50 dark:bg-slate-950 min-h-screen">
+            {/* Hero Section */}
+            <HeroSection
+                title={t('services.seo.title')}
+                subtitle={t('services.seo.description')}
+            />
+
+            {/* Why Section */}
+            <section className="container mx-auto px-6 py-24 text-center">
+                <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tighter"
+                >
+                    Why SEO is Crucial
+                </motion.h2>
+                <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-16 max-w-3xl mx-auto font-medium">
+                    In the vast digital landscape, SEO is the compass that guides customers to your doorstep. 
+                    It&apos;s about visibility, credibility, and sustainable, long-term growth.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {[
+                        {
+                            icon: <FaSearch className="text-5xl text-rose-500 mb-6" />,
+                            title: "Elite Visibility",
+                            description: "Appear higher in search results, making it effortless for potential customers to find your brand.",
+                        },
+                        {
+                            icon: <FaChartLine className="text-5xl text-rose-500 mb-6" />,
+                            title: "Sustainable Growth",
+                            description: "Attract consistent, high-quality organic traffic that converts into loyal, long-term customers.",
+                        },
+                        {
+                            icon: <FaGlobe className="text-5xl text-rose-500 mb-6" />,
+                            title: "Market Credibility",
+                            description: "Top rankings build instant trust and position your brand as a leading industry authority.",
+                        },
+                    ].map((item, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4, delay: index * 0.1 }}
+                            className="p-10 bg-white dark:bg-slate-900 rounded-3xl shadow-xl hover:shadow-rose-500/5 transition-all duration-300 border border-slate-100 dark:border-slate-800 flex flex-col items-center text-center"
+                        >
+                            {item.icon}
+                            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">{item.title}</h3>
+                            <p className="text-slate-600 dark:text-slate-400 font-medium">{item.description}</p>
+                        </motion.div>
+                    ))}
+                </div>
+            </section>
+
+            {/* Comprehensive SEO Services */}
+            <section className="py-24 bg-slate-900 dark:bg-black text-white border-y border-slate-800">
+                <div className="container mx-auto px-6">
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-4xl md:text-5xl font-black mb-16 text-center uppercase tracking-tighter"
+                    >
+                        Precision SEO Services
+                    </motion.h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {[
+                            { icon: <FaLightbulb className="text-4xl text-rose-500 mb-4" />, title: "Keyword Intelligence", desc: "Identifying high-impact keywords that your audience is actively searching for." },
+                            { icon: <FaCogs className="text-4xl text-rose-500 mb-4" />, title: "On-Page Mastery", desc: "Optimizing content, meta tags, and technical structure for perfect crawlability." },
+                            { icon: <FaGlobe className="text-4xl text-rose-500 mb-4" />, title: "Authority Building", desc: "Building premium backlinks that enhance your domain's reputation and power." },
+                            { icon: <FaCogs className="text-4xl text-rose-500 mb-4" />, title: "Technical Excellence", desc: "Ensuring your website foundation is flawless for search engine indexing." },
+                            { icon: <FaMapMarkerAlt className="text-4xl text-rose-500 mb-4" />, title: "Local Domination", desc: "Helping local businesses capture nearby customers with hyper-targeted local SEO." },
+                            { icon: <FaChartLine className="text-4xl text-rose-500 mb-4" />, title: "Neural Analytics", desc: "Deep tracking of rankings and conversions with detailed, actionable insights." },
+                        ].map((service, i) => (
+                            <motion.div 
+                                key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.1 }}
+                                className="flex flex-col items-center p-10 bg-slate-800/20 backdrop-blur-sm rounded-3xl border border-slate-800 hover:border-rose-500/50 transition-all duration-300 text-center"
+                            >
+                                {service.icon}
+                                <h3 className="text-xl font-bold text-white mb-4">{service.title}</h3>
+                                <p className="text-slate-400 font-medium leading-relaxed">{service.desc}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Testimonials */}
+            <Testimonials />
+
+            {/* Final CTA Section */}
+            <section className="py-24 bg-white dark:bg-slate-950 text-center relative overflow-hidden">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-slate-800 to-transparent"></div>
+                
+                <div className="container mx-auto px-6 relative z-10">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="max-w-4xl mx-auto"
+                    >
+                        <h2 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter uppercase">
+                            Dominate Search <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-indigo-600">Results</span>
+                        </h2>
+                        <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 mb-12 font-medium leading-relaxed">
+                            Join elite businesses using AI-enhanced SEO to capture the market and search traffic.
+                        </p>
+                        
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                            <Link
+                                href="/request-quote"
+                                className="w-full sm:w-auto bg-gradient-to-r from-rose-500 via-purple-500 to-indigo-600 text-white py-5 px-12 rounded-full hover:scale-105 transition-all duration-300 text-xl font-black shadow-xl uppercase tracking-tighter"
+                            >
+                                Get Started
+                            </Link>
+                            <Link
+                                href="/free-consultation"
+                                className="w-full sm:w-auto py-5 px-12 rounded-full border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-900 transition-all duration-300 text-xl font-black uppercase tracking-tighter"
+                            >
+                                Free Consultation
+                            </Link>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
         </div>
-      </section>
-
-      <section className="container mx-auto px-4 py-16 bg-gray-100">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-4xl font-bold text-gray-900 mb-12 text-center uppercase tracking-tighter"
-        >
-          Our Comprehensive SEO Services
-        </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 items-start">
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
-            <FaLightbulb className="text-5xl text-blue-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Keyword Research & Strategy</h3>
-            <p className="text-gray-700">Identifying the most relevant and high-impact keywords for your business and audience.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
-            <FaCogs className="text-5xl text-green-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">On-Page SEO Optimization</h3>
-            <p className="text-gray-700">Optimizing your website content, meta tags, and structure for search engines.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
-            <FaGlobe className="text-5xl text-red-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Off-Page SEO & Link Building</h3>
-            <p className="text-gray-700">Building high-quality backlinks and improving your website&apos;s authority and reputation.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
-            <FaCogs className="text-5xl text-purple-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Technical SEO Audit & Fixes</h3>
-            <p className="text-gray-700">Ensuring your website&apos;s technical foundation is solid for optimal crawling and indexing.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
-            <FaMapMarkerAlt className="text-5xl text-orange-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Local SEO Optimization</h3>
-            <p className="text-gray-700">Helping local businesses rank higher in local search results and attract nearby customers.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
-            <FaChartLine className="text-5xl text-teal-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Performance Monitoring & Reporting</h3>
-            <p className="text-gray-700">Continuous tracking of your SEO performance with detailed reports and actionable insights.</p>
-          </div>
-        </div>
-      </section>
-
-      <Testimonials />
-
-      <section className="py-24 bg-gradient-to-br from-slate-800 to-slate-950 text-white text-center rounded-3xl mx-4 mb-16 shadow-2xl overflow-hidden relative">
-        <div className="absolute inset-0 bg-[url('/images/grid.png')] opacity-10"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-black mb-8 uppercase tracking-tighter"
-          >
-            Ready to Dominate Search?
-          </motion.h2>
-          <p className="text-xl mb-12 max-w-2xl mx-auto opacity-90 font-medium">
-            Join the elite businesses using AI-enhanced SEO to dominate their market.
-          </p>
-          <Link
-            href="/request-quote"
-            className="inline-block bg-white text-slate-900 py-4 px-10 rounded-full hover:scale-105 transition-transform duration-300 text-xl font-black shadow-2xl uppercase tracking-tight"
-          >
-            Get Started
-          </Link>
-        </div>
-      </section>
-    </div>
-  );
+    );
 };
 
 export default SearchEngineOptimizationPage;

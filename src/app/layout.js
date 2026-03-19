@@ -26,6 +26,14 @@ const raleway = Raleway({
   weight: ["400", "500", "600", "700"],
 });
 
+export const viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#020617' },
+  ],
+  colorScheme: 'light dark',
+};
+
 export const metadata = {
   metadataBase: new URL('https://aone.no'),
   title: "Aone | AI-Native Digital Agency in Bergen & Oslo",
@@ -68,10 +76,13 @@ export default function RootLayout({ children }) {
               (function() {
                 try {
                   var theme = localStorage.getItem('theme');
-                  if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  var supportDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  if (theme === 'dark' || (!theme && supportDark)) {
                     document.documentElement.classList.add('dark');
+                    document.documentElement.setAttribute('data-theme', 'dark');
                   } else {
                     document.documentElement.classList.remove('dark');
+                    document.documentElement.setAttribute('data-theme', 'light');
                   }
                 } catch (e) {}
               })();
@@ -101,6 +112,7 @@ export default function RootLayout({ children }) {
       </head>
       <body
         className={`${inter.variable} ${pacifico.variable} ${bebasNeue.variable} ${raleway.variable} antialiased}`}
+        suppressHydrationWarning
       >
         <LayoutClientWrapper>
           <noscript

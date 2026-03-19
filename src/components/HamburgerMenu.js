@@ -29,7 +29,7 @@ const HamburgerMenu = () => {
   return (
     <div className="hamburger-menu flex items-center space-x-6">
       {/* Language Switcher - Desktop */}
-      <div className="hidden md:flex items-center gap-4 px-4 py-2 rounded-full transition-all duration-300 bg-slate-900/10 dark:bg-white/10 backdrop-blur-md border border-slate-900/20 dark:border-white/20">
+      <div className="hidden md:flex items-center gap-6">
         <button
           onClick={() => changeLanguage('en')}
           className={`flex items-center gap-2 group transition-all duration-300`}
@@ -39,7 +39,7 @@ const HamburgerMenu = () => {
             alt="English"
             width={20}
             height={15}
-            className={`w-5 h-auto rounded-[1px] transition-all duration-300 ${language === 'en' ? 'opacity-100 scale-110 shadow-lg' : 'opacity-30 group-hover:opacity-60'}`}
+            className={`w-5 h-auto rounded-[1px] transition-all duration-300 ${language === 'en' ? 'opacity-100 scale-110 shadow-lg' : 'opacity-40 group-hover:opacity-70'}`}
             unoptimized
           />
           <span className={`text-[10px] font-black tracking-[0.2em] uppercase transition-colors duration-300 ${language === 'en' ? 'text-rose-500' : 'text-slate-600 dark:text-white/60 group-hover:text-slate-900 dark:group-hover:text-white'}`}>
@@ -47,7 +47,7 @@ const HamburgerMenu = () => {
           </span>
         </button>
 
-        <div className="w-px h-3 bg-slate-900/20 dark:bg-white/20"></div>
+        <div className="w-px h-3 bg-slate-900/20 dark:bg-white/10"></div>
 
         <button
           onClick={() => changeLanguage('no')}
@@ -58,7 +58,7 @@ const HamburgerMenu = () => {
             alt="Norsk"
             width={20}
             height={15}
-            className={`w-5 h-auto rounded-[1px] transition-all duration-300 ${language === 'no' ? 'opacity-100 scale-110 shadow-lg' : 'opacity-30 group-hover:opacity-60'}`}
+            className={`w-5 h-auto rounded-[1px] transition-all duration-300 ${language === 'no' ? 'opacity-100 scale-110 shadow-lg' : 'opacity-40 group-hover:opacity-70'}`}
             unoptimized
           />
           <span className={`text-[10px] font-black tracking-[0.2em] uppercase transition-colors duration-300 ${language === 'no' ? 'text-rose-500' : 'text-slate-600 dark:text-white/60 group-hover:text-slate-900 dark:group-hover:text-white'}`}>
@@ -90,7 +90,7 @@ const HamburgerMenu = () => {
       </a>
 
       <button
-        className="glass w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 shadow-lg border border-slate-900/30 dark:border-white/30 hover:bg-slate-900/10 dark:hover:bg-white/10 text-slate-900 dark:text-white"
+        className="relative z-[10002] w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 shadow-xl bg-gradient-to-br from-rose-500 via-purple-500 to-indigo-500 text-white border-0"
         onClick={toggleMenu}
         aria-expanded={isOpen}
         aria-controls="fullscreen-menu"
@@ -103,7 +103,7 @@ const HamburgerMenu = () => {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            strokeWidth="2"
+            strokeWidth="3"
             strokeLinecap="round"
             strokeLinejoin="round"
             className="w-8 h-8 text-white z-[10001]"
@@ -118,7 +118,7 @@ const HamburgerMenu = () => {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            strokeWidth="2.5"
+            strokeWidth="3"
             strokeLinecap="round"
             strokeLinejoin="round"
             className="w-8 h-8"
@@ -133,7 +133,10 @@ const HamburgerMenu = () => {
         <div
           id="fullscreen-menu"
           className="fullscreen-menu bg-slate-900/40 backdrop-blur-xl"
-          style={{ zIndex: 9999, position: 'fixed', top: 0, left: 0, width: '100vw', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}
+          style={{ zIndex: 10001, position: 'fixed', top: 0, left: 0, width: '100vw', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}
+          onClick={(e) => {
+            if (e.target.id === 'fullscreen-menu') toggleMenu();
+          }}
         >
           {/* Mobile Language Selection */}
           <div className="absolute top-8 left-8 flex items-center gap-6">
@@ -153,17 +156,7 @@ const HamburgerMenu = () => {
             </button>
           </div>
 
-          {/* Minimalist Close Button in Overlay */}
-          <button
-            className="absolute top-8 right-8 w-14 h-14 rounded-full flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 transition-all duration-300"
-            onClick={toggleMenu}
-            aria-label="Close menu"
-          >
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
+
 
 
 

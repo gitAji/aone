@@ -8,114 +8,145 @@ import { motion } from "framer-motion";
 import Testimonials from "@/components/Testimonials";
 
 const PhotographyPage = () => {
-  const { t } = useLanguage();
-  return (
-    <div className="service-detail-page bg-gray-50 min-h-screen">
-      <HeroSection
-        title={t('services.photo.title')}
-        subtitle={t('services.photo.description')}
-      />
+    const { t } = useLanguage();
 
-      <section className="container mx-auto px-4 py-16 text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-4xl font-bold text-gray-900 mb-12 uppercase tracking-tighter"
-        >
-          The Power of Professional Photography
-        </motion.h2>
-        <p className="text-lg text-gray-700 leading-relaxed mb-8 max-w-3xl mx-auto">
-          In a world saturated with visuals, high-quality photography is crucial for making a lasting impression. Whether it&apos;s for your brand, products, or special events, professional images elevate your message, evoke emotion, and build credibility. We transform ordinary scenes into extraordinary visual narratives.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
-            <FaImage className="text-5xl text-blue-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Visual Storytelling</h3>
-            <p className="text-gray-700">Convey your brand&apos;s narrative and values through compelling imagery.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
-            <FaMagic className="text-5xl text-green-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Enhanced Engagement</h3>
-            <p className="text-gray-700">Capture attention and increase interaction with stunning, high-resolution photos.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
-            <FaUsers className="text-5xl text-purple-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Professional Credibility</h3>
-            <p className="text-gray-700">Build trust and establish your authority with polished and professional visual assets.</p>
-          </div>
+    return (
+        <div className="service-detail-page bg-slate-50 dark:bg-slate-950 min-h-screen">
+            {/* Hero Section */}
+            <HeroSection
+                title={t('services.photo.title')}
+                subtitle={t('services.photo.description')}
+            />
+
+            {/* Why Section */}
+            <section className="container mx-auto px-6 py-24 text-center">
+                <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tighter"
+                >
+                    Visual Excellence
+                </motion.h2>
+                <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-16 max-w-3xl mx-auto font-medium">
+                    In a world saturated with visuals, elite-quality photography is crucial for making a lasting impact. 
+                    We transform ordinary scenes into extraordinary visual narratives.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {[
+                        {
+                            icon: <FaImage className="text-5xl text-rose-500 mb-6" />,
+                            title: "Visual Narrative",
+                            description: "Convey your brand's core values through high-fidelity, compelling imagery.",
+                        },
+                        {
+                            icon: <FaMagic className="text-5xl text-rose-500 mb-6" />,
+                            title: "Neural Engagement",
+                            description: "Capture attention and increase interaction with stunning, ultra-resolution captures.",
+                        },
+                        {
+                            icon: <FaUsers className="text-5xl text-rose-500 mb-6" />,
+                            title: "Professional Authority",
+                            description: "Build deep trust and establish your market authority with polished visual assets.",
+                        },
+                    ].map((item, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4, delay: index * 0.1 }}
+                            className="p-10 bg-white dark:bg-slate-900 rounded-3xl shadow-xl hover:shadow-rose-500/5 transition-all duration-300 border border-slate-100 dark:border-slate-800 flex flex-col items-center text-center"
+                        >
+                            {item.icon}
+                            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">{item.title}</h3>
+                            <p className="text-slate-600 dark:text-slate-400 font-medium">{item.description}</p>
+                        </motion.div>
+                    ))}
+                </div>
+            </section>
+
+            {/* Services Section */}
+            <section className="py-24 bg-slate-900 dark:bg-black text-white border-y border-slate-800">
+                <div className="container mx-auto px-6">
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-4xl md:text-5xl font-black mb-16 text-center uppercase tracking-tighter"
+                    >
+                        Elite Photography Services
+                    </motion.h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {[
+                            { icon: <FaCameraRetro className="text-4xl text-rose-500 mb-4" />, title: "Product Mastery", desc: "Showcasing your products with crisp, enticing imagery that mirrors your brand quality." },
+                            { icon: <FaUsers className="text-4xl text-rose-500 mb-4" />, title: "Corporate Portraits", desc: "Professional headshots that radiate confidence, reliability, and approachability." },
+                            { icon: <FaVideo className="text-4xl text-rose-500 mb-4" />, title: "High-Expose Events", desc: "Capturing the essence and prestige of your major corporate events and conferences." },
+                            { icon: <FaLightbulb className="text-4xl text-rose-500 mb-4" />, title: "Editorial Lifestyle", desc: "Crafting authentic, high-impact campaigns across all digital and print media." },
+                            { icon: <FaImage className="text-4xl text-rose-500 mb-4" />, title: "Architectural Focus", desc: "Highlighting structure and space with elite interior and exterior photography." },
+                            { icon: <FaCameraRetro className="text-4xl text-rose-500 mb-4" />, title: "Neural Culinary", desc: "Making your creations irresistible through artfully composed, high-resolution imagery." },
+                        ].map((service, i) => (
+                                <motion.div 
+                                    key={i}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: i * 0.1 }}
+                                    whileHover={{ y: -12, scale: 1.02 }}
+                                    className="flex flex-col items-center p-10 bg-slate-800/20 backdrop-blur-sm rounded-3xl border border-slate-800 hover:border-rose-500/50 transition-all duration-300 text-center cursor-default group"
+                                >
+                                    <div className="transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                                        {service.icon}
+                                    </div>
+                                    <h3 className="text-xl font-bold text-white mb-4">{service.title}</h3>
+                                    <p className="text-slate-400 font-medium leading-relaxed">{service.desc}</p>
+                                </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Testimonials */}
+            <Testimonials />
+
+            {/* Final CTA Section */}
+            <section className="py-24 bg-white dark:bg-slate-950 text-center relative overflow-hidden">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-slate-800 to-transparent"></div>
+                
+                <div className="container mx-auto px-6 relative z-10">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="max-w-4xl mx-auto"
+                    >
+                        <h2 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter uppercase">
+                            Visualize your <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-indigo-600">Success</span>
+                        </h2>
+                        <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 mb-12 font-medium leading-relaxed">
+                            Join elite businesses using professional imagery to capture their audience and achieve more.
+                        </p>
+                        
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                            <Link
+                                href="/request-quote"
+                                className="w-full sm:w-auto bg-gradient-to-r from-rose-500 via-purple-500 to-indigo-600 text-white py-5 px-12 rounded-full hover:scale-105 transition-all duration-300 text-xl font-black shadow-xl uppercase tracking-tighter"
+                            >
+                                Get Started
+                            </Link>
+                            <Link
+                                href="/free-consultation"
+                                className="w-full sm:w-auto py-5 px-12 rounded-full border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-900 transition-all duration-300 text-xl font-black uppercase tracking-tighter"
+                            >
+                                Free Consultation
+                            </Link>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
         </div>
-      </section>
-
-      <section className="container mx-auto px-4 py-16 bg-gray-100">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-4xl font-bold text-gray-900 mb-12 text-center uppercase tracking-tighter"
-        >
-          Our Photography Services
-        </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 items-start">
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
-            <FaCameraRetro className="text-5xl text-blue-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Product Photography</h3>
-            <p className="text-gray-700">Showcase your products with crisp, clear, and enticing images that drive sales.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
-            <FaUsers className="text-5xl text-green-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Corporate & Headshot Photography</h3>
-            <p className="text-gray-700">Professional portraits and team photos that convey confidence and approachability.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
-            <FaVideo className="text-5xl text-red-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Event Photography</h3>
-            <p className="text-gray-700">Capture the essence and key moments of your corporate events, conferences, or celebrations.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
-            <FaLightbulb className="text-5xl text-purple-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Lifestyle & Editorial Photography</h3>
-            <p className="text-gray-700">Create authentic and engaging visual content for marketing campaigns and publications.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
-            <FaImage className="text-5xl text-orange-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Architectural & Real Estate Photography</h3>
-            <p className="text-gray-700">Highlight the beauty and functionality of spaces with high-quality interior and exterior shots.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
-            <FaCameraRetro className="text-5xl text-teal-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Food & Beverage Photography</h3>
-            <p className="text-gray-700">Make your culinary creations irresistible with mouth-watering and artfully composed images.</p>
-          </div>
-        </div>
-      </section>
-
-      <Testimonials />
-
-      <section className="py-24 bg-gradient-to-br from-amber-600 to-orange-600 text-white text-center rounded-3xl mx-4 mb-16 shadow-2xl overflow-hidden relative">
-        <div className="absolute inset-0 bg-[url('/images/grid.png')] opacity-10"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-black mb-8 uppercase tracking-tighter"
-          >
-            Capture Your Story
-          </motion.h2>
-          <p className="text-xl mb-12 max-w-2xl mx-auto opacity-90 font-medium">
-            Join the elite businesses using professional imagery to dominate their market.
-          </p>
-          <Link
-            href="/request-quote"
-            className="inline-block bg-white text-amber-600 py-4 px-10 rounded-full hover:scale-105 transition-transform duration-300 text-xl font-black shadow-2xl uppercase tracking-tight"
-          >
-            Get Started
-          </Link>
-        </div>
-      </section>
-    </div>
-  );
+    );
 };
 
 export default PhotographyPage;

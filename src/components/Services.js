@@ -6,6 +6,10 @@ import {
   FaRobot,
   FaSync,
   FaSearchDollar,
+  FaSearch,
+  FaCameraRetro,
+  FaVideo,
+  FaObjectGroup,
 } from "react-icons/fa";
 
 import { useLanguage } from "@/context/LanguageContext";

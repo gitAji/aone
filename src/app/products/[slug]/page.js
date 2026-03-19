@@ -110,14 +110,14 @@ const ProductDetailPage = () => {
       <section className="cta py-24 bg-gradient-to-r from-slate-900 to-slate-800 text-center text-white">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-black mb-6 uppercase tracking-tighter">
-            {t('projectDetail.ctaTitle') || "Ready to elevate your business?"}
+            {t('projectDetail.ctaTitle') || "Ready to elevate your online presence?"}
           </h2>
           <p className="text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
             Contact us today to integrate our intelligent, scalable SaaS solutions directly into your custom workflow.
           </p>
           <Link
             href="/free-consultation"
-            className="inline-block bg-white text-slate-900 uppercase font-black tracking-widest py-4 px-10 rounded-full hover:bg-rose-500 hover:text-white transition-all duration-300 shadow-xl hover:shadow-rose-500/30"
+            className="inline-block bg-[#ffffff] !text-slate-900 uppercase font-black tracking-widest py-4 px-10 rounded-full hover:bg-rose-500 hover:text-white transition-all duration-300 shadow-xl hover:shadow-rose-500/30"
           >
             {t('projectDetail.ctaButton') || "Get a Free Consultation"}
           </Link>

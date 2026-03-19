@@ -8,114 +8,142 @@ import { motion } from "framer-motion";
 import Testimonials from "@/components/Testimonials";
 
 const UIUXDesignPage = () => {
-  const { t } = useLanguage();
-  return (
-    <div className="service-detail-page bg-gray-50 min-h-screen">
-      <HeroSection
-        title={t('services.uiux.title')}
-        subtitle={t('services.uiux.description')}
-      />
+    const { t } = useLanguage();
 
-      <section className="container mx-auto px-4 py-16 text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-4xl font-bold text-gray-900 mb-12 uppercase tracking-tighter"
-        >
-          The Art & Science of UI/UX Design
-        </motion.h2>
-        <p className="text-lg text-gray-700 leading-relaxed mb-8 max-w-3xl mx-auto">
-          User Interface (UI) and User Experience (UX) design are the cornerstones of successful digital products. UI focuses on the visual elements users interact with, while UX ensures those interactions are meaningful and enjoyable. Together, they create a seamless journey that delights your audience and achieves your business goals.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
-            <FaPalette className="text-5xl text-blue-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Aesthetic Appeal</h3>
-            <p className="text-gray-700">Create visually stunning interfaces that leave a lasting impression.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
-            <FaUserFriends className="text-5xl text-green-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">User-Centric Focus</h3>
-            <p className="text-gray-700">Design solutions tailored to your users&apos; needs, behaviors, and preferences.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
-            <FaLightbulb className="text-5xl text-purple-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Problem Solving</h3>
-            <p className="text-gray-700">Transform complex challenges into intuitive and delightful user journeys.</p>
-          </div>
+    return (
+        <div className="service-detail-page bg-slate-50 dark:bg-slate-950 min-h-screen">
+            {/* Hero Section */}
+            <HeroSection
+                title={t('services.uiux.title')}
+                subtitle={t('services.uiux.description')}
+            />
+
+            {/* Why Section */}
+            <section className="container mx-auto px-6 py-24 text-center">
+                <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tighter"
+                >
+                    The Art & Science of UI/UX
+                </motion.h2>
+                <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-16 max-w-3xl mx-auto font-medium">
+                    User Interface (UI) and User Experience (UX) design are the cornerstones of successful digital products. 
+                    We create a seamless journey that delights your audience and achieves business goals.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {[
+                        {
+                            icon: <FaPalette className="text-5xl text-rose-500 mb-6" />,
+                            title: "Aesthetic Excellence",
+                            description: "Create visually stunning interfaces that leave a lasting, premium impression.",
+                        },
+                        {
+                            icon: <FaUserFriends className="text-5xl text-rose-500 mb-6" />,
+                            title: "User-Centric Design",
+                            description: "Design solutions tailored precisely to your users' needs, behaviors, and desires.",
+                        },
+                        {
+                            icon: <FaLightbulb className="text-5xl text-rose-500 mb-6" />,
+                            title: "Neural Interaction",
+                            description: "Transform complex challenges into intuitive and delightful user journeys.",
+                        },
+                    ].map((item, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4, delay: index * 0.1 }}
+                            className="p-10 bg-white dark:bg-slate-900 rounded-3xl shadow-xl hover:shadow-rose-500/5 transition-all duration-300 border border-slate-100 dark:border-slate-800 flex flex-col items-center text-center"
+                        >
+                            {item.icon}
+                            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">{item.title}</h3>
+                            <p className="text-slate-600 dark:text-slate-400 font-medium">{item.description}</p>
+                        </motion.div>
+                    ))}
+                </div>
+            </section>
+
+            {/* Design Process Section */}
+            <section className="py-24 bg-slate-900 dark:bg-black text-white border-y border-slate-800">
+                <div className="container mx-auto px-6">
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-4xl md:text-5xl font-black mb-16 text-center uppercase tracking-tighter"
+                    >
+                        Our Design Workflow
+                    </motion.h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {[
+                            { icon: <FaLightbulb className="text-4xl text-rose-500 mb-4" />, title: "Discovery Phase", desc: "Understanding users, goals, and market landscape through in-depth analysis." },
+                            { icon: <FaLaptopCode className="text-4xl text-rose-500 mb-4" />, title: "Systemic Prototyping", desc: "Creating low-fidelity wireframes and interactive prototypes for visual validation." },
+                            { icon: <FaPalette className="text-4xl text-rose-500 mb-4" />, title: "Visual Language", desc: "Developing a cohesive visual identity, including typography and UI kits." },
+                            { icon: <FaMobileAlt className="text-4xl text-rose-500 mb-4" />, title: "Neural Interaction", desc: "Designing intuitive animations and micro-interactions for ultimate delight." },
+                            { icon: <FaAccessibleIcon className="text-4xl text-rose-500 mb-4" />, title: "Usability Audits", desc: "Conducting rigorous user testing to iterate for perfect platform usability." },
+                            { icon: <FaChartLine className="text-4xl text-rose-500 mb-4" />, title: "Engineering Support", desc: "Collaborating with dev teams for pixel-perfect implementation of designs." },
+                        ].map((service, i) => (
+                            <motion.div 
+                                key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.1 }}
+                                className="flex flex-col items-center p-10 bg-slate-800/20 backdrop-blur-sm rounded-3xl border border-slate-800 hover:border-rose-500/50 transition-all duration-300 text-center"
+                            >
+                                {service.icon}
+                                <h3 className="text-xl font-bold text-white mb-4">{service.title}</h3>
+                                <p className="text-slate-400 font-medium leading-relaxed">{service.desc}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Testimonials */}
+            <Testimonials />
+
+            {/* Final CTA Section */}
+            <section className="py-24 bg-white dark:bg-slate-950 text-center relative overflow-hidden">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-slate-800 to-transparent"></div>
+                
+                <div className="container mx-auto px-6 relative z-10">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="max-w-4xl mx-auto"
+                    >
+                        <h2 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter uppercase">
+                            Design for the <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-indigo-600">Future</span>
+                        </h2>
+                        <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 mb-12 font-medium leading-relaxed">
+                            Join elite businesses using user-centric design to capture their audience.
+                        </p>
+                        
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                            <Link
+                                href="/request-quote"
+                                className="w-full sm:w-auto bg-gradient-to-r from-rose-500 via-purple-500 to-indigo-600 text-white py-5 px-12 rounded-full hover:scale-105 transition-all duration-300 text-xl font-black shadow-xl uppercase tracking-tighter"
+                            >
+                                Get Started
+                            </Link>
+                            <Link
+                                href="/free-consultation"
+                                className="w-full sm:w-auto py-5 px-12 rounded-full border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-900 transition-all duration-300 text-xl font-black uppercase tracking-tighter"
+                            >
+                                Free Consultation
+                            </Link>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
         </div>
-      </section>
-
-      <section className="container mx-auto px-4 py-16 bg-gray-100">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-4xl font-bold text-gray-900 mb-12 text-center uppercase tracking-tighter"
-        >
-          Our UI/UX Design Process
-        </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 items-start">
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
-            <FaLightbulb className="text-5xl text-blue-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Discovery & Research</h3>
-            <p className="text-gray-700">Understanding your users, business goals, and market landscape through in-depth research.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
-            <FaLaptopCode className="text-5xl text-green-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Wireframing & Prototyping</h3>
-            <p className="text-gray-700">Creating low-fidelity wireframes and interactive prototypes to visualize user flows and layouts.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
-            <FaPalette className="text-5xl text-red-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Visual Design & UI Kit</h3>
-            <p className="text-gray-700">Developing a cohesive visual design, including color palettes, typography, and a comprehensive UI kit.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
-            <FaMobileAlt className="text-5xl text-purple-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Interaction Design</h3>
-            <p className="text-gray-700">Designing intuitive interactions, animations, and micro-interactions to enhance user delight.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
-            <FaAccessibleIcon className="text-5xl text-orange-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Usability Testing & Iteration</h3>
-            <p className="text-gray-700">Conducting user testing to gather feedback and iterate on designs for optimal usability.</p>
-          </div>
-          <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md text-center">
-            <FaChartLine className="text-5xl text-teal-600 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Implementation Support</h3>
-            <p className="text-gray-700">Collaborating with development teams to ensure designs are implemented accurately and efficiently.</p>
-          </div>
-        </div>
-      </section>
-
-      <Testimonials />
-
-      <section className="py-24 bg-gradient-to-br from-violet-600 to-indigo-600 text-white text-center rounded-3xl mx-4 mb-16 shadow-2xl overflow-hidden relative">
-        <div className="absolute inset-0 bg-[url('/images/grid.png')] opacity-10"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-black mb-8 uppercase tracking-tighter"
-          >
-            Design for the Future
-          </motion.h2>
-          <p className="text-xl mb-12 max-w-2xl mx-auto opacity-90 font-medium">
-            Join the elite businesses using user-centric design to dominate their market.
-          </p>
-          <Link
-            href="/request-quote"
-            className="inline-block bg-white text-violet-600 py-4 px-10 rounded-full hover:scale-105 transition-transform duration-300 text-xl font-black shadow-2xl uppercase tracking-tight"
-          >
-            Get Started
-          </Link>
-        </div>
-      </section>
-    </div>
-  );
+    );
 };
 
 export default UIUXDesignPage;

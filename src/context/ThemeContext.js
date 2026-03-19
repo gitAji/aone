@@ -14,6 +14,7 @@ export const ThemeProvider = ({ children }) => {
 
         setTheme(initialTheme);
         document.documentElement.classList.toggle("dark", initialTheme === "dark");
+        document.documentElement.setAttribute('data-theme', initialTheme);
     }, []);
 
     const toggleTheme = () => {
@@ -21,6 +22,7 @@ export const ThemeProvider = ({ children }) => {
         setTheme(newTheme);
         localStorage.setItem("theme", newTheme);
         document.documentElement.classList.toggle("dark", newTheme === "dark");
+        document.documentElement.setAttribute('data-theme', newTheme);
     };
 
     return (

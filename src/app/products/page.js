@@ -36,14 +36,20 @@ const ProductsPage = () => {
                   {/* Stronger overlay gradient for text visibility */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10 transition-opacity duration-500 group-hover:opacity-90"></div>
                   <div className="absolute bottom-6 left-6 right-6 z-20">
-                    <h3 className="text-3xl font-bold text-white tracking-tight drop-shadow-md brightness-150">
+                    <h3 
+                      className="text-3xl font-bold tracking-tight drop-shadow-md brightness-150"
+                      style={{ color: '#ffffff' }}
+                    >
                       {product.title}
                     </h3>
                   </div>
                 </div>
                 
                 <div className="p-8 flex-1 flex flex-col">
-                  <p className="text-white/80 font-medium leading-relaxed mb-6 flex-1">
+                  <p 
+                    className="font-medium leading-relaxed mb-6 flex-1"
+                    style={{ color: '#f8fafc' }}
+                  >
                     {product.description}
                   </p>
                   
@@ -62,7 +68,8 @@ const ProductsPage = () => {
                       href={product.subdomain}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-white text-slate-900 px-5 py-2.5 rounded-full text-sm font-bold hover:bg-rose-500 hover:text-white transition-all shadow-md active:scale-95"
+                      className="inline-block px-5 py-2.5 rounded-full text-sm font-bold hover:bg-rose-500 hover:text-white transition-all shadow-md active:scale-95"
+                      style={{ backgroundColor: '#ffffff', color: '#0f172a' }}
                     >
                       Visit Product
                     </a>
