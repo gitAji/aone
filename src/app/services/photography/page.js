@@ -38,7 +38,7 @@ const PhotographyPage = () => {
                         {
                             icon: <FaImage className="text-5xl text-rose-500 mb-6" />,
                             title: "Visual Narrative",
-                            description: "Convey your brand's core values through high-fidelity, compelling imagery.",
+                            description: "Convey your brand&apos;s core values through high-fidelity, compelling imagery.",
                         },
                         {
                             icon: <FaMagic className="text-5xl text-rose-500 mb-6" />,

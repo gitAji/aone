@@ -30,8 +30,8 @@ const DigitalMarketingPage = () => {
                     Why Digital Marketing is Essential
                 </motion.h2>
                 <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-16 max-w-3xl mx-auto font-medium">
-                    In today's digital-first world, a strong online presence is non-negotiable. 
-                    It's about reaching the right people, at the right time, with the right message.
+                    In today&apos;s digital-first world, a strong online presence is non-negotiable. 
+                    It&apos;s about reaching the right people, at the right time, with the right message.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[

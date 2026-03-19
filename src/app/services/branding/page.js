@@ -30,7 +30,7 @@ const BrandingPage = () => {
                     Why Strong Branding Matters
                 </motion.h2>
                 <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-16 max-w-3xl mx-auto font-medium">
-                    In a crowded marketplace, a strong brand is your most valuable asset. It's the essence of your business, 
+                    In a crowded marketplace, a strong brand is your most valuable asset. It&apos;s the essence of your business, 
                     communicating your values and promise to your audience while building lasting trust.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -118,7 +118,7 @@ const BrandingPage = () => {
                             Ready to define your <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-indigo-600">identity?</span>
                         </h2>
                         <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 mb-12 font-medium leading-relaxed">
-                            Create a brand that resonates in the AI era. Let's start the conversation.
+                            Create a brand that resonates in the AI era. Let&apos;s start the conversation.
                         </p>
                         
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">

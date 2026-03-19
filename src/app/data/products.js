@@ -40,6 +40,27 @@ const products = [
       "Detailed Performance Analytics"
     ],
     technologies: ["Next.js", "AI Automation", "Scalable Cloud Architecture", "Real-time sync"]
+  },
+  {
+    id: "booking",
+    title: "Aone Booking & Reservation",
+    description: "An AI-powered booking platform for restaurants, salons, and service providers to automate their scheduling.",
+    projectLink: "/products/booking",
+    subdomain: "https://booking.aone.no/",
+    imageUrl: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=2670&auto=format&fit=crop",
+    overview: {
+      description1: "Transform how you handle appointments with our intelligent booking engine. It eliminates no-shows, manages capacity, and provides a premium experience for your clients.",
+      description2: "Integrated with AI assistants, it can handle bookings via chat, voice, or web, making it the most versatile reservation system on the market.",
+    },
+    features: [
+      "AI Smart Scheduling",
+      "Real-time Availability",
+      "Automated Reminders (Email/SMS)",
+      "Deposit & Payment Collection",
+      "Customer History & Preferences",
+      "Multi-resource Management"
+    ],
+    technologies: ["Next.js", "AI Booking Engine", "Stripe API", "Real-time Notifications"]
   }
 ];
 
