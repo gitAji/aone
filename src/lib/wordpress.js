@@ -1,5 +1,34 @@
 const WORDPRESS_API_URL = 'https://blog.aone.no/wp-json/wp/v2';
 
+// Helper to get featured image from a post object
+export function getFeaturedImage(post) {
+  if (!post) return '/images/placeholders/project1.jpeg';
+
+  // 1. Try _embedded featured media
+  const featuredMedia = post._embedded?.['wp:featuredmedia']?.[0];
+  if (featuredMedia?.source_url) {
+    return featuredMedia.source_url;
+  }
+
+  // 2. Try media details from _embedded if available
+  if (featuredMedia?.media_details?.sizes?.full?.source_url) {
+    return featuredMedia.media_details.sizes.full.source_url;
+  }
+
+  // 3. Try Yoast SEO image
+  if (post.yoast_head_json?.og_image?.[0]?.url) {
+    return post.yoast_head_json.og_image[0].url;
+  }
+
+  // 4. Try og_image directly if it's there
+  if (post.og_image?.[0]?.url) {
+    return post.og_image[0].url;
+  }
+
+  // 5. Fallback to placeholder
+  return '/images/placeholders/project1.jpeg';
+}
+
 // Use proxy in browser to avoid SSL/CORS issues
 function getApiUrl(endpoint, params = '') {
   if (typeof window !== 'undefined') {
@@ -12,7 +41,7 @@ function getApiUrl(endpoint, params = '') {
 
 export async function fetchPosts(perPage = 9, page = 1) {
   try {
-    const url = getApiUrl('posts', `per_page=${perPage}&page=${page}&orderby=date&_embed`);
+    const url = getApiUrl('posts', `per_page=${perPage}&page=${page}&orderby=date&_embed=true`);
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -28,7 +57,7 @@ export async function fetchPosts(perPage = 9, page = 1) {
 
 export async function fetchPostBySlug(slug) {
   try {
-    const url = getApiUrl('posts', `slug=${slug}&_embed`);
+    const url = getApiUrl('posts', `slug=${slug}&_embed=true`);
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -75,7 +104,7 @@ export async function handleTableBooking(bookingData) {
 // Fetch homepage popup content
 export async function fetchPopupContent() {
   try {
-    const url = getApiUrl('posts', 'slug=homepage-popup&_embed');
+    const url = getApiUrl('posts', 'slug=homepage-popup&_embed=true');
     const response = await fetch(url);
     if (!response.ok) {
       return null;

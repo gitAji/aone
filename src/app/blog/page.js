@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import HeroSection from '@/components/HeroSection';
-import { fetchPosts } from '@/lib/wordpress';
+import { fetchPosts, getFeaturedImage } from '@/lib/wordpress';
 
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -94,7 +94,7 @@ const BlogPage = () => {
                 <div className="bg-white dark:bg-slate-900 rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-xl cursor-pointer border border-slate-100 dark:border-slate-800">
                   <div className="relative w-full h-52">
                     <Image
-                      src={post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '/images/placeholders/project1.jpeg'}
+                      src={getFeaturedImage(post)}
                       alt={post.title.rendered}
                       layout="fill"
                       objectFit="cover"

@@ -77,7 +77,8 @@ export async function GET(request) {
                     // Check if value is a WordPress image URL
                     // Also handle escaped slashes that might be present in some contexts
                     if (value.includes('blog.aone.no/wp-content/uploads/')) {
-                        value = `/api/image-proxy?url=${value.replace(/\\\//g, '/')}`;
+                        const cleanUrl = value.replace(/\\\//g, '/');
+                        value = `/api/image-proxy?url=${encodeURIComponent(cleanUrl)}`;
                     }
                 } else if (typeof value === 'object') {
                     value = rewriteUrls(value);

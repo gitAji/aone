@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Head from 'next/head';
 import Link from 'next/link';
 import HeroSection from '@/components/HeroSection';
-import { fetchPostBySlug } from '@/lib/wordpress';
+import { fetchPostBySlug, getFeaturedImage } from '@/lib/wordpress';
 import { useLanguage } from "@/context/LanguageContext";
 
 const PostPage = () => {
@@ -76,14 +76,14 @@ const PostPage = () => {
       <div className="post-page bg-gray-50 min-h-screen">
         <HeroSection
           title={post.title.rendered}
-          subtitle={`By ${post._embedded.author[0].name} on ${new Date(post.date).toLocaleDateString()}`}
+          subtitle={`By ${post._embedded?.author?.[0]?.name || 'Admin'} on ${new Date(post.date).toLocaleDateString()}`}
         />
         <section className="container mx-auto px-4 pb-16 pt-16">
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            {post._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
+            {getFeaturedImage(post) && (
               <div className="relative w-full h-96">
                 <Image
-                  src={post._embedded['wp:featuredmedia'][0].source_url}
+                  src={getFeaturedImage(post)}
                   alt={post.title.rendered}
                   layout="fill"
                   objectFit="cover"
