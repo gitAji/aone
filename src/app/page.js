@@ -9,6 +9,7 @@ const DynamicClientLogos = dynamic(() => import("@/components/ClientLogos"));
 const DynamicServices = dynamic(() => import("@/components/Services"));
 const DynamicProjects = dynamic(() => import("@/components/Projects"));
 const DynamicTestimonials = dynamic(() => import("@/components/Testimonials"));
+const DynamicBrandingShowcase = dynamic(() => import("@/components/BrandingShowcase"));
 const DynamicCTA = dynamic(() => import("@/components/CTA"));
 
 // ✅ Reusable Service Card Component
@@ -39,6 +40,8 @@ const HomePage = () => {
 
       {/* Projects */}
       <DynamicProjects />
+      {/* Branding Designs */}
+      <DynamicBrandingShowcase />
       {/* Testimonials */}
       <DynamicTestimonials />
       {/* Call to Action */}

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 // Curated logos - professional businesses only, ordered for visual balance
 const clients = [
-    { name: "Quick Consultant", logo: "/images/projects/QFS/logo.png" },
+    { name: "Quick Consultant", logo: "/images/projects/qfs.jpg" },
     { name: "Rent My Property", logo: "/images/projects/rentmyproperty/logo.png" },
     { name: "Tulips", logo: "/images/projects/tulips/logo.png" },
     { name: "Clean Masters", logo: "/images/clients/clean.png" },
@@ -24,7 +24,7 @@ const ClientLogos = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                 >
-                    TRUSTED BY INNOVATIVE BRANDS WORLDWIDE
+                    Helping 100+ businesses dominate the digital era
                 </motion.p>
                 <div className="flex flex-wrap justify-center items-center gap-10 md:gap-14">
                     {clients.map((client, index) => (
