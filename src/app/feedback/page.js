@@ -126,7 +126,7 @@ const FeedbackPage = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`btn-gradient-primary ${isSubmitting ? 'disabled' : ''}`}
+                className={`btn-premium-gradient ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 {isSubmitting ? 'Sending...' : 'Send Feedback'}
               </button>

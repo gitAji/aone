@@ -144,7 +144,7 @@ const ContactPage = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full btn-primary h-14"
+                className="btn-premium-gradient"
               >
                 {loading ? t('contact.sending') : t('contact.send')}
               </button>

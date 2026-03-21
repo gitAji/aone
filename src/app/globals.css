@@ -374,30 +374,59 @@ p {
 
 /* Primary Gradient Button */
 .btn-primary,
-.btn-gradient-primary {
-  background: linear-gradient(135deg, var(--grad-1), var(--grad-2), var(--grad-3));
+.btn-gradient-primary,
+.btn-premium-gradient {
+  background: linear-gradient(to right, #ef4444, #eab308, #3b82f6); /* from-red-500 via-yellow-500 to-blue-500 */
   background-size: 200% auto;
   color: white;
   border: none;
-  box-shadow: 0 10px 25px -5px rgba(244, 63, 94, 0.4);
+  box-shadow: 0 10px 25px -5px rgba(239, 68, 68, 0.4);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem; /* rounded-lg */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-premium-gradient {
+  width: 100%;
+  padding: 1rem 2rem;
+  font-size: 1.25rem; /* text-xl */
 }
 
 .btn-primary:hover,
-.btn-gradient-primary:hover {
+.btn-gradient-primary:hover,
+.btn-premium-gradient:hover {
   background-position: right center;
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 20px 35px -10px rgba(244, 63, 94, 0.5);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 20px 35px -10px rgba(239, 68, 68, 0.5);
 }
 
 .btn-primary:active,
-.btn-gradient-primary:active {
+.btn-gradient-primary:active,
+.btn-premium-gradient:active {
   transform: translateY(-1px) scale(0.98);
+}
+
+.btn-primary:disabled,
+.btn-gradient-primary:disabled,
+.btn-premium-gradient:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 /* Shine effect for primary button */
 .btn-primary::after,
-.btn-gradient-primary::after {
+.btn-gradient-primary::after,
+.btn-premium-gradient::after {
   content: '';
   position: absolute;
   top: -50%;
@@ -411,8 +440,9 @@ p {
   opacity: 0;
 }
 
-.btn-primary:hover::after,
-.btn-gradient-primary:hover::after {
+.btn-primary:not(:disabled):hover::after,
+.btn-gradient-primary:not(:disabled):hover::after,
+.btn-premium-gradient:not(:disabled):hover::after {
   opacity: 1;
   left: 100%;
   top: 100%;

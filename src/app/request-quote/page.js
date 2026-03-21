@@ -244,7 +244,7 @@ const RequestQuotePage = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full btn-primary h-14"
+                className="btn-premium-gradient"
               >
                 {isSubmitting ? t('quote.submitting') : t('quote.submit')}
               </button>

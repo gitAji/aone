@@ -145,7 +145,7 @@ const FreeConsultationPage = () => {
               </select>
             </div>
             <div>
-              <button type="submit" disabled={isSubmitting} className="w-full btn-primary h-14">
+              <button type="submit" disabled={isSubmitting} className="btn-premium-gradient">
                 {isSubmitting ? t('consultation.submitting') : t('consultation.submit')}
               </button>
             </div>
