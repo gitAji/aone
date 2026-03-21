@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Logo from './Logo';
 import HamburgerMenu from './HamburgerMenu';
 import ThemeToggle from './ThemeToggle';
+import { FaUserCircle } from 'react-icons/fa';
 
 const Header = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -24,8 +25,9 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-[1000] flex justify-between items-center transition-transform duration-300 px-6 py-6 ${visible ? 'translate-y-0' : '-translate-y-full'
-        } bg-transparent`}
+      className={`fixed left-0 w-full z-[1000] flex justify-between items-center transition-all duration-300 px-6 py-4 ${
+        visible ? 'translate-y-0' : '-translate-y-[200%]'
+      } ${isScrolled ? 'top-0' : 'top-[44px]'} ${isScrolled ? 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}
     >
       <Logo />
       <div className="flex items-center gap-4">

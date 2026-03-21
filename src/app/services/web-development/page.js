@@ -165,7 +165,7 @@ const WebDevelopmentPage = () => {
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <Link
-                href="/request-quote"
+                href="/pricing"
                 className="w-full sm:w-auto bg-gradient-to-r from-rose-500 via-purple-500 to-indigo-600 text-white py-5 px-12 rounded-full hover:scale-105 transition-all duration-300 text-xl font-black shadow-xl uppercase tracking-tighter"
               >
                 Get Started

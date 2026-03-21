@@ -34,6 +34,15 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      keyframes: {
+        shimmer: {
+          '0%': { transform: 'translateX(-150%) skewX(-15deg)' },
+          '100%': { transform: 'translateX(150%) skewX(-15deg)' },
+        },
+      },
+      animation: {
+        shimmer: 'shimmer 3s infinite',
+      },
     },
   },
   plugins: [

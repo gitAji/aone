@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useLanguage } from "@/context/LanguageContext";
 import { FaArrowRight } from "react-icons/fa";
 import AnimatedGrid from "./AnimatedGrid";
@@ -66,6 +67,7 @@ const TypewriterTitle = ({ text, delay = 50 }) => {
 
 const HeroSection = ({ isHomePage = false, title, subtitle }) => {
   const { t, language } = useLanguage();
+  const pathname = usePathname();
   const [index, setIndex] = useState(0);
 
   const phrases = t('hero.phrases') || [];
@@ -124,11 +126,15 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full sm:w-auto">
                 <Link 
-                  href="/request-quote" 
-                  className="w-full sm:w-auto px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full font-bold tracking-wide hover:shadow-xl hover:shadow-slate-900/20 dark:hover:shadow-white/20 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 group"
+                  href="/pricing" 
+                  className="w-full sm:w-auto px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full font-bold tracking-wide hover:shadow-xl hover:shadow-slate-900/20 dark:hover:shadow-white/20 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 group relative overflow-hidden"
                 >
-                  {t('hero.cta')}
-                  <FaArrowRight className="transform group-hover:translate-x-1 transition-transform" />
+                  <span className="relative z-10 flex items-center gap-3">
+                    View Pricing
+                    <FaArrowRight className="transform group-hover:translate-x-1 transition-transform" />
+                  </span>
+                  {/* Active Shine Effect */}
+                  <div className="absolute inset-0 -translate-x-full z-0 bg-gradient-to-r from-transparent via-white/20 dark:via-black/10 to-transparent animate-shimmer" />
                 </Link>
                 <Link 
                   href="/services" 
@@ -153,6 +159,26 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
                 <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed font-medium">
                   {subtitle}
                 </p>
+              )}
+              {pathname?.startsWith('/services/') && pathname !== '/services' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="mt-8"
+                >
+                  <Link 
+                    href="/pricing" 
+                    className="relative inline-flex items-center justify-center gap-3 px-10 py-4 bg-gradient-to-r from-rose-500 via-amber-500 to-rose-500 bg-[length:200%_auto] text-white rounded-full font-black tracking-wide uppercase shadow-lg shadow-rose-500/20 hover:scale-105 hover:bg-right transition-all duration-500 overflow-hidden group"
+                  >
+                    <span className="relative z-10 flex items-center gap-3">
+                      View Packages
+                      <FaArrowRight className="transform group-hover:translate-x-1 transition-transform" />
+                    </span>
+                    {/* Active Shine Effect */}
+                    <div className="absolute inset-0 -translate-x-full z-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer" />
+                  </Link>
+                </motion.div>
               )}
             </>
           )}

@@ -27,7 +27,7 @@ const HamburgerMenu = () => {
   };
 
   return (
-    <div className="hamburger-menu flex items-center space-x-6">
+    <div className="hamburger-menu flex items-center space-x-3 sm:space-x-4 md:space-x-6">
       {/* Language Switcher - Desktop */}
       <div className="hidden md:flex items-center gap-6">
         <button
@@ -71,12 +71,12 @@ const HamburgerMenu = () => {
         href="https://crm.aone.no"
         target="_blank"
         rel="noopener noreferrer"
-        className="hidden md:flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 text-slate-700 dark:text-white/70 hover:text-slate-900 dark:hover:text-white hover:bg-slate-900/10 dark:hover:bg-white/10"
+        className="group relative flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full transition-all duration-300 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-900/10 dark:hover:bg-white/10"
         aria-label="Client Login"
       >
         <svg
-          width="24"
-          height="24"
+          width="22"
+          height="22"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -87,10 +87,14 @@ const HamburgerMenu = () => {
           <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
           <circle cx="12" cy="7" r="4"></circle>
         </svg>
+        {/* Premium Hover Tooltip */}
+        <span className="pointer-events-none absolute top-full left-1/2 mt-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-slate-900 dark:bg-white px-3 py-1.5 text-[10px] uppercase font-black tracking-widest text-white dark:text-slate-900 opacity-0 transition-all duration-300 group-hover:opacity-100 shadow-xl hidden sm:block">
+            Client Portal
+        </span>
       </a>
 
       <button
-        className="relative z-[10002] w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 shadow-xl bg-white text-slate-900 border border-slate-200"
+        className="group relative z-[10002] w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 shadow-xl bg-white text-slate-900 border border-slate-200"
         onClick={toggleMenu}
         aria-expanded={isOpen}
         aria-controls="fullscreen-menu"
@@ -127,6 +131,10 @@ const HamburgerMenu = () => {
             <line x1="5" y1="12" x2="19" y2="12"></line>
           </svg>
         )}
+        {/* Premium Hover Tooltip */}
+        <span className="pointer-events-none absolute top-full left-1/2 mt-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-slate-900 dark:bg-white px-3 py-1.5 text-[10px] uppercase font-black tracking-widest text-white dark:text-slate-900 opacity-0 transition-all duration-300 group-hover:opacity-100 shadow-xl hidden sm:block">
+            {isOpen ? "Close" : "Menu"}
+        </span>
       </button>
 
       {isOpen && (

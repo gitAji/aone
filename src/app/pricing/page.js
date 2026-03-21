@@ -8,12 +8,15 @@ import Link from 'next/link';
 import { FaCheck, FaCrown, FaRocket, FaShieldAlt, FaArrowRight, FaZap, FaStar, FaInfoCircle, FaCheckCircle } from 'react-icons/fa';
 import HeroSection from '@/components/HeroSection';
 
-const PricingCard = ({ pkg, billingInterval, index }) => {
+const PricingCard = ({ pkg, billingInterval, index, isHovered }) => {
     const { t } = useLanguage();
-    const isRecommended = pkg.recommended;
+    // If isHovered is provided, use it, otherwise fallback to the hardcoded pkg.recommended
+    const isRecommended = isHovered !== undefined ? isHovered : pkg.recommended;
     
     // Determine the price to display
-    const displayPrice = billingInterval === 'once' ? pkg.price : pkg.monthlyPrice;
+    const originalPrice = billingInterval === 'once' ? pkg.price : pkg.monthlyPrice;
+    const isDiscounted = !pkg.isCustom && originalPrice > 0;
+    const displayPrice = isDiscounted ? Math.round(originalPrice * 0.9) : originalPrice;
     const intervalLabel = billingInterval === 'once' ? 'once' : 'mo';
 
     return (
@@ -22,14 +25,34 @@ const PricingCard = ({ pkg, billingInterval, index }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className={`relative group h-full flex flex-col p-6 md:p-8 rounded-[2rem] transition-all duration-500 ${
-                isRecommended 
-                ? 'bg-slate-900 text-white shadow-2xl shadow-rose-500/10 scale-105 border-0' 
-                : 'bg-white dark:bg-slate-900/50 text-slate-900 dark:text-white border border-slate-100 dark:border-slate-800'
-            }`}
+            className={`relative group h-full w-full rounded-[2rem] transition-all duration-500 ${isRecommended ? 'scale-105 shadow-2xl shadow-rose-500/10' : ''}`}
         >
+            {/* Animated Glowing Border Container */}
+            <div className={`absolute -inset-[3px] rounded-[35px] overflow-hidden transition-opacity duration-500 pointer-events-none z-0 ${isRecommended ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
+                <div 
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250%] h-[250%]"
+                  style={{
+                    background: 'conic-gradient(from 0deg, transparent 0 260deg, #FFBC42 360deg)',
+                    animation: 'spin 3s linear infinite'
+                  }}
+                />
+                <div 
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250%] h-[250%] blur-md"
+                  style={{
+                    background: 'conic-gradient(from 0deg, transparent 0 300deg, #FFBC42 360deg)',
+                    animation: 'spin 3s linear infinite'
+                  }}
+                />
+            </div>
+
+            {/* Main Inner Card Content */}
+            <div className={`relative z-10 w-full h-full flex flex-col p-6 md:p-8 rounded-[2rem] transition-all duration-500 ${
+                isRecommended 
+                ? 'bg-slate-900 text-white border-0' 
+                : 'bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800'
+            }`}>
             {isRecommended && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-1.5 bg-gradient-to-r from-rose-500 to-amber-500 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-white shadow-lg">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-1.5 bg-gradient-to-r from-rose-500 to-amber-500 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-white shadow-lg z-20">
                     Most Popular
                 </div>
             )}
@@ -42,15 +65,27 @@ const PricingCard = ({ pkg, billingInterval, index }) => {
             </div>
 
             <div className="mb-10">
-                <div className="flex items-baseline gap-1">
-                    <span className="text-4xl md:text-5xl font-black tracking-tighter">
-                        {pkg.isCustom ? 'Custom' : `${displayPrice.toLocaleString()} NOK`}
-                    </span>
-                    {!pkg.isCustom && (
-                        <span className={`text-sm font-bold uppercase tracking-widest ${isRecommended ? 'text-slate-500' : 'text-slate-400'}`}>
-                            /{intervalLabel}
-                        </span>
+                <div className="flex flex-col items-start gap-1">
+                    {isDiscounted && (
+                        <div className="flex items-center gap-2 mb-1">
+                            <span className="text-sm md:text-base font-bold text-slate-400 line-through decoration-rose-500 decoration-2">
+                                {originalPrice.toLocaleString()} NOK
+                            </span>
+                            <span className="text-[10px] font-black uppercase bg-rose-500 text-white px-2 py-0.5 rounded-sm tracking-widest shadow-sm animate-pulse">
+                                -10% TODAY
+                            </span>
+                        </div>
                     )}
+                    <div className="flex items-baseline gap-1">
+                        <span className="text-4xl md:text-5xl font-black tracking-tighter text-emerald-500 dark:text-emerald-400">
+                            {pkg.isCustom ? 'Custom' : `${displayPrice.toLocaleString()} NOK`}
+                        </span>
+                        {!pkg.isCustom && (
+                            <span className={`text-sm font-bold uppercase tracking-widest ${isRecommended ? 'text-slate-500' : 'text-slate-400'}`}>
+                                /{intervalLabel}
+                            </span>
+                        )}
+                    </div>
                 </div>
             </div>
 
@@ -78,6 +113,7 @@ const PricingCard = ({ pkg, billingInterval, index }) => {
                 {pkg.isCustom ? 'Contact us' : 'Get Started'}
                 <FaArrowRight className={`text-[10px] transform transition-transform group-hover:translate-x-1`} />
             </Link>
+            </div>
         </motion.div>
     );
 };
@@ -85,6 +121,7 @@ const PricingCard = ({ pkg, billingInterval, index }) => {
 export default function PricingPage() {
     const { t } = useLanguage();
     const [billingInterval, setBillingInterval] = useState('monthly');
+    const [hoveredIndex, setHoveredIndex] = useState(1); // Defaults to Growth package
 
     const mainPackages = packages.filter(p => !p.isAddon);
     const addonPackages = packages.filter(p => p.isAddon);
@@ -127,9 +164,18 @@ export default function PricingPage() {
                 </div>
 
                 {/* Pricing Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-32 max-w-7xl mx-auto">
+                <div 
+                  className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-32 max-w-7xl mx-auto"
+                  onMouseLeave={() => setHoveredIndex(1)} // Reset back to middle card when mouse leaves grid
+                >
                     {mainPackages.map((pkg, i) => (
-                        <PricingCard key={pkg.id} pkg={pkg} billingInterval={billingInterval} index={i} />
+                        <div 
+                          key={pkg.id}
+                          className="w-full h-full"
+                          onMouseEnter={() => setHoveredIndex(i)}
+                        >
+                          <PricingCard pkg={pkg} billingInterval={billingInterval} index={i} isHovered={hoveredIndex === i} />
+                        </div>
                     ))}
                 </div>
 
@@ -169,12 +215,19 @@ export default function PricingPage() {
                                         {addon.description}
                                     </p>
                                 </div>
-                                <div className="text-right flex flex-col items-end gap-3">
-                                    <div className="text-lg font-black text-slate-900 dark:text-white">
+                                <div className="text-right flex flex-col items-end gap-1">
+                                    {(addon.price > 0 || addon.monthlyPrice > 0) && (
+                                       <div className="text-xs font-bold text-slate-400 line-through decoration-rose-500 decoration-2">
+                                           {billingInterval === 'monthly' && addon.monthlyPrice > 0 
+                                               ? `${addon.monthlyPrice} NOK` 
+                                               : `${addon.price} NOK`}
+                                       </div>
+                                    )}
+                                    <div className="text-lg flex flex-row font-black text-emerald-500 dark:text-emerald-400">
                                         {billingInterval === 'monthly' && addon.monthlyPrice > 0 
-                                            ? `${addon.monthlyPrice} NOK` 
-                                            : `${addon.price} NOK`}
-                                        <span className="text-[10px] text-slate-400 font-bold uppercase ml-1">
+                                            ? `${Math.round(addon.monthlyPrice * 0.9)} NOK` 
+                                            : `${Math.round(addon.price * 0.9)} NOK`}
+                                        <span className="text-[10px] text-slate-400 font-bold uppercase ml-1 mt-1">
                                             {billingInterval === 'monthly' && addon.monthlyPrice > 0 ? '/mo' : '/once'}
                                         </span>
                                     </div>
