@@ -53,7 +53,7 @@ const TypewriterTitle = ({ text, delay = 50 }) => {
   }, [text, delay]);
 
   return (
-    <h1 className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter text-slate-900 dark:text-white leading-[1.1] min-h-[1.2em]">
+    <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[1.1] min-h-[1.2em] bg-clip-text text-transparent bg-gradient-to-r from-rose-500 via-rose-400 to-amber-500 drop-shadow-sm">
       <HighlightedText text={displayText} />
       <motion.span
         animate={{ opacity: [0, 1, 0] }}
@@ -145,7 +145,7 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-slate-950 dark:text-white mb-6"
+                className="text-5xl md:text-7xl font-black tracking-tighter leading-tight bg-clip-text text-transparent bg-gradient-to-r from-rose-500 via-rose-400 to-amber-500 uppercase drop-shadow-sm"
               >
                 {title}
               </motion.h1>

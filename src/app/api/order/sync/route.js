@@ -4,7 +4,7 @@ import { doc, setDoc, getDoc } from 'firebase/firestore';
 
 export async function POST(req) {
     try {
-        const { orderId, step, selectedPack, addons, formData, billingInterval, status, totalAmount } = await req.json();
+        const { orderId, step, selectedPack, addons, formData, billingInterval, status, totalAmount, agreementUrl } = await req.json();
 
         if (!orderId) {
             return NextResponse.json({ error: 'Missing orderId' }, { status: 400 });
@@ -24,6 +24,7 @@ export async function POST(req) {
         if (formData) data.formData = formData;
         if (billingInterval) data.billingInterval = billingInterval;
         if (totalAmount !== undefined) data.totalAmount = totalAmount;
+        if (agreementUrl !== undefined) data.agreementUrl = agreementUrl;
 
         await setDoc(orderRef, data, { merge: true });
 

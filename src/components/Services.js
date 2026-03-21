@@ -18,17 +18,26 @@ const ServiceCard = ({ href, icon: Icon, title, description, color }) => {
   return (
     <a
       href={href}
-      className="group relative bg-white dark:bg-slate-900 rounded-3xl p-8 transition-all duration-500 hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)] hover:-translate-y-2 border border-slate-100 dark:border-slate-800 overflow-hidden"
+      className="group relative rounded-3xl transition-all duration-500 hover:shadow-[0_40px_80px_rgba(0,0,0,0.2)] hover:-translate-y-2 overflow-hidden block h-full bg-slate-100 dark:bg-slate-800"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-transparent dark:from-slate-800/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-      <div className="relative z-10">
-        <div className="mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 origin-left inline-block">
-          <Icon className={`text-5xl ${color} transition-colors duration-500 drop-shadow-sm`} />
-        </div>
-        <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">{title}</h3>
-        <p className="text-slate-600 dark:text-white leading-relaxed font-medium">{description}</p>
+      {/* 2. Animated Gold Snake Border Layer */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 overflow-hidden">
+        <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0_10%,#fbbf24_15%,#fbbf24_35%,transparent_40%_100%)] animate-[spin_3s_linear_infinite] blur-[1px]" />
       </div>
-      <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-rose-500 to-amber-500 transition-all duration-500 group-hover:w-full"></div>
+
+      {/* 3. Card Body - Inner mask with 3px gap to show the gold line */}
+      <div className="relative z-20 bg-white dark:bg-slate-900 m-[3px] rounded-[21px] p-8 h-[calc(100%-6px)] overflow-hidden flex flex-col">
+        {/* Subtle glow background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        
+        <div className="relative z-10 flex flex-col h-full">
+          <div className="mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 origin-left inline-block">
+            <Icon className={`text-5xl ${color} transition-colors duration-500 drop-shadow-sm`} />
+          </div>
+          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">{title}</h3>
+          <p className="text-slate-600 dark:text-white leading-relaxed font-medium flex-grow">{description}</p>
+        </div>
+      </div>
     </a>
   );
 };
@@ -40,7 +49,7 @@ const ServicesSection = () => {
       <header className="container text-center mb-20">
         <h2
           id="our-work"
-          className="text-5xl md:text-6xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400 uppercase tracking-tighter"
+          className="text-5xl md:text-7xl font-black mb-8 bg-clip-text text-transparent bg-gradient-to-r from-rose-500 via-rose-400 to-amber-500 uppercase tracking-tighter drop-shadow-sm"
         >
           {t('services.title')}
         </h2>

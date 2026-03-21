@@ -1,52 +1,51 @@
 export const packages = [
     {
         id: 'starter',
-        name: 'AI-Ready Starter',
-        price: 35000,
-        monthlyPrice: 0,
+        name: 'Basic Pack',
+        price: 4990,
+        monthlyPrice: 249,
         features: [
-            'AI-Native Web Framework (Next.js)',
-            'Performance-Optimized (90+ Score)',
-            'Standard AI Assistant Integration',
-            'Full Responsive Design',
-            'SEO & GEO Fundamentals',
-            'Scalable Infrastructure'
+            'Design & Delivery',
+            'Full Responsive (Mobile/Desktop)',
+            'Basic SEO Optimization',
+            'Menu & Content Design',
+            'Product Photo & Video',
+            'Maintenance & Small Updates (Monthly)'
         ],
         recommended: false,
-        description: 'Perfect for small businesses looking to establish a premium, AI-ready presence.'
+        description: 'Perfect for established small businesses who need a complete, high-quality digital footprint.'
     },
     {
         id: 'growth',
-        name: 'AI-Native Growth',
-        price: 75000,
-        monthlyPrice: 0,
+        name: 'Standard Pack',
+        price: 19990,
+        monthlyPrice: 999,
         features: [
-            'Everything in Starter',
-            'Custom Trained AI Sales Agent',
-            'Conversion Rate Optimization (CRO)',
-            'GEO Dominance Package',
-            'Automated Lead Qualification',
-            'Priority Support & Monthly Strategy'
+            'Everything in Basic',
+            'AI Chat / Custom Service',
+            'Full Database Integration',
+            'CMS Admin Access',
+            'Voucher Support at Checkout',
+            'Maintenance & Basic Updates (Monthly)'
         ],
         recommended: true,
-        description: 'Designed for scaling businesses that want to dominate their niche with AI-driven results.'
+        description: 'Advanced features including database access and AI capabilities to scale your business.'
     },
     {
         id: 'enterprise',
-        name: 'AI-First Enterprise',
-        price: 150000,
+        name: 'Custom Pack',
+        price: 0,
         monthlyPrice: 0,
+        isCustom: true,
         features: [
-            'Full Business Process Automation',
-            'Custom LLM Fine-tuning (Private Data)',
-            'End-to-end Digital Transformation',
-            'Dedicated Project Team (24/7)',
-            'Global Content Delivery Network',
-            'Custom Integrations & Security'
+            'Everything Custom',
+            'Highly Scalable Systems',
+            'Full Automation & LLMs',
+            'Dedicated Project Manager',
+            'Bespoke Enterprise Solutions'
         ],
         recommended: false,
-        isCustom: true,
-        description: 'Elite solutions for organizations requiring deep AI integration and bespoke scalability.'
+        description: 'Bespoke AI infrastructure for organizations requiring high-scale, unique integrations.'
     },
     {
         id: 'chatbot',

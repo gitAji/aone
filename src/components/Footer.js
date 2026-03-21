@@ -72,8 +72,14 @@ const Footer = () => {
         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="footer-section about-us">
-          <div className="mb-4">
-            <Image src="/images/logo.png" alt="Aone Logo" width={150} height={50} className="h-12 w-auto" />
+          <div className="mb-8">
+            <Image 
+              src="/images/logo.png" 
+              alt="Aone Logo" 
+              width={250} 
+              height={80} 
+              className="h-20 w-auto opacity-100 hover:scale-105 transition-all duration-500" 
+            />
           </div>
           
           <div className="h-20 mb-4">
@@ -100,6 +106,7 @@ const Footer = () => {
           <ul>
             <li><Link href="/privacy-policy">{t('footer.privacy')}</Link></li>
             <li><Link href="/terms-and-conditions">{t('footer.terms')}</Link></li>
+            <li><Link href="/pricing">{t('nav.pricing')}</Link></li>
             <li><Link href="/design-requirements">{t('footer.requirements')}</Link></li>
             <li><Link href="/free-consultation">{t('footer.consultation')}</Link></li>
             <li><Link href="/feedback">{t('footer.feedback')}</Link></li>
@@ -110,8 +117,8 @@ const Footer = () => {
 
         <div className="footer-section contact-info">
           <h3 className="text-xs uppercase tracking-[0.3em] font-black mb-6 text-slate-500">{t('footer.contactInfo')}</h3>
-          <p className="text-slate-400 font-bold mb-1">info@aone.no</p>
-          <p className="text-slate-400 font-bold">400 71 654</p>
+          <a href="mailto:info@aone.no" className="block text-white font-bold mb-2 hover:text-rose-500 transition-colors">info@aone.no</a>
+          <a href="tel:40071654" className="block text-white font-bold hover:text-rose-500 transition-colors">400 71 654</a>
         </div>
 
         <div className="footer-section social-media">
@@ -130,8 +137,8 @@ const Footer = () => {
         </div>
       </motion.div>
 
-      <div className="footer-bottom mt-20 py-12 relative border-t border-slate-900/50 text-center">
-        <p className="opacity-40 text-[9px] uppercase tracking-[0.4em] font-black inline-block border-b-2 border-rose-500/30 pb-2 px-4 translate-y-2">
+      <div className="footer-bottom mt-10 py-3 relative border-t border-slate-900/50 text-center">
+        <p className="opacity-20 text-[5.5px] uppercase tracking-[0.2em] font-medium transition-opacity hover:opacity-100 cursor-default">
           &copy; {new Date().getFullYear()} Aone.no. {t('footer.rights')}
         </p>
       </div>

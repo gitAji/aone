@@ -10,7 +10,7 @@ const CTASection = () => {
       <div className="container mx-auto px-6">
         <h2
           id="cta"
-          className="text-4xl font-bold text-gray-900 dark:text-white mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-indigo-600 dark:from-white dark:to-indigo-400"
+          className="text-4xl md:text-5xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-rose-500 via-rose-400 to-amber-500 uppercase tracking-tighter drop-shadow-sm"
         >
           {t('cta.title')}
         </h2>

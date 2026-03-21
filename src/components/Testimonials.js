@@ -37,7 +37,7 @@ const TestimonialsSection = () => {
       <header className="text-center mb-20 container">
         <h2
           id="testimonials"
-          className="text-5xl md:text-6xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-rose-500 to-amber-500 uppercase tracking-tighter"
+          className="text-5xl md:text-7xl font-black mb-10 bg-clip-text text-transparent bg-gradient-to-r from-rose-500 via-rose-400 to-amber-500 uppercase tracking-tighter drop-shadow-sm"
         >
           {t('testimonials.title')}
         </h2>

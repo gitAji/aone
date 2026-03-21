@@ -7,6 +7,7 @@ export const translations = {
             about: "About",
             blog: "Blog",
             contact: "Contact",
+            pricing: "Pricing",
             clientLogin: "Client Login",
         },
         hero: {
@@ -256,6 +257,7 @@ export const translations = {
             supportTitle: "Support",
             referralTitle: "Referral",
             quoteTitle: "Request a Quote",
+            pricingTitle: "Pricing",
         },
         contact: {
             title: "Contact Us",
@@ -298,6 +300,7 @@ export const translations = {
             about: "Om oss",
             blog: "Blogg",
             contact: "Kontakt",
+            pricing: "Priser",
             clientLogin: "Klientpålogging",
         },
         hero: {
@@ -547,6 +550,7 @@ export const translations = {
             supportTitle: "Brukerstøtte",
             referralTitle: "Verveprogram",
             quoteTitle: "Få et tilbud",
+            pricingTitle: "Priser",
         },
         contact: {
             title: "Kontakt oss",

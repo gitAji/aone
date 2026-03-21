@@ -90,7 +90,7 @@ const HamburgerMenu = () => {
       </a>
 
       <button
-        className="relative z-[10002] w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 shadow-xl bg-gradient-to-br from-rose-500 via-purple-500 to-indigo-500 text-white border-0"
+        className="relative z-[10002] w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 shadow-xl bg-white text-slate-900 border border-slate-200"
         onClick={toggleMenu}
         aria-expanded={isOpen}
         aria-controls="fullscreen-menu"
@@ -106,7 +106,7 @@ const HamburgerMenu = () => {
             strokeWidth="3"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="w-8 h-8 text-white z-[10001]"
+            className="w-8 h-8 z-[10001]"
           >
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>

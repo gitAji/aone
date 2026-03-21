@@ -19,7 +19,7 @@ export async function POST(request) {
         const body = await request.json();
         console.log('Order received:', body);
 
-        const { orderId: providedOrderId, selectedPack, formData, billingInterval, addons, paymentMethod } = body;
+        const { orderId: providedOrderId, selectedPack, formData, billingInterval, addons, paymentMethod, agreementUrl } = body;
 
         if (!selectedPack || !formData) {
             return NextResponse.json({ error: 'Missing required data' }, { status: 400 });
@@ -40,7 +40,8 @@ export async function POST(request) {
             signedAt: new Date().toISOString(),
             createdAt: new Date().toISOString(),
             totalAmount: price,
-            currentStep: 4
+            currentStep: 4,
+            agreementUrl: agreementUrl || null
         };
 
         let finalOrderId = providedOrderId || ('MOCK-' + Date.now());
