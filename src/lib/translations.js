@@ -23,46 +23,46 @@ export const translations = {
         },
         services: {
             title: "Our Expertise",
-            subtitle: "We combine creative vision with technical excellence to build AI-powered solutions that don't just work—they perform.",
+            subtitle: "Elite AI-native digital agency specializing in high-performance web development, custom AI automation, and future-ready branding for businesses in Norway and beyond.",
             webDev: {
-                title: "AI-Powered Web",
-                description: "AI-native web experiences. Performance-obsessed development that adapts to user behavior.",
+                title: "AI-Powered Web Design",
+                description: "High-performance, AI-native web experiences. Custom web development in Norway focused on speed, conversion, and adaptive user behavior.",
             },
             branding: {
-                title: "Future-Ready Brand",
-                description: "Future-ready brand systems. Adaptive identities for digital-first businesses.",
+                title: "Future-Ready Branding",
+                description: "Digital-first brand systems. Adaptive identities and UI/UX design Bergen that evolve with AI-driven market trends.",
             },
             marketing: {
                 title: "AI-Driven Marketing",
-                description: "AI-driven growth marketing. Predictive analytics and automated optimization for maximum ROI.",
+                description: "AI-powered growth marketing. Predictive analytics and automated optimization to maximize ROI for Norwegian businesses.",
             },
             chatbot: {
-                title: "AI Chatbots",
-                description: "Intelligent conversational agents for 24/7 support and lead qualification.",
+                title: "Custom AI Chatbots",
+                description: "Intelligent conversational agents and AI customer support solutions for 24/7 lead qualification and engagement.",
             },
             ai: {
-                title: "AI Automations",
-                description: "Leveraging intelligent systems to optimize workflows and unlock new levels of efficiency.",
+                title: "Business AI Automation",
+                description: "Leveraging machine learning and custom AI workflows to optimize processes and unlock new levels of efficiency.",
             },
             geo: {
-                title: "Generative Engine Optimization",
-                description: "Proactively shaping your online presence for the next era of AI-driven search and discovery.",
+                title: "GEO (AI Search Optimization)",
+                description: "Generative Engine Optimization (GEO). Proactively shaping your digital presence for the future of AI-driven search (SGE).",
             },
             uiux: {
-                title: "UI/UX Design",
-                description: "Designing intuitive, user-centric interfaces that deliver seamless and delightful experiences.",
+                title: "UX/UI Design Bergen",
+                description: "Intuitive, user-centric interfaces designed in Bergen. Optimized for seamless experiences and modern accessibility.",
             },
             photo: {
-                title: "Photography",
-                description: "Professional brand photography that tells your unique story with high-impact visuals.",
+                title: "Brand Photography",
+                description: "Professional photography for brands in Norway that tells your unique story with high-impact organic visuals.",
             },
             video: {
-                title: "Videography",
-                description: "Compelling cinematic stories designed to engage your audience and drive action.",
+                title: "Cinematic Videography",
+                description: "Compelling video content and brand storytelling designed to engage your audience and drive digital action.",
             },
             seo: {
-                title: "AI-Enhanced SEO",
-                description: "Strategic visibility powered by AI insights to dominate the digital landscape.",
+                title: "AI-Enhanced SEO Norway",
+                description: "Strategic search engine optimization powered by AI insights. Dominate the Google rankings in Norway and Bergen.",
             },
         },
         testimonials: {
@@ -90,7 +90,7 @@ export const translations = {
             rights: "All rights reserved.",
         },
         projects: {
-            title: "Our Latest Projects",
+            title: "Strategic Niche Architectures",
             subtitle: "A showcase of our most innovative digital solutions for clients.",
             viewAll: "View all projects",
         },
@@ -245,7 +245,7 @@ export const translations = {
             title: "Voices of Success",
             subtitle: "The true measure of our work lies in the growth and satisfaction of those we partner with.",
             cleanMasters: "Excellent designs that made our website look more professional. All the gaps were filled with highest prerequisites. 100% endorsed and a good choice for restaurant businesses.",
-            saray: "Saray Steakhouse, and arguably one of the best places for grabbing the all-in-one bundle for web solutions. Unquestionably a 5 stars digital firm with huge potential.",
+            saray: "Saray Steakhouse & Kro, and arguably one of the best places for grabbing the all-in-one bundle for web solutions. Unquestionably a 5 stars digital firm with huge potential.",
             goLocal: "A website that is visually appealing, easy to use, and provides a good user experience can help to increase customer engagement and drive conversions."
         },
         policies: {
@@ -316,46 +316,46 @@ export const translations = {
         },
         services: {
             title: "Vår Ekspertise",
-            subtitle: "Vi kombinerer kreativ visjon med teknisk dyktighet for å bygge AI-drevne løsninger som ikke bare fungerer – de presterer.",
+            subtitle: "Elite AI-drevet digitalt byrå spesialisert på høytytende webutvikling, tilpasset AI-automatisering og fremtidsrettet merkevarebygging for bedrifter i Norge.",
             webDev: {
-                title: "AI-drevet nett",
-                description: "AI-native nettopplevelser. Ytelsesfokusert utvikling som tilpasser seg brukeratferd.",
+                title: "AI-drevet Webdesign",
+                description: "Høytytende, AI-native nettopplevelser. Spesialtilpasset webutvikling i Norge med fokus på hastighet, konvertering og brukeratferd.",
             },
             branding: {
-                title: "Fremtidsklar merkevare",
-                description: "Fremtidsklare merkevaresystemer. Adaptive identiteter for digitale bedrifter.",
+                title: "Digital Merkevarebygging",
+                description: "Fremtidsklare merkevaresystemer. Adaptive identiteter og UI/UX design Bergen som utvikler seg med AI-drevne markedstrender.",
             },
             marketing: {
-                title: "AI-drevet markedsføring",
-                description: "AI-drevet vekstmarkedsføring. Prediktiv analyse og automatisert optimalisering for maksimal ROI.",
+                title: "AI-drevet Markedsføring",
+                description: "AI-basert vekstmarkedsføring. Prediktiv analyse og automatisert optimalisering for å maksimere ROI for norske bedrifter.",
             },
             chatbot: {
-                title: "AI-chatbots",
-                description: "Intelligente samtaleagenter for 24/7 support og salgskvalifisering.",
+                title: "Tilpassede AI-chatbots",
+                description: "Intelligente samtaleagenter og AI-kundestøtteløsninger for 24/7 salgskvalifisering og kundereise.",
             },
             ai: {
-                title: "AI-automatisering",
-                description: "Utnytte intelligente systemer for å optimalisere arbeidsflyter og låse opp nye nivåer av effektivitet.",
+                title: "AI-automatisering for Bedrifter",
+                description: "Utnytt maskinlæring og tilpassede AI-arbeidsflyter for å optimalisere prosesser og låse opp ny effektivitet.",
             },
             geo: {
-                title: "Generative Engine Optimization",
-                description: "Proaktiv forming av din online tilstedeværelse for den neste æraen av AI-drevet søk og oppdagelse.",
+                title: "GEO (AI-søksoptimalisering)",
+                description: "Generative Engine Optimization (GEO). Proaktiv forming av din digitale tilstedeværelse for fremtidens AI-søk (SGE).",
             },
             uiux: {
-                title: "UI/UX Design",
-                description: "Design av intuitive, brukersentriske grensesnitt som leverer sømløse og herlige opplevelser.",
+                title: "UI/UX-design Bergen",
+                description: "Design av intuitive, brukersentriske grensesnitt utviklet i Bergen. Optimalisert for sømløse opplevelser og universell utforming.",
             },
             photo: {
-                title: "Fotografering",
-                description: "Profesjonell merkevarefotografering som forteller din unike historie med bilder som selger.",
+                title: "Merkevarefotografering",
+                description: "Profesjonell fotografering for merkevarer i Norge som forteller din unike historie med organiske bilder.",
             },
             video: {
-                title: "Videografi",
-                description: "Fengslende videoinnhold designet for å engasjere publikum og skape resultater.",
+                title: "Cinematisk Videografi",
+                description: "Fengslende videoinnhold og merkevarehistorier designet for høy engasjement og digital konvertering.",
             },
             seo: {
-                title: "AI-forbedret SEO",
-                description: "Strategisk synlighet drevet av AI for å dominere det digitale landskapet.",
+                title: "AI-forbedret SEO Norge",
+                description: "Strategisk søkemotoroptimalisering drevet av AI-innsikt. Dominer Google-rangeringene i Norge og Bergen.",
             },
         },
         testimonials: {
@@ -383,7 +383,7 @@ export const translations = {
             rights: "Alle rettigheter forbeholdt.",
         },
         projects: {
-            title: "Våre siste prosjekter",
+            title: "Strategisk Nisjearkitektur",
             subtitle: "En fremvisning av våre mest innovative digitale løsninger for kunder.",
             viewAll: "Se alle prosjekter",
         },
@@ -538,7 +538,7 @@ export const translations = {
             title: "Suksesshistorier",
             subtitle: "Det sanne målet på vårt arbeid ligger i veksten og tilfredsheten til de vi samarbeider med.",
             cleanMasters: "Utmerkede design som fikk nettstedet vårt til å se mer profesjonelt ut. Alle hull ble fylt med de høyeste forutsetninger. 100% anbefalt og et godt valg for restaurantbedrifter.",
-            saray: "Saray Steakhouse er uten tvil et av de beste stedene for å få alt-i-ett-pakken for webløsninger. Utvilsomt et 5-stjerners digitalt firma med enormt potensial.",
+            saray: "Saray Steakhouse & Kro er uten tvil et av de beste stedene for å få alt-i-ett-pakken for webløsninger. Utvilsomt et 5-stjerners digitalt firma med enormt potensial.",
             goLocal: "Et nettsted som er visuelt tiltalende, enkelt å bruke og gir en god brukeropplevelse kan bidra til å øke kundeengasjementet og drive konverteringer."
         },
         policies: {

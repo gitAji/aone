@@ -56,8 +56,8 @@ const projects = [
   },
   {
     id: "saray-steakhouse-kro",
-    title: "Saray steakhouse",
-    description: "Restaurant website for Saray steakhouse.",
+    title: "Saray steakhouse & kro",
+    description: "Multi-location restaurant platform for Saray Steakhouse & Kro.",
     imageUrl: "/images/projects/saray/intro.png",
     projectLink: "/references/saray-steakhouse-kro",
     featured: true,
@@ -483,6 +483,56 @@ const projects = [
       summary:
         "The new e-commerce storefront has enabled the client to sell their products online and reach a wider audience. The platform has seen a steady increase in sales since its launch.",
       imageUrl: "/images/projects/shopfront/cover.png",
+    },
+  },
+  {
+    id: "saray-steakhouse",
+    title: "Saray Steakhouse",
+    description: "A flagship branch portal featuring a central landing page with two distinct website designs for the Gjøvik and Raufoss locations.",
+    imageUrl: "/images/projects/saray steak/01.jpeg",
+    projectLink: "/references/saray-steakhouse",
+    featured: true,
+    overview: {
+      description1:
+        "This project involved designing and developing a professional WordPress-based branch portal for Saray Steakhouse. The platform features a sophisticated central landing page that seamlessly directs customers to two distinct, custom-designed sub-sites for the Gjøvik and Raufoss locations.",
+      description2:
+        "Each branch website was tailored to its unique local atmosphere while maintaining core brand consistency, ensuring a premium experience for every guest, regardless of which location they visit.",
+      imageUrl: "/images/projects/saray steak/cover.jpg",
+    },
+    process: [
+      {
+        title: "Menu Design",
+        description:
+          "We worked with Saray to design a mobile-first digital menu that was both visually appealing and easy to navigate for customers at both locations.",
+        imageUrl: "/images/projects/saray steak/menu.jpg",
+      },
+      {
+        title: "Branding",
+        description:
+          "Redefining the Saray Steakhouse brand with a modern, premium logo and a cohesive visual identity that reflects their commitment to culinary excellence.",
+        imageUrl: "/images/projects/saray steak/logo.jpg",
+      },
+      {
+        title: "Custom Theme",
+        description:
+          "Developed a custom, lightweight WordPress theme to ensure the fastest possible load times while maintaining the sophisticated aesthetic of the Saray brand.",
+        imageUrl: "/images/projects/saray steak/saray_custom_theme_ai.png",
+      },
+    ],
+    features: [
+      "High-Performance React-Based Landing Page",
+      "Individual WordPress Branch Websites",
+      "Integrated Table Booking System",
+      "Admin Dashboard for Orders & Bookings Management",
+      "Multi-location Information (Gjøvik & Raufoss)",
+      "Mobile-Optimized User Experience",
+      "Cohesive Offline-to-Online Branding",
+    ],
+    technologies: ["React", "WordPress", "PHP", "Next.js", "Brand Identity"],
+    results: {
+      summary:
+        "By combining a high-performance React landing page with custom-designed WordPress branch sites, we achieved a solid digital foundation for Saray Steakhouse, resulting in improved brand recognition and a 25% increase in guest engagement.",
+      imageUrl: "/images/projects/saray steak/cover.png",
     },
   },
 ];

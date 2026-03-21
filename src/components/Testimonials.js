@@ -78,8 +78,8 @@ const TestimonialsSection = () => {
         <TestimonialCard
           text={t('testimonials.saray')}
           imgSrc="/images/clients/saraysange.png"
-          imgAlt="Saray Steakhouse Logo"
-          client="Saray Steakhouse"
+          imgAlt="Saray Steakhouse & Kro Logo"
+          client="Saray Steakhouse & Kro"
         />
         <TestimonialCard
           text={t('testimonials.goLocal')}

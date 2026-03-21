@@ -24,7 +24,7 @@ const ClientLogos = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                 >
-                    Helping 100+ businesses dominate the digital era
+                    TRUSTED BY INNOVATIVE BRANDS WORLDWIDE
                 </motion.p>
                 <div className="flex flex-wrap justify-center items-center gap-10 md:gap-14">
                     {clients.map((client, index) => (
