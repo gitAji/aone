@@ -128,20 +128,6 @@ function OrderPageContent() {
                                         finalTotal = b + a;
                                     }
 
-                                    let pdfUrl = null;
-                                    try {
-                                        const pdfBlob = await generateAgreementPDF(false, data);
-                                        if (pdfBlob) {
-                                            const { storage } = await import('@/lib/firebase');
-                                            const { ref, uploadBytes, getDownloadURL } = await import('firebase/storage');
-                                            const agreementRef = ref(storage, `agreements/${initialOrderId}.pdf`);
-                                            await uploadBytes(agreementRef, pdfBlob);
-                                            pdfUrl = await getDownloadURL(agreementRef);
-                                        }
-                                    } catch (e) {
-                                        console.error('Failed to upload PDF on success:', e);
-                                    }
-
                                     await fetch('/api/order/sync', {
                                         method: 'POST',
                                         headers: { 'Content-Type': 'application/json' },
@@ -149,11 +135,33 @@ function OrderPageContent() {
                                             orderId: initialOrderId,
                                             status: 'completed',
                                             step: 4,
-                                            totalAmount: finalTotal,
-                                            agreementUrl: pdfUrl
+                                            totalAmount: finalTotal
                                         })
                                     });
                                     if (finalTotal > 0) setTotalAmount(finalTotal);
+
+                                    // Upload PDF in the background separately tracking its own sync
+                                    generateAgreementPDF(false, data).then(async (pdfBlob) => {
+                                        if (pdfBlob) {
+                                            const { storage } = await import('@/lib/firebase');
+                                            const { ref, uploadBytes, getDownloadURL } = await import('firebase/storage');
+                                            const agreementRef = ref(storage, `agreements/${initialOrderId}.pdf`);
+                                            await uploadBytes(agreementRef, pdfBlob);
+                                            const pdfUrl = await getDownloadURL(agreementRef);
+                                            
+                                            // Update db silently with the saved pdfUrl
+                                            await fetch('/api/order/sync', {
+                                                method: 'POST',
+                                                headers: { 'Content-Type': 'application/json' },
+                                                body: JSON.stringify({
+                                                    orderId: initialOrderId,
+                                                    agreementUrl: pdfUrl
+                                                })
+                                            });
+                                        }
+                                    }).catch(e => {
+                                        console.error('Failed to upload PDF on success in background:', e);
+                                    });
                                 } catch (e) {
                                     console.error('Final sync failed:', e);
                                 }
@@ -381,20 +389,6 @@ function OrderPageContent() {
                 return;
             }
 
-            let pdfUrl = null;
-            try {
-                const pdfBlob = await generateAgreementPDF(false);
-                if (pdfBlob) {
-                    const { storage } = await import('@/lib/firebase');
-                    const { ref, uploadBytes, getDownloadURL } = await import('firebase/storage');
-                    const agreementRef = ref(storage, `agreements/${orderId}.pdf`);
-                    await uploadBytes(agreementRef, pdfBlob);
-                    pdfUrl = await getDownloadURL(agreementRef);
-                }
-            } catch (e) {
-                console.error("Failed to upload agreement", e);
-            }
-
             const res = await fetch('/api/order/create', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -405,12 +399,35 @@ function OrderPageContent() {
                     formData,
                     billingInterval,
                     paymentMethod: method,
-                    agreementUrl: pdfUrl
+                    agreementUrl: null // will update in background
                 })
             });
+
             if (res.ok) {
                 await syncState({ step: 4, status: 'completed' });
                 setStep(4);
+                
+                // Background PDF upload
+                generateAgreementPDF(false).then(async (pdfBlob) => {
+                    if (pdfBlob) {
+                        const { storage } = await import('@/lib/firebase');
+                        const { ref, uploadBytes, getDownloadURL } = await import('firebase/storage');
+                        const agreementRef = ref(storage, `agreements/${orderId}.pdf`);
+                        await uploadBytes(agreementRef, pdfBlob);
+                        const pdfUrl = await getDownloadURL(agreementRef);
+                        
+                        await fetch('/api/order/sync', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                orderId,
+                                agreementUrl: pdfUrl
+                            })
+                        });
+                    }
+                }).catch(e => {
+                    console.error("Failed to upload agreement in background", e);
+                });
             } else {
                 setToast({ message: 'Something went wrong. Please try again.', type: 'error' });
             }
