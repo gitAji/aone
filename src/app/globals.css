@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Force Tailwind v4 to solely rely on the .dark class strictly for dark mode, ignoring OS-level night modes */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @import "../components/Header.css";
 
 :root {
