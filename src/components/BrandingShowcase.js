@@ -5,25 +5,25 @@ import { motion } from "framer-motion";
 
 const brandingProjects = [
     {
-        name: "WebDesign UK",
+        name: "Logo Design",
         category: "Digital Agency",
         image: "/images/brand design/webdesignuk.jpg",
         className: "md:col-span-2 md:row-span-2 h-[600px]",
     },
     {
-        name: "Shop Front",
+        name: "Window Design",
         category: "Retail Brand",
         image: "/images/brand design/shop front sticker.jpg",
         className: "md:col-span-1 md:row-span-3 h-[600px] md:h-full",
     },
     {
-        name: "AR Const",
-        category: "Architecture",
-        image: "/images/brand design/Ar constructions.jpg",
+        name: "UI/UX Design",
+        category: "Interactive Prototype",
+        image: "/images/brand design/UI UX design.png",
         className: "col-span-1 h-[300px]",
     },
     {
-        name: "CTB Solutions",
+        name: "Hand Coded Web Sites",
         category: "Tech Identity",
         image: "/images/brand design/ctb solutions.jpeg",
         className: "col-span-1 h-[300px]",
@@ -56,7 +56,7 @@ const BrandingShowcase = () => {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                         >
-                            Design Atelier
+                            Design Atelier portfolio
                         </motion.span>
                         <motion.h2 
                             className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter uppercase"
@@ -68,14 +68,6 @@ const BrandingShowcase = () => {
                             <span className="text-transparent" style={{ WebkitTextStroke: '1px currentColor', opacity: 0.3 }}>Showcase</span>
                         </motion.h2>
                     </div>
-                    <motion.p 
-                        className="text-slate-500 dark:text-slate-400 text-lg max-w-sm font-medium leading-relaxed"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                    >
-                        Bespoke visual narratives crafted with precision and global design standards.
-                    </motion.p>
                 </div>
 
                 {/* Re-Architected Bento Grid Layout */}
@@ -89,16 +81,44 @@ const BrandingShowcase = () => {
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
                         >
-                            <Image
-                                src={project.image}
-                                alt={project.name}
-                                fill
-                                className="object-cover transition-all duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)] grayscale group-hover:grayscale-0 group-hover:scale-110"
-                                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                            />
+                            {project.figmaUrl ? (
+                                <div className="absolute inset-0 w-full h-full">
+                                    <iframe 
+                                        style={{ border: '1px solid rgba(0, 0, 0, 0.1)' }}
+                                        width="100%" 
+                                        height="100%" 
+                                        src={project.figmaUrl}
+                                        allowFullScreen
+                                        className="transition-all duration-700"
+                                    />
+                                    {/* Transparent click-through mask in default state to ensure hover works */}
+                                    <div className="absolute inset-0 z-10" />
+                                </div>
+                            ) : project.videoUrl ? (
+                                <div className="absolute inset-0 w-full h-full pointer-events-none">
+                                    <iframe 
+                                        src={project.videoUrl}
+                                        title={project.name}
+                                        className="w-full h-full scale-[1.3] brightness-75 group-hover:brightness-100 transition-all duration-700"
+                                        frameBorder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                    />
+                                    {/* Glass Overlay to capture clicks/hover without blocking video */}
+                                    <div className="absolute inset-0 z-10 bg-transparent" />
+                                </div>
+                            ) : (
+                                <Image
+                                    src={project.image}
+                                    alt={project.name}
+                                    fill
+                                    className="object-cover transition-all duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)] grayscale group-hover:grayscale-0 group-hover:scale-110"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                />
+                            )}
                             
                             {/* The Sleek Hover Reveal */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 backdrop-blur-[2px] flex flex-col justify-end p-10">
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 backdrop-blur-[2px] flex flex-col justify-end p-10 z-20 pointer-events-none">
                                 <motion.div
                                     initial={{ y: 20, opacity: 0 }}
                                     whileInView={{ y: 0, opacity: 1 }}
@@ -115,7 +135,7 @@ const BrandingShowcase = () => {
                             </div>
 
                             {/* Corner Identity Badge */}
-                            <div className="absolute top-8 left-8 flex items-center gap-3 transition-opacity duration-300 group-hover:opacity-0">
+                            <div className="absolute top-8 left-8 flex items-center gap-3 transition-opacity duration-300 group-hover:opacity-0 z-20">
                                 <div className="w-8 h-8 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-[10px] text-white font-black">
                                     0{index + 1}
                                 </div>

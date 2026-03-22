@@ -215,58 +215,53 @@ const projects = [
     },
   },
   {
-    id: "trendify-tools",
-    title: "Trendify Tools Dashboard",
-    description: "An e-commerce fashion platform.",
-    imageUrl: "/images/projects/trendify.png",
-    projectLink: "/references/trendify-tools",
+    id: "saray-steakhouse",
+    title: "Saray Steakhouse",
+    description: "A flagship branch portal featuring a central landing page with two distinct website designs for the Gjøvik and Raufoss locations.",
+    imageUrl: "/images/projects/saray steak/01.jpeg",
+    projectLink: "/references/saray-steakhouse",
     featured: true,
     overview: {
       description1:
-        "Trendify Tools is a comprehensive website designed to offer different types of online tools that help creators to grow their audience on social media platforms. The project involved designing and developing a modern, user-friendly dashboard that provides access to a variety of tools such as hashtag generators, content planners, and analytics trackers. this project aimed to create an engaging online presence that showcases their services, allows clients to easily access the tools, and provides essential information about the platform.",
+        "This project involved designing and developing a professional WordPress-based branch portal for Saray Steakhouse. The platform features a sophisticated central landing page that seamlessly directs customers to two distinct, custom-designed sub-sites for the Gjøvik and Raufoss locations.",
       description2:
-        "The dashboard features a clean and elegant design that reflects the professionalism of Trendify Tools. Key functionalities include a comprehensive tool menu, an integrated user account system, a photo gallery showcasing their tools, and client testimonials to build trust with potential users. The site is built using Next.js to ensure fast load times and a responsive design that works seamlessly across all devices. Additionally, SEO best practices were implemented to enhance the platform 's visibility in search engine results, attracting more visitors and potential users.",
-      imageUrl: "/images/projects/trendify/cover.png",
+        "Each branch website was tailored to its unique local atmosphere while maintaining core brand consistency, ensuring a premium experience for every guest, regardless of which location they visit.",
+      imageUrl: "/images/projects/saray steak/cover.jpg",
     },
     process: [
       {
-        title: "Data Integration & Pipeline Setup",
+        title: "Menu Design",
         description:
-          "We began by integrating various data sources, including social media APIs and user databases, to ensure seamless data flow into the dashboard. This involved setting up ETL pipelines for data extraction, transformation, and loading.",
-        imageUrl: "/images/projects/trendify/plan.png",
+          "We worked with Saray to design a mobile-first digital menu that was both visually appealing and easy to navigate for customers at both locations.",
+        imageUrl: "/images/projects/saray steak/menu.jpg",
       },
       {
-        title: "Machine Learning Model Development & Training",
+        title: "Branding",
         description:
-          "We developed and trained machine learning models to provide predictive analytics and insights. This included tasks such as trend analysis, user behavior prediction, and content optimization suggestions.",
-        imageUrl: "/images/projects/trendify/ai.png",
+          "Redefining the Saray Steakhouse brand with a modern, premium logo and a cohesive visual identity that reflects their commitment to culinary excellence.",
+        imageUrl: "/images/projects/saray steak/logo.jpg",
       },
       {
-        title: "Dashboard UI/UX Design & Development",
+        title: "Custom Theme",
         description:
-          "Our design team created an intuitive and visually appealing user interface for the dashboard. The development team then built the front-end and back-end components, ensuring a smooth user experience and robust functionality.",
-        imageUrl: "/images/projects/trendify/testing.png",
-      },
-      {
-        title: "Deployment & Performance Optimization",
-        description:
-          "Finally, we deployed the dashboard on a scalable cloud platform, ensuring high availability and performance. We also implemented monitoring tools to track usage and performance metrics, allowing for ongoing optimization.",
-        imageUrl: "/images/projects/trendify/dev.png",
+          "Developed a custom, lightweight WordPress theme to ensure the fastest possible load times while maintaining the sophisticated aesthetic of the Saray brand.",
+        imageUrl: "/images/projects/saray steak/saray_custom_theme_ai.png",
       },
     ],
     features: [
-      "AI-Powered Content Recommendation Engine",
-      "Automated Tool Discovery via AI Chat",
-      "Predictive Analytics Dashboard for Creators",
-      "Lightning-fast SEO & GEO optimized pages",
-      "Secure User Authentication & Cloud Storage",
-      "Real-time Collaboration & Export Tools",
+      "High-Performance React-Based Landing Page",
+      "Individual WordPress Branch Websites",
+      "Integrated Table Booking System",
+      "Admin Dashboard for Orders & Bookings Management",
+      "Multi-location Information (Gjøvik & Raufoss)",
+      "Mobile-Optimized User Experience",
+      "Cohesive Offline-to-Online Branding",
     ],
-    technologies: ["Next.js", "OpenAI API", "Tailwind", "Supabase"],
+    technologies: ["React", "WordPress", "PHP", "Next.js", "Brand Identity"],
     results: {
       summary:
-        "The AI-native dashboard drove a **45% increase in engagement** and a 30% boost in recurring tool usage. SEO/GEO efforts led to a **25% increase in organic traffic** from AI search engines like Perplexity, positioning Trendify as a 2026 industry leader.",
-      imageUrl: "/images/projects/trendify.png",
+        "By combining a high-performance React landing page with custom-designed WordPress branch sites, we achieved a solid digital foundation for Saray Steakhouse, resulting in improved brand recognition and a 25% increase in guest engagement.",
+      imageUrl: "/images/projects/saray steak/cover.png",
     },
   },
   {
@@ -486,53 +481,58 @@ const projects = [
     },
   },
   {
-    id: "saray-steakhouse",
-    title: "Saray Steakhouse",
-    description: "A flagship branch portal featuring a central landing page with two distinct website designs for the Gjøvik and Raufoss locations.",
-    imageUrl: "/images/projects/saray steak/01.jpeg",
-    projectLink: "/references/saray-steakhouse",
+    id: "trendify-tools",
+    title: "Trendify Tools Dashboard",
+    description: "An e-commerce fashion platform.",
+    imageUrl: "/images/projects/trendify.png",
+    projectLink: "/references/trendify-tools",
     featured: true,
     overview: {
       description1:
-        "This project involved designing and developing a professional WordPress-based branch portal for Saray Steakhouse. The platform features a sophisticated central landing page that seamlessly directs customers to two distinct, custom-designed sub-sites for the Gjøvik and Raufoss locations.",
+        "Trendify Tools is a comprehensive website designed to offer different types of online tools that help creators to grow their audience on social media platforms. The project involved designing and developing a modern, user-friendly dashboard that provides access to a variety of tools such as hashtag generators, content planners, and analytics trackers. this project aimed to create an engaging online presence that showcases their services, allows clients to easily access the tools, and provides essential information about the platform.",
       description2:
-        "Each branch website was tailored to its unique local atmosphere while maintaining core brand consistency, ensuring a premium experience for every guest, regardless of which location they visit.",
-      imageUrl: "/images/projects/saray steak/cover.jpg",
+        "The dashboard features a clean and elegant design that reflects the professionalism of Trendify Tools. Key functionalities include a comprehensive tool menu, an integrated user account system, a photo gallery showcasing their tools, and client testimonials to build trust with potential users. The site is built using Next.js to ensure fast load times and a responsive design that works seamlessly across all devices. Additionally, SEO best practices were implemented to enhance the platform 's visibility in search engine results, attracting more visitors and potential users.",
+      imageUrl: "/images/projects/trendify/cover.png",
     },
     process: [
       {
-        title: "Menu Design",
+        title: "Data Integration & Pipeline Setup",
         description:
-          "We worked with Saray to design a mobile-first digital menu that was both visually appealing and easy to navigate for customers at both locations.",
-        imageUrl: "/images/projects/saray steak/menu.jpg",
+          "We began by integrating various data sources, including social media APIs and user databases, to ensure seamless data flow into the dashboard. This involved setting up ETL pipelines for data extraction, transformation, and loading.",
+        imageUrl: "/images/projects/trendify/plan.png",
       },
       {
-        title: "Branding",
+        title: "Machine Learning Model Development & Training",
         description:
-          "Redefining the Saray Steakhouse brand with a modern, premium logo and a cohesive visual identity that reflects their commitment to culinary excellence.",
-        imageUrl: "/images/projects/saray steak/logo.jpg",
+          "We developed and trained machine learning models to provide predictive analytics and insights. This included tasks such as trend analysis, user behavior prediction, and content optimization suggestions.",
+        imageUrl: "/images/projects/trendify/ai.png",
       },
       {
-        title: "Custom Theme",
+        title: "Dashboard UI/UX Design & Development",
         description:
-          "Developed a custom, lightweight WordPress theme to ensure the fastest possible load times while maintaining the sophisticated aesthetic of the Saray brand.",
-        imageUrl: "/images/projects/saray steak/saray_custom_theme_ai.png",
+          "Our design team created an intuitive and visually appealing user interface for the dashboard. The development team then built the front-end and back-end components, ensuring a smooth user experience and robust functionality.",
+        imageUrl: "/images/projects/trendify/testing.png",
+      },
+      {
+        title: "Deployment & Performance Optimization",
+        description:
+          "Finally, we deployed the dashboard on a scalable cloud platform, ensuring high availability and performance. We also implemented monitoring tools to track usage and performance metrics, allowing for ongoing optimization.",
+        imageUrl: "/images/projects/trendify/dev.png",
       },
     ],
     features: [
-      "High-Performance React-Based Landing Page",
-      "Individual WordPress Branch Websites",
-      "Integrated Table Booking System",
-      "Admin Dashboard for Orders & Bookings Management",
-      "Multi-location Information (Gjøvik & Raufoss)",
-      "Mobile-Optimized User Experience",
-      "Cohesive Offline-to-Online Branding",
+      "AI-Powered Content Recommendation Engine",
+      "Automated Tool Discovery via AI Chat",
+      "Predictive Analytics Dashboard for Creators",
+      "Lightning-fast SEO & GEO optimized pages",
+      "Secure User Authentication & Cloud Storage",
+      "Real-time Collaboration & Export Tools",
     ],
-    technologies: ["React", "WordPress", "PHP", "Next.js", "Brand Identity"],
+    technologies: ["Next.js", "OpenAI API", "Tailwind", "Supabase"],
     results: {
       summary:
-        "By combining a high-performance React landing page with custom-designed WordPress branch sites, we achieved a solid digital foundation for Saray Steakhouse, resulting in improved brand recognition and a 25% increase in guest engagement.",
-      imageUrl: "/images/projects/saray steak/cover.png",
+        "The AI-native dashboard drove a **45% increase in engagement** and a 30% boost in recurring tool usage. SEO/GEO efforts led to a **25% increase in organic traffic** from AI search engines like Perplexity, positioning Trendify as a 2026 industry leader.",
+      imageUrl: "/images/projects/trendify.png",
     },
   },
 ];
