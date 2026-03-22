@@ -164,54 +164,57 @@ const projects = [
     },
   },
   {
-    id: "rent-my-property-uk",
-    title: "Rent My Property UK",
-    description: "A platform for renting properties.",
-    imageUrl: "/images/projects/rentmypropertyuk.png",
-    projectLink: "/references/rent-my-property-uk",
+    id: "qfs-accountants",
+    title: "QFS Accountants",
+    description: "A financial services website.",
+    imageUrl: "/images/projects/QFS/cover.png",
+    projectLink: "/references/qfs-accountants",
     featured: true,
     overview: {
       description1:
-        "This project focused on developing a comprehensive online presence for Rent My Property UK, a property management service. Our goal was to create a user-friendly and visually appealing website that would facilitate property listings, inquiries, and bookings.",
-      description2: "",
-      imageUrl: "/images/projects/rentmypropertyuk.png",
+        "This project involved designing and developing a professional website for QFS Accountants, a reputable accounting firm. The objective was to create a modern, user-friendly online platform that effectively showcases their services, expertise, and client testimonials, while also providing easy access to contact information and resources for potential clients.",
+      description2:
+        "Key features of the website include a clean and intuitive design that reflects the professionalism of QFS Accountants, a detailed service section outlining their offerings, a blog for sharing industry insights and updates, and a contact form for inquiries. The website was built using Next.js to ensure fast performance and responsiveness across all devices. Additionally, SEO best practices were implemented to enhance the firm's online visibility and attract more potential clients.",
+      imageUrl: "/images/projects/QFS/cover.png",
     },
     process: [
       {
-        title: "Requirements Gathering & User Needs Assessment",
+        title: "Requirements & Compliance Analysis",
         description:
-          "We started by engaging with the client to understand their business model, target audience, and specific needs for the property management platform. This phase included user surveys and stakeholder interviews to gather comprehensive requirements.",
-        imageUrl: "/images/projects/rentmyproperty/plan.png",
+          "We collaborated closely with QFS Accountants to gather detailed requirements, ensuring the app met all relevant financial regulations and compliance standards.we use public API to get latest news about accounting updates and HMRC forms to the site so that user can get latest updates.",
+        imageUrl: "/images/projects/QFS/requirements.png",
       },
       {
-        title: "UI/UX Redesign & Prototyping",
+        title: "Secure Architecture Design",
         description:
-          "The design team created wireframes and interactive prototypes to visualize the new user interface. Emphasis was placed on intuitive navigation, clear property listings, and a seamless booking process.",
-        imageUrl: "/images/projects/rentmyproperty/ui.png",
+          "We designed a robust architecture prioritizing data security, user authentication, and secure communication protocols to protect sensitive financial information.",
+        imageUrl: "/images/projects/QFS/mood board.png",
       },
       {
-        title: "Development & Feature Implementation",
+        title: "Development & Integration",
         description:
-          "Our development team built the website using modern web technologies, ensuring it was responsive and optimized for performance. Key features included property search filters, detailed listings, user accounts, and a secure booking system.",
-        imageUrl: "/images/projects/rentmyproperty/dev.png",
+          "The site was developed using the latest Technologies, integrating secure APIs for data handling and ensuring compliance with industry standards.",
+        imageUrl: "/images/projects/QFS/dev.png",
       },
       {
-        title: "Accessibility & Performance Testing",
+        title: "Security Testing & Deployment",
         description:
-          "Rigorous testing was conducted to ensure the website met accessibility standards and performed well across all devices and browsers. User feedback was incorporated to refine the user experience further.",
-        imageUrl: "/images/projects/rentmyproperty/logo.png",
+          "Rigorous security testing, penetration testing, and user acceptance testing were conducted before a secure and compliant deployment to app stores.",
+        imageUrl: "/images/projects/QFS/test.png",
       },
     ],
     features: [
-      "Responsive Design for optimal viewing on all devices.",
-      "Detailed Property Listings with descriptions and amenities.",
-      "SEO Optimization for local search visibility.",
+      "Comprehensive Service Catalog with clear pricing.",
+      "Online Booking and Scheduling System for convenience.",
+      "Client Testimonials and Reviews Section.",
+      "Responsive Design for seamless access on any device.",
+      "Integrated Contact Forms and Service Inquiry options.",
     ],
-    technologies: ["WordPress (headless CMS)"],
+    technologies: ["Next.js", "React", "Booking API", "CMS"],
     results: {
       summary:
-        "The revamped Rent My Property UK website successfully enhanced the user experience, leading to increased user engagement and higher booking rates. The client reported positive feedback from users regarding the ease of navigation and the clarity of property information. Overall, the project significantly contributed to the client's business growth and online presence.",
-      imageUrl: "/images/projects/rentmyproperty/cover.png",
+        "The website launch resulted in a significant increase in online appointments and client inquiries for QFS Accountants. The user-friendly design and integrated booking system enhanced customer satisfaction, leading to positive feedback and repeat business. Overall, the new website played a crucial role in boosting the firm online presence and supporting its growth objectives.",
+      imageUrl: "/images/projects/QFS/cover.png",
     },
   },
   {
@@ -265,57 +268,54 @@ const projects = [
     },
   },
   {
-    id: "qfs-accountants",
-    title: "QFS Accountants",
-    description: "A financial services website.",
-    imageUrl: "/images/projects/qfs.png",
-    projectLink: "/references/qfs-accountants",
+    id: "rent-my-property-uk",
+    title: "Rent My Property UK",
+    description: "A platform for renting properties.",
+    imageUrl: "/images/projects/rentmypropertyuk.png",
+    projectLink: "/references/rent-my-property-uk",
     featured: true,
     overview: {
       description1:
-        "This project involved designing and developing a professional website for QFS Accountants, a reputable accounting firm. The objective was to create a modern, user-friendly online platform that effectively showcases their services, expertise, and client testimonials, while also providing easy access to contact information and resources for potential clients.",
-      description2:
-        "Key features of the website include a clean and intuitive design that reflects the professionalism of QFS Accountants, a detailed service section outlining their offerings, a blog for sharing industry insights and updates, and a contact form for inquiries. The website was built using Next.js to ensure fast performance and responsiveness across all devices. Additionally, SEO best practices were implemented to enhance the firm's online visibility and attract more potential clients.",
-      imageUrl: "/images/projects/QFS/cover.png",
+        "This project focused on developing a comprehensive online presence for Rent My Property UK, a property management service. Our goal was to create a user-friendly and visually appealing website that would facilitate property listings, inquiries, and bookings.",
+      description2: "",
+      imageUrl: "/images/projects/rentmypropertyuk.png",
     },
     process: [
       {
-        title: "Requirements & Compliance Analysis",
+        title: "Requirements Gathering & User Needs Assessment",
         description:
-          "We collaborated closely with QFS Accountants to gather detailed requirements, ensuring the app met all relevant financial regulations and compliance standards.we use public API to get latest news about accounting updates and HMRC forms to the site so that user can get latest updates.",
-        imageUrl: "/images/projects/QFS/requirements.png",
+          "We started by engaging with the client to understand their business model, target audience, and specific needs for the property management platform. This phase included user surveys and stakeholder interviews to gather comprehensive requirements.",
+        imageUrl: "/images/projects/rentmyproperty/plan.png",
       },
       {
-        title: "Secure Architecture Design",
+        title: "UI/UX Redesign & Prototyping",
         description:
-          "We designed a robust architecture prioritizing data security, user authentication, and secure communication protocols to protect sensitive financial information.",
-        imageUrl: "/images/projects/QFS/mood board.png",
+          "The design team created wireframes and interactive prototypes to visualize the new user interface. Emphasis was placed on intuitive navigation, clear property listings, and a seamless booking process.",
+        imageUrl: "/images/projects/rentmyproperty/ui.png",
       },
       {
-        title: "Development & Integration",
+        title: "Development & Feature Implementation",
         description:
-          "The site was developed using the latest Technologies, integrating secure APIs for data handling and ensuring compliance with industry standards.",
-        imageUrl: "/images/projects/QFS/dev.png",
+          "Our development team built the website using modern web technologies, ensuring it was responsive and optimized for performance. Key features included property search filters, detailed listings, user accounts, and a secure booking system.",
+        imageUrl: "/images/projects/rentmyproperty/dev.png",
       },
       {
-        title: "Security Testing & Deployment",
+        title: "Accessibility & Performance Testing",
         description:
-          "Rigorous security testing, penetration testing, and user acceptance testing were conducted before a secure and compliant deployment to app stores.",
-        imageUrl: "/images/projects/QFS/test.png",
+          "Rigorous testing was conducted to ensure the website met accessibility standards and performed well across all devices and browsers. User feedback was incorporated to refine the user experience further.",
+        imageUrl: "/images/projects/rentmyproperty/logo.png",
       },
     ],
     features: [
-      "Comprehensive Service Catalog with clear pricing.",
-      "Online Booking and Scheduling System for convenience.",
-      "Client Testimonials and Reviews Section.",
-      "Responsive Design for seamless access on any device.",
-      "Integrated Contact Forms and Service Inquiry options.",
+      "Responsive Design for optimal viewing on all devices.",
+      "Detailed Property Listings with descriptions and amenities.",
+      "SEO Optimization for local search visibility.",
     ],
-    technologies: ["Next.js", "React", "Booking API", "CMS"],
+    technologies: ["WordPress (headless CMS)"],
     results: {
       summary:
-        "The website launch resulted in a significant increase in online appointments and client inquiries for QFS Accountants. The user-friendly design and integrated booking system enhanced customer satisfaction, leading to positive feedback and repeat business. Overall, the new website played a crucial role in boosting the firm online presence and supporting its growth objectives.",
-      imageUrl: "/images/projects/QFS/cover.png",
+        "The revamped Rent My Property UK website successfully enhanced the user experience, leading to increased user engagement and higher booking rates. The client reported positive feedback from users regarding the ease of navigation and the clarity of property information. Overall, the project significantly contributed to the client's business growth and online presence.",
+      imageUrl: "/images/projects/rentmyproperty/cover.png",
     },
   },
   {

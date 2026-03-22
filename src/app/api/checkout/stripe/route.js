@@ -35,7 +35,7 @@ export async function POST(req) {
         const priceId = billingInterval === 'monthly' ? selectedPack.monthlyStripePriceId : selectedPack.stripePriceId;
 
         const session = await stripe.checkout.sessions.create({
-            payment_method_types: ['card'],
+            payment_method_types: ['card', 'klarna'], // Added Klarna for better Norway conversion
             line_items: [
                 {
                     ...(priceId ? { price: priceId } : {
@@ -62,6 +62,8 @@ export async function POST(req) {
             metadata: {
                 orderId,
                 packageId: selectedPack.id,
+                businessName: formData.businessName,
+                customerName: formData.name
             },
         });
 
