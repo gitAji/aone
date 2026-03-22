@@ -19,7 +19,7 @@ export async function POST(req) {
         } = await req.json();
 
         // Calculate total amount in NOK (Stripe expects amount in subunits like øre/cents)
-        const { packages } = await import('../../../data/packages');
+        const { packages } = await import('@/app/data/packages');
 
         let addonCost = 0;
         if (addons && addons.length > 0) {
@@ -109,7 +109,15 @@ export async function POST(req) {
 
         return NextResponse.json({ url: session.url });
     } catch (err) {
-        console.error('Stripe Checkout Error:', err);
-        return NextResponse.json({ error: err.message }, { status: 500 });
+        console.error('--- STRIPE CONFIGURATION / CHECKOUT ERROR ---');
+        console.error('Message:', err.message);
+        console.error('Stack Trace:', err.stack);
+        if (err.type === 'StripeAuthenticationError') {
+             console.error('AUTHENTICATION ERROR: Your STRIPE_SECRET_KEY might be invalid or not live.');
+        }
+        return NextResponse.json({ 
+            error: err.message,
+            diagnostic: 'Check your server logs for the full stack trace.'
+        }, { status: 500 });
     }
 }
