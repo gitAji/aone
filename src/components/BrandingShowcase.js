@@ -11,28 +11,34 @@ const brandingProjects = [
         className: "md:col-span-2 md:row-span-2 h-[600px]",
     },
     {
-        name: "Feet Locker",
-        category: "Sport Retail",
-        image: "/images/brand design/feetlocker.png",
-        className: "col-span-1 h-[300px] md:h-auto",
+        name: "Shop Front",
+        category: "Retail Brand",
+        image: "/images/brand design/shop front sticker.jpg",
+        className: "md:col-span-1 md:row-span-3 h-[600px] md:h-full",
     },
     {
         name: "AR Const",
         category: "Architecture",
         image: "/images/brand design/Ar constructions.jpg",
-        className: "col-span-1 h-[300px] md:h-auto",
+        className: "col-span-1 h-[300px]",
     },
     {
         name: "CTB Solutions",
         category: "Tech Identity",
         image: "/images/brand design/ctb solutions.jpeg",
-        className: "md:col-span-1 h-[300px] md:h-auto",
+        className: "col-span-1 h-[300px]",
     },
     {
-        name: "Shop Front",
-        category: "Retail Brand",
-        image: "/images/brand design/shop front sticker.jpg",
-        className: "md:col-span-1 h-[300px] md:h-auto",
+        name: "AI Agent",
+        category: "AI Identity",
+        image: "/images/brand design/AI Agent.png",
+        className: "col-span-1 h-[250px]",
+    },
+    {
+        name: "Invitation",
+        category: "Event Branding",
+        image: "/images/brand design/Invitation.png",
+        className: "col-span-1 h-[250px]",
     },
 ];
 
@@ -72,7 +78,7 @@ const BrandingShowcase = () => {
                     </motion.p>
                 </div>
 
-                {/* Modern Bento Grid Layout */}
+                {/* Re-Architected Bento Grid Layout */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-min">
                     {brandingProjects.map((project, index) => (
                         <motion.div
@@ -92,7 +98,7 @@ const BrandingShowcase = () => {
                             />
                             
                             {/* The Sleek Hover Reveal */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 backdrop-blur-[2px] flex flex-col justify-end p-10">
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 backdrop-blur-[2px] flex flex-col justify-end p-10">
                                 <motion.div
                                     initial={{ y: 20, opacity: 0 }}
                                     whileInView={{ y: 0, opacity: 1 }}
@@ -120,13 +126,13 @@ const BrandingShowcase = () => {
                         </motion.div>
                     ))}
                     
-                    {/* Minimalist CTA Fragment */}
-                    <div className="flex flex-col flex-wrap justify-between p-12 rounded-[2.5rem] border border-dashed border-slate-300 dark:border-white/10 text-center md:text-left bg-slate-50/50 dark:bg-white/5 group">
+                    {/* Minimalist CTA Fragment - Now at the end */}
+                    <div className="md:col-span-1 h-[250px] flex flex-col justify-between p-8 rounded-[2.5rem] border border-dashed border-slate-300 dark:border-white/10 text-left bg-slate-50/50 dark:bg-white/5 group">
                         <div className="space-y-4">
-                            <h4 className="text-2xl font-black text-slate-900 dark:text-white uppercase leading-none tracking-tighter italic">Elevate Your Presence</h4>
-                            <p className="text-slate-500 dark:text-slate-400 text-sm font-medium leading-relaxed">Let&apos;s engineer your visual legacy.</p>
+                            <h4 className="text-xl font-black text-slate-900 dark:text-white uppercase leading-none tracking-tighter italic">Elevate Your Presence</h4>
+                            <p className="text-slate-500 dark:text-slate-400 text-xs font-medium leading-relaxed">Let&apos;s engineer your visual legacy.</p>
                         </div>
-                        <a href="/contact" className="mt-8 md:mt-0 px-8 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full font-black text-[10px] uppercase tracking-widest hover:scale-110 transition-transform w-[140px] text-center">
+                        <a href="/contact" className="mt-8 md:mt-0 px-6 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full font-black text-[9px] uppercase tracking-widest hover:scale-110 transition-transform w-[120px] text-center">
                             Start Now
                         </a>
                     </div>
