@@ -6,38 +6,38 @@ import { motion } from "framer-motion";
 const brandingProjects = [
     {
         name: "Logo Design",
-        category: "Digital Agency",
+        category: "Visual Identity",
         image: "/images/brand design/webdesignuk.jpg",
         className: "md:col-span-2 md:row-span-2 h-[600px]",
     },
     {
         name: "Window Design",
-        category: "Retail Brand",
+        category: "Retail Presence",
         image: "/images/brand design/shop front sticker.jpg",
         className: "md:col-span-1 md:row-span-3 h-[600px] md:h-full",
     },
     {
-        name: "UI/UX Design",
-        category: "Interactive Prototype",
+        name: "UI/UX Architecture",
+        category: "Digital Experience",
         image: "/images/brand design/UI UX design.png",
         className: "col-span-1 h-[300px]",
     },
     {
-        name: "Hand Coded Web Sites",
-        category: "Tech Identity",
-        image: "/images/brand design/ctb solutions.jpeg",
+        name: "Product Design",
+        category: "Industrial Design",
+        image: "/images/brand design/product design.jpg",
         className: "col-span-1 h-[300px]",
     },
     {
-        name: "AI Agent",
-        category: "AI Identity",
-        image: "/images/brand design/AI Agent.png",
+        name: "Business Identity",
+        category: "Corporate Brand",
+        image: "/images/brand design/business card.png",
         className: "col-span-1 h-[250px]",
     },
     {
-        name: "Invitation",
-        category: "Event Branding",
-        image: "/images/brand design/Invitation.png",
+        name: "Brand Merchandise",
+        category: "Lifestyle Goods",
+        image: "/images/brand design/bag.png",
         className: "col-span-1 h-[250px]",
     },
 ];
@@ -81,41 +81,13 @@ const BrandingShowcase = () => {
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
                         >
-                            {project.figmaUrl ? (
-                                <div className="absolute inset-0 w-full h-full">
-                                    <iframe 
-                                        style={{ border: '1px solid rgba(0, 0, 0, 0.1)' }}
-                                        width="100%" 
-                                        height="100%" 
-                                        src={project.figmaUrl}
-                                        allowFullScreen
-                                        className="transition-all duration-700"
-                                    />
-                                    {/* Transparent click-through mask in default state to ensure hover works */}
-                                    <div className="absolute inset-0 z-10" />
-                                </div>
-                            ) : project.videoUrl ? (
-                                <div className="absolute inset-0 w-full h-full pointer-events-none">
-                                    <iframe 
-                                        src={project.videoUrl}
-                                        title={project.name}
-                                        className="w-full h-full scale-[1.3] brightness-75 group-hover:brightness-100 transition-all duration-700"
-                                        frameBorder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                    />
-                                    {/* Glass Overlay to capture clicks/hover without blocking video */}
-                                    <div className="absolute inset-0 z-10 bg-transparent" />
-                                </div>
-                            ) : (
-                                <Image
-                                    src={project.image}
-                                    alt={project.name}
-                                    fill
-                                    className="object-cover transition-all duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)] grayscale group-hover:grayscale-0 group-hover:scale-110"
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                />
-                            )}
+                            <Image
+                                src={project.image}
+                                alt={project.name}
+                                fill
+                                className="object-cover transition-all duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)] grayscale group-hover:grayscale-0 group-hover:scale-110"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            />
                             
                             {/* The Sleek Hover Reveal */}
                             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 backdrop-blur-[2px] flex flex-col justify-end p-10 z-20 pointer-events-none">
