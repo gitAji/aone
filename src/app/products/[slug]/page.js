@@ -52,14 +52,12 @@ const ProductDetailPage = () => {
               </p>
               
               <div className="mt-8">
-                <a
-                  href={product.subdomain}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/free-consultation"
                   className="inline-block bg-rose-500 text-white font-bold tracking-widest uppercase px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:bg-rose-600 hover:-translate-y-1 transition-all duration-300"
                 >
-                  Access Platform
-                </a>
+                  Contact Us
+                </Link>
               </div>
             </div>
             

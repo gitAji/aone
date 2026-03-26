@@ -64,15 +64,13 @@ const ProductsPage = () => {
                       </svg>
                     </Link>
                     
-                    <a
-                      href={product.subdomain}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <Link
+                      href="/free-consultation"
                       className="inline-block px-5 py-2.5 rounded-full text-sm font-bold hover:bg-rose-500 hover:text-white transition-all shadow-md active:scale-95"
                       style={{ backgroundColor: '#ffffff', color: '#0f172a' }}
                     >
-                      Visit Product
-                    </a>
+                      Contact Us
+                    </Link>
                   </div>
                 </div>
               </div>

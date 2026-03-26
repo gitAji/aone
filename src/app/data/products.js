@@ -61,6 +61,27 @@ const products = [
       "Multi-resource Management"
     ],
     technologies: ["Next.js", "AI Booking Engine", "Stripe API", "Real-time Notifications"]
+  },
+  {
+    id: "emis",
+    title: "Aone EMIS",
+    description: "An institutional intelligence platform providing end-to-end management for educational and organizational ecosystems.",
+    projectLink: "/products/emis",
+    subdomain: "https://emis.aone.no/",
+    imageUrl: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=2532&auto=format&fit=crop",
+    overview: {
+      description1: "Aone EMIS (Educational & Institutional Management Intelligence System) is a powerful platform built to streamline the full lifecycle of institutional operations — from enrollment and scheduling to performance analytics and compliance reporting.",
+      description2: "Designed for schools, colleges, and organizations, EMIS centralizes all administrative processes under one intelligent roof, reducing overhead and empowering decision-makers with real-time institutional data.",
+    },
+    features: [
+      "Student & Staff Enrollment Management",
+      "Timetable & Scheduling Automation",
+      "Academic Performance Tracking",
+      "Role-Based Access Control",
+      "Attendance & Leave Management",
+      "Compliance & Reporting Dashboards"
+    ],
+    technologies: ["Next.js", "Node.js", "Cloud Database", "Role-Based Auth", "AI Analytics"]
   }
 ];
 
