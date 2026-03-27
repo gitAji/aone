@@ -1,9 +1,12 @@
 import { NextResponse } from 'next/server';
 import https from 'https';
-import http from 'http';
 
 export const runtime = 'nodejs';
 
+/**
+ * Optimized Image Proxy for WordPress - SSL Bypass Version
+ * Uses https module to stream images even if SSL is expired
+ */
 export async function GET(request) {
     const { searchParams } = new URL(request.url);
     const imageUrl = searchParams.get('url');
@@ -13,46 +16,54 @@ export async function GET(request) {
     }
 
     if (!imageUrl.includes('blog.aone.no')) {
-        return new NextResponse('Invalid domain', { status: 403 });
+        return new NextResponse('Invalid domain: Unauthorized image source', { status: 403 });
     }
 
     try {
-        const protocol = imageUrl.startsWith('https') ? https : http;
-        const options = imageUrl.startsWith('https') ? { rejectUnauthorized: false } : {};
+        const stream = await new Promise((resolve, reject) => {
+            const options = {
+                rejectUnauthorized: false,
+                headers: {
+                    'User-Agent': 'Aone-Image-Proxy/1.1',
+                }
+            };
 
-        const response = await new Promise((resolve, reject) => {
-            protocol.get(imageUrl, options, (res) => {
-                const chunks = [];
-                res.on('data', (chunk) => chunks.push(chunk));
-                res.on('end', () => {
-                    resolve({
-                        statusCode: res.statusCode,
-                        headers: res.headers,
-                        data: Buffer.concat(chunks)
-                    });
-                });
-            }).on('error', (err) => {
-                console.error('Fetch error:', err);
-                reject(err);
+            https.get(imageUrl, options, (res) => {
+                if (res.statusCode >= 400) {
+                    reject(new Error(`Upstream error: ${res.statusCode}`));
+                    return;
+                }
+                resolve(res);
+            }).on('error', (e) => {
+                reject(e);
             });
         });
 
-        if (response.statusCode >= 400) {
-            return new NextResponse(`Upstream error: ${response.statusCode}`, { status: response.statusCode });
-        }
+        // Map node readable stream to web stream for Next.js response
+        const webStream = new ReadableStream({
+            start(controller) {
+                stream.on('data', (chunk) => controller.enqueue(chunk));
+                stream.on('end', () => controller.close());
+                stream.on('error', (err) => controller.error(err));
+            }
+        });
 
         const headers = new Headers();
-        if (response.headers['content-type']) {
-            headers.set('Content-Type', response.headers['content-type']);
-        }
-        headers.set('Cache-Control', 'public, max-age=31536000, immutable');
+        const contentType = stream.headers['content-type'];
+        const contentLength = stream.headers['content-length'];
 
-        return new NextResponse(response.data, {
-            status: response.statusCode,
-            headers
+        if (contentType) headers.set('Content-Type', contentType);
+        if (contentLength) headers.set('Content-Length', contentLength);
+        
+        headers.set('Cache-Control', 'public, max-age=31536000, immutable');
+        headers.set('X-Proxy-Source', 'Aone-WP-Engine-Legacy-SSL');
+
+        return new NextResponse(webStream, {
+            status: 200,
+            headers,
         });
     } catch (error) {
         console.error('Image Proxy Error:', error);
-        return new NextResponse('Failed to fetch image', { status: 500 });
+        return new NextResponse('Failed to fetch image from upstream', { status: 500 });
     }
 }

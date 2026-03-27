@@ -1,7 +1,7 @@
 export const metadata = {
-  title: "Our Blog | Aone",
-  description: "Read the latest insights from the Aone blog. Stay updated on web design trends, digital marketing tips, and news from our Bergen team.",
-  keywords: "Aone blog, digital agency blog, web design articles, digital marketing insights, AI automation news, industry trends, technology blog, Norway",
+  title: "Insights Repository | Aone Digital",
+  description: "Advanced perspectives at the cross-section of AI-native architecture, quantitative marketing, and digital engineering. Strategic intelligence from the Aone team.",
+  keywords: "Aone blog, AI-native insights, digital agency blog, web design architecture, quantitative marketing, AI automation news, strategic digital intelligence, technology blog",
 };
 
 export default function BlogLayout({ children }) {

@@ -71,6 +71,7 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <head>
         <script
+          id="theme-script"
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
@@ -124,7 +125,7 @@ export default function RootLayout({ children }) {
           {children}
         </LayoutClientWrapper>
 
-        <script type="application/ld+json" dangerouslySetInnerHTML={{
+        <Script id="schema-script" type="application/ld+json" dangerouslySetInnerHTML={{
           __html: `
               {
                 "@context": "https://schema.org",

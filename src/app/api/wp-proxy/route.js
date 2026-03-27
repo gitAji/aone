@@ -1,9 +1,12 @@
 import { NextResponse } from 'next/server';
 import https from 'https';
-import http from 'http';
 
 export const runtime = 'nodejs';
 
+/**
+ * Enhanced WordPress API Proxy - SSL Bypass Version
+ * Handles expired SSL on blog.aone.no by using custom https agent
+ */
 export async function GET(request) {
     const { searchParams } = new URL(request.url);
     const endpoint = searchParams.get('endpoint');
@@ -14,6 +17,7 @@ export async function GET(request) {
 
     const wpApiUrl = `https://blog.aone.no/wp-json/wp/v2/${endpoint}`;
     const targetUrl = new URL(wpApiUrl);
+    
     searchParams.forEach((value, key) => {
         if (key !== 'endpoint') {
             targetUrl.searchParams.set(key, value);
@@ -21,66 +25,54 @@ export async function GET(request) {
     });
 
     try {
-        const urlToFetch = targetUrl.toString().replace('http://', 'https://');
-
+        const fetchUrl = targetUrl.toString();
+        
+        // Fetch data using https module to bypass expired certificate
         const data = await new Promise((resolve, reject) => {
-            https.get(urlToFetch, {
-                rejectUnauthorized: false
-            }, (res) => {
-                let body = '';
-                res.on('data', chunk => body += chunk);
+            const options = {
+                rejectUnauthorized: false,
+                headers: {
+                    'Accept': 'application/json',
+                    'User-Agent': 'Aone-WP-Proxy/1.1',
+                }
+            };
+
+            https.get(fetchUrl, options, (res) => {
+                let rawData = '';
+                res.on('data', (chunk) => { rawData += chunk; });
                 res.on('end', () => {
                     try {
-                        resolve({
-                            status: res.statusCode,
+                        const parsedData = JSON.parse(rawData);
+                        resolve({ 
+                            data: parsedData, 
                             headers: res.headers,
-                            body: JSON.parse(body)
+                            status: res.statusCode 
                         });
                     } catch (e) {
-                        reject(new Error('Failed to parse WP response'));
+                        reject(new Error('Failed to parse WP JSON'));
                     }
                 });
-            }).on('error', (err) => {
-                http.get(targetUrl.toString(), (res) => {
-                    let body = '';
-                    res.on('data', chunk => body += chunk);
-                    res.on('end', () => {
-                        try {
-                            resolve({
-                                status: res.statusCode,
-                                headers: res.headers,
-                                body: JSON.parse(body)
-                            });
-                        } catch (e) {
-                            reject(new Error('Failed to parse WP response via HTTP fallback'));
-                        }
-                    });
-                }).on('error', reject);
+            }).on('error', (e) => {
+                reject(e);
             });
         });
 
-        let responseBody = data.body;
+        if (data.status >= 400) {
+            return NextResponse.json({ error: 'WP Upstream Error', status: data.status }, { status: data.status });
+        }
 
-        // Recursive function to replace URLs in the response object
+        // Deep Rewrite Function
         const rewriteUrls = (obj) => {
             if (!obj || typeof obj !== 'object') return obj;
-
-            if (Array.isArray(obj)) {
-                return obj.map(rewriteUrls);
-            }
+            if (Array.isArray(obj)) return obj.map(rewriteUrls);
 
             const newObj = {};
             for (const key in obj) {
                 let value = obj[key];
-
-                if (typeof value === 'string') {
-                    // Check if value is a WordPress image URL
-                    // Also handle escaped slashes that might be present in some contexts
-                    if (value.includes('blog.aone.no/wp-content/uploads/')) {
-                        const cleanUrl = value.replace(/\\\//g, '/');
-                        value = `/api/image-proxy?url=${encodeURIComponent(cleanUrl)}`;
-                    }
-                } else if (typeof value === 'object') {
+                if (typeof value === 'string' && value.includes('blog.aone.no/wp-content/uploads/')) {
+                    const cleanUrl = value.replace(/\\\//g, '/').trim();
+                    value = `/api/image-proxy?url=${encodeURIComponent(cleanUrl)}`;
+                } else if (typeof value === 'object' && value !== null) {
                     value = rewriteUrls(value);
                 }
                 newObj[key] = value;
@@ -88,22 +80,24 @@ export async function GET(request) {
             return newObj;
         };
 
-        if (responseBody) {
-            responseBody = rewriteUrls(responseBody);
-        }
+        const processedData = rewriteUrls(data.data);
+        const response = NextResponse.json(processedData, { status: 200 });
 
-        const response = NextResponse.json(responseBody, { status: data.status });
-
-        if (data.headers['x-wp-total']) {
-            response.headers.set('X-WP-Total', data.headers['x-wp-total']);
-        }
-        if (data.headers['x-wp-totalpages']) {
-            response.headers.set('X-WP-TotalPages', data.headers['x-wp-totalpages']);
-        }
-
+        // Forward vital WordPress pagination headers
+        const wpTotal = data.headers['x-wp-total'];
+        const wpTotalPages = data.headers['x-wp-totalpages'];
+        
+        if (wpTotal) response.headers.set('X-WP-Total', wpTotal);
+        if (wpTotalPages) response.headers.set('X-WP-TotalPages', wpTotalPages);
+        
+        response.headers.set('X-Data-Source', 'Aone-WP-Engine-Legacy-SSL');
+        
         return response;
     } catch (error) {
-        console.error('WP Proxy Error:', error);
-        return NextResponse.json({ error: 'Failed to fetch from WordPress' }, { status: 500 });
+        console.error('WP Proxy Fatal Error:', error);
+        return NextResponse.json({ 
+            error: 'WP Communication Failure', 
+            details: error.message 
+        }, { status: 500 });
     }
 }

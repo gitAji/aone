@@ -1,60 +1,14 @@
 import React from "react";
+import { FaEnvelope, FaPhone, FaArrowRight, FaMapMarkerAlt } from "react-icons/fa";
 import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Image from "next/image";
-import {
-  faFacebookF,
-  faXTwitter,
-  faInstagram,
-  faGithub,
-  faGoogle,
-} from "@fortawesome/free-brands-svg-icons";
 import { useLanguage } from "@/context/LanguageContext";
-
 import { motion } from "framer-motion";
-
-const FooterTypewriter = ({ strings }) => {
-  const [currentStringIndex, setCurrentStringIndex] = React.useState(0);
-  const [currentText, setCurrentText] = React.useState("");
-  const [isDeleting, setIsDeleting] = React.useState(false);
-
-  React.useEffect(() => {
-    const timeout = setTimeout(() => {
-      const fullText = strings[currentStringIndex];
-      
-      if (!isDeleting) {
-        setCurrentText(fullText.substring(0, currentText.length + 1));
-        if (currentText === fullText) {
-          setTimeout(() => setIsDeleting(true), 2000);
-        }
-      } else {
-        setCurrentText(fullText.substring(0, currentText.length - 1));
-        if (currentText === "") {
-          setIsDeleting(false);
-          setCurrentStringIndex((prev) => (prev + 1) % strings.length);
-        }
-      }
-    }, isDeleting ? 30 : 50);
-
-    return () => clearTimeout(timeout);
-  }, [currentText, isDeleting, currentStringIndex, strings]);
-
-  return (
-    <span>
-      {currentText}
-      <motion.span
-        animate={{ opacity: [0, 1, 0] }}
-        transition={{ duration: 0.8, repeat: Infinity }}
-        className="inline-block w-[1px] h-[1em] bg-rose-500 ml-1 align-middle"
-      />
-    </span>
-  );
-};
+import Logo from "./Logo";
 
 const Footer = () => {
   const { t } = useLanguage();
   return (
-    <footer className="footer overflow-hidden relative">
+    <footer className="footer overflow-hidden relative border-t border-slate-900 bg-slate-950 pb-10">
       {/* Animated Top Border Line */}
       <motion.div 
         initial={{ scaleX: 0 }}
@@ -65,83 +19,80 @@ const Footer = () => {
       />
 
       <motion.div 
-        className="footer-content relative z-20"
-        initial={{ opacity: 0, y: 40 }}
+        className="footer-content relative z-20 pt-16"
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.8 }}
       >
-        <div className="footer-section about-us">
-          <div className="mb-8">
-            <Image 
-              src="/images/logo.png" 
-              alt="Aone Logo" 
-              width={250} 
-              height={80} 
-              className="h-20 w-auto opacity-100 hover:scale-105 transition-all duration-500" 
-            />
+        <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* Column 1: Brand */}
+          <div className="footer-section brand-column">
+            <div className="mb-6 scale-90 origin-left">
+              <Logo />
+            </div>
+            <p className="text-white text-[10px] leading-relaxed max-w-xs mb-6">
+              {t('footer.aboutText')}
+            </p>
+            <p className="text-slate-400/50 text-[7px] uppercase tracking-[0.25em] font-medium mt-4 whitespace-nowrap">Org nr: 922 103 682</p>
           </div>
           
-          <div className="h-20 mb-4">
-            <h3 className="text-sm font-black tracking-[0.2em] uppercase text-rose-500 mb-2">Aone Vision</h3>
-            <div className="text-slate-400 font-medium italic opacity-80 min-h-[3em]">
-              <FooterTypewriter
-                strings={[
-                  "Crafting the future of digital identity.",
-                  "Where AI meets human artistry.",
-                  "Your vision, elevated beyond limits."
-                ]}
-              />
+          {/* Column 2: Quick Links */}
+          <div className="footer-section quick-links">
+            <h3 className="text-[10px] uppercase tracking-[0.3em] font-black mb-8 text-white">{t('footer.quickLinks')}</h3>
+            <ul className="space-y-3">
+              <li><Link href="/careers" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('footer.careers')}</Link></li>
+              <li><Link href="/pricing" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('nav.pricing')}</Link></li>
+              <li><Link href="/free-consultation" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('footer.consultation')}</Link></li>
+              <li><Link href="/referral" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('footer.referral')}</Link></li>
+              <li><Link href="/feedback" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('footer.feedback')}</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 3: Legal */}
+          <div className="footer-section legal-links">
+            <h3 className="text-[10px] uppercase tracking-[0.3em] font-black mb-8 text-white">{t('footer.legal') || 'Legal'}</h3>
+            <ul className="space-y-3">
+              <li><Link href="/privacy-policy" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('footer.privacy')}</Link></li>
+              <li><Link href="/terms-and-conditions" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('footer.terms')}</Link></li>
+              <li><Link href="/design-requirements" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('footer.requirements')}</Link></li>
+              <li><Link href="/support" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('footer.support')}</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 4: Contact */}
+          <div className="footer-section contact-info">
+            <h3 className="text-[10px] uppercase tracking-[0.3em] font-black mb-8 text-white">Contact</h3>
+            <div className="space-y-4">
+              <a href="mailto:info@aone.no" className="flex items-center gap-3 text-white group">
+                <div className="w-8 h-8 rounded-full bg-rose-500/10 flex items-center justify-center border border-rose-500/20 group-hover:bg-rose-500 group-hover:text-white transition-all">
+                  <FaEnvelope className="text-xs" />
+                </div>
+                <span className="text-sm font-bold group-hover:text-rose-500 transition-colors">info@aone.no</span>
+              </a>
+              <a href="tel:40071654" className="flex items-center gap-3 text-white group">
+                <div className="w-8 h-8 rounded-full bg-rose-500/10 flex items-center justify-center border border-rose-500/20 group-hover:bg-rose-500 group-hover:text-white transition-all">
+                  <FaPhone className="text-xs" />
+                </div>
+                <span className="text-sm font-bold group-hover:text-rose-500 transition-colors">400 71 654</span>
+              </a>
+              <div className="flex items-center gap-3 text-white">
+                <div className="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center border border-slate-800">
+                  <FaMapMarkerAlt className="text-xs text-rose-500" />
+                </div>
+                <span className="text-sm font-bold text-white">Bergen, Norway</span>
+              </div>
             </div>
           </div>
 
-          <p className="text-sm mt-8 opacity-60">
-            {t('footer.aboutText')}
+        </div>
+
+        <div className="footer-bottom mt-20 pt-8 border-t border-slate-900/50 text-center">
+          <p className="text-white text-[6px] uppercase tracking-[0.3em] font-medium">
+            &copy; {new Date().getFullYear()} Aone.no. {t('footer.rights')}
           </p>
-          <p className="opacity-30 text-[10px] mt-2 uppercase tracking-widest">Org nr: 922 103 682</p>
-        </div>
-        
-        <div className="footer-section quick-links">
-          <h3 className="text-xs uppercase tracking-[0.3em] font-black mb-6 text-slate-500">{t('footer.quickLinks')}</h3>
-          <ul>
-            <li><Link href="/privacy-policy">{t('footer.privacy')}</Link></li>
-            <li><Link href="/terms-and-conditions">{t('footer.terms')}</Link></li>
-            <li><Link href="/pricing">{t('nav.pricing')}</Link></li>
-            <li><Link href="/design-requirements">{t('footer.requirements')}</Link></li>
-            <li><Link href="/free-consultation">{t('footer.consultation')}</Link></li>
-            <li><Link href="/feedback">{t('footer.feedback')}</Link></li>
-            <li><Link href="/support">{t('footer.support')}</Link></li>
-            <li><Link href="/referral">{t('footer.referral')}</Link></li>
-          </ul>
-        </div>
-
-        <div className="footer-section contact-info">
-          <h3 className="text-xs uppercase tracking-[0.3em] font-black mb-6 text-slate-500">{t('footer.contactInfo')}</h3>
-          <a href="mailto:info@aone.no" className="block text-white font-bold mb-2 hover:text-rose-500 transition-colors">info@aone.no</a>
-          <a href="tel:40071654" className="block text-white font-bold hover:text-rose-500 transition-colors">400 71 654</a>
-        </div>
-
-        <div className="footer-section social-media">
-          <h3 className="text-xs uppercase tracking-[0.3em] font-black mb-6 text-slate-500">{t('footer.followUs')}</h3>
-          <div className="social-icons">
-            <motion.a whileHover={{ y: -3, color: "#f43f5e" }} href="https://www.facebook.com/profile.php?id=100063719223439" aria-label="Facebook">
-              <FontAwesomeIcon icon={faFacebookF} />
-            </motion.a>
-            <motion.a whileHover={{ y: -3, color: "#f43f5e" }} href="https://www.instagram.com/aone.no/" aria-label="Instagram">
-              <FontAwesomeIcon icon={faInstagram} />
-            </motion.a>
-            <motion.a whileHover={{ y: -3, color: "#f43f5e" }} href="https://share.google/LnZ6WBbDLAwypBM65" aria-label="Google">
-              <FontAwesomeIcon icon={faGoogle} />
-            </motion.a>
-          </div>
         </div>
       </motion.div>
-
-      <div className="footer-bottom mt-10 py-3 relative border-t border-slate-900/50 text-center">
-        <p className="opacity-20 text-[5.5px] uppercase tracking-[0.2em] font-medium transition-opacity hover:opacity-100 cursor-default">
-          &copy; {new Date().getFullYear()} Aone.no. {t('footer.rights')}
-        </p>
-      </div>
     </footer>
   );
 };
