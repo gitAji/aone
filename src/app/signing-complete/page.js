@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FaCheckCircle, FaSpinner } from 'react-icons/fa';
 
 function SigningCompleteContent() {
@@ -67,9 +67,8 @@ function SigningCompleteContent() {
             </div>
         </div>
     );
-}
 
-import { AnimatePresence } from 'framer-motion';
+}
 
 export default function SigningCompletePage() {
     return (

@@ -1,14 +1,14 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import HeroSection from "@/components/HeroSection";
 import { useLanguage } from "@/context/LanguageContext";
 import Toast from "@/components/Toast";
 import { motion } from "framer-motion";
-import { FaPaperPlane, FaUserAlt, FaEnvelope, FaBriefcase, FaFileAlt, FaLink, FaCheckCircle } from "react-icons/fa";
+import { FaPaperPlane, FaUserAlt, FaEnvelope, FaBriefcase, FaFileAlt, FaLink, FaCheckCircle, FaStar } from "react-icons/fa";
 import { vacancies } from "@/app/data/vacancies";
 
-export default function ApplyPage() {
+function ApplyForm() {
   const { t } = useLanguage();
   const searchParams = useSearchParams();
   const roleId = searchParams.get("role");
@@ -268,5 +268,20 @@ export default function ApplyPage() {
         </motion.div>
       </div>
     </div>
+  );
+}
+
+export default function ApplyPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white flex items-center justify-center">
+        <div className="animate-pulse flex flex-col items-center gap-4">
+          <div className="w-12 h-12 bg-rose-500/20 rounded-full"></div>
+          <div className="text-sm font-black uppercase tracking-widest text-slate-500">Loading Application...</div>
+        </div>
+      </div>
+    }>
+      <ApplyForm />
+    </Suspense>
   );
 }
