@@ -2,7 +2,7 @@ import WebDevClient from './WebDevClient';
 
 export const metadata = {
   title: "Premium Web Development Bergen | High-Performance Next.js Solutions Norway",
-  description: "Elite web development in Bergen. We build lightning-fast, SEO-optimized websites using Next.js and modern UI/UX principles to drive conversions and scale your brand.",
+  description: "Elite web development in Bergen. We build lightning-fast, SEO-optimized websites with Next.js and modern UI/UX to drive conversions and scale your brand.",
   keywords: "Webutvikling Bergen, Next.js developer Norway, Premium web design, High performance websites, Digital development Oslo, React expert Bergen",
   openGraph: {
     title: "Web Development Bergen | Aone",

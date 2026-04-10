@@ -37,8 +37,7 @@ export const viewport = {
 export const metadata = {
   metadataBase: new URL('https://aone.no'),
   title: "Aone | AI-Native Digital Agency Bergen & Oslo | Web Design & AI Automation",
-  description:
-    "Aone is an elite AI-native digital agency in Bergen & Oslo. We deliver high-performance web development (Next.js), custom AI chatbots, machine learning automation, and GEO (Generative Engine Optimization) to help Norwegian businesses thrive in the AI era.",
+  description: "Elite AI-native digital agency in Bergen & Oslo. High-performance web development (Next.js), custom AI chatbots, and GEO for Norwegian business growth.",
   keywords:
     "AI Agency Norway, Web Design Bergen, AI Automation Norway, Custom AI Chatbots Bergen, GEO SEO, Generative Engine Optimization, SGE Optimization, High Performance Websites Norway, Next.js Development Norway, Digital Transformation Bergen, AI Business Solutions Oslo, Webutvikling Bergen, AI-drevet markedsføring, Kunstig intelligens firma Norge, LLM implementering",
   icons: {

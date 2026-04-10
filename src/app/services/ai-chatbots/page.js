@@ -2,7 +2,7 @@ import ChatbotClient from './ChatbotClient';
 
 export const metadata = {
   title: "Custom AI Chatbots & Agents Bergen | Conversational AI Solutions Norway",
-  description: "Elite AI chatbot development in Bergen. We build intelligent, custom-trained AI agents that automate customer support, capture leads, and integrate with your CRM.",
+  description: "Elite AI chatbot development in Bergen. Build intelligent AI agents that automate support, capture leads, and integrate seamlessly with your CRM.",
   keywords: "AI Chatbots Norway, Custom AI agents Bergen, Conversational AI solutions, lead generation chatbots, support automation Norway, AI customer service",
   openGraph: {
     title: "AI Chatbots & Agents | Aone",

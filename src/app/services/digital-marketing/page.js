@@ -2,7 +2,7 @@ import MarketingClient from './MarketingClient';
 
 export const metadata = {
   title: "AI-Driven Digital Marketing Bergen | Performance Marketing Agency Norway",
-  description: "Elite digital marketing services in Bergen. We combine data-driven strategies with AI-powered analytics to maximize your ROI, reach your ideal audience, and dominate the market.",
+  description: "Elite digital marketing in Bergen. We use AI analytics to maximize ROI and help your business grow.",
   keywords: "Digital marketing Bergen, Performance marketing Norway, AI marketing agency, SEO services Bergen, content strategy Norway, social media marketing Bergen",
   openGraph: {
     title: "Digital Marketing & Strategy | Aone",

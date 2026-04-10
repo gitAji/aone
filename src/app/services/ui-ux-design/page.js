@@ -37,8 +37,7 @@ const UIUXDesignPage = () => {
                     {[
                         {
                             icon: <FaPalette className="text-5xl text-rose-500 mb-6" />,
-                            title: "Aesthetic Excellence",
-                            description: "Create visually stunning interfaces that leave a lasting, premium impression.",
+                            description: "Elevate your digital products with Aone's expert UI/UX design. We create stunning, user-centric interfaces through research, prototyping, and testing.",
                         },
                         {
                             icon: <FaUserFriends className="text-5xl text-rose-500 mb-6" />,
