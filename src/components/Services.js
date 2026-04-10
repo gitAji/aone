@@ -66,20 +66,6 @@ const ServicesSection = () => {
           color="text-rose-500"
         />
         <ServiceCard
-          href="/services/branding"
-          icon={FaMagic}
-          title={t('services.branding.title') || "Brand Experience"}
-          description={t('services.branding.description') || "Cohesive brand identities optimized for the digital age."}
-          color="text-rose-500"
-        />
-        <ServiceCard
-          href="/services/digital-marketing"
-          icon={FaChartLine}
-          title={t('services.marketing.title') || "Digital Marketing"}
-          description={t('services.marketing.description') || "Data-driven marketing strategies that fuel sustainable growth."}
-          color="text-rose-500"
-        />
-        <ServiceCard
           href="/services/ai-chatbots"
           icon={FaRobot}
           title={t('services.chatbot.title')}
@@ -94,10 +80,52 @@ const ServicesSection = () => {
           color="text-rose-500"
         />
         <ServiceCard
+          href="/services/ui-ux-design"
+          icon={FaObjectGroup}
+          title={t('services.uiux.title')}
+          description={t('services.uiux.description')}
+          color="text-rose-500"
+        />
+        <ServiceCard
+          href="/services/branding"
+          icon={FaMagic}
+          title={t('services.branding.title') || "Brand Experience"}
+          description={t('services.branding.description') || "Cohesive brand identities optimized for the digital age."}
+          color="text-rose-500"
+        />
+        <ServiceCard
+          href="/services/digital-marketing"
+          icon={FaChartLine}
+          title={t('services.marketing.title') || "Digital Marketing"}
+          description={t('services.marketing.description') || "Data-driven marketing strategies that fuel sustainable growth."}
+          color="text-rose-500"
+        />
+        <ServiceCard
+          href="/services/search-engine-optimization"
+          icon={FaSearch}
+          title={t('services.seo.title')}
+          description={t('services.seo.description')}
+          color="text-rose-500"
+        />
+        <ServiceCard
           href="/services/geo"
           icon={FaSearchDollar}
           title={t('services.geo.title')}
           description={t('services.geo.description')}
+          color="text-rose-500"
+        />
+        <ServiceCard
+          href="/services/photography"
+          icon={FaCameraRetro}
+          title={t('services.photo.title')}
+          description={t('services.photo.description')}
+          color="text-rose-500"
+        />
+        <ServiceCard
+          href="/services/videography"
+          icon={FaVideo}
+          title={t('services.video.title')}
+          description={t('services.video.description')}
           color="text-rose-500"
         />
       </div>
