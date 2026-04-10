@@ -87,6 +87,7 @@ const BrandingShowcase = () => {
                                 fill
                                 className="object-cover transition-all duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)] grayscale group-hover:grayscale-0 group-hover:scale-110"
                                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                quality={75}
                             />
                             
                             {/* The Sleek Hover Reveal */}

@@ -63,6 +63,7 @@ const ProjectDetail = ({ project }) => {
                     height={400}
                     className="rounded-lg shadow-md mt-4"
                     sizes="(max-width: 768px) 100vw, 50vw"
+                    quality={80}
                   />
                 </div>
               ))}
@@ -102,6 +103,7 @@ const ProjectDetail = ({ project }) => {
                   height={400}
                   className="rounded-lg shadow-lg"
                   sizes="100vw"
+                  quality={80}
                 />
               </div>
             )}

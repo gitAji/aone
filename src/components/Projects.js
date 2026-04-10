@@ -63,6 +63,7 @@ const Projects = () => {
                       style={{ objectFit: "cover" }}
                       className="opacity-100 group-hover:opacity-90 transition-opacity duration-500"
                       sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1023px) 50vw, 33vw"
+                      quality={80}
                       priority={index < 3} // Prioritize first three images for faster loading
                     />
 
