@@ -105,6 +105,17 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "invoice.aone.no",
+          },
+        ],
+        destination: "https://aone.no/client-login",
+        permanent: true,
+      },
+      {
         source: "/oldsite",
         destination: "/",
         permanent: true,
@@ -112,6 +123,26 @@ const nextConfig = {
       {
         source: "/projects",
         destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/branding",
+        destination: "/services/branding",
+        permanent: true,
+      },
+      {
+        source: "/branding-services",
+        destination: "/services/branding",
+        permanent: true,
+      },
+      {
+        source: "/client-login",
+        destination: "https://crm.aone.no",
+        permanent: true,
+      },
+      {
+        source: "/ai-chat",
+        destination: "/services/ai-chatbots",
         permanent: true,
       },
       {

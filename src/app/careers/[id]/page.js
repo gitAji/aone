@@ -103,7 +103,7 @@ export default function VacancyDetail() {
               </p>
               
               <Link
-                href="/contact"
+                href={`/apply?role=${vacancy.id}`}
                 className="flex items-center justify-center gap-3 w-full bg-rose-500 hover:bg-rose-600 text-white font-black py-5 rounded-2xl transition-all duration-300 shadow-lg shadow-rose-500/25 hover:shadow-rose-500/40 hover:-translate-y-1 mb-6"
               >
                 Apply Now <FaPaperPlane />

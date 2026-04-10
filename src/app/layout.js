@@ -38,9 +38,9 @@ export const metadata = {
   metadataBase: new URL('https://aone.no'),
   title: "Aone | AI-Native Digital Agency Bergen & Oslo | Web Design & AI Automation",
   description:
-    "Elite AI-native agency in Bergen & Oslo. We specialize in high-performance web development, custom AI chatbots, machine learning automation, and GEO (SGE) optimization for businesses in Norway.",
+    "Aone is an elite AI-native digital agency in Bergen & Oslo. We deliver high-performance web development (Next.js), custom AI chatbots, machine learning automation, and GEO (Generative Engine Optimization) to help Norwegian businesses thrive in the AI era.",
   keywords:
-    "AI Agency Norway, Web Design Bergen, AI Automation Norway, Custom AI Chatbots Bergen, GEO SEO, Generative Engine Optimization, High Performance Websites Norway, Next.js Development Norway, Digital Transformation Bergen, AI Business Solutions Oslo, Webutvikling Bergen, AI-drevet markedsføring",
+    "AI Agency Norway, Web Design Bergen, AI Automation Norway, Custom AI Chatbots Bergen, GEO SEO, Generative Engine Optimization, SGE Optimization, High Performance Websites Norway, Next.js Development Norway, Digital Transformation Bergen, AI Business Solutions Oslo, Webutvikling Bergen, AI-drevet markedsføring, Kunstig intelligens firma Norge, LLM implementering",
   icons: {
     icon: "/images/favicon.ico",
   },
@@ -50,19 +50,38 @@ export const metadata = {
         "e0ddcbd585d6a2bedc5fcbcf2e8ca5da13defcef5a3694a39043b02d01728335",
     },
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
     title: "Aone | AI-Native Digital Agency Bergen & Oslo",
-    description: "Specializing in high-performance AI web design, custom chatbots, and business automation in Norway.",
+    description: "Specializing in premium AI web design, custom chatbots, and business automation in Norway.",
     url: "https://aone.no",
+    siteName: "Aone",
+    locale: "en_US",
     type: "website",
     images: [
       {
-        url: "/images/logo.png",
-        width: 800,
-        height: 600,
-        alt: "Aone Logo",
+        url: "/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Aone | AI-Native Digital Agency",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Aone | AI-Native Digital Agency Bergen & Oslo",
+    description: "Empowering Norwegian businesses with elite AI and web solutions.",
+    images: ["/images/og-image.png"],
   },
 };
 
@@ -135,16 +154,54 @@ export default function RootLayout({ children }) {
                     "@id": "https://aone.no/#organization",
                     "name": "Aone",
                     "url": "https://aone.no",
-                    "logo": "https://aone.no/images/logo.png",
+                    "logo": {
+                      "@type": "ImageObject",
+                      "url": "https://aone.no/images/logo.png"
+                    },
                     "contactPoint": {
                       "@type": "ContactPoint",
                       "telephone": "+47-40071654",
-                      "contactType": "Customer Service"
+                      "contactType": "Customer Service",
+                      "areaServed": "NO",
+                      "availableLanguage": ["English", "Norwegian"]
                     },
                     "sameAs": [
                       "https://www.facebook.com/profile.php?id=100063719223439",
                       "https://www.instagram.com/aone.no/"
                     ]
+                  },
+                  {
+                    "@type": "ProfessionalService",
+                    "@id": "https://aone.no/#service",
+                    "name": "Aone AI & Web Agency",
+                    "image": "https://aone.no/images/logo.png",
+                    "url": "https://aone.no",
+                    "telephone": "+4740071654",
+                    "address": {
+                      "@type": "PostalAddress",
+                      "addressLocality": "Bergen",
+                      "addressRegion": "Vestland",
+                      "postalCode": "5003",
+                      "addressCountry": "NO"
+                    },
+                    "geo": {
+                      "@type": "GeoCoordinates",
+                      "latitude": 60.3913,
+                      "longitude": 5.3221
+                    },
+                    "openingHoursSpecification": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday"
+                      ],
+                      "opens": "09:00",
+                      "closes": "17:00"
+                    },
+                    "priceRange": "$$$"
                   },
                   {
                     "@type": "WebSite",

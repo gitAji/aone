@@ -1,20 +1,26 @@
 import projects from "@/app/data/projects";
+import { vacancies } from "@/app/data/vacancies";
 
 export default function sitemap() {
   const baseUrl = "https://aone.no";
   const staticPages = [
     "/",
     "/about",
-    "/client-login",
     "/contact",
     "/design-requirements",
     "/feedback",
     "/free-consultation",
     "/privacy-policy",
+    "/disclaimer",
     "/referral",
     "/request-quote",
     "/support",
-    "/terms-and-conditions",
+        "/terms-and-conditions",
+    "/accessibility-statement",
+    "/cookie-policy",
+    "/free-seo-audit",
+    "/pricing",
+    "/careers",
     "/services",
     "/services/ai-automations",
     "/services/ai-chatbots",
@@ -29,8 +35,9 @@ export default function sitemap() {
   ];
 
   const projectPages = projects.map((project) => project.projectLink);
+  const vacancyPages = vacancies.map((vacancy) => `/careers/${vacancy.id}`);
 
-  const allPages = [...staticPages, ...projectPages];
+  const allPages = [...staticPages, ...projectPages, ...vacancyPages];
 
   const urls = allPages.map((page) => ({
     url: `${baseUrl}${page}`,

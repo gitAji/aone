@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
+Disallow: /order
+Disallow: /signing-cancelled
+Disallow: /signing-complete
+Disallow: /apply
+Disallow: /client-login
+Disallow: /api/
 
-Sitemap: https://www.aone.no/sitemap.xml
+Sitemap: https://aone.no/sitemap.xml

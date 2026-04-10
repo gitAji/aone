@@ -1,53 +1,17 @@
-"use client";
+import HomeClient from './HomeClient';
 
-import dynamic from "next/dynamic";
-import HeroSection from "@/components/HeroSection";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-
-const DynamicClientLogos = dynamic(() => import("@/components/ClientLogos"));
-const DynamicServices = dynamic(() => import("@/components/Services"));
-const DynamicProjects = dynamic(() => import("@/components/Projects"));
-const DynamicTestimonials = dynamic(() => import("@/components/Testimonials"));
-const DynamicBrandingShowcase = dynamic(() => import("@/components/BrandingShowcase"));
-const DynamicCTA = dynamic(() => import("@/components/CTA"));
-
-// ✅ Reusable Service Card Component
-const ServiceCard = ({ href, icon: Icon, title, description, color }) => (
-  <Link
-    href={href}
-    className="group block p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 bg-white hover:-translate-y-1 flex flex-col items-center text-center"
-  >
-    <Icon
-      className={`text-5xl ${color} mb-4 group-hover:brightness-110 transition-colors duration-300`}
-    />
-    <h3 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-purple-800 transition-colors duration-300">
-      {title}
-    </h3>
-    <p className="text-gray-700 text-base leading-relaxed">{description}</p>
-  </Link>
-);
-
-const HomePage = () => {
-  return (
-    <div className="min-h-screen">
-      {/* Hero */}
-      <HeroSection isHomePage={true} />
-      {/* Client Logos - Social Proof */}
-      <DynamicClientLogos />
-      {/* Services */}
-      <DynamicServices />
-
-      {/* Projects */}
-      <DynamicProjects />
-      {/* Branding Designs */}
-      <DynamicBrandingShowcase />
-      {/* Testimonials */}
-      <DynamicTestimonials />
-      {/* Call to Action */}
-      <DynamicCTA />
-    </div>
-  );
+export const metadata = {
+  title: "Aone | AI-Native Digital Agency Bergen & Oslo | Web Design & AI Automation",
+  description: "Aone is an elite AI-native digital agency in Bergen & Oslo. We deliver high-performance web development (Next.js), custom AI chatbots, machine learning automation, and GEO (Generative Engine Optimization) to help Norwegian businesses thrive in the AI era.",
+  alternates: {
+    canonical: 'https://aone.no',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  }
 };
 
-export default HomePage;
+export default function Page() {
+  return <HomeClient />;
+}
