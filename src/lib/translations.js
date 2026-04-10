@@ -10,6 +10,7 @@ export const translations = {
             pricing: "Pricing",
             clientLogin: "Client Login",
         },
+        requestQuote: "Request Quote",
         hero: {
             tagline: "AI-NATIVE DIGITAL EXPERIENCES BUILT FOR",
             inspire: "2026.",
@@ -314,6 +315,7 @@ export const translations = {
             pricing: "Priser",
             clientLogin: "Klientpålogging",
         },
+        requestQuote: "Få et tilbud",
         hero: {
             tagline: "AI-NATIVE DIGITALE OPPLEVELSER BYGGET FOR",
             inspire: "2026.",

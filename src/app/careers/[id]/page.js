@@ -3,7 +3,7 @@ import VacancyDetailClient from "./VacancyDetailClient";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }) {
-  const { id } = params;
+  const { id } = await params;
   const vacancy = vacancies.find((v) => v.id === id);
 
   if (!vacancy) {
@@ -18,8 +18,8 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default function Page({ params }) {
-  const { id } = params;
+export default async function Page({ params }) {
+  const { id } = await params;
   const vacancy = vacancies.find((v) => v.id === id);
 
   if (!vacancy) {

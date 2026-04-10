@@ -173,7 +173,6 @@ const HamburgerMenu = () => {
               {[
                 { name: t('nav.services'), href: '/services' },
                 { name: t('nav.products'), href: '/products' },
-                { name: t('nav.pricing'), href: '/pricing' },
                 { name: t('nav.references'), href: '/references' },
                 { name: t('nav.about'), href: '/about' },
                 { name: t('nav.blog'), href: '/blog' },

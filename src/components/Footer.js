@@ -37,34 +37,15 @@ const Footer = () => {
             <p className="text-slate-400/50 text-[7px] uppercase tracking-[0.25em] font-medium mt-4 whitespace-nowrap">Org nr: 922 103 682</p>
           </div>
           
-          {/* Column 2: Services */}
-          <div className="footer-section services-links">
-            <h3 className="text-[10px] uppercase tracking-[0.3em] font-black mb-8 text-white">{t('nav.services')}</h3>
-            <div className="grid grid-cols-1 gap-x-8">
-              <ul className="space-y-3">
-                <li><Link href="/services/web-development" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('servicesPage.webDevTitle')}</Link></li>
-                <li><Link href="/services/ui-ux-design" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('servicesPage.uiuxTitle')}</Link></li>
-                <li><Link href="/services/ai-chatbots" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('servicesPage.chatbotTitle')}</Link></li>
-                <li><Link href="/services/ai-automations" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('servicesPage.aiTitle')}</Link></li>
-                <li><Link href="/services/geo" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('servicesPage.geoTitle')}</Link></li>
-                <li><Link href="/services/search-engine-optimization" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('servicesPage.seoTitle')}</Link></li>
-                <li><Link href="/services/branding" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('servicesPage.brandingTitle')}</Link></li>
-                <li><Link href="/services/photography" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('servicesPage.photoTitle')}</Link></li>
-                <li><Link href="/services/videography" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('servicesPage.videoTitle')}</Link></li>
-              </ul>
-            </div>
-          </div>
-
           {/* Column 3: Quick Links */}
           <div className="footer-section quick-links">
             <h3 className="text-[10px] uppercase tracking-[0.3em] font-black mb-8 text-white">{t('footer.quickLinks')}</h3>
             <ul className="space-y-3">
-              <li><Link href="/services" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('nav.services')}</Link></li>
-              <li><Link href="/references" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('nav.references')}</Link></li>
-              <li><Link href="/careers" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('footer.careers')}</Link></li>
-              <li><Link href="/pricing" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('nav.pricing')}</Link></li>
-              <li><Link href="/request-quote" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('nav.requestQuote') || 'Request Quote'}</Link></li>
-              <li><Link href="/free-consultation" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('footer.consultation')}</Link></li>
+              <li><Link href="/references" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('nav.references')}</Link></li>
+              <li><Link href="/careers" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.careers')}</Link></li>
+              <li><Link href="/pricing" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('nav.pricing')}</Link></li>
+              <li><Link href="/request-quote" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('requestQuote') || 'Request Quote'}</Link></li>
+              <li><Link href="/free-consultation" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.consultation')}</Link></li>
             </ul>
           </div>
 
@@ -72,13 +53,13 @@ const Footer = () => {
           <div className="footer-section legal-links">
             <h3 className="text-[10px] uppercase tracking-[0.3em] font-black mb-8 text-white">{t('footer.legal') || 'Legal'}</h3>
             <ul className="space-y-3">
-              <li><Link href="/privacy-policy" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('footer.privacy')}</Link></li>
-              <li><Link href="/terms-and-conditions" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('footer.terms')}</Link></li>
-              <li><Link href="/accessibility-statement" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('footer.accessibility')}</Link></li>
-              <li><Link href="/cookie-policy" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('footer.cookie')}</Link></li>
-              <li><Link href="/disclaimer" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('footer.disclaimer')}</Link></li>
-              <li><Link href="/design-requirements" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('footer.requirements')}</Link></li>
-              <li><Link href="/support" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors"><FaArrowRight className="text-[8px] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />{t('footer.support')}</Link></li>
+              <li><Link href="/privacy-policy" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.privacy')}</Link></li>
+              <li><Link href="/terms-and-conditions" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.terms')}</Link></li>
+              <li><Link href="/accessibility-statement" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.accessibility')}</Link></li>
+              <li><Link href="/cookie-policy" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.cookie')}</Link></li>
+              <li><Link href="/disclaimer" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.disclaimer')}</Link></li>
+              <li><Link href="/design-requirements" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.requirements')}</Link></li>
+              <li><Link href="/support" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.support')}</Link></li>
             </ul>
           </div>
 
