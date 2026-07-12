@@ -30,7 +30,7 @@ export default function sitemap() {
     "/services/photography",
     "/services/search-engine-optimization",
     "/services/ui-ux-design",
-    "/services/videography",
+
     "/services/web-development",
   ];
 

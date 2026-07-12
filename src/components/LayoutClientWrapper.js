@@ -1,4 +1,5 @@
 "use client";
+import { usePathname } from 'next/navigation';
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
@@ -20,6 +21,7 @@ const DynamicVoiceflowChat = dynamic(() =>
 );
 
 export default function LayoutClientWrapper({ children }) {
+  const pathname = usePathname();
   const [showReferralPopup, setShowReferralPopup] = useState(false);
   const [hasChatConsent, setHasChatConsent] = useState(false);
 
@@ -63,7 +65,7 @@ export default function LayoutClientWrapper({ children }) {
           {/* {showReferralPopup && <DynamicReferralPopup />} */}
           <Footer />
         </ClientLayoutWrapper>
-        <DynamicVoiceflowChat />
+        {pathname !== '/' && <DynamicVoiceflowChat />}
         {/* <DynamicTawkToMessenger /> */}
       </ThemeProvider>
     </LanguageProvider>

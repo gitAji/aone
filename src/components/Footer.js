@@ -25,9 +25,9 @@ const Footer = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="container mx-auto px-6 flex flex-nowrap justify-between items-start gap-8">
           {/* Column 1: Brand */}
-          <div className="footer-section brand-column">
+          <div className="footer-section brand-column flex-1">
             <div className="mb-6 scale-90 origin-left">
               <Logo />
             </div>
@@ -38,7 +38,7 @@ const Footer = () => {
           </div>
           
           {/* Column 2: Positions */}
-          <div className="footer-section careers-links">
+          <div className="footer-section careers-links flex-1">
             <h3 className="text-[10px] uppercase tracking-[0.3em] font-black mb-8 text-white">{t('footer.careers') || 'Careers'}</h3>
             <ul className="space-y-3">
               <li><Link href="/careers/ai-automation-specialist" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">AI & Automation</Link></li>
@@ -49,7 +49,7 @@ const Footer = () => {
           </div>
           
           {/* Column 3: Quick Links */}
-          <div className="footer-section quick-links">
+          <div className="footer-section quick-links flex-1">
             <h3 className="text-[10px] uppercase tracking-[0.3em] font-black mb-8 text-white">{t('footer.quickLinks')}</h3>
             <ul className="space-y-3">
               <li><Link href="/references" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('nav.references')}</Link></li>
@@ -64,7 +64,7 @@ const Footer = () => {
           </div>
 
           {/* Column 3: Legal */}
-          <div className="footer-section legal-links">
+          <div className="footer-section legal-links flex-1">
             <h3 className="text-[10px] uppercase tracking-[0.3em] font-black mb-8 text-white">{t('footer.legal') || 'Legal'}</h3>
             <ul className="space-y-3">
               <li><Link href="/privacy-policy" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.privacy')}</Link></li>
@@ -79,7 +79,7 @@ const Footer = () => {
           </div>
 
           {/* Column 4: Contact */}
-          <div className="footer-section contact-info">
+          <div className="footer-section contact-info flex-1">
             <h3 className="text-[10px] uppercase tracking-[0.3em] font-black mb-8 text-white">Contact</h3>
             <div className="space-y-4">
               <a href="mailto:info@aone.no" className="flex items-center gap-3 text-white group">

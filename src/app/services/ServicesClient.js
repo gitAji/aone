@@ -2,7 +2,7 @@
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import Link from 'next/link';
-import { FaLaptopCode, FaPaintBrush, FaChartLine, FaRobot, FaCameraRetro, FaVideo, FaObjectGroup, FaSearch, FaSearchDollar, FaCommentDots, FaSync } from 'react-icons/fa';
+import { FaLaptopCode, FaPaintBrush, FaChartLine, FaRobot, FaCameraRetro, FaObjectGroup, FaSearch, FaSearchDollar, FaCommentDots, FaSync } from 'react-icons/fa';
 import Testimonials from "@/components/Testimonials";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -96,20 +96,11 @@ const ServicesPage = () => {
               <div className="flex justify-center mb-8">
                 <FaCameraRetro className="text-6xl text-rose-500 group-hover:scale-110 transition-transform duration-500" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight text-center">{t('servicesPage.photoTitle')}</h3>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight text-center">{t('servicesPage.photoTitle') || "Photography & Videography"}</h3>
               <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed text-center">{t('servicesPage.photoDesc')}</p>
             </Link>
 
-            <Link
-              href="/services/videography"
-              className="group block p-10 rounded-3xl transition-all duration-300 bg-white dark:bg-slate-900 hover:-translate-y-2 border border-slate-100 dark:border-slate-800 hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10"
-            >
-              <div className="flex justify-center mb-8">
-                <FaVideo className="text-6xl text-rose-500 group-hover:scale-110 transition-transform duration-500" />
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight text-center">{t('servicesPage.videoTitle')}</h3>
-              <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed text-center">{t('servicesPage.videoDesc')}</p>
-            </Link>
+
 
             <Link
               href="/services/ui-ux-design"
