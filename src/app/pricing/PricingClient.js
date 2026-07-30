@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { packages } from '../data/packages';
+import { packages, SITE_WIDE_DISCOUNT_RATE } from '../data/packages';
 import { useLanguage } from '@/context/LanguageContext';
 import Link from 'next/link';
 import { FaCheck, FaCrown, FaRocket, FaShieldAlt, FaArrowRight, FaZap, FaStar, FaInfoCircle, FaCheckCircle } from 'react-icons/fa';
@@ -27,7 +27,7 @@ const PricingCard = ({ pkg, billingInterval, index, isHovered }) => {
     // Determine the price to display
     const originalPrice = billingInterval === 'once' ? pkg.price : pkg.monthlyPrice;
     const isDiscounted = !pkg.isCustom && originalPrice > 0;
-    const displayPrice = isDiscounted ? roundPrice(originalPrice * 0.9) : originalPrice;
+    const displayPrice = isDiscounted ? roundPrice(originalPrice * (1 - SITE_WIDE_DISCOUNT_RATE)) : originalPrice;
     const intervalLabel = billingInterval === 'once' ? 'once' : 'mo';
 
     return (
@@ -83,7 +83,7 @@ const PricingCard = ({ pkg, billingInterval, index, isHovered }) => {
                                 {originalPrice.toLocaleString()} NOK
                             </span>
                             <span className="text-[10px] font-black uppercase bg-rose-500 text-white px-2 py-0.5 rounded-sm tracking-widest shadow-sm animate-pulse">
-                                -10% TODAY
+                                -{Math.round(SITE_WIDE_DISCOUNT_RATE * 100)}% TODAY
                             </span>
                         </div>
                     )}

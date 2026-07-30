@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, Suspense, useCallback, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { packages } from '../data/packages';
+import { packages, SITE_WIDE_DISCOUNT_RATE, PROMO_CODE_DISCOUNT_RATE, PROMO_CODE } from '../data/packages';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { FaLaptopCode, FaCheck, FaCrown, FaCameraRetro, FaSearch, FaTools, FaPenNib, FaUsers, FaRobot, FaBullhorn, FaPencilRuler, FaVideo, FaInfoCircle, FaTruck, FaSpinner, FaCreditCard, FaLock, FaCalendarAlt, FaShieldAlt, FaStripe, FaCcVisa, FaCcMastercard, FaCcPaypal, FaBolt, FaFileInvoice, FaCube, FaPuzzlePiece, FaTag, FaClock, FaCalendarCheck, FaChartLine } from 'react-icons/fa';
@@ -69,7 +69,14 @@ function OrderPageContent() {
             .reduce((sum, p) => sum + p.monthlyPrice, 0);
 
         const total = base + addonsOneTime;
-        const potentialDiscount = promoCode.trim().toUpperCase() === 'AONE' ? total * 0.5 : 0;
+        // Matches checkout/stripe and order/create: the site-wide flash-sale
+        // rate applies automatically, a voucher code overrides (not stacks)
+        // with a larger rate. Previously this always priced from the full
+        // total with no automatic discount at all, so the order page (and
+        // the amount actually charged) never reflected the "-10% TODAY"
+        // shown on the pricing page.
+        const discountRate = promoCode.trim().toUpperCase() === PROMO_CODE ? PROMO_CODE_DISCOUNT_RATE : SITE_WIDE_DISCOUNT_RATE;
+        const potentialDiscount = total * discountRate;
         const finalTotal = Math.max(0, total - potentialDiscount);
 
         // Round up to end with 0, 9, or 5
