@@ -1,8 +1,8 @@
 import HomeClient from './HomeClient';
 
 export const metadata = {
-  title: "Aone | AI-Native Digital Agency Bergen & Oslo | Web Design & AI Automation",
-  description: "Elite AI-native digital agency in Bergen & Oslo. High-performance web development (Next.js), custom AI chatbots, and GEO for Norwegian business growth.",
+  title: "Webdesign Bergen & Webutvikling | Aone | AI-byrå Norge",
+  description: "Premium webdesign og webutvikling i Bergen. Aone er et ledende AI-byrå som bygger lynraske Next.js nettsider, skreddersydde AI-chatbots og automatiseringer for bedrifter.",
   alternates: {
     canonical: 'https://aone.no',
   },

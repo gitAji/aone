@@ -1,7 +1,7 @@
 export const metadata = {
-  title: "Search Engine Optimization (SEO) Services | Aone",
-  description: "Boost visibility and drive organic traffic with expert SEO services. We offer technical, on-page, and local SEO strategies for sustainable growth.",
-  keywords: "SEO services, search engine optimization, keyword research, on-page SEO, off-page SEO, link building, technical SEO, local SEO, SEO audit, organic traffic, online visibility, Aone, Norway",
+  title: "SEO Bergen & Søkemotoroptimalisering Norge | Aone",
+  description: "Dominer Google med profesjonell SEO i Bergen. Aone tilbyr teknisk søkemotoroptimalisering og synlighetsstrategier som øker din organiske trafikk.",
+  keywords: "SEO Bergen, søkemotoroptimalisering Bergen, SEO byrå Norge, teknisk SEO, lokal SEO, SEO optimalisering, organisk trafikk, synlighet på Google",
 };
 
 export default function SearchEngineOptimizationLayout({ children }) {

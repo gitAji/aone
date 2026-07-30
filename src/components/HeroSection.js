@@ -87,10 +87,11 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
       
       {/* Refined Background Elements - Very subtle and professional */}
       <AnimatedGrid />
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Subtle glowing orbs */}
-        <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-rose-500/10 blur-[120px]"></div>
-        <div className="absolute top-[20%] -right-[10%] w-[40%] h-[40%] rounded-full bg-slate-500/10 blur-[120px]"></div>
+      {/* Dynamic Color Bomb Background (vibrant in light mode, subtle in dark) */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden select-none">
+        <div className="absolute -top-[15%] -left-[10%] w-[55vw] h-[55vw] max-w-[600px] rounded-full bg-gradient-to-tr from-rose-400/25 to-amber-300/20 blur-[100px] dark:from-rose-500/10 dark:to-transparent animate-orb-float-1" />
+        <div className="absolute -bottom-[15%] -right-[10%] w-[50vw] h-[50vw] max-w-[550px] rounded-full bg-gradient-to-br from-indigo-400/20 to-purple-300/15 blur-[110px] dark:from-slate-500/5 dark:to-transparent animate-orb-float-2" />
+        <div className="absolute top-[20%] right-[15%] w-[45vw] h-[45vw] max-w-[450px] rounded-full bg-gradient-to-tr from-cyan-400/15 to-emerald-300/10 blur-[90px] dark:from-indigo-500/5 dark:to-transparent animate-orb-float-3" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10 w-full max-w-5xl flex justify-center items-center text-center">

@@ -1,7 +1,7 @@
 export const metadata = {
-  title: "UI/UX Design Services | Aone",
-  description: "Elevate your digital products with Aone's expert UI/UX design. We create stunning, user-centric interfaces through research, prototyping, and testing.",
-  keywords: "UI UX design, user interface design, user experience design, web design, mobile app design, wireframing, prototyping, visual design, usability testing, interaction design, Aone, Norway",
+  title: "UI/UX Design Bergen & Interaksjonsdesign Norge | Aone",
+  description: "Brukervennlig UI/UX design i Bergen. Vi designer moderne, intuitive grensesnitt og digitale brukeropplevelser optimalisert for konvertering.",
+  keywords: "UI UX design Bergen, interaksjonsdesign Norge, brukervennlighet, produktdesign, wireframing, prototyping, brukertesting, digitalt design Bergen",
 };
 
 export default function UIUXDesignLayout({ children }) {

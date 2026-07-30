@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/context/ThemeContext";
+import AccessibilityWidget from "@/components/AccessibilityWidget";
 
 const DynamicReferralPopup = dynamic(() =>
   import("@/components/ReferralPopup").then((mod) => mod.default)
@@ -65,6 +66,7 @@ export default function LayoutClientWrapper({ children }) {
           {/* {showReferralPopup && <DynamicReferralPopup />} */}
           <Footer />
         </ClientLayoutWrapper>
+        <AccessibilityWidget />
         {/* {pathname !== '/' && <DynamicVoiceflowChat />} */}
         {/* <DynamicTawkToMessenger /> */}
       </ThemeProvider>
