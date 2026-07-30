@@ -64,7 +64,7 @@ export default function NotFound() {
                         404 Page Not Found
                     </h1>
                     <p className="text-base sm:text-lg text-slate-500 dark:text-slate-400 max-w-lg mx-auto mb-10 leading-relaxed font-bold">
-                        Oops! It looks like this link doesn’t exist or was moved. Let's find what you are looking for.
+                        {"Oops! It looks like this link doesn’t exist or was moved. Let's find what you are looking for."}
                     </p>
 
                     {/* Premium Search Box */}

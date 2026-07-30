@@ -29,7 +29,7 @@ const FreeSEOAudit = () => {
                             whileInView={{ opacity: 1, x: 0 }}
                             className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tighter"
                         >
-                            What's included in your <span className="text-rose-500">Free Audit?</span>
+                            What&apos;s included in your <span className="text-rose-500">Free Audit?</span>
                         </motion.h2>
                         
                         <div className="space-y-8">
@@ -112,7 +112,7 @@ const FreeSEOAudit = () => {
                                     </div>
                                     <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tighter">Request Received!</h3>
                                     <p className="text-slate-600 dark:text-slate-400 font-medium mb-8">
-                                        Our SEO elite team is now scanning your website. You'll receive your comprehensive report via email within 24 hours.
+                                        {"Our SEO elite team is now scanning your website. You'll receive your comprehensive report via email within 24 hours."}
                                     </p>
                                     <button 
                                         onClick={() => setSubmitted(false)}

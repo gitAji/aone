@@ -46,7 +46,7 @@ const PostPage = () => {
                     <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 </div>
                 <h3 className="text-3xl font-black mb-4">Post Not Found</h3>
-                <p className="text-slate-500 mb-10 max-w-md mx-auto">The digital trail you're following seems to have gone cold. It might have been relocated or archived.</p>
+                <p className="text-slate-500 mb-10 max-w-md mx-auto">{"The digital trail you're following seems to have gone cold. It might have been relocated or archived."}</p>
                 <Link href="/blog" className="px-10 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-950 font-black rounded-2xl transition-all hover:scale-105">
                     Return to Repository
                 </Link>

@@ -197,7 +197,7 @@ export default function PricingPage() {
                             Power Up Your Solution
                         </h2>
                         <p className="text-slate-500 dark:text-slate-400 font-medium">
-                            Optional modules to enhance your platform's capabilities.
+                            {"Optional modules to enhance your platform's capabilities."}
                         </p>
                     </div>
 

@@ -190,7 +190,7 @@ function SuccessPageContent() {
                 <FaClock className="text-4xl text-amber-500" />
                 <h1 className="text-2xl font-black text-slate-900 dark:text-white uppercase">Confirming Your Payment</h1>
                 <p className="text-slate-500 dark:text-slate-400 max-w-md text-sm">
-                    We're still waiting on final confirmation from Stripe -- this page will update automatically. If this doesn't resolve within a couple of minutes, check your email or contact us with your reference: <span className="font-mono">{orderId}</span>.
+                    {"We're still waiting on final confirmation from Stripe -- this page will update automatically. If this doesn't resolve within a couple of minutes, check your email or contact us with your reference: "}<span className="font-mono">{orderId}</span>.
                 </p>
                 <Link href="/" className="mt-4 px-8 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-bold text-sm">
                     Back to Home

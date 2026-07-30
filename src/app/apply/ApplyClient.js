@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect, Suspense } from "react";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import HeroSection from "@/components/HeroSection";
 import { useLanguage } from "@/context/LanguageContext";
@@ -80,9 +81,9 @@ function ApplyForm() {
             Thank you for reaching out to join the Aone team. We&apos;ve received your details and will review them carefully. 
             If your profile matches our requirements, we&apos;ll be in touch within 5-7 business days.
           </p>
-          <a href="/careers" className="inline-block bg-slate-800 hover:bg-slate-700 text-white font-bold px-8 py-4 rounded-full transition-all duration-300">
+          <Link href="/careers" className="inline-block bg-slate-800 hover:bg-slate-700 text-white font-bold px-8 py-4 rounded-full transition-all duration-300">
             Back to Careers
-          </a>
+          </Link>
         </motion.div>
       </div>
     );

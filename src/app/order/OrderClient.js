@@ -836,7 +836,7 @@ function OrderPageContent() {
 
                                                          <h5 className="font-black text-slate-900 uppercase">3. Maintenance & Support (Monthly)</h5>
                                                          <p className="text-sm leading-relaxed text-slate-600 mb-6 font-bold">
-                                                             Monthly billing includes professional site maintenance: regular backups, security oversight, hosting monitoring, and "Small Adjustments" (e.g., price changes or minor text edits) at no extra cost.
+                                                             Monthly billing includes professional site maintenance: regular backups, security oversight, hosting monitoring, and &quot;Small Adjustments&quot; (e.g., price changes or minor text edits) at no extra cost.
                                                          </p>
 
                                                          <h5 className="font-black text-slate-900 uppercase">4. Major Improvements & Hourly Work</h5>

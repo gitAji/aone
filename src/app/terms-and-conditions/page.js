@@ -202,12 +202,12 @@ const TermsAndConditionsPage = () => {
             </Section>
 
             <Section id="content" title="4. Your Content">
-              <p className="mb-4">"Your Content" refers to any text, images, or audio you choose to display on the Site. By displaying it, you grant Aone a non-exclusive license to adapt and distribute it across our platforms.</p>
+              <p className="mb-4">&quot;Your Content&quot; refers to any text, images, or audio you choose to display on the Site. By displaying it, you grant Aone a non-exclusive license to adapt and distribute it across our platforms.</p>
               <p className="font-bold border-l-4 border-rose-500 pl-4 py-2 bg-rose-500/5">Your content must be your own and must not infringe on any third-party rights. We reserve the right to remove any content without notice.</p>
             </Section>
 
             <Section id="warranties" title="5. No Warranties">
-              <p>This Website is provided "as is," with all faults, and Aone makes no express or implied representations or warranties of any kind related to this Website or the materials contained on it. Nothing on this website constitutes professional consultancy or legal advice.</p>
+              <p>This Website is provided &quot;as is,&quot; with all faults, and Aone makes no express or implied representations or warranties of any kind related to this Website or the materials contained on it. Nothing on this website constitutes professional consultancy or legal advice.</p>
             </Section>
 
             <Section id="liability" title="6. Limitation of Liability">
