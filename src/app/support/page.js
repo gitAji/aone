@@ -1,0 +1,179 @@
+'use client';
+
+import React, { useState } from 'react';
+import HeroSection from '@/components/HeroSection';
+import SkeletonLoader from '@/components/SkeletonLoader';
+import Toast from '@/components/Toast';
+
+const priorityOptions = [
+  'Low',
+  'Medium',
+  'High',
+  'Urgent',
+];
+
+const SupportPage = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    issueDescription: '',
+    priority: '',
+  });
+  const [toast, setToast] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setToast(null);
+
+    try {
+      const response = await fetch('/api/support', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setToast({ message: 'Your support request has been sent successfully! We will get back to you shortly.', type: 'success' });
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          issueDescription: '',
+          priority: '',
+        });
+      } else {
+        setToast({ message: 'Something went wrong. Please try again.', type: 'error' });
+      }
+    } catch (error) {
+      console.error('Error submitting support form:', error);
+      setToast({ message: 'An unexpected error occurred. Please try again later.', type: 'error' });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="support-page bg-gray-50 min-h-screen">
+      {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
+      <HeroSection
+        title="Support Request"
+        subtitle="Submit a support request and we'll assist you as soon as possible."
+      />
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Submit a Support Ticket</h2>
+          {isSubmitting ? (
+            <SkeletonLoader />
+          ) : (
+            <>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                    Full Name <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    required
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                    Email <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700">
+                    Subject <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="subject"
+                    id="subject"
+                    required
+                    value={formData.subject}
+                    onChange={handleChange}
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="issueDescription" className="block text-sm font-medium text-gray-700">
+                    Issue Description <span className="text-red-500">*</span>
+                  </label>
+                  <textarea
+                    name="issueDescription"
+                    id="issueDescription"
+                    rows="5"
+                    required
+                    value={formData.issueDescription}
+                    onChange={handleChange}
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  ></textarea>
+                </div>
+                <div>
+                  <label htmlFor="priority" className="block text-sm font-medium text-gray-700">
+                    Priority <span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    id="priority"
+                    name="priority"
+                    required
+                    value={formData.priority}
+                    onChange={handleChange}
+                    className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                  >
+                    <option value="">Select priority</option>
+                    {priorityOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="btn-premium-gradient"
+                  >
+                    {isSubmitting ? 'Submitting...' : 'Submit Request'}
+                  </button>
+                </div>
+              </form>
+            </>
+          )}
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default SupportPage;
