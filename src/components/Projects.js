@@ -9,14 +9,15 @@ import { useLanguage } from "@/context/LanguageContext";
 const Projects = () => {
   const { t } = useLanguage();
   return (
-    <section className="projects-section py-12 md:py-20 bg-gray-50 dark:bg-slate-950 flex justify-center items-center w-full min-h-screen">
+    <section className="projects-section py-24 md:py-32 bg-slate-50 dark:bg-slate-950 w-full">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {/* Heading Section */}
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-5xl md:text-7xl font-black mb-10 bg-clip-text text-transparent bg-gradient-to-r from-rose-500 via-rose-400 to-amber-500 uppercase tracking-tighter drop-shadow-sm">
+        <div className="text-center mb-16 md:mb-20">
+          <p className="text-xs font-bold uppercase tracking-[0.25em] text-rose-500 mb-4">{t('projects.badge') || 'Our Work'}</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight">
             {t('projects.title')}
           </h2>
-          <p className="text-base sm:text-lg text-gray-600 dark:text-slate-400 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-slate-500 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
             {t('projects.subtitle')}
           </p>
         </div>

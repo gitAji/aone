@@ -3,6 +3,17 @@ import { db } from '@/lib/firebase';
 import { doc, setDoc } from 'firebase/firestore';
 import { sendClientEmail, sendAdminNotification } from '@/lib/mail';
 
+const roundPrice = (value) => {
+    let price = Math.ceil(value);
+    while (true) {
+        const lastDigit = price % 10;
+        if (lastDigit === 0 || lastDigit === 9 || lastDigit === 5) {
+            return price;
+        }
+        price++;
+    }
+};
+
 const calculatePrice = (pkg, interval, addonsList = []) => {
     const { packages } = require('@/app/data/packages');
     let base = interval === 'monthly' ? pkg.monthlyPrice : pkg.price;
@@ -19,13 +30,15 @@ export async function POST(request) {
         const body = await request.json();
         console.log('Order received:', body);
 
-        const { orderId: providedOrderId, selectedPack, formData, billingInterval, addons, paymentMethod, agreementUrl } = body;
+        const { orderId: providedOrderId, package: selectedPack, formData, billingInterval, addons, paymentMethod, appliedDiscount = 0, discountCode = '', agreementUrl } = body;
 
         if (!selectedPack || !formData) {
             return NextResponse.json({ error: 'Missing required data' }, { status: 400 });
         }
 
-        const price = calculatePrice(selectedPack, billingInterval, addons || []);
+        const rawPrice = calculatePrice(selectedPack, billingInterval, addons || []);
+        const potentialDiscount = discountCode.trim().toUpperCase() === 'AONE' ? rawPrice * 0.5 : 0;
+        const price = roundPrice(rawPrice - potentialDiscount);
 
         // 1. Store in Firestore (The "Sales Agreement")
         // Harmonized structure with sync API for consistent hydration

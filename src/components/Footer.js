@@ -15,7 +15,7 @@ const Footer = () => {
         whileInView={{ scaleX: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 1.5, ease: "circOut" }}
-        className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-rose-500 to-transparent z-10"
+        className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-slate-700 to-transparent z-10"
       />
 
       <motion.div 
@@ -83,14 +83,14 @@ const Footer = () => {
             <h3 className="text-[10px] uppercase tracking-[0.3em] font-black mb-8 text-white">Contact</h3>
             <div className="space-y-4">
               <a href="mailto:info@aone.no" className="flex items-center gap-3 text-white group">
-                <div className="w-8 h-8 rounded-full bg-rose-500/10 flex items-center justify-center border border-rose-500/20 group-hover:bg-rose-500 group-hover:text-white transition-all">
-                  <FaEnvelope className="text-xs" />
+                <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center border border-slate-700 group-hover:bg-rose-500 group-hover:border-rose-500 transition-all">
+                  <FaEnvelope className="text-xs text-slate-400 group-hover:text-white transition-colors" />
                 </div>
                 <span className="text-sm font-bold group-hover:text-rose-500 transition-colors">info@aone.no</span>
               </a>
               <a href="tel:40071654" className="flex items-center gap-3 text-white group">
-                <div className="w-8 h-8 rounded-full bg-rose-500/10 flex items-center justify-center border border-rose-500/20 group-hover:bg-rose-500 group-hover:text-white transition-all">
-                  <FaPhone className="text-xs" />
+                <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center border border-slate-700 group-hover:bg-rose-500 group-hover:border-rose-500 transition-all">
+                  <FaPhone className="text-xs text-slate-400 group-hover:text-white transition-colors" />
                 </div>
                 <span className="text-sm font-bold group-hover:text-rose-500 transition-colors">400 71 654</span>
               </a>
@@ -105,8 +105,8 @@ const Footer = () => {
 
         </div>
 
-        <div className="footer-bottom mt-20 pt-8 border-t border-slate-900/50 text-center">
-          <p className="text-white text-[6px] uppercase tracking-[0.3em] font-medium">
+        <div className="footer-bottom mt-12 pt-8 border-t border-slate-800 text-center">
+          <p className="text-slate-500 text-xs tracking-wide">
             &copy; {new Date().getFullYear()} Aone.no. {t('footer.rights')}
           </p>
         </div>

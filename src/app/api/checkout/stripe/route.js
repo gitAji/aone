@@ -1,6 +1,17 @@
 import { NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
 
+const roundPrice = (value) => {
+    let price = Math.ceil(value);
+    while (true) {
+        const lastDigit = price % 10;
+        if (lastDigit === 0 || lastDigit === 9 || lastDigit === 5) {
+            return price;
+        }
+        price++;
+    }
+};
+
 export async function POST(req) {
     if (!stripe) {
         console.error('Stripe is not configured. STRIPE_SECRET_KEY is missing.');
@@ -29,7 +40,9 @@ export async function POST(req) {
         }
 
         const baseAmount = (billingInterval === 'monthly' ? selectedPack.monthlyPrice : selectedPack.price);
-        const totalAmount = Math.max(0, baseAmount + addonCost - appliedDiscount);
+        const subtotal = baseAmount + addonCost;
+        const potentialDiscount = discountCode.trim().toUpperCase() === 'AONE' ? subtotal * 0.5 : 0;
+        const totalAmount = roundPrice(subtotal - potentialDiscount);
 
         // Use pre-defined Stripe Price ID from package if it exists, otherwise use inline price_data
         const priceId = billingInterval === 'monthly' ? selectedPack.monthlyStripePriceId : selectedPack.stripePriceId;
@@ -56,7 +69,7 @@ export async function POST(req) {
             ...(billingInterval === 'monthly' ? {
                 subscription_data: clientSubscriptionData || {}
             } : {}),
-            success_url: `${req.nextUrl.origin}/order?step=4&order_id=${orderId}&status=success`,
+            success_url: `${req.nextUrl.origin}/order/success?order_id=${orderId}`,
             cancel_url: `${req.nextUrl.origin}/order?step=3&order_id=${orderId}&status=cancel`,
             customer_email: formData.email,
             metadata: {

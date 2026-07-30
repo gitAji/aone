@@ -8,6 +8,17 @@ import Link from 'next/link';
 import { FaCheck, FaCrown, FaRocket, FaShieldAlt, FaArrowRight, FaZap, FaStar, FaInfoCircle, FaCheckCircle } from 'react-icons/fa';
 import HeroSection from '@/components/HeroSection';
 
+const roundPrice = (value) => {
+    let price = Math.ceil(value);
+    while (true) {
+        const lastDigit = price % 10;
+        if (lastDigit === 0 || lastDigit === 9 || lastDigit === 5) {
+            return price;
+        }
+        price++;
+    }
+};
+
 const PricingCard = ({ pkg, billingInterval, index, isHovered }) => {
     const { t } = useLanguage();
     // If isHovered is provided, use it, otherwise fallback to the hardcoded pkg.recommended
@@ -16,7 +27,7 @@ const PricingCard = ({ pkg, billingInterval, index, isHovered }) => {
     // Determine the price to display
     const originalPrice = billingInterval === 'once' ? pkg.price : pkg.monthlyPrice;
     const isDiscounted = !pkg.isCustom && originalPrice > 0;
-    const displayPrice = isDiscounted ? Math.round(originalPrice * 0.9) : originalPrice;
+    const displayPrice = isDiscounted ? roundPrice(originalPrice * 0.9) : originalPrice;
     const intervalLabel = billingInterval === 'once' ? 'once' : 'mo';
 
     return (

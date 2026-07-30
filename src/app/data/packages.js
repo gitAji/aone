@@ -5,7 +5,7 @@ export const packages = [
         price: 4990,
         monthlyPrice: 249,
         features: [
-            'Design & Delivery',
+            'Logo, UI/UX Design',
             'Full Responsive (Mobile/Desktop)',
             'Basic SEO Optimization',
             'Menu & Content Design',
@@ -22,14 +22,15 @@ export const packages = [
         monthlyPrice: 999,
         features: [
             'Everything in Basic',
-            'AI Chat / Custom Service',
-            'Full Database Integration',
-            'CMS Admin Access',
-            'Voucher Support at Checkout',
+            'E-Commerce & Stripe Integration',
+            'SaaS Features & User Auth',
+            'AI Chat & Custom Workflows',
+            'CMS & Admin Dashboard Access',
+            'Database & Custom API Design',
             'Maintenance & Basic Updates (Monthly)'
         ],
         recommended: true,
-        description: 'Advanced features including database access and AI capabilities to scale your business.'
+        description: 'Tailored for medium businesses, online shops, and SaaS products requiring advanced database systems and AI integrations.'
     },
     {
         id: 'enterprise',
@@ -78,7 +79,7 @@ export const packages = [
     {
         id: 'performance',
         name: 'Lightning Performance Audit',
-        price: 15000,
+        price: 4990,
         monthlyPrice: 0,
         isAddon: true,
         features: [
@@ -88,6 +89,20 @@ export const packages = [
             'Accessibility Compliance (WCAG)'
         ],
         description: 'Boost your site speed to sub-1 second loading times to improve SEO and conversion.'
+    },
+    {
+        id: 'seo',
+        name: 'Advanced SEO Setup',
+        price: 7990,
+        monthlyPrice: 0,
+        isAddon: true,
+        features: [
+            'Deep Keyword Research & Strategy',
+            'On-Page HTML & Meta Tags Optimization',
+            'Google Search Console & Analytics Integration',
+            'Sitemap & Technical SEO Configuration'
+        ],
+        description: 'Boost organic search engine rankings and increase visibility for your business on Google.'
     },
     {
         id: 'branding',

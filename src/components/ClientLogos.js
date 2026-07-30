@@ -15,18 +15,16 @@ const clients = [
 
 const ClientLogos = () => {
     return (
-        <section className="py-12 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800">
-            <div className="container mx-auto px-4">
-                <motion.p
-                    className="text-center text-sm uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-8 font-medium"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                >
-                    Helping 100+ businesses dominate the digital era
-                </motion.p>
-                <div className="flex flex-wrap justify-center items-center gap-10 md:gap-14">
+        <section className="py-16 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800">
+            <div className="container mx-auto px-6">
+                <div className="flex items-center gap-4 mb-10 max-w-xl mx-auto">
+                    <div className="flex-1 h-px bg-slate-200 dark:bg-slate-800" />
+                    <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 whitespace-nowrap">
+                        Trusted by ambitious businesses
+                    </p>
+                    <div className="flex-1 h-px bg-slate-200 dark:bg-slate-800" />
+                </div>
+                <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16">
                     {clients.map((client, index) => (
                         <motion.div
                             key={client.name}

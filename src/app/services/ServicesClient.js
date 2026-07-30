@@ -115,7 +115,7 @@ const ServicesPage = () => {
 
             <Link
               href="/services/search-engine-optimization"
-              className="group block p-10 rounded-3xl transition-all duration-300 bg-white dark:bg-slate-900 hover:-translate-y-2 border border-slate-100 dark:border-slate-800 hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10"
+              className="group block p-10 rounded-3xl transition-all duration-300 bg-white dark:bg-slate-900 hover:-translate-y-2 border border-slate-100 dark:border-slate-800 hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10 md:col-span-2 lg:col-span-1"
             >
               <div className="flex justify-center mb-8">
                 <FaSearch className="text-6xl text-rose-500 group-hover:scale-110 transition-transform duration-500" />

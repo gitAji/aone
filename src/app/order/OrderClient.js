@@ -5,8 +5,19 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { packages } from '../data/packages';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { FaLaptopCode, FaCheck, FaCrown, FaCameraRetro, FaSearch, FaTools, FaPenNib, FaUsers, FaRobot, FaBullhorn, FaPencilRuler, FaVideo, FaInfoCircle, FaTruck, FaSpinner, FaCreditCard, FaLock, FaCalendarAlt, FaShieldAlt, FaStripe, FaCcVisa, FaCcMastercard, FaCcPaypal, FaBolt, FaFileInvoice, FaCube, FaPuzzlePiece, FaTag, FaClock, FaCalendarCheck } from 'react-icons/fa';
+import { FaLaptopCode, FaCheck, FaCrown, FaCameraRetro, FaSearch, FaTools, FaPenNib, FaUsers, FaRobot, FaBullhorn, FaPencilRuler, FaVideo, FaInfoCircle, FaTruck, FaSpinner, FaCreditCard, FaLock, FaCalendarAlt, FaShieldAlt, FaStripe, FaCcVisa, FaCcMastercard, FaCcPaypal, FaBolt, FaFileInvoice, FaCube, FaPuzzlePiece, FaTag, FaClock, FaCalendarCheck, FaChartLine } from 'react-icons/fa';
 import Toast from '@/components/Toast';
+
+const roundPrice = (value) => {
+    let price = Math.ceil(value);
+    while (true) {
+        const lastDigit = price % 10;
+        if (lastDigit === 0 || lastDigit === 9 || lastDigit === 5) {
+            return price;
+        }
+        price++;
+    }
+};
 
 function OrderPageContent() {
     const router = useRouter();
@@ -61,12 +72,15 @@ function OrderPageContent() {
         const potentialDiscount = promoCode.trim().toUpperCase() === 'AONE' ? total * 0.5 : 0;
         const finalTotal = Math.max(0, total - potentialDiscount);
 
+        // Round up to end with 0, 9, or 5
+        const roundedFinalTotal = roundPrice(finalTotal);
+
         return {
             base,
             addons: addonsOneTime,
             monthly: (billingInterval === 'monthly' ? selectedPack.monthlyPrice : 0) + addonsMonthly,
-            total: finalTotal,
-            discount: promoCode.trim().toUpperCase() === 'AONE' ? (base + (packages.filter(p => p.isAddon && addons.includes(p.id)).reduce((sum, p) => sum + p.price, 0))) * 0.5 : 0
+            total: roundedFinalTotal,
+            discount: total - roundedFinalTotal
         };
     }, [selectedPack, billingInterval, addons, promoCode]);
 
@@ -399,6 +413,8 @@ function OrderPageContent() {
                     formData,
                     billingInterval,
                     paymentMethod: method,
+                    appliedDiscount: calculateTotal().discount,
+                    discountCode: promoCode,
                     agreementUrl: null // will update in background
                 })
             });
@@ -612,26 +628,71 @@ function OrderPageContent() {
                                             <p className="text-slate-500">Select additional services to supercharge your platform.</p>
                                         </div>
                                         <div className="grid grid-cols-1 gap-4">
-                                            {packages.filter(p => p.isAddon).map(pkg => (
-                                                <div
-                                                    key={pkg.id}
-                                                    onClick={() => toggleAddon(pkg.id)}
-                                                    className={`p-6 rounded-2xl cursor-pointer border-2 transition-all flex items-center justify-between group ${addons.includes(pkg.id) ? 'border-slate-900 dark:border-white bg-slate-50 dark:bg-slate-900' : 'border-slate-100 dark:border-slate-800 hover:border-slate-200'}`}
-                                                >
-                                                    <div className="flex items-center gap-6">
-                                                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all ${addons.includes(pkg.id) ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900' : 'bg-slate-100 dark:bg-slate-800 text-slate-400'}`}>
-                                                            {pkg.id === 'seo' ? <FaSearch /> : <FaTools />}
+                                            {packages.filter(p => p.isAddon).map(pkg => {
+                                                const getAddonIcon = (id) => {
+                                                    switch (id) {
+                                                        case 'chatbot': return <FaRobot />;
+                                                        case 'geo': return <FaSearch />;
+                                                        case 'performance': return <FaBolt />;
+                                                        case 'seo': return <FaSearch />;
+                                                        case 'branding': return <FaPenNib />;
+                                                        case 'marketing': return <FaChartLine />;
+                                                        case 'maintenance': return <FaTools />;
+                                                        default: return <FaTools />;
+                                                    }
+                                                };
+                                                return (
+                                                    <div
+                                                        key={pkg.id}
+                                                        onClick={() => toggleAddon(pkg.id)}
+                                                        className={`p-6 rounded-2xl cursor-pointer border-2 transition-all flex items-center justify-between group ${addons.includes(pkg.id) ? 'border-slate-900 dark:border-white bg-slate-50 dark:bg-slate-900' : 'border-slate-100 dark:border-slate-800 hover:border-slate-200'}`}
+                                                    >
+                                                        <div className="flex items-center gap-6">
+                                                            <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all ${addons.includes(pkg.id) ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900' : 'bg-slate-100 dark:bg-slate-800 text-slate-400'}`}>
+                                                                {getAddonIcon(pkg.id)}
+                                                            </div>
+                                                            <div>
+                                                                <div className="flex items-center gap-2">
+                                                                    <p className="font-bold text-sm text-slate-900 dark:text-white">{pkg.name}</p>
+                                                                    <div className="relative group/info">
+                                                                        <button 
+                                                                            type="button"
+                                                                            onClick={(e) => {
+                                                                                e.stopPropagation();
+                                                                            }}
+                                                                            className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors cursor-help flex items-center justify-center p-1"
+                                                                            aria-label="View details"
+                                                                        >
+                                                                            <FaInfoCircle className="text-xs" />
+                                                                        </button>
+                                                                        {/* Tooltip Content */}
+                                                                        <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden group-hover/info:block w-72 bg-slate-900 dark:bg-slate-800 text-white text-xs rounded-xl p-4 shadow-xl border border-slate-700 dark:border-slate-600 z-50 pointer-events-none leading-relaxed font-bold">
+                                                                            <p className="mb-2 text-slate-100">{pkg.description}</p>
+                                                                            {pkg.features && pkg.features.length > 0 && (
+                                                                                <ul className="pt-2 border-t border-slate-800 dark:border-slate-700 space-y-1 text-[10px] text-slate-400">
+                                                                                    {pkg.features.map((f, idx) => (
+                                                                                        <li key={idx} className="flex items-center gap-1.5">
+                                                                                            <FaCheck className="text-emerald-500 text-[8px]" /> {f}
+                                                                                        </li>
+                                                                                    ))}
+                                                                                </ul>
+                                                                            )}
+                                                                            {/* Triangle Arrow */}
+                                                                            <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900 dark:border-t-slate-800"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <p className="text-sm text-slate-500">
+                                                                    {pkg.price > 0 ? `${pkg.price} NOK` : `${pkg.monthlyPrice} NOK/mo`}
+                                                                </p>
+                                                            </div>
                                                         </div>
-                                                        <div>
-                                                            <p className="font-bold text-sm text-slate-900 dark:text-white">{pkg.name}</p>
-                                                            <p className="text-sm text-slate-500">{pkg.price} NOK</p>
+                                                        <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${addons.includes(pkg.id) ? 'bg-slate-900 dark:bg-white border-slate-900 dark:border-white' : 'border-slate-200'}`}>
+                                                            {addons.includes(pkg.id) && <FaCheck className="text-[10px] text-white dark:text-slate-900" />}
                                                         </div>
                                                     </div>
-                                                    <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${addons.includes(pkg.id) ? 'bg-slate-900 dark:bg-white border-slate-900 dark:border-white' : 'border-slate-200'}`}>
-                                                        {addons.includes(pkg.id) && <FaCheck className="text-[10px] text-white dark:text-slate-900" />}
-                                                    </div>
-                                                </div>
-                                            ))}
+                                                );
+                                            })}
                                         </div>
                                     </div>
                                     <div className="relative pt-12">
@@ -654,147 +715,93 @@ function OrderPageContent() {
                                                 </div>
                                             </div>
 
-                                            <div className="space-y-10">
-                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 font-black uppercase tracking-widest text-[10px]">
-                                                    <div className="space-y-3">
-                                                        <label className="text-slate-500 ml-1">Contact Name</label>
+                                            <div className="space-y-6">
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-[10px] font-black uppercase tracking-widest">
+                                                    <div className="space-y-2">
+                                                        <label htmlFor="name-input" className="text-slate-500 ml-1">Contact Name</label>
                                                         <input 
+                                                            id="name-input"
                                                             name="name" 
                                                             value={formData.name} 
                                                             onChange={handleInputChange} 
-                                                            className="w-full px-6 py-4 rounded-xl bg-white border border-slate-100 shadow-sm focus:ring-2 focus:ring-slate-900 transition-all text-sm font-bold text-slate-900 placeholder:text-slate-300" 
+                                                            className="w-full px-5 py-3 rounded-xl bg-white border border-slate-200 shadow-sm focus:ring-2 focus:ring-slate-900 transition-all text-sm font-bold text-slate-900 placeholder:text-slate-300" 
                                                             placeholder="Full Name" 
                                                         />
                                                     </div>
-                                                    <div className="space-y-3">
-                                                        <label className="text-slate-500 ml-1">Work Email</label>
+                                                    <div className="space-y-2">
+                                                        <label htmlFor="email-input" className="text-slate-500 ml-1">Work Email</label>
                                                         <input 
+                                                            id="email-input"
                                                             name="email" 
                                                             value={formData.email} 
                                                             onChange={handleInputChange} 
-                                                            className="w-full px-6 py-4 rounded-xl bg-white border border-slate-100 shadow-sm focus:ring-2 focus:ring-slate-900 transition-all text-sm font-bold text-slate-900 placeholder:text-slate-300" 
+                                                            className="w-full px-5 py-3 rounded-xl bg-white border border-slate-200 shadow-sm focus:ring-2 focus:ring-slate-900 transition-all text-sm font-bold text-slate-900 placeholder:text-slate-300" 
                                                             placeholder="Email address" 
                                                             type="email" 
                                                         />
                                                     </div>
                                                 </div>
 
-                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 font-black uppercase tracking-widest text-[10px]">
-                                                    <div className="space-y-3">
-                                                        <label className="text-slate-500 ml-1">Legal Entity Name</label>
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-[10px] font-black uppercase tracking-widest">
+                                                    <div className="space-y-2">
+                                                        <label htmlFor="business-input" className="text-slate-500 ml-1">Company Name</label>
                                                         <input 
+                                                            id="business-input"
                                                             name="businessName" 
                                                             value={formData.businessName} 
                                                             onChange={handleInputChange} 
-                                                            className="w-full px-6 py-4 rounded-xl bg-white border border-slate-100 shadow-sm focus:ring-2 focus:ring-2 focus:ring-slate-900 transition-all text-sm font-bold text-slate-900 placeholder:text-slate-300" 
+                                                            className="w-full px-5 py-3 rounded-xl bg-white border border-slate-200 shadow-sm focus:ring-2 focus:ring-slate-900 transition-all text-sm font-bold text-slate-900 placeholder:text-slate-300" 
                                                             placeholder="AS / LLC name" 
                                                         />
                                                     </div>
-                                                    <div className="space-y-3">
-                                                        <label className="text-slate-500 ml-1">Org. Number (Optional)</label>
+                                                    <div className="space-y-2">
+                                                        <label htmlFor="org-input" className="text-slate-500 ml-1">Org. Number (Optional)</label>
                                                         <input 
+                                                            id="org-input"
                                                             name="orgNumber" 
                                                             value={formData.orgNumber} 
                                                             onChange={handleInputChange} 
-                                                            className="w-full px-6 py-4 rounded-xl bg-white border border-slate-100 shadow-sm focus:ring-2 focus:ring-slate-900 transition-all text-sm font-bold text-slate-900 placeholder:text-slate-300" 
+                                                            className="w-full px-5 py-3 rounded-xl bg-white border border-slate-200 shadow-sm focus:ring-2 focus:ring-slate-900 transition-all text-sm font-bold text-slate-900 placeholder:text-slate-300" 
                                                             placeholder="000 000 000" 
                                                         />
                                                     </div>
                                                 </div>
 
-                                                <div className="space-y-4 font-black uppercase tracking-widest text-[10px]">
-                                                    <label className="text-slate-500 ml-1">Billing Address</label>
-                                                    <input 
-                                                        name="address" 
-                                                        value={formData.address} 
-                                                        onChange={handleInputChange} 
-                                                        className="w-full px-6 py-4 rounded-xl bg-white border border-slate-100 shadow-sm focus:ring-2 focus:ring-slate-900 transition-all text-sm font-bold text-slate-900 placeholder:text-slate-300 mb-4" 
-                                                        placeholder="Street, Suite, Number" 
-                                                    />
-                                                    <div className="grid grid-cols-2 gap-8">
-                                                        <input 
-                                                            name="zip" 
-                                                            value={formData.zip} 
-                                                            onChange={handleInputChange} 
-                                                            className="w-full px-6 py-4 rounded-xl bg-white border border-slate-100 shadow-sm focus:ring-2 focus:ring-slate-900 transition-all text-sm font-bold text-slate-900 placeholder:text-slate-300" 
-                                                            placeholder="Zip" 
-                                                        />
-                                                        <input 
-                                                            name="city" 
-                                                            value={formData.city} 
-                                                            onChange={handleInputChange} 
-                                                            className="w-full px-6 py-4 rounded-xl bg-white border border-slate-100 shadow-sm focus:ring-2 focus:ring-slate-900 transition-all text-sm font-bold text-slate-900 placeholder:text-slate-300" 
-                                                            placeholder="City" 
-                                                        />
-                                                    </div>
-                                                </div>
-
-                                                <div className="pt-6 border-t border-slate-200">
-                                                    <div className="space-y-4 font-black uppercase tracking-widest text-[10px]">
-                                                        <label className="text-slate-900 ml-1 flex items-center gap-2">
-                                                            <FaCalendarAlt className="text-rose-500" />
-                                                            Preferred Service Start Date
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-[10px] font-black uppercase tracking-widest pt-6 border-t border-slate-200">
+                                                    <div className="space-y-2">
+                                                        <label htmlFor="start-date-input" className="text-slate-500 ml-1 flex items-center gap-1.5 animate-pulse">
+                                                            <FaCalendarAlt className="text-rose-500" /> Start Date
                                                         </label>
-                                                        <p className="text-[9px] text-slate-400 font-bold mb-2 lowercase">Choose your preferred date for project kick-off and initial payment.</p>
                                                         <input 
+                                                            id="start-date-input"
                                                             name="startDate" 
                                                             type="date"
                                                             value={formData.startDate} 
                                                             onChange={handleInputChange} 
-                                                            className="w-full px-6 py-4 rounded-xl bg-white border border-slate-100 shadow-sm focus:ring-2 focus:ring-slate-900 transition-all text-sm font-bold text-slate-900 outline-none" 
+                                                            className="w-full px-5 py-3 rounded-xl bg-white border border-slate-200 shadow-sm focus:ring-2 focus:ring-slate-900 transition-all text-sm font-bold text-slate-900 outline-none" 
                                                         />
                                                     </div>
-                                                </div>
-
-                                                <div className="space-y-4">
-                                                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2 flex items-center gap-2">
-                                                        <FaShieldAlt className="text-slate-900" /> Contract Commitment
-                                                    </label>
-                                                    <div className="grid grid-cols-2 gap-4">
-                                                        {[
-                                                            { id: '12', label: '12 Months', sub: 'Standard Plan' },
-                                                            { id: '24', label: '24 Months', sub: 'Priority Support' }
-                                                        ].map(opt => (
-                                                            <div
-                                                                key={opt.id}
-                                                                onClick={() => setFormData(prev => ({ ...prev, commitment: opt.id }))}
-                                                                className={`p-6 rounded-3xl border-2 transition-all cursor-pointer flex flex-col gap-1 ${formData.commitment === opt.id ? 'border-slate-900 bg-white shadow-xl shadow-slate-200/50' : 'border-slate-200/50 bg-slate-100/30'}`}
-                                                            >
-                                                                <span className={`text-sm font-black ${formData.commitment === opt.id ? 'text-slate-900' : 'text-slate-400'}`}>{opt.label}</span>
-                                                                <span className="text-[10px] text-slate-400 font-bold uppercase tracking-tight">{opt.sub}</span>
-                                                            </div>
-                                                        ))}
+                                                    <div className="space-y-2">
+                                                        <label className="text-slate-500 ml-1 flex items-center gap-1.5">
+                                                            <FaShieldAlt className="text-slate-900" /> Commitment
+                                                        </label>
+                                                        <div className="flex gap-2">
+                                                            {[
+                                                                { id: '12', label: '12 Months' },
+                                                                { id: '24', label: '24 Months' }
+                                                            ].map(opt => (
+                                                                <button
+                                                                    key={opt.id}
+                                                                    type="button"
+                                                                    onClick={() => setFormData(prev => ({ ...prev, commitment: opt.id }))}
+                                                                    className={`flex-1 py-3 px-4 rounded-xl border text-xs font-black transition-all cursor-pointer ${formData.commitment === opt.id ? 'border-slate-950 bg-slate-950 text-white shadow-md' : 'border-slate-200 bg-white text-slate-500 hover:border-slate-300'}`}
+                                                                >
+                                                                    {opt.label}
+                                                                </button>
+                                                            ))}
+                                                        </div>
                                                     </div>
                                                 </div>
-
-                                                {/* Trial Period Selection */}
-                                                <div className="space-y-4">
-                                                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2 flex items-center gap-2">
-                                                        <FaBolt className="text-slate-900" /> Trial Period (Days)
-                                                    </label>
-                                                    <div className="grid grid-cols-2 gap-4">
-                                                        {[
-                                                            { id: 'none', label: 'None', sub: 'Pay Now' },
-                                                            { id: '30', label: '30 Days', sub: 'Standard Trial' }
-                                                        ].map(opt => (
-                                                            <div
-                                                                key={opt.id}
-                                                                onClick={() => setFormData(prev => ({ ...prev, trialPeriod: opt.id }))}
-                                                                className={`p-4 rounded-2xl border-2 transition-all cursor-pointer flex flex-col items-center text-center gap-1 ${formData.trialPeriod === opt.id ? 'border-slate-900 bg-white shadow-lg' : 'border-slate-200/50 bg-slate-100/30'}`}
-                                                            >
-                                                                <span className={`text-[11px] font-black leading-tight ${formData.trialPeriod === opt.id ? 'text-slate-900' : 'text-slate-400'}`}>{opt.label}</span>
-                                                                <span className="text-[8px] text-slate-400 font-bold uppercase tracking-tight">{opt.sub}</span>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                    {formData.trialPeriod !== 'none' && (
-                                                        <p className="text-[10px] text-slate-500 font-medium bg-amber-50 border border-amber-100 p-3 rounded-lg flex items-center gap-2 mt-2">
-                                                            <FaInfoCircle className="text-amber-500" /> 
-                                                            Note: First billing will be deferred. The platform access is usually provided after the first payment clears unless an MSA is signed.
-                                                        </p>
-                                                    )}
-                                                </div>
-
                                             </div>
 
                                             {/* Digital Sales Agreement Section */}
@@ -980,10 +987,14 @@ function OrderPageContent() {
                                                             <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
                                                                 <FaCreditCard className="text-white" />
                                                             </div>
-                                                            Pay & Secure Now
+                                                            Quick Pay
                                                         </>
                                                     )}
                                                 </motion.button>
+                                                
+                                                <p className="text-[10px] font-bold text-center text-slate-400 lowercase tracking-wide">
+                                                    pay with <span className="text-slate-800 font-extrabold dark:text-white">cards</span>, <span className="text-slate-800 font-extrabold dark:text-white">klarna</span>, or <span className="text-slate-800 font-extrabold dark:text-white">apple pay</span> at checkout
+                                                </p>
                                                 
                                                 <button
                                                     onClick={() => submitOrder('later')}

@@ -5,17 +5,14 @@ import { translations } from '@/lib/translations';
 const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-    const [language, setLanguage] = useState('en');
+    const [language, setLanguage] = useState('no');
 
     useEffect(() => {
         const savedLanguage = localStorage.getItem('language');
         if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'no')) {
             setLanguage(savedLanguage);
         } else {
-            const browserLang = navigator.language.split('-')[0];
-            if (browserLang === 'no') {
-                setLanguage('no');
-            }
+            setLanguage('no');
         }
     }, []);
 

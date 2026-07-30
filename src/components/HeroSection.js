@@ -54,12 +54,12 @@ const TypewriterTitle = ({ text, delay = 50 }) => {
   }, [text, delay]);
 
   return (
-    <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[1.1] min-h-[1.2em] bg-clip-text text-transparent bg-gradient-to-r from-rose-500 via-rose-400 to-amber-500 drop-shadow-sm">
+    <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[1.1] min-h-[1.2em] bg-clip-text text-transparent bg-gradient-to-r from-rose-500 via-rose-400 to-amber-500 drop-shadow-sm font-satoshi">
       <HighlightedText text={displayText} />
       <motion.span
         animate={{ opacity: [0, 1, 0] }}
         transition={{ duration: 0.8, repeat: Infinity }}
-        className="inline-block w-1 h-12 md:h-20 bg-rose-500 ml-1 align-middle"
+        className="inline-block w-[3px] h-10 md:h-14 bg-rose-500 ml-1 align-middle rounded-full"
       />
     </h1>
   );
@@ -104,7 +104,7 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
             <>
 
               {/* Typewriter Title */}
-              <div className="h-48 flex items-center justify-center mb-6">
+              <div className="h-32 md:h-40 flex items-center justify-center mb-6">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={`${language}-${index}`}
@@ -151,7 +151,7 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="text-5xl md:text-7xl font-black tracking-tighter leading-tight bg-clip-text text-transparent bg-gradient-to-r from-rose-500 via-rose-400 to-amber-500 uppercase drop-shadow-sm"
+                className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-tight bg-clip-text text-transparent bg-gradient-to-r from-rose-500 via-rose-400 to-amber-500 uppercase drop-shadow-sm font-satoshi mb-6"
               >
                 {title}
               </motion.h1>

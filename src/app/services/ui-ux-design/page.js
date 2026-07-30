@@ -19,48 +19,54 @@ const UIUXDesignPage = () => {
             />
 
             {/* Why Section */}
-            <section className="container mx-auto px-6 py-24 text-center">
+            <section className="container mx-auto px-6 pt-28 pb-32 text-center">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tighter"
+                    className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight"
                 >
-                    The Art & Science of UI/UX
+                    The Art &amp; Science of UI/UX
                 </motion.h2>
-                <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-16 max-w-3xl mx-auto font-medium">
+                <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-16 max-w-2xl mx-auto">
                     User Interface (UI) and User Experience (UX) design are the cornerstones of successful digital products. 
                     We create a seamless journey that delights your audience and achieves business goals.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[
                         {
-                            icon: <FaPalette className="text-5xl text-rose-500 mb-6" />,
-                            description: "Elevate your digital products with Aone's expert UI/UX design. We create stunning, user-centric interfaces through research, prototyping, and testing.",
+                            icon: <FaPalette className="text-3xl text-rose-500" />,
+                            title: "Expert UI/UX Design",
+                            description: "Elevate your digital products with stunning, user-centric interfaces built through research, prototyping, and rigorous testing.",
                         },
                         {
-                            icon: <FaUserFriends className="text-5xl text-rose-500 mb-6" />,
+                            icon: <FaUserFriends className="text-3xl text-rose-500" />,
                             title: "User-Centric Design",
                             description: "Design solutions tailored precisely to your users' needs, behaviors, and desires.",
                         },
                         {
-                            icon: <FaLightbulb className="text-5xl text-rose-500 mb-6" />,
+                            icon: <FaLightbulb className="text-3xl text-rose-500" />,
                             title: "Neural Interaction",
                             description: "Transform complex challenges into intuitive and delightful user journeys.",
                         },
                     ].map((item, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.4, delay: index * 0.1 }}
-                            className="p-10 bg-white dark:bg-slate-900 rounded-3xl shadow-xl hover:shadow-rose-500/5 transition-all duration-300 border border-slate-100 dark:border-slate-800 flex flex-col items-center text-center"
+                            transition={{ duration: 0.5, delay: index * 0.12 }}
+                            className="group relative p-10 bg-white dark:bg-slate-900 rounded-3xl shadow-md hover:shadow-2xl hover:shadow-rose-500/10 transition-all duration-500 border border-slate-100 dark:border-slate-800 hover:-translate-y-2 flex flex-col items-center text-center overflow-hidden"
                         >
-                            {item.icon}
-                            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">{item.title}</h3>
-                            <p className="text-slate-600 dark:text-slate-400 font-medium">{item.description}</p>
+                            <div className="absolute inset-0 bg-gradient-to-br from-rose-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none" />
+                            <div className="relative z-10 flex flex-col items-center">
+                                <div className="w-14 h-14 rounded-2xl bg-rose-50 dark:bg-rose-950/40 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                                    {item.icon}
+                                </div>
+                                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">{item.title}</h3>
+                                <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{item.description}</p>
+                            </div>
                         </motion.div>
                     ))}
                 </div>

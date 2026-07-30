@@ -1,4 +1,4 @@
-import { Inter, Pacifico, Bebas_Neue, Raleway } from "next/font/google";
+import { Inter, Pacifico, DM_Sans } from "next/font/google";
 import "./globals.css?v=1";
 import Script from "next/script";
 import LayoutClientWrapper from "@/components/LayoutClientWrapper";
@@ -14,16 +14,11 @@ const pacifico = Pacifico({
   weight: ["400"],
 });
 
-const bebasNeue = Bebas_Neue({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-bebas-neue",
-  weight: ["400"],
-});
-
-const raleway = Raleway({
-  subsets: ["latin"],
-  variable: "--font-raleway",
-  weight: ["400", "500", "600", "700"],
+  variable: "--font-dm-sans",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  style: ["normal", "italic"],
 });
 
 export const viewport = {
@@ -130,7 +125,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body
-        className={`${inter.variable} ${pacifico.variable} ${bebasNeue.variable} ${raleway.variable} antialiased}`}
+        className={`${inter.variable} ${pacifico.variable} ${dmSans.variable} antialiased`}
         suppressHydrationWarning
       >
         <LayoutClientWrapper>

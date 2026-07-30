@@ -65,7 +65,7 @@ export default function LayoutClientWrapper({ children }) {
           {/* {showReferralPopup && <DynamicReferralPopup />} */}
           <Footer />
         </ClientLayoutWrapper>
-        {pathname !== '/' && <DynamicVoiceflowChat />}
+        {/* {pathname !== '/' && <DynamicVoiceflowChat />} */}
         {/* <DynamicTawkToMessenger /> */}
       </ThemeProvider>
     </LanguageProvider>
