@@ -9,14 +9,54 @@ const Footer = () => {
   const { t } = useLanguage();
   return (
     <footer className="footer overflow-hidden relative border-t border-slate-900 bg-slate-950 pb-10">
-      {/* Animated Top Border Line */}
-      <motion.div 
-        initial={{ scaleX: 0 }}
-        whileInView={{ scaleX: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.5, ease: "circOut" }}
-        className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-slate-700 to-transparent z-10"
-      />
+      
+      {/* Animated Glowing Red Border Lines (Three Layers) */}
+      <div className="absolute top-0 left-0 w-full h-[4px] overflow-hidden pointer-events-none select-none z-10">
+        {/* Layer 1: High speed primary glow */}
+        <motion.div 
+          animate={{ x: ['-100%', '100%'] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
+          className="absolute top-0 left-0 w-[50%] h-[2px] bg-gradient-to-r from-transparent via-rose-500/80 to-transparent"
+        />
+        {/* Layer 2: Slow counter-speed sub-glow */}
+        <motion.div 
+          animate={{ x: ['100%', '-100%'] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+          className="absolute top-[1px] left-0 w-[40%] h-[1px] bg-gradient-to-r from-transparent via-red-500/60 to-transparent"
+        />
+        {/* Layer 3: Blurry neon cast */}
+        <motion.div 
+          animate={{ x: ['-80%', '80%'] }}
+          transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+          className="absolute top-0 left-0 w-[60%] h-[3px] bg-gradient-to-r from-transparent via-rose-600/40 to-transparent blur-[3px]"
+        />
+      </div>
+
+      {/* Abstract Glowing Background Waves (Red) */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.035] select-none z-0">
+        <svg className="absolute bottom-0 left-0 w-full h-[300px] text-red-500" viewBox="0 0 1440 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <motion.path 
+            animate={{ d: [
+              "M0,150 C360,100 720,200 1080,150 C1260,125 1380,175 1440,150 L1440,300 L0,300 Z",
+              "M0,150 C360,200 720,100 1080,180 C1260,220 1380,120 1440,150 L1440,300 L0,300 Z",
+              "M0,150 C360,100 720,200 1080,150 C1260,125 1380,175 1440,150 L1440,300 L0,300 Z"
+            ]}}
+            transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+            stroke="currentColor" 
+            strokeWidth="1.5" 
+          />
+          <motion.path 
+            animate={{ d: [
+              "M0,120 C400,200 800,80 1200,160 C1320,200 1380,140 1440,120 L1440,300 L0,300 Z",
+              "M0,120 C400,80 800,200 1200,100 C1320,50 1380,180 1440,120 L1440,300 L0,300 Z",
+              "M0,120 C400,200 800,80 1200,160 C1320,200 1380,140 1440,120 L1440,300 L0,300 Z"
+            ]}}
+            transition={{ duration: 24, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            stroke="currentColor" 
+            strokeWidth="1" 
+          />
+        </svg>
+      </div>
 
       <motion.div 
         className="footer-content relative z-20 pt-16"
