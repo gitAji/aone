@@ -1,24 +1,33 @@
 import { initializeApp, getApps, cert } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 
-// Parse service account from env var
-const serviceAccount = process.env.FIREBASE_SERVICE_ACCOUNT_KEY
-    ? JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY)
-    : null;
+// Lazy singleton -- getAdminDb() is only ever called from inside a request
+// handler, never at module load time. Next.js imports every route module
+// during build/page-data collection, so throwing here unconditionally would
+// take down the whole build the instant FIREBASE_SERVICE_ACCOUNT_KEY is
+// unset (e.g. in local dev), the same way an eager `new Stripe(undefined)`
+// would.
+let adminDb = null;
 
-if (getApps().length === 0) {
-    if (serviceAccount) {
-        initializeApp({
-            credential: cert(serviceAccount)
-        });
-    } else {
-        // If no service account, try initializing with default credentials (e.g. on GCP)
-        // or log warning
-        console.warn("Warning: FIREBASE_SERVICE_ACCOUNT_KEY not set. Backend ops may fail.");
-        initializeApp();
+export function getAdminDb() {
+    if (adminDb) return adminDb;
+
+    if (getApps().length === 0) {
+        const raw = process.env.FIREBASE_SERVICE_ACCOUNT_KEY;
+        if (!raw) {
+            throw new Error(
+                'FIREBASE_SERVICE_ACCOUNT_KEY is not configured -- server-side Firestore writes (orders, webhooks) cannot run without it.'
+            );
+        }
+        let serviceAccount;
+        try {
+            serviceAccount = JSON.parse(raw);
+        } catch (err) {
+            throw new Error('FIREBASE_SERVICE_ACCOUNT_KEY is not valid JSON: ' + err.message);
+        }
+        initializeApp({ credential: cert(serviceAccount) });
     }
+
+    adminDb = getFirestore();
+    return adminDb;
 }
-
-const db = getFirestore();
-
-export { db };

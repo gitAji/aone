@@ -16,6 +16,7 @@ function SuccessPageContent() {
     const [orderData, setOrderData] = useState(null);
     const [pdfGenerating, setPdfGenerating] = useState(false);
     const [error, setError] = useState(null);
+    const [confirming, setConfirming] = useState(false);
 
     useEffect(() => {
         if (!orderId) {
@@ -24,37 +25,59 @@ function SuccessPageContent() {
             return;
         }
 
+        // Landing on this page only means Stripe redirected the browser here
+        // -- it is NOT proof payment succeeded, and this page must not mark
+        // the order 'completed' itself (the server would ignore that write
+        // anyway; only the Stripe webhook, which has actually verified
+        // payment, is allowed to). Instead, poll briefly for the webhook to
+        // catch up -- it normally lands within a second or two, well before
+        // this redirect completes -- and show an honest "confirming" state
+        // rather than asserting success.
+        let cancelled = false;
+        const POLL_ATTEMPTS = 6;
+        const POLL_DELAY_MS = 1500;
+
         const fetchOrder = async () => {
-            try {
-                const res = await fetch(`/api/order/sync?order_id=${orderId}`);
-                const json = await res.json();
-                if (json.success && json.data) {
-                    setOrderData(json.data);
-                    
-                    // If the order status is not completed, set it to completed since we are on the success page
-                    if (json.data.status !== 'completed') {
-                        await fetch('/api/order/sync', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                orderId: orderId,
-                                status: 'completed',
-                                step: 4
-                            })
-                        });
+            for (let attempt = 0; attempt < POLL_ATTEMPTS; attempt++) {
+                try {
+                    const res = await fetch(`/api/order/sync?order_id=${orderId}`);
+                    const json = await res.json();
+                    if (cancelled) return;
+
+                    if (!json.success || !json.data) {
+                        setError('Order details could not be found.');
+                        setLoading(false);
+                        return;
                     }
-                } else {
-                    setError('Order details could not be found.');
+
+                    setOrderData(json.data);
+
+                    if (json.data.status === 'completed') {
+                        setConfirming(false);
+                        setLoading(false);
+                        return;
+                    }
+
+                    // Not confirmed yet -- keep the receipt hidden and retry.
+                    setConfirming(true);
+                    setLoading(false);
+                } catch (err) {
+                    console.error(err);
+                    if (!cancelled) {
+                        setError('Failed to load your order details.');
+                        setLoading(false);
+                    }
+                    return;
                 }
-            } catch (err) {
-                console.error(err);
-                setError('Failed to load your order details.');
-            } finally {
-                setLoading(false);
+
+                if (attempt < POLL_ATTEMPTS - 1) {
+                    await new Promise(resolve => setTimeout(resolve, POLL_DELAY_MS));
+                }
             }
         };
 
         fetchOrder();
+        return () => { cancelled = true; };
     }, [orderId]);
 
     const generateAgreementPDF = async () => {
@@ -151,6 +174,25 @@ function SuccessPageContent() {
                 <h1 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-2">Order Lookup Failed</h1>
                 <p className="text-slate-500 dark:text-slate-400 max-w-md mb-8 text-sm">{error}</p>
                 <Link href="/" className="px-8 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-bold text-sm">
+                    Back to Home
+                </Link>
+            </div>
+        );
+    }
+
+    // Stripe's webhook hasn't confirmed payment yet (rare -- it usually beats
+    // this redirect by a second or two). Rather than showing a receipt for a
+    // payment we haven't actually verified, be honest that confirmation is
+    // still in progress.
+    if (confirming || orderData?.status !== 'completed') {
+        return (
+            <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col items-center justify-center px-6 text-center gap-4">
+                <FaClock className="text-4xl text-amber-500" />
+                <h1 className="text-2xl font-black text-slate-900 dark:text-white uppercase">Confirming Your Payment</h1>
+                <p className="text-slate-500 dark:text-slate-400 max-w-md text-sm">
+                    We're still waiting on final confirmation from Stripe -- this page will update automatically. If this doesn't resolve within a couple of minutes, check your email or contact us with your reference: <span className="font-mono">{orderId}</span>.
+                </p>
+                <Link href="/" className="mt-4 px-8 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-bold text-sm">
                     Back to Home
                 </Link>
             </div>

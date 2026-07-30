@@ -18,19 +18,30 @@ export async function POST(req) {
         return NextResponse.json({ error: 'Stripe is not configured' }, { status: 500 });
     }
     try {
-        const { 
-            orderId, 
-            package: selectedPack, 
-            addons, 
-            billingInterval, 
-            formData, 
-            appliedDiscount = 0, 
+        const {
+            orderId,
+            package: clientSelectedPack,
+            addons,
+            billingInterval,
+            formData,
+            appliedDiscount = 0,
             discountCode = '',
             subscription_data: clientSubscriptionData // Trial details calculated by frontend
         } = await req.json();
 
         // Calculate total amount in NOK (Stripe expects amount in subunits like øre/cents)
         const { packages } = await import('@/app/data/packages');
+
+        // The client only ever tells us WHICH package/add-ons were picked (by
+        // id) -- the price charged always comes from our own canonical
+        // packages.js, never from the request body. Previously this trusted
+        // selectedPack.price/monthlyPrice verbatim from the client, so anyone
+        // could POST here directly with an arbitrary price and get a real,
+        // valid Stripe Checkout Session for whatever amount they chose.
+        const selectedPack = packages.find(p => p.id === clientSelectedPack?.id);
+        if (!selectedPack || selectedPack.isCustom) {
+            return NextResponse.json({ error: 'Unknown or non-purchasable package.' }, { status: 400 });
+        }
 
         let addonCost = 0;
         if (addons && addons.length > 0) {
@@ -80,13 +91,16 @@ export async function POST(req) {
             },
         });
 
-        // Update Firestore with comprehensive order & customer details
+        // Update Firestore with comprehensive order & customer details. Uses
+        // the Admin SDK (not the public client SDK) since firestore.rules
+        // denies direct client access to `orders` -- this route is the only
+        // legitimate writer of the pre-payment record, and the webhook below
+        // is the only legitimate writer of the post-payment "completed" state.
         try {
-            const { db } = await import('@/lib/firebase');
-            const { doc, setDoc } = await import('firebase/firestore');
-            const orderRef = doc(db, 'orders', orderId);
-            
-            await setDoc(orderRef, {
+            const { getAdminDb } = await import('@/lib/firebaseAdmin');
+            const adminDb = getAdminDb();
+
+            await adminDb.collection('orders').doc(orderId).set({
                 orderId,
                 customerId: formData.email, // Using email as a temporary unique identifier
                 customerName: formData.name,
@@ -108,7 +122,7 @@ export async function POST(req) {
                 billingInterval: billingInterval,
                 discount: {
                     code: discountCode,
-                    amount: appliedDiscount
+                    amount: potentialDiscount
                 },
                 totalAmount: totalAmount,
                 status: 'awaiting_payment',

@@ -1,6 +1,14 @@
 import { NextResponse } from 'next/server';
-import { db } from '@/lib/firebase';
-import { doc, setDoc, getDoc } from 'firebase/firestore';
+import { getAdminDb } from '@/lib/firebaseAdmin';
+
+// Statuses the client is allowed to set while a customer is still filling
+// out the multi-step order form. 'completed' is deliberately excluded --
+// only the Stripe webhook (checkout.session.completed, which has actually
+// verified payment) may set that. 'agreement_signed' is excluded too --
+// only order/create sets that, alongside the signed agreement record.
+// Without this allowlist, anyone could POST here directly with
+// status:'completed' and mark an arbitrary order paid.
+const CLIENT_SETTABLE_STATUSES = new Set(['draft', 'awaiting_payment', 'cancelled']);
 
 export async function POST(req) {
     try {
@@ -10,15 +18,21 @@ export async function POST(req) {
             return NextResponse.json({ error: 'Missing orderId' }, { status: 400 });
         }
 
-        const orderRef = doc(db, 'orders', orderId);
+        const adminDb = getAdminDb();
 
-        // Merge data - we use setDoc with merge: true to update only provided fields
+        // Merge data - only update fields the caller actually provided
         const data = {
             lastUpdated: new Date().toISOString(),
-            currentStep: step,
-            status: status || 'draft'
         };
 
+        if (step !== undefined) data.currentStep = step;
+        if (status !== undefined) {
+            if (CLIENT_SETTABLE_STATUSES.has(status)) {
+                data.status = status;
+            } else {
+                console.warn(`order/sync: ignored disallowed status "${status}" for order ${orderId}`);
+            }
+        }
         if (selectedPack) data.package = selectedPack;
         if (addons) data.addons = addons;
         if (formData) data.formData = formData;
@@ -26,7 +40,7 @@ export async function POST(req) {
         if (totalAmount !== undefined) data.totalAmount = totalAmount;
         if (agreementUrl !== undefined) data.agreementUrl = agreementUrl;
 
-        await setDoc(orderRef, data, { merge: true });
+        await adminDb.collection('orders').doc(orderId).set(data, { merge: true });
 
         return NextResponse.json({ success: true, orderId });
     } catch (err) {
@@ -44,10 +58,10 @@ export async function GET(req) {
     }
 
     try {
-        const orderRef = doc(db, 'orders', orderId);
-        const docSnap = await getDoc(orderRef);
+        const adminDb = getAdminDb();
+        const docSnap = await adminDb.collection('orders').doc(orderId).get();
 
-        if (docSnap.exists()) {
+        if (docSnap.exists) {
             return NextResponse.json({ success: true, data: docSnap.data() });
         } else {
             return NextResponse.json({ error: 'Order not found' }, { status: 404 });

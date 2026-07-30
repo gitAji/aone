@@ -30,9 +30,13 @@ service cloud.firestore {
       allow create: if true;
       allow read, update, delete: if false;
     }
+    // Orders contain customer PII (name, email, business org number, address)
+    // and the financial record of what was charged. All reads and writes go
+    // through server-side API routes using the Admin SDK (which bypasses
+    // these rules entirely), so direct client access is never legitimate --
+    // deny it outright, matching flaggedMessages-style Admin-SDK-only data.
     match /orders/{doc} {
-      allow read, create, update: if true;
-      allow delete: if false;
+      allow read, write: if false;
     }
     
     // Default deny
