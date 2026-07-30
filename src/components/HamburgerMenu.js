@@ -172,6 +172,7 @@ const HamburgerMenu = () => {
             <ul className="menu-links flex flex-col items-center gap-8">
               {[
                 { name: t('nav.services'), href: '/services' },
+                { name: t('nav.pricing'), href: '/pricing' },
                 { name: t('nav.products'), href: '/products' },
                 { name: t('nav.references'), href: '/references' },
                 { name: t('nav.about'), href: '/about' },
@@ -199,6 +200,17 @@ const HamburgerMenu = () => {
                 );
               })}
             </ul>
+
+            {/* Header's own CTA button is hidden on the smallest screens to
+                avoid crowding the compact top bar -- this is the fallback
+                so those visitors still have one tap to a quote request. */}
+            <Link
+              href="/request-quote"
+              onClick={toggleMenu}
+              className="sm:hidden mt-10 inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-rose-500 to-amber-500 text-white text-xs font-black uppercase tracking-widest shadow-xl shadow-rose-500/20"
+            >
+              {t('requestQuote')}
+            </Link>
           </nav>
         </div>
       )}
