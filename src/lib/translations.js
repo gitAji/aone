@@ -9,6 +9,15 @@ export const translations = {
             contact: "Contact",
             pricing: "Pricing",
             clientLogin: "Client Login",
+            desc: {
+                services: "Tailored web design & business AI automation",
+                pricing: "Transparent packages & custom enterprise quotes",
+                products: "Pre-packaged software & ready-made templates",
+                references: "Explore our case studies and successful projects",
+                about: "Our story, team values, and mission statement",
+                blog: "Insights, technology guides & industry news",
+                contact: "Get in touch or schedule a virtual discovery call",
+            }
         },
         requestQuote: "Request Quote",
         hero: {
@@ -71,9 +80,17 @@ export const translations = {
             subtitle: "The true measure of our work lies in the growth and satisfaction of those we partner with.",
         },
         cta: {
-            title: "Ready to Start Your Project?",
-            subtitle: "Let's build something amazing together.",
+            badge: "Now Accepting New Clients",
+            title: "Ready to Start Your",
+            titleHighlight: "Project?",
+            subtitle: "From AI chatbots to lightning-fast websites, we create digital experiences that drive real business results.",
             button: "Get Your Free Quote Today!",
+            secondaryButton: "Book a Free Call",
+            trust: {
+                rating: "Client Rating",
+                turnaround: "Fast Onboarding",
+                guarantee: "Satisfaction",
+            }
         },
         footer: {
             aboutTitle: "About",
@@ -98,9 +115,56 @@ export const translations = {
             rights: "All rights reserved.",
         },
         projects: {
+            badge: "Our Work",
             title: "Strategic Niche Architectures",
             subtitle: "A showcase of our most innovative digital solutions for clients.",
             viewAll: "View all projects",
+        },
+        chatbot: {
+            why: {
+                badge: "Why It Matters",
+                title: "Why Your AI Agent Matters",
+                subtitle: "Static forms are dead. Modern customers expect instant, intelligent, and personalized responses. Our AI agents don't just \"chat\"—they solve problems, qualify leads, and close sales 24/7.",
+                support: {
+                    title: "24/7 Intelligent Support",
+                    desc: "Never miss a lead or support ticket again. Your AI agent works with human-like empathy while you sleep."
+                },
+                leadCapture: {
+                    title: "Lead Capture & Auth",
+                    desc: "Instantly qualify prospects and securely book them into your calendar or CRM systems."
+                },
+                engagement: {
+                    title: "Behavioral Engagement",
+                    desc: "Proactively reach out to users based on their real-time behavior to maximize conversions."
+                }
+            },
+            cap: {
+                title: "Advanced Capabilities",
+                subtitle: "Everything your business needs to automate intelligently.",
+                knowledge: {
+                    title: "Custom Knowledge",
+                    desc: "Trained natively on your specific business documentation for perfect accuracy."
+                },
+                language: {
+                    title: "Universal Fluency",
+                    desc: "Fluent in over 50 languages, including hyper-natural Norwegian and English."
+                },
+                integration: {
+                    title: "Deep Integration",
+                    desc: "Full read-write access to HubSpot, Salesforce, or your proprietary backends."
+                },
+                analytics: {
+                    title: "Neural Analytics",
+                    desc: "Visualize conversation flows and identify exactly where users convert."
+                }
+            },
+            cta: {
+                title: "Deploy",
+                titleHighlight: "Intelligence",
+                subtitle: "Upgrade your customer experience with human-like AI agents. Let's make it happen.",
+                primary: "Get Started",
+                secondary: "Free Consultation"
+            }
         },
         referral: {
             greetings: "🎉 Special Offer! 🎉",
@@ -313,7 +377,16 @@ export const translations = {
             blog: "Blogg",
             contact: "Kontakt",
             pricing: "Priser",
-            clientLogin: "Klientpålogging",
+            clientLogin: "Kundeportal",
+            desc: {
+                services: "Skreddersydd webdesign og forretnings-AI",
+                pricing: "Transparente prispakker og skreddersydde tilbud",
+                products: "Ferdig programvare og maler klare for bruk",
+                references: "Utforsk våre casestudier og suksesshistorier",
+                about: "Vår historie, verdier og misjonserklæring",
+                blog: "Innsikt, teknologiguider og bransjenyheter",
+                contact: "Ta kontakt eller avtal et virtuelt møte",
+            }
         },
         requestQuote: "Få et tilbud",
         hero: {
@@ -376,9 +449,17 @@ export const translations = {
             subtitle: "Den sanne verdien av vårt arbeid ligger i veksten og tilfredsheten til våre partnere.",
         },
         cta: {
-            title: "Klar til å starte prosjektet ditt?",
-            subtitle: "La oss bygge noe fantastisk sammen.",
+            badge: "Nå åpen for nye kunder",
+            title: "Klar for å starte",
+            titleHighlight: "prosjektet ditt?",
+            subtitle: "Fra AI-chatbots til lynraske nettsider – vi bygger digital infrastruktur som vokser med din bedrift.",
             button: "Få ditt gratistilbud i dag!",
+            secondaryButton: "Book en gratis samtale",
+            trust: {
+                rating: "Klientvurdering",
+                turnaround: "Rask onboarding",
+                guarantee: "Fornøydgaranti",
+            }
         },
         footer: {
             aboutTitle: "Om",
@@ -403,9 +484,56 @@ export const translations = {
             rights: "Alle rettigheter forbeholdt.",
         },
         projects: {
+            badge: "Vårt arbeid",
             title: "Strategisk Nisjearkitektur",
             subtitle: "En fremvisning av våre mest innovative digitale løsninger for kunder.",
             viewAll: "Se alle prosjekter",
+        },
+        chatbot: {
+            why: {
+                badge: "Hvorfor det betyr noe",
+                title: "Hvorfor din AI-agent betyr noe",
+                subtitle: "Statiske skjemaer er utdaterte. Moderne kunder forventer umiddelbare, intelligente og personlige svar. Våre AI-agenter gjør mer enn bare å \"chatte\" – de løser problemer, kvalifiserer leads og lukker salg 24/7.",
+                support: {
+                    title: "24/7 Intelligent Support",
+                    desc: "Gå aldri glipp av et lead eller en supporthenvendelse. Din AI-agent jobber med menneskelig empati mens du sover."
+                },
+                leadCapture: {
+                    title: "Lead-fangst & Automatisering",
+                    desc: "Kvalifiser potensielle kunder umiddelbart og book dem direkte inn i kalenderen eller CRM-systemet ditt."
+                },
+                engagement: {
+                    title: "Atferdsbasert Engasjement",
+                    desc: "Nå ut til brukere proaktivt basert på deres sanntidsatferd for å maksimere konverteringer."
+                }
+            },
+            cap: {
+                title: "Avanserte Funksjoner",
+                subtitle: "Alt din bedrift trenger for å automatisere intelligent.",
+                knowledge: {
+                    title: "Skreddersydd Kunnskap",
+                    desc: "Trent opp på dine spesifikke forretningsdokumenter og nettsider for perfekt nøyaktighet."
+                },
+                language: {
+                    title: "Universell Språkforståelse",
+                    desc: "Flytende i over 50 språk, inkludert hypernaturlig norsk og engelsk."
+                },
+                integration: {
+                    title: "Dype Integrasjoner",
+                    desc: "Full lese- og skrivetilgang til HubSpot, Salesforce eller dine egne databaser."
+                },
+                analytics: {
+                    title: "Avansert Analyse",
+                    desc: "Visualiser samtaleflyter og finn ut nøyaktig hvor brukerne konverterer."
+                }
+            },
+            cta: {
+                title: "Ta i bruk",
+                titleHighlight: "AI-Intelligens",
+                subtitle: "Oppgrader kundeopplevelsen din med menneskelignende AI-agenter. La oss få det til å skje.",
+                primary: "Kom i gang",
+                secondary: "Gratis konsultasjon"
+            }
         },
         referral: {
             greetings: "🎉 Spesialtilbud! 🎉",
