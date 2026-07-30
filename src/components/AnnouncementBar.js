@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { FaArrowRight } from 'react-icons/fa';
 
 export default function AnnouncementBar() {
   const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 0, seconds: 0 });
@@ -52,8 +53,12 @@ export default function AnnouncementBar() {
         <span>{String(timeLeft.minutes).padStart(2, '0')}</span>:
         <span>{String(timeLeft.seconds).padStart(2, '0')}</span>
       </div>
-      <Link href="/pricing" className="bg-red-600 text-white border-2 border-transparent hover:bg-transparent hover:text-red-600 hover:border-red-600 px-2 py-0.5 sm:px-4 sm:py-1 rounded-full text-[8px] sm:text-[10px] md:text-xs font-black uppercase tracking-widest transition-all duration-300 shadow-xl whitespace-nowrap">
-        Claim Now
+      <Link 
+        href="/pricing" 
+        className="inline-flex items-center gap-1 px-3 py-1 rounded-full !bg-white !text-slate-950 text-[10px] md:text-xs font-bold tracking-wider hover:!bg-slate-100 hover:scale-105 active:scale-95 transition-all duration-300 shadow-md shadow-black/10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-rose-600 whitespace-nowrap group"
+      >
+        <span>Claim Now</span>
+        <FaArrowRight className="text-[8px] transform group-hover:translate-x-0.5 transition-transform duration-200" />
       </Link>
     </div>
   </div>

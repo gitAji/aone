@@ -59,13 +59,13 @@ const BrandingShowcase = () => {
                             Design Atelier portfolio
                         </motion.span>
                         <motion.h2 
-                            className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter uppercase"
+                            className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white leading-[1.1] tracking-tight font-clash uppercase"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                         >
                             Identity <br />
-                            <span className="text-transparent" style={{ WebkitTextStroke: '1px currentColor', opacity: 0.3 }}>Showcase</span>
+                            <span className="text-transparent" style={{ WebkitTextStroke: '1px currentColor', opacity: 0.35 }}>Showcase</span>
                         </motion.h2>
                     </div>
                 </div>

@@ -1,3 +1,22 @@
+// Single source of truth for the site-wide "flash sale" rate advertised in
+// AnnouncementBar.js ("FLASH SALE: 10% OFF TODAY!") and shown on every
+// pricing card in PricingClient.js. Previously that 10% was only a display
+// calculation on the pricing page (originalPrice * 0.9) with nothing
+// connecting it to the actual order total -- checkout/stripe, order/create,
+// and OrderClient's own running total all priced from the full,
+// undiscounted package price, so a customer who saw "-10% TODAY" and clicked
+// through was charged full price. Both the marketing components and the
+// price-calculating code now import this one constant so they can't drift
+// apart again.
+export const SITE_WIDE_DISCOUNT_RATE = 0.10;
+
+// A larger override discount for a manually-entered voucher code (sales/
+// support use) -- replaces the automatic site-wide discount rather than
+// stacking with it, so a customer never pays more by using a code than the
+// standing public discount already gives them.
+export const PROMO_CODE_DISCOUNT_RATE = 0.50;
+export const PROMO_CODE = 'AONE';
+
 export const packages = [
     {
         id: 'starter',
