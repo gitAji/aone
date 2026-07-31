@@ -34,7 +34,11 @@ export default function LayoutClientWrapper({ children }) {
     const handleCookiebotConsent = () => {
       // If Cookiebot isn't loaded yet or user hasn't made a choice, we can show it
       // or check if they specifically declined marketing.
-      if (window.Cookiebot) {
+      // `window.Cookiebot` can exist as a stub before its `.consent` object is
+      // populated (its async init runs after the global is created) — reading
+      // `.consent.marketing` at that moment threw and crashed the whole app on
+      // every page load, not just here.
+      if (window.Cookiebot?.consent) {
         setHasChatConsent(window.Cookiebot.consent.marketing);
       } else {
         // Fallback: show it by default until Cookiebot decides otherwise

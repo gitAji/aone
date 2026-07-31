@@ -224,6 +224,8 @@ export const translations = {
         productsPage: {
             subtitle: "Explore our dedicated SaaS systems and platforms",
             header: "Our Cloud Solutions",
+            liveDemo: "View Live Demo",
+            ctaSubtitle: "Contact us to find out which solution is the best fit for your business.",
         },
         referencesPage: {
             title: "Our References",
@@ -593,6 +595,8 @@ export const translations = {
         productsPage: {
             subtitle: "Utforsk våre dedikerte SaaS-systemer og plattformer",
             header: "Våre Skyløsninger",
+            liveDemo: "Se live demo",
+            ctaSubtitle: "Kontakt oss for å finne ut hvilken løsning som passer best for din bedrift.",
         },
         referencesPage: {
             title: "Våre referanser",

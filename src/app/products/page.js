@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import products from "@/app/data/products";
 import { useLanguage } from "@/context/LanguageContext";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 const ProductsPage = () => {
   const { t } = useLanguage();
@@ -53,6 +54,18 @@ const ProductsPage = () => {
                     {product.description}
                   </p>
                   
+                  {product.subdomain && (
+                    <a
+                      href={product.subdomain}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-slate-300 hover:text-rose-400 font-semibold text-sm mb-6 transition-colors w-fit"
+                    >
+                      <FaExternalLinkAlt className="w-3 h-3" />
+                      {t('productsPage.liveDemo') || "Se live demo"}
+                    </a>
+                  )}
+
                   <div className="flex items-center justify-between mt-auto">
                     <Link
                       href={product.projectLink}
@@ -63,19 +76,37 @@ const ProductsPage = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                       </svg>
                     </Link>
-                    
+
                     <Link
                       href="/free-consultation"
                       className="inline-block px-5 py-2.5 rounded-full text-sm font-bold hover:bg-rose-500 hover:text-white transition-all shadow-md active:scale-95"
                       style={{ backgroundColor: '#ffffff', color: '#0f172a' }}
                     >
-                      Contact Us
+                      {t('projectDetail.ctaButton') || "Få en gratis konsultasjon"}
                     </Link>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Closing CTA — matches the pattern on /services and product detail pages */}
+      <section className="cta py-24 bg-gradient-to-r from-slate-900 to-slate-800 text-center text-white">
+        <div className="container mx-auto px-6">
+          <h2 className="text-4xl md:text-5xl font-black mb-6 uppercase tracking-tighter">
+            {t('projectDetail.ctaTitle') || "Klar for å løfte din online tilstedeværelse?"}
+          </h2>
+          <p className="text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
+            {t('productsPage.ctaSubtitle') || "Kontakt oss for å finne ut hvilken løsning som passer best for din bedrift."}
+          </p>
+          <Link
+            href="/free-consultation"
+            className="inline-block bg-white !text-slate-900 uppercase font-black tracking-widest py-4 px-10 rounded-full hover:bg-rose-500 hover:text-white transition-all duration-300 shadow-xl hover:shadow-rose-500/30"
+          >
+            {t('projectDetail.ctaButton') || "Få en gratis konsultasjon"}
+          </Link>
         </div>
       </section>
     </div>
