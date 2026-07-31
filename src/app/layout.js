@@ -56,32 +56,32 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: "Aone | AI-Native Digital Agency Bergen & Oslo",
-    description: "Specializing in premium AI web design, custom chatbots, and business automation in Norway.",
+    title: "Aone | Webdesign Bergen, Webutvikling & AI-byrå Norge",
+    description: "Ledende AI-drevet digitalt byrå i Bergen. Vi leverer premium webdesign, webutvikling (Next.js) og forretnings-AI (chatbots & automatisering) i Norge.",
     url: "https://aone.no",
     siteName: "Aone",
-    locale: "en_US",
+    locale: "nb_NO",
     type: "website",
     images: [
       {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Aone | AI-Native Digital Agency",
+        alt: "Aone | AI-drevet digitalt byrå i Bergen",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aone | AI-Native Digital Agency Bergen & Oslo",
-    description: "Empowering Norwegian businesses with elite AI and web solutions.",
+    title: "Aone | Webdesign Bergen, Webutvikling & AI-byrå Norge",
+    description: "Ledende AI-drevet digitalt byrå i Bergen. Premium webdesign, webutvikling og forretnings-AI for norske bedrifter.",
     images: ["/images/og-image.png"],
   },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="no" suppressHydrationWarning>
       <head>
         <script
           id="theme-script"

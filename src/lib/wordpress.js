@@ -55,6 +55,50 @@ export async function fetchPosts(perPage = 9, page = 1) {
   }
 }
 
+// WordPress title/excerpt fields come as rendered HTML — strip tags and
+// decode the handful of entities WP commonly emits, for use anywhere the
+// plain text is needed (page <title>, meta description, JSON-LD).
+export function stripHtml(html) {
+  if (!html) return '';
+  return html
+    .replace(/<[^>]*>/g, '')
+    .replace(/&amp;/g, '&')
+    .replace(/&#8217;|&#039;/g, "'")
+    .replace(/&#8220;|&#8221;|&quot;/g, '"')
+    .replace(/&#8211;/g, '–')
+    .replace(/&#8212;/g, '—')
+    .replace(/&nbsp;/g, ' ')
+    .trim();
+}
+
+// Every published post's slug + last-modified date, paginating through the
+// WP REST API. Used by sitemap.js (one sitemap entry per post) and
+// blog/[slug]/page.js's generateStaticParams (pre-render every post at build
+// time). Safe to fail: an unreachable WordPress instance returns an empty
+// list rather than breaking the build/sitemap.
+export async function fetchAllPostSlugs() {
+  const perPage = 100;
+  let page = 1;
+  let totalPages = 1;
+  const posts = [];
+
+  try {
+    do {
+      const url = getApiUrl('posts', `per_page=${perPage}&page=${page}&_fields=slug,modified`);
+      const response = await fetch(url, { signal: AbortSignal.timeout(8000) });
+      if (!response.ok) break;
+      totalPages = parseInt(response.headers.get('X-WP-TotalPages') || '1', 10);
+      const data = await response.json();
+      posts.push(...data);
+      page++;
+    } while (page <= totalPages);
+  } catch (error) {
+    console.error('Error fetching all post slugs:', error);
+  }
+
+  return posts;
+}
+
 export async function fetchPostBySlug(slug) {
   try {
     const url = getApiUrl('posts', `slug=${slug}&_embed=true`);

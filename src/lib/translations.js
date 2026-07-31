@@ -392,10 +392,10 @@ export const translations = {
         hero: {
             tagline: "AI-NATIVE DIGITALE OPPLEVELSER BYGGET FOR",
             inspire: "2026.",
-            subtitle: "Fra AI-chatbots til lynraske nettsteder, vi skaper digitale opplevelser som gir ekte forretningsresultater for norske og internasjonale kunder.",
+            subtitle: "Fra AI-chatbots til lynraske nettsteder, vi skaper digitale opplevelser som gir ekte forretningsresultater for bedrifter i Bergen og resten av Norge.",
             cta: "Få et tilbud",
             phrases: [
-                "Styrker bedrifter med |AI.",
+                "Webdesign i |Bergen som konverterer.",
                 "Lynraske |Nettsider.",
                 "Skaler med |Automasjon.",
             ]
