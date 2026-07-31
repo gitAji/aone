@@ -70,8 +70,19 @@ export async function GET(request) {
             for (const key in obj) {
                 let value = obj[key];
                 if (typeof value === 'string' && value.includes('blog.aone.no/wp-content/uploads/')) {
-                    const cleanUrl = value.replace(/\\\//g, '/').trim();
-                    value = `/api/image-proxy?url=${encodeURIComponent(cleanUrl)}`;
+                    const trimmed = value.trim();
+                    const isPureUrl = !trimmed.includes(' ') && !trimmed.includes('<') && !trimmed.includes('>');
+                    
+                    if (isPureUrl) {
+                        const cleanUrl = trimmed.replace(/\\\//g, '/');
+                        value = `/api/image-proxy?url=${encodeURIComponent(cleanUrl)}`;
+                    } else {
+                        // It's a block of text/HTML. Replace only the URLs inside it.
+                        value = value.replace(/(https?:\/\/blog\.aone\.no\/wp-content\/uploads\/[^\s"'>]+)/g, (match) => {
+                            const cleanUrl = match.replace(/\\\//g, '/').trim();
+                            return `/api/image-proxy?url=${encodeURIComponent(cleanUrl)}`;
+                        });
+                    }
                 } else if (typeof value === 'object' && value !== null) {
                     value = rewriteUrls(value);
                 }

@@ -1,6 +1,5 @@
 const WORDPRESS_API_URL = 'https://blog.aone.no/wp-json/wp/v2';
 
-// Helper to get featured image from a post object
 export function getFeaturedImage(post) {
   if (!post) return '/images/placeholders/project1.jpeg';
 
@@ -15,17 +14,25 @@ export function getFeaturedImage(post) {
     return featuredMedia.media_details.sizes.full.source_url;
   }
 
-  // 3. Try Yoast SEO image
+  // 3. Try to extract first image from content
+  if (post.content?.rendered) {
+    const match = post.content.rendered.match(/<img[^>]+src=["']([^"']+)["']/i);
+    if (match && match[1]) {
+      return match[1];
+    }
+  }
+
+  // 4. Try Yoast SEO image
   if (post.yoast_head_json?.og_image?.[0]?.url) {
     return post.yoast_head_json.og_image[0].url;
   }
 
-  // 4. Try og_image directly if it's there
+  // 5. Try og_image directly if it's there
   if (post.og_image?.[0]?.url) {
     return post.og_image[0].url;
   }
 
-  // 5. Fallback to placeholder
+  // 6. Fallback to placeholder
   return '/images/placeholders/project1.jpeg';
 }
 

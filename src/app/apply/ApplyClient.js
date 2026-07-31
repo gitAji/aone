@@ -10,7 +10,7 @@ import { FaPaperPlane, FaUserAlt, FaEnvelope, FaBriefcase, FaFileAlt, FaLink, Fa
 import { vacancies } from "@/app/data/vacancies";
 
 function ApplyForm() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const searchParams = useSearchParams();
   const roleId = searchParams.get("role");
 
@@ -52,14 +52,23 @@ function ApplyForm() {
       });
 
       if (response.ok) {
-        setToast({ message: "Thank you for reaching out! We have received your details and will contact you soon.", type: "success" });
+        setToast({ 
+          message: t("apply.toastSuccess") || "Thank you for reaching out! We have received your details and will contact you soon.", 
+          type: "success" 
+        });
         setSubmitted(true);
       } else {
-        setToast({ message: "Failed to submit application. Please try again.", type: "error" });
+        setToast({ 
+          message: t("apply.toastError") || "Failed to submit application. Please try again.", 
+          type: "error" 
+        });
       }
     } catch (error) {
       console.error("Error submitting application:", error);
-      setToast({ message: "An unexpected error occurred. Please try again later.", type: "error" });
+      setToast({ 
+        message: t("apply.toastUnexpected") || "An unexpected error occurred. Please try again later.", 
+        type: "error" 
+      });
     } finally {
       setLoading(false);
     }
@@ -76,13 +85,14 @@ function ApplyForm() {
           <div className="w-20 h-20 bg-emerald-500/20 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto mb-8">
             <FaCheckCircle className="text-emerald-500 dark:text-emerald-400 text-4xl" />
           </div>
-          <h2 className="text-3xl font-black mb-4">Message Received!</h2>
-          <p className="text-slate-600 dark:text-slate-400 mb-10 leading-relaxed text-lg">
-            Thank you for reaching out to join the Aone team. We&apos;ve received your details and will review them carefully. 
-            If your profile matches our requirements, we&apos;ll be in touch within 5-7 business days.
+          <h2 className="text-3xl font-black mb-4">
+            {t("apply.messageReceived") || "Message Received!"}
+          </h2>
+          <p className="text-slate-600 dark:text-slate-400 mb-10 leading-relaxed text-lg font-medium">
+            {t("apply.messageReceivedDesc") || "Thank you for reaching out to join the Aone team. We've received your details and will review them carefully. If your profile matches our requirements, we'll be in touch within 5-7 business days."}
           </p>
           <Link href="/careers" className="inline-block bg-slate-800 hover:bg-slate-700 text-white font-bold px-8 py-4 rounded-full transition-all duration-300">
-            Back to Careers
+            {t("apply.backToCareers") || "Back to Careers"}
           </Link>
         </motion.div>
       </div>
@@ -94,8 +104,8 @@ function ApplyForm() {
       {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
       
       <HeroSection 
-        title="Apply Today" 
-        subtitle="Embark on your journey with Aone. Complete the form below to start your application." 
+        title={t("apply.title") || "Apply Today"} 
+        subtitle={t("apply.subtitle") || "Embark on your journey with Aone. Complete the form below to start your application."} 
       />
 
       <div className="container mx-auto px-4 pt-40 pb-28">
@@ -108,28 +118,30 @@ function ApplyForm() {
           {/* Form Left Side - Info */}
           <div className="md:w-1/3 bg-slate-100 dark:bg-slate-800 p-10 flex flex-col justify-between border-b md:border-b-0 md:border-r border-slate-200 dark:border-slate-700">
             <div>
-              <h3 className="text-xl font-black mb-6">Contact Us</h3>
+              <h3 className="text-xl font-black mb-6">
+                {t("apply.contactUs") || "Contact Us"}
+              </h3>
               <ul className="space-y-6">
                 {[
-                  { step: "01", title: "Review", desc: "Our HR team reviews your profile." },
-                  { step: "02", title: "Interview", desc: "Technical or creative discussion." },
-                  { step: "03", title: "Assessment", desc: "Practical task evaluation." },
-                  { step: "04", title: "Offer", desc: "Welcome to the Aone crew." },
+                  { step: "01", title: t("apply.steps.step1Title") || "Review", desc: t("apply.steps.step1Desc") || "Our HR team reviews your profile." },
+                  { step: "02", title: t("apply.steps.step2Title") || "Interview", desc: t("apply.steps.step2Desc") || "Technical or creative discussion." },
+                  { step: "03", title: t("apply.steps.step3Title") || "Assessment", desc: t("apply.steps.step3Desc") || "Practical task evaluation." },
+                  { step: "04", title: t("apply.steps.step4Title") || "Offer", desc: t("apply.steps.step4Desc") || "Welcome to the Aone crew." },
                 ].map(item => (
                   <li key={item.step} className="flex gap-4">
                     <span className="text-rose-500 font-black text-xs mt-1">{item.step}</span>
                     <div>
                       <h4 className="font-bold text-sm text-slate-800 dark:text-white mb-1 uppercase tracking-wider">{item.title}</h4>
-                      <p className="text-xs text-slate-500 dark:text-slate-400">{item.desc}</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">{item.desc}</p>
                     </div>
                   </li>
                 ))}
               </ul>
             </div>
             
-            <div className="pt-10 border-t border-slate-700 mt-10">
+            <div className="pt-10 border-t border-slate-200 dark:border-slate-700 mt-10">
               <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest leading-loose">
-                Confidentiality Guaranteed. We respect your privacy and handle all data in accordance with our GDPR policy.
+                {t("apply.gdprText") || "Confidentiality Guaranteed. We respect your privacy and handle all data in accordance with our GDPR policy."}
               </p>
             </div>
           </div>
@@ -140,70 +152,73 @@ function ApplyForm() {
               {/* Name */}
               <div className="space-y-2">
                 <label className="text-xs font-black uppercase tracking-widest text-slate-500 flex items-center gap-2">
-                  <FaUserAlt className="text-rose-500" /> Full Name
+                  <FaUserAlt className="text-rose-500" /> {t("apply.fullName") || "Full Name"}
                 </label>
                 <input
                   type="text"
                   name="name"
-                  placeholder="John Doe"
+                  placeholder={t("apply.fullNamePlaceholder") || "John Doe"}
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white px-5 py-4 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all outline-none placeholder:text-slate-400 dark:placeholder:text-slate-600"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white px-5 py-4 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all outline-none placeholder:text-slate-400 dark:placeholder:text-slate-600 font-medium"
                 />
               </div>
 
               {/* Email */}
               <div className="space-y-2">
                 <label className="text-xs font-black uppercase tracking-widest text-slate-500 flex items-center gap-2">
-                  <FaEnvelope className="text-rose-500" /> Email Address
+                  <FaEnvelope className="text-rose-500" /> {t("apply.emailAddress") || "Email Address"}
                 </label>
                 <input
                   type="email"
                   name="email"
-                  placeholder="john@example.com"
+                  placeholder={t("apply.emailPlaceholder") || "john@example.com"}
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white px-5 py-4 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all outline-none placeholder:text-slate-400 dark:placeholder:text-slate-600"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white px-5 py-4 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all outline-none placeholder:text-slate-400 dark:placeholder:text-slate-600 font-medium"
                 />
               </div>
 
               {/* Position */}
               <div className="space-y-2">
                 <label className="text-xs font-black uppercase tracking-widest text-slate-500 flex items-center gap-2">
-                  <FaBriefcase className="text-rose-500" /> Position
+                  <FaBriefcase className="text-rose-500" /> {t("apply.position") || "Position"}
                 </label>
                 <select
                   name="role"
                   value={formData.role}
                   onChange={handleChange}
                   required
-                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white px-5 py-4 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all outline-none appearance-none"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white px-5 py-4 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all outline-none appearance-none font-bold"
                 >
-                  <option value="">Select a role</option>
-                  {vacancies.map(v => (
-                    <option key={v.id} value={v.id}>{v.title}</option>
-                  ))}
-                  <option value="speculative">Speculative Application</option>
+                  <option value="">{t("apply.selectRole") || "Select a role"}</option>
+                  {vacancies.map(v => {
+                    const rTitle = v.title[language] || v.title.en;
+                    return (
+                      <option key={v.id} value={v.id}>{rTitle}</option>
+                    );
+                  })}
+                  <option value="speculative">{t("apply.speculativeApp") || "Speculative Application"}</option>
                 </select>
               </div>
 
               {/* Experience */}
               <div className="space-y-2">
                 <label className="text-xs font-black uppercase tracking-widest text-slate-500 flex items-center gap-2">
-                  <FaStar className="text-rose-500" /> Experience Level
+                  <FaStar className="text-rose-500" /> {t("apply.experienceLevel") || "Experience Level"}
                 </label>
                 <select
                   name="experience"
                   value={formData.experience}
                   onChange={handleChange}
                   required
-                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white px-5 py-4 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all outline-none appearance-none"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white px-5 py-4 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all outline-none appearance-none font-bold"
                 >
-                   <option value="Junior">Junior (0-2 years)</option>
-                   <option value="Mid-level">Mid-level (2-5 years)</option>
-                   <option value="Senior">Senior (5+ years)</option>
+                   <option value="Junior">{t("apply.junior") || "Junior (0-2 years)"}</option>
+                   <option value="Mid-level">{t("apply.mid") || "Mid-level (2-5 years)"}</option>
+                   <option value="Senior">{t("apply.senior") || "Senior (5+ years)"}</option>
                 </select>
               </div>
             </div>
@@ -212,30 +227,30 @@ function ApplyForm() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="text-xs font-black uppercase tracking-widest text-slate-500 flex items-center gap-2">
-                  <FaLink className="text-rose-500" /> Portfolio / LinkedIn
+                  <FaLink className="text-rose-500" /> {t("apply.portfolio") || "Portfolio / LinkedIn"}
                 </label>
                 <input
                   type="url"
                   name="portfolioUrl"
-                  placeholder="https://"
+                  placeholder={t("apply.portfolioPlaceholder") || "https://"}
                   value={formData.portfolioUrl}
                   onChange={handleChange}
-                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white px-5 py-4 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all outline-none placeholder:text-slate-400 dark:placeholder:text-slate-600"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white px-5 py-4 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all outline-none placeholder:text-slate-400 dark:placeholder:text-slate-600 font-medium"
                 />
               </div>
 
               <div className="space-y-2">
                 <label className="text-xs font-black uppercase tracking-widest text-slate-500 flex items-center gap-2">
-                  <FaFileAlt className="text-rose-500" /> Resume / CV Link
+                  <FaFileAlt className="text-rose-500" /> {t("apply.cvLink") || "Resume / CV Link"}
                 </label>
                 <input
                   type="url"
                   name="cvUrl"
-                  placeholder="Shared Drive Link"
+                  placeholder={t("apply.cvPlaceholder") || "Shared Drive Link"}
                   value={formData.cvUrl}
                   onChange={handleChange}
                   required
-                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white px-5 py-4 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all outline-none placeholder:text-slate-400 dark:placeholder:text-slate-600"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white px-5 py-4 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all outline-none placeholder:text-slate-400 dark:placeholder:text-slate-600 font-medium"
                 />
               </div>
             </div>
@@ -243,16 +258,16 @@ function ApplyForm() {
             {/* Message */}
             <div className="space-y-2">
               <label className="text-xs font-black uppercase tracking-widest text-slate-500 flex items-center gap-2">
-                Cover Letter / Why Aone?
+                {t("apply.coverLetter") || "Cover Letter / Why Aone?"}
               </label>
               <textarea
                 name="message"
                 rows="5"
-                placeholder="Tell us about yourself and why you're a good fit..."
+                placeholder={t("apply.coverLetterPlaceholder") || "Tell us about yourself and why you're a good fit..."}
                 value={formData.message}
                 onChange={handleChange}
                 required
-                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white px-5 py-4 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all outline-none resize-none placeholder:text-slate-400 dark:placeholder:text-slate-600"
+                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white px-5 py-4 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all outline-none resize-none placeholder:text-slate-400 dark:placeholder:text-slate-600 font-medium"
               ></textarea>
             </div>
 
@@ -261,8 +276,8 @@ function ApplyForm() {
               disabled={loading}
               className="w-full flex items-center justify-center gap-3 bg-rose-500 hover:bg-rose-600 disabled:bg-slate-800 text-white font-black py-4 rounded-xl shadow-lg shadow-rose-500/20 transition-all duration-300 transform hover:-translate-y-1"
             >
-              {loading ? "Submitting..." : (
-                <>Send Application <FaPaperPlane className="text-xs" /></>
+              {loading ? (t("apply.submitting") || "Submitting...") : (
+                <>{t("apply.sendBtn") || "Send Application"} <FaPaperPlane className="text-xs" /></>
               )}
             </button>
           </form>
@@ -273,12 +288,15 @@ function ApplyForm() {
 }
 
 export default function ApplyPage() {
+  const { t } = useLanguage();
   return (
     <Suspense fallback={
       <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white flex items-center justify-center">
         <div className="animate-pulse flex flex-col items-center gap-4">
           <div className="w-12 h-12 bg-rose-500/20 rounded-full"></div>
-          <div className="text-sm font-black uppercase tracking-widest text-slate-500">Loading Application...</div>
+          <div className="text-sm font-black uppercase tracking-widest text-slate-500">
+            {t("apply.submitting") || "Loading Application..."}
+          </div>
         </div>
       </div>
     }>

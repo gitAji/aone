@@ -113,9 +113,9 @@ const BlogListClient = ({ initialPosts, initialTotalPages }) => {
 
                                         <div className="p-8 flex flex-col flex-grow">
                                             <div className="flex items-center gap-4 mb-4 text-[10px] font-black uppercase tracking-widest text-slate-400">
-                                                <span className="flex items-center gap-1.5"><FaRegClock className="text-rose-500/50" /> 5 Min Read</span>
+                                                <span className="flex items-center gap-1.5"><FaRegClock className="text-rose-500/50" /> {t('blog.minRead') || "5 Min Read"}</span>
                                                 <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-700" />
-                                                <span className="flex items-center gap-1.5"><FaUser className="text-rose-500/50" /> Aone Team</span>
+                                                <span className="flex items-center gap-1.5"><FaUser className="text-rose-500/50" /> {t('blog.team') || "Aone Team"}</span>
                                             </div>
 
                                             <h3
