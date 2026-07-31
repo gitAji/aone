@@ -163,6 +163,28 @@ export default function RootLayout({ children }) {
                     "sameAs": [
                       "https://www.facebook.com/profile.php?id=100063719223439",
                       "https://www.instagram.com/aone.no/"
+                    ],
+                    "knowsAbout": [
+                      "Artificial Intelligence",
+                      "Web Development",
+                      "Generative Engine Optimization",
+                      "AI Chatbots",
+                      "Business Automation",
+                      "Branding",
+                      "UI/UX Design",
+                      "Accessibility"
+                    ],
+                    "accessibilityFeature": [
+                      "alternativeText",
+                      "highContrastDisplay",
+                      "resizeText",
+                      "structuralNavigation"
+                    ],
+                    "serviceType": [
+                      "AI-Native Web Development",
+                      "Custom Business Workflows & Automations",
+                      "Generative Engine Optimization (GEO)",
+                      "UI/UX & Accessibility Consulting"
                     ]
                   },
                   {
