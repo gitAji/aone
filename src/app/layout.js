@@ -167,7 +167,11 @@ export default function RootLayout({ children }) {
                     "knowsAbout": [
                       "Artificial Intelligence",
                       "Web Development",
-                      "Generative Engine Optimization",
+                      "Web Design",
+                      "WordPress Development",
+                      "Content Management Systems (CMS)",
+                      "Search Engine Optimization (SEO)",
+                      "Generative Engine Optimization (GEO)",
                       "AI Chatbots",
                       "Business Automation",
                       "Branding",
@@ -181,9 +185,11 @@ export default function RootLayout({ children }) {
                       "structuralNavigation"
                     ],
                     "serviceType": [
-                      "AI-Native Web Development",
+                      "AI-Native Web Design & Development",
+                      "WordPress & CMS Website Development",
+                      "Search Engine Optimization (SEO) & Generative Engine Optimization (GEO)",
+                      "Digital Branding & Identity Design",
                       "Custom Business Workflows & Automations",
-                      "Generative Engine Optimization (GEO)",
                       "UI/UX & Accessibility Consulting"
                     ]
                   },
