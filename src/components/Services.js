@@ -13,11 +13,11 @@ import {
 
 import { useLanguage } from "@/context/LanguageContext";
 
-const ServiceCard = ({ href, icon: Icon, title, description, color }) => {
+const ServiceCard = ({ href, icon: Icon, title, description, color, number }) => {
   return (
     <a
       href={href}
-      className="group relative rounded-3xl transition-all duration-500 hover:shadow-[0_40px_80px_rgba(0,0,0,0.2)] hover:-translate-y-2 overflow-hidden block h-full bg-slate-100 dark:bg-slate-800"
+      className="group relative rounded-3xl border border-slate-200/80 dark:border-white/10 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(0,0,0,0.2)] hover:-translate-y-2 overflow-hidden block h-full bg-slate-100 dark:bg-slate-800"
     >
       {/* 2. Animated Gold Snake Border Layer */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 overflow-hidden">
@@ -28,8 +28,14 @@ const ServiceCard = ({ href, icon: Icon, title, description, color }) => {
       <div className="relative z-20 bg-white dark:bg-slate-900 m-[3px] rounded-[21px] p-8 h-[calc(100%-6px)] overflow-hidden flex flex-col">
         {/* Subtle glow background */}
         <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        
+
         <div className="relative z-10 flex flex-col h-full">
+          {number && (
+            <div className="eyebrow-label mb-5">
+              <span className="accent-dot" aria-hidden="true" />
+              Service {number}
+            </div>
+          )}
           <div className="mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 origin-left inline-block">
             <Icon className={`text-5xl ${color} transition-colors duration-500 drop-shadow-sm`} />
           </div>
@@ -58,6 +64,7 @@ const ServicesSection = () => {
       </header>
       <div className="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
   <ServiceCard
+    number="01"
     href="/services/web-development"
     icon={FaCode}
     title={t('services.webDev.title')}
@@ -65,6 +72,7 @@ const ServicesSection = () => {
     color="text-rose-500"
   />
   <ServiceCard
+    number="02"
     href="/services/ai-chatbots"
     icon={FaRobot}
     title={t('services.chatbot.title')}
@@ -72,6 +80,7 @@ const ServicesSection = () => {
     color="text-rose-500"
   />
   <ServiceCard
+    number="03"
     href="/services/ai-automations"
     icon={FaSync}
     title={t('services.ai.title')}
@@ -79,6 +88,7 @@ const ServicesSection = () => {
     color="text-rose-500"
   />
   <ServiceCard
+    number="04"
     href="/services/ui-ux-design"
     icon={FaObjectGroup}
     title={t('services.uiux.title')}
@@ -86,6 +96,7 @@ const ServicesSection = () => {
     color="text-rose-500"
   />
   <ServiceCard
+    number="05"
     href="/services/digital-marketing"
     icon={FaChartLine}
     title={t('services.marketing.title') || "Digital Marketing"}
@@ -93,6 +104,7 @@ const ServicesSection = () => {
     color="text-rose-500"
   />
   <ServiceCard
+    number="06"
     href="/services/photography"
     icon={FaCameraRetro}
     title={t('services.photo.title') || "Photography & Videography"}

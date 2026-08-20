@@ -27,8 +27,16 @@ const Projects = () => {
           {projects.slice(0, 6).map((project, index) => (
             <div key={index} className="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
               {/* Animated Glowing Border Wrapper */}
-              <div className="project-card relative group shadow-lg aspect-[4/3] w-full bg-transparent rounded-2xl z-0">
-                
+              <div className="project-card relative group shadow-lg aspect-[4/3] w-full bg-transparent rounded-2xl z-0 border border-slate-200/70 dark:border-white/10">
+
+                {/* Gallery-style number badge */}
+                <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-sm pointer-events-none">
+                  <span className="accent-dot" aria-hidden="true" />
+                  <span className="font-clash text-[10px] font-bold uppercase tracking-[0.2em] text-white">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                </div>
+
                 {/* The glowing border container (expands 3px outward to form the thick border line) */}
                 <div className="absolute -inset-[3px] rounded-[18px] overflow-hidden bg-slate-200 dark:bg-slate-800 transition-opacity duration-500 pointer-events-none z-0 opacity-0 group-hover:opacity-100">
                   {/* The bright distinct edge line */}
