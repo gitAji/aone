@@ -12,9 +12,13 @@ export async function generateMetadata({ params }) {
     };
   }
 
+  const title = vacancy.title.no || vacancy.title.en;
+  const location = vacancy.location.no || vacancy.location.en;
+  const summary = vacancy.summary.no || vacancy.summary.en;
+
   return {
-    title: `${vacancy.title} | Aone Careers`,
-    description: `Join Aone as a ${vacancy.title} in ${vacancy.location}. ${vacancy.summary.slice(0, 100)}...`,
+    title: `${title} | Aone Careers`,
+    description: `Join Aone as a ${title} in ${location}. ${summary.slice(0, 100)}...`,
   };
 }
 

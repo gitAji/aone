@@ -211,17 +211,25 @@ const HamburgerMenu = () => {
                             target={isExternal ? "_blank" : undefined}
                             rel={isExternal ? "noopener noreferrer" : undefined}
                           >
-                            <span className="font-clash text-[10px] md:text-xs font-bold text-rose-500 mt-1 md:mt-2">
+                            <span className="font-clash text-[10px] md:text-xs font-bold text-rose-500 mt-1 md:mt-2 tracking-[0.15em]">
                               {link.num}
                             </span>
-                            <div>
-                              <div className="font-clash text-lg md:text-2xl lg:text-3xl font-semibold text-white tracking-tight group-hover/item:text-rose-400 transition-colors duration-300 flex items-center gap-2">
-                                {link.name}
-                                {isExternal && <FaExternalLinkAlt className="text-xs text-white/30" />}
+                            <div className="flex-1 flex items-start justify-between gap-3">
+                              <div>
+                                <div className="font-clash text-lg md:text-2xl lg:text-3xl font-semibold text-white tracking-tight group-hover/item:text-rose-400 transition-colors duration-300 flex items-center gap-2">
+                                  {link.name}
+                                  {isExternal && <FaExternalLinkAlt className="text-xs text-white/30" />}
+                                </div>
+                                <p className="text-slate-500 text-[11px] md:text-xs mt-0.5 max-w-md group-hover/item:text-slate-400 transition-colors duration-300 font-medium">
+                                  {link.desc}
+                                </p>
                               </div>
-                              <p className="text-slate-500 text-[11px] md:text-xs mt-0.5 max-w-md group-hover/item:text-slate-400 transition-colors duration-300 font-medium">
-                                {link.desc}
-                              </p>
+                              <span
+                                className="hidden md:inline-flex items-center justify-center w-8 h-8 rounded-full border border-white/15 text-white/50 text-sm opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 ease-out flex-shrink-0 mt-1"
+                                aria-hidden="true"
+                              >
+                                ↗
+                              </span>
                             </div>
                           </Link>
                         </motion.li>

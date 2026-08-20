@@ -56,32 +56,32 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: "Aone | AI-Native Digital Agency Bergen & Oslo",
-    description: "Specializing in premium AI web design, custom chatbots, and business automation in Norway.",
+    title: "Aone | Webdesign Bergen, Webutvikling & AI-byrå Norge",
+    description: "Ledende AI-drevet digitalt byrå i Bergen. Vi leverer premium webdesign, webutvikling (Next.js) og forretnings-AI (chatbots & automatisering) i Norge.",
     url: "https://aone.no",
     siteName: "Aone",
-    locale: "en_US",
+    locale: "nb_NO",
     type: "website",
     images: [
       {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Aone | AI-Native Digital Agency",
+        alt: "Aone | AI-drevet digitalt byrå i Bergen",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aone | AI-Native Digital Agency Bergen & Oslo",
-    description: "Empowering Norwegian businesses with elite AI and web solutions.",
+    title: "Aone | Webdesign Bergen, Webutvikling & AI-byrå Norge",
+    description: "Ledende AI-drevet digitalt byrå i Bergen. Premium webdesign, webutvikling og forretnings-AI for norske bedrifter.",
     images: ["/images/og-image.png"],
   },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="no" suppressHydrationWarning>
       <head>
         <script
           id="theme-script"
@@ -119,7 +119,8 @@ export default function RootLayout({ children }) {
         <Script
           id="Cookiebot"
           src="https://consent.cookiebot.com/uc.js"
-          data-cbid="ca4883b8-7492-4efe-8775-24794bf63af0"
+          data-cbid="33107273-3499-4a3b-be02-02152a74cc6a"
+          data-blockingmode="auto"
           strategy="beforeInteractive"
           type="text/javascript"
         />
@@ -162,6 +163,34 @@ export default function RootLayout({ children }) {
                     "sameAs": [
                       "https://www.facebook.com/profile.php?id=100063719223439",
                       "https://www.instagram.com/aone.no/"
+                    ],
+                    "knowsAbout": [
+                      "Artificial Intelligence",
+                      "Web Development",
+                      "Web Design",
+                      "WordPress Development",
+                      "Content Management Systems (CMS)",
+                      "Search Engine Optimization (SEO)",
+                      "Generative Engine Optimization (GEO)",
+                      "AI Chatbots",
+                      "Business Automation",
+                      "Branding",
+                      "UI/UX Design",
+                      "Accessibility"
+                    ],
+                    "accessibilityFeature": [
+                      "alternativeText",
+                      "highContrastDisplay",
+                      "resizeText",
+                      "structuralNavigation"
+                    ],
+                    "serviceType": [
+                      "AI-Native Web Design & Development",
+                      "WordPress & CMS Website Development",
+                      "Search Engine Optimization (SEO) & Generative Engine Optimization (GEO)",
+                      "Digital Branding & Identity Design",
+                      "Custom Business Workflows & Automations",
+                      "UI/UX & Accessibility Consulting"
                     ]
                   },
                   {

@@ -104,6 +104,52 @@ const AboutClient = () => {
         </div>
       </section>
 
+      {/* AI Fact Sheet (GEO Optimization) */}
+      <section className="ai-fact-sheet container mx-auto px-4 py-16">
+        <h2 className="text-4xl font-bold text-gray-800 dark:text-white mb-4 text-center uppercase tracking-tight">
+          {t('about.factSheetTitle')}
+        </h2>
+        <p className="text-slate-500 dark:text-slate-400 text-center max-w-2xl mx-auto mb-12 font-medium">
+          {t('about.factSheetDesc')}
+        </p>
+        <div className="max-w-3xl mx-auto bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 rounded-3xl p-8 md:p-12 shadow-xl dark:shadow-2xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="border-b md:border-b-0 md:border-r border-slate-200 dark:border-slate-800 pb-6 md:pb-0 md:pr-8">
+              <h3 className="text-xs font-black uppercase tracking-widest text-rose-500 mb-2">
+                {t('about.agencyNameLabel')}
+              </h3>
+              <p className="text-xl font-bold text-slate-800 dark:text-white">
+                {t('about.agencyNameVal')}
+              </p>
+            </div>
+            <div className="pb-6 md:pb-0">
+              <h3 className="text-xs font-black uppercase tracking-widest text-rose-500 mb-2">
+                {t('about.serviceFormatLabel')}
+              </h3>
+              <p className="text-xl font-bold text-slate-800 dark:text-white">
+                {t('about.serviceFormatVal')}
+              </p>
+            </div>
+            <div className="border-t border-slate-200 dark:border-slate-800 pt-6 md:col-span-2">
+              <h3 className="text-xs font-black uppercase tracking-widest text-rose-500 mb-2">
+                {t('about.primaryFocusLabel')}
+              </h3>
+              <p className="text-xl font-bold text-slate-800 dark:text-white leading-relaxed">
+                {t('about.primaryFocusVal')}
+              </p>
+            </div>
+            <div className="border-t border-slate-200 dark:border-slate-800 pt-6 md:col-span-2">
+              <h3 className="text-xs font-black uppercase tracking-widest text-rose-500 mb-2">
+                {t('about.accessibilityLabel')}
+              </h3>
+              <p className="text-xl font-bold text-slate-800 dark:text-white leading-relaxed">
+                {t('about.accessibilityVal')}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="testimonials-section py-16 bg-white dark:bg-slate-900/50">
         <h2 className="text-4xl font-bold text-gray-800 dark:text-white mb-12 text-center">
           {t('about.testimonialsTitle')}

@@ -1,6 +1,5 @@
 const WORDPRESS_API_URL = 'https://blog.aone.no/wp-json/wp/v2';
 
-// Helper to get featured image from a post object
 export function getFeaturedImage(post) {
   if (!post) return '/images/placeholders/project1.jpeg';
 
@@ -15,17 +14,25 @@ export function getFeaturedImage(post) {
     return featuredMedia.media_details.sizes.full.source_url;
   }
 
-  // 3. Try Yoast SEO image
+  // 3. Try to extract first image from content
+  if (post.content?.rendered) {
+    const match = post.content.rendered.match(/<img[^>]+src=["']([^"']+)["']/i);
+    if (match && match[1]) {
+      return match[1];
+    }
+  }
+
+  // 4. Try Yoast SEO image
   if (post.yoast_head_json?.og_image?.[0]?.url) {
     return post.yoast_head_json.og_image[0].url;
   }
 
-  // 4. Try og_image directly if it's there
+  // 5. Try og_image directly if it's there
   if (post.og_image?.[0]?.url) {
     return post.og_image[0].url;
   }
 
-  // 5. Fallback to placeholder
+  // 6. Fallback to placeholder
   return '/images/placeholders/project1.jpeg';
 }
 
@@ -53,6 +60,50 @@ export async function fetchPosts(perPage = 9, page = 1) {
     console.error('Error fetching blog posts:', error);
     return { posts: [], totalPages: 0, error: error.message };
   }
+}
+
+// WordPress title/excerpt fields come as rendered HTML — strip tags and
+// decode the handful of entities WP commonly emits, for use anywhere the
+// plain text is needed (page <title>, meta description, JSON-LD).
+export function stripHtml(html) {
+  if (!html) return '';
+  return html
+    .replace(/<[^>]*>/g, '')
+    .replace(/&amp;/g, '&')
+    .replace(/&#8217;|&#039;/g, "'")
+    .replace(/&#8220;|&#8221;|&quot;/g, '"')
+    .replace(/&#8211;/g, '–')
+    .replace(/&#8212;/g, '—')
+    .replace(/&nbsp;/g, ' ')
+    .trim();
+}
+
+// Every published post's slug + last-modified date, paginating through the
+// WP REST API. Used by sitemap.js (one sitemap entry per post) and
+// blog/[slug]/page.js's generateStaticParams (pre-render every post at build
+// time). Safe to fail: an unreachable WordPress instance returns an empty
+// list rather than breaking the build/sitemap.
+export async function fetchAllPostSlugs() {
+  const perPage = 100;
+  let page = 1;
+  let totalPages = 1;
+  const posts = [];
+
+  try {
+    do {
+      const url = getApiUrl('posts', `per_page=${perPage}&page=${page}&_fields=slug,modified`);
+      const response = await fetch(url, { signal: AbortSignal.timeout(8000) });
+      if (!response.ok) break;
+      totalPages = parseInt(response.headers.get('X-WP-TotalPages') || '1', 10);
+      const data = await response.json();
+      posts.push(...data);
+      page++;
+    } while (page <= totalPages);
+  } catch (error) {
+    console.error('Error fetching all post slugs:', error);
+  }
+
+  return posts;
 }
 
 export async function fetchPostBySlug(slug) {
