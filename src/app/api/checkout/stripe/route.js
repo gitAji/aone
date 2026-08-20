@@ -52,8 +52,8 @@ export async function POST(req) {
 
         const baseAmount = (billingInterval === 'monthly' ? selectedPack.monthlyPrice : selectedPack.price);
         const subtotal = baseAmount + addonCost;
-        // The site-wide flash sale (advertised in the announcement bar and on
-        // every pricing card) applies automatically -- no code needed. A
+        // The site-wide flash sale (advertised on every pricing card) applies
+        // automatically -- no code needed. A
         // voucher code, if entered, overrides it with the larger rate rather
         // than stacking on top of it.
         const discountRate = discountCode.trim().toUpperCase() === PROMO_CODE ? PROMO_CODE_DISCOUNT_RATE : SITE_WIDE_DISCOUNT_RATE;

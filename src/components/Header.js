@@ -27,9 +27,9 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed left-0 w-full z-[1000] transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-300 ${
         visible ? 'translate-y-0' : '-translate-y-[200%]'
-      } ${isScrolled ? 'top-0' : 'top-[44px]'} ${
+      } ${
         isScrolled
           ? 'bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm border-b border-slate-200/50 dark:border-white/5'
           : 'bg-transparent border-b border-transparent'

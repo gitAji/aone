@@ -1,5 +1,4 @@
-// Single source of truth for the site-wide "flash sale" rate advertised in
-// AnnouncementBar.js ("FLASH SALE: 10% OFF TODAY!") and shown on every
+// Single source of truth for the site-wide "flash sale" rate shown on every
 // pricing card in PricingClient.js. Previously that 10% was only a display
 // calculation on the pricing page (originalPrice * 0.9) with nothing
 // connecting it to the actual order total -- checkout/stripe, order/create,

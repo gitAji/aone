@@ -69,7 +69,7 @@ const Footer = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <div className="container mx-auto px-6 flex flex-nowrap justify-between items-start gap-8">
+        <div className="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-x-8 gap-y-10">
           {/* Column 1: Brand */}
           <div className="footer-section brand-column flex-1">
             <div className="mb-6 scale-90 origin-left">
