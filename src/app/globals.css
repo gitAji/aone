@@ -1146,6 +1146,32 @@ html.a11y-stop-animations *::after {
   transform: none !important;
 }
 
+/* ============================================
+   Constellation Particle Field (Dala-inspired)
+   Ambient drifting triangle particles, used only in the footer.
+   Opt-in, additive — nothing existing above is modified.
+   ============================================ */
+@keyframes constellationDrift {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(var(--drift-x, 12px), calc(var(--drift-y, 8px) * -1)) rotate(180deg);
+  }
+}
+
+.animate-constellation-drift {
+  animation-name: constellationDrift;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-constellation-drift {
+    animation: none !important;
+  }
+}
+
 /* ============================================================
    Editorial Accents — opt-in additions inspired by the SVZ
    gallery-signage style reference. Purely additive: nothing

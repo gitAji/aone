@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
 import Logo from "./Logo";
+import ConstellationField from "./ConstellationField";
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -58,7 +59,10 @@ const Footer = () => {
         </svg>
       </div>
 
-      <motion.div 
+      {/* Ambient Constellation Particle Field (Dala-inspired), footer-only */}
+      <ConstellationField className="z-[1]" count={26} />
+
+      <motion.div
         className="footer-content relative z-20 pt-16"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
