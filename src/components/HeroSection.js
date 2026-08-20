@@ -21,7 +21,15 @@ const HighlightedText = ({ text }) => {
     return (
       <>
         {before}
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-orange-400">{highlightedChar}</span>
+        <motion.span
+          key={highlightedChar + before.length}
+          initial={{ opacity: 0, scale: 0.4, rotate: -10 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ type: "spring", stiffness: 420, damping: 14, mass: 0.6 }}
+          className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-orange-400"
+        >
+          {highlightedChar}
+        </motion.span>
         {rest}
       </>
     );
