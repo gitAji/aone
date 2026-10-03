@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaExternalLinkAlt, FaStar } from "react-icons/fa";
+import { FaEnvelope, FaPhone, FaExternalLinkAlt } from "react-icons/fa";
 
 const HamburgerMenu = () => {
   const { language, changeLanguage, t } = useLanguage();
@@ -120,7 +120,9 @@ const HamburgerMenu = () => {
         <span className={`h-[2px] bg-current rounded-full transition-all duration-300 origin-center ${isOpen ? 'w-4.5 -rotate-45 -translate-y-[7px]' : 'w-2'}`} />
       </button>
 
-      {/* Fullscreen Navigation Overlay */}
+      {/* Fullscreen Navigation Overlay — single clean column, large type,
+          minimal chrome (no duplicate contact/trust info; that already
+          lives in the footer) */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -128,144 +130,73 @@ const HamburgerMenu = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[10001] bg-slate-950/95 backdrop-blur-2xl flex flex-col justify-between overflow-y-auto lg:overflow-hidden px-6 py-12 md:py-16 md:px-20"
+            className="fixed inset-0 z-[10001] bg-slate-950/98 backdrop-blur-2xl flex flex-col justify-center overflow-y-auto px-6 py-16 md:px-16"
             style={{ width: '100vw', height: '100vh' }}
           >
-            <div className="container mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 my-auto">
-              
-              {/* Left Column: Context & Metadata (Hidden on Mobile, elegant on Desktop) */}
-              <div className="hidden lg:flex lg:col-span-5 flex-col justify-between border-r border-white/10 pr-10 py-1">
-                <div>
-                  <h3 className="font-clash text-lg md:text-xl font-bold text-white mb-4">Aone Digital</h3>
-                  <p className="text-slate-400 text-[13px] leading-relaxed mb-5 max-w-xs">
-                    {t('footer.aboutText') || "We are a creative agency dedicated to building stunning websites and digital experiences that drive results."}
-                  </p>
-                  
-                  {/* Trust Rating */}
-                  <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-2xl p-3 max-w-xs">
-                    <div className="w-8 h-8 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400">
-                      <FaStar className="text-sm" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-white">4.9★ Average Client Rating</div>
-                      <div className="text-[10px] text-slate-500">Based on projects delivered in Norway</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  {/* Contact Info */}
-                  <div className="space-y-2.5">
-                    <a href="mailto:info@aone.no" className="flex items-center gap-3 text-slate-400 hover:text-white transition-colors text-xs group">
-                      <FaEnvelope className="text-rose-500" />
-                      <span>info@aone.no</span>
-                    </a>
-                    <a href="tel:40071654" className="flex items-center gap-3 text-slate-400 hover:text-white transition-colors text-xs">
-                      <FaPhone className="text-rose-500" />
-                      <span>400 71 654</span>
-                    </a>
-                    <div className="flex items-center gap-3 text-slate-400 text-xs">
-                      <FaMapMarkerAlt className="text-rose-500" />
-                      <span>Bergen, Norway</span>
-                    </div>
-                  </div>
-
-                  {/* Languages Selector */}
-                  <div className="flex items-center gap-4">
-                    <button
-                      onClick={() => changeLanguage('en')}
-                      className={`flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase transition-all duration-300 ${language === 'en' ? 'text-rose-500 scale-105' : 'text-white/40 hover:text-white'}`}
+            <nav className="w-full max-w-3xl mx-auto">
+              <ul className="flex flex-col">
+                {menuLinks.map((link, i) => {
+                  const isExternal = link.href.startsWith('http');
+                  return (
+                    <motion.li
+                      key={link.name}
+                      initial={{ opacity: 0, y: 16 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: i * 0.04 }}
+                      className="border-b border-white/5 first:border-t"
                     >
-                      <Image src={getFlagUrl('en')} alt="EN" width={18} height={13} className="w-4.5 h-auto rounded-[1px]" unoptimized />
-                      English
-                    </button>
-                    <div className="w-px h-3 bg-white/10" />
-                    <button
-                      onClick={() => changeLanguage('no')}
-                      className={`flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase transition-all duration-300 ${language === 'no' ? 'text-rose-500 scale-105' : 'text-white/40 hover:text-white'}`}
-                    >
-                      <Image src={getFlagUrl('no')} alt="NO" width={18} height={13} className="w-4.5 h-auto rounded-[1px]" unoptimized />
-                      Norsk
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Column: Menu Navigation Links */}
-              <div className="lg:col-span-7 flex flex-col justify-center">
-                <nav className="w-full">
-                  <ul className="flex flex-col gap-3.5 md:gap-4">
-                    {menuLinks.map((link, i) => {
-                      const isExternal = link.href.startsWith('http');
-                      return (
-                        <motion.li
-                          key={link.name}
-                          initial={{ opacity: 0, x: 20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.4, delay: i * 0.05 }}
-                          className="group relative"
+                      <Link
+                        href={link.href}
+                        onClick={toggleMenu}
+                        target={isExternal ? "_blank" : undefined}
+                        rel={isExternal ? "noopener noreferrer" : undefined}
+                        className="group/item flex items-center justify-between gap-4 py-3.5 md:py-4"
+                      >
+                        <span className="font-clash text-3xl md:text-5xl font-semibold text-white/90 tracking-tight group-hover/item:text-rose-400 transition-colors duration-300 flex items-center gap-3">
+                          {link.name}
+                          {isExternal && <FaExternalLinkAlt className="text-sm text-white/30" />}
+                        </span>
+                        <span
+                          className="text-lg md:text-2xl text-rose-500 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 ease-out flex-shrink-0"
+                          aria-hidden="true"
                         >
-                          <Link
-                            href={link.href}
-                            onClick={toggleMenu}
-                            className="flex items-start gap-3 md:gap-5 py-0.5 group/item"
-                            target={isExternal ? "_blank" : undefined}
-                            rel={isExternal ? "noopener noreferrer" : undefined}
-                          >
-                            <span className="font-clash text-[10px] md:text-xs font-bold text-rose-500 mt-1 md:mt-2 tracking-[0.15em]">
-                              {link.num}
-                            </span>
-                            <div className="flex-1 flex items-start justify-between gap-3">
-                              <div>
-                                <div className="font-clash text-lg md:text-2xl lg:text-3xl font-semibold text-white tracking-tight group-hover/item:text-rose-400 transition-colors duration-300 flex items-center gap-2">
-                                  {link.name}
-                                  {isExternal && <FaExternalLinkAlt className="text-xs text-white/30" />}
-                                </div>
-                                <p className="text-slate-500 text-[11px] md:text-xs mt-0.5 max-w-md group-hover/item:text-slate-400 transition-colors duration-300 font-medium">
-                                  {link.desc}
-                                </p>
-                              </div>
-                              <span
-                                className="hidden md:inline-flex items-center justify-center w-8 h-8 rounded-full border border-white/15 text-white/50 text-sm opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 ease-out flex-shrink-0 mt-1"
-                                aria-hidden="true"
-                              >
-                                ↗
-                              </span>
-                            </div>
-                          </Link>
-                        </motion.li>
-                      );
-                    })}
-                  </ul>
-                </nav>
+                          ↗
+                        </span>
+                      </Link>
+                    </motion.li>
+                  );
+                })}
+              </ul>
 
-                {/* Mobile Language Switcher Footer (visible on mobile only) */}
-                <div className="flex lg:hidden flex-col gap-6 mt-10 pt-6 border-t border-white/10">
-                  <div className="flex items-center gap-6">
-                    <button
-                      onClick={() => changeLanguage('en')}
-                      className={`flex items-center gap-2 text-sm font-bold tracking-widest uppercase transition-all duration-300 ${language === 'en' ? 'text-rose-500' : 'text-white/40'}`}
-                    >
-                      <Image src={getFlagUrl('en')} alt="EN" width={20} height={15} className="w-5 h-auto rounded-[1px]" unoptimized />
-                      English
-                    </button>
-                    <button
-                      onClick={() => changeLanguage('no')}
-                      className={`flex items-center gap-2 text-sm font-bold tracking-widest uppercase transition-all duration-300 ${language === 'no' ? 'text-rose-500' : 'text-white/40'}`}
-                    >
-                      <Image src={getFlagUrl('no')} alt="NO" width={20} height={15} className="w-5 h-auto rounded-[1px]" unoptimized />
-                      Norsk
-                    </button>
-                  </div>
-                  <div className="flex flex-wrap gap-4 text-xs text-slate-500 font-medium">
-                    <a href="mailto:info@aone.no" className="hover:text-white transition-colors">info@aone.no</a>
-                    <span>•</span>
-                    <a href="tel:40071654" className="hover:text-white transition-colors">400 71 654</a>
-                  </div>
+              {/* Minimal footer row: language switcher + contact */}
+              <div className="flex flex-wrap items-center justify-between gap-5 mt-10 pt-6 text-xs">
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() => changeLanguage('en')}
+                    className={`font-bold tracking-widest uppercase transition-colors duration-300 ${language === 'en' ? 'text-rose-500' : 'text-white/40 hover:text-white'}`}
+                  >
+                    EN
+                  </button>
+                  <span className="text-white/15">/</span>
+                  <button
+                    onClick={() => changeLanguage('no')}
+                    className={`font-bold tracking-widest uppercase transition-colors duration-300 ${language === 'no' ? 'text-rose-500' : 'text-white/40 hover:text-white'}`}
+                  >
+                    NO
+                  </button>
+                </div>
+                <div className="flex items-center gap-5 text-slate-400">
+                  <a href="mailto:info@aone.no" className="flex items-center gap-2 hover:text-white transition-colors">
+                    <FaEnvelope className="text-rose-500" />
+                    <span>info@aone.no</span>
+                  </a>
+                  <a href="tel:40071654" className="hidden sm:flex items-center gap-2 hover:text-white transition-colors">
+                    <FaPhone className="text-rose-500" />
+                    <span>400 71 654</span>
+                  </a>
                 </div>
               </div>
-
-            </div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>
