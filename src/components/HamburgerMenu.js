@@ -108,7 +108,7 @@ const HamburgerMenu = () => {
       </a>
 
       {/* Hamburger Trigger Button — asymmetric "staircase" mark instead of a generic
-          equal-width hamburger, with a rose accent bar; morphs into a centered X on open */}
+          equal-width hamburger, single-color (bg-current); morphs into a centered X on open */}
       <button
         onClick={toggleMenu}
         className="group relative z-[10002] w-10 h-10 rounded-full flex flex-col items-center justify-center gap-[5px] transition-all duration-300 bg-slate-950 dark:bg-white text-white dark:text-slate-950 hover:scale-105 active:scale-95 shadow-md"
@@ -116,7 +116,7 @@ const HamburgerMenu = () => {
         aria-label={isOpen ? "Close menu" : "Open menu"}
       >
         <span className={`h-[2px] bg-current rounded-full transition-all duration-300 origin-center ${isOpen ? 'w-4.5 rotate-45 translate-y-[7px]' : 'w-3'}`} />
-        <span className={`h-[2px] rounded-full transition-all duration-300 ${isOpen ? 'w-4.5 bg-current opacity-0 scale-x-0' : 'w-4.5 bg-rose-500'}`} />
+        <span className={`h-[2px] bg-current rounded-full transition-all duration-300 ${isOpen ? 'w-4.5 opacity-0 scale-x-0' : 'w-4.5'}`} />
         <span className={`h-[2px] bg-current rounded-full transition-all duration-300 origin-center ${isOpen ? 'w-4.5 -rotate-45 -translate-y-[7px]' : 'w-2'}`} />
       </button>
 
