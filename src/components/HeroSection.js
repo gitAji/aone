@@ -63,12 +63,19 @@ const TypewriterTitle = ({ text, delay = 50 }) => {
 
   return (
     <h1 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter leading-[1.1] min-h-[1.2em] bg-clip-text text-transparent bg-gradient-to-r from-rose-500 via-rose-400 to-amber-500 drop-shadow-sm font-satoshi">
-      <HighlightedText text={displayText} />
-      <motion.span
-        animate={{ opacity: [0, 1, 0] }}
-        transition={{ duration: 0.8, repeat: Infinity }}
-        className="inline-block w-[3px] h-8 md:h-11 bg-rose-500 ml-1 align-middle rounded-full"
-      />
+      {/* The real heading text, present in the server-rendered HTML
+          immediately -- search engines and screen readers get this
+          right away instead of an empty H1 that only fills in once the
+          typewriter effect finishes typing it out client-side. */}
+      <span className="sr-only">{text.replace('|', '')}</span>
+      <span aria-hidden="true">
+        <HighlightedText text={displayText} />
+        <motion.span
+          animate={{ opacity: [0, 1, 0] }}
+          transition={{ duration: 0.8, repeat: Infinity }}
+          className="inline-block w-[3px] h-8 md:h-11 bg-rose-500 ml-1 align-middle rounded-full"
+        />
+      </span>
     </h1>
   );
 };

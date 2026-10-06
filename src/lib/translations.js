@@ -26,8 +26,9 @@ export const translations = {
             subtitle: "From AI chatbots to lightning-fast websites, we create digital experiences that drive real business results for Norwegian and international clients.",
             cta: "Get a Quote",
             phrases: [
-                "Empowering businesses with |AI.",
-                "High-Performance |Websites.",
+                "Web Design & |AI Solutions in Bergen.",
+                "Your Digital |Design Partner.",
+                "Smart |Digital Solutions for Growth.",
                 "Scale with |Automation.",
             ]
         },
@@ -497,7 +498,8 @@ export const translations = {
             cta: "Få et tilbud",
             phrases: [
                 "Webdesign i |Bergen som konverterer.",
-                "Lynraske |Nettsider.",
+                "Din digitale |designpartner.",
+                "Smarte |AI-løsninger for vekst.",
                 "Skaler med |Automasjon.",
             ]
         },
