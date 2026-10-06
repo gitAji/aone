@@ -67,20 +67,6 @@ export const packages = [
         description: 'Bespoke AI infrastructure for organizations requiring high-scale, unique integrations.'
     },
     {
-        id: 'chatbot',
-        name: 'AI Sales Agent (Voiceflow)',
-        price: 25000,
-        monthlyPrice: 990,
-        isAddon: true,
-        features: [
-            '24/7 Intelligent Customer Support',
-            'Custom Knowledge Base Integration',
-            'Lead Capture & CRM Sync',
-            'Multi-language Support'
-        ],
-        description: 'A dedicated AI agent that works 24/7 to qualify leads and answer customer questions.'
-    },
-    {
         id: 'geo',
         name: 'GEO Dominance Package',
         price: 20000,

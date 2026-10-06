@@ -1,5 +1,4 @@
 "use client";
-import { usePathname } from 'next/navigation';
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
@@ -17,12 +16,7 @@ const DynamicTawkToMessenger = dynamic(() =>
   import("@/components/TawkToMessenger").then((mod) => mod.default)
 );
 
-const DynamicVoiceflowChat = dynamic(() =>
-  import("@/components/VoiceflowChat").then((mod) => mod.default)
-);
-
 export default function LayoutClientWrapper({ children }) {
-  const pathname = usePathname();
   const [showReferralPopup, setShowReferralPopup] = useState(false);
   const [hasChatConsent, setHasChatConsent] = useState(false);
 
@@ -74,7 +68,6 @@ export default function LayoutClientWrapper({ children }) {
           <Footer />
         </ClientLayoutWrapper>
         <AccessibilityWidget />
-        {/* {pathname !== '/' && <DynamicVoiceflowChat />} */}
         {/* Gated on Cookiebot marketing consent (hasChatConsent, above) --
             Tawk.to sets third-party cookies, so it shouldn't load until a
             visitor has actually consented, same as Clarity/GTM elsewhere
