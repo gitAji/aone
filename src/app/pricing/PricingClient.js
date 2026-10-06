@@ -227,6 +227,11 @@ export default function PricingPage() {
                                     </p>
                                 </div>
                                 <div className="text-right flex flex-col items-end gap-1">
+                                    {billingInterval === 'monthly' && addon.monthlyPrice > 0 && addon.price > 0 && (
+                                        <div className="text-[9px] font-bold text-slate-400 uppercase tracking-wide">
+                                            +{Math.round(addon.price * 0.9)} NOK one-time setup
+                                        </div>
+                                    )}
                                     {(addon.price > 0 || addon.monthlyPrice > 0) && (
                                        <div className="text-xs font-bold text-slate-400 line-through decoration-rose-500 decoration-2">
                                            {billingInterval === 'monthly' && addon.monthlyPrice > 0 

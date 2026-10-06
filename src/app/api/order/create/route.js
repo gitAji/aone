@@ -18,14 +18,29 @@ const roundPrice = (value) => {
 // by id -- never from the client-supplied package object -- for the same
 // reason as checkout/stripe/route.js: this is a price the business will
 // actually invoice against, so it can't be attacker-controlled.
+//
+// An addon's one-time (setup) fee always applies regardless of billing
+// interval; its monthly fee only applies when the base package itself is
+// billed Monthly -- mirrors checkout/stripe/route.js and OrderClient.js's
+// calculateTotal(). Previously this always summed addon.price (one-time)
+// only, so a pure-recurring addon (e.g. Maintenance, monthlyPrice-only)
+// invoiced as free, and the quoted "due today" total didn't match what the
+// card-payment path (checkout/stripe) would actually charge for the same
+// selection.
 const calculatePrice = (canonicalPkg, interval, addonsList = []) => {
-    const base = interval === 'monthly' ? canonicalPkg.monthlyPrice : canonicalPkg.price;
+    const baseOneTime = interval === 'once' ? canonicalPkg.price : 0;
+    const baseMonthly = interval === 'monthly' ? canonicalPkg.monthlyPrice : 0;
 
-    const addonsCost = packages
-        .filter(p => p.isAddon && addonsList.includes(p.id))
-        .reduce((sum, p) => sum + p.price, 0);
+    const selectedAddons = packages.filter(p => p.isAddon && addonsList.includes(p.id));
+    const addonsOneTime = selectedAddons.reduce((sum, p) => sum + p.price, 0);
+    const addonsMonthly = interval === 'monthly'
+        ? selectedAddons.reduce((sum, p) => sum + p.monthlyPrice, 0)
+        : 0;
 
-    return base + addonsCost;
+    // "Due today" equivalent for this signed-but-unpaid record: one-time
+    // fees plus the first month, matching the initial Stripe invoice amount
+    // for the card-payment path.
+    return (baseOneTime + addonsOneTime) + (baseMonthly + addonsMonthly);
 };
 
 export async function POST(request) {

@@ -57,37 +57,48 @@ function OrderPageContent() {
 
     const stepsCount = 4;
     const calculateTotal = useCallback(() => {
-        if (!selectedPack) return { base: 0, addons: 0, monthly: 0, total: 0 };
-        let base = billingInterval === 'monthly' ? selectedPack.monthlyPrice : selectedPack.price;
+        if (!selectedPack) return { base: 0, addons: 0, addonsMonthly: 0, monthly: 0, total: 0, discount: 0 };
 
-        const addonsOneTime = packages
-            .filter(p => p.isAddon && addons.includes(p.id))
-            .reduce((sum, p) => sum + p.price, 0);
+        const baseOneTime = billingInterval === 'once' ? selectedPack.price : 0;
+        const baseMonthly = billingInterval === 'monthly' ? selectedPack.monthlyPrice : 0;
 
-        const addonsMonthly = packages
-            .filter(p => p.isAddon && addons.includes(p.id))
-            .reduce((sum, p) => sum + p.monthlyPrice, 0);
+        const selectedAddons = packages.filter(p => p.isAddon && addons.includes(p.id));
+        // An addon's one-time (setup) fee always applies, regardless of the
+        // base package's billing interval -- it's a one-off cost. Its
+        // monthly fee only applies when the base package itself is billed
+        // Monthly, since there's no recurring vehicle to attach it to
+        // otherwise. Previously this summed addon.price (one-time) no
+        // matter the billing interval, so a Monthly order with an addon
+        // showed a "total" mixing a monthly base price with the addon's
+        // full one-time fee -- a number nothing actually charged, since
+        // checkout/stripe/route.js priced addons by interval instead. Both
+        // now agree: see that file's two-line-item construction.
+        const addonsOneTime = selectedAddons.reduce((sum, p) => sum + p.price, 0);
+        const addonsMonthly = billingInterval === 'monthly'
+            ? selectedAddons.reduce((sum, p) => sum + p.monthlyPrice, 0)
+            : 0;
 
-        const total = base + addonsOneTime;
+        const oneTimeSubtotal = baseOneTime + addonsOneTime;
+        const monthlySubtotal = baseMonthly + addonsMonthly;
+
         // Matches checkout/stripe and order/create: the site-wide flash-sale
         // rate applies automatically, a voucher code overrides (not stacks)
-        // with a larger rate. Previously this always priced from the full
-        // total with no automatic discount at all, so the order page (and
-        // the amount actually charged) never reflected the "-10% TODAY"
-        // shown on the pricing page.
+        // with a larger rate.
         const discountRate = promoCode.trim().toUpperCase() === PROMO_CODE ? PROMO_CODE_DISCOUNT_RATE : SITE_WIDE_DISCOUNT_RATE;
-        const potentialDiscount = total * discountRate;
-        const finalTotal = Math.max(0, total - potentialDiscount);
 
-        // Round up to end with 0, 9, or 5
-        const roundedFinalTotal = roundPrice(finalTotal);
+        const oneTimeTotal = oneTimeSubtotal > 0 ? roundPrice(Math.max(0, oneTimeSubtotal - oneTimeSubtotal * discountRate)) : 0;
+        const monthlyTotal = monthlySubtotal > 0 ? roundPrice(Math.max(0, monthlySubtotal - monthlySubtotal * discountRate)) : 0;
 
         return {
-            base,
             addons: addonsOneTime,
-            monthly: (billingInterval === 'monthly' ? selectedPack.monthlyPrice : 0) + addonsMonthly,
-            total: roundedFinalTotal,
-            discount: total - roundedFinalTotal
+            addonsMonthly,
+            oneTime: oneTimeTotal,
+            monthly: monthlyTotal,
+            // "Due today": Stripe charges one-time fees together with the
+            // first month on the initial invoice, then just the monthly
+            // amount on every renewal after that.
+            total: oneTimeTotal + monthlyTotal,
+            discount: (oneTimeSubtotal - oneTimeTotal) + (monthlySubtotal - monthlyTotal)
         };
     }, [selectedPack, billingInterval, addons, promoCode]);
 
@@ -494,11 +505,16 @@ function OrderPageContent() {
             </div>
 
             <div className="border-t border-slate-100 dark:border-slate-800 pt-6">
-                <div className="flex justify-between items-center mb-6">
-                    <span className="text-slate-950 dark:text-slate-200 font-black uppercase text-[10px] tracking-widest">Total Amount</span>
-                    <span className="text-3xl font-black text-slate-950 dark:text-white">
-                        {calculateTotal().total} NOK
-                    </span>
+                <div className="mb-6">
+                    <div className="flex justify-between items-center">
+                        <span className="text-slate-950 dark:text-slate-200 font-black uppercase text-[10px] tracking-widest">Due Today</span>
+                        <span className="text-3xl font-black text-slate-950 dark:text-white">
+                            {calculateTotal().total} NOK
+                        </span>
+                    </div>
+                    {billingInterval === 'monthly' && calculateTotal().monthly > 0 && (
+                        <p className="text-xs text-slate-400 font-bold text-right mt-1">then {calculateTotal().monthly} NOK/mo</p>
+                    )}
                 </div>
 
                 {step < 3 && selectedPack && (
@@ -690,7 +706,16 @@ function OrderPageContent() {
                                                                     </div>
                                                                 </div>
                                                                 <p className="text-sm text-slate-500">
-                                                                    {pkg.price > 0 ? `${pkg.price} NOK` : `${pkg.monthlyPrice} NOK/mo`}
+                                                                    {(() => {
+                                                                        // One-time setup fee always applies; the monthly
+                                                                        // fee only applies when the base plan itself is
+                                                                        // billed Monthly (see calculateTotal above).
+                                                                        const setupFee = pkg.price > 0 ? `${pkg.price} NOK setup` : null;
+                                                                        const monthlyFee = (billingInterval === 'monthly' && pkg.monthlyPrice > 0) ? `${pkg.monthlyPrice} NOK/mo` : null;
+                                                                        const parts = [setupFee, monthlyFee].filter(Boolean);
+                                                                        if (parts.length > 0) return parts.join(' + ');
+                                                                        return billingInterval === 'once' ? 'Requires monthly billing' : `${pkg.monthlyPrice} NOK/mo`;
+                                                                    })()}
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -896,6 +921,9 @@ function OrderPageContent() {
                                                         <h3 className="text-7xl font-black tracking-tighter text-slate-950 drop-shadow-sm">
                                                             {calculateTotal().total} <span className="text-2xl font-bold opacity-30 tracking-widest ml-1">NOK</span>
                                                         </h3>
+                                                        {billingInterval === 'monthly' && calculateTotal().monthly > 0 && (
+                                                            <p className="text-sm font-bold text-slate-400">then {calculateTotal().monthly} NOK/mo</p>
+                                                        )}
                                                         {billingInterval === 'monthly' && (
                                                             <div className="flex flex-wrap items-center gap-3 mt-4">
                                                                 <span className="text-[9px] font-black text-emerald-600 uppercase tracking-widest bg-emerald-50 px-3 py-1.5 rounded-md border border-emerald-100 flex items-center gap-1.5">
@@ -921,15 +949,26 @@ function OrderPageContent() {
                                                                 </span>
                                                                 <span className="text-slate-900">{billingInterval === 'monthly' ? selectedPack?.monthlyPrice : selectedPack?.price} NOK</span>
                                                             </div>
-                                                            {addons.length > 0 && (
+                                                            {addons.length > 0 && calculateTotal().addons > 0 && (
                                                                 <div className="flex justify-between items-center text-sm font-bold text-slate-600">
                                                                     <span className="flex items-center gap-3">
                                                                         <div className="w-8 h-8 rounded-lg bg-white shadow-sm flex items-center justify-center border border-slate-100">
                                                                             <FaPuzzlePiece className="text-slate-400 text-xs" />
                                                                         </div>
-                                                                        Service Add-ons ({addons.length})
+                                                                        Service Add-ons ({addons.length}) - Setup
                                                                     </span>
                                                                     <span className="text-slate-900">+{calculateTotal().addons} NOK</span>
+                                                            </div>
+                                                            )}
+                                                            {addons.length > 0 && calculateTotal().addonsMonthly > 0 && (
+                                                                <div className="flex justify-between items-center text-sm font-bold text-slate-600">
+                                                                    <span className="flex items-center gap-3">
+                                                                        <div className="w-8 h-8 rounded-lg bg-white shadow-sm flex items-center justify-center border border-slate-100">
+                                                                            <FaPuzzlePiece className="text-slate-400 text-xs" />
+                                                                        </div>
+                                                                        Service Add-ons - Monthly
+                                                                    </span>
+                                                                    <span className="text-slate-900">+{calculateTotal().addonsMonthly} NOK/mo</span>
                                                             </div>
                                                             )}
                                                             {calculateTotal().discount > 0 && (

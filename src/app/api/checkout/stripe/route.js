@@ -43,44 +43,88 @@ export async function POST(req) {
             return NextResponse.json({ error: 'Unknown or non-purchasable package.' }, { status: 400 });
         }
 
-        let addonCost = 0;
+        // An addon's one-time (setup) fee always applies, regardless of the
+        // base package's billing interval. Its monthly fee only applies when
+        // the base package itself is billed Monthly, since there's no
+        // recurring vehicle to attach it to otherwise -- mirrors
+        // OrderClient.js's calculateTotal(). Previously this always used
+        // (monthly ? p.monthlyPrice : p.price) for every addon, so a pure
+        // one-time addon (e.g. GEO, price-only) silently charged 0 on a
+        // Monthly order, and a pure-recurring addon (e.g. Maintenance,
+        // monthlyPrice-only) silently charged 0 on a one-time order --
+        // while the order review page (OrderClient.js) showed a "total"
+        // that didn't match either.
+        let addonsOneTime = 0;
+        let addonsMonthly = 0;
         if (addons && addons.length > 0) {
-            addonCost = packages
-                .filter(p => p.isAddon && addons.includes(p.id))
-                .reduce((sum, p) => sum + (billingInterval === 'monthly' ? p.monthlyPrice : p.price), 0);
+            const selectedAddons = packages.filter(p => p.isAddon && addons.includes(p.id));
+            addonsOneTime = selectedAddons.reduce((sum, p) => sum + p.price, 0);
+            addonsMonthly = billingInterval === 'monthly'
+                ? selectedAddons.reduce((sum, p) => sum + p.monthlyPrice, 0)
+                : 0;
         }
 
-        const baseAmount = (billingInterval === 'monthly' ? selectedPack.monthlyPrice : selectedPack.price);
-        const subtotal = baseAmount + addonCost;
+        const baseOneTime = billingInterval === 'once' ? selectedPack.price : 0;
+        const baseMonthly = billingInterval === 'monthly' ? selectedPack.monthlyPrice : 0;
+
+        const oneTimeSubtotal = baseOneTime + addonsOneTime;
+        const monthlySubtotal = baseMonthly + addonsMonthly;
+
         // The site-wide flash sale (advertised on every pricing card) applies
         // automatically -- no code needed. A
         // voucher code, if entered, overrides it with the larger rate rather
         // than stacking on top of it.
         const discountRate = discountCode.trim().toUpperCase() === PROMO_CODE ? PROMO_CODE_DISCOUNT_RATE : SITE_WIDE_DISCOUNT_RATE;
-        const potentialDiscount = subtotal * discountRate;
-        const totalAmount = roundPrice(subtotal - potentialDiscount);
+        const oneTimeAmount = oneTimeSubtotal > 0 ? roundPrice(Math.max(0, oneTimeSubtotal - oneTimeSubtotal * discountRate)) : 0;
+        const monthlyAmount = monthlySubtotal > 0 ? roundPrice(Math.max(0, monthlySubtotal - monthlySubtotal * discountRate)) : 0;
+        const potentialDiscount = (oneTimeSubtotal - oneTimeAmount) + (monthlySubtotal - monthlyAmount);
+        // "Due today": Stripe bills one-time line items together with the
+        // first month on the initial invoice, then just the recurring line
+        // item on every renewal after that.
+        const totalAmount = oneTimeAmount + monthlyAmount;
 
-        // Use pre-defined Stripe Price ID from package if it exists, otherwise use inline price_data
-        const priceId = billingInterval === 'monthly' ? selectedPack.monthlyStripePriceId : selectedPack.stripePriceId;
+        // Stripe supports up to one recurring price plus one one-time price
+        // in a single subscription-mode Checkout Session -- the one-time
+        // price is billed only on that initial invoice. For a one-time
+        // order there's just the single non-recurring line item.
+        const lineItems = [];
+        if (monthlyAmount > 0) {
+            lineItems.push({
+                price_data: {
+                    currency: 'nok',
+                    product_data: {
+                        name: `${selectedPack.name} - Monthly Plan`,
+                        description: `Order ID: ${orderId}. ${formData.commitment}-month commitment.`,
+                    },
+                    unit_amount: monthlyAmount * 100, // Convert to subunits (øre)
+                    recurring: { interval: 'month' },
+                },
+                quantity: 1,
+            });
+        }
+        if (oneTimeAmount > 0) {
+            lineItems.push({
+                price_data: {
+                    currency: 'nok',
+                    product_data: {
+                        name: billingInterval === 'monthly'
+                            ? `${selectedPack.name} - One-time Setup${addons.length > 0 ? ' & Add-ons' : ''}`
+                            : `${selectedPack.name} - Standard Plan${addons.length > 0 ? ' & Add-ons' : ''}`,
+                        description: `Order ID: ${orderId}${addons.length > 0 ? ' (Includes Custom Add-ons)' : ''}.`,
+                    },
+                    unit_amount: oneTimeAmount * 100,
+                },
+                quantity: 1,
+            });
+        }
+
+        if (lineItems.length === 0) {
+            return NextResponse.json({ error: 'Order total is zero.' }, { status: 400 });
+        }
 
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card', 'klarna'], // Added Klarna for better Norway conversion
-            line_items: [
-                {
-                    ...(priceId ? { price: priceId } : {
-                        price_data: {
-                            currency: 'nok',
-                            product_data: {
-                                name: `${selectedPack.name} - ${billingInterval === 'monthly' ? 'Monthly Plan' : 'Standard Plan'}`,
-                                description: `Order ID: ${orderId}${addons.length > 0 ? ' (Includes Custom Add-ons)' : ''}. ${formData.commitment}-month commitment.`,
-                            },
-                            unit_amount: totalAmount * 100, // Convert to subunits (øre)
-                            ...(billingInterval === 'monthly' ? { recurring: { interval: 'month' } } : {})
-                        },
-                    }),
-                    quantity: 1,
-                },
-            ],
+            line_items: lineItems,
             mode: billingInterval === 'monthly' ? 'subscription' : 'payment',
             ...(billingInterval === 'monthly' ? {
                 subscription_data: clientSubscriptionData || {}
