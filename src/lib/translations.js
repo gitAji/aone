@@ -20,14 +20,41 @@ export const translations = {
             }
         },
         requestQuote: "Request Quote",
+        homeFaq: {
+            title: "Frequently Asked Questions",
+            subtitle: "Common questions about working with a web design agency in Bergen.",
+            items: [
+                {
+                    q: "Why choose a web design agency in Bergen over a national one?",
+                    a: "A local Bergen web design agency understands the Vestland market, can meet in person, and knows the local competitive landscape. Aone combines that local knowledge with AI-driven solutions most traditional agencies don't offer.",
+                },
+                {
+                    q: "What does web design in Bergen cost?",
+                    a: "Pricing depends on scope, from a simple business site to a full digital solution with AI integration. See our pricing page for package details, or book a free consultation for a tailored quote.",
+                },
+                {
+                    q: "How long does it take to build a website?",
+                    a: "Most projects take 3-6 weeks depending on complexity, from discovery and design through development and launch. We'll give you a concrete timeline during your consultation.",
+                },
+                {
+                    q: "Do you offer AI solutions alongside web design?",
+                    a: "Yes -- every website we build can be paired with AI chatbots, automation, and GEO (Generative Engine Optimization) so your business shows up in AI-driven search like ChatGPT and Google AI Overviews, not just traditional SEO.",
+                },
+                {
+                    q: "Do you work with businesses outside Bergen?",
+                    a: "Yes. We're based in Bergen and proud of it, but we build for clients across Norway and internationally.",
+                },
+            ],
+        },
         hero: {
             tagline: "AI-NATIVE DIGITAL EXPERIENCES BUILT FOR",
             inspire: "2026.",
             subtitle: "From AI chatbots to lightning-fast websites, we create digital experiences that drive real business results for Norwegian and international clients.",
             cta: "Get a Quote",
             phrases: [
-                "Empowering businesses with |AI.",
-                "High-Performance |Websites.",
+                "Web Design & |AI Solutions in Bergen.",
+                "Your Digital |Design Partner.",
+                "Smart |Digital Solutions for Growth.",
                 "Scale with |Automation.",
             ]
         },
@@ -490,6 +517,32 @@ export const translations = {
             }
         },
         requestQuote: "Få et tilbud",
+        homeFaq: {
+            title: "Ofte stilte spørsmål",
+            subtitle: "Vanlige spørsmål om å jobbe med et webdesign-byrå i Bergen.",
+            items: [
+                {
+                    q: "Hvorfor velge et webdesign-byrå i Bergen fremfor et nasjonalt byrå?",
+                    a: "Et lokalt webdesign-byrå i Bergen kjenner Vestland-markedet, kan møtes fysisk, og forstår den lokale konkurransen. Aone kombinerer denne lokalkunnskapen med AI-drevne løsninger som de fleste tradisjonelle byråer ikke tilbyr.",
+                },
+                {
+                    q: "Hva koster webdesign i Bergen?",
+                    a: "Prisen varierer fra en enkel bedriftsside til en komplett digital løsning med AI-integrasjon. Se prissiden vår for pakkedetaljer, eller book en gratis konsultasjon for et skreddersydd tilbud.",
+                },
+                {
+                    q: "Hvor lang tid tar det å lage en nettside?",
+                    a: "De fleste prosjekter tar 3-6 uker avhengig av omfang, fra research og design til utvikling og lansering. Du får en konkret tidsplan i konsultasjonen.",
+                },
+                {
+                    q: "Tilbyr dere AI-løsninger sammen med webdesign?",
+                    a: "Ja -- alle nettsidene våre kan kombineres med AI-chatbots, automatisering og GEO (generativ motoroptimalisering), slik at bedriften din synes i AI-drevet søk som ChatGPT og Google AI Overviews, ikke bare tradisjonell SEO.",
+                },
+                {
+                    q: "Jobber dere med bedrifter utenfor Bergen?",
+                    a: "Ja. Vi er basert i Bergen og stolte av det, men bygger for kunder i hele Norge og internasjonalt.",
+                },
+            ],
+        },
         hero: {
             tagline: "AI-NATIVE DIGITALE OPPLEVELSER BYGGET FOR",
             inspire: "2026.",
@@ -497,7 +550,8 @@ export const translations = {
             cta: "Få et tilbud",
             phrases: [
                 "Webdesign i |Bergen som konverterer.",
-                "Lynraske |Nettsider.",
+                "Din digitale |designpartner.",
+                "Smarte |AI-løsninger for vekst.",
                 "Skaler med |Automasjon.",
             ]
         },

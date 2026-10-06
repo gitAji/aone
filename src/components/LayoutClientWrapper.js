@@ -68,7 +68,11 @@ export default function LayoutClientWrapper({ children }) {
         </ClientLayoutWrapper>
         <AccessibilityWidget />
         {/* {pathname !== '/' && <DynamicVoiceflowChat />} */}
-        {/* <DynamicTawkToMessenger /> */}
+        {/* Gated on Cookiebot marketing consent (hasChatConsent, above) --
+            Tawk.to sets third-party cookies, so it shouldn't load until a
+            visitor has actually consented, same as Clarity/GTM elsewhere
+            on this site. */}
+        {hasChatConsent && <DynamicTawkToMessenger />}
       </ThemeProvider>
     </LanguageProvider>
   );

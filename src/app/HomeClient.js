@@ -10,6 +10,7 @@ const DynamicServices = dynamic(() => import("@/components/Services"));
 const DynamicProjects = dynamic(() => import("@/components/Projects"));
 const DynamicTestimonials = dynamic(() => import("@/components/Testimonials"));
 const DynamicBrandingShowcase = dynamic(() => import("@/components/BrandingShowcase"));
+const DynamicHomeFAQ = dynamic(() => import("@/components/HomeFAQ"));
 const DynamicCTA = dynamic(() => import("@/components/CTA"));
 
 const HomeClient = () => {
@@ -30,6 +31,8 @@ const HomeClient = () => {
       <DynamicBrandingShowcase />
       {/* Testimonials */}
       <DynamicTestimonials />
+      {/* FAQ -- also targets local "web design Bergen" search intent */}
+      <DynamicHomeFAQ />
       {/* Call to Action */}
       <DynamicCTA />
     </div>
