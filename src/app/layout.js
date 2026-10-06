@@ -34,7 +34,7 @@ export const metadata = {
   title: "Aone | Webdesign Bergen, Webutvikling & AI-byrå Norge",
   description: "Ledende AI-drevet digitalt byrå i Bergen. Vi leverer premium webdesign, webutvikling (Next.js) og forretnings-AI (chatbots & automatisering) i Norge.",
   keywords:
-    "AI Agency Norway, Web Design Bergen, Web Designers in Bergen Norway, Digital Designer Bergen, Digital Solutions Norway, AI Solutions Norway, AI Automation Norway, Custom AI Chatbots Bergen, GEO SEO, Generative Engine Optimization, SGE Optimization, High Performance Websites Norway, Next.js Development Norway, Digital Transformation Bergen, AI Business Solutions Oslo, Webutvikling Bergen, Webdesignere i Bergen, Digital Designer, Digitale Løsninger, AI-løsninger, AI-drevet markedsføring, Kunstig intelligens firma Norge, LLM implementering",
+    "AI Agency Norway, Web Design Bergen, Web Designers in Bergen Norway, Digital Designer Bergen, Digital Solutions Norway, AI Solutions Norway, AI Automation Norway, Custom AI Chatbots Bergen, GEO SEO, Generative Engine Optimization, SGE Optimization, High Performance Websites Norway, Next.js Development Norway, Digital Transformation Bergen, AI Business Solutions Oslo, Webutvikling Bergen, Webdesignere i Bergen, Digital Designer, Digitale Løsninger, AI-løsninger, Digitalbyrå Bergen, Digital Marketing Bergen, AI-drevet markedsføring, Kunstig intelligens firma Norge, LLM implementering",
   icons: {
     icon: "/images/favicon.ico",
   },
