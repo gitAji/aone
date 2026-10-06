@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import * as CookieConsent from "vanilla-cookieconsent";
 import Footer from "@/components/Footer";
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
+import CookieConsentManager from "@/components/CookieConsentManager";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import AccessibilityWidget from "@/components/AccessibilityWidget";
@@ -25,53 +27,43 @@ export default function LayoutClientWrapper({ children }) {
       setShowReferralPopup(true);
     }, 2000); // 2-second delay
 
-    const handleCookiebotConsent = () => {
-      // window.Cookiebot can exist before its own .consent object is
-      // populated (it's set asynchronously once Cookiebot finishes
-      // initializing) -- checking window.Cookiebot alone and then reading
-      // .consent.marketing threw a TypeError in that gap, which aborted
-      // this whole effect before the CookiebotOnAccept/Decline/Load
-      // listeners below ever got registered. Confirmed live: it crashed
-      // every single page in dev (Next's full-screen error overlay) and
-      // would have left hasChatConsent stuck at its default forever in
-      // production too, since the listener registration never ran.
-      if (window.Cookiebot?.consent) {
-        setHasChatConsent(window.Cookiebot.consent.marketing);
-      } else {
-        // Fallback: show it by default until Cookiebot decides otherwise
-        setHasChatConsent(true);
-      }
+    const handleConsentChange = () => {
+      setHasChatConsent(CookieConsent.acceptedCategory('marketing'));
     };
 
-    // Initial check
-    handleCookiebotConsent();
-
-    // Listen for consent changes
-    window.addEventListener('CookiebotOnAccept', handleCookiebotConsent);
-    window.addEventListener('CookiebotOnDecline', handleCookiebotConsent);
-    window.addEventListener('CookiebotOnLoad', handleCookiebotConsent);
+    // No synchronous initial check here: CookieConsent.run() (called from
+    // CookieConsentManager, a child, so its effect fires first) is async --
+    // reading acceptedCategory() immediately would race it. 'cc:consentChange'
+    // is dispatched from the library's own onConsent callback, which fires
+    // once run() resolves AND on every later change, whether the visitor is
+    // brand new (defaults to not-accepted, correctly keeping Tawk off) or
+    // returning with stored consent -- so this listener alone covers both.
+    window.addEventListener('cc:consentChange', handleConsentChange);
 
     return () => {
       clearTimeout(referralTimer);
-      window.removeEventListener('CookiebotOnAccept', handleCookiebotConsent);
-      window.removeEventListener('CookiebotOnDecline', handleCookiebotConsent);
-      window.removeEventListener('CookiebotOnLoad', handleCookiebotConsent);
+      window.removeEventListener('cc:consentChange', handleConsentChange);
     };
   }, []);
 
   return (
     <LanguageProvider>
       <ThemeProvider>
+        {/* Needs to be inside LanguageProvider (for useLanguage) but outside
+            ClientLayoutWrapper -- it renders nothing itself, just owns the
+            CookieConsent.run() call and keeps its text in sync with the
+            site's EN/NO toggle. The library injects its own banner/modal
+            straight into document.body, not through this component's JSX. */}
+        <CookieConsentManager />
         <ClientLayoutWrapper>
           {children}
           {/* {showReferralPopup && <DynamicReferralPopup />} */}
           <Footer />
         </ClientLayoutWrapper>
         <AccessibilityWidget />
-        {/* Gated on Cookiebot marketing consent (hasChatConsent, above) --
-            Tawk.to sets third-party cookies, so it shouldn't load until a
-            visitor has actually consented, same as Clarity/GTM elsewhere
-            on this site. */}
+        {/* Gated on marketing consent (hasChatConsent, above) -- Tawk.to sets
+            third-party cookies, so it shouldn't load until a visitor has
+            actually consented, same as Clarity/GTM elsewhere on this site. */}
         {hasChatConsent && <DynamicTawkToMessenger />}
       </ThemeProvider>
     </LanguageProvider>

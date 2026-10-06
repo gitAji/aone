@@ -1,6 +1,7 @@
 import React from "react";
 import { FaEnvelope, FaPhone, FaArrowRight, FaMapMarkerAlt } from "react-icons/fa";
 import Link from "next/link";
+import * as CookieConsent from "vanilla-cookieconsent";
 import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
 import Logo from "./Logo";
@@ -115,6 +116,15 @@ const Footer = () => {
               <li><Link href="/terms-and-conditions" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.terms')}</Link></li>
               <li><Link href="/accessibility-statement" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.accessibility')}</Link></li>
               <li><Link href="/cookie-policy" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.cookie')}</Link></li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => CookieConsent.showPreferences()}
+                  className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors text-left"
+                >
+                  {t('footer.cookieSettings') || 'Cookie Settings'}
+                </button>
+              </li>
               <li><Link href="/disclaimer" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.disclaimer')}</Link></li>
               <li><Link href="/design-requirements" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.requirements')}</Link></li>
               <li><Link href="/support" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.support')}</Link></li>

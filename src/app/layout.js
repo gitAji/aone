@@ -1,6 +1,9 @@
 import { Inter, Pacifico, DM_Sans } from "next/font/google";
+// vanilla-cookieconsent's own stylesheet sets its --cc-* defaults on :root
+// too, same specificity as our overrides below -- it must load first so
+// globals.css's theme mapping (further down this file) wins the cascade.
+import "vanilla-cookieconsent/dist/cookieconsent.css";
 import "./globals.css?v=1";
-import Script from "next/script";
 import LayoutClientWrapper from "@/components/LayoutClientWrapper";
 
 const inter = Inter({
@@ -103,9 +106,22 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
-        <Script
+        {/* type="text/plain" + data-category -- our own CookieConsentManager
+            (vanilla-cookieconsent, run from LayoutClientWrapper) intercepts
+            and executes these once the matching category is accepted. This
+            replaces Cookiebot's "auto blocking mode", which relied on its
+            own pattern-matching to find and block trackers -- these tags are
+            now explicitly, verifiably blocked until consent is given,
+            instead of depending on a third-party's detection. Plain
+            server-rendered <script>, not next/script, so the tag (inert,
+            type="text/plain") is present in the initial HTML for the
+            library to find on mount; next/script's injection strategies are
+            for *executing* scripts, which is exactly what must NOT happen
+            here before consent. */}
+        <script
           id="gtm-script"
-          strategy="afterInteractive"
+          type="text/plain"
+          data-category="marketing"
           dangerouslySetInnerHTML={{
             __html: `
               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -116,10 +132,10 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
-        <Script
+        <script
           id="ms-clarity"
-          strategy="afterInteractive"
-          data-cookieconsent="statistics"
+          type="text/plain"
+          data-category="analytics"
           dangerouslySetInnerHTML={{
             __html: `
               (function(c,l,a,r,i,t,y){
@@ -130,26 +146,12 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
-        <Script
-          id="Cookiebot"
-          src="https://consent.cookiebot.com/uc.js"
-          data-cbid="33107273-3499-4a3b-be02-02152a74cc6a"
-          data-blockingmode="auto"
-          strategy="beforeInteractive"
-          type="text/javascript"
-        />
       </head>
       <body
         className={`${inter.variable} ${pacifico.variable} ${dmSans.variable} antialiased`}
         suppressHydrationWarning
       >
         <LayoutClientWrapper>
-          <noscript
-            dangerouslySetInnerHTML={{
-              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TB2VFWDP"
-                height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
-            }}
-          />
           {children}
         </LayoutClientWrapper>
 
