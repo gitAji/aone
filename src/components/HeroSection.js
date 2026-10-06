@@ -139,24 +139,27 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
                 {t('hero.subtitle')}
               </p>
 
-              {/* CTAs */}
+              {/* CTAs -- primary button is the direct conversion action
+                  (request-quote), not just another navigational link, so a
+                  1-click path to converting is visible above the fold with
+                  zero scrolling. */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full sm:w-auto">
-                <Link 
-                  href="/pricing" 
+                <Link
+                  href="/request-quote"
                   className="w-full sm:w-auto px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full font-bold tracking-wide hover:shadow-xl hover:shadow-slate-900/20 dark:hover:shadow-white/20 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 group relative overflow-hidden"
                 >
                   <span className="relative z-10 flex items-center gap-3">
-                    View Pricing
+                    {t('requestQuote') || "Get Free Quote"}
                     <FaArrowRight className="transform group-hover:translate-x-1 transition-transform" />
                   </span>
                   {/* Active Shine Effect */}
                   <div className="absolute inset-0 -translate-x-full z-0 bg-gradient-to-r from-transparent via-white/20 dark:via-black/10 to-transparent animate-shimmer" />
                 </Link>
-                <Link 
-                  href="/services" 
+                <Link
+                  href="/pricing"
                   className="w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 rounded-full font-bold tracking-wide hover:border-slate-900 dark:hover:border-white hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-900 transition-all duration-300 flex items-center justify-center"
                 >
-                  {t('nav.services') || "Our Services"}
+                  View Pricing
                 </Link>
               </div>
             </>
