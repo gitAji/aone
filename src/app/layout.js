@@ -153,7 +153,13 @@ export default function RootLayout({ children }) {
           {children}
         </LayoutClientWrapper>
 
-        <Script id="schema-script" type="application/ld+json" dangerouslySetInnerHTML={{
+        {/* Plain <script>, not next/script -- JSON-LD has to be present in the
+            raw server-rendered HTML for reliable structured-data detection.
+            next/script's default "afterInteractive" strategy injects the tag
+            client-side only after hydration, so it's absent from the actual
+            page source crawlers/validators see first. Verified by inspecting
+            .next/server/app/index.html before and after this change. */}
+        <script id="schema-script" type="application/ld+json" dangerouslySetInnerHTML={{
           __html: `
               {
                 "@context": "https://schema.org",
