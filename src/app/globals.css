@@ -51,6 +51,42 @@
   --hero-highlight: #facc15;
 }
 
+/* Theme the self-hosted cookie consent banner/modal (vanilla-cookieconsent)
+   to match the site's own brand tokens above, rather than the library's
+   generic default styling. Referencing --primary-color/--card-background/etc.
+   instead of hardcoding hex values means this automatically follows the
+   site's light/dark toggle, since those already swap under .dark. */
+:root {
+  --cc-bg: var(--card-background);
+  --cc-primary-color: var(--text-color);
+  --cc-secondary-color: var(--secondary-color);
+  --cc-font-family: var(--font-inter), sans-serif;
+  --cc-btn-primary-bg: var(--primary-color);
+  --cc-btn-primary-border-color: var(--primary-color);
+  --cc-btn-primary-hover-bg: var(--primary-color-darker);
+  --cc-btn-primary-hover-border-color: var(--primary-color-darker);
+  --cc-btn-primary-color: #ffffff;
+  --cc-btn-secondary-bg: transparent;
+  --cc-btn-secondary-border-color: var(--border-color);
+  --cc-btn-secondary-color: var(--text-color);
+  --cc-btn-secondary-hover-bg: var(--light-gray);
+  --cc-btn-secondary-hover-border-color: var(--border-color);
+  --cc-btn-secondary-hover-color: var(--text-color);
+  --cc-toggle-on-bg: var(--primary-color);
+  --cc-toggle-off-bg: var(--border-color);
+  --cc-toggle-readonly-bg: var(--secondary-color);
+  --cc-cookie-category-block-bg: var(--light-gray);
+  --cc-cookie-category-block-border: var(--border-color);
+  --cc-cookie-category-expanded-block-bg: var(--light-gray);
+  --cc-separator-border-color: var(--border-color);
+  --cc-footer-bg: var(--light-gray);
+  --cc-footer-border-color: var(--border-color);
+  --cc-footer-color: var(--secondary-color);
+  --cc-link-color: var(--primary-color);
+  --cc-modal-border-radius: 1.5rem;
+  --cc-btn-border-radius: 0.75rem;
+}
+
 /* Modern Scrollbar */
 @media (max-width: 768px) {
   ::-webkit-scrollbar {

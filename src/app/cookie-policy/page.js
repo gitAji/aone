@@ -3,6 +3,7 @@
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import { motion } from 'framer-motion';
+import * as CookieConsent from 'vanilla-cookieconsent';
 
 const Section = ({ title, children, id }) => (
   <motion.section 
@@ -69,9 +70,16 @@ const CookiePolicy = () => {
             </Section>
 
             <Section title="How can I control cookies?">
-              <p>
-                You have the right to decide whether to accept or reject cookies. You can exercise your cookie rights by setting your preferences in the Cookie Consent Manager. The Cookie Consent Manager allows you to select which categories of cookies you accept or reject. Essential cookies cannot be rejected as they are strictly necessary to provide you with services.
+              <p className="mb-6">
+                You have the right to decide whether to accept or reject cookies. You can exercise your cookie rights at any time by opening your cookie preferences below, or via the &quot;Cookie Settings&quot; link in the footer. Necessary cookies cannot be rejected as they are strictly required to provide you with the service.
               </p>
+              <button
+                type="button"
+                onClick={() => CookieConsent.showPreferences()}
+                className="px-6 py-3 rounded-xl bg-rose-500 text-white text-xs font-black uppercase tracking-widest hover:bg-rose-600 transition-colors"
+              >
+                Manage Cookie Preferences
+              </button>
             </Section>
           </div>
         </div>
