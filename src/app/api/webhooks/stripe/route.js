@@ -53,10 +53,19 @@ export async function POST(request) {
                 }
 
                 const adminDb = getAdminDb();
+                const paidAmount = typeof session.amount_total === 'number' ? session.amount_total / 100 : null;
                 await adminDb.collection('orders').doc(orderId).set({
                     status: 'completed',
                     paymentVerified: true,
-                    paidAmount: typeof session.amount_total === 'number' ? session.amount_total / 100 : null,
+                    paidAmount,
+                    // Mirror into totalAmount too -- that's the field the
+                    // success page and OrderClient's step-4 receipt actually
+                    // read, and it was previously only ever set to the
+                    // pre-payment estimate from checkout/stripe/route.js.
+                    // Overwriting it here with what Stripe actually
+                    // confirms was charged keeps the receipt honest even if
+                    // that estimate and the real charge ever drift apart.
+                    ...(paidAmount !== null ? { totalAmount: paidAmount } : {}),
                     currency: session.currency || null,
                     stripeSessionId: session.id,
                     stripeCustomerId: typeof session.customer === 'string' ? session.customer : session.customer?.id || null,
