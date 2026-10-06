@@ -39,9 +39,11 @@ const Header = () => {
         <Logo />
 
         <div className="flex items-center gap-2 sm:gap-3">
+          {/* Visible at every breakpoint -- a direct conversion action should
+              be reachable in 1 click from any page, not just on desktop. */}
           <Link
             href="/request-quote"
-            className="hidden sm:inline-flex items-center gap-2 px-5 py-2 text-[11px] font-bold uppercase tracking-wider rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-950 border border-slate-900 dark:border-white hover:bg-transparent dark:hover:bg-transparent hover:text-slate-900 dark:hover:text-white hover:-translate-y-0.5 active:translate-y-0 shadow-sm transition-all duration-300 group"
+            className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-950 border border-slate-900 dark:border-white hover:bg-transparent dark:hover:bg-transparent hover:text-slate-900 dark:hover:text-white hover:-translate-y-0.5 active:translate-y-0 shadow-sm transition-all duration-300 group"
           >
             <span>{t('requestQuote')}</span>
             <FaArrowRight className="text-[9px] transform group-hover:translate-x-0.5 transition-transform duration-200" />

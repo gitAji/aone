@@ -31,6 +31,7 @@ const HamburgerMenu = () => {
   };
 
   const menuLinks = [
+    { num: "00", name: t('requestQuote'), href: '/request-quote', desc: t('nav.desc.requestQuote') || "Get a free, no-obligation quote" },
     { num: "01", name: t('nav.services'), href: '/services', desc: t('nav.desc.services') || "Tailored web design & business AI automation" },
     { num: "02", name: t('nav.pricing'), href: '/pricing', desc: t('nav.desc.pricing') || "Transparent packages & custom enterprise quotes" },
     { num: "03", name: t('nav.products'), href: '/products', desc: t('nav.desc.products') || "Pre-packaged software & ready-made templates" },
