@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { packages, SITE_WIDE_DISCOUNT_RATE, PROMO_CODE_DISCOUNT_RATE, PROMO_CODE } from '../data/packages';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { FaLaptopCode, FaCheck, FaCrown, FaCameraRetro, FaSearch, FaTools, FaPenNib, FaUsers, FaRobot, FaBullhorn, FaPencilRuler, FaVideo, FaInfoCircle, FaTruck, FaSpinner, FaCreditCard, FaLock, FaCalendarAlt, FaShieldAlt, FaStripe, FaCcVisa, FaCcMastercard, FaCcPaypal, FaBolt, FaFileInvoice, FaCube, FaPuzzlePiece, FaTag, FaClock, FaCalendarCheck, FaChartLine } from 'react-icons/fa';
+import { FaLaptopCode, FaCheck, FaCrown, FaCameraRetro, FaSearch, FaTools, FaPenNib, FaUsers, FaBullhorn, FaPencilRuler, FaVideo, FaInfoCircle, FaTruck, FaSpinner, FaCreditCard, FaLock, FaCalendarAlt, FaShieldAlt, FaStripe, FaCcVisa, FaCcMastercard, FaCcPaypal, FaBolt, FaFileInvoice, FaCube, FaPuzzlePiece, FaTag, FaClock, FaCalendarCheck, FaChartLine } from 'react-icons/fa';
 import Toast from '@/components/Toast';
 
 const roundPrice = (value) => {
@@ -654,7 +654,6 @@ function OrderPageContent() {
                                             {packages.filter(p => p.isAddon).map(pkg => {
                                                 const getAddonIcon = (id) => {
                                                     switch (id) {
-                                                        case 'chatbot': return <FaRobot />;
                                                         case 'geo': return <FaSearch />;
                                                         case 'performance': return <FaBolt />;
                                                         case 'seo': return <FaSearch />;
