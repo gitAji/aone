@@ -38,7 +38,7 @@ const PhotographyPage = () => {
                         {
                             icon: <FaImage className="text-5xl text-rose-500 mb-6" />,
                             title: "Visual Narrative",
-                            description: "Convey your brand&apos;s core values through high-fidelity, compelling imagery.",
+                            description: "Convey your brand's core values through high-fidelity, compelling imagery.",
                         },
                         {
                             icon: <FaMagic className="text-5xl text-rose-500 mb-6" />,
@@ -74,7 +74,7 @@ const PhotographyPage = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-4xl md:text-5xl font-black mb-16 text-center uppercase tracking-tighter"
+                        className="text-4xl md:text-5xl font-black mb-16 text-center uppercase tracking-tighter text-white"
                     >
                         Elite Photography Services
                     </motion.h2>

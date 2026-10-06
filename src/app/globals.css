@@ -169,47 +169,62 @@ body.no-scroll {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-clash-display), sans-serif;
-  margin-bottom: 1.25rem;
-  line-height: 1.15;
-  font-weight: 700;
-  color: var(--text-color);
-  letter-spacing: -0.025em;
-}
+/* @layer base, not a bare rule -- these are the sitewide defaults for
+   headings/paragraphs, but they were previously unlayered. Tailwind v4
+   emits its own utilities inside @layer utilities, and per the CSS
+   cascade-layers spec, ANY unlayered rule beats ANY layered rule
+   regardless of specificity. That meant a bare `h3 { color: var(--text-color) }`
+   here was silently overriding `text-white`/`text-4xl`/etc. utility
+   classes applied directly to headings throughout the site -- confirmed
+   live on /services/photography's "Elite Photography Services" section,
+   where text-white h2/h3 headings rendered as near-invisible dark slate
+   against a dark background. Wrapping in @layer base keeps these as the
+   sensible default for headings with no explicit color/size utility,
+   while letting Tailwind utility classes override them again as
+   intended. */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-clash-display), sans-serif;
+    margin-bottom: 1.25rem;
+    line-height: 1.15;
+    font-weight: 700;
+    color: var(--text-color);
+    letter-spacing: -0.025em;
+  }
 
-h1 {
-  font-size: clamp(2.25rem, 6vw, 4.25rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-}
+  h1 {
+    font-size: clamp(2.25rem, 6vw, 4.25rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
 
-h2 {
-  font-size: clamp(1.75rem, 4vw, 3rem);
-  font-weight: 600;
-  line-height: 1.2;
-}
+  h2 {
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    font-weight: 600;
+    line-height: 1.2;
+  }
 
-h3 {
-  font-size: clamp(1.25rem, 2.5vw, 1.875rem);
-  font-weight: 600;
-  line-height: 1.3;
-}
+  h3 {
+    font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+    font-weight: 600;
+    line-height: 1.3;
+  }
 
-h4 {
-  font-size: clamp(1.1rem, 2vw, 1.5rem);
-  font-weight: 600;
-}
+  h4 {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-weight: 600;
+  }
 
-p {
-  margin-bottom: 1.25rem;
-  font-size: 1.0625rem;
-  line-height: 1.75;
+  p {
+    margin-bottom: 1.25rem;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
 }
 
 /* Utility class to explicitly force Clash Display on any element */

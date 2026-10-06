@@ -32,9 +32,16 @@ export default function LayoutClientWrapper({ children }) {
     }, 2000); // 2-second delay
 
     const handleCookiebotConsent = () => {
-      // If Cookiebot isn't loaded yet or user hasn't made a choice, we can show it
-      // or check if they specifically declined marketing.
-      if (window.Cookiebot) {
+      // window.Cookiebot can exist before its own .consent object is
+      // populated (it's set asynchronously once Cookiebot finishes
+      // initializing) -- checking window.Cookiebot alone and then reading
+      // .consent.marketing threw a TypeError in that gap, which aborted
+      // this whole effect before the CookiebotOnAccept/Decline/Load
+      // listeners below ever got registered. Confirmed live: it crashed
+      // every single page in dev (Next's full-screen error overlay) and
+      // would have left hasChatConsent stuck at its default forever in
+      // production too, since the listener registration never ran.
+      if (window.Cookiebot?.consent) {
         setHasChatConsent(window.Cookiebot.consent.marketing);
       } else {
         // Fallback: show it by default until Cookiebot decides otherwise
