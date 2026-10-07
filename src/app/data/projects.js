@@ -1,5 +1,62 @@
 const projects = [
   {
+    id: "clean-masters-renhold",
+    title: "Clean Masters Renhold",
+    description: "Website for a professional cleaning company (rengjøringsbyrå) in Bergen.",
+    imageUrl: "/images/projects/cleanmasters.png",
+    projectLink: "/references/clean-masters-renhold",
+    featured: true,
+    local: true,
+    location: "Bergen, Norge",
+    overview: {
+      description1:
+        "Clean Masters Renhold is a professional cleaning company based in Bergen, Norway. Aone designed and developed a clean, modern, and trustworthy website built to generate leads and make it effortless for Bergen homeowners and businesses to request a quote or book a cleaning service.",
+      description2:
+        "We focused on creating a user-friendly experience with clear calls-to-action, detailed service descriptions, and a simple contact form, combined with local SEO targeting Bergen-area search terms such as \"rengjøringsbyrå Bergen\" and \"rengjøringstjenester Bergen.\" The website was designed to be fully responsive and optimized for search engines to attract local customers across Bergen and Vestland.",
+      imageUrl: "/images/projects/cleanmasters/cover1.png",
+    },
+    process: [
+      {
+        title: "Brand Discovery & Strategy",
+        description:
+          "We conducted workshops and interviews to understand the agency's values, mission, and target audience, laying the foundation for a unique brand strategy.",
+        imageUrl: "/images/projects/cleanmasters/wireframe.png",
+      },
+      {
+        title: "Visual Identity Design",
+        description:
+          "Our design team crafted a sleek, intuitive, and secure user interface, focusing on ease of use. Interactive prototypes were developed for user testing.",
+        imageUrl: "/images/projects/cleanmasters/cover.png",
+      },
+      {
+        title: "Secure Development",
+        description:
+          "The app was built with a strong emphasis on security, utilizing encryption, secure APIs, and robust backend infrastructure.",
+        imageUrl: "/images/projects/cleanmasters/dev.png",
+      },
+      {
+        title: "Testing & Compliance",
+        description:
+          "Extensive testing was conducted to ensure functionality, usability, and performance across devices, along with compliance checks to meet industry standards.",
+        imageUrl: "/images/projects/cleanmasters/test.png",
+      },
+    ],
+    features: [
+      "AI-Driven Instant Quote Generator",
+      "SEO & GEO Optimization (AI Search Ready)",
+      "Vibrant, modern UI with sub-1s load times",
+      "Automated booking & scheduling system",
+      "Client Testimonials with verified metrics",
+      "Interactive Location & Zone Management",
+    ],
+    technologies: ["Next.js", "Tailwind CSS", "AI Logic", "Firebase"],
+    results: {
+      summary:
+        "The new AI-enhanced platform led to a **40% increase in web traffic** and a **60% faster response time** via the automated quote generator. Local SEO gains helped Clean Masters Renhold rank for key Bergen cleaning-service searches, boosting service inquiries by 25% within the first three months and solidifying their market leadership in Bergen.",
+      imageUrl: "/images/projects/cleanmasters/result.png",
+    },
+  },
+  {
     id: "kids-learning-portal",
     title: "Kids Learning Portal",
     description: "Learning portal for kids.",
@@ -50,7 +107,7 @@ const projects = [
     technologies: ["Next.js", "React", "Node.js", "Strapi (headless CMS)"],
     results: {
       summary:
-        "The new website significantly enhanced Saray Steakhouse's online presence, leading to a **20% increase in online reservations** and improved customer engagement. The visually appealing design and user-friendly interface received positive feedback, contributing to a stronger brand image and increased customer satisfaction.",
+        "The new platform significantly enhanced the learning portal's online presence, leading to a **20% increase in active parent sign-ups** and improved student engagement. The intuitive parent and kids dashboards received positive feedback, contributing to a stronger brand image and increased customer satisfaction.",
       imageUrl: "/images/projects/kidsportal/result.png",
     },
   },
@@ -106,61 +163,6 @@ const projects = [
       summary:
         "The AI-Native transformation resulted in a **50% increase in online bookings** and a 30% reduction in manual admin time. The new lightning-fast interface (sub-1s load) significantly improved mobile conversion rates and customer satisfaction.",
       imageUrl: "/images/projects/saray/result.png",
-    },
-  },
-  {
-    id: "clean-masters-renhold",
-    title: "Clean Masters Renhold",
-    description: "Website for Clean Masters Renhold.",
-    imageUrl: "/images/projects/cleanmasters.png",
-    projectLink: "/references/clean-masters-renhold",
-    featured: true,
-    overview: {
-      description1:
-        "The project for Clean Masters Renhold, a professional cleaning service, was to design and develop a clean, modern, and trustworthy website. The main objective was to generate leads and make it easy for potential customers to request a quote or book a service.",
-      description2:
-        "We focused on creating a user-friendly experience with clear calls-to-action, detailed service descriptions, and a simple contact form. The website was designed to be fully responsive and optimized for search engines to attract local customers.",
-      imageUrl: "/images/projects/cleanmasters/cover1.png",
-    },
-    process: [
-      {
-        title: "Brand Discovery & Strategy",
-        description:
-          "We conducted workshops and interviews to understand the agency's values, mission, and target audience, laying the foundation for a unique brand strategy.",
-        imageUrl: "/images/projects/cleanmasters/wireframe.png",
-      },
-      {
-        title: "Visual Identity Design",
-        description:
-          "Our design team crafted a sleek, intuitive, and secure user interface, focusing on ease of use. Interactive prototypes were developed for user testing.",
-        imageUrl: "/images/projects/cleanmasters/cover.png",
-      },
-      {
-        title: "Secure Development",
-        description:
-          "The app was built with a strong emphasis on security, utilizing encryption, secure APIs, and robust backend infrastructure.",
-        imageUrl: "/images/projects/cleanmasters/dev.png",
-      },
-      {
-        title: "Testing & Compliance",
-        description:
-          "Extensive testing was conducted to ensure functionality, usability, and performance across devices, along with compliance checks to meet industry standards.",
-        imageUrl: "/images/projects/cleanmasters/test.png",
-      },
-    ],
-    features: [
-      "AI-Driven Instant Quote Generator",
-      "SEO & GEO Optimization (AI Search Ready)",
-      "Vibrant, modern UI with sub-1s load times",
-      "Automated booking & scheduling system",
-      "Client Testimonials with verified metrics",
-      "Interactive Location & Zone Management",
-    ],
-    technologies: ["Next.js", "Tailwind CSS", "AI Logic", "Firebase"],
-    results: {
-      summary:
-        "The new AI-enhanced platform led to a **40% increase in web traffic** and a **60% faster response time** via the automated quote generator. Service inquiries boosted by 25% within the first three months, solidifying their market leadership.",
-      imageUrl: "/images/projects/cleanmasters/result.png",
     },
   },
   {

@@ -57,6 +57,7 @@ export default async function ProjectDetailPage({ params }) {
     image: project.imageUrl,
     url: `https://aone.no/references/${slug}`,
     creator: { '@type': 'Organization', name: 'Aone' },
+    ...(project.location ? { locationCreated: { '@type': 'Place', name: project.location } } : {}),
   };
 
   return (
