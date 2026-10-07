@@ -219,8 +219,8 @@ export default function CookieConsentManager() {
   // Hidden until the visitor has actually answered (see hasAnswered above),
   // so it never competes with the consent banner itself. After that, it's
   // the persistent way to reopen the preferences modal and change category
-  // choices at any time -- stacked just above the accessibility widget
-  // (same corner, same size/style) rather than a separate footer link only.
+  // choices at any time -- sits in the same bottom-6 row as the accessibility
+  // widget, to its right, rather than stacked above it.
   return (
     <AnimatePresence>
       {hasAnswered && (
@@ -229,15 +229,15 @@ export default function CookieConsentManager() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.6, y: 12 }}
           transition={{ type: "spring", stiffness: 400, damping: 25 }}
-          className="group fixed bottom-24 left-6 z-[99999]"
+          className="group fixed bottom-6 left-20 z-[99999]"
         >
           <button
             type="button"
             onClick={() => CookieConsent.showPreferences()}
-            className="relative w-12 h-12 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-950 flex items-center justify-center shadow-lg hover:shadow-rose-500/30 hover:scale-105 active:scale-95 transition-all duration-300 border border-slate-800 dark:border-slate-200 hover:border-rose-500 dark:hover:border-rose-400"
+            className="relative w-10 h-10 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-950 flex items-center justify-center shadow-lg hover:shadow-rose-500/30 hover:scale-105 active:scale-95 transition-all duration-300 border border-slate-800 dark:border-slate-200 hover:border-rose-500 dark:hover:border-rose-400"
             aria-label={language === "no" ? "Administrer informasjonskapsler" : "Manage cookie preferences"}
           >
-            <FaCookieBite className="text-xl" />
+            <FaCookieBite className="text-base" />
           </button>
           <span className="pointer-events-none absolute left-full top-1/2 ml-3 -translate-y-1/2 whitespace-nowrap rounded-md bg-slate-950 px-2.5 py-1.5 text-[9px] font-bold tracking-widest text-white opacity-0 scale-95 transition-all duration-200 group-hover:opacity-100 group-hover:scale-100 shadow-xl hidden sm:block">
             {language === "no" ? "INFORMASJONSKAPSLER" : "COOKIE PREFERENCES"}

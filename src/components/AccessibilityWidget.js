@@ -102,15 +102,17 @@ const AccessibilityWidget = () => {
 
   return (
     <div ref={widgetRef} className="fixed bottom-6 left-6 z-[99999] select-none font-sans">
-      
-      {/* Floating Action Button */}
+
+      {/* Floating Action Button -- paired horizontally with the cookie-reopen
+          icon (CookieConsentManager.js), which sits at left-20 at this same
+          bottom-6 row instead of stacking above it. */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-12 h-12 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-950 flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 border border-slate-800 dark:border-slate-200"
+        className="w-10 h-10 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-950 flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 border border-slate-800 dark:border-slate-200"
         aria-label="Accessibility settings"
         aria-expanded={isOpen}
       >
-        <FaUniversalAccess className="text-xl" />
+        <FaUniversalAccess className="text-base" />
       </button>
 
       {/* Settings Card */}
