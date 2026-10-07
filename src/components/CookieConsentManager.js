@@ -120,6 +120,16 @@ export default function CookieConsentManager() {
     didInit = true;
 
     CookieConsent.run({
+      // The library's default (true) silently skips its own run() entirely
+      // -- no banner, no modal, no reopen icon, nothing in the DOM at all --
+      // for any visitor whose browser reports navigator.webdriver (true
+      // under WebDriver automation: headless/automated browsers, some
+      // embedded preview tooling) or a bot-like user agent. That's a much
+      // bigger footgun than the thing it's meant to prevent: modern crawlers
+      // (Googlebot included) fully render JS and see the page's real content
+      // in the DOM regardless of a cookie overlay, so there's no indexing
+      // cost to leaving this on for everyone.
+      hideFromBots: false,
       guiOptions: {
         // Boxed "bottom right" card, not a full-width bar: the library
         // forces its own UI to an extreme max z-index (see its CSS --
