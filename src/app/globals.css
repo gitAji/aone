@@ -87,19 +87,45 @@
   --cc-btn-border-radius: 0.75rem;
 }
 
-/* Hardening for the preferences modal (#cc-main .pm): the library centers
-   it via `top: 50%` + `transform: translateY(-50%)` with a 600px max-height,
-   which is correct at every viewport size this was tested at (desktop,
-   mobile, and every height from 400px to 900px, before and after resize),
-   but was repeatedly reported as clipping below the viewport in real
-   browser use this sandbox couldn't reproduce. Forcing the max-height to be
-   viewport-relative removes any possible path to that: the modal's own
-   height can never exceed what top:50%/translateY(-50%) has room for,
-   independent of whatever the library's internal math computes it to be.
-   !important is deliberate -- this overrides the library's own stylesheet,
-   loaded earlier in layout.js specifically so later rules here can win. */
+/* Hardening for the preferences modal (#cc-main .pm). Two layered fixes for
+   the same "Save button hidden below the window" report, which this
+   sandbox's Chromium-only testing could never reproduce -- turned out to be
+   a real cross-browser flexbox gap, confirmed by a user screenshot showing
+   an iOS home-indicator bar (Safari/WebKit).
+
+   1. The library's own CSS: `.pm { max-height: 600px }`, assuming 100vh ==
+      "the visible viewport." It doesn't on real mobile browsers -- 100vh is
+      the viewport with browser chrome (address bar, toolbars) hidden, not
+      the actually-visible height. 100dvh tracks the real, currently-visible
+      viewport instead. Dropped the 600px half of the cap entirely (not just
+      min()'d against it): the library's own mobile breakpoint intentionally
+      goes full-screen (max-height:100%) on narrow viewports, and forcing a
+      flat 600px there fights that design instead of complementing it.
+
+   2. `.pm` is `display:flex; flex-direction:column`, with `.pm__body` as the
+      `flex:1; overflow-y:auto` scrollable middle section between the header
+      and footer (Accept/Reject/Save). Flex children default to
+      `min-height:auto`, which lets them refuse to shrink below their own
+      content's natural size. Chromium is forgiving about this in practice;
+      WebKit (Safari, and every iOS browser, which is WebKit under the hood
+      regardless of its name) is strict about it -- so on WebKit, `.pm__body`
+      grows past its allotted space instead of scrolling, and pushes the
+      footer buttons out past `.pm`'s `overflow:hidden`, exactly matching the
+      report. `min-height: 0` on the body is the standard fix; `flex-shrink:
+      0` on header/footer makes them structurally un-squeezable regardless.
+
+   !important throughout is deliberate -- overriding the library's own
+   stylesheet, loaded earlier in layout.js specifically so later rules here
+   can win. */
 #cc-main .pm {
-  max-height: min(600px, calc(100dvh - 2rem)) !important;
+  max-height: calc(100dvh - 2rem) !important;
+}
+#cc-main .pm__header,
+#cc-main .pm__footer {
+  flex-shrink: 0 !important;
+}
+#cc-main .pm__body {
+  min-height: 0 !important;
 }
 
 /* Modern Scrollbar */
