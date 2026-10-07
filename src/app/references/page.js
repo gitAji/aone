@@ -1,5 +1,9 @@
 import ReferencesClient from './ReferencesClient';
 import projects from '../data/projects';
+import { tr } from '@/lib/projectText';
+
+// Matches the site's SSR default (<html lang="no">) -- see [slug]/page.js.
+const SSR_LANG = 'no';
 
 export const metadata = {
   title: "Våre Prosjekter | Webdesign & AI-referanser fra Bergen og Norge",
@@ -34,13 +38,16 @@ export default function Page() {
     },
     mainEntity: {
       '@type': 'ItemList',
-      itemListElement: projects.map((project, index) => ({
-        '@type': 'ListItem',
-        position: index + 1,
-        url: `https://aone.no${project.projectLink}`,
-        name: project.title,
-        ...(project.location ? { item: { '@type': 'CreativeWork', name: project.title, areaServed: project.location } } : {}),
-      })),
+      itemListElement: projects.map((project, index) => {
+        const name = tr(project.title, SSR_LANG);
+        return {
+          '@type': 'ListItem',
+          position: index + 1,
+          url: `https://aone.no${project.projectLink}`,
+          name,
+          ...(project.location ? { item: { '@type': 'CreativeWork', name, areaServed: tr(project.location, SSR_LANG) } } : {}),
+        };
+      }),
     },
   };
 
