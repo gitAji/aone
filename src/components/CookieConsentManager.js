@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import * as CookieConsent from "vanilla-cookieconsent";
 import { FaCookieBite } from "react-icons/fa";
 import { useLanguage } from "@/context/LanguageContext";
@@ -200,17 +201,29 @@ export default function CookieConsentManager() {
   // the persistent way to reopen the preferences modal and change category
   // choices at any time -- stacked just above the accessibility widget
   // (same corner, same size/style) rather than a separate footer link only.
-  if (!hasAnswered) return null;
-
   return (
-    <button
-      type="button"
-      onClick={() => CookieConsent.showPreferences()}
-      className="fixed bottom-24 left-6 z-[99999] w-12 h-12 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-950 flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 border border-slate-800 dark:border-slate-200"
-      aria-label={language === "no" ? "Administrer informasjonskapsler" : "Manage cookie preferences"}
-      title={language === "no" ? "Informasjonskapsler" : "Cookie preferences"}
-    >
-      <FaCookieBite className="text-xl" />
-    </button>
+    <AnimatePresence>
+      {hasAnswered && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.6, y: 12 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.6, y: 12 }}
+          transition={{ type: "spring", stiffness: 400, damping: 25 }}
+          className="group fixed bottom-24 left-6 z-[99999]"
+        >
+          <button
+            type="button"
+            onClick={() => CookieConsent.showPreferences()}
+            className="relative w-12 h-12 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-950 flex items-center justify-center shadow-lg hover:shadow-rose-500/30 hover:scale-105 active:scale-95 transition-all duration-300 border border-slate-800 dark:border-slate-200 hover:border-rose-500 dark:hover:border-rose-400"
+            aria-label={language === "no" ? "Administrer informasjonskapsler" : "Manage cookie preferences"}
+          >
+            <FaCookieBite className="text-xl" />
+          </button>
+          <span className="pointer-events-none absolute left-full top-1/2 ml-3 -translate-y-1/2 whitespace-nowrap rounded-md bg-slate-950 px-2.5 py-1.5 text-[9px] font-bold tracking-widest text-white opacity-0 scale-95 transition-all duration-200 group-hover:opacity-100 group-hover:scale-100 shadow-xl hidden sm:block">
+            {language === "no" ? "INFORMASJONSKAPSLER" : "COOKIE PREFERENCES"}
+          </span>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
