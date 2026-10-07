@@ -5,9 +5,10 @@ import Link from "next/link";
 
 import projects from "@/app/data/projects.js";
 import { useLanguage } from "@/context/LanguageContext";
+import { tr } from "@/lib/projectText";
 
 const Projects = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   return (
     <section className="projects-section py-24 md:py-32 bg-slate-50 dark:bg-slate-950 w-full">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
@@ -24,7 +25,10 @@ const Projects = () => {
 
         {/* Flexbox-based Grid */}
         <div className="flex flex-wrap -mx-4">
-          {projects.slice(0, 6).map((project, index) => (
+          {projects.slice(0, 6).map((project, index) => {
+            const displayTitle = tr(project.homeTitle || project.title, language);
+            const displayDescription = tr(project.description, language);
+            return (
             <div key={index} className="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
               {/* Animated Glowing Border Wrapper */}
               <div className="project-card relative group shadow-lg aspect-[4/3] w-full bg-transparent rounded-2xl z-0 border border-slate-200/70 dark:border-white/10">
@@ -62,12 +66,12 @@ const Projects = () => {
                   <Link
                     href={`/references/${project.id}`}
                     className="relative w-full h-full block overflow-hidden focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
-                    aria-label={`View details for ${project.title}`}
+                    aria-label={`View details for ${displayTitle}`}
                   >
                     {/* Background Image */}
                     <Image
                       src={project.imageUrl}
-                      alt={project.title}
+                      alt={displayTitle}
                       fill
                       style={{ objectFit: "cover" }}
                       className="opacity-100 group-hover:opacity-90 transition-opacity duration-500"
@@ -82,21 +86,22 @@ const Projects = () => {
                     >
                       <div className="flex items-center justify-between w-full">
                         <h3 className="project-overlay-title text-base sm:text-lg md:text-xl font-semibold">
-                          {project.title}
+                          {displayTitle}
                         </h3>
                         <span className="project-overlay-arrow w-6 h-6 transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300">
                           -&gt;
                         </span>
                       </div>
                       <p className="project-overlay-desc text-xs sm:text-sm mt-2 opacity-90 line-clamp-2">
-                        {project.description}
+                        {displayDescription}
                       </p>
                     </div>
                   </Link>
                 </div>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* View All Button */}
