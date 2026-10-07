@@ -33,7 +33,10 @@ export default function WhatsAppButton() {
       // code, and embed.tawk.to isn't reachable from this sandbox to
       // screenshot the real bubble -- worth a quick visual check on the
       // live deploy preview).
-      className="group fixed bottom-24 right-6 z-[99999]"
+      // Mobile-only: WhatsApp is the primary chat channel on phones, Tawk.to
+      // (desktop-only, see LayoutClientWrapper.js) is the primary channel on
+      // desktop -- the two never show at the same time.
+      className="group fixed bottom-24 right-6 z-[99999] md:hidden"
     >
       <a
         href={href}

@@ -28,8 +28,17 @@ export default function LayoutClientWrapper({ children }) {
   // WhatsAppButton.js sits in, so it must stay hidden until that banner is
   // answered and out of the way, same timing as the cookie-settings icon.
   const [hasAnsweredConsent, setHasAnsweredConsent] = useState(false);
+  // Tawk.to is desktop-only (WhatsApp is mobile's chat channel instead, see
+  // WhatsAppButton.js's own md:hidden) -- gated here, not just visually
+  // hidden with CSS, so its third-party script never even loads on mobile.
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
+    const mql = window.matchMedia('(min-width: 768px)');
+    setIsDesktop(mql.matches);
+    const handleChange = (e) => setIsDesktop(e.matches);
+    mql.addEventListener('change', handleChange);
+
     const referralTimer = setTimeout(() => {
       setShowReferralPopup(true);
     }, 2000); // 2-second delay
@@ -50,6 +59,7 @@ export default function LayoutClientWrapper({ children }) {
 
     return () => {
       clearTimeout(referralTimer);
+      mql.removeEventListener('change', handleChange);
       window.removeEventListener('cc:consentChange', handleConsentChange);
     };
   }, []);
@@ -79,8 +89,10 @@ export default function LayoutClientWrapper({ children }) {
         {hasAnsweredConsent && <WhatsAppButton />}
         {/* Gated on marketing consent (hasChatConsent, above) -- Tawk.to sets
             third-party cookies, so it shouldn't load until a visitor has
-            actually consented, same as Clarity/GTM elsewhere on this site. */}
-        {hasChatConsent && <DynamicTawkToMessenger />}
+            actually consented, same as Clarity/GTM elsewhere on this site.
+            Also desktop-only (isDesktop) so its script never loads on
+            mobile, where WhatsApp is the chat channel instead. */}
+        {hasChatConsent && isDesktop && <DynamicTawkToMessenger />}
       </ThemeProvider>
     </LanguageProvider>
   );
