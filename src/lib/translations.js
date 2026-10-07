@@ -264,9 +264,9 @@ export const translations = {
             header: "Our Cloud Solutions",
         },
         referencesPage: {
-            title: "Our References",
-            subtitle: "Explore our portfolio of successful projects",
-            header: "Our References",
+            title: "Our Projects",
+            subtitle: "Web design, AI automation & branding work for businesses in Bergen and across Norway",
+            header: "Featured Case Studies",
             viewDetails: "View Details",
         },
         projectDetail: {
@@ -762,9 +762,9 @@ export const translations = {
             header: "Våre Skyløsninger",
         },
         referencesPage: {
-            title: "Våre referanser",
-            subtitle: "Utforsk vår portefølje av vellykkede prosjekter",
-            header: "Våre referanser",
+            title: "Våre Prosjekter",
+            subtitle: "Webdesign, AI-automatisering og merkevarebygging for bedrifter i Bergen og i hele Norge",
+            header: "Utvalgte Kundecase",
             viewDetails: "Se detaljer",
         },
         projectDetail: {

@@ -1,56 +1,56 @@
-"use client";
-import React from "react";
-import HeroSection from "@/components/HeroSection";
-import Link from "next/link";
-import Image from "next/image";
-import projects from "../data/projects";
-import { useLanguage } from "@/context/LanguageContext";
+import ReferencesClient from './ReferencesClient';
+import projects from '../data/projects';
 
-const ReferencesPage = () => {
-  const { t } = useLanguage();
-  return (
-    <div className="references-page bg-gray-50 dark:bg-slate-950 min-h-screen">
-      <HeroSection
-        title={t('referencesPage.title')}
-        subtitle={t('referencesPage.subtitle')}
-      />
-
-      <section className="py-16 bg-gray-100 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-gray-800 dark:text-white mb-12 text-center">
-            {t('referencesPage.header')}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {" "}
-            {/* Revert grid */}
-            {projects.map((project) => (
-              <Link href={`${project.projectLink}`} key={project.id}>
-                <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-xl cursor-pointer border border-slate-100 dark:border-slate-700">
-                  <div className="relative w-full h-60">
-                    <Image
-                      src={project.imageUrl}
-                      alt={project.title}
-                      fill
-                      className="rounded-t-lg object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
-                      {project.title}
-                    </h3>
-                    <p className="text-blue-600 dark:text-rose-400 font-medium hover:underline">
-                      {t('referencesPage.viewDetails')}
-                    </p>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-    </div>
-  );
+export const metadata = {
+  title: "Våre Prosjekter | Webdesign & AI-referanser fra Bergen og Norge",
+  description: "Se hvordan Aone har hjulpet bedrifter i Bergen og i hele Norge med webdesign, AI-automatisering og merkevarebygging – inkludert Clean Masters Renhold, et lokalt rengjøringsbyrå i Bergen.",
+  keywords: "Webdesign referanser Bergen, Aone prosjekter, AI-byrå portefølje Norge, nettside rengjøringsbyrå Bergen, case study webdesign Bergen, digitalbyrå kundeprosjekter Norge",
+  alternates: { canonical: "https://aone.no/references" },
+  openGraph: {
+    title: "Våre Prosjekter | Aone Webdesign & AI-referanser",
+    description: "Utforsk vår portefølje av webdesign- og AI-prosjekter for bedrifter i Bergen og i hele Norge.",
+    url: "https://aone.no/references",
+    type: "website",
+    images: [
+      {
+        url: "/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Aone Portfolio – Webdesign Bergen & Norge",
+      },
+    ],
+  },
 };
 
-export default ReferencesPage;
+export default function Page() {
+  const itemListJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Aone – Prosjekter og kundereferanser',
+    url: 'https://aone.no/references',
+    about: {
+      '@type': 'Organization',
+      name: 'Aone',
+    },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: projects.map((project, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        url: `https://aone.no${project.projectLink}`,
+        name: project.title,
+        ...(project.location ? { item: { '@type': 'CreativeWork', name: project.title, areaServed: project.location } } : {}),
+      })),
+    },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
+      <ReferencesClient />
+    </>
+  );
+}
