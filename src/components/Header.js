@@ -27,7 +27,7 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-[100002] transition-all duration-300 ${
         visible ? 'translate-y-0' : '-translate-y-[200%]'
       } ${
         isScrolled
@@ -36,14 +36,16 @@ const Header = () => {
       }`}
     >
       <div className="max-w-[1400px] mx-auto px-6 py-3.5 flex items-center justify-between gap-4">
-        <Logo />
+        <div className="shrink-0">
+          <Logo responsive />
+        </div>
 
         <div className="flex items-center gap-2 sm:gap-3">
           {/* Visible at every breakpoint -- a direct conversion action should
               be reachable in 1 click from any page, not just on desktop. */}
           <Link
             href="/request-quote"
-            className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-950 border border-slate-900 dark:border-white hover:bg-transparent dark:hover:bg-transparent hover:text-slate-900 dark:hover:text-white hover:-translate-y-0.5 active:translate-y-0 shadow-sm transition-all duration-300 group"
+            className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-950 border border-slate-900 dark:border-white hover:bg-transparent dark:hover:bg-transparent hover:text-slate-900 dark:hover:text-white hover:-translate-y-0.5 active:translate-y-0 shadow-sm transition-all duration-300 group whitespace-nowrap shrink-0"
           >
             <span>{t('requestQuote')}</span>
             <FaArrowRight className="text-[9px] transform group-hover:translate-x-0.5 transition-transform duration-200" />
