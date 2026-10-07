@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
@@ -9,6 +10,12 @@ import { FaEnvelope, FaPhone, FaExternalLinkAlt } from "react-icons/fa";
 const HamburgerMenu = () => {
   const { language, changeLanguage, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+  // Portal target isn't available during SSR -- only render it once mounted
+  // on the client.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -87,7 +94,7 @@ const HamburgerMenu = () => {
         href="https://crm.aone.no"
         target="_blank"
         rel="noopener noreferrer"
-        className="group relative flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-850 border border-slate-200/50 dark:border-slate-800/50 text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white"
+        className="group relative hidden min-[360px]:flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-850 border border-slate-200/50 dark:border-slate-800/50 text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white"
         aria-label="Client Login"
       >
         <svg
@@ -112,7 +119,7 @@ const HamburgerMenu = () => {
           equal-width hamburger, single-color (bg-current); morphs into a centered X on open */}
       <button
         onClick={toggleMenu}
-        className="group relative z-[10002] w-10 h-10 rounded-full flex flex-col items-center justify-center gap-[5px] transition-all duration-300 bg-slate-950 dark:bg-white text-white dark:text-slate-950 hover:scale-105 active:scale-95 shadow-md"
+        className="group relative z-[100001] w-10 h-10 rounded-full flex flex-col items-center justify-center gap-[5px] transition-all duration-300 bg-slate-950 dark:bg-white text-white dark:text-slate-950 hover:scale-105 active:scale-95 shadow-md"
         aria-expanded={isOpen}
         aria-label={isOpen ? "Close menu" : "Open menu"}
       >
@@ -124,14 +131,15 @@ const HamburgerMenu = () => {
       {/* Fullscreen Navigation Overlay — single clean column, large type,
           minimal chrome (no duplicate contact/trust info; that already
           lives in the footer) */}
-      <AnimatePresence>
-        {isOpen && (
+      {mounted && createPortal(
+        <AnimatePresence>
+          {isOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[10001] bg-slate-950/98 backdrop-blur-2xl flex flex-col justify-center overflow-y-auto px-6 py-16 md:px-16"
+            className="fixed inset-0 z-[100000] bg-slate-950/98 backdrop-blur-2xl flex flex-col justify-center overflow-y-auto px-6 py-16 md:px-16"
             style={{ width: '100vw', height: '100vh' }}
           >
             <nav className="w-full max-w-3xl mx-auto">
@@ -186,6 +194,18 @@ const HamburgerMenu = () => {
                     NO
                   </button>
                 </div>
+                {/* Below 360px the header hides the Client Portal icon to fit
+                    the quote button -- this is the fallback so the link
+                    stays reachable on those narrowest phones. */}
+                <a
+                  href="https://crm.aone.no"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hidden max-[359px]:flex items-center gap-2 font-bold tracking-widest uppercase text-white/40 hover:text-white transition-colors"
+                >
+                  {language === 'no' ? 'Kundeportal' : 'Client Portal'}
+                  <FaExternalLinkAlt className="text-[9px]" />
+                </a>
                 <div className="flex items-center gap-5 text-slate-400">
                   <a href="mailto:info@aone.no" className="flex items-center gap-2 hover:text-white transition-colors">
                     <FaEnvelope className="text-rose-500" />
@@ -199,8 +219,10 @@ const HamburgerMenu = () => {
               </div>
             </nav>
           </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </div>
   );
 };
