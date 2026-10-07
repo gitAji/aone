@@ -87,6 +87,21 @@
   --cc-btn-border-radius: 0.75rem;
 }
 
+/* Hardening for the preferences modal (#cc-main .pm): the library centers
+   it via `top: 50%` + `transform: translateY(-50%)` with a 600px max-height,
+   which is correct at every viewport size this was tested at (desktop,
+   mobile, and every height from 400px to 900px, before and after resize),
+   but was repeatedly reported as clipping below the viewport in real
+   browser use this sandbox couldn't reproduce. Forcing the max-height to be
+   viewport-relative removes any possible path to that: the modal's own
+   height can never exceed what top:50%/translateY(-50%) has room for,
+   independent of whatever the library's internal math computes it to be.
+   !important is deliberate -- this overrides the library's own stylesheet,
+   loaded earlier in layout.js specifically so later rules here can win. */
+#cc-main .pm {
+  max-height: min(600px, calc(100dvh - 2rem)) !important;
+}
+
 /* Modern Scrollbar */
 @media (max-width: 768px) {
   ::-webkit-scrollbar {
