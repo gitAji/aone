@@ -49,11 +49,12 @@ export default function LayoutClientWrapper({ children }) {
   return (
     <LanguageProvider>
       <ThemeProvider>
-        {/* Needs to be inside LanguageProvider (for useLanguage) but outside
-            ClientLayoutWrapper -- it renders nothing itself, just owns the
+        {/* Needs to be inside LanguageProvider (for useLanguage). Owns the
             CookieConsent.run() call and keeps its text in sync with the
-            site's EN/NO toggle. The library injects its own banner/modal
-            straight into document.body, not through this component's JSX. */}
+            site's EN/NO toggle -- the library injects the banner/modal
+            straight into document.body, not through this component's JSX.
+            It does render its own floating "reopen preferences" button
+            directly (not via the library), once the visitor has answered. */}
         <CookieConsentManager />
         <ClientLayoutWrapper>
           {children}

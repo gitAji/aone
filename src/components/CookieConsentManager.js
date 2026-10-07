@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import * as CookieConsent from "vanilla-cookieconsent";
+import { FaCookieBite } from "react-icons/fa";
 import { useLanguage } from "@/context/LanguageContext";
 
 // Module-level, not component state: React 18 Strict Mode double-invokes
@@ -35,7 +37,7 @@ const translations = {
         {
           title: "Your privacy choices",
           description:
-            'We use three kinds of cookies. Necessary cookies are always on; you choose whether to allow statistics and marketing cookies, and can change your mind at any time from the "Cookie Settings" link in the footer.',
+            "We use three kinds of cookies. Necessary cookies are always on; you choose whether to allow statistics and marketing cookies, and can change your mind at any time via the cookie icon in the corner of the screen.",
         },
         {
           title: "Necessary",
@@ -80,7 +82,7 @@ const translations = {
         {
           title: "Dine personvernvalg",
           description:
-            'Vi bruker tre typer informasjonskapsler. Nødvendige er alltid på; du velger selv om du vil tillate statistikk og markedsføring, og kan når som helst endre valget via "Informasjonskapsler"-lenken i bunnteksten.',
+            "Vi bruker tre typer informasjonskapsler. Nødvendige er alltid på; du velger selv om du vil tillate statistikk og markedsføring, og kan når som helst endre valget via cookie-ikonet nederst i skjermhjørnet.",
         },
         {
           title: "Nødvendige",
@@ -108,6 +110,10 @@ const translations = {
 export default function CookieConsentManager() {
   const { language } = useLanguage();
   const isFirstLanguageSync = useRef(true);
+  // Starts false so this doesn't double up with the consent banner itself
+  // on a first visit -- it's meant as the lasting "change your mind" control
+  // once a visitor has already answered, not a second way to answer.
+  const [hasAnswered, setHasAnswered] = useState(false);
 
   useEffect(() => {
     if (didInit) return;
@@ -167,6 +173,10 @@ export default function CookieConsentManager() {
         translations,
       },
       onConsent: () => {
+        // Fires once consent is first given AND on every later page load for
+        // a returning visitor with stored consent -- covers both cases for
+        // revealing the floating "change your mind" button below.
+        setHasAnswered(true);
         window.dispatchEvent(new Event("cc:consentChange"));
       },
       onChange: () => {
@@ -186,5 +196,34 @@ export default function CookieConsentManager() {
     CookieConsent.setLanguage(language, true);
   }, [language]);
 
-  return null;
+  // Hidden until the visitor has actually answered (see hasAnswered above),
+  // so it never competes with the consent banner itself. After that, it's
+  // the persistent way to reopen the preferences modal and change category
+  // choices at any time -- stacked just above the accessibility widget
+  // (same corner, same size/style) rather than a separate footer link only.
+  return (
+    <AnimatePresence>
+      {hasAnswered && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.6, y: 12 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.6, y: 12 }}
+          transition={{ type: "spring", stiffness: 400, damping: 25 }}
+          className="group fixed bottom-24 left-6 z-[99999]"
+        >
+          <button
+            type="button"
+            onClick={() => CookieConsent.showPreferences()}
+            className="relative w-12 h-12 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-950 flex items-center justify-center shadow-lg hover:shadow-rose-500/30 hover:scale-105 active:scale-95 transition-all duration-300 border border-slate-800 dark:border-slate-200 hover:border-rose-500 dark:hover:border-rose-400"
+            aria-label={language === "no" ? "Administrer informasjonskapsler" : "Manage cookie preferences"}
+          >
+            <FaCookieBite className="text-xl" />
+          </button>
+          <span className="pointer-events-none absolute left-full top-1/2 ml-3 -translate-y-1/2 whitespace-nowrap rounded-md bg-slate-950 px-2.5 py-1.5 text-[9px] font-bold tracking-widest text-white opacity-0 scale-95 transition-all duration-200 group-hover:opacity-100 group-hover:scale-100 shadow-xl hidden sm:block">
+            {language === "no" ? "INFORMASJONSKAPSLER" : "COOKIE PREFERENCES"}
+          </span>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
 }
