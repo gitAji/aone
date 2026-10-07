@@ -6,6 +6,7 @@ import * as CookieConsent from "vanilla-cookieconsent";
 import Footer from "@/components/Footer";
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 import CookieConsentManager from "@/components/CookieConsentManager";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import AccessibilityWidget from "@/components/AccessibilityWidget";
@@ -21,6 +22,12 @@ const DynamicTawkToMessenger = dynamic(() =>
 export default function LayoutClientWrapper({ children }) {
   const [showReferralPopup, setShowReferralPopup] = useState(false);
   const [hasChatConsent, setHasChatConsent] = useState(false);
+  // Not a privacy gate (WhatsApp sets no cookies) -- purely spatial. The
+  // consent banner is a boxed "bottom right" card at an unbeatable max
+  // z-index (see CookieConsentManager.js), occupying the same corner
+  // WhatsAppButton.js sits in, so it must stay hidden until that banner is
+  // answered and out of the way, same timing as the cookie-settings icon.
+  const [hasAnsweredConsent, setHasAnsweredConsent] = useState(false);
 
   useEffect(() => {
     const referralTimer = setTimeout(() => {
@@ -29,6 +36,7 @@ export default function LayoutClientWrapper({ children }) {
 
     const handleConsentChange = () => {
       setHasChatConsent(CookieConsent.acceptedCategory('marketing'));
+      setHasAnsweredConsent(CookieConsent.validConsent());
     };
 
     // No synchronous initial check here: CookieConsent.run() (called from
@@ -62,6 +70,13 @@ export default function LayoutClientWrapper({ children }) {
           <Footer />
         </ClientLayoutWrapper>
         <AccessibilityWidget />
+        {/* WhatsApp is just an external link (wa.me) -- hasAnsweredConsent
+            here is a spatial guard, not a privacy gate (see above), keeping
+            it from sitting underneath the still-open consent banner. Paired
+            with Tawk's corner (bottom-right, "ways to reach a human") rather
+            than the accessibility/cookie corner (bottom-left, "how the site
+            behaves for you") -- see WhatsAppButton.js for the full rationale. */}
+        {hasAnsweredConsent && <WhatsAppButton />}
         {/* Gated on marketing consent (hasChatConsent, above) -- Tawk.to sets
             third-party cookies, so it shouldn't load until a visitor has
             actually consented, same as Clarity/GTM elsewhere on this site. */}

@@ -121,6 +121,16 @@ export default function CookieConsentManager() {
 
     CookieConsent.run({
       guiOptions: {
+        // Boxed "bottom right" card, not a full-width bar: the library
+        // forces its own UI to an extreme max z-index (see its CSS --
+        // --cc-z-index: 2147483647), so nothing we render can ever appear
+        // above it. A full-width bar was tried and rejected for exactly
+        // that reason: its hit area covers the *entire* bottom edge while
+        // open, so it blocked the accessibility icon on the left too,
+        // which this boxed layout (confined to the right) never did.
+        // WhatsAppButton.js is instead hidden for the same brief
+        // pre-answer window as the cookie-settings icon below --
+        // see hasAnsweredConsent in LayoutClientWrapper.js.
         consentModal: {
           layout: "box",
           position: "bottom right",
