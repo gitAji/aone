@@ -9,7 +9,7 @@ import CookieConsentManager from "@/components/CookieConsentManager";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/context/ThemeContext";
-import AccessibilityWidget from "@/components/AccessibilityWidget";
+import SettingsFab from "@/components/SettingsFab";
 
 const DynamicReferralPopup = dynamic(() =>
   import("@/components/ReferralPopup").then((mod) => mod.default)
@@ -26,7 +26,8 @@ export default function LayoutClientWrapper({ children }) {
   // consent banner is a boxed "bottom right" card at an unbeatable max
   // z-index (see CookieConsentManager.js), occupying the same corner
   // WhatsAppButton.js sits in, so it must stay hidden until that banner is
-  // answered and out of the way, same timing as the cookie-settings icon.
+  // answered and out of the way, same timing as SettingsFab's "Cookie
+  // Preferences" menu item.
   const [hasAnsweredConsent, setHasAnsweredConsent] = useState(false);
   // Tawk.to is desktop-only (WhatsApp is mobile's chat channel instead, see
   // WhatsAppButton.js's own md:hidden) -- gated here, not just visually
@@ -71,21 +72,25 @@ export default function LayoutClientWrapper({ children }) {
             CookieConsent.run() call and keeps its text in sync with the
             site's EN/NO toggle -- the library injects the banner/modal
             straight into document.body, not through this component's JSX.
-            It does render its own floating "reopen preferences" button
-            directly (not via the library), once the visitor has answered. */}
+            Renders no UI of its own; reopening preferences is now a menu
+            item inside SettingsFab below. */}
         <CookieConsentManager />
         <ClientLayoutWrapper>
           {children}
           {/* {showReferralPopup && <DynamicReferralPopup />} */}
           <Footer />
         </ClientLayoutWrapper>
-        <AccessibilityWidget />
+        {/* Single bottom-left "site preferences" button covering both
+            accessibility settings and (once answered) cookie preferences --
+            replaces what used to be two separate icons next to each other
+            in the same corner. */}
+        <SettingsFab />
         {/* WhatsApp is just an external link (wa.me) -- hasAnsweredConsent
             here is a spatial guard, not a privacy gate (see above), keeping
             it from sitting underneath the still-open consent banner. Paired
             with Tawk's corner (bottom-right, "ways to reach a human") rather
-            than the accessibility/cookie corner (bottom-left, "how the site
-            behaves for you") -- see WhatsAppButton.js for the full rationale. */}
+            than the settings corner (bottom-left, "how the site behaves for
+            you") -- see WhatsAppButton.js for the full rationale. */}
         {hasAnsweredConsent && <WhatsAppButton />}
         {/* Gated on marketing consent (hasChatConsent, above) -- Tawk.to sets
             third-party cookies, so it shouldn't load until a visitor has
