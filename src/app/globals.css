@@ -121,7 +121,20 @@
    stylesheet, loaded earlier in layout.js specifically so later rules here
    can win. Matches the library's own selectors where needed (the
    show-transition's translateY) so specificity, not just source order,
-   guarantees these rules win. */
+   guarantees these rules win.
+
+   Follow-up bug from this same redesign: `.pm-wrapper` needs `position:
+   fixed; inset: 0` at all times so it can center `.pm` while the modal is
+   open -- but unlike the library's own `.pm`/`.pm-overlay`, which toggle
+   opacity/visibility off (removing them from hit-testing) when closed,
+   `.pm-wrapper` itself was never hidden. A permanently full-viewport,
+   `pointer-events: auto` (the default) div -- invisible, but still very
+   much there -- silently ate every click on the page underneath it,
+   closed or not: reported as "I close the modal, then nothing on the page
+   is clickable." `pointer-events: none` by default, flipped back to
+   `auto` only while `.show--preferences` is on `<body>` (the same class
+   the library's own CSS already keys the modal's visibility off of),
+   fixes it without touching the centering logic at all. */
 #cc-main .pm-wrapper {
   position: fixed !important;
   inset: 0 !important;
@@ -129,6 +142,10 @@
   align-items: center !important;
   justify-content: center !important;
   padding: 1rem !important;
+  pointer-events: none !important;
+}
+.show--preferences #cc-main .pm-wrapper {
+  pointer-events: auto !important;
 }
 #cc-main .pm {
   position: static !important;
