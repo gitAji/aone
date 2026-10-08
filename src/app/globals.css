@@ -87,11 +87,12 @@
   --cc-btn-border-radius: 0.75rem;
 }
 
-/* Hardening for the preferences modal (#cc-main .pm). Two layered fixes for
-   the same "Save button hidden below the window" report, which this
-   sandbox's Chromium-only testing could never reproduce -- turned out to be
-   a real cross-browser flexbox gap, confirmed by a user screenshot showing
-   an iOS home-indicator bar (Safari/WebKit).
+/* Hardening for the preferences modal (#cc-main .pm). Three layered fixes
+   for the same "Save button hidden below the window" report, which this
+   sandbox's Chromium-only testing could never reproduce -- confirmed by two
+   separate user screenshots (both showing an iOS home-indicator bar, i.e.
+   Safari/WebKit) that the bug survived fixes 1 and 2 below, which only ever
+   checked out clean in Chromium.
 
    1. The library's own CSS: `.pm { max-height: 600px }`, assuming 100vh ==
       "the visible viewport." It doesn't on real mobile browsers -- 100vh is
@@ -107,18 +108,31 @@
       and footer (Accept/Reject/Save). Flex children default to
       `min-height:auto`, which lets them refuse to shrink below their own
       content's natural size. Chromium is forgiving about this in practice;
-      WebKit (Safari, and every iOS browser, which is WebKit under the hood
-      regardless of its name) is strict about it -- so on WebKit, `.pm__body`
-      grows past its allotted space instead of scrolling, and pushes the
-      footer buttons out past `.pm`'s `overflow:hidden`, exactly matching the
-      report. `min-height: 0` on the body is the standard fix; `flex-shrink:
-      0` on header/footer makes them structurally un-squeezable regardless.
+      WebKit is strict about it -- so on WebKit, `.pm__body` can grow past
+      its allotted space instead of scrolling. `min-height: 0` on the body
+      is the standard fix; `flex-shrink: 0` on header/footer makes them
+      structurally un-squeezable regardless.
+
+   3. The library's own mobile breakpoint (<=640px wide) sets `top:0` AND
+      `bottom:0` AND `height:auto` on `.pm` all at once -- an over-constrained
+      box (CSS 10.6.4/10.6.7: height must be derived from top+bottom, then
+      re-clamped by max-height, then ONE of the three has to be "ignored" and
+      recomputed). Which property a browser engine chooses to ignore in that
+      resolution is exactly the kind of edge case engines have historically
+      disagreed on, and this sandbox can only drive Chromium to check it --
+      Chromium resolved it fine every time it was tested here, which is
+      presumably why fixes 1 and 2 alone looked sufced but didn't hold on the
+      user's real WebKit device. Removing the ambiguity entirely beats
+      hoping every engine resolves it the same way: `bottom: auto` leaves
+      only `top` (pinned) and `height` (derived from content, clamped by
+      max-height) in play, so there's nothing left to disagree about.
 
    !important throughout is deliberate -- overriding the library's own
    stylesheet, loaded earlier in layout.js specifically so later rules here
    can win. */
 #cc-main .pm {
   max-height: calc(100dvh - 2rem) !important;
+  bottom: auto !important;
 }
 #cc-main .pm__header,
 #cc-main .pm__footer {
