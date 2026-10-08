@@ -87,52 +87,71 @@
   --cc-btn-border-radius: 0.75rem;
 }
 
-/* Hardening for the preferences modal (#cc-main .pm). Three layered fixes
-   for the same "Save button hidden below the window" report, which this
-   sandbox's Chromium-only testing could never reproduce -- confirmed by two
-   separate user screenshots (both showing an iOS home-indicator bar, i.e.
-   Safari/WebKit) that the bug survived fixes 1 and 2 below, which only ever
-   checked out clean in Chromium.
+/* Redesign of the preferences modal's positioning (#cc-main .pm-wrapper /
+   .pm). Two rounds of targeted patches (capping max-height to 100dvh, then
+   fixing a flexbox min-height quirk, then fixing a top/bottom/height
+   over-constraint) each checked out clean in this sandbox's Chromium-only
+   testing and each still left the Save button clipped on the user's real
+   device -- three separate screenshots of the same symptom. Patching
+   individual properties on the library's own absolutely-positioned
+   `.pm{position:fixed;top:50%;...}` box keeps hitting new edge cases in how
+   browser engines resolve that box model, because the box model itself
+   (explicit top/bottom/height all interacting with transforms and a
+   percentage-based height) is the kind of thing engines have historically
+   disagreed on -- and this sandbox has no way to test the one engine
+   (WebKit/Safari) the reports keep coming from.
 
-   1. The library's own CSS: `.pm { max-height: 600px }`, assuming 100vh ==
-      "the visible viewport." It doesn't on real mobile browsers -- 100vh is
-      the viewport with browser chrome (address bar, toolbars) hidden, not
-      the actually-visible height. 100dvh tracks the real, currently-visible
-      viewport instead. Dropped the 600px half of the cap entirely (not just
-      min()'d against it): the library's own mobile breakpoint intentionally
-      goes full-screen (max-height:100%) on narrow viewports, and forcing a
-      flat 600px there fights that design instead of complementing it.
+   Redesign instead of another patch: stop fighting the library's
+   fixed-position box math entirely. `.pm-wrapper` becomes a full-viewport
+   flex container that centers `.pm` the ordinary way -- the same pattern
+   used to center any modal, dialog, or lightbox, with no absolute
+   positioning, no top/bottom math, and nothing for different engines to
+   resolve differently. `.pm` becomes a normal flow element (position:
+   static) sized by its own content and capped by max-height; the flex
+   parent centers it and guarantees the available height.
 
-   2. `.pm` is `display:flex; flex-direction:column`, with `.pm__body` as the
-      `flex:1; overflow-y:auto` scrollable middle section between the header
-      and footer (Accept/Reject/Save). Flex children default to
-      `min-height:auto`, which lets them refuse to shrink below their own
-      content's natural size. Chromium is forgiving about this in practice;
-      WebKit is strict about it -- so on WebKit, `.pm__body` can grow past
-      its allotted space instead of scrolling. `min-height: 0` on the body
-      is the standard fix; `flex-shrink: 0` on header/footer makes them
-      structurally un-squeezable regardless.
-
-   3. The library's own mobile breakpoint (<=640px wide) sets `top:0` AND
-      `bottom:0` AND `height:auto` on `.pm` all at once -- an over-constrained
-      box (CSS 10.6.4/10.6.7: height must be derived from top+bottom, then
-      re-clamped by max-height, then ONE of the three has to be "ignored" and
-      recomputed). Which property a browser engine chooses to ignore in that
-      resolution is exactly the kind of edge case engines have historically
-      disagreed on, and this sandbox can only drive Chromium to check it --
-      Chromium resolved it fine every time it was tested here, which is
-      presumably why fixes 1 and 2 alone looked sufced but didn't hold on the
-      user's real WebKit device. Removing the ambiguity entirely beats
-      hoping every engine resolves it the same way: `bottom: auto` leaves
-      only `top` (pinned) and `height` (derived from content, clamped by
-      max-height) in play, so there's nothing left to disagree about.
+   `.pm` is still `display:flex;flex-direction:column` internally (the
+   library's own base rule, untouched), with `.pm__body` as the scrollable
+   middle section between the header and footer -- `min-height:0` on the
+   body and `flex-shrink:0` on header/footer are kept from the previous
+   round, since flex children default to refusing to shrink below their own
+   content's natural size regardless of how the outer box is positioned.
 
    !important throughout is deliberate -- overriding the library's own
    stylesheet, loaded earlier in layout.js specifically so later rules here
-   can win. */
+   can win. Matches the library's own selectors where needed (the
+   show-transition's translateY) so specificity, not just source order,
+   guarantees these rules win. */
+#cc-main .pm-wrapper {
+  position: fixed !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 1rem !important;
+}
 #cc-main .pm {
-  max-height: calc(100dvh - 2rem) !important;
+  position: static !important;
+  inset: auto !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
   bottom: auto !important;
+  margin: 0 !important;
+  height: auto !important;
+  max-height: min(100%, calc(100dvh - 2rem)) !important;
+  width: 100% !important;
+  max-width: min(30em, 100%) !important;
+  border-radius: var(--cc-modal-border-radius) !important;
+}
+/* Neutralizes the library's own open-transition transform (a translateY
+   meant for its absolutely-positioned box), which would otherwise shift our
+   now flex-centered, statically-positioned box off-center. Matched to the
+   library's own selector so specificity -- not just source order -- decides
+   the winner. */
+#cc-main .pm,
+.show--preferences #cc-main .cc--anim .pm--box {
+  transform: none !important;
 }
 #cc-main .pm__header,
 #cc-main .pm__footer {
