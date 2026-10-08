@@ -660,6 +660,7 @@ function OrderPageContent() {
                                                         case 'branding': return <FaPenNib />;
                                                         case 'marketing': return <FaChartLine />;
                                                         case 'maintenance': return <FaTools />;
+                                                        case 'photovideo': return <FaCameraRetro />;
                                                         default: return <FaTools />;
                                                     }
                                                 };

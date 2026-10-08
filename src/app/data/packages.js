@@ -149,5 +149,19 @@ export const packages = [
             'Minor Design/Content Updates'
         ],
         description: 'Comprehensive support to keep your AI-native site running at peak performance.'
+    },
+    {
+        id: 'photovideo',
+        name: 'Photo & Video Pack',
+        price: 9990,
+        monthlyPrice: 0,
+        isAddon: true,
+        features: [
+            'Professional Product/Facility Photos (up to 10)',
+            'Short Promotional Video (up to 2 mins)',
+            'Website Gallery Integration',
+            'Full Web Usage Rights'
+        ],
+        description: 'Professional photography and a short promotional video tailored for your website, from our in-house photo & video services.'
     }
 ];
