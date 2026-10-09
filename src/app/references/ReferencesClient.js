@@ -39,12 +39,6 @@ const ReferencesPage = () => {
                       className="rounded-t-lg object-cover"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
-                    {project.local && (
-                      <span className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-rose-500 text-white text-[10px] font-bold uppercase tracking-wider shadow-lg">
-                        <FaMapMarkerAlt className="text-[11px]" />
-                        {language === 'no' ? 'Lokalt prosjekt i Bergen' : 'Local Bergen Project'}
-                      </span>
-                    )}
                   </div>
                   <div className="p-6">
                     <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">

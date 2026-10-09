@@ -3,13 +3,37 @@
 import React, { useState } from 'react';
 import HeroSection from '@/components/HeroSection';
 import { motion } from 'framer-motion';
-import { FaSearch, FaChartBar, FaRocket, FaCheckCircle } from 'react-icons/fa';
+import { FaSearch, FaChartBar, FaRocket, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
+
+// Accepts "example.com", "www.example.com", or a full "https://example.com"
+// URL, and normalizes to a proper https:// URL the browser's URL() can
+// validate -- most visitors won't type the scheme unprompted.
+function normalizeWebsiteUrl(raw) {
+    const trimmed = raw.trim();
+    if (!trimmed) return null;
+    const withScheme = /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+    try {
+        const url = new URL(withScheme);
+        if (!url.hostname.includes('.')) return null;
+        return url.toString();
+    } catch {
+        return null;
+    }
+}
 
 const FreeSeoAuditClient = () => {
     const [submitted, setSubmitted] = useState(false);
+    const [urlValue, setUrlValue] = useState('');
+    const [urlError, setUrlError] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const normalized = normalizeWebsiteUrl(urlValue);
+        if (!normalized) {
+            setUrlError("That doesn't look like a valid website address. Try a format like example.com or https://example.com.");
+            return;
+        }
+        setUrlError('');
         // Here you would normally handle the form submission
         setSubmitted(true);
     };
@@ -79,12 +103,32 @@ const FreeSeoAuditClient = () => {
                                     </h3>
                                     <div>
                                         <label className="block text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Website URL</label>
-                                        <input 
-                                            type="url" 
-                                            required 
-                                            placeholder="https://yourwebsite.com"
-                                            className="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl px-5 py-4 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-rose-500/50 transition-all font-medium"
+                                        <input
+                                            type="text"
+                                            required
+                                            value={urlValue}
+                                            onChange={(e) => {
+                                                setUrlValue(e.target.value);
+                                                if (urlError) setUrlError('');
+                                            }}
+                                            placeholder="example.com"
+                                            aria-invalid={!!urlError}
+                                            className={`w-full bg-slate-50 dark:bg-slate-800/50 border rounded-xl px-5 py-4 text-slate-900 dark:text-white focus:outline-none focus:ring-2 transition-all font-medium ${
+                                                urlError
+                                                    ? 'border-rose-500 focus:ring-rose-500/50'
+                                                    : 'border-slate-200 dark:border-slate-700 focus:ring-rose-500/50'
+                                            }`}
                                         />
+                                        {urlError ? (
+                                            <p className="mt-2 text-xs text-rose-500 font-bold flex items-center gap-1.5">
+                                                <FaExclamationCircle className="text-[10px]" />
+                                                {urlError}
+                                            </p>
+                                        ) : (
+                                            <p className="mt-2 text-[11px] text-slate-400 font-medium">
+                                                Just the domain is fine -- e.g. example.com or https://example.com
+                                            </p>
+                                        )}
                                     </div>
                                     <div>
                                         <label className="block text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Work Email</label>
