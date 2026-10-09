@@ -58,7 +58,10 @@ const ServicesSection = () => {
           {t('services.subtitle')}
         </p>
       </header>
-      <div className="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* flex-wrap + per-card width (not a 3-col grid) so 5 cards center as
+          3-then-2 instead of leaving an empty slot in the last row. */}
+      <div className="container mx-auto px-6 flex flex-wrap justify-center gap-8">
+  <div className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.3334rem)]">
   <ServiceCard
     number="01"
     href="/services/web-solution"
@@ -67,6 +70,8 @@ const ServicesSection = () => {
     description={t('services.webSolution.description')}
     color="text-rose-500"
   />
+  </div>
+  <div className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.3334rem)]">
   <ServiceCard
     number="02"
     href="/services/ai-solution"
@@ -75,6 +80,8 @@ const ServicesSection = () => {
     description={t('services.aiSolution.description')}
     color="text-rose-500"
   />
+  </div>
+  <div className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.3334rem)]">
   <ServiceCard
     number="03"
     href="/services/marketing"
@@ -83,6 +90,8 @@ const ServicesSection = () => {
     description={t('services.marketing.description') || "Data-driven marketing, SEO, and GEO that fuel sustainable growth."}
     color="text-rose-500"
   />
+  </div>
+  <div className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.3334rem)]">
   <ServiceCard
     number="04"
     href="/services/photography"
@@ -91,6 +100,8 @@ const ServicesSection = () => {
     description={t('services.photo.description') || "Professional photography that tells your unique story."}
     color="text-rose-500"
   />
+  </div>
+  <div className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.3334rem)]">
   <ServiceCard
     number="05"
     href="/services/videography"
@@ -99,6 +110,7 @@ const ServicesSection = () => {
     description={t('services.video.description') || "Compelling video content designed for high engagement."}
     color="text-rose-500"
   />
+  </div>
 </div>
     </section>
   );
