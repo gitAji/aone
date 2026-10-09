@@ -3,6 +3,7 @@ import React from "react";
 import HeroSection from "@/components/HeroSection";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -15,23 +16,40 @@ const ProductDetailClient = ({ product, prevProduct, nextProduct }) => {
     <div className="project-detail-page bg-slate-50 dark:bg-slate-950 min-h-screen">
       <HeroSection title={product.title} subtitle={product.description} />
 
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center relative z-20">
-        <Link href={prevProduct.projectLink} className="flex items-center text-slate-800 dark:text-slate-200 hover:text-rose-500 transition-colors duration-300">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="container mx-auto px-4 py-4 flex justify-between items-center relative z-20"
+      >
+        <Link href={prevProduct.projectLink} className="flex items-center text-slate-800 dark:text-slate-200 hover:text-rose-500 hover:-translate-x-1 transition-all duration-300">
           <FaArrowLeft className="mr-2" /> {prevProduct.title}
         </Link>
-        <Link href={nextProduct.projectLink} className="flex items-center text-slate-800 dark:text-slate-200 hover:text-rose-500 transition-colors duration-300">
+        <Link href={nextProduct.projectLink} className="flex items-center text-slate-800 dark:text-slate-200 hover:text-rose-500 hover:translate-x-1 transition-all duration-300">
           {nextProduct.title} <FaArrowRight className="ml-2" />
         </Link>
-      </div>
+      </motion.div>
 
       <section className="py-16 bg-white dark:bg-[#020617] transition-colors duration-500">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-black text-slate-900 dark:text-white mb-8 text-center uppercase tracking-tighter">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl font-black text-slate-900 dark:text-white mb-8 text-center uppercase tracking-tighter"
+          >
             {product.title}
-          </h2>
+          </motion.h2>
 
           <div className="flex flex-col md:flex-row gap-12 items-center">
-            <div className="md:w-1/2">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6 }}
+              className="md:w-1/2"
+            >
               <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-6 font-medium">
                 {product.overview.description1}
               </p>
@@ -47,9 +65,15 @@ const ProductDetailClient = ({ product, prevProduct, nextProduct }) => {
                   Kontakt oss
                 </Link>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="md:w-1/2 relative h-[400px] w-full rounded-2xl overflow-hidden shadow-2xl">
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="md:w-1/2 relative h-[400px] w-full rounded-2xl overflow-hidden shadow-2xl"
+            >
               <Image
                 src={product.imageUrl}
                 alt={`${product.title} Platform`}
@@ -57,7 +81,7 @@ const ProductDetailClient = ({ product, prevProduct, nextProduct }) => {
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -69,12 +93,19 @@ const ProductDetailClient = ({ product, prevProduct, nextProduct }) => {
               <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-8 tracking-tight border-b-2 border-slate-200 dark:border-slate-800 pb-4">Kjernefunksjoner</h3>
               <ul className="space-y-4">
                 {product.features.map((feature, index) => (
-                  <li key={index} className="flex items-start">
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.08 }}
+                    className="flex items-start"
+                  >
                     <svg className="w-6 h-6 text-emerald-500 mr-3 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                     <span className="text-lg text-slate-700 dark:text-slate-200 font-medium">{feature}</span>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             </div>
@@ -82,10 +113,17 @@ const ProductDetailClient = ({ product, prevProduct, nextProduct }) => {
               <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-8 tracking-tight border-b-2 border-slate-200 dark:border-slate-800 pb-4">Teknologier</h3>
               <ul className="space-y-4">
                 {product.technologies.map((tech, index) => (
-                  <li key={index} className="flex items-start">
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.08 }}
+                    className="flex items-start"
+                  >
                     <div className="w-2 h-2 rounded-full bg-indigo-500 mt-2.5 mr-4 flex-shrink-0"></div>
                     <span className="text-lg text-slate-700 dark:text-slate-200 font-medium">{tech}</span>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             </div>
@@ -94,7 +132,13 @@ const ProductDetailClient = ({ product, prevProduct, nextProduct }) => {
       </section>
 
       <section className="cta py-24 bg-gradient-to-r from-slate-900 to-slate-800 text-center text-white">
-        <div className="container mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="container mx-auto px-6"
+        >
           <h2 className="text-4xl md:text-5xl font-black mb-6 uppercase tracking-tighter">
             {t('projectDetail.ctaTitle') || "Klar til å løfte din digitale tilstedeværelse?"}
           </h2>
@@ -107,7 +151,7 @@ const ProductDetailClient = ({ product, prevProduct, nextProduct }) => {
           >
             {t('projectDetail.ctaButton') || "Få en gratis konsultasjon"}
           </Link>
-        </div>
+        </motion.div>
       </section>
     </div>
   );
