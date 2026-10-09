@@ -2,7 +2,7 @@
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import Link from 'next/link';
-import { FaLaptopCode, FaChartLine, FaRobot, FaCameraRetro, FaVideo } from 'react-icons/fa';
+import { FaLaptopCode, FaChartLine, FaRobot, FaCameraRetro, FaVideo, FaShoppingBag } from 'react-icons/fa';
 import Testimonials from "@/components/Testimonials";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -59,6 +59,17 @@ const ServicesPage = () => {
             </Link>
 
             <Link
+              href="/services/online-store"
+              className="group block p-10 rounded-3xl transition-all duration-300 bg-white dark:bg-slate-900 hover:-translate-y-2 border border-slate-100 dark:border-slate-800 hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10 w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.3334rem)]"
+            >
+              <div className="flex justify-center mb-8">
+                <FaShoppingBag className="text-6xl text-rose-500 group-hover:scale-110 transition-transform duration-500" />
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight text-center">{t('services.onlineStore.title')}</h3>
+              <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed text-center">{t('services.onlineStore.description')}</p>
+            </Link>
+
+            <Link
               href="/services/photography"
               className="group block p-10 rounded-3xl transition-all duration-300 bg-white dark:bg-slate-900 hover:-translate-y-2 border border-slate-100 dark:border-slate-800 hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10 w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.3334rem)]"
             >
@@ -97,7 +108,7 @@ const ServicesPage = () => {
             className="max-w-4xl mx-auto"
           >
             <h2 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter uppercase">
-              Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-indigo-600">Scale</span>?
+              Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-amber-500">Scale</span>?
             </h2>
             <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 mb-12 font-medium leading-relaxed">
               Join elite businesses using our comprehensive services to dominate their market.
@@ -106,7 +117,7 @@ const ServicesPage = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <Link
                 href="/pricing"
-                className="w-full sm:w-auto bg-gradient-to-r from-rose-500 via-purple-500 to-indigo-600 text-white py-5 px-12 rounded-full hover:scale-105 transition-all duration-300 text-xl font-black shadow-xl uppercase tracking-tighter"
+                className="w-full sm:w-auto bg-gradient-to-r from-rose-500 to-amber-500 text-white py-5 px-12 rounded-full hover:scale-105 transition-all duration-300 text-xl font-black shadow-xl uppercase tracking-tighter"
               >
                 Get Started
               </Link>

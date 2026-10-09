@@ -70,7 +70,7 @@ const FreeSeoAuditClient = () => {
                     </div>
 
                     <div className="relative">
-                        <div className="absolute -inset-4 bg-gradient-to-r from-rose-500 to-indigo-600 rounded-[2.5rem] blur-2xl opacity-20"></div>
+                        <div className="absolute -inset-4 bg-gradient-to-r from-rose-500 to-amber-500 rounded-[2.5rem] blur-2xl opacity-20"></div>
                         <div className="relative bg-white dark:bg-slate-900 p-8 md:p-12 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-2xl">
                             {!submitted ? (
                                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -97,7 +97,7 @@ const FreeSeoAuditClient = () => {
                                     </div>
                                     <button 
                                         type="submit"
-                                        className="w-full bg-gradient-to-r from-rose-500 to-indigo-600 text-white font-black py-4 rounded-xl uppercase tracking-widest hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-rose-500/25"
+                                        className="w-full bg-gradient-to-r from-rose-500 to-amber-500 text-white font-black py-4 rounded-xl uppercase tracking-widest hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-rose-500/25"
                                     >
                                         Run Free Audit
                                     </button>

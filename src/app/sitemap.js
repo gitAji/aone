@@ -19,6 +19,7 @@ export default async function sitemap() {
     "/services/web-solution",
     "/services/ai-solution",
     "/services/marketing",
+    "/services/online-store",
     "/services/photography",
     "/services/videography",
     "/references",
