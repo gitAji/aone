@@ -41,7 +41,13 @@ function AdminLoginForm() {
     } catch (err) {
       // User closing the popup throws too -- don't show a scary error for that.
       if (err?.code !== 'auth/popup-closed-by-user' && err?.code !== 'auth/cancelled-popup-request') {
-        setError('Google sign-in failed.');
+        // Surface the actual Firebase error code (e.g. auth/operation-not-allowed
+        // if the Google provider isn't enabled yet, auth/unauthorized-domain if
+        // this domain isn't in Firebase's authorized-domains list) instead of a
+        // dead-end generic message -- this is exactly the detail needed to tell
+        // "CSP blocked the script" apart from "provider not enabled" apart from
+        // "domain not authorized".
+        setError(err?.code ? `Google sign-in failed: ${err.code}` : 'Google sign-in failed.');
       }
     } finally {
       setIsGoogleSubmitting(false);
