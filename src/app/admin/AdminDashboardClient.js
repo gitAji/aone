@@ -2,10 +2,11 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { FaSignOutAlt, FaTicketAlt, FaBriefcase, FaTags } from 'react-icons/fa';
 
 const sections = [
-  { icon: <FaTicketAlt />, title: 'Submissions & Tickets', desc: 'View form submissions and support tickets.' },
+  { icon: <FaTicketAlt />, title: 'Submissions & Orders', desc: 'View form submissions and orders across the site.', href: '/admin/submissions' },
   { icon: <FaBriefcase />, title: 'Careers', desc: 'Post, edit, or remove job listings.' },
   { icon: <FaTags />, title: 'Pricing Plans', desc: 'Edit plans, prices, and features.' },
 ];
@@ -40,14 +41,25 @@ const AdminDashboardClient = ({ username }) => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {sections.map((s, i) => (
-            <div key={i} className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-8">
-              <div className="text-2xl text-rose-500 mb-4">{s.icon}</div>
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{s.title}</h3>
-              <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">{s.desc}</p>
-              <span className="inline-block px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-[10px] font-black uppercase tracking-widest">Coming soon</span>
-            </div>
-          ))}
+          {sections.map((s, i) => {
+            const card = (
+              <div className={`bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-8 h-full ${s.href ? 'hover:border-rose-500/50 hover:-translate-y-1 transition-all duration-300' : ''}`}>
+                <div className="text-2xl text-rose-500 mb-4">{s.icon}</div>
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{s.title}</h3>
+                <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">{s.desc}</p>
+                {s.href ? (
+                  <span className="inline-block px-3 py-1 rounded-full bg-rose-500/10 text-rose-500 text-[10px] font-black uppercase tracking-widest">View All →</span>
+                ) : (
+                  <span className="inline-block px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-[10px] font-black uppercase tracking-widest">Coming soon</span>
+                )}
+              </div>
+            );
+            return s.href ? (
+              <Link href={s.href} key={i}>{card}</Link>
+            ) : (
+              <div key={i}>{card}</div>
+            );
+          })}
         </div>
       </div>
     </div>

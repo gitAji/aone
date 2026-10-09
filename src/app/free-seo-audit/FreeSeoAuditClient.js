@@ -25,8 +25,11 @@ const FreeSeoAuditClient = () => {
     const [submitted, setSubmitted] = useState(false);
     const [urlValue, setUrlValue] = useState('');
     const [urlError, setUrlError] = useState('');
+    const [emailValue, setEmailValue] = useState('');
+    const [submitting, setSubmitting] = useState(false);
+    const [submitError, setSubmitError] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const normalized = normalizeWebsiteUrl(urlValue);
         if (!normalized) {
@@ -34,8 +37,24 @@ const FreeSeoAuditClient = () => {
             return;
         }
         setUrlError('');
-        // Here you would normally handle the form submission
-        setSubmitted(true);
+        setSubmitError('');
+        setSubmitting(true);
+        try {
+            const res = await fetch('/api/seo-audit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ url: normalized, email: emailValue }),
+            });
+            if (!res.ok) {
+                const data = await res.json().catch(() => ({}));
+                throw new Error(data.error || 'Something went wrong. Please try again.');
+            }
+            setSubmitted(true);
+        } catch (err) {
+            setSubmitError(err.message || 'Something went wrong. Please try again.');
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     return (
@@ -132,18 +151,27 @@ const FreeSeoAuditClient = () => {
                                     </div>
                                     <div>
                                         <label className="block text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Work Email</label>
-                                        <input 
-                                            type="email" 
-                                            required 
+                                        <input
+                                            type="email"
+                                            required
+                                            value={emailValue}
+                                            onChange={(e) => setEmailValue(e.target.value)}
                                             placeholder="you@company.com"
                                             className="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl px-5 py-4 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-rose-500/50 transition-all font-medium"
                                         />
                                     </div>
-                                    <button 
+                                    {submitError && (
+                                        <p className="text-xs text-rose-500 font-bold flex items-center gap-1.5">
+                                            <FaExclamationCircle className="text-[10px]" />
+                                            {submitError}
+                                        </p>
+                                    )}
+                                    <button
                                         type="submit"
-                                        className="w-full bg-gradient-to-r from-rose-500 to-amber-500 text-white font-black py-4 rounded-xl uppercase tracking-widest hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-rose-500/25"
+                                        disabled={submitting}
+                                        className="w-full bg-gradient-to-r from-rose-500 to-amber-500 text-white font-black py-4 rounded-xl uppercase tracking-widest hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-rose-500/25 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                                     >
-                                        Run Free Audit
+                                        {submitting ? 'Submitting...' : 'Run Free Audit'}
                                     </button>
                                     <p className="text-[10px] text-center text-slate-400 font-medium">
                                         No credit card required. Our experts will manually review your site.
