@@ -6,7 +6,7 @@ import { useLanguage } from "@/context/LanguageContext";
 const stats = [
   { number: "50+",  label: "Projects Delivered",    labelNo: "Prosjekter levert" },
   { number: "4.9★", label: "Client Rating",          labelNo: "Klientvurdering" },
-  { number: "3+",   label: "Years of Excellence",    labelNo: "År med dyktighet" },
+  { number: "15+",  label: "Years of Excellence",    labelNo: "År med dyktighet" },
   { number: "24h",  label: "Avg. Response Time",     labelNo: "Svartid" },
 ];
 

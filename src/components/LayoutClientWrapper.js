@@ -10,6 +10,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import SettingsFab from "@/components/SettingsFab";
+import ExitIntentPopup from "@/components/ExitIntentPopup";
 
 const DynamicReferralPopup = dynamic(() =>
   import("@/components/ReferralPopup").then((mod) => mod.default)
@@ -85,6 +86,11 @@ export default function LayoutClientWrapper({ children }) {
             replaces what used to be two separate icons next to each other
             in the same corner. */}
         <SettingsFab />
+        {/* Desktop-only exit-intent CTA -- fires once per session when the
+            cursor crosses the top of the viewport heading for the tab bar.
+            Owns its own trigger/session-guard logic internally (see
+            ExitIntentPopup.js), so it needs nothing from this wrapper. */}
+        <ExitIntentPopup />
         {/* WhatsApp is just an external link (wa.me) -- hasAnsweredConsent
             here is a spatial guard, not a privacy gate (see above), keeping
             it from sitting underneath the still-open consent banner. Paired
