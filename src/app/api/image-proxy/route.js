@@ -1,34 +1,38 @@
 import { NextResponse } from 'next/server';
-import https from 'https';
+import http from 'http';
 
 export const runtime = 'nodejs';
 
 /**
- * Optimized Image Proxy for WordPress - SSL Bypass Version
- * Uses https module to stream images even if SSL is expired
+ * Image Proxy for WordPress uploads
+ * blog.aone.no does not accept connections on 443 at all. WordPress's own
+ * stored URLs are https://blog.aone.no/wp-content/uploads/... (its siteurl
+ * setting) -- normalize to http:// before fetching, same as wp-proxy's API
+ * calls, rather than trying (and failing) to connect over TLS.
  */
 export async function GET(request) {
     const { searchParams } = new URL(request.url);
-    const imageUrl = searchParams.get('url');
+    const rawImageUrl = searchParams.get('url');
 
-    if (!imageUrl) {
+    if (!rawImageUrl) {
         return new NextResponse('URL is required', { status: 400 });
     }
 
-    if (!imageUrl.includes('blog.aone.no')) {
+    if (!rawImageUrl.includes('blog.aone.no')) {
         return new NextResponse('Invalid domain: Unauthorized image source', { status: 403 });
     }
+
+    const imageUrl = rawImageUrl.replace(/^https:\/\//, 'http://');
 
     try {
         const stream = await new Promise((resolve, reject) => {
             const options = {
-                rejectUnauthorized: false,
                 headers: {
                     'User-Agent': 'Aone-Image-Proxy/1.1',
                 }
             };
 
-            https.get(imageUrl, options, (res) => {
+            http.get(imageUrl, options, (res) => {
                 if (res.statusCode >= 400) {
                     reject(new Error(`Upstream error: ${res.statusCode}`));
                     return;
@@ -56,7 +60,7 @@ export async function GET(request) {
         if (contentLength) headers.set('Content-Length', contentLength);
         
         headers.set('Cache-Control', 'public, max-age=31536000, immutable');
-        headers.set('X-Proxy-Source', 'Aone-WP-Engine-Legacy-SSL');
+        headers.set('X-Proxy-Source', 'Aone-WP-Engine');
 
         return new NextResponse(webStream, {
             status: 200,
