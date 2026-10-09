@@ -5,7 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaEnvelope, FaPhone, FaExternalLinkAlt } from "react-icons/fa";
+import { FaEnvelope, FaPhone, FaExternalLinkAlt, FaUser } from "react-icons/fa";
+import ThemeToggle from "./ThemeToggle";
 
 const HamburgerMenu = () => {
   const { language, changeLanguage, t } = useLanguage();
@@ -49,70 +50,79 @@ const HamburgerMenu = () => {
 
   return (
     <div className="hamburger-menu flex items-center gap-3">
-      {/* Desktop Language Switcher */}
-      <div className="hidden lg:flex items-center gap-4 bg-slate-100 dark:bg-slate-900 px-3 py-1.5 rounded-full border border-slate-200/50 dark:border-slate-800/50">
-        <button
-          onClick={() => changeLanguage('en')}
-          className="flex items-center gap-1.5 group transition-all duration-300"
-        >
-          <Image
-            src={getFlagUrl('en')}
-            alt="English"
-            width={16}
-            height={12}
-            className={`w-4 h-auto rounded-[1px] transition-all duration-300 ${language === 'en' ? 'opacity-100 scale-105 shadow-sm' : 'opacity-40 group-hover:opacity-75'}`}
-            unoptimized
-          />
-          <span className={`text-[10px] font-bold tracking-wider transition-colors duration-300 ${language === 'en' ? 'text-rose-700 dark:text-rose-400' : 'text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white'}`}>
-            EN
-          </span>
-        </button>
+      {/* Utility pill -- theme, language, and client portal used to float as
+          three separately-shaped buttons (a pill + two circles) with
+          inconsistent padding/rhythm; merged into one pill so the header
+          reads as CTA + one utility cluster + menu trigger, not five
+          disconnected shapes. Full version (all three segments) on desktop;
+          a trimmed two-segment version (no language, already reachable in
+          the fullscreen menu's footer) on mobile, matching the segments'
+          prior individual breakpoints. */}
+      <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-900 pl-1.5 pr-1.5 py-1 rounded-full border border-slate-200/50 dark:border-slate-800/50">
+        <ThemeToggle />
 
-        <div className="w-px h-3 bg-slate-300 dark:bg-slate-800"></div>
+        {/* Language Switcher -- desktop only; on mobile it lives in the
+            fullscreen menu's footer row instead, where there's room for it. */}
+        <div className="hidden lg:flex items-center gap-2.5 pl-1">
+          <div className="w-px h-4 bg-slate-300 dark:bg-slate-800" />
+          <button
+            onClick={() => changeLanguage('en')}
+            className="flex items-center gap-1.5 group transition-all duration-300"
+            aria-label="English"
+          >
+            <Image
+              src={getFlagUrl('en')}
+              alt="English"
+              width={16}
+              height={12}
+              className={`w-4 h-auto rounded-[1px] transition-all duration-300 ${language === 'en' ? 'opacity-100 scale-105 shadow-sm' : 'opacity-40 group-hover:opacity-75'}`}
+              unoptimized
+            />
+            <span className={`text-[10px] font-bold tracking-wider transition-colors duration-300 ${language === 'en' ? 'text-rose-700 dark:text-rose-400' : 'text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white'}`}>
+              EN
+            </span>
+          </button>
 
-        <button
-          onClick={() => changeLanguage('no')}
-          className="flex items-center gap-1.5 group transition-all duration-300"
-        >
-          <Image
-            src={getFlagUrl('no')}
-            alt="Norsk"
-            width={16}
-            height={12}
-            className={`w-4 h-auto rounded-[1px] transition-all duration-300 ${language === 'no' ? 'opacity-100 scale-105 shadow-sm' : 'opacity-40 group-hover:opacity-75'}`}
-            unoptimized
-          />
-          <span className={`text-[10px] font-bold tracking-wider transition-colors duration-300 ${language === 'no' ? 'text-rose-700 dark:text-rose-400' : 'text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white'}`}>
-            NO
-          </span>
-        </button>
+          <div className="w-px h-3 bg-slate-300 dark:bg-slate-800" />
+
+          <button
+            onClick={() => changeLanguage('no')}
+            className="flex items-center gap-1.5 group transition-all duration-300"
+            aria-label="Norsk"
+          >
+            <Image
+              src={getFlagUrl('no')}
+              alt="Norsk"
+              width={16}
+              height={12}
+              className={`w-4 h-auto rounded-[1px] transition-all duration-300 ${language === 'no' ? 'opacity-100 scale-105 shadow-sm' : 'opacity-40 group-hover:opacity-75'}`}
+              unoptimized
+            />
+            <span className={`text-[10px] font-bold tracking-wider transition-colors duration-300 ${language === 'no' ? 'text-rose-700 dark:text-rose-400' : 'text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white'}`}>
+              NO
+            </span>
+          </button>
+        </div>
+
+        {/* Client Portal -- hidden below 360px to leave room for the quote
+            button and menu trigger on the narrowest phones (same fallback
+            link then lives in the fullscreen menu's footer). */}
+        <div className="hidden min-[360px]:flex items-center pl-0.5">
+          <div className="w-px h-4 bg-slate-300 dark:bg-slate-800" />
+          <a
+            href="https://crm.aone.no"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative flex items-center justify-center w-7 h-7 rounded-full ml-1 transition-colors duration-200 hover:bg-black/5 dark:hover:bg-white/10 text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white"
+            aria-label="Client Login"
+          >
+            <FaUser className="text-sm" />
+            <span className="pointer-events-none absolute top-full left-1/2 mt-2.5 -translate-x-1/2 whitespace-nowrap rounded-md bg-slate-950 dark:bg-white px-2.5 py-1.5 text-[9px] font-black uppercase tracking-widest text-white dark:text-slate-900 opacity-0 scale-95 transition-all duration-200 group-hover:opacity-100 group-hover:scale-100 shadow-xl hidden sm:block">
+              CLIENT PORTAL
+            </span>
+          </a>
+        </div>
       </div>
-
-      {/* Portal Access */}
-      <a
-        href="https://crm.aone.no"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group relative hidden min-[360px]:flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-850 border border-slate-200/50 dark:border-slate-800/50 text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white"
-        aria-label="Client Login"
-      >
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-          <circle cx="12" cy="7" r="4"></circle>
-        </svg>
-        <span className="pointer-events-none absolute top-full left-1/2 mt-2.5 -translate-x-1/2 whitespace-nowrap rounded-md bg-slate-950 px-2.5 py-1.5 text-[9px] font-bold tracking-widest text-white opacity-0 scale-95 transition-all duration-200 group-hover:opacity-100 group-hover:scale-100 shadow-xl hidden sm:block">
-          CLIENT PORTAL
-        </span>
-      </a>
 
       {/* Hamburger Trigger Button — asymmetric "staircase" mark instead of a generic
           equal-width hamburger, single-color (bg-current); morphs into a centered X on open */}
