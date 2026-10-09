@@ -118,7 +118,7 @@ const AISolutionClient = () => {
             className="max-w-4xl mx-auto"
           >
             <h2 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter uppercase">
-              Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-indigo-600">Automate?</span>
+              Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-amber-500">Automate?</span>
             </h2>
             <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 mb-12 font-medium leading-relaxed">
               Join the businesses using chatbots, automation, and AI agents to streamline everything.
@@ -127,7 +127,7 @@ const AISolutionClient = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <Link
                 href="/pricing"
-                className="w-full sm:w-auto bg-gradient-to-r from-rose-500 via-purple-500 to-indigo-600 text-white py-5 px-12 rounded-full hover:scale-105 transition-all duration-300 text-xl font-black shadow-xl uppercase tracking-tighter"
+                className="w-full sm:w-auto bg-gradient-to-r from-rose-500 to-amber-500 text-white py-5 px-12 rounded-full hover:scale-105 transition-all duration-300 text-xl font-black shadow-xl uppercase tracking-tighter"
               >
                 Get Started
               </Link>
