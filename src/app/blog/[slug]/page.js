@@ -3,6 +3,10 @@ import { getFeaturedImage, stripHtml } from '@/lib/wordpress';
 import { fetchPostBySlug, fetchAllPostSlugs } from '@/lib/wordpress-server';
 import BlogPostClient from './BlogPostClient';
 
+// Same reasoning as blog/page.js's revalidate: don't let a build-time
+// WordPress outage bake in forever.
+export const revalidate = 300;
+
 // Pre-renders every known post at build time; any post published after the
 // last build still resolves on-demand at request time (Next.js default
 // dynamicParams behavior), so a new WordPress post is never a 404 while

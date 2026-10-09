@@ -1,6 +1,12 @@
 import { fetchPosts } from '@/lib/wordpress-server';
 import BlogListClient from './BlogListClient';
 
+// Without this, Next.js fully bakes this page at build time and never
+// looks at WordPress again until the next deploy -- if blog.aone.no was
+// briefly unreachable during a build, the empty result is permanent.
+// This re-fetches in the background at most every 5 minutes.
+export const revalidate = 300;
+
 export const metadata = {
   title: "Blogg | Webdesign, AI & Digital Markedsføring Innsikt – Aone",
   description: "Artikler om webdesign, AI-automatisering, SEO og digital markedsføring fra Aone i Bergen. Hold deg oppdatert på teknologitrender i Norge.",
