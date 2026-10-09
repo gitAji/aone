@@ -2,7 +2,7 @@
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import Link from 'next/link';
-import { FaSearchDollar, FaLightbulb, FaRocket, FaCogs, FaChartLine, FaShieldAlt } from 'react-icons/fa';
+import { FaSearchDollar, FaLightbulb, FaRocket, FaCogs, FaChartLine, FaShieldAlt, FaFileAlt, FaQuestionCircle, FaLink, FaRobot } from 'react-icons/fa';
 import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
 import Testimonials from "@/components/Testimonials";
@@ -67,8 +67,45 @@ const GEOPage = () => {
                 </div>
             </section>
 
-            {/* Approach Section */}
+            {/* What We Offer Section */}
             <section className="py-24 bg-slate-900 dark:bg-black text-white border-y border-slate-800">
+                <div className="container mx-auto px-6">
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-4xl md:text-5xl font-black mb-16 text-center uppercase tracking-tighter"
+                    >
+                        Our GEO Services
+                    </motion.h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {[
+                            { icon: <FaFileAlt className="text-4xl text-rose-500 mb-4" />, title: "AI-Readable Content Structuring", desc: "Restructure your pages so ChatGPT, Perplexity, and Gemini can parse, quote, and cite them accurately." },
+                            { icon: <FaQuestionCircle className="text-4xl text-rose-500 mb-4" />, title: "Answer-Engine Optimization", desc: "Format content to directly answer the questions people ask AI assistants, increasing citation odds." },
+                            { icon: <FaLink className="text-4xl text-rose-500 mb-4" />, title: "Entity & Schema Markup", desc: "Structured data and knowledge-graph signals that help AI engines correctly identify and trust your brand." },
+                            { icon: <FaChartLine className="text-4xl text-rose-500 mb-4" />, title: "AI Visibility Tracking", desc: "Monitor how often and how accurately AI engines mention your brand across prompts and categories." },
+                            { icon: <FaRobot className="text-4xl text-rose-500 mb-4" />, title: "Competitor AI Audits", desc: "See exactly what AI engines say about your competitors -- and close the gap." },
+                            { icon: <FaShieldAlt className="text-4xl text-rose-500 mb-4" />, title: "Authority & Citation Building", desc: "Build the citations and mentions across the web that AI models use to judge source credibility." },
+                        ].map((service, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.1 }}
+                                className="flex flex-col items-center p-10 bg-slate-800/20 backdrop-blur-sm rounded-3xl border border-slate-800 hover:border-rose-500/50 transition-all duration-300 text-center"
+                            >
+                                {service.icon}
+                                <h3 className="text-xl font-bold text-white mb-4">{service.title}</h3>
+                                <p className="text-slate-400 font-medium leading-relaxed">{service.desc}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Approach Section */}
+            <section className="py-24 bg-slate-50 dark:bg-slate-950">
                 <div className="container mx-auto px-6">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <motion.div
@@ -76,16 +113,16 @@ const GEOPage = () => {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                         >
-                            <h2 className="text-4xl md:text-5xl font-black mb-8 uppercase tracking-tighter">
+                            <h2 className="text-4xl md:text-5xl font-black mb-8 uppercase tracking-tighter text-slate-900 dark:text-white">
                                 Neural-First Approach
                             </h2>
-                            <p className="text-xl text-slate-400 mb-8 font-medium leading-relaxed">
-                                Our GEO process starts with deep linguistic analysis to understand how users ask questions. 
+                            <p className="text-xl text-slate-600 dark:text-slate-400 mb-8 font-medium leading-relaxed">
+                                Our GEO process starts with deep linguistic analysis to understand how users ask questions.
                                 We then architect content that AI generative engines prioritize.
                             </p>
                             <ul className="space-y-4">
                                 {['Linguistic Analysis', 'Semantic Structuring', 'Entity Association', 'Performance Synthesis'].map((step, idx) => (
-                                    <li key={idx} className="flex items-center text-slate-200 font-bold">
+                                    <li key={idx} className="flex items-center text-slate-700 dark:text-slate-200 font-bold">
                                         <div className="w-2 h-2 bg-rose-500 rounded-full mr-4"></div>
                                         {step}
                                     </li>
@@ -99,16 +136,16 @@ const GEOPage = () => {
                                 { icon: <FaSearchDollar className="text-4xl text-rose-500 mb-4" />, title: "Optimization" },
                                 { icon: <FaChartLine className="text-4xl text-rose-500 mb-4" />, title: "Tracking" },
                             ].map((item, i) => (
-                                <motion.div 
+                                <motion.div
                                     key={i}
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: i * 0.1 }}
-                                    className="p-8 bg-slate-800/30 backdrop-blur-sm rounded-3xl border border-slate-800 flex flex-col items-center text-center"
+                                    className="p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800 flex flex-col items-center text-center shadow-sm"
                                 >
                                     {item.icon}
-                                    <span className="text-lg font-bold uppercase tracking-tight">{item.title}</span>
+                                    <span className="text-lg font-bold uppercase tracking-tight text-slate-900 dark:text-white">{item.title}</span>
                                 </motion.div>
                             ))}
                         </div>
