@@ -106,26 +106,26 @@ const FreeConsultationClient = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">{t('consultation.fullName')} <span className="text-red-500">*</span></label>
-              <input type="text" name="fullName" id="fullName" required value={formData.fullName} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              <input type="text" name="fullName" id="fullName" required value={formData.fullName} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 sm:text-sm" />
             </div>
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">{t('consultation.emailAddress')} <span className="text-red-500">*</span></label>
-              <input type="email" name="email" id="email" required value={formData.email} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              <input type="email" name="email" id="email" required value={formData.email} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 sm:text-sm" />
             </div>
             <div>
               <label htmlFor="phone" className="block text-sm font-medium text-gray-700">{t('consultation.phoneNumber')}</label>
-              <input type="tel" name="phone" id="phone" value={formData.phone} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              <input type="tel" name="phone" id="phone" value={formData.phone} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 sm:text-sm" />
             </div>
             <div>
               <label htmlFor="companyName" className="block text-sm font-medium text-gray-700">{t('consultation.companyName')}</label>
-              <input type="text" name="companyName" id="companyName" value={formData.companyName} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              <input type="text" name="companyName" id="companyName" value={formData.companyName} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 sm:text-sm" />
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">{t('consultation.servicesOfInterest')}</label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {services.map((service) => (
                   <div key={service.key} className="flex items-center">
-                    <input type="checkbox" id={service.key} name="servicesOfInterest" value={service.label} checked={formData.servicesOfInterest.includes(service.label)} onChange={handleChange} className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
+                    <input type="checkbox" id={service.key} name="servicesOfInterest" value={service.label} checked={formData.servicesOfInterest.includes(service.label)} onChange={handleChange} className="h-4 w-4 text-rose-600 focus:ring-rose-500 border-gray-300 rounded" />
                     <label htmlFor={service.key} className="ml-2 block text-sm text-gray-900">{service.label}</label>
                   </div>
                 ))}
@@ -133,11 +133,11 @@ const FreeConsultationClient = () => {
             </div>
             <div>
               <label htmlFor="biggestChallenge" className="block text-sm font-medium text-gray-700">{t('consultation.biggestChallenge')}</label>
-              <textarea name="biggestChallenge" id="biggestChallenge" rows="4" value={formData.biggestChallenge} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+              <textarea name="biggestChallenge" id="biggestChallenge" rows="4" value={formData.biggestChallenge} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 sm:text-sm"></textarea>
             </div>
             <div>
               <label htmlFor="preferredTime" className="block text-sm font-medium text-gray-700">{t('consultation.preferredTime')}</label>
-              <select name="preferredTime" id="preferredTime" value={formData.preferredTime} onChange={handleChange} className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+              <select name="preferredTime" id="preferredTime" value={formData.preferredTime} onChange={handleChange} className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-rose-500 focus:border-rose-500 sm:text-sm rounded-md">
                 <option value="">{t('consultation.selectTime')}</option>
                 <option value="Morning">{t('consultation.morning')}</option>
                 <option value="Afternoon">{t('consultation.afternoon')}</option>

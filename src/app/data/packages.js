@@ -151,6 +151,32 @@ export const packages = [
         description: 'Comprehensive support to keep your AI-native site running at peak performance.'
     },
     {
+        id: 'sme-launch',
+        name: 'SME Launch Plan',
+        // Transparent, all-inclusive pricing for small businesses -- replaces
+        // the earlier "free design/free logo/free everything, 2500kr/yr,
+        // 3-year lock-in with code withheld on cancellation" offer, which
+        // legal review flagged under Markedsforingsloven (misleading "free"
+        // claims under UCPD Annex I item 20) and Avtaleloven SS36
+        // (disproportionate withholding of the customer's own source files).
+        // Setup is a real, stated price; the recurring fee covers actual
+        // domain/hosting/support costs rather than being dressed up as a
+        // "free" perk with hidden conditions.
+        price: 9990,
+        monthlyPrice: 299,
+        features: [
+            'Up to 5-Page Custom Website',
+            'Logo & UI/UX Design Included',
+            'Admin Panel for Self-Service Edits',
+            'Domain Registration (1st Year)',
+            'Hosting, SSL & Email Included',
+            'Source Files Delivered on Completion',
+            '12-Month Minimum Term, Cancel Anytime After'
+        ],
+        recommended: false,
+        description: 'A straightforward, fixed-price website package built for small and medium businesses -- one setup fee, one clear monthly rate, no hidden terms.'
+    },
+    {
         id: 'photovideo',
         name: 'Photo & Video Pack',
         price: 9990,

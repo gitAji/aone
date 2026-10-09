@@ -18,7 +18,7 @@ const SupportPage = () => {
     email: '',
     subject: '',
     issueDescription: '',
-    priority: '',
+    priority: 'Medium',
   });
   const [toast, setToast] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -54,7 +54,7 @@ const SupportPage = () => {
           email: '',
           subject: '',
           issueDescription: '',
-          priority: '',
+          priority: 'Medium',
         });
       } else {
         setToast({ message: 'Something went wrong. Please try again.', type: 'error' });
@@ -93,7 +93,7 @@ const SupportPage = () => {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 sm:text-sm"
                   />
                 </div>
                 <div>
@@ -107,7 +107,7 @@ const SupportPage = () => {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 sm:text-sm"
                   />
                 </div>
                 <div>
@@ -121,7 +121,7 @@ const SupportPage = () => {
                     required
                     value={formData.subject}
                     onChange={handleChange}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 sm:text-sm"
                   />
                 </div>
                 <div>
@@ -135,22 +135,20 @@ const SupportPage = () => {
                     required
                     value={formData.issueDescription}
                     onChange={handleChange}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 sm:text-sm"
                   ></textarea>
                 </div>
                 <div>
                   <label htmlFor="priority" className="block text-sm font-medium text-gray-700">
-                    Priority <span className="text-red-500">*</span>
+                    Priority
                   </label>
                   <select
                     id="priority"
                     name="priority"
-                    required
                     value={formData.priority}
                     onChange={handleChange}
-                    className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                    className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-rose-500 focus:border-rose-500 sm:text-sm rounded-md"
                   >
-                    <option value="">Select priority</option>
                     {priorityOptions.map((option) => (
                       <option key={option} value={option}>
                         {option}
