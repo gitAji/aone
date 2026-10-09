@@ -1,0 +1,57 @@
+'use client';
+
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { FaSignOutAlt, FaTicketAlt, FaBriefcase, FaTags } from 'react-icons/fa';
+
+const sections = [
+  { icon: <FaTicketAlt />, title: 'Submissions & Tickets', desc: 'View form submissions and support tickets.' },
+  { icon: <FaBriefcase />, title: 'Careers', desc: 'Post, edit, or remove job listings.' },
+  { icon: <FaTags />, title: 'Pricing Plans', desc: 'Edit plans, prices, and features.' },
+];
+
+const AdminDashboardClient = ({ username }) => {
+  const router = useRouter();
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
+
+  const handleLogout = async () => {
+    setIsLoggingOut(true);
+    await fetch('/api/admin/logout', { method: 'POST' });
+    router.push('/admin/login');
+    router.refresh();
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 px-6 py-10">
+      <div className="max-w-5xl mx-auto">
+        <div className="flex items-center justify-between mb-10">
+          <div>
+            <h1 className="text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Admin Dashboard</h1>
+            <p className="text-sm text-slate-500 dark:text-slate-400">Signed in as {username}</p>
+          </div>
+          <button
+            onClick={handleLogout}
+            disabled={isLoggingOut}
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-950 text-xs font-black uppercase tracking-wider hover:opacity-90 transition-all"
+          >
+            <FaSignOutAlt className="text-xs" />
+            {isLoggingOut ? 'Signing out...' : 'Sign Out'}
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {sections.map((s, i) => (
+            <div key={i} className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-8">
+              <div className="text-2xl text-rose-500 mb-4">{s.icon}</div>
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{s.title}</h3>
+              <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">{s.desc}</p>
+              <span className="inline-block px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-[10px] font-black uppercase tracking-widest">Coming soon</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default AdminDashboardClient;
