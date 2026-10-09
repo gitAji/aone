@@ -2,7 +2,7 @@
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import Link from 'next/link';
-import { FaRobot, FaLightbulb, FaRocket, FaCogs, FaChartLine, FaShieldAlt } from 'react-icons/fa';
+import { FaRobot, FaLightbulb, FaRocket, FaCogs, FaChartLine, FaShieldAlt, FaDatabase, FaSync, FaPlug } from 'react-icons/fa';
 import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
 import Testimonials from "@/components/Testimonials";
@@ -67,8 +67,45 @@ const AIAutomationsPage = () => {
                 </div>
             </section>
 
-            {/* Approach Section */}
+            {/* What We Offer Section */}
             <section className="py-24 bg-slate-900 dark:bg-black text-white border-y border-slate-800">
+                <div className="container mx-auto px-6">
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-4xl md:text-5xl font-black mb-16 text-center uppercase tracking-tighter"
+                    >
+                        What We Automate
+                    </motion.h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {[
+                            { icon: <FaCogs className="text-4xl text-rose-500 mb-4" />, title: "Workflow Automation", desc: "Connect your CRM, invoicing, and support tools into self-running pipelines that eliminate manual busywork." },
+                            { icon: <FaRobot className="text-4xl text-rose-500 mb-4" />, title: "Custom AI Integrations", desc: "Embed GPT and LLM-powered logic directly into your internal tools, dashboards, and customer-facing apps." },
+                            { icon: <FaDatabase className="text-4xl text-rose-500 mb-4" />, title: "Data & Document Processing", desc: "Automatically extract, structure, and route data from invoices, forms, and emails with zero manual entry." },
+                            { icon: <FaSync className="text-4xl text-rose-500 mb-4" />, title: "CRM & Lead Routing", desc: "Qualify, score, and route incoming leads to the right team member the moment they arrive." },
+                            { icon: <FaChartLine className="text-4xl text-rose-500 mb-4" />, title: "Automated Reporting", desc: "Turn raw business data into live dashboards and scheduled reports, delivered without lifting a finger." },
+                            { icon: <FaPlug className="text-4xl text-rose-500 mb-4" />, title: "Third-Party Integrations", desc: "Plug into the tools you already use -- Zapier, Make, Slack, Google Workspace -- no rebuild required." },
+                        ].map((service, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.1 }}
+                                className="flex flex-col items-center p-10 bg-slate-800/20 backdrop-blur-sm rounded-3xl border border-slate-800 hover:border-rose-500/50 transition-all duration-300 text-center"
+                            >
+                                {service.icon}
+                                <h3 className="text-xl font-bold text-white mb-4">{service.title}</h3>
+                                <p className="text-slate-400 font-medium leading-relaxed">{service.desc}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Approach Section */}
+            <section className="py-24 bg-slate-50 dark:bg-slate-950">
                 <div className="container mx-auto px-6">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center text-center lg:text-left">
                         <div>
@@ -76,11 +113,11 @@ const AIAutomationsPage = () => {
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
-                                className="text-4xl md:text-5xl font-black mb-8 uppercase tracking-tighter"
+                                className="text-4xl md:text-5xl font-black mb-8 uppercase tracking-tighter text-slate-900 dark:text-white"
                             >
                                 Our Neural Strategy
                             </motion.h2>
-                            <div className="space-y-6 text-xl text-slate-400 font-medium leading-relaxed">
+                            <div className="space-y-6 text-xl text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
                                 <p>Our process begins with a deep dive into your current operations to identify key areas where AI can deliver the most impact. We don&apos;t just implement technology; we craft bespoke solutions.</p>
                                 <p>From consultation and strategy development to custom AI model training and deployment, we guide you through every step of the transformation.</p>
                             </div>
@@ -92,16 +129,16 @@ const AIAutomationsPage = () => {
                                 { icon: <FaRobot className="text-3xl text-rose-500 mb-4" />, title: "Integration & Deployment" },
                                 { icon: <FaChartLine className="text-3xl text-rose-500 mb-4" />, title: "Monitoring & Analytics" },
                             ].map((step, i) => (
-                                <motion.div 
+                                <motion.div
                                     key={i}
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: i * 0.1 }}
-                                    className="p-8 bg-slate-800/20 backdrop-blur-sm rounded-3xl border border-slate-800 hover:border-rose-500/50 transition-all duration-300 flex flex-col items-center lg:items-start"
+                                    className="p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800 hover:border-rose-500/50 transition-all duration-300 flex flex-col items-center lg:items-start shadow-sm"
                                 >
                                     {step.icon}
-                                    <h3 className="text-lg font-bold text-white transition-colors">{step.title}</h3>
+                                    <h3 className="text-lg font-bold text-slate-900 dark:text-white transition-colors">{step.title}</h3>
                                 </motion.div>
                             ))}
                         </div>

@@ -2,7 +2,7 @@
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import Link from 'next/link';
-import { FaPaintBrush, FaLightbulb, FaBullhorn, FaUsers, FaChartLine, FaRegLightbulb, FaRocket } from 'react-icons/fa';
+import { FaPaintBrush, FaLightbulb, FaBullhorn, FaUsers, FaChartLine, FaRegLightbulb, FaRocket, FaBook } from 'react-icons/fa';
 import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
 import Testimonials from "@/components/Testimonials";
@@ -67,7 +67,7 @@ const BrandingPage = () => {
                 </div>
             </section>
 
-            {/* Our Branding Process */}
+            {/* What We Offer Section */}
             <section className="py-24 bg-slate-900 dark:bg-black text-white border-y border-slate-800">
                 <div className="container mx-auto px-6">
                     <motion.h2
@@ -76,10 +76,47 @@ const BrandingPage = () => {
                         viewport={{ once: true }}
                         className="text-4xl md:text-5xl font-black mb-16 text-center uppercase tracking-tighter"
                     >
+                        Our Branding Services
+                    </motion.h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {[
+                            { icon: <FaRegLightbulb className="text-4xl text-rose-500 mb-4" />, title: "Brand Strategy & Positioning", desc: "Define your mission, voice, and market position so every touchpoint tells the same story." },
+                            { icon: <FaPaintBrush className="text-4xl text-rose-500 mb-4" />, title: "Logo & Visual Identity", desc: "A distinctive logo, color palette, and typography system built to be instantly recognizable." },
+                            { icon: <FaBook className="text-4xl text-rose-500 mb-4" />, title: "Brand Guidelines", desc: "A complete style guide covering usage rules, spacing, and tone so your brand stays consistent everywhere." },
+                            { icon: <FaBullhorn className="text-4xl text-rose-500 mb-4" />, title: "Marketing Collateral", desc: "Business cards, social templates, and presentation decks designed to match your new identity." },
+                            { icon: <FaChartLine className="text-4xl text-rose-500 mb-4" />, title: "Brand Audits & Refresh", desc: "Already have a brand? We audit what's working and modernize what isn't, without starting from zero." },
+                            { icon: <FaRocket className="text-4xl text-rose-500 mb-4" />, title: "Launch & Rollout Support", desc: "We help you roll your new identity out across your website, socials, and physical materials." },
+                        ].map((service, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.1 }}
+                                className="flex flex-col items-center p-10 bg-slate-800/20 backdrop-blur-sm rounded-3xl border border-slate-800 hover:border-rose-500/50 transition-all duration-300 text-center"
+                            >
+                                {service.icon}
+                                <h3 className="text-xl font-bold text-white mb-4">{service.title}</h3>
+                                <p className="text-slate-400 font-medium leading-relaxed">{service.desc}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Our Branding Process */}
+            <section className="py-24 bg-slate-50 dark:bg-slate-950">
+                <div className="container mx-auto px-6">
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-4xl md:text-5xl font-black mb-16 text-center uppercase tracking-tighter text-slate-900 dark:text-white"
+                    >
                         Our Branding Process
                     </motion.h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                        <div className="text-xl text-slate-400 leading-relaxed space-y-8 font-medium">
+                        <div className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed space-y-8 font-medium">
                             <p>Our branding journey begins with a deep understanding of your vision, values, and target market. We collaborate closely with you to unearth your unique brand story.</p>
                             <p>From conceptualization and design to comprehensive brand guidelines, we ensure every element of your identity is meticulously crafted for maximum impact.</p>
                         </div>
@@ -90,9 +127,9 @@ const BrandingPage = () => {
                                 { icon: <FaChartLine className="text-3xl text-rose-500 mb-3" />, title: "Guidelines" },
                                 { icon: <FaRocket className="text-3xl text-rose-500 mb-3" />, title: "Launch" },
                             ].map((step, i) => (
-                                <div key={i} className="flex flex-col items-center p-8 bg-slate-800/20 backdrop-blur-sm rounded-2xl border border-slate-800 hover:border-rose-500/50 transition-all duration-300">
+                                <div key={i} className="flex flex-col items-center p-8 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-rose-500/50 transition-all duration-300 shadow-sm">
                                     {step.icon}
-                                    <h3 className="text-lg font-bold text-white text-center">{step.title}</h3>
+                                    <h3 className="text-lg font-bold text-slate-900 dark:text-white text-center">{step.title}</h3>
                                 </div>
                             ))}
                         </div>
