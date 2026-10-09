@@ -3,6 +3,7 @@ import React from "react";
 import HeroSection from "@/components/HeroSection";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import products from "@/app/data/products";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -18,12 +19,25 @@ const ProductsClient = () => {
 
       <section className="py-24 bg-white dark:bg-[#020617] transition-colors duration-500">
         <div className="container mx-auto px-6">
-          <h2 className="text-5xl font-black text-slate-900 dark:text-white mb-16 text-center uppercase tracking-tighter">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-5xl font-black text-slate-900 dark:text-white mb-16 text-center uppercase tracking-tighter"
+          >
             {t('productsPage.header') || "Our Cloud Solutions"}
-          </h2>
+          </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12">
-            {products.map((product) => (
-              <div key={product.id} className="group bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-slate-800 hover:shadow-rose-500/10 transition-all duration-300 transform hover:-translate-y-2 flex flex-col">
+            {products.map((product, index) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, delay: (index % 2) * 0.15 }}
+                className="group bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-slate-800 hover:shadow-rose-500/10 transition-all duration-300 transform hover:-translate-y-2 flex flex-col"
+              >
                 <div className="relative h-64 w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
                   {product.imageUrl && (
                     <Image
@@ -73,7 +87,7 @@ const ProductsClient = () => {
                     </Link>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
