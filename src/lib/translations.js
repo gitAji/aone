@@ -81,6 +81,10 @@ export const translations = {
                 title: "AI-Driven Marketing",
                 description: "Digital marketing, SEO, and Generative Engine Optimization (GEO) together -- predictive analytics and AI-driven visibility across Google and AI search alike.",
             },
+            onlineStore: {
+                title: "Online Store",
+                description: "Shopify and WooCommerce solutions for online businesses and dropshipping -- store setup, custom theming, and ongoing management.",
+            },
             chatbot: {
                 title: "Custom AI Chatbots",
                 description: "Intelligent conversational agents and AI customer support solutions for 24/7 lead qualification and engagement.",
@@ -586,6 +590,10 @@ export const translations = {
             marketing: {
                 title: "AI-drevet Markedsføring",
                 description: "Digital markedsføring, SEO og Generative Engine Optimization (GEO) samlet -- prediktiv analyse og AI-drevet synlighet på tvers av Google og AI-søk.",
+            },
+            onlineStore: {
+                title: "Nettbutikk",
+                description: "Shopify- og WooCommerce-løsninger for nettbutikker og dropshipping -- oppsett, tilpasset tema og løpende drift.",
             },
             chatbot: {
                 title: "Tilpassede AI-chatbots",

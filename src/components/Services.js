@@ -5,6 +5,7 @@ import {
   FaRobot,
   FaCameraRetro,
   FaVideo,
+  FaShoppingBag,
 } from "react-icons/fa";
 
 import { useLanguage } from "@/context/LanguageContext";
@@ -94,6 +95,16 @@ const ServicesSection = () => {
   <div className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.3334rem)]">
   <ServiceCard
     number="04"
+    href="/services/online-store"
+    icon={FaShoppingBag}
+    title={t('services.onlineStore.title') || "Online Store"}
+    description={t('services.onlineStore.description') || "Shopify and WooCommerce solutions for online businesses and dropshipping."}
+    color="text-rose-500"
+  />
+  </div>
+  <div className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.3334rem)]">
+  <ServiceCard
+    number="05"
     href="/services/photography"
     icon={FaCameraRetro}
     title={t('services.photo.title') || "Photography"}
@@ -103,7 +114,7 @@ const ServicesSection = () => {
   </div>
   <div className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.3334rem)]">
   <ServiceCard
-    number="05"
+    number="06"
     href="/services/videography"
     icon={FaVideo}
     title={t('services.video.title') || "Videography"}

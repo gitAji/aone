@@ -2,19 +2,19 @@
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import Link from 'next/link';
-import { FaMobileAlt, FaCloud, FaCode, FaLaptopCode, FaShoppingCart, FaObjectGroup, FaPaintBrush, FaBook, FaBullhorn } from 'react-icons/fa';
+import { FaShoppingBag, FaBolt, FaGlobeEurope, FaStoreAlt, FaPalette, FaCreditCard, FaTruck, FaBoxes, FaChartBar } from 'react-icons/fa';
 import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
 import Testimonials from "@/components/Testimonials";
 
-const WebSolutionClient = () => {
+const OnlineStoreClient = () => {
   const { t } = useLanguage();
 
   return (
     <div className="service-detail-page bg-slate-50 dark:bg-slate-950 min-h-screen">
       <HeroSection
-        title={t('services.webSolution.title')}
-        subtitle={t('services.webSolution.description')}
+        title={t('services.onlineStore.title')}
+        subtitle={t('services.onlineStore.description')}
       />
 
       {/* Why Section */}
@@ -25,27 +25,27 @@ const WebSolutionClient = () => {
           viewport={{ once: true }}
           className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tighter"
         >
-          Why One Team, One Package
+          Launch Faster, Sell Sooner
         </motion.h2>
         <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-16 max-w-3xl mx-auto font-medium">
-          Your website, your identity, and your interface are one experience to a visitor -- not three separate vendors. We design and build them together, so nothing is left mismatched or out of sync.
+          Shopify and WooCommerce are the fastest proven path from idea to selling online -- whether you're stocking your own products or running a dropshipping business.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             {
-              icon: <FaMobileAlt className="text-5xl text-rose-500 mb-6" />,
-              title: "Responsive Mastery",
-              description: "Flawless performance across every device, from phones to 8K displays.",
+              icon: <FaBolt className="text-5xl text-rose-500 mb-6" />,
+              title: "Fast to Launch",
+              description: "A proven, battle-tested platform means weeks to launch, not months of custom development.",
             },
             {
-              icon: <FaObjectGroup className="text-5xl text-rose-500 mb-6" />,
-              title: "Cohesive Identity",
-              description: "Logo, brand system, and interface designed as one visual language, not patched together after the fact.",
+              icon: <FaStoreAlt className="text-5xl text-rose-500 mb-6" />,
+              title: "Built to Sell",
+              description: "Payments, shipping, tax, and checkout -- all handled by platforms designed for conversion.",
             },
             {
-              icon: <FaCloud className="text-5xl text-rose-500 mb-6" />,
-              title: "Built to Scale",
-              description: "Modern, serverless architecture that grows with your business instead of needing a rebuild.",
+              icon: <FaGlobeEurope className="text-5xl text-rose-500 mb-6" />,
+              title: "Scales With You",
+              description: "From your first order to thousands a month, the same platform grows with your business.",
             },
           ].map((item, index) => (
             <motion.div
@@ -73,19 +73,17 @@ const WebSolutionClient = () => {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-black mb-16 text-center uppercase tracking-tighter"
           >
-            Everything in the Web Solution
+            Everything In The Online Store
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { icon: <FaLaptopCode className="text-4xl text-rose-500 mb-4" />, title: "Custom Web Development", desc: "Deeply custom websites and web apps built for your specific business logic and workflows." },
-              { icon: <FaShoppingCart className="text-4xl text-rose-500 mb-4" />, title: "Custom E-Commerce", desc: "Fully bespoke online stores built from scratch when Shopify or WooCommerce can't do what you need." },
-              { icon: <FaObjectGroup className="text-4xl text-rose-500 mb-4" />, title: "UI/UX Design", desc: "User-centric interfaces built through research, wireframing, and prototyping before a line of code is written." },
-              { icon: <FaPaintBrush className="text-4xl text-rose-500 mb-4" />, title: "Logo & Visual Identity", desc: "A distinctive logo, color palette, and typography system designed to be instantly recognizable." },
-              { icon: <FaBook className="text-4xl text-rose-500 mb-4" />, title: "Brand Guidelines", desc: "A complete style guide so your brand stays consistent everywhere it appears." },
-              { icon: <FaBullhorn className="text-4xl text-rose-500 mb-4" />, title: "Marketing Collateral", desc: "Business cards, social templates, and presentation decks designed to match your identity." },
-              { icon: <FaCode className="text-4xl text-rose-500 mb-4" />, title: "API & System Integration", desc: "Connecting your site to the tools you already use every day." },
-              { icon: <FaMobileAlt className="text-4xl text-rose-500 mb-4" />, title: "Progressive Web Apps", desc: "Web experiences that feel and perform like native mobile apps." },
-              { icon: <FaCloud className="text-4xl text-rose-500 mb-4" />, title: "Performance Audits", desc: "Tuning existing sites for Core Web Vitals and top-tier SEO performance." },
+              { icon: <FaShoppingBag className="text-4xl text-rose-500 mb-4" />, title: "Shopify Setup", desc: "Full store build on Shopify, from theme to product catalog to go-live." },
+              { icon: <FaStoreAlt className="text-4xl text-rose-500 mb-4" />, title: "WooCommerce Setup", desc: "A WordPress-based store on WooCommerce for full ownership and flexibility." },
+              { icon: <FaBoxes className="text-4xl text-rose-500 mb-4" />, title: "Dropshipping Stores", desc: "Supplier integration, automated order routing, and a store built for dropshipping from day one." },
+              { icon: <FaPalette className="text-4xl text-rose-500 mb-4" />, title: "Custom Theming", desc: "A storefront that matches your brand, not a stock template everyone else uses." },
+              { icon: <FaCreditCard className="text-4xl text-rose-500 mb-4" />, title: "Payments & Checkout", desc: "Vipps, Klarna, card payments, and a checkout flow tuned to reduce cart abandonment." },
+              { icon: <FaTruck className="text-4xl text-rose-500 mb-4" />, title: "Shipping & Tax", desc: "Shipping rules, carrier integration, and tax setup configured correctly for Norway and beyond." },
+              { icon: <FaChartBar className="text-4xl text-rose-500 mb-4" />, title: "Store Analytics", desc: "Sales, inventory, and customer reporting so you always know what's selling." },
             ].map((service, index) => (
               <motion.div
                 key={index}
@@ -108,7 +106,7 @@ const WebSolutionClient = () => {
 
       {/* Final CTA Section */}
       <section className="py-24 bg-white dark:bg-slate-950 text-center relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-slate-800 to-transparent"></div>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-slate-800 to-transparent" />
 
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
@@ -118,10 +116,10 @@ const WebSolutionClient = () => {
             className="max-w-4xl mx-auto"
           >
             <h2 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter uppercase">
-              Ready to build something <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-indigo-600">extraordinary?</span>
+              Start <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-indigo-600">Selling</span>
             </h2>
             <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 mb-12 font-medium leading-relaxed">
-              One team designing your site, your interface, and your brand together.
+              Join online businesses running on Shopify and WooCommerce stores built to sell.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -145,4 +143,4 @@ const WebSolutionClient = () => {
   );
 };
 
-export default WebSolutionClient;
+export default OnlineStoreClient;

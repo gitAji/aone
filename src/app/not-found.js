@@ -23,6 +23,8 @@ export default function NotFound() {
             router.push('/services/web-solution');
         } else if (query.includes('seo') || query.includes('search') || query.includes('rank') || query.includes('google') || query.includes('market') || query.includes('ad') || query.includes('camp') || query.includes('social') || query.includes('geo') || query.includes('perplexity') || query.includes('engine') || query.includes('optimise')) {
             router.push('/services/marketing');
+        } else if (query.includes('shop') || query.includes('store') || query.includes('ecommerce') || query.includes('e-commerce') || query.includes('shopify') || query.includes('woocommerce') || query.includes('dropship') || query.includes('cart') || query.includes('sell')) {
+            router.push('/services/online-store');
         } else if (query.includes('photo') || query.includes('camera') || query.includes('shoot')) {
             router.push('/services/photography');
         } else if (query.includes('video') || query.includes('film')) {
