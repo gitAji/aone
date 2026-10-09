@@ -52,8 +52,8 @@ const ServicesPage = () => {
               <div className="flex justify-center mb-8">
                 <FaChartLine className="text-6xl text-rose-500 group-hover:scale-110 transition-transform duration-500" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight text-center">{t('servicesPage.marketingTitle')}</h3>
-              <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed text-center">{t('servicesPage.marketingDesc')}</p>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight text-center">{t('services.marketing.title')}</h3>
+              <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed text-center">{t('services.marketing.description')}</p>
             </Link>
 
             <Link
