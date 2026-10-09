@@ -218,7 +218,7 @@ export default function RootLayout({ children }) {
                   {
                     "@type": "ProfessionalService",
                     "@id": "https://aone.no/#service",
-                    "name": "Aone AI & Web Agency",
+                    "name": "Aone",
                     "image": "https://aone.no/images/logo.png",
                     "url": "https://aone.no",
                     "telephone": "+4740071654",
