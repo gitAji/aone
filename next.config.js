@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    // Lets Server Components/Route Handlers call forbidden()/unauthorized()
+    // from 'next/navigation', rendering src/app/forbidden.js and
+    // src/app/unauthorized.js respectively.
+    authInterrupts: true,
+  },
   images: {
     localPatterns: [
       {
