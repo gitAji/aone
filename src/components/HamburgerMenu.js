@@ -38,14 +38,13 @@ const HamburgerMenu = () => {
   };
 
   const menuLinks = [
-    { num: "00", name: t('requestQuote'), href: '/request-quote', desc: t('nav.desc.requestQuote') || "Get a free, no-obligation quote" },
-    { num: "01", name: t('nav.services'), href: '/services', desc: t('nav.desc.services') || "Tailored web design & business AI automation" },
-    { num: "02", name: t('nav.pricing'), href: '/pricing', desc: t('nav.desc.pricing') || "Transparent packages & custom enterprise quotes" },
-    { num: "03", name: t('nav.products'), href: '/products', desc: t('nav.desc.products') || "Pre-packaged software & ready-made templates" },
-    { num: "04", name: t('nav.references'), href: '/references', desc: t('nav.desc.references') || "Explore our case studies and successful projects" },
-    { num: "05", name: t('nav.about'), href: '/about', desc: t('nav.desc.about') || "Our story, team values, and mission statement" },
-    { num: "06", name: t('nav.blog'), href: '/blog', desc: t('nav.desc.blog') || "Insights, technology guides & industry news" },
-    { num: "07", name: t('nav.contact'), href: '/contact', desc: t('nav.desc.contact') || "Get in touch or schedule a virtual discovery call" },
+    { num: "00", name: t('nav.services'), href: '/services', desc: t('nav.desc.services') || "Tailored web design & business AI automation" },
+    { num: "01", name: t('nav.pricing'), href: '/pricing', desc: t('nav.desc.pricing') || "Transparent packages & custom enterprise quotes" },
+    { num: "02", name: t('nav.products'), href: '/products', desc: t('nav.desc.products') || "Pre-packaged software & ready-made templates" },
+    { num: "03", name: t('nav.references'), href: '/references', desc: t('nav.desc.references') || "Explore our case studies and successful projects" },
+    { num: "04", name: t('nav.about'), href: '/about', desc: t('nav.desc.about') || "Our story, team values, and mission statement" },
+    { num: "05", name: t('nav.blog'), href: '/blog', desc: t('nav.desc.blog') || "Insights, technology guides & industry news" },
+    { num: "06", name: t('nav.contact'), href: '/contact', desc: t('nav.desc.contact') || "Get in touch or schedule a virtual discovery call" },
   ];
 
   return (
@@ -64,7 +63,7 @@ const HamburgerMenu = () => {
             className={`w-4 h-auto rounded-[1px] transition-all duration-300 ${language === 'en' ? 'opacity-100 scale-105 shadow-sm' : 'opacity-40 group-hover:opacity-75'}`}
             unoptimized
           />
-          <span className={`text-[10px] font-bold tracking-wider transition-colors duration-300 ${language === 'en' ? 'text-rose-500' : 'text-slate-500 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white'}`}>
+          <span className={`text-[10px] font-bold tracking-wider transition-colors duration-300 ${language === 'en' ? 'text-rose-700 dark:text-rose-400' : 'text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white'}`}>
             EN
           </span>
         </button>
@@ -83,7 +82,7 @@ const HamburgerMenu = () => {
             className={`w-4 h-auto rounded-[1px] transition-all duration-300 ${language === 'no' ? 'opacity-100 scale-105 shadow-sm' : 'opacity-40 group-hover:opacity-75'}`}
             unoptimized
           />
-          <span className={`text-[10px] font-bold tracking-wider transition-colors duration-300 ${language === 'no' ? 'text-rose-500' : 'text-slate-500 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white'}`}>
+          <span className={`text-[10px] font-bold tracking-wider transition-colors duration-300 ${language === 'no' ? 'text-rose-700 dark:text-rose-400' : 'text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white'}`}>
             NO
           </span>
         </button>
