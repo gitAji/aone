@@ -176,7 +176,7 @@ export default function PricingPage() {
 
                 {/* Pricing Grid */}
                 <div
-                  className={`grid grid-cols-1 gap-8 mb-32 max-w-7xl mx-auto ${mainPackages.length >= 4 ? 'lg:grid-cols-2 xl:grid-cols-4' : 'lg:grid-cols-3'}`}
+                  className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-32 max-w-7xl mx-auto"
                   onMouseLeave={() => setHoveredIndex(1)} // Reset back to middle card when mouse leaves grid
                 >
                     {mainPackages.map((pkg, i) => (
