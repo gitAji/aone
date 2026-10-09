@@ -22,10 +22,12 @@ const ServicesPage = () => {
           <h2 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-16 text-center uppercase tracking-tighter">
             {t('servicesPage.comprehensive')}
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* flex-wrap + per-card width (not a 3-col grid) so 5 cards center
+              as 3-then-2 instead of leaving an empty slot in the last row. */}
+          <div className="flex flex-wrap justify-center gap-8">
             <Link
               href="/services/web-solution"
-              className="group block p-10 rounded-3xl transition-all duration-300 bg-white dark:bg-slate-900 hover:-translate-y-2 border border-slate-100 dark:border-slate-800 hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10"
+              className="group block p-10 rounded-3xl transition-all duration-300 bg-white dark:bg-slate-900 hover:-translate-y-2 border border-slate-100 dark:border-slate-800 hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10 w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.3334rem)]"
             >
               <div className="flex justify-center mb-8">
                 <FaLaptopCode className="text-6xl text-rose-500 group-hover:scale-110 transition-transform duration-500" />
@@ -36,7 +38,7 @@ const ServicesPage = () => {
 
             <Link
               href="/services/ai-solution"
-              className="group block p-10 rounded-3xl transition-all duration-300 bg-white dark:bg-slate-900 hover:-translate-y-2 border border-slate-100 dark:border-slate-800 hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10"
+              className="group block p-10 rounded-3xl transition-all duration-300 bg-white dark:bg-slate-900 hover:-translate-y-2 border border-slate-100 dark:border-slate-800 hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10 w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.3334rem)]"
             >
               <div className="flex justify-center mb-8">
                 <FaRobot className="text-6xl text-rose-500 group-hover:scale-110 transition-transform duration-500" />
@@ -47,7 +49,7 @@ const ServicesPage = () => {
 
             <Link
               href="/services/marketing"
-              className="group block p-10 rounded-3xl transition-all duration-300 bg-white dark:bg-slate-900 hover:-translate-y-2 border border-slate-100 dark:border-slate-800 hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10"
+              className="group block p-10 rounded-3xl transition-all duration-300 bg-white dark:bg-slate-900 hover:-translate-y-2 border border-slate-100 dark:border-slate-800 hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10 w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.3334rem)]"
             >
               <div className="flex justify-center mb-8">
                 <FaChartLine className="text-6xl text-rose-500 group-hover:scale-110 transition-transform duration-500" />
@@ -58,7 +60,7 @@ const ServicesPage = () => {
 
             <Link
               href="/services/photography"
-              className="group block p-10 rounded-3xl transition-all duration-300 bg-white dark:bg-slate-900 hover:-translate-y-2 border border-slate-100 dark:border-slate-800 hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10"
+              className="group block p-10 rounded-3xl transition-all duration-300 bg-white dark:bg-slate-900 hover:-translate-y-2 border border-slate-100 dark:border-slate-800 hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10 w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.3334rem)]"
             >
               <div className="flex justify-center mb-8">
                 <FaCameraRetro className="text-6xl text-rose-500 group-hover:scale-110 transition-transform duration-500" />
@@ -69,7 +71,7 @@ const ServicesPage = () => {
 
             <Link
               href="/services/videography"
-              className="group block p-10 rounded-3xl transition-all duration-300 bg-white dark:bg-slate-900 hover:-translate-y-2 border border-slate-100 dark:border-slate-800 hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10"
+              className="group block p-10 rounded-3xl transition-all duration-300 bg-white dark:bg-slate-900 hover:-translate-y-2 border border-slate-100 dark:border-slate-800 hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10 w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.3334rem)]"
             >
               <div className="flex justify-center mb-8">
                 <FaVideo className="text-6xl text-rose-500 group-hover:scale-110 transition-transform duration-500" />
