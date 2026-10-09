@@ -1,7 +1,7 @@
 import projects from "@/app/data/projects";
 import products from "@/app/data/products";
 import { vacancies } from "@/app/data/vacancies";
-import { fetchAllPostSlugs } from "@/lib/wordpress";
+import { fetchAllPostSlugs } from "@/lib/wordpress-server";
 
 export default async function sitemap() {
   const baseUrl = "https://aone.no";

@@ -1,7 +1,7 @@
 import OrderClient from './OrderClient';
 
 export const metadata = {
-  title: "Complete Your Order | Aone AI & Web Agency",
+  title: "Complete Your Order | Aone",
   description: "Finalize your project specifications and secure your digital solution with Aone. Premium web development and AI automation services in Norway.",
   robots: {
     index: false,

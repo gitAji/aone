@@ -1,4 +1,4 @@
-import { fetchPosts } from '@/lib/wordpress';
+import { fetchPosts } from '@/lib/wordpress-server';
 import BlogListClient from './BlogListClient';
 
 export const metadata = {

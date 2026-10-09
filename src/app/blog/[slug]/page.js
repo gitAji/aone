@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
-import { fetchPostBySlug, fetchAllPostSlugs, getFeaturedImage, stripHtml } from '@/lib/wordpress';
+import { getFeaturedImage, stripHtml } from '@/lib/wordpress';
+import { fetchPostBySlug, fetchAllPostSlugs } from '@/lib/wordpress-server';
 import BlogPostClient from './BlogPostClient';
 
 // Pre-renders every known post at build time; any post published after the
