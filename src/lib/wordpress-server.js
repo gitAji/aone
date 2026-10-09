@@ -1,15 +1,20 @@
-import https from 'https';
+import http from 'http';
 
-const WORDPRESS_API_URL = 'https://blog.aone.no/wp-json/wp/v2';
+// blog.aone.no does not accept connections on 443 at all (not merely an
+// expired cert -- a bypassed-verification TLS connection to it still never
+// completes). Someone already discovered this: NEXT_PUBLIC_WP_API_URL is
+// configured on the live site as `http://blog.aone.no/...`, not https.
+// Honor that, falling back to the same known-working http URL if the env
+// var is ever unset (e.g. a fresh environment/local dev).
+const WORDPRESS_API_URL = (process.env.NEXT_PUBLIC_WP_API_URL || 'http://blog.aone.no/wp-json/wp/v2').replace(/\/$/, '');
 
-// Shared with api/wp-proxy/route.js (the client-side path), which applies
-// this same rewrite. blog.aone.no's uploaded images sit behind the same
-// expired certificate as its API -- a raw blog.aone.no image URL fails to
-// load client-side too (browsers refuse expired certs for subresources
-// just like for the page itself), so every image URL anywhere in a
-// WordPress response has to be rewritten to go through
-// /api/image-proxy (which fetches it server-side with the same SSL
-// bypass) before it ever reaches a component.
+// Shared with api/wp-proxy/route.js (the client-side path) and
+// api/image-proxy/route.js, which apply this same rewrite/normalization.
+// WordPress's own stored upload URLs are https://blog.aone.no/... (its
+// siteurl setting), but that host doesn't serve 443 -- every image URL
+// anywhere in a WordPress response has to be rewritten to go through
+// /api/image-proxy (which itself fetches the image over http) before it
+// ever reaches a component.
 export function rewriteWpImageUrls(obj) {
   if (!obj || typeof obj !== 'object') return obj;
   if (Array.isArray(obj)) return obj.map(rewriteWpImageUrls);
@@ -39,19 +44,16 @@ export function rewriteWpImageUrls(obj) {
 }
 
 // Server-only counterpart to wordpress.js's fetchPosts/fetchAllPostSlugs/
-// fetchPostBySlug. blog.aone.no runs on an expired TLS certificate --
-// api/wp-proxy/route.js already works around this for client-side requests
-// with a rejectUnauthorized:false https agent, but blog/page.js,
-// blog/[slug]/page.js and sitemap.js call WordPress at `next build` time
-// (static generation), where there's no running server yet to proxy
-// through. wordpress.js's plain fetch() rejected on the bad cert there,
-// so every build baked in an empty post list. This file applies the same
-// SSL bypass directly for those server call sites instead.
+// fetchPostBySlug. blog/page.js, blog/[slug]/page.js and sitemap.js call
+// WordPress at `next build` time (static generation), where there's no
+// running server yet to proxy through -- wordpress.js's plain fetch()
+// against the https:// URL failed outright there (connection never
+// completes on that host's 443), so every build baked in an empty post
+// list. This file fetches over http instead, same as the proxy route.
 function fetchWpJson(endpoint, params = '', timeoutMs = 8000) {
   return new Promise((resolve, reject) => {
     const url = `${WORDPRESS_API_URL}/${endpoint}${params ? `?${params}` : ''}`;
-    const req = https.get(url, {
-      rejectUnauthorized: false,
+    const req = http.get(url, {
       headers: { 'Accept': 'application/json', 'User-Agent': 'Aone-WP-Server/1.0' },
       timeout: timeoutMs,
     }, (res) => {

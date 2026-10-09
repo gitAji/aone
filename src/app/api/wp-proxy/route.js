@@ -1,12 +1,14 @@
 import { NextResponse } from 'next/server';
-import https from 'https';
+import http from 'http';
 import { rewriteWpImageUrls } from '@/lib/wordpress-server';
 
 export const runtime = 'nodejs';
 
 /**
- * Enhanced WordPress API Proxy - SSL Bypass Version
- * Handles expired SSL on blog.aone.no by using custom https agent
+ * WordPress API Proxy
+ * blog.aone.no does not accept connections on 443 -- NEXT_PUBLIC_WP_API_URL
+ * is configured site-wide as the http:// URL for this host; fall back to
+ * it directly if that env var is ever unset.
  */
 export async function GET(request) {
     const { searchParams } = new URL(request.url);
@@ -16,7 +18,8 @@ export async function GET(request) {
         return NextResponse.json({ error: 'Endpoint is required' }, { status: 400 });
     }
 
-    const wpApiUrl = `https://blog.aone.no/wp-json/wp/v2/${endpoint}`;
+    const wpApiBase = (process.env.NEXT_PUBLIC_WP_API_URL || 'http://blog.aone.no/wp-json/wp/v2').replace(/\/$/, '');
+    const wpApiUrl = `${wpApiBase}/${endpoint}`;
     const targetUrl = new URL(wpApiUrl);
     
     searchParams.forEach((value, key) => {
@@ -27,18 +30,16 @@ export async function GET(request) {
 
     try {
         const fetchUrl = targetUrl.toString();
-        
-        // Fetch data using https module to bypass expired certificate
+
         const data = await new Promise((resolve, reject) => {
             const options = {
-                rejectUnauthorized: false,
                 headers: {
                     'Accept': 'application/json',
                     'User-Agent': 'Aone-WP-Proxy/1.1',
                 }
             };
 
-            https.get(fetchUrl, options, (res) => {
+            http.get(fetchUrl, options, (res) => {
                 let rawData = '';
                 res.on('data', (chunk) => { rawData += chunk; });
                 res.on('end', () => {
@@ -72,7 +73,7 @@ export async function GET(request) {
         if (wpTotal) response.headers.set('X-WP-Total', wpTotal);
         if (wpTotalPages) response.headers.set('X-WP-TotalPages', wpTotalPages);
         
-        response.headers.set('X-Data-Source', 'Aone-WP-Engine-Legacy-SSL');
+        response.headers.set('X-Data-Source', 'Aone-WP-Engine');
         
         return response;
     } catch (error) {
