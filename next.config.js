@@ -121,12 +121,12 @@ const nextConfig = {
       },
       {
         source: "/branding",
-        destination: "/services/branding",
+        destination: "/services/web-solution",
         permanent: true,
       },
       {
         source: "/branding-services",
-        destination: "/services/branding",
+        destination: "/services/web-solution",
         permanent: true,
       },
       {
@@ -136,7 +136,51 @@ const nextConfig = {
       },
       {
         source: "/ai-chat",
-        destination: "/services/ai-chatbots",
+        destination: "/services/ai-solution",
+        permanent: true,
+      },
+      // Services were consolidated from 10 narrow pages into 5 (Web
+      // Solution, AI Solution, Marketing, Photography, Videography) --
+      // these preserve any existing inbound links/search rankings instead
+      // of letting the old URLs 404.
+      {
+        source: "/services/web-development",
+        destination: "/services/web-solution",
+        permanent: true,
+      },
+      {
+        source: "/services/ui-ux-design",
+        destination: "/services/web-solution",
+        permanent: true,
+      },
+      {
+        source: "/services/branding",
+        destination: "/services/web-solution",
+        permanent: true,
+      },
+      {
+        source: "/services/ai-chatbots",
+        destination: "/services/ai-solution",
+        permanent: true,
+      },
+      {
+        source: "/services/ai-automations",
+        destination: "/services/ai-solution",
+        permanent: true,
+      },
+      {
+        source: "/services/digital-marketing",
+        destination: "/services/marketing",
+        permanent: true,
+      },
+      {
+        source: "/services/search-engine-optimization",
+        destination: "/services/marketing",
+        permanent: true,
+      },
+      {
+        source: "/services/geo",
+        destination: "/services/marketing",
         permanent: true,
       },
       {

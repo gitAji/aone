@@ -2,7 +2,7 @@
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import Link from 'next/link';
-import { FaLaptopCode, FaPaintBrush, FaChartLine, FaRobot, FaCameraRetro, FaObjectGroup, FaSearch, FaSearchDollar, FaCommentDots, FaSync } from 'react-icons/fa';
+import { FaLaptopCode, FaChartLine, FaRobot, FaCameraRetro, FaVideo } from 'react-icons/fa';
 import Testimonials from "@/components/Testimonials";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -24,29 +24,29 @@ const ServicesPage = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Link
-              href="/services/web-development"
+              href="/services/web-solution"
               className="group block p-10 rounded-3xl transition-all duration-300 bg-white dark:bg-slate-900 hover:-translate-y-2 border border-slate-100 dark:border-slate-800 hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10"
             >
               <div className="flex justify-center mb-8">
                 <FaLaptopCode className="text-6xl text-rose-500 group-hover:scale-110 transition-transform duration-500" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight text-center">{t('servicesPage.webDevTitle')}</h3>
-              <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed text-center">{t('servicesPage.webDevDesc')}</p>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight text-center">{t('services.webSolution.title')}</h3>
+              <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed text-center">{t('services.webSolution.description')}</p>
             </Link>
 
             <Link
-              href="/services/branding"
+              href="/services/ai-solution"
               className="group block p-10 rounded-3xl transition-all duration-300 bg-white dark:bg-slate-900 hover:-translate-y-2 border border-slate-100 dark:border-slate-800 hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10"
             >
               <div className="flex justify-center mb-8">
-                <FaPaintBrush className="text-6xl text-rose-500 group-hover:scale-110 transition-transform duration-500" />
+                <FaRobot className="text-6xl text-rose-500 group-hover:scale-110 transition-transform duration-500" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight text-center">{t('servicesPage.brandingTitle')}</h3>
-              <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed text-center">{t('servicesPage.brandingDesc')}</p>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight text-center">{t('services.aiSolution.title')}</h3>
+              <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed text-center">{t('services.aiSolution.description')}</p>
             </Link>
 
             <Link
-              href="/services/digital-marketing"
+              href="/services/marketing"
               className="group block p-10 rounded-3xl transition-all duration-300 bg-white dark:bg-slate-900 hover:-translate-y-2 border border-slate-100 dark:border-slate-800 hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10"
             >
               <div className="flex justify-center mb-8">
@@ -57,71 +57,25 @@ const ServicesPage = () => {
             </Link>
 
             <Link
-              href="/services/ai-chatbots"
-              className="group block p-10 rounded-3xl transition-all duration-300 bg-white dark:bg-slate-900 hover:-translate-y-2 border border-slate-100 dark:border-slate-800 hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10"
-            >
-              <div className="flex justify-center mb-8">
-                <FaRobot className="text-6xl text-rose-500 group-hover:scale-110 transition-transform duration-500" />
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight text-center">{t('servicesPage.chatbotTitle')}</h3>
-              <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed text-center">{t('servicesPage.chatbotDesc')}</p>
-            </Link>
-
-            <Link
-              href="/services/ai-automations"
-              className="group block p-10 rounded-3xl transition-all duration-300 bg-white dark:bg-slate-900 hover:-translate-y-2 border border-slate-100 dark:border-slate-800 hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10"
-            >
-              <div className="flex justify-center mb-8">
-                <FaSync className="text-6xl text-rose-500 group-hover:scale-110 transition-transform duration-500" />
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight text-center">{t('servicesPage.aiTitle')}</h3>
-              <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed text-center">{t('servicesPage.aiDesc')}</p>
-            </Link>
-
-            <Link
-              href="/services/geo"
-              className="group block p-10 rounded-3xl transition-all duration-300 bg-white dark:bg-slate-900 hover:-translate-y-2 border border-slate-100 dark:border-slate-800 hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10"
-            >
-              <div className="flex justify-center mb-8">
-                <FaSearchDollar className="text-6xl text-rose-500 group-hover:scale-110 transition-transform duration-500" />
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight text-center">{t('servicesPage.geoTitle')}</h3>
-              <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed text-center">{t('servicesPage.geoDesc')}</p>
-            </Link>
-
-            <Link
               href="/services/photography"
               className="group block p-10 rounded-3xl transition-all duration-300 bg-white dark:bg-slate-900 hover:-translate-y-2 border border-slate-100 dark:border-slate-800 hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10"
             >
               <div className="flex justify-center mb-8">
                 <FaCameraRetro className="text-6xl text-rose-500 group-hover:scale-110 transition-transform duration-500" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight text-center">{t('servicesPage.photoTitle') || "Photography & Videography"}</h3>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight text-center">{t('servicesPage.photoTitle') || "Photography"}</h3>
               <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed text-center">{t('servicesPage.photoDesc')}</p>
             </Link>
 
-
-
             <Link
-              href="/services/ui-ux-design"
+              href="/services/videography"
               className="group block p-10 rounded-3xl transition-all duration-300 bg-white dark:bg-slate-900 hover:-translate-y-2 border border-slate-100 dark:border-slate-800 hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10"
             >
               <div className="flex justify-center mb-8">
-                <FaObjectGroup className="text-6xl text-rose-500 group-hover:scale-110 transition-transform duration-500" />
+                <FaVideo className="text-6xl text-rose-500 group-hover:scale-110 transition-transform duration-500" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight text-center">{t('servicesPage.uiuxTitle')}</h3>
-              <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed text-center">{t('servicesPage.uiuxDesc')}</p>
-            </Link>
-
-            <Link
-              href="/services/search-engine-optimization"
-              className="group block p-10 rounded-3xl transition-all duration-300 bg-white dark:bg-slate-900 hover:-translate-y-2 border border-slate-100 dark:border-slate-800 hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10 md:col-span-2 lg:col-span-1"
-            >
-              <div className="flex justify-center mb-8">
-                <FaSearch className="text-6xl text-rose-500 group-hover:scale-110 transition-transform duration-500" />
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight text-center">{t('servicesPage.seoTitle')}</h3>
-              <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed text-center">{t('servicesPage.seoDesc')}</p>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight text-center">{t('services.video.title') || "Videography"}</h3>
+              <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed text-center">{t('services.video.description')}</p>
             </Link>
           </div>
         </div>

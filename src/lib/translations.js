@@ -65,13 +65,21 @@ export const translations = {
                 title: "AI-Powered Web Design",
                 description: "High-performance, AI-native web experiences. Custom web development in Norway focused on speed, conversion, and adaptive user behavior.",
             },
+            webSolution: {
+                title: "Web Solution",
+                description: "Website, UI/UX, logo, and branding -- designed and built together as one cohesive package, not separate vendors.",
+            },
+            aiSolution: {
+                title: "AI Solution",
+                description: "Custom AI chatbots, business process automation, and autonomous AI agents working around the clock for your business.",
+            },
             branding: {
                 title: "Future-Ready Branding",
                 description: "Digital-first brand systems. Adaptive identities and UI/UX design Bergen that evolve with AI-driven market trends.",
             },
             marketing: {
                 title: "AI-Driven Marketing",
-                description: "AI-powered growth marketing. Predictive analytics and automated optimization to maximize ROI for Norwegian businesses.",
+                description: "Digital marketing, SEO, and Generative Engine Optimization (GEO) together -- predictive analytics and AI-driven visibility across Google and AI search alike.",
             },
             chatbot: {
                 title: "Custom AI Chatbots",
@@ -563,13 +571,21 @@ export const translations = {
                 title: "AI-drevet Webdesign",
                 description: "Høytytende, AI-native nettopplevelser. Spesialtilpasset webutvikling i Norge med fokus på hastighet, konvertering og brukeratferd.",
             },
+            webSolution: {
+                title: "Nettløsning",
+                description: "Nettside, UI/UX, logo og merkevarebygging -- designet og bygget sammen som én helhetlig pakke, ikke separate leverandører.",
+            },
+            aiSolution: {
+                title: "AI-løsning",
+                description: "Tilpassede AI-chatbots, automatisering av forretningsprosesser og autonome AI-agenter som jobber døgnet rundt for din bedrift.",
+            },
             branding: {
                 title: "Digital Merkevarebygging",
                 description: "Fremtidsklare merkevaresystemer. Adaptive identiteter og UI/UX design Bergen som utvikler seg med AI-drevne markedstrender.",
             },
             marketing: {
                 title: "AI-drevet Markedsføring",
-                description: "AI-basert vekstmarkedsføring. Prediktiv analyse og automatisert optimalisering for å maksimere ROI for norske bedrifter.",
+                description: "Digital markedsføring, SEO og Generative Engine Optimization (GEO) samlet -- prediktiv analyse og AI-drevet synlighet på tvers av Google og AI-søk.",
             },
             chatbot: {
                 title: "Tilpassede AI-chatbots",

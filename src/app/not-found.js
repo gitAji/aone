@@ -17,22 +17,16 @@ export default function NotFound() {
         if (!query) return;
 
         // Smart Redirect Logic based on keywords
-        if (query.includes('chat') || query.includes('bot') || query.includes('agent') || query.includes('voice')) {
-            router.push('/services/ai-chatbots');
-        } else if (query.includes('auto') || query.includes('workflow') || query.includes('sync') || query.includes('ops')) {
-            router.push('/services/ai-automations');
-        } else if (query.includes('web') || query.includes('develop') || query.includes('code') || query.includes('site') || query.includes('page') || query.includes('design')) {
-            router.push('/services/web-development');
-        } else if (query.includes('brand') || query.includes('logo') || query.includes('card') || query.includes('visual')) {
-            router.push('/services/branding');
-        } else if (query.includes('seo') || query.includes('search') || query.includes('rank') || query.includes('google')) {
-            router.push('/services/search-engine-optimization');
-        } else if (query.includes('market') || query.includes('ad') || query.includes('camp') || query.includes('social')) {
-            router.push('/services/digital-marketing');
-        } else if (query.includes('photo') || query.includes('video') || query.includes('camera') || query.includes('film') || query.includes('shoot')) {
+        if (query.includes('chat') || query.includes('bot') || query.includes('agent') || query.includes('voice') || query.includes('auto') || query.includes('workflow') || query.includes('sync') || query.includes('ops')) {
+            router.push('/services/ai-solution');
+        } else if (query.includes('web') || query.includes('develop') || query.includes('code') || query.includes('site') || query.includes('page') || query.includes('design') || query.includes('brand') || query.includes('logo') || query.includes('card') || query.includes('visual') || query.includes('ux') || query.includes('ui')) {
+            router.push('/services/web-solution');
+        } else if (query.includes('seo') || query.includes('search') || query.includes('rank') || query.includes('google') || query.includes('market') || query.includes('ad') || query.includes('camp') || query.includes('social') || query.includes('geo') || query.includes('perplexity') || query.includes('engine') || query.includes('optimise')) {
+            router.push('/services/marketing');
+        } else if (query.includes('photo') || query.includes('camera') || query.includes('shoot')) {
             router.push('/services/photography');
-        } else if (query.includes('geo') || query.includes('perplexity') || query.includes('engine') || query.includes('optimise')) {
-            router.push('/services/geo');
+        } else if (query.includes('video') || query.includes('film')) {
+            router.push('/services/videography');
         } else if (query.includes('price') || query.includes('cost') || query.includes('pack') || query.includes('pay') || query.includes('sub')) {
             router.push('/pricing');
         } else if (query.includes('contact') || query.includes('call') || query.includes('mail') || query.includes('phone') || query.includes('meet')) {

@@ -1,14 +1,10 @@
 import React from "react";
 import {
   FaCode,
-  FaMagic,
   FaChartLine,
   FaRobot,
-  FaSync,
-  FaSearchDollar,
-  FaSearch,
   FaCameraRetro,
-  FaObjectGroup,
+  FaVideo,
 } from "react-icons/fa";
 
 import { useLanguage } from "@/context/LanguageContext";
@@ -65,50 +61,42 @@ const ServicesSection = () => {
       <div className="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
   <ServiceCard
     number="01"
-    href="/services/web-development"
+    href="/services/web-solution"
     icon={FaCode}
-    title={t('services.webDev.title')}
-    description={t('services.webDev.description')}
+    title={t('services.webSolution.title')}
+    description={t('services.webSolution.description')}
     color="text-rose-500"
   />
   <ServiceCard
     number="02"
-    href="/services/ai-chatbots"
+    href="/services/ai-solution"
     icon={FaRobot}
-    title={t('services.chatbot.title')}
-    description={t('services.chatbot.description')}
+    title={t('services.aiSolution.title')}
+    description={t('services.aiSolution.description')}
     color="text-rose-500"
   />
   <ServiceCard
     number="03"
-    href="/services/ai-automations"
-    icon={FaSync}
-    title={t('services.ai.title')}
-    description={t('services.ai.description')}
+    href="/services/marketing"
+    icon={FaChartLine}
+    title={t('services.marketing.title') || "Marketing"}
+    description={t('services.marketing.description') || "Data-driven marketing, SEO, and GEO that fuel sustainable growth."}
     color="text-rose-500"
   />
   <ServiceCard
     number="04"
-    href="/services/ui-ux-design"
-    icon={FaObjectGroup}
-    title={t('services.uiux.title')}
-    description={t('services.uiux.description')}
+    href="/services/photography"
+    icon={FaCameraRetro}
+    title={t('services.photo.title') || "Photography"}
+    description={t('services.photo.description') || "Professional photography that tells your unique story."}
     color="text-rose-500"
   />
   <ServiceCard
     number="05"
-    href="/services/digital-marketing"
-    icon={FaChartLine}
-    title={t('services.marketing.title') || "Digital Marketing"}
-    description={t('services.marketing.description') || "Data-driven marketing strategies that fuel sustainable growth."}
-    color="text-rose-500"
-  />
-  <ServiceCard
-    number="06"
-    href="/services/photography"
-    icon={FaCameraRetro}
-    title={t('services.photo.title') || "Photography & Videography"}
-    description={t('services.photo.description') || "Capturing moments with visual storytelling."}
+    href="/services/videography"
+    icon={FaVideo}
+    title={t('services.video.title') || "Videography"}
+    description={t('services.video.description') || "Compelling video content designed for high engagement."}
     color="text-rose-500"
   />
 </div>

@@ -1,28 +1,20 @@
-"use client";
-import React from "react";
-import HeroSection from "@/components/HeroSection";
-import Link from "next/link";
-import {
-  FaLaptopCode,
-  FaShoppingCart,
-  FaWordpress,
-  FaMobileAlt,
-  FaCloud,
-  FaCode,
-  FaChartLine,
-  FaStar,
-} from "react-icons/fa";
-import { motion } from "framer-motion"; // Added for subtle animations
-import Testimonials from "@/components/Testimonials";
+'use client';
+import React from 'react';
+import HeroSection from '@/components/HeroSection';
+import Link from 'next/link';
+import { FaMobileAlt, FaCloud, FaCode, FaLaptopCode, FaShoppingCart, FaObjectGroup, FaPaintBrush, FaBook, FaBullhorn } from 'react-icons/fa';
 import { useLanguage } from "@/context/LanguageContext";
+import { motion } from "framer-motion";
+import Testimonials from "@/components/Testimonials";
 
-const WebDevelopmentPage = () => {
+const WebSolutionClient = () => {
   const { t } = useLanguage();
+
   return (
     <div className="service-detail-page bg-slate-50 dark:bg-slate-950 min-h-screen">
       <HeroSection
-        title={t('services.webDev.title')}
-        subtitle={t('services.webDev.description')}
+        title={t('services.webSolution.title')}
+        subtitle={t('services.webSolution.description')}
       />
 
       {/* Why Section */}
@@ -33,27 +25,27 @@ const WebDevelopmentPage = () => {
           viewport={{ once: true }}
           className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tighter"
         >
-          {t('services.webDev.whyTitle') || "Why Your Digital Core Matters"}
+          Why One Team, One Package
         </motion.h2>
         <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-16 max-w-3xl mx-auto font-medium">
-          {t('services.webDev.whyDesc') || "Your website is the cornerstone of your digital presence. We create solutions that combine stunning design, seamless functionality, and elite performance to drive growth."}
+          Your website, your identity, and your interface are one experience to a visitor -- not three separate vendors. We design and build them together, so nothing is left mismatched or out of sync.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             {
               icon: <FaMobileAlt className="text-5xl text-rose-500 mb-6" />,
               title: "Responsive Mastery",
-              description: "Flawless performance across all devices, from phones to 8K displays.",
+              description: "Flawless performance across every device, from phones to 8K displays.",
+            },
+            {
+              icon: <FaObjectGroup className="text-5xl text-rose-500 mb-6" />,
+              title: "Cohesive Identity",
+              description: "Logo, brand system, and interface designed as one visual language, not patched together after the fact.",
             },
             {
               icon: <FaCloud className="text-5xl text-rose-500 mb-6" />,
-              title: "Cloud Performance",
-              description: "Optimized, serverless architectures built to handle unlimited growth instantly.",
-            },
-            {
-              icon: <FaCode className="text-5xl text-rose-500 mb-6" />,
-              title: "Native Solutions",
-              description: "Tailored codebases using Next.js and the most advanced frameworks available.",
+              title: "Built to Scale",
+              description: "Modern, serverless architecture that grows with your business instead of needing a rebuild.",
             },
           ].map((item, index) => (
             <motion.div
@@ -65,58 +57,35 @@ const WebDevelopmentPage = () => {
               className="p-10 bg-white dark:bg-slate-900 rounded-3xl shadow-xl hover:shadow-rose-500/5 border border-slate-100 dark:border-slate-800 transition-all duration-300"
             >
               <div className="flex justify-center">{item.icon}</div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                {item.title}
-              </h3>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">{item.title}</h3>
               <p className="text-slate-600 dark:text-slate-400 font-medium">{item.description}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* Capabilities Section */}
-      <section className="py-24 bg-slate-100 dark:bg-slate-900/50">
+      {/* What We Offer */}
+      <section className="py-24 bg-slate-900 dark:bg-black text-white border-y border-slate-800">
         <div className="container mx-auto px-6">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-16 text-center uppercase tracking-tighter"
+            className="text-4xl md:text-5xl font-black mb-16 text-center uppercase tracking-tighter"
           >
-            Capabilities
+            Everything in the Web Solution
           </motion.h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              {
-                icon: <FaLaptopCode />,
-                title: "Custom Web Applications",
-                description: "Deeply custom software built for your specific business logic and workflows.",
-              },
-              {
-                icon: <FaShoppingCart />,
-                title: "High-Performance E-commerce",
-                description: "Fast, secure online stores optimized for conversion and massive scale.",
-              },
-              {
-                icon: <FaWordpress />,
-                title: "Headless CMS Solutions",
-                description: "Managing content with ease using modern headless providers like Sanity or Strapi.",
-              },
-              {
-                icon: <FaCode />,
-                title: "API & System Integration",
-                description: "Connecting your digital core to the tools you already use every day.",
-              },
-              {
-                icon: <FaMobileAlt />,
-                title: "Progressive Web Apps",
-                description: "Web experiences that feel and perform like native mobile applications.",
-              },
-              {
-                icon: <FaChartLine />,
-                title: "Performance Audits",
-                description: "Tuning existing sites for Core Web Vitals and top-tier SEO performance.",
-              },
+              { icon: <FaLaptopCode className="text-4xl text-rose-500 mb-4" />, title: "Custom Web Development", desc: "Deeply custom websites and web apps built for your specific business logic and workflows." },
+              { icon: <FaShoppingCart className="text-4xl text-rose-500 mb-4" />, title: "E-Commerce", desc: "Fast, secure online stores optimized for conversion and built to scale." },
+              { icon: <FaObjectGroup className="text-4xl text-rose-500 mb-4" />, title: "UI/UX Design", desc: "User-centric interfaces built through research, wireframing, and prototyping before a line of code is written." },
+              { icon: <FaPaintBrush className="text-4xl text-rose-500 mb-4" />, title: "Logo & Visual Identity", desc: "A distinctive logo, color palette, and typography system designed to be instantly recognizable." },
+              { icon: <FaBook className="text-4xl text-rose-500 mb-4" />, title: "Brand Guidelines", desc: "A complete style guide so your brand stays consistent everywhere it appears." },
+              { icon: <FaBullhorn className="text-4xl text-rose-500 mb-4" />, title: "Marketing Collateral", desc: "Business cards, social templates, and presentation decks designed to match your identity." },
+              { icon: <FaCode className="text-4xl text-rose-500 mb-4" />, title: "API & System Integration", desc: "Connecting your site to the tools you already use every day." },
+              { icon: <FaMobileAlt className="text-4xl text-rose-500 mb-4" />, title: "Progressive Web Apps", desc: "Web experiences that feel and perform like native mobile apps." },
+              { icon: <FaCloud className="text-4xl text-rose-500 mb-4" />, title: "Performance Audits", desc: "Tuning existing sites for Core Web Vitals and top-tier SEO performance." },
             ].map((service, index) => (
               <motion.div
                 key={index}
@@ -124,31 +93,23 @@ const WebDevelopmentPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="group flex flex-col p-8 bg-white dark:bg-slate-950 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 hover:border-rose-500/30 transition-all duration-300"
+                className="flex flex-col items-center p-10 bg-slate-800/20 backdrop-blur-sm rounded-3xl border border-slate-800 hover:border-rose-500/50 transition-all duration-300 text-center"
               >
-                <div className="text-3xl text-rose-500 mb-6 group-hover:scale-110 transition-transform duration-300">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">
-                  {service.title}
-                </h3>
-                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed font-medium">
-                  {service.description}
-                </p>
+                {service.icon}
+                <h3 className="text-xl font-bold text-white mb-4">{service.title}</h3>
+                <p className="text-slate-400 font-medium leading-relaxed">{service.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
       <Testimonials />
 
       {/* Final CTA Section */}
       <section className="py-24 bg-white dark:bg-slate-950 text-center relative overflow-hidden">
-        {/* Subtle decorative elements for a 'human' touch */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-slate-800 to-transparent"></div>
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -160,9 +121,9 @@ const WebDevelopmentPage = () => {
               Ready to build something <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-indigo-600">extraordinary?</span>
             </h2>
             <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 mb-12 font-medium leading-relaxed">
-              We combine human creativity with elite technology to deliver digital experiences that matter.
+              One team designing your site, your interface, and your brand together.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <Link
                 href="/pricing"
@@ -184,4 +145,4 @@ const WebDevelopmentPage = () => {
   );
 };
 
-export default WebDevelopmentPage;
+export default WebSolutionClient;
