@@ -3,7 +3,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import Logo from './Logo';
 import HamburgerMenu from './HamburgerMenu';
-import ThemeToggle from './ThemeToggle';
 import { useLanguage } from '@/context/LanguageContext';
 import { FaArrowRight } from 'react-icons/fa';
 
@@ -50,7 +49,6 @@ const Header = () => {
             <span>{t('requestQuote')}</span>
             <FaArrowRight className="text-[9px] transform group-hover:translate-x-0.5 transition-transform duration-200" />
           </Link>
-          <ThemeToggle />
           <HamburgerMenu />
         </div>
       </div>
