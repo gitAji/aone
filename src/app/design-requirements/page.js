@@ -124,7 +124,7 @@ const DesignRequirementsPage = () => {
             <h3 className="text-2xl font-semibold text-gray-800 pt-4 pb-2 border-b border-gray-200">Branding Elements</h3>
             <div>
               <label htmlFor="logo" className="block text-sm font-medium text-gray-700">Upload Logo (Optional)</label>
-              <input type="file" name="logo" id="logo" accept="image/*" onChange={handleFileChange} className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100" />
+              <input type="file" name="logo" id="logo" accept="image/*" onChange={handleFileChange} className="mt-1 block w-full text-sm text-gray-600 dark:text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100" />
             </div>
             <div>
               <label htmlFor="primaryColor" className="block text-sm font-medium text-gray-700">Primary Color</label>

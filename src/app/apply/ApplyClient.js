@@ -129,10 +129,10 @@ function ApplyForm() {
                   { step: "04", title: t("apply.steps.step4Title") || "Offer", desc: t("apply.steps.step4Desc") || "Welcome to the Aone crew." },
                 ].map(item => (
                   <li key={item.step} className="flex gap-4">
-                    <span className="text-rose-500 font-black text-xs mt-1">{item.step}</span>
+                    <span className="text-rose-700 dark:text-rose-400 font-black text-xs mt-1">{item.step}</span>
                     <div>
                       <h4 className="font-bold text-sm text-slate-800 dark:text-white mb-1 uppercase tracking-wider">{item.title}</h4>
-                      <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">{item.desc}</p>
+                      <p className="text-xs text-slate-600 dark:text-slate-400 font-medium">{item.desc}</p>
                     </div>
                   </li>
                 ))}
@@ -140,7 +140,7 @@ function ApplyForm() {
             </div>
             
             <div className="pt-10 border-t border-slate-200 dark:border-slate-700 mt-10">
-              <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest leading-loose">
+              <p className="text-[10px] text-slate-600 dark:text-slate-400 font-black uppercase tracking-widest leading-loose">
                 {t("apply.gdprText") || "Confidentiality Guaranteed. We respect your privacy and handle all data in accordance with our GDPR policy."}
               </p>
             </div>
@@ -151,7 +151,7 @@ function ApplyForm() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {/* Name */}
               <div className="space-y-2">
-                <label className="text-xs font-black uppercase tracking-widest text-slate-500 flex items-center gap-2">
+                <label className="text-xs font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 flex items-center gap-2">
                   <FaUserAlt className="text-rose-500" /> {t("apply.fullName") || "Full Name"}
                 </label>
                 <input
@@ -167,7 +167,7 @@ function ApplyForm() {
 
               {/* Email */}
               <div className="space-y-2">
-                <label className="text-xs font-black uppercase tracking-widest text-slate-500 flex items-center gap-2">
+                <label className="text-xs font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 flex items-center gap-2">
                   <FaEnvelope className="text-rose-500" /> {t("apply.emailAddress") || "Email Address"}
                 </label>
                 <input
@@ -183,7 +183,7 @@ function ApplyForm() {
 
               {/* Position */}
               <div className="space-y-2">
-                <label className="text-xs font-black uppercase tracking-widest text-slate-500 flex items-center gap-2">
+                <label className="text-xs font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 flex items-center gap-2">
                   <FaBriefcase className="text-rose-500" /> {t("apply.position") || "Position"}
                 </label>
                 <select
@@ -206,7 +206,7 @@ function ApplyForm() {
 
               {/* Experience */}
               <div className="space-y-2">
-                <label className="text-xs font-black uppercase tracking-widest text-slate-500 flex items-center gap-2">
+                <label className="text-xs font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 flex items-center gap-2">
                   <FaStar className="text-rose-500" /> {t("apply.experienceLevel") || "Experience Level"}
                 </label>
                 <select
@@ -226,7 +226,7 @@ function ApplyForm() {
             {/* Links */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label className="text-xs font-black uppercase tracking-widest text-slate-500 flex items-center gap-2">
+                <label className="text-xs font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 flex items-center gap-2">
                   <FaLink className="text-rose-500" /> {t("apply.portfolio") || "Portfolio / LinkedIn"}
                 </label>
                 <input
@@ -240,7 +240,7 @@ function ApplyForm() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-black uppercase tracking-widest text-slate-500 flex items-center gap-2">
+                <label className="text-xs font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 flex items-center gap-2">
                   <FaFileAlt className="text-rose-500" /> {t("apply.cvLink") || "Resume / CV Link"}
                 </label>
                 <input
@@ -257,7 +257,7 @@ function ApplyForm() {
 
             {/* Message */}
             <div className="space-y-2">
-              <label className="text-xs font-black uppercase tracking-widest text-slate-500 flex items-center gap-2">
+              <label className="text-xs font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 flex items-center gap-2">
                 {t("apply.coverLetter") || "Cover Letter / Why Aone?"}
               </label>
               <textarea
@@ -274,7 +274,7 @@ function ApplyForm() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full flex items-center justify-center gap-3 bg-rose-500 hover:bg-rose-600 disabled:bg-slate-800 text-white font-black py-4 rounded-xl shadow-lg shadow-rose-500/20 transition-all duration-300 transform hover:-translate-y-1"
+              className="w-full flex items-center justify-center gap-3 bg-rose-600 hover:bg-rose-700 disabled:bg-slate-800 text-white font-black py-4 rounded-xl shadow-lg shadow-rose-500/20 transition-all duration-300 transform hover:-translate-y-1"
             >
               {loading ? (t("apply.submitting") || "Submitting...") : (
                 <>{t("apply.sendBtn") || "Send Application"} <FaPaperPlane className="text-xs" /></>

@@ -98,18 +98,18 @@ const RequestQuoteClient = () => {
   };
 
   return (
-    <div className="request-quote-page bg-gray-50 min-h-screen">
+    <div className="request-quote-page bg-gray-50 dark:bg-slate-950 min-h-screen">
       <HeroSection
         title={t('quote.title')}
         subtitle={t('quote.subtitle')}
       />
       <section className="container mx-auto px-4 pb-16 pt-36">
         {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
-        <div className="max-w-4xl mx-auto bg-white/95 backdrop-blur-sm p-10 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">{t('quote.projectDetails')}</h2>
+        <div className="max-w-4xl mx-auto bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm p-10 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 dark:border-slate-800">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 text-center">{t('quote.projectDetails')}</h2>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-slate-300">
                 {t('quote.fullName')} <span className="text-red-500">*</span>
               </label>
               <input
@@ -119,11 +119,11 @@ const RequestQuoteClient = () => {
                 required
                 value={formData.name}
                 onChange={handleChange}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-slate-300">
                 {t('quote.emailAddress')} <span className="text-red-500">*</span>
               </label>
               <input
@@ -133,11 +133,11 @@ const RequestQuoteClient = () => {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
             </div>
             <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-slate-300">
                 {t('quote.phoneNumber')} <span className="text-red-500">*</span>
               </label>
               <input
@@ -147,11 +147,11 @@ const RequestQuoteClient = () => {
                 required
                 value={formData.phone}
                 onChange={handleChange}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
             </div>
             <div>
-              <label htmlFor="company" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-slate-300">
                 {t('quote.companyName')}
               </label>
               <input
@@ -160,11 +160,11 @@ const RequestQuoteClient = () => {
                 id="company"
                 value={formData.company}
                 onChange={handleChange}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-2">
                 {t('quote.servicesOfInterest')} <span className="text-red-500">*</span>
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -177,9 +177,9 @@ const RequestQuoteClient = () => {
                       value={service.label}
                       checked={formData.services.includes(service.label)}
                       onChange={handleChange}
-                      className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                      className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 dark:border-slate-700 dark:bg-slate-800 rounded"
                     />
-                    <label htmlFor={service.key} className="ml-2 block text-sm text-gray-900">
+                    <label htmlFor={service.key} className="ml-2 block text-sm text-gray-900 dark:text-slate-200">
                       {service.label}
                     </label>
                   </div>
@@ -187,7 +187,7 @@ const RequestQuoteClient = () => {
               </div>
             </div>
             <div>
-              <label htmlFor="projectDescription" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="projectDescription" className="block text-sm font-medium text-gray-700 dark:text-slate-300">
                 {t('quote.projectDescription')} <span className="text-red-500">*</span>
               </label>
               <textarea
@@ -197,11 +197,11 @@ const RequestQuoteClient = () => {
                 required
                 value={formData.projectDescription}
                 onChange={handleChange}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               ></textarea>
             </div>
             <div>
-              <label htmlFor="budget" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="budget" className="block text-sm font-medium text-gray-700 dark:text-slate-300">
                 {t('quote.estimatedBudget')} <span className="text-red-500">*</span>
               </label>
               <select
@@ -210,7 +210,7 @@ const RequestQuoteClient = () => {
                 required
                 value={formData.budget}
                 onChange={handleChange}
-                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
               >
                 <option value="">{t('quote.selectBudget')}</option>
                 {budgetOptions.map((option) => (
@@ -221,7 +221,7 @@ const RequestQuoteClient = () => {
               </select>
             </div>
             <div>
-              <label htmlFor="timeline" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="timeline" className="block text-sm font-medium text-gray-700 dark:text-slate-300">
                 {t('quote.desiredTimeline')} <span className="text-red-500">*</span>
               </label>
               <select
@@ -230,7 +230,7 @@ const RequestQuoteClient = () => {
                 required
                 value={formData.timeline}
                 onChange={handleChange}
-                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
               >
                 <option value="">{t('quote.selectTimeline')}</option>
                 {timelineOptions.map((option) => (

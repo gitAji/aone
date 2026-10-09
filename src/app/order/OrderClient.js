@@ -557,12 +557,12 @@ function OrderPageContent() {
                         {[1, 2, 3].map((s) => (
                             <div key={s} className="relative z-10 flex flex-col items-center gap-2">
                                 <div
-                                    className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 ${step >= s ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-lg' : 'bg-slate-100 dark:bg-slate-800 text-slate-400'
+                                    className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 ${step >= s ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-lg' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
                                         }`}
                                 >
                                     {step > s ? <FaCheck className="text-xs" /> : s}
                                 </div>
-                                <span className={`text-[10px] font-bold uppercase tracking-widest ${step >= s ? 'text-slate-900 dark:text-white' : 'text-slate-400'}`}>
+                                <span className={`text-[10px] font-bold uppercase tracking-widest ${step >= s ? 'text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-400'}`}>
                                     {s === 1 ? 'Package' : s === 2 ? 'Add-ons' : 'Checkout'}
                                 </span>
                             </div>
@@ -593,13 +593,13 @@ function OrderPageContent() {
                                             <div className="bg-slate-50 dark:bg-slate-900 p-1 rounded-xl flex border border-slate-200 dark:border-slate-800">
                                                 <button
                                                     onClick={() => setBillingInterval('once')}
-                                                    className={`px-8 py-2.5 rounded-lg text-xs font-bold transition-all ${billingInterval === 'once' ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500'}`}
+                                                    className={`px-8 py-2.5 rounded-lg text-xs font-bold transition-all ${billingInterval === 'once' ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 dark:text-slate-400'}`}
                                                 >
                                                     One-time
                                                 </button>
                                                 <button
                                                     onClick={() => setBillingInterval('monthly')}
-                                                    className={`px-8 py-2.5 rounded-lg text-xs font-bold transition-all ${billingInterval === 'monthly' ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500'}`}
+                                                    className={`px-8 py-2.5 rounded-lg text-xs font-bold transition-all ${billingInterval === 'monthly' ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 dark:text-slate-400'}`}
                                                 >
                                                     Monthly
                                                 </button>
@@ -623,7 +623,7 @@ function OrderPageContent() {
                                                 <h3 className="font-bold text-xl mb-2 text-slate-900 dark:text-white">{pkg.name}</h3>
                                                 <div className="text-3xl font-bold text-slate-900 dark:text-white mb-6">
                                                     {pkg.isCustom ? 'Contact' : `${billingInterval === 'monthly' ? pkg.monthlyPrice : pkg.price} NOK`}
-                                                    {!pkg.isCustom && <span className="text-sm text-slate-400 font-normal ml-1">/{billingInterval === 'monthly' ? 'mo' : 'once'}</span>}
+                                                    {!pkg.isCustom && <span className="text-sm text-slate-500 dark:text-slate-400 font-normal ml-1">/{billingInterval === 'monthly' ? 'mo' : 'once'}</span>}
                                                 </div>
 
                                                 <ul className="space-y-4 mb-8 flex-grow">
@@ -671,7 +671,7 @@ function OrderPageContent() {
                                                         className={`p-6 rounded-2xl cursor-pointer border-2 transition-all flex items-center justify-between group ${addons.includes(pkg.id) ? 'border-slate-900 dark:border-white bg-slate-50 dark:bg-slate-900' : 'border-slate-100 dark:border-slate-800 hover:border-slate-200'}`}
                                                     >
                                                         <div className="flex items-center gap-6">
-                                                            <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all ${addons.includes(pkg.id) ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900' : 'bg-slate-100 dark:bg-slate-800 text-slate-400'}`}>
+                                                            <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all ${addons.includes(pkg.id) ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'}`}>
                                                                 {getAddonIcon(pkg.id)}
                                                             </div>
                                                             <div>
