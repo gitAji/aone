@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import HeroSection from '@/components/HeroSection';
 import { motion } from 'framer-motion';
+import { FaDownload } from 'react-icons/fa';
 
 const Section = ({ title, children, id }) => (
   <motion.section 
@@ -35,6 +36,112 @@ const PrivacyPolicyPage = () => {
     { id: 'contact', title: '7. Contact Us' },
   ];
 
+  // Mirrors the on-page sections below verbatim (same headings, paragraphs,
+  // and bullet lists) so the downloaded copy can never drift from what's
+  // actually published on the site -- a running y-cursor with ensureSpace()
+  // paginates automatically instead of hardcoding per-line y-coordinates.
+  const downloadPDF = async () => {
+    try {
+      const { jsPDF } = await import('jspdf');
+      const doc = new jsPDF();
+      const marginX = 20;
+      const maxWidth = 170;
+      const pageBottom = 280;
+      let y = 20;
+
+      const ensureSpace = (needed) => {
+        if (y + needed > pageBottom) {
+          doc.addPage();
+          y = 20;
+        }
+      };
+
+      const addHeading = (text) => {
+        ensureSpace(14);
+        doc.setFontSize(14);
+        doc.text(text, marginX, y);
+        y += 8;
+        doc.setFontSize(10);
+      };
+
+      const addParagraph = (text) => {
+        const lines = doc.splitTextToSize(text, maxWidth);
+        ensureSpace(lines.length * 5 + 4);
+        doc.text(lines, marginX, y);
+        y += lines.length * 5 + 6;
+      };
+
+      const addBullets = (items) => {
+        items.forEach((item) => {
+          const lines = doc.splitTextToSize(`- ${item}`, maxWidth);
+          ensureSpace(lines.length * 5 + 2);
+          doc.text(lines, marginX, y);
+          y += lines.length * 5 + 2;
+        });
+        y += 4;
+      };
+
+      doc.setFontSize(22);
+      doc.text('AONE PRIVACY POLICY', marginX, y);
+      y += 10;
+      doc.setFontSize(10);
+      doc.text('Last Updated: October 2, 2025', marginX, y);
+      y += 6;
+      doc.text('Aone - Norway', marginX, y);
+      y += 6;
+      doc.line(marginX, y, 190, y);
+      y += 10;
+
+      addHeading('1. Collection of Your Information');
+      addParagraph('We may collect information about you in a variety of ways.');
+      addParagraph('Personal Data: Personally identifiable information, such as your name, shipping address, email address, and telephone number, that you voluntarily give to us when you register or participate in various activities.');
+      addParagraph('Derivative Data: Information our servers automatically collect when you access the Site, such as your IP address, browser type, and operating system.');
+      addParagraph('Financial Data: We store only very limited, if any, financial information. All processing is handled by our secure payment partners (e.g., Stripe).');
+
+      addHeading('2. Use of Your Information');
+      addParagraph('Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. We use your data to:');
+      addBullets([
+        'Create and manage your account',
+        'Process secure transactions',
+        'Personalize your user profile',
+        'Monitor usage trends',
+        'Notify you of updates',
+        'Prevent fraudulent activity',
+        'Improve site operations',
+        'Send tailored newsletters',
+      ]);
+
+      addHeading('3. Disclosure of Your Information');
+      addParagraph('We may share information in certain situations, primarily to protect rights or via third-party providers who perform services on our behalf (hosting, email, data analysis).');
+      addParagraph('We do not sell your personal data to third parties for marketing purposes.');
+
+      addHeading('4. Tracking Technologies');
+      addParagraph('We may use cookies and web beacons to help customize the Site and improve your experience. Most browsers accept cookies by default, but you can always modify your settings to reject them.');
+
+      addHeading('5. Security of Your Information');
+      addParagraph('We use administrative, technical, and physical security measures to protect your personal information. While we take reasonable steps to secure your data, no method of transmission is 100% secure.');
+
+      addHeading('6. Your Rights (GDPR)');
+      addParagraph('As a resident of Norway or the EEA, you have robust data protection rights. You may request to:');
+      addBullets([
+        'Access, update, or delete your information',
+        'Request rectification (corrections)',
+        'Object to processing or restriction',
+        'Request data portability',
+        'Withdraw consent at any time',
+      ]);
+
+      addHeading('7. Contact Us');
+      addParagraph('Questions about your privacy? Our dedicated team is here to help you understand your data rights.');
+      addParagraph('Email: info@aone.no');
+      addParagraph('Phone: 400 71 654');
+
+      doc.save('Aone_Privacy_Policy.pdf');
+    } catch (err) {
+      console.error('Failed to generate PDF:', err);
+    }
+  };
+
   return (
     <div className="bg-slate-50 dark:bg-[#020617] min-h-screen pb-32">
       <HeroSection 
@@ -46,7 +153,7 @@ const PrivacyPolicyPage = () => {
         <div className="flex flex-col lg:flex-row gap-16">
           {/* Sidebar TOC - Desktop only */}
           <aside className="hidden lg:block w-72 h-fit sticky top-32">
-            <nav className="space-y-4">
+            <nav className="space-y-4 mb-8">
               <p className="text-xs font-black uppercase tracking-[0.3em] text-rose-500 mb-6">Contents</p>
               {sections.map((section) => (
                 <a
@@ -58,6 +165,13 @@ const PrivacyPolicyPage = () => {
                 </a>
               ))}
             </nav>
+            <button
+              onClick={downloadPDF}
+              className="w-full py-3 bg-slate-900 dark:bg-white text-slate-900 dark:text-slate-950 rounded-xl text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 hover:opacity-90 transition-all shadow-md cursor-pointer"
+            >
+              <FaDownload className="text-xs" />
+              Download PDF
+            </button>
           </aside>
 
           {/* Main Content */}
@@ -66,6 +180,15 @@ const PrivacyPolicyPage = () => {
               <p className="text-xl text-slate-500 dark:text-slate-300 leading-relaxed mb-12 italic">
                 Aone.no is committed to protecting the privacy of our users. This policy explains how we handle your information with the same precision and care we apply to our digital projects.
               </p>
+              <div className="flex flex-wrap gap-4 items-center mb-12 lg:hidden">
+                <button
+                  onClick={downloadPDF}
+                  className="px-6 py-3 bg-slate-900 dark:bg-white text-slate-900 dark:text-slate-950 rounded-xl text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 hover:opacity-90 transition-all shadow-md cursor-pointer"
+                >
+                  <FaDownload className="text-xs" />
+                  Download PDF
+                </button>
+              </div>
               <div className="h-[1px] w-full bg-slate-200 dark:bg-slate-800"></div>
             </div>
 

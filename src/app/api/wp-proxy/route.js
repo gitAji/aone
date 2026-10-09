@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import https from 'https';
+import { rewriteWpImageUrls } from '@/lib/wordpress-server';
 
 export const runtime = 'nodejs';
 
@@ -61,37 +62,7 @@ export async function GET(request) {
             return NextResponse.json({ error: 'WP Upstream Error', status: data.status }, { status: data.status });
         }
 
-        // Deep Rewrite Function
-        const rewriteUrls = (obj) => {
-            if (!obj || typeof obj !== 'object') return obj;
-            if (Array.isArray(obj)) return obj.map(rewriteUrls);
-
-            const newObj = {};
-            for (const key in obj) {
-                let value = obj[key];
-                if (typeof value === 'string' && value.includes('blog.aone.no/wp-content/uploads/')) {
-                    const trimmed = value.trim();
-                    const isPureUrl = !trimmed.includes(' ') && !trimmed.includes('<') && !trimmed.includes('>');
-                    
-                    if (isPureUrl) {
-                        const cleanUrl = trimmed.replace(/\\\//g, '/');
-                        value = `/api/image-proxy?url=${encodeURIComponent(cleanUrl)}`;
-                    } else {
-                        // It's a block of text/HTML. Replace only the URLs inside it.
-                        value = value.replace(/(https?:\/\/blog\.aone\.no\/wp-content\/uploads\/[^\s"'>]+)/g, (match) => {
-                            const cleanUrl = match.replace(/\\\//g, '/').trim();
-                            return `/api/image-proxy?url=${encodeURIComponent(cleanUrl)}`;
-                        });
-                    }
-                } else if (typeof value === 'object' && value !== null) {
-                    value = rewriteUrls(value);
-                }
-                newObj[key] = value;
-            }
-            return newObj;
-        };
-
-        const processedData = rewriteUrls(data.data);
+        const processedData = rewriteWpImageUrls(data.data);
         const response = NextResponse.json(processedData, { status: 200 });
 
         // Forward vital WordPress pagination headers

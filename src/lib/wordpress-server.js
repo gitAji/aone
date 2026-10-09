@@ -2,6 +2,42 @@ import https from 'https';
 
 const WORDPRESS_API_URL = 'https://blog.aone.no/wp-json/wp/v2';
 
+// Shared with api/wp-proxy/route.js (the client-side path), which applies
+// this same rewrite. blog.aone.no's uploaded images sit behind the same
+// expired certificate as its API -- a raw blog.aone.no image URL fails to
+// load client-side too (browsers refuse expired certs for subresources
+// just like for the page itself), so every image URL anywhere in a
+// WordPress response has to be rewritten to go through
+// /api/image-proxy (which fetches it server-side with the same SSL
+// bypass) before it ever reaches a component.
+export function rewriteWpImageUrls(obj) {
+  if (!obj || typeof obj !== 'object') return obj;
+  if (Array.isArray(obj)) return obj.map(rewriteWpImageUrls);
+
+  const newObj = {};
+  for (const key in obj) {
+    let value = obj[key];
+    if (typeof value === 'string' && value.includes('blog.aone.no/wp-content/uploads/')) {
+      const trimmed = value.trim();
+      const isPureUrl = !trimmed.includes(' ') && !trimmed.includes('<') && !trimmed.includes('>');
+
+      if (isPureUrl) {
+        const cleanUrl = trimmed.replace(/\\\//g, '/');
+        value = `/api/image-proxy?url=${encodeURIComponent(cleanUrl)}`;
+      } else {
+        value = value.replace(/(https?:\/\/blog\.aone\.no\/wp-content\/uploads\/[^\s"'>]+)/g, (match) => {
+          const cleanUrl = match.replace(/\\\//g, '/').trim();
+          return `/api/image-proxy?url=${encodeURIComponent(cleanUrl)}`;
+        });
+      }
+    } else if (typeof value === 'object' && value !== null) {
+      value = rewriteWpImageUrls(value);
+    }
+    newObj[key] = value;
+  }
+  return newObj;
+}
+
 // Server-only counterpart to wordpress.js's fetchPosts/fetchAllPostSlugs/
 // fetchPostBySlug. blog.aone.no runs on an expired TLS certificate --
 // api/wp-proxy/route.js already works around this for client-side requests
@@ -39,7 +75,7 @@ export async function fetchPosts(perPage = 9, page = 1) {
     const { data, headers, status } = await fetchWpJson('posts', `per_page=${perPage}&page=${page}&orderby=date&_embed=true`);
     if (status >= 400) throw new Error(`HTTP error! status: ${status}`);
     const totalPages = parseInt(headers['x-wp-totalpages'] || '1', 10);
-    return { posts: data, totalPages, error: null };
+    return { posts: rewriteWpImageUrls(data), totalPages, error: null };
   } catch (error) {
     console.error('Error fetching blog posts:', error);
     return { posts: [], totalPages: 0, error: error.message };
@@ -71,7 +107,7 @@ export async function fetchPostBySlug(slug) {
   try {
     const { data, status } = await fetchWpJson('posts', `slug=${slug}&_embed=true`);
     if (status >= 400) throw new Error(`HTTP error! status: ${status}`);
-    if (data.length > 0) return { post: data[0], error: null };
+    if (data.length > 0) return { post: rewriteWpImageUrls(data[0]), error: null };
     return { post: null, error: 'Post not found' };
   } catch (error) {
     console.error(`Error fetching post by slug ${slug}:`, error);
