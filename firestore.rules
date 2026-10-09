@@ -30,6 +30,18 @@ service cloud.firestore {
       allow create: if true;
       allow read, update, delete: if false;
     }
+    // Was missing from this file entirely -- every submission to
+    // src/app/api/apply/route.js's job_applications collection has been
+    // hitting the default-deny rule at the bottom and failing with
+    // PERMISSION_DENIED.
+    match /job_applications/{doc} {
+      allow create: if true;
+      allow read, update, delete: if false;
+    }
+    match /seo_audit_requests/{doc} {
+      allow create: if true;
+      allow read, update, delete: if false;
+    }
     // Orders contain customer PII (name, email, business org number, address)
     // and the financial record of what was charged. All reads and writes go
     // through server-side API routes using the Admin SDK (which bypasses
