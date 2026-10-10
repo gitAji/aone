@@ -248,7 +248,7 @@ const SubmissionsClient = () => {
     : submissions.filter((s) => s.type === activeType);
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 px-4 sm:px-6 py-8 sm:py-10">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 px-4 sm:px-6 pt-32 sm:pt-36 pb-8 sm:pb-10">
       <div className="max-w-6xl mx-auto">
         <div className="mb-6 sm:mb-8">
           <Link href="/admin" className="inline-flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-rose-500 transition-colors mb-3">
