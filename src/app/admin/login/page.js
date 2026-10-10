@@ -55,7 +55,7 @@ function AdminLoginForm() {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950 px-4 py-12 overflow-hidden">
+    <div className="relative min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950 px-4 pt-28 pb-12 overflow-hidden">
       <div className="absolute -top-32 -left-32 w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-rose-400/20 to-amber-300/15 blur-[90px] dark:from-rose-500/10 dark:to-transparent pointer-events-none" />
       <div className="absolute -bottom-32 -right-32 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-rose-400/15 to-amber-300/10 blur-[90px] dark:from-amber-500/5 dark:to-transparent pointer-events-none" />
 

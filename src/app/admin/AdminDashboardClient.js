@@ -23,7 +23,7 @@ const AdminDashboardClient = ({ username }) => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 px-4 sm:px-6 py-8 sm:py-10">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 px-4 sm:px-6 pt-32 sm:pt-36 pb-8 sm:pb-10">
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 mb-8 sm:mb-10">
           <div>
