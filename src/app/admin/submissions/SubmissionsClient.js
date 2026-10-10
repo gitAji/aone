@@ -129,7 +129,7 @@ function SubmissionDetailModal({ type, id, typeLabel, onClose, onDeleted, onUpda
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/60 backdrop-blur-sm px-4" onClick={onClose}>
       <div
-        className="w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl shadow-2xl p-8"
+        className="w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl shadow-2xl p-5 sm:p-8"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between mb-6">
@@ -189,18 +189,18 @@ function SubmissionDetailModal({ type, id, typeLabel, onClose, onDeleted, onUpda
               </div>
             )}
 
-            <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
+            <div className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
               <button
                 onClick={handleDelete}
                 disabled={deleting || saving}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-rose-500/10 text-rose-500 text-xs font-black uppercase tracking-wider hover:bg-rose-500 hover:text-white transition-all disabled:opacity-50"
+                className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-rose-500/10 text-rose-500 text-xs font-black uppercase tracking-wider hover:bg-rose-500 hover:text-white transition-all disabled:opacity-50"
               >
                 <FaTrash className="text-xs" /> {deleting ? 'Deleting…' : 'Delete'}
               </button>
               <button
                 onClick={handleSave}
                 disabled={saving || deleting}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-950 text-xs font-black uppercase tracking-wider hover:opacity-90 transition-all disabled:opacity-50"
+                className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-950 text-xs font-black uppercase tracking-wider hover:opacity-90 transition-all disabled:opacity-50"
               >
                 <FaSave className="text-xs" /> {saving ? 'Saving…' : 'Save Changes'}
               </button>
@@ -248,18 +248,16 @@ const SubmissionsClient = () => {
     : submissions.filter((s) => s.type === activeType);
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 px-6 py-10">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 px-4 sm:px-6 py-8 sm:py-10">
       <div className="max-w-6xl mx-auto">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <Link href="/admin" className="inline-flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-rose-500 transition-colors mb-3">
-              <FaArrowLeft className="text-[10px]" /> Back to Dashboard
-            </Link>
-            <h1 className="text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Submissions &amp; Orders</h1>
-            <p className="text-sm text-slate-500 dark:text-slate-400">
-              {loading ? 'Loading…' : `${submissions.length} total across all forms -- click a row to edit or delete`}
-            </p>
-          </div>
+        <div className="mb-6 sm:mb-8">
+          <Link href="/admin" className="inline-flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-rose-500 transition-colors mb-3">
+            <FaArrowLeft className="text-[10px]" /> Back to Dashboard
+          </Link>
+          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Submissions &amp; Orders</h1>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+            {loading ? 'Loading…' : `${submissions.length} total across all forms -- tap a row to edit or delete`}
+          </p>
         </div>
 
         {error && (
@@ -311,7 +309,31 @@ const SubmissionsClient = () => {
               ))}
             </div>
 
-            <div className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl overflow-hidden">
+            {/* Mobile: stacked cards -- a horizontally-scrolling table is awkward to
+                read one-handed, so phones get a dedicated card layout instead of the
+                desktop table's overflow-x-auto. */}
+            <div className="sm:hidden space-y-3">
+              {filtered.map((s) => (
+                <div
+                  key={`${s.type}-${s.id}`}
+                  onClick={() => setSelected(s)}
+                  className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl p-4 active:bg-slate-50 dark:active:bg-slate-800/30 transition-colors cursor-pointer"
+                >
+                  <div className="flex items-start justify-between gap-3 mb-2">
+                    <span className={`inline-block px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${TYPE_COLORS[s.type] || 'bg-slate-500/10 text-slate-500'}`}>
+                      {s.typeLabel}
+                    </span>
+                    <span className="text-[11px] text-slate-400 whitespace-nowrap">{formatDate(s.createdAt)}</span>
+                  </div>
+                  <p className="font-bold text-slate-900 dark:text-white text-sm">{s.name}</p>
+                  <p className="text-slate-500 dark:text-slate-400 text-xs mb-1.5 break-all">{s.email}</p>
+                  <p className="text-slate-600 dark:text-slate-300 text-sm line-clamp-2">{s.summary || '—'}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop/tablet: full table */}
+            <div className="hidden sm:block bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-sm">
                   <thead>
