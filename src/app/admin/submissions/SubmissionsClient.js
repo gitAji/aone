@@ -2,7 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { FaArrowLeft, FaExclamationTriangle } from 'react-icons/fa';
+import { FaArrowLeft, FaExclamationTriangle, FaTimes, FaTrash, FaSave } from 'react-icons/fa';
 
 const TYPE_COLORS = {
   contact: 'bg-blue-500/10 text-blue-500',
@@ -17,27 +17,224 @@ const TYPE_COLORS = {
   order: 'bg-slate-700/10 dark:bg-slate-300/10 text-slate-700 dark:text-slate-300',
 };
 
-const SubmissionsClient = () => {
-  const [submissions, setSubmissions] = useState([]);
+const READ_ONLY_FIELDS = new Set(['created_at', 'createdAt']);
+
+function formatDate(iso) {
+  if (!iso) return '—';
+  try {
+    return new Date(iso).toLocaleDateString('en-GB', {
+      day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit',
+    });
+  } catch {
+    return '—';
+  }
+}
+
+// Scalars (string/number/boolean/null) get a plain input; anything else
+// (objects, arrays -- e.g. an order's `formData`, a design request's
+// `header_requirements: {content}`) gets a raw-JSON textarea instead of a
+// bespoke recursive form, so every field type stays editable without
+// hand-building a form per collection shape.
+function isScalar(value) {
+  return value === null || ['string', 'number', 'boolean'].includes(typeof value);
+}
+
+function SubmissionDetailModal({ type, id, typeLabel, onClose, onDeleted, onUpdated }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [activeType, setActiveType] = useState('all');
+  const [fields, setFields] = useState(null);
+  const [saving, setSaving] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+  const [saveError, setSaveError] = useState('');
 
   useEffect(() => {
     let cancelled = false;
     (async () => {
       try {
-        const res = await fetch('/api/admin/submissions');
+        const res = await fetch(`/api/admin/submissions/${type}/${id}`);
         const data = await res.json().catch(() => ({}));
         if (!res.ok) throw new Error(data.error || `Request failed (${res.status})`);
-        if (!cancelled) setSubmissions(data.submissions || []);
+        if (!cancelled) {
+          const raw = data.data || {};
+          const editable = {};
+          for (const key in raw) {
+            editable[key] = isScalar(raw[key]) ? raw[key] : JSON.stringify(raw[key], null, 2);
+          }
+          setFields(editable);
+        }
       } catch (err) {
-        if (!cancelled) setError(err.message || 'Failed to load submissions.');
+        if (!cancelled) setError(err.message || 'Failed to load submission.');
       } finally {
         if (!cancelled) setLoading(false);
       }
     })();
     return () => { cancelled = true; };
+  }, [type, id]);
+
+  const handleFieldChange = (key, value) => {
+    setFields((prev) => ({ ...prev, [key]: value }));
+  };
+
+  const handleSave = async () => {
+    setSaving(true);
+    setSaveError('');
+    try {
+      const updates = {};
+      for (const key in fields) {
+        if (READ_ONLY_FIELDS.has(key)) continue;
+        const value = fields[key];
+        if (typeof value === 'string' && (value.trim().startsWith('{') || value.trim().startsWith('['))) {
+          try {
+            updates[key] = JSON.parse(value);
+          } catch {
+            throw new Error(`"${key}" is not valid JSON.`);
+          }
+        } else {
+          updates[key] = value;
+        }
+      }
+
+      const res = await fetch(`/api/admin/submissions/${type}/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updates),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || `Request failed (${res.status})`);
+      onUpdated();
+      onClose();
+    } catch (err) {
+      setSaveError(err.message || 'Failed to save changes.');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleDelete = async () => {
+    if (!window.confirm('Delete this submission permanently? This cannot be undone.')) return;
+    setDeleting(true);
+    setSaveError('');
+    try {
+      const res = await fetch(`/api/admin/submissions/${type}/${id}`, { method: 'DELETE' });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || `Request failed (${res.status})`);
+      onDeleted();
+      onClose();
+    } catch (err) {
+      setSaveError(err.message || 'Failed to delete submission.');
+      setDeleting(false);
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/60 backdrop-blur-sm px-4" onClick={onClose}>
+      <div
+        className="w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl shadow-2xl p-8"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <span className={`inline-block px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider mb-2 ${TYPE_COLORS[type] || 'bg-slate-500/10 text-slate-500'}`}>
+              {typeLabel}
+            </span>
+            <h2 className="text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Edit Submission</h2>
+          </div>
+          <button onClick={onClose} className="text-slate-400 hover:text-rose-500 transition-colors p-2">
+            <FaTimes />
+          </button>
+        </div>
+
+        {loading && <p className="text-slate-400 text-sm">Loading…</p>}
+
+        {error && (
+          <div className="p-4 bg-rose-500/5 border border-rose-500/20 rounded-xl text-sm text-rose-500 font-medium mb-4">
+            {error}
+          </div>
+        )}
+
+        {fields && (
+          <div className="space-y-4">
+            {Object.entries(fields).map(([key, value]) => {
+              const readOnly = READ_ONLY_FIELDS.has(key);
+              const isMultiline = typeof value === 'string' && (value.includes('\n') || value.length > 80);
+              return (
+                <div key={key}>
+                  <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5">
+                    {key}{readOnly && ' (read-only)'}
+                  </label>
+                  {isMultiline ? (
+                    <textarea
+                      value={value ?? ''}
+                      onChange={(e) => handleFieldChange(key, e.target.value)}
+                      disabled={readOnly}
+                      rows={Math.min(8, Math.max(3, String(value ?? '').split('\n').length))}
+                      className="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white font-mono focus:outline-none focus:ring-2 focus:ring-rose-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    />
+                  ) : (
+                    <input
+                      type={typeof value === 'number' ? 'number' : 'text'}
+                      value={value ?? ''}
+                      onChange={(e) => handleFieldChange(key, typeof value === 'number' ? Number(e.target.value) : e.target.value)}
+                      disabled={readOnly}
+                      className="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-rose-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    />
+                  )}
+                </div>
+              );
+            })}
+
+            {saveError && (
+              <div className="p-4 bg-rose-500/5 border border-rose-500/20 rounded-xl text-sm text-rose-500 font-medium">
+                {saveError}
+              </div>
+            )}
+
+            <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
+              <button
+                onClick={handleDelete}
+                disabled={deleting || saving}
+                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-rose-500/10 text-rose-500 text-xs font-black uppercase tracking-wider hover:bg-rose-500 hover:text-white transition-all disabled:opacity-50"
+              >
+                <FaTrash className="text-xs" /> {deleting ? 'Deleting…' : 'Delete'}
+              </button>
+              <button
+                onClick={handleSave}
+                disabled={saving || deleting}
+                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-950 text-xs font-black uppercase tracking-wider hover:opacity-90 transition-all disabled:opacity-50"
+              >
+                <FaSave className="text-xs" /> {saving ? 'Saving…' : 'Save Changes'}
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+const SubmissionsClient = () => {
+  const [submissions, setSubmissions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [activeType, setActiveType] = useState('all');
+  const [selected, setSelected] = useState(null);
+
+  const fetchSubmissions = async () => {
+    try {
+      const res = await fetch('/api/admin/submissions');
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || `Request failed (${res.status})`);
+      setSubmissions(data.submissions || []);
+      setError('');
+    } catch (err) {
+      setError(err.message || 'Failed to load submissions.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchSubmissions();
   }, []);
 
   const types = useMemo(() => {
@@ -50,17 +247,6 @@ const SubmissionsClient = () => {
     ? submissions
     : submissions.filter((s) => s.type === activeType);
 
-  const formatDate = (iso) => {
-    if (!iso) return '—';
-    try {
-      return new Date(iso).toLocaleDateString('en-GB', {
-        day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit',
-      });
-    } catch {
-      return '—';
-    }
-  };
-
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 px-6 py-10">
       <div className="max-w-6xl mx-auto">
@@ -71,7 +257,7 @@ const SubmissionsClient = () => {
             </Link>
             <h1 className="text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Submissions &amp; Orders</h1>
             <p className="text-sm text-slate-500 dark:text-slate-400">
-              {loading ? 'Loading…' : `${submissions.length} total across all forms`}
+              {loading ? 'Loading…' : `${submissions.length} total across all forms -- click a row to edit or delete`}
             </p>
           </div>
         </div>
@@ -139,7 +325,11 @@ const SubmissionsClient = () => {
                   </thead>
                   <tbody>
                     {filtered.map((s) => (
-                      <tr key={`${s.type}-${s.id}`} className="border-b border-slate-50 dark:border-slate-800/50 last:border-0 hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                      <tr
+                        key={`${s.type}-${s.id}`}
+                        onClick={() => setSelected(s)}
+                        className="border-b border-slate-50 dark:border-slate-800/50 last:border-0 hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors cursor-pointer"
+                      >
                         <td className="px-6 py-4">
                           <span className={`inline-block px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${TYPE_COLORS[s.type] || 'bg-slate-500/10 text-slate-500'}`}>
                             {s.typeLabel}
@@ -158,6 +348,17 @@ const SubmissionsClient = () => {
           </>
         )}
       </div>
+
+      {selected && (
+        <SubmissionDetailModal
+          type={selected.type}
+          id={selected.id}
+          typeLabel={selected.typeLabel}
+          onClose={() => setSelected(null)}
+          onUpdated={fetchSubmissions}
+          onDeleted={fetchSubmissions}
+        />
+      )}
     </div>
   );
 };
