@@ -8,12 +8,21 @@ import { motion } from "framer-motion";
 import Testimonials from "@/components/Testimonials";
 
 const WebSolutionClient = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+
+  // Overrides the shared "Web Solution" / "Nettløsning" label (used
+  // elsewhere as a short nav/card name) with a longer, keyword-descriptive
+  // H1 specifically for this page -- the one page on the site most
+  // relevant to "web design/designer Bergen" searches shouldn't have a
+  // generic product name as its only heading.
+  const heroTitle = language === 'no'
+    ? 'Webdesign & Nettløsninger i Bergen'
+    : 'Web Design & Web Solutions in Bergen';
 
   return (
     <div className="service-detail-page bg-slate-50 dark:bg-slate-950 min-h-screen">
       <HeroSection
-        title={t('services.webSolution.title')}
+        title={heroTitle}
         subtitle={t('services.webSolution.description')}
       />
 

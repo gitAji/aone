@@ -53,6 +53,7 @@ export const translations = {
             cta: "Get a Quote",
             phrases: [
                 "Web Design & |AI Solutions in Bergen.",
+                "Leading |Web Designers in Bergen.",
                 "Your Digital |Design Partner.",
                 "Smart |Digital Solutions for Growth.",
                 "Scale with |Automation.",
@@ -563,6 +564,7 @@ export const translations = {
             cta: "Få et tilbud",
             phrases: [
                 "Webdesign i |Bergen som konverterer.",
+                "Ledende |webdesignere i Bergen.",
                 "Din digitale |designpartner.",
                 "Smarte |AI-løsninger for vekst.",
                 "Skaler med |Automasjon.",
