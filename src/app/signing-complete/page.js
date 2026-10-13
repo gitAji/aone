@@ -38,7 +38,7 @@ function SigningCompleteContent() {
                             <div className="flex justify-center">
                                 <FaSpinner className="text-5xl text-rose-500 animate-spin" />
                             </div>
-                            <h2 className="text-2xl font-bold text-slate-800 dark:text-white">Verifying Signature</h2>
+                            <h1 className="text-2xl font-bold text-slate-800 dark:text-white">Verifying Signature</h1>
                             <p className="text-slate-600 dark:text-slate-400">Please wait while we confirm your agreement with Posten Signering.</p>
                         </motion.div>
                     )}
@@ -53,7 +53,7 @@ function SigningCompleteContent() {
                             <div className="flex justify-center">
                                 <FaCheckCircle className="text-5xl text-emerald-500" />
                             </div>
-                            <h2 className="text-2xl font-bold text-slate-800 dark:text-white">Signature Confirmed</h2>
+                            <h1 className="text-2xl font-bold text-slate-800 dark:text-white">Signature Confirmed</h1>
                             <p className="text-slate-600 dark:text-slate-400">Your agreement is legally binding. You can now proceed to payment.</p>
                             <button
                                 onClick={() => router.push(`/order?step=5&order_id=${orderId}`)}

@@ -5,6 +5,7 @@ Disallow: /signing-cancelled
 Disallow: /signing-complete
 Disallow: /apply
 Disallow: /client-login
+Disallow: /admin
 Disallow: /api/
 
 Sitemap: https://aone.no/sitemap.xml
