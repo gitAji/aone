@@ -254,6 +254,29 @@ const nextConfig = {
         destination: "/references/qfs-accountants",
         permanent: true,
       },
+      {
+        // Leftover from an older URL-prefixed locale scheme (/no/...) --
+        // language switching is now handled client-side via
+        // LanguageContext with no URL prefix, so these paths have never
+        // matched a real route since that migration.
+        source: "/no",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/no/:path*",
+        destination: "/:path*",
+        permanent: true,
+      },
+      {
+        // Never a real route in this codebase, but flagged by the SEO
+        // audit as receiving inbound traffic -- /blog is the closest
+        // semantic match ("knowledge" content) rather than losing that
+        // traffic to a dead end.
+        source: "/knowledge",
+        destination: "/blog",
+        permanent: true,
+      },
     ];
   },
 };
