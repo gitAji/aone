@@ -215,18 +215,43 @@ const nextConfig = {
         permanent: true,
       },
       {
+        // Was pointing at /references/kids-learning-portal-development,
+        // a slug that has never existed in src/app/data/projects.js (the
+        // real entry is "kids-learning-portal") -- the redirect fired
+        // successfully but its destination itself 404'd, exactly the
+        // broken-redirect-chain finding an SEO audit flagged.
         source: "/references/project-7",
-        destination: "/references/kids-learning-portal-development",
+        destination: "/references/kids-learning-portal",
         permanent: true,
       },
       {
+        // Was pointing at /references/saray-beauty-parlour-website, which
+        // has also never existed -- the only "Saray" project on file is
+        // the steakhouse (saray-steakhouse / saray-steakhouse-kro), not a
+        // beauty parlour, so there's no current page to confidently map
+        // this legacy slug onto. Sending it to the references index
+        // avoids a dead-end 404 without guessing wrong.
         source: "/references/project-8",
-        destination: "/references/saray-beauty-parlour-website",
+        destination: "/references",
         permanent: true,
       },
       {
+        // Was pointing at /references/tulips-beauty-parlour-website, a
+        // pre-rename slug for what is now "tulips-beauty".
         source: "/references/project-9",
-        destination: "/references/tulips-beauty-parlour-website",
+        destination: "/references/tulips-beauty",
+        permanent: true,
+      },
+      {
+        // Legacy/shortened URLs with real inbound traffic (per SEO audit)
+        // that never had a redirect rule at all.
+        source: "/references/tulips",
+        destination: "/references/tulips-beauty",
+        permanent: true,
+      },
+      {
+        source: "/references/qfs-accoutant",
+        destination: "/references/qfs-accountants",
         permanent: true,
       },
     ];
