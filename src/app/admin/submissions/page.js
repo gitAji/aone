@@ -3,6 +3,11 @@ import { redirect } from 'next/navigation';
 import { verifyAdminSession, ADMIN_COOKIE_NAME } from '@/lib/adminAuth';
 import SubmissionsClient from './SubmissionsClient';
 
+export const metadata = {
+  title: 'Submissions & Orders | Aone Admin',
+  robots: { index: false, follow: false },
+};
+
 // Same defense-in-depth pattern as admin/page.js -- middleware.js already
 // gates /admin/:path*, this re-verifies server-side.
 export default async function AdminSubmissionsPage() {

@@ -21,7 +21,7 @@ function SigningCancelledContent() {
                     <div className="flex justify-center">
                         <FaTimesCircle className="text-5xl text-rose-500" />
                     </div>
-                    <h2 className="text-2xl font-bold text-slate-800 dark:text-white">Signing Cancelled</h2>
+                    <h1 className="text-2xl font-bold text-slate-800 dark:text-white">Signing Cancelled</h1>
                     <p className="text-slate-600 dark:text-slate-400">The signing process was not completed. You can try again to finalize your order.</p>
                     <div className="space-y-3">
                         <button

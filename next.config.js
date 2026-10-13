@@ -121,11 +121,6 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/projects",
-        destination: "/",
-        permanent: true,
-      },
-      {
         source: "/branding",
         destination: "/services/web-solution",
         permanent: true,
