@@ -1,53 +1,24 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import HeroSection from '@/components/HeroSection';
-import { fetchPosts, getFeaturedImage, upgradeWpLinksToHttps } from '@/lib/wordpress';
+import { getFeaturedImage, upgradeWpLinksToHttps } from '@/lib/wordpress';
 import { useLanguage } from "@/context/LanguageContext";
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaCalendarAlt, FaChevronRight, FaRegClock, FaUser } from 'react-icons/fa';
+import { FaCalendarAlt, FaChevronRight, FaChevronLeft, FaRegClock, FaUser } from 'react-icons/fa';
 
-// Receives the first page of posts already fetched server-side (see
-// src/app/blog/page.js) so the initial HTML — what search engines and
-// social scrapers actually see — contains real post content instead of a
-// loading skeleton. "Load More" beyond page 1 stays a client-side fetch,
-// which is fine: Google only needs the initial content indexed, and
-// pagination-by-button was never going to get separate crawlable URLs anyway.
-const BlogListClient = ({ initialPosts, initialTotalPages }) => {
+// Receives the requested page of posts already fetched server-side (see
+// src/app/blog/page.js) so the initial HTML -- what search engines and
+// social scrapers actually see -- contains real post content instead of a
+// loading skeleton. Pagination below is real <Link>s to /blog?page=N
+// (not a client-side "load more" fetch), so every page of the archive is
+// its own crawlable URL and every post gets a real incoming link from
+// somewhere other than the sitemap.
+const BlogListClient = ({ posts, currentPage, totalPages }) => {
     const { t } = useLanguage();
-    const [posts, setPosts] = useState(initialPosts);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(initialTotalPages);
-    const [loadingMore, setLoadingMore] = useState(false);
-    const [error, setError] = useState(null);
     const postsPerPage = 6;
-
-    const loadMore = async () => {
-        setLoadingMore(true);
-        try {
-            const nextPage = currentPage + 1;
-            const { posts: fetchedPosts, totalPages: fetchedTotalPages, error: fetchError } =
-                await fetchPosts(postsPerPage, nextPage);
-
-            if (fetchError) {
-                setError(fetchError);
-            } else {
-                setError(null);
-                setPosts(prev => {
-                    const newPosts = fetchedPosts.filter(fp => !prev.some(p => p.id === fp.id));
-                    return [...prev, ...newPosts];
-                });
-                setTotalPages(fetchedTotalPages);
-                setCurrentPage(nextPage);
-            }
-        } catch (err) {
-            setError(err.message);
-        } finally {
-            setLoadingMore(false);
-        }
-    };
 
     const formatDate = (dateString) => {
         return new Date(dateString).toLocaleDateString('nb-NO', {
@@ -65,14 +36,18 @@ const BlogListClient = ({ initialPosts, initialTotalPages }) => {
             />
 
             <section className="container mx-auto px-6 pb-24 pt-20">
-                {/* Error State */}
-                {error && posts.length === 0 && (
+                {/* Empty State */}
+                {posts.length === 0 && (
                     <div className="max-w-xl mx-auto text-center py-20">
                         <div className="w-16 h-16 bg-rose-500/10 text-rose-500 rounded-full flex items-center justify-center mx-auto mb-6">
                             <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
                         </div>
                         <h3 className="text-2xl font-bold mb-4">{t('blog.errorTitle') || 'Tilkobling mistet'}</h3>
-                        <p className="text-slate-500 mb-8">{error}</p>
+                        {currentPage > 1 && (
+                            <Link href="/blog" className="text-rose-500 font-bold hover:underline">
+                                {t('blog.backToFirstPage') || 'Tilbake til bloggen'}
+                            </Link>
+                        )}
                     </div>
                 )}
 
@@ -141,21 +116,34 @@ const BlogListClient = ({ initialPosts, initialTotalPages }) => {
                     </AnimatePresence>
                 </div>
 
-                {/* Load More */}
-                {totalPages > currentPage && (
-                    <div className="mt-20 text-center">
-                        <button
-                            onClick={loadMore}
-                            disabled={loadingMore}
-                            className="group relative inline-flex items-center gap-4 px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-950 font-black uppercase text-xs tracking-[0.2em] rounded-2xl overflow-hidden transition-all hover:scale-105 active:scale-95 disabled:opacity-50"
-                        >
-                            <span className="relative z-10">
-                                {loadingMore ? (t('blog.loadingMore') || 'Laster inn...') : (t('blog.loadMore') || 'Last inn mer')}
-                            </span>
-                            <FaChevronRight className="relative z-10 text-[10px] group-hover:translate-x-1 transition-transform" />
-                            <div className="absolute inset-0 bg-rose-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0" />
-                        </button>
-                    </div>
+                {/* Pagination -- real links to /blog?page=N, crawlable and
+                    bookmarkable, not a client-only "load more" fetch. */}
+                {totalPages > 1 && (
+                    <nav className="mt-20 flex items-center justify-center gap-3" aria-label="Blog pagination">
+                        {currentPage > 1 && (
+                            <Link
+                                href={currentPage === 2 ? '/blog' : `/blog?page=${currentPage - 1}`}
+                                className="flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-200 dark:border-slate-800 text-sm font-bold text-slate-600 dark:text-slate-300 hover:border-rose-500/50 hover:text-rose-500 transition-colors"
+                            >
+                                <FaChevronLeft className="text-xs" /> {t('blog.previous') || 'Forrige'}
+                            </Link>
+                        )}
+
+                        <span className="px-4 py-3 text-sm font-bold text-slate-400">
+                            {(t('blog.pageOf') || 'Side {current} av {total}')
+                                .replace('{current}', currentPage)
+                                .replace('{total}', totalPages)}
+                        </span>
+
+                        {currentPage < totalPages && (
+                            <Link
+                                href={`/blog?page=${currentPage + 1}`}
+                                className="flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-950 text-sm font-bold hover:opacity-90 transition-opacity"
+                            >
+                                {t('blog.next') || 'Neste'} <FaChevronRight className="text-xs" />
+                            </Link>
+                        )}
+                    </nav>
                 )}
             </section>
         </div>
