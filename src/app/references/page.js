@@ -7,7 +7,7 @@ const SSR_LANG = 'no';
 
 export const metadata = {
   title: "Våre Prosjekter | Webdesign & AI-referanser fra Bergen og Norge",
-  description: "Se hvordan Aone har hjulpet bedrifter i Bergen og i hele Norge med webdesign, AI-automatisering og merkevarebygging – inkludert Clean Masters Renhold, et lokalt rengjøringsbyrå i Bergen.",
+  description: "Se hvordan Aone har hjulpet bedrifter i Bergen og i hele Norge med webdesign, AI-automatisering og merkevarebygging som gir ekte resultater.",
   keywords: "Webdesign referanser Bergen, Aone prosjekter, AI-byrå portefølje Norge, nettside rengjøringsbyrå Bergen, case study webdesign Bergen, digitalbyrå kundeprosjekter Norge",
   alternates: { canonical: "https://aone.no/references" },
   openGraph: {

@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import HeroSection from '@/components/HeroSection';
-import { getFeaturedImage } from '@/lib/wordpress';
+import { getFeaturedImage, upgradeWpLinksToHttps } from '@/lib/wordpress';
 import { useLanguage } from "@/context/LanguageContext";
 import { motion } from 'framer-motion';
 import { FaCalendarAlt, FaChevronLeft, FaClock, FaUser, FaShareAlt } from 'react-icons/fa';
@@ -107,7 +107,7 @@ const BlogPostClient = ({ post }) => {
                                 prose-headings:font-black prose-headings:tracking-tighter prose-headings:uppercase
                                 prose-p:text-slate-600 dark:prose-p:text-slate-400 prose-p:leading-relaxed
                                 prose-a:text-rose-500 prose-a:font-bold prose-img:rounded-3xl prose-img:shadow-2xl"
-                                dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+                                dangerouslySetInnerHTML={{ __html: upgradeWpLinksToHttps(post.content.rendered) }}
                             />
 
                             {/* Keywords / Taxonomy */}

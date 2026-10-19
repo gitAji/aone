@@ -78,6 +78,18 @@ export function stripHtml(html) {
     .trim();
 }
 
+// WordPress is configured with http://blog.aone.no as its site URL, so any
+// internal link or image src it generates inside rendered HTML (post
+// content, excerpts, titles) comes through as an absolute http:// URL --
+// an HTTPS page on aone.no linking to an HTTP URL, flagged by SEO audits
+// and shown as a browser security warning. blog.aone.no is reachable over
+// HTTPS (see next.config.js remotePatterns / CSP), so this is always safe
+// to upgrade before injecting the HTML.
+export function upgradeWpLinksToHttps(html) {
+  if (!html) return html;
+  return html.replace(/http:\/\/blog\.aone\.no/gi, 'https://blog.aone.no');
+}
+
 // Every published post's slug + last-modified date, paginating through the
 // WP REST API. Used by sitemap.js (one sitemap entry per post) and
 // blog/[slug]/page.js's generateStaticParams (pre-render every post at build
