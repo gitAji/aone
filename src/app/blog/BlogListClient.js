@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import HeroSection from '@/components/HeroSection';
-import { fetchPosts, getFeaturedImage } from '@/lib/wordpress';
+import { fetchPosts, getFeaturedImage, upgradeWpLinksToHttps } from '@/lib/wordpress';
 import { useLanguage } from "@/context/LanguageContext";
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaCalendarAlt, FaChevronRight, FaRegClock, FaUser } from 'react-icons/fa';
@@ -120,12 +120,12 @@ const BlogListClient = ({ initialPosts, initialTotalPages }) => {
 
                                             <h3
                                                 className="text-2xl font-black mb-4 leading-tight group-hover:text-rose-500 transition-colors"
-                                                dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+                                                dangerouslySetInnerHTML={{ __html: upgradeWpLinksToHttps(post.title.rendered) }}
                                             />
 
                                             <div
                                                 className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8 line-clamp-3"
-                                                dangerouslySetInnerHTML={{ __html: post.excerpt?.rendered }}
+                                                dangerouslySetInnerHTML={{ __html: upgradeWpLinksToHttps(post.excerpt?.rendered) }}
                                             />
 
                                             <div className="mt-auto pt-4 flex items-center justify-between">
