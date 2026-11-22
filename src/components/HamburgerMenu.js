@@ -124,17 +124,16 @@ const HamburgerMenu = () => {
         </div>
       </div>
 
-      {/* Hamburger Trigger Button — asymmetric "staircase" mark instead of a generic
-          equal-width hamburger, single-color (bg-current); morphs into a centered X on open */}
+      {/* Trigger Button — a plus sign that morphs into a centered X on open
+          (two bars, one rotating 90deg->45deg, the other staying at 45deg) */}
       <button
         onClick={toggleMenu}
-        className="group relative z-[100001] w-10 h-10 rounded-full flex flex-col items-center justify-center gap-[5px] transition-all duration-300 bg-slate-950 dark:bg-white text-white dark:text-slate-950 hover:scale-105 active:scale-95 shadow-md"
+        className="group relative z-[100001] w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 bg-slate-950 dark:bg-white text-white dark:text-slate-950 hover:scale-105 active:scale-95 shadow-md"
         aria-expanded={isOpen}
         aria-label={isOpen ? "Close menu" : "Open menu"}
       >
-        <span className={`h-[2px] bg-current rounded-full transition-all duration-300 origin-center ${isOpen ? 'w-4.5 rotate-45 translate-y-[7px]' : 'w-3'}`} />
-        <span className={`h-[2px] bg-current rounded-full transition-all duration-300 ${isOpen ? 'w-4.5 opacity-0 scale-x-0' : 'w-4.5'}`} />
-        <span className={`h-[2px] bg-current rounded-full transition-all duration-300 origin-center ${isOpen ? 'w-4.5 -rotate-45 -translate-y-[7px]' : 'w-2'}`} />
+        <span className={`absolute h-[2px] w-4 bg-current rounded-full transition-transform duration-300 ${isOpen ? 'rotate-45' : 'rotate-0'}`} />
+        <span className={`absolute h-[2px] w-4 bg-current rounded-full transition-transform duration-300 ${isOpen ? '-rotate-45' : 'rotate-90'}`} />
       </button>
 
       {/* Fullscreen Navigation Overlay — single clean column, large type,
