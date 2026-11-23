@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, Suspense, useCallback, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { packages, SITE_WIDE_DISCOUNT_RATE, PROMO_CODE_DISCOUNT_RATE, PROMO_CODE } from '../data/packages';
+import { packages, SITE_WIDE_DISCOUNT_RATE, PROMO_CODE_DISCOUNT_RATE, PROMO_CODE, EXIT_INTENT_DISCOUNT_RATE, EXIT_INTENT_PROMO_CODE } from '../data/packages';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { FaLaptopCode, FaCheck, FaCrown, FaCameraRetro, FaSearch, FaTools, FaPenNib, FaUsers, FaBullhorn, FaPencilRuler, FaVideo, FaInfoCircle, FaTruck, FaSpinner, FaCreditCard, FaLock, FaCalendarAlt, FaShieldAlt, FaStripe, FaCcVisa, FaCcMastercard, FaCcPaypal, FaBolt, FaFileInvoice, FaCube, FaPuzzlePiece, FaTag, FaClock, FaCalendarCheck, FaChartLine } from 'react-icons/fa';
@@ -84,7 +84,12 @@ function OrderPageContent() {
         // Matches checkout/stripe and order/create: the site-wide flash-sale
         // rate applies automatically, a voucher code overrides (not stacks)
         // with a larger rate.
-        const discountRate = promoCode.trim().toUpperCase() === PROMO_CODE ? PROMO_CODE_DISCOUNT_RATE : SITE_WIDE_DISCOUNT_RATE;
+        const enteredCode = promoCode.trim().toUpperCase();
+        const discountRate = enteredCode === PROMO_CODE
+            ? PROMO_CODE_DISCOUNT_RATE
+            : enteredCode === EXIT_INTENT_PROMO_CODE
+                ? EXIT_INTENT_DISCOUNT_RATE
+                : SITE_WIDE_DISCOUNT_RATE;
 
         const oneTimeTotal = oneTimeSubtotal > 0 ? roundPrice(Math.max(0, oneTimeSubtotal - oneTimeSubtotal * discountRate)) : 0;
         const monthlyTotal = monthlySubtotal > 0 ? roundPrice(Math.max(0, monthlySubtotal - monthlySubtotal * discountRate)) : 0;
@@ -128,6 +133,19 @@ function OrderPageContent() {
             console.error('Failed to sync state:', err);
         }
     }, [orderId, step, selectedPack, addons, formData, billingInterval, calculateTotal]);
+
+    // Auto-apply the exit-intent 10% discount if the customer arrived here
+    // via ExitIntentPopup.js's "Claim 10% discount" button -- consumed once
+    // (removeItem) so it doesn't silently re-apply on a later, unrelated
+    // visit in the same tab/session.
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+        const claimed = sessionStorage.getItem('aone_exit_discount_code');
+        if (claimed) {
+            setPromoCode(claimed);
+            sessionStorage.removeItem('aone_exit_discount_code');
+        }
+    }, []);
 
     // Re-hydrate state from database on mount if order_id is present
     useEffect(() => {
@@ -1014,6 +1032,11 @@ function OrderPageContent() {
                                                 {promoCode.trim().toUpperCase() === 'AONE' && (
                                                     <p className="text-[9px] font-black text-emerald-500 uppercase tracking-widest mt-3 text-center animate-pulse">
                                                         🔥 50% Sales Discount Applied
+                                                    </p>
+                                                )}
+                                                {promoCode.trim().toUpperCase() === EXIT_INTENT_PROMO_CODE && (
+                                                    <p className="text-[9px] font-black text-emerald-500 uppercase tracking-widest mt-3 text-center animate-pulse">
+                                                        🎉 10% Welcome Discount Applied
                                                     </p>
                                                 )}
                                             </div>

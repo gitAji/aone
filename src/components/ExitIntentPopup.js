@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { FaTimes, FaArrowRight } from "react-icons/fa";
 import { useLanguage } from "@/context/LanguageContext";
+import { EXIT_INTENT_PROMO_CODE } from "@/app/data/packages";
 
 // Fires once per browser session when the cursor crosses the top edge of
 // the viewport heading for the tab/address bar -- the standard desktop
@@ -46,6 +47,11 @@ export default function ExitIntentPopup() {
 
   const close = () => setIsOpen(false);
 
+  const claimDiscount = () => {
+    sessionStorage.setItem("aone_exit_discount_code", EXIT_INTENT_PROMO_CODE);
+    close();
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -80,17 +86,17 @@ export default function ExitIntentPopup() {
               {isNo ? "Før du går" : "Before you go"}
             </p>
             <h2 id="exit-intent-title" className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mb-4 tracking-tight">
-              {isNo ? "Få et gratis tilbud på ditt prosjekt" : "Get a free quote for your project"}
+              {isNo ? "Få 10% rabatt i dag" : "Get 10% off today"}
             </h2>
             <p className="text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
               {isNo
-                ? "Fortell oss kort om prosjektet ditt, så sender vi deg et uforpliktende tilbud — ingen kostnad, ingen forpliktelser."
-                : "Tell us a bit about your project and we'll send a free, no-obligation quote — no cost, no strings attached."}
+                ? "Bestill nå og få 10% rabatt på bestillingen din — rabatten legges automatisk til i kassen."
+                : "Order now and get 10% off your order — the discount is applied automatically at checkout."}
             </p>
 
-            <Link href="/request-quote" onClick={close} className="block">
+            <Link href="/order" onClick={claimDiscount} className="block">
               <button className="w-full flex items-center justify-center gap-3 bg-rose-600 hover:bg-rose-700 text-white font-black py-4 rounded-xl shadow-lg shadow-rose-500/20 transition-all duration-300 transform hover:-translate-y-0.5">
-                <span>{isNo ? "Be om tilbud" : "Request a quote"}</span>
+                <span>{isNo ? "Få 10% rabatt" : "Claim 10% discount"}</span>
                 <FaArrowRight className="text-sm" />
               </button>
             </Link>

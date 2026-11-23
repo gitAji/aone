@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getAdminDb } from '@/lib/firebaseAdmin';
-import { packages, SITE_WIDE_DISCOUNT_RATE, PROMO_CODE_DISCOUNT_RATE, PROMO_CODE } from '@/app/data/packages';
+import { packages, SITE_WIDE_DISCOUNT_RATE, PROMO_CODE_DISCOUNT_RATE, PROMO_CODE, EXIT_INTENT_DISCOUNT_RATE, EXIT_INTENT_PROMO_CODE } from '@/app/data/packages';
 import { sendClientEmail, sendAdminNotification } from '@/lib/mail';
 
 const roundPrice = (value) => {
@@ -61,7 +61,12 @@ export async function POST(request) {
         const rawPrice = calculatePrice(selectedPack, billingInterval, addons || []);
         // Automatic site-wide flash-sale rate applies unless a voucher code
         // overrides it with a larger discount -- see checkout/stripe/route.js.
-        const discountRate = discountCode.trim().toUpperCase() === PROMO_CODE ? PROMO_CODE_DISCOUNT_RATE : SITE_WIDE_DISCOUNT_RATE;
+        const enteredCode = discountCode.trim().toUpperCase();
+        const discountRate = enteredCode === PROMO_CODE
+            ? PROMO_CODE_DISCOUNT_RATE
+            : enteredCode === EXIT_INTENT_PROMO_CODE
+                ? EXIT_INTENT_DISCOUNT_RATE
+                : SITE_WIDE_DISCOUNT_RATE;
         const potentialDiscount = rawPrice * discountRate;
         const price = roundPrice(rawPrice - potentialDiscount);
 

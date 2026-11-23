@@ -1,13 +1,10 @@
 // Single source of truth for the site-wide "flash sale" rate shown on every
-// pricing card in PricingClient.js. Previously that 10% was only a display
-// calculation on the pricing page (originalPrice * 0.9) with nothing
-// connecting it to the actual order total -- checkout/stripe, order/create,
-// and OrderClient's own running total all priced from the full,
-// undiscounted package price, so a customer who saw "-10% TODAY" and clicked
-// through was charged full price. Both the marketing components and the
-// price-calculating code now import this one constant so they can't drift
-// apart again.
-export const SITE_WIDE_DISCOUNT_RATE = 0.10;
+// pricing card in PricingClient.js. Both the marketing components and the
+// price-calculating code (checkout/stripe, order/create, OrderClient) import
+// this one constant so they can't drift apart. Set to 0 -- public pricing
+// shows full price, no discount -- per request; raise it again to run a
+// site-wide sale.
+export const SITE_WIDE_DISCOUNT_RATE = 0;
 
 // A larger override discount for a manually-entered voucher code (sales/
 // support use) -- replaces the automatic site-wide discount rather than
@@ -15,6 +12,15 @@ export const SITE_WIDE_DISCOUNT_RATE = 0.10;
 // standing public discount already gives them.
 export const PROMO_CODE_DISCOUNT_RATE = 0.50;
 export const PROMO_CODE = 'AONE';
+
+// Auto-applied (never typed by the customer) when they arrive at checkout
+// after claiming it from ExitIntentPopup.js -- that component writes this
+// exact code into sessionStorage, and OrderClient.js reads it back to
+// pre-fill the voucher field. Kept as a real voucher code (not a separate
+// code path) so the checkout/stripe and order/create routes validate it the
+// same way as any other code, with no separate trust path to keep in sync.
+export const EXIT_INTENT_DISCOUNT_RATE = 0.10;
+export const EXIT_INTENT_PROMO_CODE = 'WELCOME10';
 
 export const packages = [
     {

@@ -30,7 +30,7 @@ export async function POST(req) {
         } = await req.json();
 
         // Calculate total amount in NOK (Stripe expects amount in subunits like øre/cents)
-        const { packages, SITE_WIDE_DISCOUNT_RATE, PROMO_CODE_DISCOUNT_RATE, PROMO_CODE } = await import('@/app/data/packages');
+        const { packages, SITE_WIDE_DISCOUNT_RATE, PROMO_CODE_DISCOUNT_RATE, PROMO_CODE, EXIT_INTENT_DISCOUNT_RATE, EXIT_INTENT_PROMO_CODE } = await import('@/app/data/packages');
 
         // The client only ever tells us WHICH package/add-ons were picked (by
         // id) -- the price charged always comes from our own canonical
@@ -74,7 +74,12 @@ export async function POST(req) {
         // automatically -- no code needed. A
         // voucher code, if entered, overrides it with the larger rate rather
         // than stacking on top of it.
-        const discountRate = discountCode.trim().toUpperCase() === PROMO_CODE ? PROMO_CODE_DISCOUNT_RATE : SITE_WIDE_DISCOUNT_RATE;
+        const enteredCode = discountCode.trim().toUpperCase();
+        const discountRate = enteredCode === PROMO_CODE
+            ? PROMO_CODE_DISCOUNT_RATE
+            : enteredCode === EXIT_INTENT_PROMO_CODE
+                ? EXIT_INTENT_DISCOUNT_RATE
+                : SITE_WIDE_DISCOUNT_RATE;
         const oneTimeAmount = oneTimeSubtotal > 0 ? roundPrice(Math.max(0, oneTimeSubtotal - oneTimeSubtotal * discountRate)) : 0;
         const monthlyAmount = monthlySubtotal > 0 ? roundPrice(Math.max(0, monthlySubtotal - monthlySubtotal * discountRate)) : 0;
         const potentialDiscount = (oneTimeSubtotal - oneTimeAmount) + (monthlySubtotal - monthlyAmount);

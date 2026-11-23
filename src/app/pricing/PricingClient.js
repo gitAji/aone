@@ -26,7 +26,7 @@ const PricingCard = ({ pkg, billingInterval, index, isHovered }) => {
     
     // Determine the price to display
     const originalPrice = billingInterval === 'once' ? pkg.price : pkg.monthlyPrice;
-    const isDiscounted = !pkg.isCustom && originalPrice > 0;
+    const isDiscounted = !pkg.isCustom && originalPrice > 0 && SITE_WIDE_DISCOUNT_RATE > 0;
     const displayPrice = isDiscounted ? roundPrice(originalPrice * (1 - SITE_WIDE_DISCOUNT_RATE)) : originalPrice;
     const intervalLabel = billingInterval === 'once' ? 'once' : 'mo';
 
