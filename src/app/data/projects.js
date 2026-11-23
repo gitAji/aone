@@ -858,6 +858,14 @@ const projects = [
     },
     process: [
       {
+        title: { en: "Requirements & Compliance Analysis", no: "Krav- & regelverksanalyse" },
+        description: {
+          en: "We mapped the full functional scope with the client — online consultation booking, a secure client portal for document upload, VAT/tax/CIS estimators, an interactive service explorer, an HMRC & Companies House resource hub, and contact/callback forms — alongside the compliance checklist: UK GDPR, WCAG 2.1 AA accessibility, bank-grade encryption, and UK financial regulations/HMRC standards.",
+          no: "Vi kartla hele det funksjonelle omfanget sammen med kunden — nettbasert booking av konsultasjon, en sikker kundeportal for dokumentopplasting, kalkulatorer for MVA/skatt/CIS, en interaktiv tjenesteutforsker, et ressurssenter for HMRC & Companies House, samt kontakt-/tilbakeringingsskjemaer — sammen med regelverkssjekklisten: britisk GDPR, WCAG 2.1 AA-tilgjengelighet, bankgradert kryptering og britiske finansregler/HMRC-standarder.",
+        },
+        imageUrl: "/images/projects/kp-accountants/moodboard3.jpg",
+      },
+      {
         title: { en: "Brand & Visual System", no: "Merkevare & visuelt system" },
         description: {
           en: "We built the brand around the circular K&P emblem — deep navy for trust and compliance, warm gold for clarity and distinction — then carried it into the physical space: the mark anchors a dark navy feature wall in reception, paired with warm timber joinery and glass meeting rooms.",

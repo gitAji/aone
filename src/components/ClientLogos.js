@@ -9,7 +9,9 @@ const clients = [
     { name: "Rent My Property", logo: "/images/projects/rentmyproperty/logo.png" },
     { name: "Clean Masters", logo: "/images/clients/clean.png" },
     { name: "Saray", logo: "/images/clients/saray.png" },
-    { name: "Thai Ubon Take-Away", logo: "/images/clients/thai-ubon.png" },
+    // Cream-colored logo -- darkened so it reads clearly in this
+    // section's default grayscale/50%-opacity state, no background box.
+    { name: "Thai Ubon Take-Away", logo: "/images/clients/thai-ubon.png", darken: true },
     { name: "K&P Accountants", logo: "/images/clients/kp-accountants.png" },
 ];
 
@@ -39,7 +41,7 @@ const ClientLogos = () => {
                                 src={client.logo}
                                 alt={client.name}
                                 fill
-                                className="object-contain"
+                                className={`object-contain ${client.darken ? 'brightness-50' : ''}`}
                                 sizes="(max-width: 768px) 80px, 112px"
                             />
                         </motion.div>
