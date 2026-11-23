@@ -710,7 +710,7 @@ const projects = [
         en: "The work spanned packaging and in-store branding, professional food and interior photography, and a short-form video campaign built around the comfort of piping-hot curry on a snowy Bergen street. Every touchpoint, from the take-away bag to the social feed, was tied together under one cohesive, premium-feeling identity.",
         no: "Arbeidet omfattet emballasje og merkevarebygging i lokalet, profesjonell mat- og interiørfotografering, samt en videokampanje bygget rundt følelsen av nylaget, dampende curry på en snøfylt gate i Bergen. Alle kontaktpunkter, fra take-away-posen til feeden i sosiale medier, ble bundet sammen under én helhetlig og eksklusiv merkevareopplevelse.",
       },
-      imageUrl: "/images/projects/thai-ubon/real-counter.webp",
+      imageUrl: "/images/projects/thai-ubon/counter-service.jpg",
     },
     process: [
       {
@@ -719,7 +719,7 @@ const projects = [
           en: "We developed Thai Ubon's warm purple-and-gold brand identity, carried through the logo, menu cards, and branded take-away packaging so the experience feels premium from the first bag handed over the counter.",
           no: "Vi utviklet Thai Ubons varme lilla-og-gull merkevareidentitet, som går igjen i logo, menykort og merket take-away-emballasje, slik at opplevelsen føles eksklusiv fra første pose over disken.",
         },
-        imageUrl: "/images/projects/thai-ubon/real-counter.webp",
+        imageUrl: "/images/projects/thai-ubon/logo.png",
       },
       {
         title: { en: "Food & Interior Photography", no: "Mat- & interiørfotografering" },
@@ -727,7 +727,7 @@ const projects = [
           en: "We shot the restaurant's signature dishes and cozy interior to capture the authentic, inviting atmosphere customers feel when they walk through the door — content used across the website, menu, and social channels.",
           no: "Vi fotograferte restaurantens signaturretter og koselige interiør for å fange den autentiske og innbydende atmosfæren gjestene møter når de kommer inn døren — innhold som brukes på nettside, meny og sosiale kanaler.",
         },
-        imageUrl: "/images/projects/thai-ubon/real-counter.webp",
+        imageUrl: "/images/projects/thai-ubon/staff-pos.jpg",
       },
       {
         title: { en: "Seasonal Video & Social Media Campaign", no: "Sesongbasert video- & sosiale medier-kampanje" },
@@ -735,7 +735,7 @@ const projects = [
           en: "We produced a vertical video ad campaign — 'Warm Up Winter With Authentic Thai' — pairing cozy, snowy Bergen street scenes with steaming curry to drive delivery and take-away orders through the colder months.",
           no: "Vi produserte en vertikal videoannonsekampanje — «Varm opp vinteren med autentisk thaimat» — som kombinerte koselige, snøfylte gatebilder fra Bergen med dampende curry for å drive levering- og take-away-bestillinger gjennom de kaldere månedene.",
         },
-        imageUrl: "/images/projects/thai-ubon/real-counter.webp",
+        imageUrl: "/images/projects/thai-ubon/sign-banner.jpg",
       },
     ],
     features: [
@@ -751,7 +751,7 @@ const projects = [
         en: "The new brand identity and seasonal campaign gave Thai Ubon a consistent, premium look across every touchpoint — from the counter to the social feed — helping turn casual passers-by into regular take-away and delivery customers.",
         no: "Den nye merkevareidentiteten og sesongkampanjen ga Thai Ubon et konsekvent og eksklusivt uttrykk på alle kontaktpunkter — fra disken til feeden i sosiale medier — og bidro til å gjøre tilfeldige forbipasserende til faste take-away- og leveringskunder.",
       },
-      imageUrl: "/images/projects/thai-ubon/real-counter.webp",
+      imageUrl: "/images/projects/thai-ubon/pos-closeup.jpg",
     },
   },
   {
@@ -761,6 +761,9 @@ const projects = [
       en: "Compliance-focused website for a UK business consultancy.",
       no: "Regelverksfokusert nettside for et britisk konsulentselskap.",
     },
+    // Hidden from the /references grid on request -- no real assets yet.
+    // Data and detail page are kept intact, not deleted.
+    hidden: true,
     // TODO(images): no real assets yet -- waiting on logo/screenshots from
     // the client before these paths exist on disk. Filenames chosen to
     // match the rest of this entry's process steps 1:1.
@@ -833,74 +836,75 @@ const projects = [
     id: "kp-accountants",
     title: { en: "K&P Accountants", no: "K&P Accountants" },
     description: {
-      en: "Compliance-focused website for a UK accounting firm.",
-      no: "Regelverksfokusert nettside for et britisk regnskapsfirma.",
+      en: "Brand identity, office environment & website for a UK accounting and tax advisory firm.",
+      no: "Merkevareidentitet, kontormiljø & nettside for et britisk regnskaps- og skatterådgivningsfirma.",
     },
     // TODO(images): process-step and results screenshots still pending
     // real content from the client.
     imageUrl: "/images/projects/kp-accountants/office-reception.jpg",
     projectLink: "/references/kp-accountants",
     featured: true,
+    location: { en: "Hemel Hempstead, UK", no: "Hemel Hempstead, Storbritannia" },
     overview: {
       description1: {
-        en: "K&P Accountants is a UK-based accounting firm. Aone was brought in to design and build a website that clearly communicates who they are and what they offer, while meeting the compliance bar every UK accounting practice is expected to clear: GDPR, WCAG 2.1 accessibility, and up-to-date terms and conditions.",
-        no: "K&P Accountants er et britisk regnskapsfirma. Aone ble hentet inn for å designe og bygge en nettside som tydelig formidler hvem de er og hva de tilbyr, samtidig som den oppfyller kravene enhver britisk regnskapsvirksomhet forventes å overholde: GDPR, WCAG 2.1-tilgjengelighet og oppdaterte vilkår og betingelser.",
+        en: "K&P Accountants is a UK accounting and tax advisory practice founded in 2011, based in Hemel Hempstead. Aone was brought in to translate their established, fixed-fee practice — covering VAT, CIS, PAYE, Self Assessment, year-end accounts, bookkeeping, company formation, and property tax/CGT — into a cohesive brand across both their physical office and their digital presence.",
+        no: "K&P Accountants er et britisk regnskaps- og skatterådgivningsfirma grunnlagt i 2011, med base i Hemel Hempstead. Aone ble hentet inn for å omsette deres etablerte virksomhet med faste priser — som dekker MVA, CIS, lønn, selvangivelse, årsregnskap, bokføring, selskapsetablering og eiendomsskatt — til en helhetlig merkevare på tvers av både det fysiske kontoret og den digitale tilstedeværelsen.",
       },
       description2: {
-        en: "Starting from a detailed requirements and compliance analysis, we mapped out the site's core sections — company info, services, news/resources, and a clear 'Get Started' path — alongside the non-functional targets (fast load, intuitive navigation, high uptime, security) and legal obligations (GDPR, WCAG 2.1, UK business law, industry regulations) the site had to meet from day one.",
-        no: "Med utgangspunkt i en detaljert krav- og regelverksanalyse kartla vi sidens kjerneseksjoner — bedriftsinformasjon, tjenester, nyheter/ressurser og en tydelig «Kom i gang»-vei — sammen med de ikke-funksjonelle målene (rask lasting, intuitiv navigasjon, høy oppetid, sikkerhet) og de juridiske kravene (GDPR, WCAG 2.1, britisk næringslovgivning, bransjeregler) siden måtte oppfylle fra dag én.",
+        en: "The brief: accounting can feel intimidating or transactional, so the brand needed to project chartered authority and precision while staying approachable for the SMEs, contractors, tradespeople, landlords, and freelancers K&P serves. We paired a deep navy and warm gold palette — anchored by the circular K&P emblem — with natural wood and glass, carrying the same system from the office reception wall through to the website's service pages and self-service HMRC/Companies House resource hub.",
+        no: "Oppdraget: regnskap kan lett oppleves som intimiderende eller transaksjonelt, så merkevaren måtte formidle faglig tyngde og presisjon samtidig som den forble tilgjengelig for de små og mellomstore bedriftene, entreprenørene, håndverkerne, utleierne og frilanserne K&P betjener. Vi kombinerte en dyp marineblå og varm gull palett — forankret i den sirkulære K&P-logoen — med naturlig tre og glass, og førte det samme systemet fra kontorets resepsjonsvegg til nettsidens tjenestesider og selvbetjente ressurssenter for HMRC/Companies House.",
       },
-      imageUrl: "/images/projects/kp-accountants/office-reception.jpg",
+      imageUrl: "/images/projects/kp-accountants/reception-desk.jpg",
     },
     process: [
       {
-        title: { en: "Requirements & Compliance Analysis", no: "Krav- & regelverksanalyse" },
+        title: { en: "Brand & Visual System", no: "Merkevare & visuelt system" },
         description: {
-          en: "We worked through the full functional scope with the client — company info, services list, news/blog, FAQs and resources, mobile navigation, and content-management needs — alongside the compliance checklist: GDPR, WCAG 2.1, UK business law, and relevant industry regulations.",
-          no: "Vi gikk gjennom hele det funksjonelle omfanget sammen med kunden — bedriftsinformasjon, tjenesteliste, nyheter/blogg, FAQ og ressurser, mobilnavigasjon og behov for innholdsstyring — sammen med regelverkssjekklisten: GDPR, WCAG 2.1, britisk næringslovgivning og relevante bransjeregler.",
+          en: "We built the brand around the circular K&P emblem — deep navy for trust and compliance, warm gold for clarity and distinction — then carried it into the physical space: the mark anchors a dark navy feature wall in reception, paired with warm timber joinery and glass meeting rooms.",
+          no: "Vi bygde merkevaren rundt den sirkulære K&P-logoen — dyp marineblå for tillit og regelverksetterlevelse, varm gull for klarhet og særpreg — og førte den videre inn i det fysiske rommet: logoen er forankret på en mørk marineblå fokusvegg i resepsjonen, kombinert med varmt treverk og glassmøterom.",
         },
-        imageUrl: "/images/projects/kp-accountants/requirements.png",
+        imageUrl: "/images/projects/kp-accountants/logo.png",
       },
       {
-        title: { en: "Secure, Accessible Architecture", no: "Sikker og tilgjengelig arkitektur" },
+        title: { en: "Service & User Journey Architecture", no: "Tjeneste- & brukerreisearkitektur" },
         description: {
-          en: "We designed an architecture built around the non-functional requirements from the outset — fast load times, an intuitive UI, high reliability, and secure handling of client data — with accessibility (WCAG 2.1) treated as a core design constraint, not an afterthought.",
-          no: "Vi designet en arkitektur bygget rundt de ikke-funksjonelle kravene fra starten av — rask lastetid, intuitivt brukergrensesnitt, høy pålitelighet og sikker håndtering av kundedata — der tilgjengelighet (WCAG 2.1) ble behandlet som en kjernebegrensning i designet, ikke en ettertanke.",
+          en: "We mapped the site around how clients actually arrive: new businesses choosing between sole trader, limited company or partnership; ongoing compliance (VAT/MTD, CIS, PAYE/RTI payroll, Self Assessment, year-end accounts); and self-service tools — HMRC and Companies House forms, tax calculators, and statutory dates — all routing toward a low-friction free consultation booking.",
+          no: "Vi kartla nettsiden rundt hvordan kundene faktisk kommer inn: nyetablerte virksomheter som velger mellom enkeltpersonforetak, aksjeselskap eller partnerskap; løpende regelverksetterlevelse (MVA/MTD, CIS, PAYE/lønn, selvangivelse, årsregnskap); og selvbetjeningsverktøy — HMRC- og Companies House-skjemaer, skattekalkulatorer og lovpålagte frister — som alle leder mot en lavterskel booking av gratis konsultasjon.",
         },
-        imageUrl: "/images/projects/kp-accountants/architecture.png",
+        imageUrl: "/images/projects/kp-accountants/office-hallway.jpg",
       },
       {
-        title: { en: "Development & Integration", no: "Utvikling & integrasjon" },
+        title: { en: "Content Accuracy & Trust Signals", no: "Innholdsnøyaktighet & tillitssignaler" },
         description: {
-          en: "The site was built with an easy-to-use content system so the K&P Accountants team can update services, publish news, and manage resources without developer help, plus a clear 'Get Started' flow to convert visitors into enquiries.",
-          no: "Siden ble bygget med et brukervennlig innholdssystem, slik at K&P Accountants-teamet selv kan oppdatere tjenester, publisere nyheter og administrere ressurser uten utviklerhjelp, i tillegg til en tydelig «Kom i gang»-flyt for å konvertere besøkende til henvendelser.",
+          en: "As part of launch, we audited every testimonial and review snippet to make sure each one was correctly attributed to K&P Accountants rather than other firm names, and tightened the fixed-fee messaging so pricing transparency comes through clearly on every service page.",
+          no: "Som en del av lanseringen gikk vi gjennom alle kundeomtaler og anmeldelsesutdrag for å sikre at hver av dem var korrekt tilskrevet K&P Accountants og ikke andre firmanavn, og vi strammet opp budskapet om faste priser slik at prisgjennomsiktighet kommer tydelig frem på hver tjenesteside.",
         },
-        imageUrl: "/images/projects/kp-accountants/dev.png",
+        imageUrl: "/images/projects/kp-accountants/moodboard.jpg",
       },
       {
-        title: { en: "Compliance Testing & Deployment", no: "Regelverkstesting & lansering" },
+        title: { en: "Accessibility, Performance & Compliance Testing", no: "Tilgjengelighet, ytelse & regelverkstesting" },
         description: {
-          en: "Before launch we tested against the full compliance checklist — GDPR (privacy policy, cookie consent), WCAG 2.1 accessibility, and UK business law requirements for terms and conditions — alongside performance, usability, and cross-device reliability testing.",
-          no: "Før lansering testet vi mot hele regelverkssjekklisten — GDPR (personvernerklæring, samtykke til informasjonskapsler), WCAG 2.1-tilgjengelighet og krav fra britisk næringslovgivning til vilkår og betingelser — sammen med testing av ytelse, brukervennlighet og pålitelighet på tvers av enheter.",
+          en: "Before launch we tested against the full compliance checklist — GDPR (privacy policy, cookie consent), WCAG AA+ contrast (critical for the navy/gold pairing), semantic HTML with a logical heading hierarchy, and UK business law requirements for terms and conditions — alongside performance and cross-device reliability testing.",
+          no: "Før lansering testet vi mot hele regelverkssjekklisten — GDPR (personvernerklæring, samtykke til informasjonskapsler), WCAG AA+-kontrast (avgjørende for kombinasjonen marineblå/gull), semantisk HTML med en logisk overskriftshierarki, og krav fra britisk næringslovgivning til vilkår og betingelser — sammen med testing av ytelse og pålitelighet på tvers av enheter.",
         },
-        imageUrl: "/images/projects/kp-accountants/testing.png",
+        imageUrl: "/images/projects/kp-accountants/moodboard2.jpg",
       },
     ],
     features: [
-      { en: "Company info, services & news/blog sections", no: "Bedriftsinformasjon, tjenester & nyheter/blogg-seksjoner" },
-      { en: "FAQs & resources hub", no: "FAQ- & ressursknutepunkt" },
-      { en: "Clear 'Get Started' conversion path", no: "Tydelig «Kom i gang»-konverteringsvei" },
-      { en: "Mobile-first responsive navigation", no: "Mobiltilpasset responsiv navigasjon" },
-      { en: "Self-service content updates (no developer needed)", no: "Selvbetjente innholdsoppdateringer (ingen utvikler nødvendig)" },
-      { en: "GDPR & WCAG 2.1 compliant by design", no: "GDPR- & WCAG 2.1-kompatibel fra grunnen av" },
+      { en: "Fixed-fee pricing transparency across every service page", no: "Prisgjennomsiktighet med faste priser på hver tjenesteside" },
+      { en: "Full UK compliance coverage: VAT/MTD, CIS, PAYE, Self Assessment, CGT", no: "Full dekning av britisk regelverk: MVA/MTD, CIS, lønn, selvangivelse, CGT" },
+      { en: "Self-service HMRC & Companies House forms, tax calculators & statutory dates", no: "Selvbetjente HMRC- & Companies House-skjemaer, skattekalkulatorer & lovpålagte frister" },
+      { en: "Low-friction free-consultation booking & direct contact CTAs", no: "Lavterskel booking av gratis konsultasjon & direkte kontakt-CTA-er" },
+      { en: "Audited, accurately attributed client testimonials", no: "Gjennomgåtte kundeomtaler med korrekt tilskrivelse" },
+      { en: "WCAG AA+ accessible navy & gold brand system, office to web", no: "WCAG AA+-tilgjengelig merkevaresystem i marineblått & gull, fra kontor til nett" },
     ],
-    technologies: ["Next.js", "React", "CMS", "GDPR Compliance", "WCAG 2.1"],
+    technologies: ["Next.js", "React", "CMS", "GDPR Compliance", "WCAG AA+"],
     results: {
       summary: {
-        en: "K&P Accountants launched with a fast, accessible, fully compliant website that gives visitors a clear path from browsing services to getting in touch, and gives the client's own team full control over keeping content current.",
-        no: "K&P Accountants lanserte en rask, tilgjengelig og fullt regelverkskompatibel nettside som gir besøkende en tydelig vei fra å utforske tjenester til å ta kontakt, og som gir kundens eget team full kontroll over å holde innholdet oppdatert.",
+        en: "K&P Accountants now presents one consistent, chartered-authority brand from the office reception wall through to the website — clear fixed-fee pricing, accurate testimonials, and a self-service compliance toolkit that gives SMEs, contractors, and landlords a straightforward path from browsing services to booking a free consultation.",
+        no: "K&P Accountants fremstår nå med én helhetlig, faglig tung merkevare — fra resepsjonsveggen på kontoret til nettsiden — med tydelige faste priser, korrekte kundeomtaler og et selvbetjent regelverksverktøy som gir SMB-er, entreprenører og utleiere en enkel vei fra å utforske tjenester til å booke en gratis konsultasjon.",
       },
-      imageUrl: "/images/projects/kp-accountants/result.png",
+      imageUrl: "/images/projects/kp-accountants/office-reception.jpg",
     },
   },
 ];

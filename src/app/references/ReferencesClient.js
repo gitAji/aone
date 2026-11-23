@@ -25,7 +25,7 @@ const ReferencesPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {" "}
             {/* Revert grid */}
-            {projects.map((project) => {
+            {projects.filter((project) => !project.hidden).map((project) => {
               const displayTitle = tr(project.title, language);
               const displayLocation = tr(project.location, language);
               return (

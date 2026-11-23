@@ -9,9 +9,7 @@ const clients = [
     { name: "Rent My Property", logo: "/images/projects/rentmyproperty/logo.png" },
     { name: "Clean Masters", logo: "/images/clients/clean.png" },
     { name: "Saray", logo: "/images/clients/saray.png" },
-    // Cream-on-transparent logo -- needs a dark chip behind it or it
-    // disappears against this section's white background.
-    { name: "Thai Ubon Take-Away", logo: "/images/clients/thai-ubon.png", darkChip: true },
+    { name: "Thai Ubon Take-Away", logo: "/images/clients/thai-ubon.png" },
     { name: "K&P Accountants", logo: "/images/clients/kp-accountants.png" },
 ];
 
@@ -37,25 +35,13 @@ const ClientLogos = () => {
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             whileHover={{ scale: 1.1 }}
                         >
-                            {client.darkChip ? (
-                                <div className="absolute inset-0 rounded-lg bg-slate-900 dark:bg-black p-2">
-                                    <Image
-                                        src={client.logo}
-                                        alt={client.name}
-                                        fill
-                                        className="object-contain p-1"
-                                        sizes="(max-width: 768px) 80px, 112px"
-                                    />
-                                </div>
-                            ) : (
-                                <Image
-                                    src={client.logo}
-                                    alt={client.name}
-                                    fill
-                                    className="object-contain"
-                                    sizes="(max-width: 768px) 80px, 112px"
-                                />
-                            )}
+                            <Image
+                                src={client.logo}
+                                alt={client.name}
+                                fill
+                                className="object-contain"
+                                sizes="(max-width: 768px) 80px, 112px"
+                            />
                         </motion.div>
                     ))}
                 </div>
