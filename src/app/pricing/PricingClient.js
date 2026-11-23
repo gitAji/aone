@@ -289,6 +289,14 @@ export default function PricingPage() {
                         </p>
                     </div>
                 </div>
+
+                {/* Deliberately understated -- only for customers given this
+                    link directly, not meant to be a visible CTA on the page. */}
+                <div className="mt-20 text-center">
+                    <Link href="/special-offer" className="text-[10px] text-slate-300 dark:text-slate-700 hover:text-slate-400 dark:hover:text-slate-600 transition-colors tracking-widest uppercase">
+                        Special offers
+                    </Link>
+                </div>
             </div>
         </main>
     );

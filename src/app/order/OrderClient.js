@@ -43,7 +43,6 @@ function OrderPageContent() {
         city: '',
         zip: '',
         startDate: '',
-        commitment: '24', // default to 24 months
         trialPeriod: 'none' // 'none' or '30'
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -345,14 +344,13 @@ function OrderPageContent() {
             
             doc.setFontSize(12);
             doc.text(`Electronic Signature: ${dataToUse.name || 'N/A'}`, 20, 195);
-            doc.text(`Commitment Period: ${dataToUse.commitment || '24'} Months`, 20, 203);
-            
+
             doc.setFontSize(10);
             const footer = [
-                'Legal Note: This document is an initial Purchase Commitment.',
-                'A comprehensive Master Service Agreement (MSA) and',
-                'detailed Project Plan will be signed during kick-off.',
-                'Service starts only after full initial payment.',
+                'Legal Note: This document is an Order Confirmation, with no',
+                'binding commitment period. A comprehensive Master Service',
+                'Agreement (MSA) and detailed Project Plan will be signed',
+                'during kick-off. Service starts only after full initial payment.',
                 '© Aone Digital Agency'
             ];
             doc.text(footer, 20, 225);
@@ -408,7 +406,6 @@ function OrderPageContent() {
                         subscription_data = {
                             trial_end: actualTrialEnd,
                             metadata: {
-                                commitment: formData.commitment,
                                 trialDays: trialDays.toString()
                             }
                         };
@@ -817,39 +814,19 @@ function OrderPageContent() {
                                                     </div>
                                                 </div>
 
-                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-[10px] font-black uppercase tracking-widest pt-6 border-t border-slate-200">
+                                                <div className="grid grid-cols-1 gap-6 text-[10px] font-black uppercase tracking-widest pt-6 border-t border-slate-200">
                                                     <div className="space-y-2">
                                                         <label htmlFor="start-date-input" className="text-slate-500 ml-1 flex items-center gap-1.5 animate-pulse">
                                                             <FaCalendarAlt className="text-rose-500" /> Start Date
                                                         </label>
-                                                        <input 
+                                                        <input
                                                             id="start-date-input"
-                                                            name="startDate" 
+                                                            name="startDate"
                                                             type="date"
-                                                            value={formData.startDate} 
-                                                            onChange={handleInputChange} 
-                                                            className="w-full px-5 py-3 rounded-xl bg-white border border-slate-200 shadow-sm focus:ring-2 focus:ring-slate-900 transition-all text-sm font-bold text-slate-900 outline-none" 
+                                                            value={formData.startDate}
+                                                            onChange={handleInputChange}
+                                                            className="w-full px-5 py-3 rounded-xl bg-white border border-slate-200 shadow-sm focus:ring-2 focus:ring-slate-900 transition-all text-sm font-bold text-slate-900 outline-none"
                                                         />
-                                                    </div>
-                                                    <div className="space-y-2">
-                                                        <label className="text-slate-500 ml-1 flex items-center gap-1.5">
-                                                            <FaShieldAlt className="text-slate-900" /> Commitment
-                                                        </label>
-                                                        <div className="flex gap-2">
-                                                            {[
-                                                                { id: '12', label: '12 Months' },
-                                                                { id: '24', label: '24 Months' }
-                                                            ].map(opt => (
-                                                                <button
-                                                                    key={opt.id}
-                                                                    type="button"
-                                                                    onClick={() => setFormData(prev => ({ ...prev, commitment: opt.id }))}
-                                                                    className={`flex-1 py-3 px-4 rounded-xl border text-xs font-black transition-all cursor-pointer ${formData.commitment === opt.id ? 'border-slate-950 bg-slate-950 text-white shadow-md' : 'border-slate-200 bg-white text-slate-500 hover:border-slate-300'}`}
-                                                                >
-                                                                    {opt.label}
-                                                                </button>
-                                                            ))}
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -869,12 +846,12 @@ function OrderPageContent() {
                                                 <div className="bg-slate-100 rounded-[2rem] p-8 mb-8 border border-slate-200 shadow-inner max-h-48 overflow-y-auto scrollbar-thin scrollbar-thumb-slate-300">
                                                     <div className="text-xs text-slate-600 leading-relaxed font-bold space-y-4">                                                         <h5 className="font-black text-slate-900 uppercase">1. Scope of Agreement</h5>
                                                          <p className="text-sm leading-relaxed text-slate-600 mb-6">
-                                                             This Agreement establishes a commitment between {formData.businessName || "the Client"} and Aone Digital Agency. By proceeding, the Client agrees to the selected {selectedPack?.name} package with a commitment period of {formData.commitment} months.
+                                                             This Agreement is entered into between {formData.businessName || "the Client"} and Aone Digital Agency. By proceeding, the Client agrees to the selected {selectedPack?.name} package, billed monthly or yearly with no fixed binding period -- the Client may cancel at any time before the next billing date.
                                                          </p>
 
-                                                         <h5 className="font-black text-slate-900 uppercase">2. Service Commencement & Payment</h5>
+                                                         <h5 className="font-black text-slate-900 uppercase">2. Service Commencement, Hosting & Source Code</h5>
                                                          <p className="text-sm leading-relaxed text-slate-600 mb-6 font-bold italic">
-                                                             Services begin officially once the initial payment is cleared. Delivery of final products (code, site access) is contingent upon successful payment processing and verification of this contract.
+                                                             Services begin officially once the initial payment is cleared. The website is hosted and operated on Aone&apos;s own service, pointed to the Client&apos;s domain, for as long as the subscription is active -- the Client is not given direct access to the source code or hosting panel. A full transfer of the website files, backups (including any database), and the admin panel is available as a separate, additional paid service upon request or at termination.
                                                          </p>
 
                                                          <h5 className="font-black text-slate-900 uppercase">3. Maintenance & Support (Monthly)</h5>

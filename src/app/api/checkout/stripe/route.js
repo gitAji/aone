@@ -99,7 +99,7 @@ export async function POST(req) {
                     currency: 'nok',
                     product_data: {
                         name: `${selectedPack.name} - Monthly Plan`,
-                        description: `Order ID: ${orderId}. ${formData.commitment}-month commitment.`,
+                        description: `Order ID: ${orderId}. No fixed commitment period -- cancel anytime.`,
                     },
                     unit_amount: monthlyAmount * 100, // Convert to subunits (øre)
                     recurring: { interval: 'month' },
