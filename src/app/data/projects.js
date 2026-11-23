@@ -730,10 +730,10 @@ const projects = [
         imageUrl: "/images/projects/thai-ubon/staff-pos.jpg",
       },
       {
-        title: { en: "Seasonal Video & Social Media Campaign", no: "Sesongbasert video- & sosiale medier-kampanje" },
+        title: { en: "Requirements & Compliance Analysis", no: "Krav- & regelverksanalyse" },
         description: {
-          en: "We produced a vertical video ad campaign — 'Warm Up Winter With Authentic Thai' — pairing cozy, snowy Bergen street scenes with steaming curry to drive delivery and take-away orders through the colder months.",
-          no: "Vi produserte en vertikal videoannonsekampanje — «Varm opp vinteren med autentisk thaimat» — som kombinerte koselige, snøfylte gatebilder fra Bergen med dampende curry for å drive levering- og take-away-bestillinger gjennom de kaldere månedene.",
+          en: "We mapped the full functional scope with the client — takeaway ordering with timed pickup, table booking, a NO/EN language switch, customizable protein/size/spice options, Vipps/Stripe and counter payment, Wolt & foodora delivery links, and kitchen-facing menu updates — alongside the compliance checklist: GDPR, WCAG 2.1 AA, and Norwegian food-safety law (Mattilsynet allergen labeling).",
+          no: "Vi kartla hele det funksjonelle omfanget sammen med kunden — take-away-bestilling med tidsbestemt henting, bordreservasjon, NO/EN-språkbryter, tilpassbare protein-, størrelses- og styrkealternativer, Vipps/Stripe og betaling i disk, leveringslenker til Wolt og foodora, samt kjøkkenrettede menyoppdateringer — sammen med regelverkssjekklisten: GDPR, WCAG 2.1 AA og norsk mattrygghetslovgivning (allergenmerking etter Mattilsynet).",
         },
         imageUrl: "/images/projects/thai-ubon/sign-banner.jpg",
       },
