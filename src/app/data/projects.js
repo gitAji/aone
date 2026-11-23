@@ -829,6 +829,81 @@ const projects = [
       imageUrl: "/images/projects/quick-consultants/result.png",
     },
   },
+  {
+    id: "kp-accountants",
+    title: { en: "K&P Accountants", no: "K&P Accountants" },
+    description: {
+      en: "Compliance-focused website for a UK accounting firm.",
+      no: "Regelverksfokusert nettside for et britisk regnskapsfirma.",
+    },
+    // TODO(images): no real assets yet -- a separate project from Quick
+    // Consultants, currently placeholder-identical pending real content
+    // from the client. Filenames chosen to match the process steps 1:1.
+    imageUrl: "/images/projects/kp-accountants/cover.png",
+    projectLink: "/references/kp-accountants",
+    featured: true,
+    overview: {
+      description1: {
+        en: "K&P Accountants is a UK-based accounting firm. Aone was brought in to design and build a website that clearly communicates who they are and what they offer, while meeting the compliance bar every UK accounting practice is expected to clear: GDPR, WCAG 2.1 accessibility, and up-to-date terms and conditions.",
+        no: "K&P Accountants er et britisk regnskapsfirma. Aone ble hentet inn for å designe og bygge en nettside som tydelig formidler hvem de er og hva de tilbyr, samtidig som den oppfyller kravene enhver britisk regnskapsvirksomhet forventes å overholde: GDPR, WCAG 2.1-tilgjengelighet og oppdaterte vilkår og betingelser.",
+      },
+      description2: {
+        en: "Starting from a detailed requirements and compliance analysis, we mapped out the site's core sections — company info, services, news/resources, and a clear 'Get Started' path — alongside the non-functional targets (fast load, intuitive navigation, high uptime, security) and legal obligations (GDPR, WCAG 2.1, UK business law, industry regulations) the site had to meet from day one.",
+        no: "Med utgangspunkt i en detaljert krav- og regelverksanalyse kartla vi sidens kjerneseksjoner — bedriftsinformasjon, tjenester, nyheter/ressurser og en tydelig «Kom i gang»-vei — sammen med de ikke-funksjonelle målene (rask lasting, intuitiv navigasjon, høy oppetid, sikkerhet) og de juridiske kravene (GDPR, WCAG 2.1, britisk næringslovgivning, bransjeregler) siden måtte oppfylle fra dag én.",
+      },
+      imageUrl: "/images/projects/kp-accountants/overview.png",
+    },
+    process: [
+      {
+        title: { en: "Requirements & Compliance Analysis", no: "Krav- & regelverksanalyse" },
+        description: {
+          en: "We worked through the full functional scope with the client — company info, services list, news/blog, FAQs and resources, mobile navigation, and content-management needs — alongside the compliance checklist: GDPR, WCAG 2.1, UK business law, and relevant industry regulations.",
+          no: "Vi gikk gjennom hele det funksjonelle omfanget sammen med kunden — bedriftsinformasjon, tjenesteliste, nyheter/blogg, FAQ og ressurser, mobilnavigasjon og behov for innholdsstyring — sammen med regelverkssjekklisten: GDPR, WCAG 2.1, britisk næringslovgivning og relevante bransjeregler.",
+        },
+        imageUrl: "/images/projects/kp-accountants/requirements.png",
+      },
+      {
+        title: { en: "Secure, Accessible Architecture", no: "Sikker og tilgjengelig arkitektur" },
+        description: {
+          en: "We designed an architecture built around the non-functional requirements from the outset — fast load times, an intuitive UI, high reliability, and secure handling of client data — with accessibility (WCAG 2.1) treated as a core design constraint, not an afterthought.",
+          no: "Vi designet en arkitektur bygget rundt de ikke-funksjonelle kravene fra starten av — rask lastetid, intuitivt brukergrensesnitt, høy pålitelighet og sikker håndtering av kundedata — der tilgjengelighet (WCAG 2.1) ble behandlet som en kjernebegrensning i designet, ikke en ettertanke.",
+        },
+        imageUrl: "/images/projects/kp-accountants/architecture.png",
+      },
+      {
+        title: { en: "Development & Integration", no: "Utvikling & integrasjon" },
+        description: {
+          en: "The site was built with an easy-to-use content system so the K&P Accountants team can update services, publish news, and manage resources without developer help, plus a clear 'Get Started' flow to convert visitors into enquiries.",
+          no: "Siden ble bygget med et brukervennlig innholdssystem, slik at K&P Accountants-teamet selv kan oppdatere tjenester, publisere nyheter og administrere ressurser uten utviklerhjelp, i tillegg til en tydelig «Kom i gang»-flyt for å konvertere besøkende til henvendelser.",
+        },
+        imageUrl: "/images/projects/kp-accountants/dev.png",
+      },
+      {
+        title: { en: "Compliance Testing & Deployment", no: "Regelverkstesting & lansering" },
+        description: {
+          en: "Before launch we tested against the full compliance checklist — GDPR (privacy policy, cookie consent), WCAG 2.1 accessibility, and UK business law requirements for terms and conditions — alongside performance, usability, and cross-device reliability testing.",
+          no: "Før lansering testet vi mot hele regelverkssjekklisten — GDPR (personvernerklæring, samtykke til informasjonskapsler), WCAG 2.1-tilgjengelighet og krav fra britisk næringslovgivning til vilkår og betingelser — sammen med testing av ytelse, brukervennlighet og pålitelighet på tvers av enheter.",
+        },
+        imageUrl: "/images/projects/kp-accountants/testing.png",
+      },
+    ],
+    features: [
+      { en: "Company info, services & news/blog sections", no: "Bedriftsinformasjon, tjenester & nyheter/blogg-seksjoner" },
+      { en: "FAQs & resources hub", no: "FAQ- & ressursknutepunkt" },
+      { en: "Clear 'Get Started' conversion path", no: "Tydelig «Kom i gang»-konverteringsvei" },
+      { en: "Mobile-first responsive navigation", no: "Mobiltilpasset responsiv navigasjon" },
+      { en: "Self-service content updates (no developer needed)", no: "Selvbetjente innholdsoppdateringer (ingen utvikler nødvendig)" },
+      { en: "GDPR & WCAG 2.1 compliant by design", no: "GDPR- & WCAG 2.1-kompatibel fra grunnen av" },
+    ],
+    technologies: ["Next.js", "React", "CMS", "GDPR Compliance", "WCAG 2.1"],
+    results: {
+      summary: {
+        en: "K&P Accountants launched with a fast, accessible, fully compliant website that gives visitors a clear path from browsing services to getting in touch, and gives the client's own team full control over keeping content current.",
+        no: "K&P Accountants lanserte en rask, tilgjengelig og fullt regelverkskompatibel nettside som gir besøkende en tydelig vei fra å utforske tjenester til å ta kontakt, og som gir kundens eget team full kontroll over å holde innholdet oppdatert.",
+      },
+      imageUrl: "/images/projects/kp-accountants/result.png",
+    },
+  },
 ];
 
 export default projects;
