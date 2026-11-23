@@ -87,6 +87,7 @@ const projects = [
     imageUrl: "/images/projects/kidsportal.png",
     projectLink: "/references/kids-learning-portal",
     featured: true,
+    location: { en: "Norway", no: "Norge" },
     overview: {
       description1: {
         en: "This project involved designing and developing a modern, user-friendly website for kids learning portal. The goal was to create an engaging platform that offers educational resources, interactive activities, and a safe online environment for children.",
@@ -159,6 +160,7 @@ const projects = [
     imageUrl: "/images/projects/saray/intro.png",
     projectLink: "/references/saray-steakhouse-kro",
     featured: true,
+    location: { en: "Norway", no: "Norge" },
     overview: {
       description1: {
         en: "This project involved creating a sophisticated and appetizing website for Saray Steakhouse, a premium dining restaurant. The primary goal was to reflect the restaurant's brand, showcase its culinary offerings, and provide a seamless online booking experience.",
@@ -227,6 +229,7 @@ const projects = [
     imageUrl: "/images/projects/QFS/cover.png",
     projectLink: "/references/qfs-accountants",
     featured: true,
+    location: { en: "United Kingdom", no: "Storbritannia" },
     overview: {
       description1: {
         en: "This project involved designing and developing a professional website for QFS Accountants, a reputable accounting firm. The objective was to create a modern, user-friendly online platform that effectively showcases their services, expertise, and client testimonials, while also providing easy access to contact information and resources for potential clients.",
@@ -298,6 +301,7 @@ const projects = [
     imageUrl: "/images/projects/saray steak/01.jpeg",
     projectLink: "/references/saray-steakhouse",
     featured: true,
+    location: { en: "Gjøvik & Raufoss, Norway", no: "Gjøvik & Raufoss, Norge" },
     overview: {
       description1: {
         en: "This project involved designing and developing a professional WordPress-based branch portal for Saray Steakhouse. The platform features a sophisticated central landing page that seamlessly directs customers to two distinct, custom-designed sub-sites for the Gjøvik and Raufoss locations.",
@@ -360,6 +364,7 @@ const projects = [
     imageUrl: "/images/projects/rentmypropertyuk.png",
     projectLink: "/references/rent-my-property-uk",
     featured: true,
+    location: { en: "United Kingdom", no: "Storbritannia" },
     overview: {
       description1: {
         en: "This project focused on developing a comprehensive online presence for Rent My Property UK, a property management service. Our goal was to create a user-friendly and visually appealing website that would facilitate property listings, inquiries, and bookings.",
@@ -423,6 +428,7 @@ const projects = [
     imageUrl: "/images/projects/tulips.png",
     projectLink: "/references/tulips-beauty",
     featured: true,
+    location: { en: "Norway", no: "Norge" },
     overview: {
       description1: {
         en: "Tulips Beauty is an elegant and user-friendly website for a modern beauty salon. The project's goal was to create a beautiful online presence that would attract new clients and make it easy for them to book appointments.",
@@ -491,6 +497,7 @@ const projects = [
     imageUrl: "/images/projects/rentcars.jpeg",
     projectLink: "/references/rent-cars",
     featured: true,
+    location: { en: "Norway", no: "Norge" },
     overview: {
       description1: {
         en: "Rent Cars is a modern and efficient car rental platform. The project's goal was to create a seamless and user-friendly experience for customers looking to rent a car.",
@@ -627,6 +634,7 @@ const projects = [
     imageUrl: "/images/projects/trendify.png",
     projectLink: "/references/trendify-tools",
     featured: true,
+    location: { en: "Norway", no: "Norge" },
     overview: {
       description1: {
         en: "Trendify Tools is a comprehensive website designed to offer different types of online tools that help creators to grow their audience on social media platforms. The project involved designing and developing a modern, user-friendly dashboard that provides access to a variety of tools such as hashtag generators, content planners, and analytics trackers. This project aimed to create an engaging online presence that showcases their services, allows clients to easily access the tools, and provides essential information about the platform.",

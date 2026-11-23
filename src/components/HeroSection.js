@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLanguage } from "@/context/LanguageContext";
-import { FaArrowRight } from "react-icons/fa";
+import { FaArrowRight, FaChevronDown } from "react-icons/fa";
 import AnimatedGrid from "./AnimatedGrid";
 
 // Helper to highlight the marked character (preceded by |)
@@ -139,27 +139,24 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
                 {t('hero.subtitle')}
               </p>
 
-              {/* CTAs -- primary button is the direct conversion action
-                  (request-quote), not just another navigational link, so a
-                  1-click path to converting is visible above the fold with
-                  zero scrolling. */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full sm:w-auto">
+              {/* Apple-style pairing: one solid, quiet primary button plus
+                  a plain text link with a chevron -- no gradients, no
+                  shine/shimmer, no hover-expanding segments. Bigger than
+                  the original (px-10/py-5/text-lg vs the old px-8/py-4/
+                  text-base) per request, but otherwise deliberately plain. */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-8 w-full sm:w-auto">
                 <Link
                   href="/request-quote"
-                  className="w-full sm:w-auto px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full font-bold tracking-wide hover:shadow-xl hover:shadow-slate-900/20 dark:hover:shadow-white/20 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 group relative overflow-hidden"
+                  className="w-full sm:w-auto px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full font-semibold text-lg tracking-tight hover:opacity-90 active:opacity-80 transition-opacity duration-200 flex items-center justify-center"
                 >
-                  <span className="relative z-10 flex items-center gap-3">
-                    {t('requestQuote') || "Get Free Quote"}
-                    <FaArrowRight className="transform group-hover:translate-x-1 transition-transform" />
-                  </span>
-                  {/* Active Shine Effect */}
-                  <div className="absolute inset-0 -translate-x-full z-0 bg-gradient-to-r from-transparent via-white/20 dark:via-black/10 to-transparent animate-shimmer" />
+                  {t('requestQuote') || "Get Free Quote"}
                 </Link>
                 <Link
                   href="/pricing"
-                  className="w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 rounded-full font-bold tracking-wide hover:border-slate-900 dark:hover:border-white hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-900 transition-all duration-300 flex items-center justify-center"
+                  className="group/link text-lg font-medium text-slate-900 dark:text-white flex items-center gap-1.5"
                 >
                   View Pricing
+                  <FaArrowRight className="text-sm transition-transform duration-200 group-hover/link:translate-x-1" />
                 </Link>
               </div>
             </>
@@ -204,22 +201,25 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
         </motion.div>
       </div>
 
-      {/* Down arrow for homepage */}
+      {/* Scroll-down affordance for homepage -- a filled, app-style pill
+          on mobile (icon only, brand gradient, thumb-sized tap target)
+          instead of the old bordered circle + text label, which read more
+          like a desktop hint than a native app control. */}
       {isHomePage && (
         <motion.div
-          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 cursor-pointer z-20 flex flex-col items-center gap-2"
+          className="absolute bottom-8 sm:bottom-12 left-1/2 transform -translate-x-1/2 cursor-pointer z-20 flex flex-col items-center gap-2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
           onClick={() => window.scrollTo({ top: window.innerHeight - 80, behavior: "smooth" })}
         >
-          <span className="text-xs font-bold tracking-[0.2em] text-slate-400 uppercase">Scroll</span>
+          <span className="hidden sm:block text-xs font-bold tracking-[0.2em] text-slate-400 uppercase">Scroll</span>
           <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-800 text-slate-400 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm"
+            animate={{ y: [0, 7, 0] }}
+            transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+            className="w-11 h-11 sm:w-10 sm:h-10 flex items-center justify-center rounded-full sm:rounded-full bg-gradient-to-r from-rose-500 to-amber-500 sm:bg-none sm:border sm:border-slate-200 sm:dark:border-slate-800 text-white sm:text-slate-400 shadow-lg shadow-rose-500/30 sm:shadow-none sm:bg-white/50 sm:dark:bg-slate-900/50 backdrop-blur-sm"
           >
-            &darr;
+            <FaChevronDown className="text-sm sm:text-xs" />
           </motion.div>
         </motion.div>
       )}
