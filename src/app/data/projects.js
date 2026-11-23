@@ -689,6 +689,146 @@ const projects = [
       imageUrl: "/images/projects/trendify.png",
     },
   },
+  {
+    id: "thai-ubon",
+    title: { en: "Thai Ubon Take-Away", no: "Thai Ubon Take-Away" },
+    description: {
+      en: "Brand identity and digital presence for an authentic Thai take-away in Bergen.",
+      no: "Merkevareidentitet og digital tilstedeværelse for en autentisk thailandsk take-away i Bergen.",
+    },
+    imageUrl: "/images/projects/thai-ubon/cover.png",
+    projectLink: "/references/thai-ubon",
+    featured: true,
+    local: true,
+    location: { en: "Bergen, Norway", no: "Bergen, Norge" },
+    overview: {
+      description1: {
+        en: "Thai Ubon Take-Away is an authentic Thai restaurant in the heart of Bergen. Aone was brought in to build a warm, appetizing brand identity and a seasonal content campaign that would get locals ordering on cold Bergen evenings, not just walking past.",
+        no: "Thai Ubon Take-Away er en autentisk thairestaurant midt i Bergen sentrum. Aone ble hentet inn for å bygge en varm og appetittvekkende merkevareidentitet, samt en sesongbasert innholdskampanje som skulle få bergensere til å bestille på kalde kvelder, ikke bare gå forbi.",
+      },
+      description2: {
+        en: "The work spanned packaging and in-store branding, professional food and interior photography, and a short-form video campaign built around the comfort of piping-hot curry on a snowy Bergen street. Every touchpoint, from the take-away bag to the social feed, was tied together under one cohesive, premium-feeling identity.",
+        no: "Arbeidet omfattet emballasje og merkevarebygging i lokalet, profesjonell mat- og interiørfotografering, samt en videokampanje bygget rundt følelsen av nylaget, dampende curry på en snøfylt gate i Bergen. Alle kontaktpunkter, fra take-away-posen til feeden i sosiale medier, ble bundet sammen under én helhetlig og eksklusiv merkevareopplevelse.",
+      },
+      imageUrl: "/images/projects/thai-ubon/cover.png",
+    },
+    process: [
+      {
+        title: { en: "Brand Identity & Packaging", no: "Merkevareidentitet & emballasje" },
+        description: {
+          en: "We developed Thai Ubon's warm purple-and-gold brand identity, carried through the logo, menu cards, and branded take-away packaging so the experience feels premium from the first bag handed over the counter.",
+          no: "Vi utviklet Thai Ubons varme lilla-og-gull merkevareidentitet, som går igjen i logo, menykort og merket take-away-emballasje, slik at opplevelsen føles eksklusiv fra første pose over disken.",
+        },
+        imageUrl: "/images/projects/thai-ubon/brand-bag.png",
+      },
+      {
+        title: { en: "Food & Interior Photography", no: "Mat- & interiørfotografering" },
+        description: {
+          en: "We shot the restaurant's signature dishes and cozy interior to capture the authentic, inviting atmosphere customers feel when they walk through the door — content used across the website, menu, and social channels.",
+          no: "Vi fotograferte restaurantens signaturretter og koselige interiør for å fange den autentiske og innbydende atmosfæren gjestene møter når de kommer inn døren — innhold som brukes på nettside, meny og sosiale kanaler.",
+        },
+        imageUrl: "/images/projects/thai-ubon/food-closeup.png",
+      },
+      {
+        title: { en: "Seasonal Video & Social Media Campaign", no: "Sesongbasert video- & sosiale medier-kampanje" },
+        description: {
+          en: "We produced a vertical video ad campaign — 'Warm Up Winter With Authentic Thai' — pairing cozy, snowy Bergen street scenes with steaming curry to drive delivery and take-away orders through the colder months.",
+          no: "Vi produserte en vertikal videoannonsekampanje — «Varm opp vinteren med autentisk thaimat» — som kombinerte koselige, snøfylte gatebilder fra Bergen med dampende curry for å drive levering- og take-away-bestillinger gjennom de kaldere månedene.",
+        },
+        imageUrl: "/images/projects/thai-ubon/social-campaign.png",
+      },
+    ],
+    features: [
+      { en: "Cohesive brand identity across packaging, menu & signage", no: "Helhetlig merkevareidentitet på emballasje, meny & skilting" },
+      { en: "Professional food & interior photography", no: "Profesjonell mat- & interiørfotografering" },
+      { en: "Seasonal short-form video advertising campaign", no: "Sesongbasert kortformat videoannonsekampanje" },
+      { en: "Warm, appetite-driving visual identity", no: "Varm, appetittvekkende visuell identitet" },
+      { en: "Content built for delivery & take-away conversion", no: "Innhold bygget for å konvertere levering & take-away" },
+    ],
+    technologies: ["Brand Identity", "Photography", "Videography", "Social Media Marketing"],
+    results: {
+      summary: {
+        en: "The new brand identity and seasonal campaign gave Thai Ubon a consistent, premium look across every touchpoint — from the counter to the social feed — helping turn casual passers-by into regular take-away and delivery customers.",
+        no: "Den nye merkevareidentiteten og sesongkampanjen ga Thai Ubon et konsekvent og eksklusivt uttrykk på alle kontaktpunkter — fra disken til feeden i sosiale medier — og bidro til å gjøre tilfeldige forbipasserende til faste take-away- og leveringskunder.",
+      },
+      imageUrl: "/images/projects/thai-ubon/interior-clean.png",
+    },
+  },
+  {
+    id: "quick-consultants",
+    title: { en: "Quick Consultants", no: "Quick Consultants" },
+    description: {
+      en: "Compliance-focused website for a UK business consultancy.",
+      no: "Regelverksfokusert nettside for et britisk konsulentselskap.",
+    },
+    // TODO(images): no real assets yet -- waiting on logo/screenshots from
+    // the client before these paths exist on disk. Filenames chosen to
+    // match the rest of this entry's process steps 1:1.
+    imageUrl: "/images/projects/quick-consultants/cover.png",
+    projectLink: "/references/quick-consultants",
+    featured: true,
+    overview: {
+      description1: {
+        en: "Quick Consultants is a UK-based business consultancy. Aone was brought in to design and build a website that clearly communicates who they are and what they offer, while meeting the compliance bar every UK consultancy site is expected to clear: GDPR, WCAG 2.1 accessibility, and up-to-date terms and conditions.",
+        no: "Quick Consultants er et britisk konsulentselskap. Aone ble hentet inn for å designe og bygge en nettside som tydelig formidler hvem de er og hva de tilbyr, samtidig som den oppfyller kravene enhver britisk konsulentvirksomhet forventes å overholde: GDPR, WCAG 2.1-tilgjengelighet og oppdaterte vilkår og betingelser.",
+      },
+      description2: {
+        en: "Starting from a detailed requirements and compliance analysis, we mapped out the site's core sections — company info, services, news/resources, and a clear 'Get Started' path — alongside the non-functional targets (fast load, intuitive navigation, high uptime, security) and legal obligations (GDPR, WCAG 2.1, UK business law, industry regulations) the site had to meet from day one.",
+        no: "Med utgangspunkt i en detaljert krav- og regelverksanalyse kartla vi sidens kjerneseksjoner — bedriftsinformasjon, tjenester, nyheter/ressurser og en tydelig «Kom i gang»-vei — sammen med de ikke-funksjonelle målene (rask lasting, intuitiv navigasjon, høy oppetid, sikkerhet) og de juridiske kravene (GDPR, WCAG 2.1, britisk næringslovgivning, bransjeregler) siden måtte oppfylle fra dag én.",
+      },
+      imageUrl: "/images/projects/quick-consultants/overview.png",
+    },
+    process: [
+      {
+        title: { en: "Requirements & Compliance Analysis", no: "Krav- & regelverksanalyse" },
+        description: {
+          en: "We worked through the full functional scope with the client — company info, services list, news/blog, FAQs and resources, mobile navigation, and content-management needs — alongside the compliance checklist: GDPR, WCAG 2.1, UK business law, and relevant industry regulations.",
+          no: "Vi gikk gjennom hele det funksjonelle omfanget sammen med kunden — bedriftsinformasjon, tjenesteliste, nyheter/blogg, FAQ og ressurser, mobilnavigasjon og behov for innholdsstyring — sammen med regelverkssjekklisten: GDPR, WCAG 2.1, britisk næringslovgivning og relevante bransjeregler.",
+        },
+        imageUrl: "/images/projects/quick-consultants/requirements.png",
+      },
+      {
+        title: { en: "Secure, Accessible Architecture", no: "Sikker og tilgjengelig arkitektur" },
+        description: {
+          en: "We designed an architecture built around the non-functional requirements from the outset — fast load times, an intuitive UI, high reliability, and secure handling of client data — with accessibility (WCAG 2.1) treated as a core design constraint, not an afterthought.",
+          no: "Vi designet en arkitektur bygget rundt de ikke-funksjonelle kravene fra starten av — rask lastetid, intuitivt brukergrensesnitt, høy pålitelighet og sikker håndtering av kundedata — der tilgjengelighet (WCAG 2.1) ble behandlet som en kjernebegrensning i designet, ikke en ettertanke.",
+        },
+        imageUrl: "/images/projects/quick-consultants/architecture.png",
+      },
+      {
+        title: { en: "Development & Integration", no: "Utvikling & integrasjon" },
+        description: {
+          en: "The site was built with an easy-to-use content system so the Quick Consultants team can update services, publish news, and manage resources without developer help, plus a clear 'Get Started' flow to convert visitors into enquiries.",
+          no: "Siden ble bygget med et brukervennlig innholdssystem, slik at Quick Consultants-teamet selv kan oppdatere tjenester, publisere nyheter og administrere ressurser uten utviklerhjelp, i tillegg til en tydelig «Kom i gang»-flyt for å konvertere besøkende til henvendelser.",
+        },
+        imageUrl: "/images/projects/quick-consultants/dev.png",
+      },
+      {
+        title: { en: "Compliance Testing & Deployment", no: "Regelverkstesting & lansering" },
+        description: {
+          en: "Before launch we tested against the full compliance checklist — GDPR (privacy policy, cookie consent), WCAG 2.1 accessibility, and UK business law requirements for terms and conditions — alongside performance, usability, and cross-device reliability testing.",
+          no: "Før lansering testet vi mot hele regelverkssjekklisten — GDPR (personvernerklæring, samtykke til informasjonskapsler), WCAG 2.1-tilgjengelighet og krav fra britisk næringslovgivning til vilkår og betingelser — sammen med testing av ytelse, brukervennlighet og pålitelighet på tvers av enheter.",
+        },
+        imageUrl: "/images/projects/quick-consultants/testing.png",
+      },
+    ],
+    features: [
+      { en: "Company info, services & news/blog sections", no: "Bedriftsinformasjon, tjenester & nyheter/blogg-seksjoner" },
+      { en: "FAQs & resources hub", no: "FAQ- & ressursknutepunkt" },
+      { en: "Clear 'Get Started' conversion path", no: "Tydelig «Kom i gang»-konverteringsvei" },
+      { en: "Mobile-first responsive navigation", no: "Mobiltilpasset responsiv navigasjon" },
+      { en: "Self-service content updates (no developer needed)", no: "Selvbetjente innholdsoppdateringer (ingen utvikler nødvendig)" },
+      { en: "GDPR & WCAG 2.1 compliant by design", no: "GDPR- & WCAG 2.1-kompatibel fra grunnen av" },
+    ],
+    technologies: ["Next.js", "React", "CMS", "GDPR Compliance", "WCAG 2.1"],
+    results: {
+      summary: {
+        en: "Quick Consultants launched with a fast, accessible, fully compliant website that gives visitors a clear path from browsing services to getting in touch, and gives the client's own team full control over keeping content current.",
+        no: "Quick Consultants lanserte en rask, tilgjengelig og fullt regelverkskompatibel nettside som gir besøkende en tydelig vei fra å utforske tjenester til å ta kontakt, og som gir kundens eget team full kontroll over å holde innholdet oppdatert.",
+      },
+      imageUrl: "/images/projects/quick-consultants/result.png",
+    },
+  },
 ];
 
 export default projects;

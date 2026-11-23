@@ -289,8 +289,8 @@ export const translations = {
             features: "Key Features",
             technologies: "Technologies Used",
             results: "Results & Impact",
-            ctaTitle: "Ready to elevate your online presence?",
-            ctaButton: "Get a Free Consultation",
+            ctaTitle: "Want a project like this?",
+            ctaButton: "Contact Us",
         },
         consultation: {
             title: "Get a Free Consultation",
@@ -800,8 +800,8 @@ export const translations = {
             features: "Viktige funksjoner",
             technologies: "Teknologier som er brukt",
             results: "Resultater og påvirkning",
-            ctaTitle: "Klar for å løfte din online tilstedeværelse?",
-            ctaButton: "Få en gratis konsultasjon",
+            ctaTitle: "Vil du ha et lignende prosjekt?",
+            ctaButton: "Kontakt oss",
         },
         consultation: {
             title: "Få en gratis konsultasjon",
