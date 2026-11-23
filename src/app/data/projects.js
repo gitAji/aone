@@ -696,7 +696,7 @@ const projects = [
       en: "Brand identity and digital presence for an authentic Thai take-away in Bergen.",
       no: "Merkevareidentitet og digital tilstedeværelse for en autentisk thailandsk take-away i Bergen.",
     },
-    imageUrl: "/images/projects/thai-ubon/cover.png",
+    imageUrl: "/images/projects/thai-ubon/real-counter.webp",
     projectLink: "/references/thai-ubon",
     featured: true,
     local: true,
@@ -710,7 +710,7 @@ const projects = [
         en: "The work spanned packaging and in-store branding, professional food and interior photography, and a short-form video campaign built around the comfort of piping-hot curry on a snowy Bergen street. Every touchpoint, from the take-away bag to the social feed, was tied together under one cohesive, premium-feeling identity.",
         no: "Arbeidet omfattet emballasje og merkevarebygging i lokalet, profesjonell mat- og interiørfotografering, samt en videokampanje bygget rundt følelsen av nylaget, dampende curry på en snøfylt gate i Bergen. Alle kontaktpunkter, fra take-away-posen til feeden i sosiale medier, ble bundet sammen under én helhetlig og eksklusiv merkevareopplevelse.",
       },
-      imageUrl: "/images/projects/thai-ubon/cover.png",
+      imageUrl: "/images/projects/thai-ubon/real-counter.webp",
     },
     process: [
       {
