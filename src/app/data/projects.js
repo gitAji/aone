@@ -719,7 +719,7 @@ const projects = [
           en: "We developed Thai Ubon's warm purple-and-gold brand identity, carried through the logo, menu cards, and branded take-away packaging so the experience feels premium from the first bag handed over the counter.",
           no: "Vi utviklet Thai Ubons varme lilla-og-gull merkevareidentitet, som går igjen i logo, menykort og merket take-away-emballasje, slik at opplevelsen føles eksklusiv fra første pose over disken.",
         },
-        imageUrl: "/images/projects/thai-ubon/brand-bag.png",
+        imageUrl: "/images/projects/thai-ubon/real-counter.webp",
       },
       {
         title: { en: "Food & Interior Photography", no: "Mat- & interiørfotografering" },
@@ -727,7 +727,7 @@ const projects = [
           en: "We shot the restaurant's signature dishes and cozy interior to capture the authentic, inviting atmosphere customers feel when they walk through the door — content used across the website, menu, and social channels.",
           no: "Vi fotograferte restaurantens signaturretter og koselige interiør for å fange den autentiske og innbydende atmosfæren gjestene møter når de kommer inn døren — innhold som brukes på nettside, meny og sosiale kanaler.",
         },
-        imageUrl: "/images/projects/thai-ubon/food-closeup.png",
+        imageUrl: "/images/projects/thai-ubon/real-counter.webp",
       },
       {
         title: { en: "Seasonal Video & Social Media Campaign", no: "Sesongbasert video- & sosiale medier-kampanje" },
@@ -735,7 +735,7 @@ const projects = [
           en: "We produced a vertical video ad campaign — 'Warm Up Winter With Authentic Thai' — pairing cozy, snowy Bergen street scenes with steaming curry to drive delivery and take-away orders through the colder months.",
           no: "Vi produserte en vertikal videoannonsekampanje — «Varm opp vinteren med autentisk thaimat» — som kombinerte koselige, snøfylte gatebilder fra Bergen med dampende curry for å drive levering- og take-away-bestillinger gjennom de kaldere månedene.",
         },
-        imageUrl: "/images/projects/thai-ubon/social-campaign.png",
+        imageUrl: "/images/projects/thai-ubon/real-counter.webp",
       },
     ],
     features: [
@@ -751,7 +751,7 @@ const projects = [
         en: "The new brand identity and seasonal campaign gave Thai Ubon a consistent, premium look across every touchpoint — from the counter to the social feed — helping turn casual passers-by into regular take-away and delivery customers.",
         no: "Den nye merkevareidentiteten og sesongkampanjen ga Thai Ubon et konsekvent og eksklusivt uttrykk på alle kontaktpunkter — fra disken til feeden i sosiale medier — og bidro til å gjøre tilfeldige forbipasserende til faste take-away- og leveringskunder.",
       },
-      imageUrl: "/images/projects/thai-ubon/interior-clean.png",
+      imageUrl: "/images/projects/thai-ubon/real-counter.webp",
     },
   },
   {
@@ -836,10 +836,9 @@ const projects = [
       en: "Compliance-focused website for a UK accounting firm.",
       no: "Regelverksfokusert nettside for et britisk regnskapsfirma.",
     },
-    // TODO(images): no real assets yet -- a separate project from Quick
-    // Consultants, currently placeholder-identical pending real content
-    // from the client. Filenames chosen to match the process steps 1:1.
-    imageUrl: "/images/projects/kp-accountants/cover.png",
+    // TODO(images): process-step and results screenshots still pending
+    // real content from the client.
+    imageUrl: "/images/projects/kp-accountants/office-reception.jpg",
     projectLink: "/references/kp-accountants",
     featured: true,
     overview: {
@@ -851,7 +850,7 @@ const projects = [
         en: "Starting from a detailed requirements and compliance analysis, we mapped out the site's core sections — company info, services, news/resources, and a clear 'Get Started' path — alongside the non-functional targets (fast load, intuitive navigation, high uptime, security) and legal obligations (GDPR, WCAG 2.1, UK business law, industry regulations) the site had to meet from day one.",
         no: "Med utgangspunkt i en detaljert krav- og regelverksanalyse kartla vi sidens kjerneseksjoner — bedriftsinformasjon, tjenester, nyheter/ressurser og en tydelig «Kom i gang»-vei — sammen med de ikke-funksjonelle målene (rask lasting, intuitiv navigasjon, høy oppetid, sikkerhet) og de juridiske kravene (GDPR, WCAG 2.1, britisk næringslovgivning, bransjeregler) siden måtte oppfylle fra dag én.",
       },
-      imageUrl: "/images/projects/kp-accountants/overview.png",
+      imageUrl: "/images/projects/kp-accountants/office-reception.jpg",
     },
     process: [
       {
