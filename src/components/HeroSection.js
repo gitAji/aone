@@ -201,25 +201,24 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
         </motion.div>
       </div>
 
-      {/* Scroll-down affordance for homepage -- a filled, app-style pill
-          on mobile (icon only, brand gradient, thumb-sized tap target)
-          instead of the old bordered circle + text label, which read more
-          like a desktop hint than a native app control. */}
+      {/* Scroll-down affordance for homepage -- same bordered-circle design
+          on every breakpoint, per request (the earlier mobile-only filled
+          gradient version was reverted). */}
       {isHomePage && (
         <motion.div
-          className="absolute bottom-8 sm:bottom-12 left-1/2 transform -translate-x-1/2 cursor-pointer z-20 flex flex-col items-center gap-2"
+          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 cursor-pointer z-20 flex flex-col items-center gap-2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
           onClick={() => window.scrollTo({ top: window.innerHeight - 80, behavior: "smooth" })}
         >
-          <span className="hidden sm:block text-xs font-bold tracking-[0.2em] text-slate-400 uppercase">Scroll</span>
+          <span className="text-xs font-bold tracking-[0.2em] text-slate-400 uppercase">Scroll</span>
           <motion.div
-            animate={{ y: [0, 7, 0] }}
-            transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
-            className="w-11 h-11 sm:w-10 sm:h-10 flex items-center justify-center rounded-full sm:rounded-full bg-gradient-to-r from-rose-500 to-amber-500 sm:bg-none sm:border sm:border-slate-200 sm:dark:border-slate-800 text-white sm:text-slate-400 shadow-lg shadow-rose-500/30 sm:shadow-none sm:bg-white/50 sm:dark:bg-slate-900/50 backdrop-blur-sm"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-800 text-slate-400 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm"
           >
-            <FaChevronDown className="text-sm sm:text-xs" />
+            <FaChevronDown className="text-xs" />
           </motion.div>
         </motion.div>
       )}
