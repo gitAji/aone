@@ -735,7 +735,7 @@ const projects = [
           en: "We mapped the full functional scope with the client — takeaway ordering with timed pickup, table booking, a NO/EN language switch, customizable protein/size/spice options, Vipps/Stripe and counter payment, Wolt & foodora delivery links, and kitchen-facing menu updates — alongside the compliance checklist: GDPR, WCAG 2.1 AA, and Norwegian food-safety law (Mattilsynet allergen labeling).",
           no: "Vi kartla hele det funksjonelle omfanget sammen med kunden — take-away-bestilling med tidsbestemt henting, bordreservasjon, NO/EN-språkbryter, tilpassbare protein-, størrelses- og styrkealternativer, Vipps/Stripe og betaling i disk, leveringslenker til Wolt og foodora, samt kjøkkenrettede menyoppdateringer — sammen med regelverkssjekklisten: GDPR, WCAG 2.1 AA og norsk mattrygghetslovgivning (allergenmerking etter Mattilsynet).",
         },
-        imageUrl: "/images/projects/thai-ubon/sign-banner.jpg",
+        imageUrl: "/images/projects/thai-ubon/requirements-notes.jpg",
       },
     ],
     features: [
@@ -863,7 +863,7 @@ const projects = [
           en: "We mapped the full functional scope with the client — online consultation booking, a secure client portal for document upload, VAT/tax/CIS estimators, an interactive service explorer, an HMRC & Companies House resource hub, and contact/callback forms — alongside the compliance checklist: UK GDPR, WCAG 2.1 AA accessibility, bank-grade encryption, and UK financial regulations/HMRC standards.",
           no: "Vi kartla hele det funksjonelle omfanget sammen med kunden — nettbasert booking av konsultasjon, en sikker kundeportal for dokumentopplasting, kalkulatorer for MVA/skatt/CIS, en interaktiv tjenesteutforsker, et ressurssenter for HMRC & Companies House, samt kontakt-/tilbakeringingsskjemaer — sammen med regelverkssjekklisten: britisk GDPR, WCAG 2.1 AA-tilgjengelighet, bankgradert kryptering og britiske finansregler/HMRC-standarder.",
         },
-        imageUrl: "/images/projects/kp-accountants/moodboard3.jpg",
+        imageUrl: "/images/projects/kp-accountants/requirements-notes.jpg",
       },
       {
         title: { en: "Brand & Visual System", no: "Merkevare & visuelt system" },
