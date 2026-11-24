@@ -11,7 +11,7 @@ export const specialOfferPackages = [
         features: [
             'Website',
             'Web hosting',
-            'Admin Panel (text, menu & prices)',
+            'Edit Your Own Text, Menu & Prices in Under a Minute',
             'Daily technical maintenance',
         ],
         description: 'Special SMB offer: a complete, managed website with ongoing maintenance, billed once a year.',

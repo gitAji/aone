@@ -368,17 +368,21 @@ export async function runPageSpeedAudit(targetUrl) {
   }
 }
 
-export function computeOverallScore(onPageChecks, psi) {
+// Deliberately based only on the deterministic on-page/GEO checks, not on
+// PageSpeed Insights' live Performance score. PSI runs a real, timed
+// Lighthouse test on Google's servers on every call, and that score is
+// known to vary run-to-run for an unchanged page (server load, timing
+// noise) -- even Google's own PSI tool shows this. Blending it into the
+// headline "Overall Score" made that score itself look inconsistent on
+// repeat scans of the same URL. The live Performance/SEO/A11y/Best
+// Practices numbers are still shown, just as their own separate, clearly
+// time-stamped snapshot rather than folded into this number.
+export function computeOverallScore(onPageChecks) {
+  if (!onPageChecks.length) return null;
   const weights = { pass: 1, warn: 0.5, fail: 0 };
-  const onPageScore = onPageChecks.length
-    ? Math.round((onPageChecks.reduce((sum, c) => sum + weights[c.status], 0) / onPageChecks.length) * 100)
-    : null;
-
-  if (psi?.available && psi.scores?.performance != null) {
-    const parts = [onPageScore, psi.scores.performance, psi.scores.seo].filter((n) => n != null);
-    return Math.round(parts.reduce((a, b) => a + b, 0) / parts.length);
-  }
-  return onPageScore;
+  return Math.round(
+    (onPageChecks.reduce((sum, c) => sum + weights[c.status], 0) / onPageChecks.length) * 100
+  );
 }
 
 const STATUS_LABEL = { pass: 'Pass', warn: 'Needs attention', fail: 'Failed' };
@@ -438,6 +442,9 @@ export function buildReportEmailHtml(report, { tier = 'summary' } = {}) {
         LCP: <strong>${performance.vitals.lcp ?? 'N/A'}</strong> &middot;
         CLS: <strong>${performance.vitals.cls ?? 'N/A'}</strong> &middot;
         Total Blocking Time: <strong>${performance.vitals.tbt ?? 'N/A'}</strong>
+      </p>
+      <p style="color:#94a3b8;font-size:11px;font-style:italic;margin:8px 0 0;">
+        Live snapshot -- these can vary slightly between scans, same as Google's own PageSpeed Insights tool. The Overall Score above does not include them.
       </p>`
     : `<p style="color:#94a3b8;font-style:italic;">Performance data was unavailable for this scan${performance?.reason ? ` (${performance.reason})` : ''}.</p>`;
 

@@ -1,0 +1,29 @@
+# Aone
+
+> Aone (legal name: Aone Kumarasamy, org. nr. 922 103 682) is an AI-native digital agency based in Bergen, Norway, serving clients across Norway and internationally. It designs and builds websites, AI automation, branding, and marketing together as one cohesive package rather than separate vendors.
+
+Aone's primary focus: AI-native web design & development, search engine optimization (SEO), generative engine optimization (GEO) for visibility in AI assistants like ChatGPT, Claude, Gemini and Perplexity, WordPress development with user-managed content editing, digital branding, and custom business workflow automation. Service format: hybrid, remote-first, full-service consulting and development. Hours: Mon-Fri 09:00-17:00 (Bergen, Norway / CET).
+
+## Services
+
+- [Web Solution](https://aone.no/services/web-solution): Custom website design and development, UI/UX, logo and brand identity built together as one package.
+- [AI Solution](https://aone.no/services/ai-solution): AI chatbots, business process automation, and custom AI agents.
+- [Marketing](https://aone.no/services/marketing): SEO, GEO/AI-search optimization, social media and paid advertising.
+- [Online Store](https://aone.no/services/online-store): Shopify and WooCommerce e-commerce setup and management.
+- [Photography](https://aone.no/services/photography): Professional brand and product photography.
+- [Videography](https://aone.no/services/videography): Cinematic brand video production.
+- [Pricing & Packages](https://aone.no/pricing): Transparent fixed-fee packages, including the GEO add-on for AI-search visibility.
+- [Pre-Built SaaS Products](https://aone.no/products): Ready-made POS, CRM, booking, and institutional-management systems.
+
+## Company
+
+- [About Aone](https://aone.no/about): Company story, mission, and achievements.
+- [References & Case Studies](https://aone.no/references): Completed client projects and results.
+- [Free SEO & GEO Audit](https://aone.no/free-seo-audit): Instant, automated scan of a website's SEO and AI-search readiness.
+- [Request a Quote](https://aone.no/request-quote): Start a project with Aone.
+- [Contact](https://aone.no/contact): Email info@aone.no, phone +47 400 71 654, Bergen, Norway.
+
+## Optional
+
+- [Blog](https://aone.no/blog): Articles on web design, AI automation, and digital marketing.
+- [Careers](https://aone.no/careers): Open positions at Aone.

@@ -2,7 +2,7 @@
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import Link from 'next/link';
-import { FaMobileAlt, FaCloud, FaCode, FaLaptopCode, FaShoppingCart, FaObjectGroup, FaPaintBrush, FaBook, FaBullhorn } from 'react-icons/fa';
+import { FaMobileAlt, FaCloud, FaCode, FaLaptopCode, FaShoppingCart, FaObjectGroup, FaPaintBrush, FaBook, FaBullhorn, FaBolt } from 'react-icons/fa';
 import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
 import Testimonials from "@/components/Testimonials";
@@ -39,7 +39,7 @@ const WebSolutionClient = () => {
         <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-16 max-w-3xl mx-auto font-medium">
           Your website, your identity, and your interface are one experience to a visitor -- not three separate vendors. We design and build them together, so nothing is left mismatched or out of sync.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {[
             {
               icon: <FaMobileAlt className="text-5xl text-rose-500 mb-6" />,
@@ -55,6 +55,11 @@ const WebSolutionClient = () => {
               icon: <FaCloud className="text-5xl text-rose-500 mb-6" />,
               title: "Built to Scale",
               description: "Modern, serverless architecture that grows with your business instead of needing a rebuild.",
+            },
+            {
+              icon: <FaBolt className="text-5xl text-rose-500 mb-6" />,
+              title: "Edit It Yourself",
+              description: "Change your text, menu, and prices yourself in under a minute -- no developer, no waiting.",
             },
           ].map((item, index) => (
             <motion.div

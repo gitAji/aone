@@ -81,73 +81,153 @@ const projects = [
     },
   },
   {
-    id: "kids-learning-portal",
-    title: { en: "Kids Learning Portal", no: "Læringsportal for barn" },
-    description: { en: "Learning portal for kids.", no: "Læringsportal for barn." },
-    imageUrl: "/images/projects/kidsportal.png",
-    projectLink: "/references/kids-learning-portal",
+    id: "kp-accountants",
+    title: { en: "K&P Accountants", no: "K&P Accountants" },
+    description: {
+      en: "Brand identity, office environment & website for a UK accounting and tax advisory firm.",
+      no: "Merkevareidentitet, kontormiljø & nettside for et britisk regnskaps- og skatterådgivningsfirma.",
+    },
+    // TODO(images): process-step screenshots still pending real content
+    // from the client. results.imageUrl below is a real screenshot of the
+    // live site (a local-SEO location landing page).
+    imageUrl: "/images/projects/kp-accountants/office-reception.jpg",
+    projectLink: "/references/kp-accountants",
     featured: true,
-    location: { en: "Norway", no: "Norge" },
+    location: { en: "Hemel Hempstead, UK", no: "Hemel Hempstead, Storbritannia" },
     overview: {
       description1: {
-        en: "This project involved designing and developing a modern, user-friendly website for kids learning portal. The goal was to create an engaging platform that offers educational resources, interactive activities, and a safe online environment for children.",
-        no: "Dette prosjektet omfattet design og utvikling av en moderne, brukervennlig nettside for en læringsportal for barn. Målet var å skape en engasjerende plattform som tilbyr læringsressurser, interaktive aktiviteter og et trygt digitalt miljø for barn.",
+        en: "K&P Accountants is a UK accounting and tax advisory practice founded in 2011, based in Hemel Hempstead. Aone was brought in to translate their established, fixed-fee practice — covering VAT, CIS, PAYE, Self Assessment, year-end accounts, bookkeeping, company formation, and property tax/CGT — into a cohesive brand across both their physical office and their digital presence.",
+        no: "K&P Accountants er et britisk regnskaps- og skatterådgivningsfirma grunnlagt i 2011, med base i Hemel Hempstead. Aone ble hentet inn for å omsette deres etablerte virksomhet med faste priser — som dekker MVA, CIS, lønn, selvangivelse, årsregnskap, bokføring, selskapsetablering og eiendomsskatt — til en helhetlig merkevare på tvers av både det fysiske kontoret og den digitale tilstedeværelsen.",
       },
       description2: {
-        en: "where parents create account and add kids to the portal & create kids login credentials and then kids can login and access the learning materials.",
-        no: "Foreldre oppretter en konto og legger til barn i portalen, med egne påloggingsopplysninger for barna, som deretter kan logge inn og få tilgang til læringsmaterialet.",
+        en: "The brief: accounting can feel intimidating or transactional, so the brand needed to project chartered authority and precision while staying approachable for the SMEs, contractors, tradespeople, landlords, and freelancers K&P serves. We paired a deep navy and warm gold palette — anchored by the circular K&P emblem — with natural wood and glass, carrying the same system from the office reception wall through to the website's service pages and self-service HMRC/Companies House resource hub.",
+        no: "Oppdraget: regnskap kan lett oppleves som intimiderende eller transaksjonelt, så merkevaren måtte formidle faglig tyngde og presisjon samtidig som den forble tilgjengelig for de små og mellomstore bedriftene, entreprenørene, håndverkerne, utleierne og frilanserne K&P betjener. Vi kombinerte en dyp marineblå og varm gull palett — forankret i den sirkulære K&P-logoen — med naturlig tre og glass, og førte det samme systemet fra kontorets resepsjonsvegg til nettsidens tjenestesider og selvbetjente ressurssenter for HMRC/Companies House.",
       },
-      imageUrl: "/images/projects/kidsportal/project1.png",
+      imageUrl: "/images/projects/kp-accountants/reception-desk.jpg",
     },
     process: [
       {
-        title: { en: "Discovery & Planning", no: "Kartlegging & planlegging" },
+        title: { en: "Requirements & Compliance Analysis", no: "Krav- & regelverksanalyse" },
         description: {
-          en: "We began with in-depth consultations to understand the client's business, target audience, and pain points with the existing platform. This phase involved market research, competitor analysis, and defining project scope and objectives.",
-          no: "Vi startet med grundige samtaler for å forstå kundens virksomhet, målgruppe og utfordringer med den eksisterende plattformen. Denne fasen omfattet markedsundersøkelser, konkurrentanalyse og definering av prosjektets omfang og mål.",
+          en: "We mapped the full functional scope with the client — online consultation booking, a secure client portal for document upload, VAT/tax/CIS estimators, an interactive service explorer, an HMRC & Companies House resource hub, and contact/callback forms — alongside the compliance checklist: UK GDPR, WCAG 2.1 AA accessibility, bank-grade encryption, and UK financial regulations/HMRC standards.",
+          no: "Vi kartla hele det funksjonelle omfanget sammen med kunden — nettbasert booking av konsultasjon, en sikker kundeportal for dokumentopplasting, kalkulatorer for MVA/skatt/CIS, en interaktiv tjenesteutforsker, et ressurssenter for HMRC & Companies House, samt kontakt-/tilbakeringingsskjemaer — sammen med regelverkssjekklisten: britisk GDPR, WCAG 2.1 AA-tilgjengelighet, bankgradert kryptering og britiske finansregler/HMRC-standarder.",
         },
-        imageUrl: "/images/projects/kidsportal/plan.png",
+        imageUrl: "/images/projects/kp-accountants/requirements-notes.jpg",
       },
       {
-        title: { en: "Wireframing & UI/UX Design", no: "Skisser & UI/UX-design" },
+        title: { en: "Brand & Visual System", no: "Merkevare & visuelt system" },
         description: {
-          en: "Based on the discovery phase, we created wireframes and interactive prototypes to visualize the new user flows and interface. Our UI/UX team focused on creating an intuitive and aesthetically pleasing design.",
-          no: "Basert på kartleggingsfasen laget vi skisser og interaktive prototyper for å visualisere de nye brukerflytene og grensesnittet. UI/UX-teamet vårt fokuserte på å skape et intuitivt og estetisk tiltalende design.",
+          en: "We built the brand around the circular K&P emblem — deep navy for trust and compliance, warm gold for clarity and distinction — then carried it into the physical space: the mark anchors a dark navy feature wall in reception, paired with warm timber joinery and glass meeting rooms.",
+          no: "Vi bygde merkevaren rundt den sirkulære K&P-logoen — dyp marineblå for tillit og regelverksetterlevelse, varm gull for klarhet og særpreg — og førte den videre inn i det fysiske rommet: logoen er forankret på en mørk marineblå fokusvegg i resepsjonen, kombinert med varmt treverk og glassmøterom.",
         },
-        imageUrl: "/images/projects/kidsportal/wireframe.png",
+        imageUrl: "/images/projects/kp-accountants/logo.png",
       },
       {
-        title: { en: "Development & Integration", no: "Utvikling & integrasjon" },
+        title: { en: "Service & User Journey Architecture", no: "Tjeneste- & brukerreisearkitektur" },
         description: {
-          en: "Our development team brought the designs to life, building a robust and scalable learning platform. This was including integrating a headless CMS for content management, setting up user authentication, and implementing interactive features.",
-          no: "Utviklingsteamet vårt realiserte designene og bygget en robust og skalerbar læringsplattform. Dette inkluderte integrasjon av et headless CMS for innholdsstyring, oppsett av brukerautentisering og implementering av interaktive funksjoner.",
+          en: "We mapped the site around how clients actually arrive: new businesses choosing between sole trader, limited company or partnership; ongoing compliance (VAT/MTD, CIS, PAYE/RTI payroll, Self Assessment, year-end accounts); and self-service tools — HMRC and Companies House forms, tax calculators, and statutory dates — all routing toward a low-friction free consultation booking.",
+          no: "Vi kartla nettsiden rundt hvordan kundene faktisk kommer inn: nyetablerte virksomheter som velger mellom enkeltpersonforetak, aksjeselskap eller partnerskap; løpende regelverksetterlevelse (MVA/MTD, CIS, PAYE/lønn, selvangivelse, årsregnskap); og selvbetjeningsverktøy — HMRC- og Companies House-skjemaer, skattekalkulatorer og lovpålagte frister — som alle leder mot en lavterskel booking av gratis konsultasjon.",
         },
-        imageUrl: "/images/projects/kidsportal/dev.png",
+        imageUrl: "/images/projects/kp-accountants/office-hallway.jpg",
       },
       {
-        title: { en: "Testing & Deployment", no: "Testing & lansering" },
+        title: { en: "Content Accuracy & Trust Signals", no: "Innholdsnøyaktighet & tillitssignaler" },
         description: {
-          en: "Rigorous testing was conducted across various devices and browsers to ensure functionality, performance, and responsiveness. After successful testing, the platform was securely deployed.",
-          no: "Grundig testing ble gjennomført på tvers av ulike enheter og nettlesere for å sikre funksjonalitet, ytelse og responsivitet. Etter vellykket testing ble plattformen sikkert lansert.",
+          en: "As part of launch, we audited every testimonial and review snippet to make sure each one was correctly attributed to K&P Accountants rather than other firm names, and tightened the fixed-fee messaging so pricing transparency comes through clearly on every service page.",
+          no: "Som en del av lanseringen gikk vi gjennom alle kundeomtaler og anmeldelsesutdrag for å sikre at hver av dem var korrekt tilskrevet K&P Accountants og ikke andre firmanavn, og vi strammet opp budskapet om faste priser slik at prisgjennomsiktighet kommer tydelig frem på hver tjenesteside.",
         },
-        imageUrl: "/images/projects/kidsportal/deploy.png",
+        imageUrl: "/images/projects/kp-accountants/moodboard.jpg",
+      },
+      {
+        title: { en: "Accessibility, Performance & Compliance Testing", no: "Tilgjengelighet, ytelse & regelverkstesting" },
+        description: {
+          en: "Before launch we tested against the full compliance checklist — GDPR (privacy policy, cookie consent), WCAG AA+ contrast (critical for the navy/gold pairing), semantic HTML with a logical heading hierarchy, and UK business law requirements for terms and conditions — alongside performance and cross-device reliability testing.",
+          no: "Før lansering testet vi mot hele regelverkssjekklisten — GDPR (personvernerklæring, samtykke til informasjonskapsler), WCAG AA+-kontrast (avgjørende for kombinasjonen marineblå/gull), semantisk HTML med en logisk overskriftshierarki, og krav fra britisk næringslovgivning til vilkår og betingelser — sammen med testing av ytelse og pålitelighet på tvers av enheter.",
+        },
+        imageUrl: "/images/projects/kp-accountants/moodboard2.jpg",
       },
     ],
     features: [
-      { en: "Firebase Authentication for secure user management.", no: "Firebase-autentisering for sikker brukerhåndtering." },
-      { en: "User login with Google", no: "Innlogging med Google" },
-      { en: "Responsive Design for optimal viewing on all devices.", no: "Responsivt design for optimal visning på alle enheter." },
-      { en: "Parents dashboard & children dashboard.", no: "Dashbord for foreldre og barn." },
-      { en: "SEO Optimization for local search visibility.", no: "SEO-optimalisering for lokal søkesynlighet." },
-      { en: "Interactive learning activities including quizzes and video lessons.", no: "Interaktive læringsaktiviteter, inkludert quizer og videoleksjoner." },
+      { en: "Fixed-fee pricing transparency across every service page", no: "Prisgjennomsiktighet med faste priser på hver tjenesteside" },
+      { en: "Full UK compliance coverage: VAT/MTD, CIS, PAYE, Self Assessment, CGT", no: "Full dekning av britisk regelverk: MVA/MTD, CIS, lønn, selvangivelse, CGT" },
+      { en: "Self-service HMRC & Companies House forms, tax calculators & statutory dates", no: "Selvbetjente HMRC- & Companies House-skjemaer, skattekalkulatorer & lovpålagte frister" },
+      { en: "Low-friction free-consultation booking & direct contact CTAs", no: "Lavterskel booking av gratis konsultasjon & direkte kontakt-CTA-er" },
+      { en: "Audited, accurately attributed client testimonials", no: "Gjennomgåtte kundeomtaler med korrekt tilskrivelse" },
+      { en: "WCAG AA+ accessible navy & gold brand system, office to web", no: "WCAG AA+-tilgjengelig merkevaresystem i marineblått & gull, fra kontor til nett" },
+      { en: "Dedicated local-SEO landing pages for every town K&P serves (Watford, St Albans, Kings Langley)", no: "Egne lokale SEO-landingssider for hver by K&P betjener (Watford, St Albans, Kings Langley)" },
     ],
-    technologies: ["Next.js", "React", "Node.js", "Strapi (headless CMS)"],
+    technologies: ["Next.js", "React", "CMS", "GDPR Compliance", "WCAG AA+"],
     results: {
       summary: {
-        en: "The new platform significantly enhanced the learning portal's online presence, leading to a **20% increase in active parent sign-ups** and improved student engagement. The intuitive parent and kids dashboards received positive feedback, contributing to a stronger brand image and increased customer satisfaction.",
-        no: "Den nye plattformen styrket læringsportalens digitale tilstedeværelse betydelig, med en **20 % økning i aktive foreldreregistreringer** og bedre elevengasjement. De intuitive dashbordene for foreldre og barn fikk positive tilbakemeldinger, noe som bidro til et sterkere merkevareinntrykk og økt kundetilfredshet.",
+        en: "K&P Accountants now presents one consistent, chartered-authority brand from the office reception wall through to the website — clear fixed-fee pricing, accurate testimonials, and a self-service compliance toolkit that gives SMEs, contractors, and landlords a straightforward path from browsing services to booking a free consultation.",
+        no: "K&P Accountants fremstår nå med én helhetlig, faglig tung merkevare — fra resepsjonsveggen på kontoret til nettsiden — med tydelige faste priser, korrekte kundeomtaler og et selvbetjent regelverksverktøy som gir SMB-er, entreprenører og utleiere en enkel vei fra å utforske tjenester til å booke en gratis konsultasjon.",
       },
-      imageUrl: "/images/projects/kidsportal/result.png",
+      imageUrl: "/images/projects/kp-accountants/watford-landing-page.jpg",
+    },
+  },
+  {
+    id: "thai-ubon",
+    title: { en: "Thai Ubon Take-Away", no: "Thai Ubon Take-Away" },
+    description: {
+      en: "Brand identity and digital presence for an authentic Thai take-away in Bergen.",
+      no: "Merkevareidentitet og digital tilstedeværelse for en autentisk thailandsk take-away i Bergen.",
+    },
+    imageUrl: "/images/projects/thai-ubon/real-counter.webp",
+    projectLink: "/references/thai-ubon",
+    featured: true,
+    local: true,
+    location: { en: "Bergen, Norway", no: "Bergen, Norge" },
+    overview: {
+      description1: {
+        en: "Thai Ubon Take-Away is an authentic Thai restaurant in the heart of Bergen. Aone was brought in to build a warm, appetizing brand identity and a seasonal content campaign that would get locals ordering on cold Bergen evenings, not just walking past.",
+        no: "Thai Ubon Take-Away er en autentisk thairestaurant midt i Bergen sentrum. Aone ble hentet inn for å bygge en varm og appetittvekkende merkevareidentitet, samt en sesongbasert innholdskampanje som skulle få bergensere til å bestille på kalde kvelder, ikke bare gå forbi.",
+      },
+      description2: {
+        en: "The work spanned packaging and in-store branding, professional food and interior photography, and a short-form video campaign built around the comfort of piping-hot curry on a snowy Bergen street. Every touchpoint, from the take-away bag to the social feed, was tied together under one cohesive, premium-feeling identity.",
+        no: "Arbeidet omfattet emballasje og merkevarebygging i lokalet, profesjonell mat- og interiørfotografering, samt en videokampanje bygget rundt følelsen av nylaget, dampende curry på en snøfylt gate i Bergen. Alle kontaktpunkter, fra take-away-posen til feeden i sosiale medier, ble bundet sammen under én helhetlig og eksklusiv merkevareopplevelse.",
+      },
+      imageUrl: "/images/projects/thai-ubon/counter-service.jpg",
+    },
+    process: [
+      {
+        title: { en: "Brand Identity & Packaging", no: "Merkevareidentitet & emballasje" },
+        description: {
+          en: "We developed Thai Ubon's warm purple-and-gold brand identity, carried through the logo, menu cards, and branded take-away packaging so the experience feels premium from the first bag handed over the counter.",
+          no: "Vi utviklet Thai Ubons varme lilla-og-gull merkevareidentitet, som går igjen i logo, menykort og merket take-away-emballasje, slik at opplevelsen føles eksklusiv fra første pose over disken.",
+        },
+        imageUrl: "/images/projects/thai-ubon/logo.png",
+      },
+      {
+        title: { en: "Food & Interior Photography", no: "Mat- & interiørfotografering" },
+        description: {
+          en: "We shot the restaurant's signature dishes and cozy interior to capture the authentic, inviting atmosphere customers feel when they walk through the door — content used across the website, menu, and social channels.",
+          no: "Vi fotograferte restaurantens signaturretter og koselige interiør for å fange den autentiske og innbydende atmosfæren gjestene møter når de kommer inn døren — innhold som brukes på nettside, meny og sosiale kanaler.",
+        },
+        imageUrl: "/images/projects/thai-ubon/staff-pos.jpg",
+      },
+      {
+        title: { en: "Requirements & Compliance Analysis", no: "Krav- & regelverksanalyse" },
+        description: {
+          en: "We mapped the full functional scope with the client — takeaway ordering with timed pickup, table booking, a NO/EN language switch, customizable protein/size/spice options, Vipps/Stripe and counter payment, Wolt & foodora delivery links, and kitchen-facing menu updates — alongside the compliance checklist: GDPR, WCAG 2.1 AA, and Norwegian food-safety law (Mattilsynet allergen labeling).",
+          no: "Vi kartla hele det funksjonelle omfanget sammen med kunden — take-away-bestilling med tidsbestemt henting, bordreservasjon, NO/EN-språkbryter, tilpassbare protein-, størrelses- og styrkealternativer, Vipps/Stripe og betaling i disk, leveringslenker til Wolt og foodora, samt kjøkkenrettede menyoppdateringer — sammen med regelverkssjekklisten: GDPR, WCAG 2.1 AA og norsk mattrygghetslovgivning (allergenmerking etter Mattilsynet).",
+        },
+        imageUrl: "/images/projects/thai-ubon/requirements-notes.jpg",
+      },
+    ],
+    features: [
+      { en: "Cohesive brand identity across packaging, menu & signage", no: "Helhetlig merkevareidentitet på emballasje, meny & skilting" },
+      { en: "Professional food & interior photography", no: "Profesjonell mat- & interiørfotografering" },
+      { en: "Seasonal short-form video advertising campaign", no: "Sesongbasert kortformat videoannonsekampanje" },
+      { en: "Warm, appetite-driving visual identity", no: "Varm, appetittvekkende visuell identitet" },
+      { en: "Content built for delivery & take-away conversion", no: "Innhold bygget for å konvertere levering & take-away" },
+    ],
+    technologies: ["Brand Identity", "Photography", "Videography", "Social Media Marketing"],
+    results: {
+      summary: {
+        en: "The new brand identity and seasonal campaign gave Thai Ubon a consistent, premium look across every touchpoint — from the counter to the social feed — helping turn casual passers-by into regular take-away and delivery customers.",
+        no: "Den nye merkevareidentiteten og sesongkampanjen ga Thai Ubon et konsekvent og eksklusivt uttrykk på alle kontaktpunkter — fra disken til feeden i sosiale medier — og bidro til å gjøre tilfeldige forbipasserende til faste take-away- og leveringskunder.",
+      },
+      imageUrl: "/images/projects/thai-ubon/pos-closeup.jpg",
     },
   },
   {
@@ -358,139 +438,6 @@ const projects = [
     },
   },
   {
-    id: "rent-my-property-uk",
-    title: { en: "Rent My Property UK", no: "Rent My Property UK" },
-    description: { en: "A platform for renting properties.", no: "En plattform for utleie av eiendommer." },
-    imageUrl: "/images/projects/rentmypropertyuk.png",
-    projectLink: "/references/rent-my-property-uk",
-    featured: true,
-    location: { en: "United Kingdom", no: "Storbritannia" },
-    overview: {
-      description1: {
-        en: "This project focused on developing a comprehensive online presence for Rent My Property UK, a property management service. Our goal was to create a user-friendly and visually appealing website that would facilitate property listings, inquiries, and bookings.",
-        no: "Dette prosjektet handlet om å utvikle en helhetlig digital tilstedeværelse for Rent My Property UK, en eiendomsforvaltningstjeneste. Målet vårt var å skape en brukervennlig og visuelt tiltalende nettside som forenklet eiendomsannonsering, henvendelser og bookinger.",
-      },
-      description2: { en: "", no: "" },
-      imageUrl: "/images/projects/rentmypropertyuk.png",
-    },
-    process: [
-      {
-        title: { en: "Requirements Gathering & User Needs Assessment", no: "Kravinnhenting & brukerbehovsanalyse" },
-        description: {
-          en: "We started by engaging with the client to understand their business model, target audience, and specific needs for the property management platform. This phase included user surveys and stakeholder interviews to gather comprehensive requirements.",
-          no: "Vi startet med å samarbeide tett med kunden for å forstå forretningsmodellen, målgruppen og de spesifikke behovene for eiendomsforvaltningsplattformen. Denne fasen inkluderte brukerundersøkelser og intervjuer med interessenter for å kartlegge alle krav.",
-        },
-        imageUrl: "/images/projects/rentmyproperty/plan.png",
-      },
-      {
-        title: { en: "UI/UX Redesign & Prototyping", no: "UI/UX-redesign & prototyping" },
-        description: {
-          en: "The design team created wireframes and interactive prototypes to visualize the new user interface. Emphasis was placed on intuitive navigation, clear property listings, and a seamless booking process.",
-          no: "Designteamet laget skisser og interaktive prototyper for å visualisere det nye brukergrensesnittet. Det ble lagt vekt på intuitiv navigasjon, tydelige eiendomsannonser og en sømløs bookingprosess.",
-        },
-        imageUrl: "/images/projects/rentmyproperty/ui.png",
-      },
-      {
-        title: { en: "Development & Feature Implementation", no: "Utvikling & funksjonsimplementering" },
-        description: {
-          en: "Our development team built the website using modern web technologies, ensuring it was responsive and optimized for performance. Key features included property search filters, detailed listings, user accounts, and a secure booking system.",
-          no: "Utviklingsteamet vårt bygget nettsiden med moderne webteknologi, og sikret at den var responsiv og optimalisert for ytelse. Sentrale funksjoner inkluderte søkefiltre for eiendommer, detaljerte annonser, brukerkontoer og et sikkert bookingsystem.",
-        },
-        imageUrl: "/images/projects/rentmyproperty/dev.png",
-      },
-      {
-        title: { en: "Accessibility & Performance Testing", no: "Tilgjengelighets- & ytelsestesting" },
-        description: {
-          en: "Rigorous testing was conducted to ensure the website met accessibility standards and performed well across all devices and browsers. User feedback was incorporated to refine the user experience further.",
-          no: "Grundig testing ble gjennomført for å sikre at nettsiden oppfylte tilgjengelighetsstandarder og fungerte godt på tvers av alle enheter og nettlesere. Brukertilbakemeldinger ble tatt inn for å videreutvikle brukeropplevelsen.",
-        },
-        imageUrl: "/images/projects/rentmyproperty/logo.png",
-      },
-    ],
-    features: [
-      { en: "Responsive Design for optimal viewing on all devices.", no: "Responsivt design for optimal visning på alle enheter." },
-      { en: "Detailed Property Listings with descriptions and amenities.", no: "Detaljerte eiendomsannonser med beskrivelser og fasiliteter." },
-      { en: "SEO Optimization for local search visibility.", no: "SEO-optimalisering for lokal søkesynlighet." },
-    ],
-    technologies: ["WordPress (headless CMS)"],
-    results: {
-      summary: {
-        en: "The revamped Rent My Property UK website successfully enhanced the user experience, leading to increased user engagement and higher booking rates. The client reported positive feedback from users regarding the ease of navigation and the clarity of property information. Overall, the project significantly contributed to the client's business growth and online presence.",
-        no: "Den fornyede Rent My Property UK-nettsiden styrket brukeropplevelsen betydelig, med økt brukerengasjement og høyere bookingrate. Kunden rapporterte positive tilbakemeldinger fra brukere om enkel navigasjon og tydelig eiendomsinformasjon. Samlet sett bidro prosjektet vesentlig til kundens forretningsvekst og digitale tilstedeværelse.",
-      },
-      imageUrl: "/images/projects/rentmyproperty/cover.png",
-    },
-  },
-  {
-    id: "tulips-beauty",
-    title: { en: "Tulips Beauty", no: "Tulips Beauty" },
-    description: { en: "A beauty salon website.", no: "Nettside for en skjønnhetssalong." },
-    imageUrl: "/images/projects/tulips.png",
-    projectLink: "/references/tulips-beauty",
-    featured: true,
-    location: { en: "Norway", no: "Norge" },
-    overview: {
-      description1: {
-        en: "Tulips Beauty is an elegant and user-friendly website for a modern beauty salon. The project's goal was to create a beautiful online presence that would attract new clients and make it easy for them to book appointments.",
-        no: "Tulips Beauty er en elegant og brukervennlig nettside for en moderne skjønnhetssalong. Målet med prosjektet var å skape en vakker digital tilstedeværelse som tiltrekker nye kunder og gjør det enkelt for dem å bestille time.",
-      },
-      description2: {
-        en: "The website features a stunning design, a detailed menu of services, a gallery of the salon's work, and an integrated online booking system. We aimed to create a website that is as beautiful and professional as the salon itself.",
-        no: "Nettsiden har et imponerende design, en detaljert oversikt over tjenester, et galleri som viser salongens arbeid, og et integrert bookingsystem. Målet var å skape en nettside som er like vakker og profesjonell som salongen selv.",
-      },
-      imageUrl: "/images/projects/tulips/cover.png",
-    },
-    process: [
-      {
-        title: { en: "Beauty Industry & Client Needs Analysis", no: "Bransje- & kundebehovsanalyse" },
-        description: {
-          en: "We worked with Tulips Beauty to understand their brand, services, and target clientele. We researched the beauty industry to identify best practices for salon websites.",
-          no: "Vi samarbeidet med Tulips Beauty for å forstå merkevaren, tjenestene og målgruppen deres. Vi undersøkte skjønnhetsbransjen for å identifisere beste praksis for salongnettsider.",
-        },
-        imageUrl: "/images/projects/tulips/plan.png",
-      },
-      {
-        title: { en: "Elegant & User-Friendly Design", no: "Elegant & brukervennlig design" },
-        description: {
-          en: "We designed an elegant and visually appealing website that reflects the salon's brand. The design is user-friendly and makes it easy for clients to find information and book appointments.",
-          no: "Vi designet en elegant og visuelt tiltalende nettside som gjenspeiler salongens merkevare. Designet er brukervennlig og gjør det enkelt for kundene å finne informasjon og bestille time.",
-        },
-        imageUrl: "/images/projects/tulips/ui.png",
-      },
-      {
-        title: { en: "Website Development & Booking System", no: "Utvikling av nettside & bookingsystem" },
-        description: {
-          en: "The website was developed with an integrated online booking system, allowing clients to book appointments 24/7. The site also features a gallery of the salon's work and a menu of services.",
-          no: "Nettsiden ble utviklet med et integrert bookingsystem, slik at kundene kan bestille time døgnet rundt. Siden har også et galleri med salongens arbeid og en oversikt over tjenester.",
-        },
-        imageUrl: "/images/projects/tulips/logo.png",
-      },
-      {
-        title: { en: "Launch & Social Media Integration", no: "Lansering & integrasjon med sosiale medier" },
-        description: {
-          en: "After the launch, we integrated the website with the salon's social media channels to create a cohesive online presence and attract new clients.",
-          no: "Etter lansering integrerte vi nettsiden med salongens kanaler i sosiale medier for å skape en helhetlig digital tilstedeværelse og tiltrekke nye kunder.",
-        },
-        imageUrl: "/images/projects/tulips/dev.png",
-      },
-    ],
-    features: [
-      { en: "Online appointment booking system", no: "Nettbasert timebestillingssystem" },
-      { en: "Service menu with detailed descriptions and pricing", no: "Tjenesteoversikt med detaljerte beskrivelser og priser" },
-      { en: "Photo gallery of the salon's work", no: "Bildegalleri av salongens arbeid" },
-      { en: "Contact information and location map", no: "Kontaktinformasjon og kart med lokasjon" },
-      { en: "Integration with social media channels", no: "Integrasjon med sosiale medier" },
-    ],
-    technologies: ["Wordpress", "PHP", "JavaScript", "CSS"],
-    results: {
-      summary: {
-        en: "The new website has significantly improved Tulips Beauty's online presence and made it easier for clients to book appointments. The salon has seen an increase in online bookings and new clients since the website's launch.",
-        no: "Den nye nettsiden har betydelig styrket Tulips Beauty sin digitale tilstedeværelse og gjort det enklere for kunder å bestille time. Salongen har sett en økning i nettbaserte bookinger og nye kunder siden lanseringen.",
-      },
-      imageUrl: "/images/projects/tulips/cover.png",
-    },
-  },
-  {
     id: "rent-cars",
     title: { en: "Rent Cars", no: "Rent Cars" },
     description: { en: "A car rental platform.", no: "En plattform for bilutleie." },
@@ -698,151 +645,206 @@ const projects = [
     },
   },
   {
-    id: "thai-ubon",
-    title: { en: "Thai Ubon Take-Away", no: "Thai Ubon Take-Away" },
-    description: {
-      en: "Brand identity and digital presence for an authentic Thai take-away in Bergen.",
-      no: "Merkevareidentitet og digital tilstedeværelse for en autentisk thailandsk take-away i Bergen.",
-    },
-    imageUrl: "/images/projects/thai-ubon/real-counter.webp",
-    projectLink: "/references/thai-ubon",
+    id: "tulips-beauty",
+    title: { en: "Tulips Beauty", no: "Tulips Beauty" },
+    description: { en: "A beauty salon website.", no: "Nettside for en skjønnhetssalong." },
+    imageUrl: "/images/projects/tulips.png",
+    projectLink: "/references/tulips-beauty",
     featured: true,
-    local: true,
-    location: { en: "Bergen, Norway", no: "Bergen, Norge" },
+    location: { en: "Norway", no: "Norge" },
     overview: {
       description1: {
-        en: "Thai Ubon Take-Away is an authentic Thai restaurant in the heart of Bergen. Aone was brought in to build a warm, appetizing brand identity and a seasonal content campaign that would get locals ordering on cold Bergen evenings, not just walking past.",
-        no: "Thai Ubon Take-Away er en autentisk thairestaurant midt i Bergen sentrum. Aone ble hentet inn for å bygge en varm og appetittvekkende merkevareidentitet, samt en sesongbasert innholdskampanje som skulle få bergensere til å bestille på kalde kvelder, ikke bare gå forbi.",
+        en: "Tulips Beauty is an elegant and user-friendly website for a modern beauty salon. The project's goal was to create a beautiful online presence that would attract new clients and make it easy for them to book appointments.",
+        no: "Tulips Beauty er en elegant og brukervennlig nettside for en moderne skjønnhetssalong. Målet med prosjektet var å skape en vakker digital tilstedeværelse som tiltrekker nye kunder og gjør det enkelt for dem å bestille time.",
       },
       description2: {
-        en: "The work spanned packaging and in-store branding, professional food and interior photography, and a short-form video campaign built around the comfort of piping-hot curry on a snowy Bergen street. Every touchpoint, from the take-away bag to the social feed, was tied together under one cohesive, premium-feeling identity.",
-        no: "Arbeidet omfattet emballasje og merkevarebygging i lokalet, profesjonell mat- og interiørfotografering, samt en videokampanje bygget rundt følelsen av nylaget, dampende curry på en snøfylt gate i Bergen. Alle kontaktpunkter, fra take-away-posen til feeden i sosiale medier, ble bundet sammen under én helhetlig og eksklusiv merkevareopplevelse.",
+        en: "The website features a stunning design, a detailed menu of services, a gallery of the salon's work, and an integrated online booking system. We aimed to create a website that is as beautiful and professional as the salon itself.",
+        no: "Nettsiden har et imponerende design, en detaljert oversikt over tjenester, et galleri som viser salongens arbeid, og et integrert bookingsystem. Målet var å skape en nettside som er like vakker og profesjonell som salongen selv.",
       },
-      imageUrl: "/images/projects/thai-ubon/counter-service.jpg",
+      imageUrl: "/images/projects/tulips/cover.png",
     },
     process: [
       {
-        title: { en: "Brand Identity & Packaging", no: "Merkevareidentitet & emballasje" },
+        title: { en: "Beauty Industry & Client Needs Analysis", no: "Bransje- & kundebehovsanalyse" },
         description: {
-          en: "We developed Thai Ubon's warm purple-and-gold brand identity, carried through the logo, menu cards, and branded take-away packaging so the experience feels premium from the first bag handed over the counter.",
-          no: "Vi utviklet Thai Ubons varme lilla-og-gull merkevareidentitet, som går igjen i logo, menykort og merket take-away-emballasje, slik at opplevelsen føles eksklusiv fra første pose over disken.",
+          en: "We worked with Tulips Beauty to understand their brand, services, and target clientele. We researched the beauty industry to identify best practices for salon websites.",
+          no: "Vi samarbeidet med Tulips Beauty for å forstå merkevaren, tjenestene og målgruppen deres. Vi undersøkte skjønnhetsbransjen for å identifisere beste praksis for salongnettsider.",
         },
-        imageUrl: "/images/projects/thai-ubon/logo.png",
+        imageUrl: "/images/projects/tulips/plan.png",
       },
       {
-        title: { en: "Food & Interior Photography", no: "Mat- & interiørfotografering" },
+        title: { en: "Elegant & User-Friendly Design", no: "Elegant & brukervennlig design" },
         description: {
-          en: "We shot the restaurant's signature dishes and cozy interior to capture the authentic, inviting atmosphere customers feel when they walk through the door — content used across the website, menu, and social channels.",
-          no: "Vi fotograferte restaurantens signaturretter og koselige interiør for å fange den autentiske og innbydende atmosfæren gjestene møter når de kommer inn døren — innhold som brukes på nettside, meny og sosiale kanaler.",
+          en: "We designed an elegant and visually appealing website that reflects the salon's brand. The design is user-friendly and makes it easy for clients to find information and book appointments.",
+          no: "Vi designet en elegant og visuelt tiltalende nettside som gjenspeiler salongens merkevare. Designet er brukervennlig og gjør det enkelt for kundene å finne informasjon og bestille time.",
         },
-        imageUrl: "/images/projects/thai-ubon/staff-pos.jpg",
+        imageUrl: "/images/projects/tulips/ui.png",
       },
       {
-        title: { en: "Requirements & Compliance Analysis", no: "Krav- & regelverksanalyse" },
+        title: { en: "Website Development & Booking System", no: "Utvikling av nettside & bookingsystem" },
         description: {
-          en: "We mapped the full functional scope with the client — takeaway ordering with timed pickup, table booking, a NO/EN language switch, customizable protein/size/spice options, Vipps/Stripe and counter payment, Wolt & foodora delivery links, and kitchen-facing menu updates — alongside the compliance checklist: GDPR, WCAG 2.1 AA, and Norwegian food-safety law (Mattilsynet allergen labeling).",
-          no: "Vi kartla hele det funksjonelle omfanget sammen med kunden — take-away-bestilling med tidsbestemt henting, bordreservasjon, NO/EN-språkbryter, tilpassbare protein-, størrelses- og styrkealternativer, Vipps/Stripe og betaling i disk, leveringslenker til Wolt og foodora, samt kjøkkenrettede menyoppdateringer — sammen med regelverkssjekklisten: GDPR, WCAG 2.1 AA og norsk mattrygghetslovgivning (allergenmerking etter Mattilsynet).",
+          en: "The website was developed with an integrated online booking system, allowing clients to book appointments 24/7. The site also features a gallery of the salon's work and a menu of services.",
+          no: "Nettsiden ble utviklet med et integrert bookingsystem, slik at kundene kan bestille time døgnet rundt. Siden har også et galleri med salongens arbeid og en oversikt over tjenester.",
         },
-        imageUrl: "/images/projects/thai-ubon/requirements-notes.jpg",
+        imageUrl: "/images/projects/tulips/logo.png",
+      },
+      {
+        title: { en: "Launch & Social Media Integration", no: "Lansering & integrasjon med sosiale medier" },
+        description: {
+          en: "After the launch, we integrated the website with the salon's social media channels to create a cohesive online presence and attract new clients.",
+          no: "Etter lansering integrerte vi nettsiden med salongens kanaler i sosiale medier for å skape en helhetlig digital tilstedeværelse og tiltrekke nye kunder.",
+        },
+        imageUrl: "/images/projects/tulips/dev.png",
       },
     ],
     features: [
-      { en: "Cohesive brand identity across packaging, menu & signage", no: "Helhetlig merkevareidentitet på emballasje, meny & skilting" },
-      { en: "Professional food & interior photography", no: "Profesjonell mat- & interiørfotografering" },
-      { en: "Seasonal short-form video advertising campaign", no: "Sesongbasert kortformat videoannonsekampanje" },
-      { en: "Warm, appetite-driving visual identity", no: "Varm, appetittvekkende visuell identitet" },
-      { en: "Content built for delivery & take-away conversion", no: "Innhold bygget for å konvertere levering & take-away" },
+      { en: "Online appointment booking system", no: "Nettbasert timebestillingssystem" },
+      { en: "Service menu with detailed descriptions and pricing", no: "Tjenesteoversikt med detaljerte beskrivelser og priser" },
+      { en: "Photo gallery of the salon's work", no: "Bildegalleri av salongens arbeid" },
+      { en: "Contact information and location map", no: "Kontaktinformasjon og kart med lokasjon" },
+      { en: "Integration with social media channels", no: "Integrasjon med sosiale medier" },
     ],
-    technologies: ["Brand Identity", "Photography", "Videography", "Social Media Marketing"],
+    technologies: ["Wordpress", "PHP", "JavaScript", "CSS"],
     results: {
       summary: {
-        en: "The new brand identity and seasonal campaign gave Thai Ubon a consistent, premium look across every touchpoint — from the counter to the social feed — helping turn casual passers-by into regular take-away and delivery customers.",
-        no: "Den nye merkevareidentiteten og sesongkampanjen ga Thai Ubon et konsekvent og eksklusivt uttrykk på alle kontaktpunkter — fra disken til feeden i sosiale medier — og bidro til å gjøre tilfeldige forbipasserende til faste take-away- og leveringskunder.",
+        en: "The new website has significantly improved Tulips Beauty's online presence and made it easier for clients to book appointments. The salon has seen an increase in online bookings and new clients since the website's launch.",
+        no: "Den nye nettsiden har betydelig styrket Tulips Beauty sin digitale tilstedeværelse og gjort det enklere for kunder å bestille time. Salongen har sett en økning i nettbaserte bookinger og nye kunder siden lanseringen.",
       },
-      imageUrl: "/images/projects/thai-ubon/pos-closeup.jpg",
+      imageUrl: "/images/projects/tulips/cover.png",
     },
   },
   {
-    id: "kp-accountants",
-    title: { en: "K&P Accountants", no: "K&P Accountants" },
-    description: {
-      en: "Brand identity, office environment & website for a UK accounting and tax advisory firm.",
-      no: "Merkevareidentitet, kontormiljø & nettside for et britisk regnskaps- og skatterådgivningsfirma.",
-    },
-    // TODO(images): process-step and results screenshots still pending
-    // real content from the client.
-    imageUrl: "/images/projects/kp-accountants/office-reception.jpg",
-    projectLink: "/references/kp-accountants",
+    id: "kids-learning-portal",
+    title: { en: "Kids Learning Portal", no: "Læringsportal for barn" },
+    description: { en: "Learning portal for kids.", no: "Læringsportal for barn." },
+    imageUrl: "/images/projects/kidsportal.png",
+    projectLink: "/references/kids-learning-portal",
     featured: true,
-    location: { en: "Hemel Hempstead, UK", no: "Hemel Hempstead, Storbritannia" },
+    location: { en: "Norway", no: "Norge" },
     overview: {
       description1: {
-        en: "K&P Accountants is a UK accounting and tax advisory practice founded in 2011, based in Hemel Hempstead. Aone was brought in to translate their established, fixed-fee practice — covering VAT, CIS, PAYE, Self Assessment, year-end accounts, bookkeeping, company formation, and property tax/CGT — into a cohesive brand across both their physical office and their digital presence.",
-        no: "K&P Accountants er et britisk regnskaps- og skatterådgivningsfirma grunnlagt i 2011, med base i Hemel Hempstead. Aone ble hentet inn for å omsette deres etablerte virksomhet med faste priser — som dekker MVA, CIS, lønn, selvangivelse, årsregnskap, bokføring, selskapsetablering og eiendomsskatt — til en helhetlig merkevare på tvers av både det fysiske kontoret og den digitale tilstedeværelsen.",
+        en: "This project involved designing and developing a modern, user-friendly website for kids learning portal. The goal was to create an engaging platform that offers educational resources, interactive activities, and a safe online environment for children.",
+        no: "Dette prosjektet omfattet design og utvikling av en moderne, brukervennlig nettside for en læringsportal for barn. Målet var å skape en engasjerende plattform som tilbyr læringsressurser, interaktive aktiviteter og et trygt digitalt miljø for barn.",
       },
       description2: {
-        en: "The brief: accounting can feel intimidating or transactional, so the brand needed to project chartered authority and precision while staying approachable for the SMEs, contractors, tradespeople, landlords, and freelancers K&P serves. We paired a deep navy and warm gold palette — anchored by the circular K&P emblem — with natural wood and glass, carrying the same system from the office reception wall through to the website's service pages and self-service HMRC/Companies House resource hub.",
-        no: "Oppdraget: regnskap kan lett oppleves som intimiderende eller transaksjonelt, så merkevaren måtte formidle faglig tyngde og presisjon samtidig som den forble tilgjengelig for de små og mellomstore bedriftene, entreprenørene, håndverkerne, utleierne og frilanserne K&P betjener. Vi kombinerte en dyp marineblå og varm gull palett — forankret i den sirkulære K&P-logoen — med naturlig tre og glass, og førte det samme systemet fra kontorets resepsjonsvegg til nettsidens tjenestesider og selvbetjente ressurssenter for HMRC/Companies House.",
+        en: "where parents create account and add kids to the portal & create kids login credentials and then kids can login and access the learning materials.",
+        no: "Foreldre oppretter en konto og legger til barn i portalen, med egne påloggingsopplysninger for barna, som deretter kan logge inn og få tilgang til læringsmaterialet.",
       },
-      imageUrl: "/images/projects/kp-accountants/reception-desk.jpg",
+      imageUrl: "/images/projects/kidsportal/project1.png",
     },
     process: [
       {
-        title: { en: "Requirements & Compliance Analysis", no: "Krav- & regelverksanalyse" },
+        title: { en: "Discovery & Planning", no: "Kartlegging & planlegging" },
         description: {
-          en: "We mapped the full functional scope with the client — online consultation booking, a secure client portal for document upload, VAT/tax/CIS estimators, an interactive service explorer, an HMRC & Companies House resource hub, and contact/callback forms — alongside the compliance checklist: UK GDPR, WCAG 2.1 AA accessibility, bank-grade encryption, and UK financial regulations/HMRC standards.",
-          no: "Vi kartla hele det funksjonelle omfanget sammen med kunden — nettbasert booking av konsultasjon, en sikker kundeportal for dokumentopplasting, kalkulatorer for MVA/skatt/CIS, en interaktiv tjenesteutforsker, et ressurssenter for HMRC & Companies House, samt kontakt-/tilbakeringingsskjemaer — sammen med regelverkssjekklisten: britisk GDPR, WCAG 2.1 AA-tilgjengelighet, bankgradert kryptering og britiske finansregler/HMRC-standarder.",
+          en: "We began with in-depth consultations to understand the client's business, target audience, and pain points with the existing platform. This phase involved market research, competitor analysis, and defining project scope and objectives.",
+          no: "Vi startet med grundige samtaler for å forstå kundens virksomhet, målgruppe og utfordringer med den eksisterende plattformen. Denne fasen omfattet markedsundersøkelser, konkurrentanalyse og definering av prosjektets omfang og mål.",
         },
-        imageUrl: "/images/projects/kp-accountants/requirements-notes.jpg",
+        imageUrl: "/images/projects/kidsportal/plan.png",
       },
       {
-        title: { en: "Brand & Visual System", no: "Merkevare & visuelt system" },
+        title: { en: "Wireframing & UI/UX Design", no: "Skisser & UI/UX-design" },
         description: {
-          en: "We built the brand around the circular K&P emblem — deep navy for trust and compliance, warm gold for clarity and distinction — then carried it into the physical space: the mark anchors a dark navy feature wall in reception, paired with warm timber joinery and glass meeting rooms.",
-          no: "Vi bygde merkevaren rundt den sirkulære K&P-logoen — dyp marineblå for tillit og regelverksetterlevelse, varm gull for klarhet og særpreg — og førte den videre inn i det fysiske rommet: logoen er forankret på en mørk marineblå fokusvegg i resepsjonen, kombinert med varmt treverk og glassmøterom.",
+          en: "Based on the discovery phase, we created wireframes and interactive prototypes to visualize the new user flows and interface. Our UI/UX team focused on creating an intuitive and aesthetically pleasing design.",
+          no: "Basert på kartleggingsfasen laget vi skisser og interaktive prototyper for å visualisere de nye brukerflytene og grensesnittet. UI/UX-teamet vårt fokuserte på å skape et intuitivt og estetisk tiltalende design.",
         },
-        imageUrl: "/images/projects/kp-accountants/logo.png",
+        imageUrl: "/images/projects/kidsportal/wireframe.png",
       },
       {
-        title: { en: "Service & User Journey Architecture", no: "Tjeneste- & brukerreisearkitektur" },
+        title: { en: "Development & Integration", no: "Utvikling & integrasjon" },
         description: {
-          en: "We mapped the site around how clients actually arrive: new businesses choosing between sole trader, limited company or partnership; ongoing compliance (VAT/MTD, CIS, PAYE/RTI payroll, Self Assessment, year-end accounts); and self-service tools — HMRC and Companies House forms, tax calculators, and statutory dates — all routing toward a low-friction free consultation booking.",
-          no: "Vi kartla nettsiden rundt hvordan kundene faktisk kommer inn: nyetablerte virksomheter som velger mellom enkeltpersonforetak, aksjeselskap eller partnerskap; løpende regelverksetterlevelse (MVA/MTD, CIS, PAYE/lønn, selvangivelse, årsregnskap); og selvbetjeningsverktøy — HMRC- og Companies House-skjemaer, skattekalkulatorer og lovpålagte frister — som alle leder mot en lavterskel booking av gratis konsultasjon.",
+          en: "Our development team brought the designs to life, building a robust and scalable learning platform. This was including integrating a headless CMS for content management, setting up user authentication, and implementing interactive features.",
+          no: "Utviklingsteamet vårt realiserte designene og bygget en robust og skalerbar læringsplattform. Dette inkluderte integrasjon av et headless CMS for innholdsstyring, oppsett av brukerautentisering og implementering av interaktive funksjoner.",
         },
-        imageUrl: "/images/projects/kp-accountants/office-hallway.jpg",
+        imageUrl: "/images/projects/kidsportal/dev.png",
       },
       {
-        title: { en: "Content Accuracy & Trust Signals", no: "Innholdsnøyaktighet & tillitssignaler" },
+        title: { en: "Testing & Deployment", no: "Testing & lansering" },
         description: {
-          en: "As part of launch, we audited every testimonial and review snippet to make sure each one was correctly attributed to K&P Accountants rather than other firm names, and tightened the fixed-fee messaging so pricing transparency comes through clearly on every service page.",
-          no: "Som en del av lanseringen gikk vi gjennom alle kundeomtaler og anmeldelsesutdrag for å sikre at hver av dem var korrekt tilskrevet K&P Accountants og ikke andre firmanavn, og vi strammet opp budskapet om faste priser slik at prisgjennomsiktighet kommer tydelig frem på hver tjenesteside.",
+          en: "Rigorous testing was conducted across various devices and browsers to ensure functionality, performance, and responsiveness. After successful testing, the platform was securely deployed.",
+          no: "Grundig testing ble gjennomført på tvers av ulike enheter og nettlesere for å sikre funksjonalitet, ytelse og responsivitet. Etter vellykket testing ble plattformen sikkert lansert.",
         },
-        imageUrl: "/images/projects/kp-accountants/moodboard.jpg",
-      },
-      {
-        title: { en: "Accessibility, Performance & Compliance Testing", no: "Tilgjengelighet, ytelse & regelverkstesting" },
-        description: {
-          en: "Before launch we tested against the full compliance checklist — GDPR (privacy policy, cookie consent), WCAG AA+ contrast (critical for the navy/gold pairing), semantic HTML with a logical heading hierarchy, and UK business law requirements for terms and conditions — alongside performance and cross-device reliability testing.",
-          no: "Før lansering testet vi mot hele regelverkssjekklisten — GDPR (personvernerklæring, samtykke til informasjonskapsler), WCAG AA+-kontrast (avgjørende for kombinasjonen marineblå/gull), semantisk HTML med en logisk overskriftshierarki, og krav fra britisk næringslovgivning til vilkår og betingelser — sammen med testing av ytelse og pålitelighet på tvers av enheter.",
-        },
-        imageUrl: "/images/projects/kp-accountants/moodboard2.jpg",
+        imageUrl: "/images/projects/kidsportal/deploy.png",
       },
     ],
     features: [
-      { en: "Fixed-fee pricing transparency across every service page", no: "Prisgjennomsiktighet med faste priser på hver tjenesteside" },
-      { en: "Full UK compliance coverage: VAT/MTD, CIS, PAYE, Self Assessment, CGT", no: "Full dekning av britisk regelverk: MVA/MTD, CIS, lønn, selvangivelse, CGT" },
-      { en: "Self-service HMRC & Companies House forms, tax calculators & statutory dates", no: "Selvbetjente HMRC- & Companies House-skjemaer, skattekalkulatorer & lovpålagte frister" },
-      { en: "Low-friction free-consultation booking & direct contact CTAs", no: "Lavterskel booking av gratis konsultasjon & direkte kontakt-CTA-er" },
-      { en: "Audited, accurately attributed client testimonials", no: "Gjennomgåtte kundeomtaler med korrekt tilskrivelse" },
-      { en: "WCAG AA+ accessible navy & gold brand system, office to web", no: "WCAG AA+-tilgjengelig merkevaresystem i marineblått & gull, fra kontor til nett" },
+      { en: "Firebase Authentication for secure user management.", no: "Firebase-autentisering for sikker brukerhåndtering." },
+      { en: "User login with Google", no: "Innlogging med Google" },
+      { en: "Responsive Design for optimal viewing on all devices.", no: "Responsivt design for optimal visning på alle enheter." },
+      { en: "Parents dashboard & children dashboard.", no: "Dashbord for foreldre og barn." },
+      { en: "SEO Optimization for local search visibility.", no: "SEO-optimalisering for lokal søkesynlighet." },
+      { en: "Interactive learning activities including quizzes and video lessons.", no: "Interaktive læringsaktiviteter, inkludert quizer og videoleksjoner." },
     ],
-    technologies: ["Next.js", "React", "CMS", "GDPR Compliance", "WCAG AA+"],
+    technologies: ["Next.js", "React", "Node.js", "Strapi (headless CMS)"],
     results: {
       summary: {
-        en: "K&P Accountants now presents one consistent, chartered-authority brand from the office reception wall through to the website — clear fixed-fee pricing, accurate testimonials, and a self-service compliance toolkit that gives SMEs, contractors, and landlords a straightforward path from browsing services to booking a free consultation.",
-        no: "K&P Accountants fremstår nå med én helhetlig, faglig tung merkevare — fra resepsjonsveggen på kontoret til nettsiden — med tydelige faste priser, korrekte kundeomtaler og et selvbetjent regelverksverktøy som gir SMB-er, entreprenører og utleiere en enkel vei fra å utforske tjenester til å booke en gratis konsultasjon.",
+        en: "The new platform significantly enhanced the learning portal's online presence, leading to a **20% increase in active parent sign-ups** and improved student engagement. The intuitive parent and kids dashboards received positive feedback, contributing to a stronger brand image and increased customer satisfaction.",
+        no: "Den nye plattformen styrket læringsportalens digitale tilstedeværelse betydelig, med en **20 % økning i aktive foreldreregistreringer** og bedre elevengasjement. De intuitive dashbordene for foreldre og barn fikk positive tilbakemeldinger, noe som bidro til et sterkere merkevareinntrykk og økt kundetilfredshet.",
       },
-      imageUrl: "/images/projects/kp-accountants/office-reception.jpg",
+      imageUrl: "/images/projects/kidsportal/result.png",
+    },
+  },
+  {
+    id: "rent-my-property-uk",
+    title: { en: "Rent My Property UK", no: "Rent My Property UK" },
+    description: { en: "A platform for renting properties.", no: "En plattform for utleie av eiendommer." },
+    imageUrl: "/images/projects/rentmypropertyuk.png",
+    projectLink: "/references/rent-my-property-uk",
+    featured: true,
+    location: { en: "United Kingdom", no: "Storbritannia" },
+    overview: {
+      description1: {
+        en: "This project focused on developing a comprehensive online presence for Rent My Property UK, a property management service. Our goal was to create a user-friendly and visually appealing website that would facilitate property listings, inquiries, and bookings.",
+        no: "Dette prosjektet handlet om å utvikle en helhetlig digital tilstedeværelse for Rent My Property UK, en eiendomsforvaltningstjeneste. Målet vårt var å skape en brukervennlig og visuelt tiltalende nettside som forenklet eiendomsannonsering, henvendelser og bookinger.",
+      },
+      description2: { en: "", no: "" },
+      imageUrl: "/images/projects/rentmypropertyuk.png",
+    },
+    process: [
+      {
+        title: { en: "Requirements Gathering & User Needs Assessment", no: "Kravinnhenting & brukerbehovsanalyse" },
+        description: {
+          en: "We started by engaging with the client to understand their business model, target audience, and specific needs for the property management platform. This phase included user surveys and stakeholder interviews to gather comprehensive requirements.",
+          no: "Vi startet med å samarbeide tett med kunden for å forstå forretningsmodellen, målgruppen og de spesifikke behovene for eiendomsforvaltningsplattformen. Denne fasen inkluderte brukerundersøkelser og intervjuer med interessenter for å kartlegge alle krav.",
+        },
+        imageUrl: "/images/projects/rentmyproperty/plan.png",
+      },
+      {
+        title: { en: "UI/UX Redesign & Prototyping", no: "UI/UX-redesign & prototyping" },
+        description: {
+          en: "The design team created wireframes and interactive prototypes to visualize the new user interface. Emphasis was placed on intuitive navigation, clear property listings, and a seamless booking process.",
+          no: "Designteamet laget skisser og interaktive prototyper for å visualisere det nye brukergrensesnittet. Det ble lagt vekt på intuitiv navigasjon, tydelige eiendomsannonser og en sømløs bookingprosess.",
+        },
+        imageUrl: "/images/projects/rentmyproperty/ui.png",
+      },
+      {
+        title: { en: "Development & Feature Implementation", no: "Utvikling & funksjonsimplementering" },
+        description: {
+          en: "Our development team built the website using modern web technologies, ensuring it was responsive and optimized for performance. Key features included property search filters, detailed listings, user accounts, and a secure booking system.",
+          no: "Utviklingsteamet vårt bygget nettsiden med moderne webteknologi, og sikret at den var responsiv og optimalisert for ytelse. Sentrale funksjoner inkluderte søkefiltre for eiendommer, detaljerte annonser, brukerkontoer og et sikkert bookingsystem.",
+        },
+        imageUrl: "/images/projects/rentmyproperty/dev.png",
+      },
+      {
+        title: { en: "Accessibility & Performance Testing", no: "Tilgjengelighets- & ytelsestesting" },
+        description: {
+          en: "Rigorous testing was conducted to ensure the website met accessibility standards and performed well across all devices and browsers. User feedback was incorporated to refine the user experience further.",
+          no: "Grundig testing ble gjennomført for å sikre at nettsiden oppfylte tilgjengelighetsstandarder og fungerte godt på tvers av alle enheter og nettlesere. Brukertilbakemeldinger ble tatt inn for å videreutvikle brukeropplevelsen.",
+        },
+        imageUrl: "/images/projects/rentmyproperty/logo.png",
+      },
+    ],
+    features: [
+      { en: "Responsive Design for optimal viewing on all devices.", no: "Responsivt design for optimal visning på alle enheter." },
+      { en: "Detailed Property Listings with descriptions and amenities.", no: "Detaljerte eiendomsannonser med beskrivelser og fasiliteter." },
+      { en: "SEO Optimization for local search visibility.", no: "SEO-optimalisering for lokal søkesynlighet." },
+    ],
+    technologies: ["WordPress (headless CMS)"],
+    results: {
+      summary: {
+        en: "The revamped Rent My Property UK website successfully enhanced the user experience, leading to increased user engagement and higher booking rates. The client reported positive feedback from users regarding the ease of navigation and the clarity of property information. Overall, the project significantly contributed to the client's business growth and online presence.",
+        no: "Den fornyede Rent My Property UK-nettsiden styrket brukeropplevelsen betydelig, med økt brukerengasjement og høyere bookingrate. Kunden rapporterte positive tilbakemeldinger fra brukere om enkel navigasjon og tydelig eiendomsinformasjon. Samlet sett bidro prosjektet vesentlig til kundens forretningsvekst og digitale tilstedeværelse.",
+      },
+      imageUrl: "/images/projects/rentmyproperty/cover.png",
     },
   },
 ];

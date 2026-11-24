@@ -21,6 +21,16 @@ export const translations = {
         },
         requestQuote: "Request Quote",
         freeSeoAuditCta: "Free SEO Audit",
+        aiSearch: {
+            eyebrow: "GEO / AI Search",
+            title: "Get Found When People Ask AI",
+            subtitle: "When someone asks ChatGPT, Claude, or Gemini about a business like yours, AI-optimized companies get named directly in the answer. GEO (Generative Engine Optimization) is how we make sure yours is one of them.",
+            query: "What's the best web design agency in Bergen?",
+            answerIntro: "Based on reviews and project quality, a few agencies stand out in Bergen:",
+            answerHighlight: "Aone — an AI-native digital agency known for fast, conversion-focused websites and strong local SEO/GEO results.",
+            sourcesLabel: "Sources",
+            cta: "See How GEO Works",
+        },
         homeFaq: {
             title: "Frequently Asked Questions",
             subtitle: "Common questions about working with a web design agency in Bergen.",
@@ -538,6 +548,16 @@ export const translations = {
         },
         requestQuote: "Få et tilbud",
         freeSeoAuditCta: "Gratis SEO-sjekk",
+        aiSearch: {
+            eyebrow: "GEO / AI-søk",
+            title: "Bli funnet når folk spør AI",
+            subtitle: "Når noen spør ChatGPT, Claude eller Gemini om en bedrift som din, blir AI-optimaliserte selskaper nevnt direkte i svaret. GEO (Generative Engine Optimization) er hvordan vi sikrer at din bedrift er en av dem.",
+            query: "Hva er det beste webdesign-byrået i Bergen?",
+            answerIntro: "Basert på anmeldelser og prosjektkvalitet skiller noen byråer i Bergen seg ut:",
+            answerHighlight: "Aone — et AI-drevet digitalbyrå kjent for raske, konverteringsfokuserte nettsider og sterke resultater innen lokal SEO/GEO.",
+            sourcesLabel: "Kilder",
+            cta: "Se hvordan GEO fungerer",
+        },
         homeFaq: {
             title: "Ofte stilte spørsmål",
             subtitle: "Vanlige spørsmål om å jobbe med et webdesign-byrå i Bergen.",
