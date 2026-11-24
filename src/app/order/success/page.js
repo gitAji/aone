@@ -99,7 +99,8 @@ function SuccessPageContent() {
             doc.setFontSize(12);
             doc.text(`Date: ${new Date(orderData.createdAt || Date.now()).toLocaleDateString()}`, 20, 30);
             doc.text(`Order ID: ${orderId}`, 20, 38);
-            
+            doc.text('Service Provider: Aone Kumarasamy (Org. nr. 922 103 682)', 20, 46);
+
             doc.setFontSize(16);
             doc.text('CUSTOMER DETAILS', 20, 55);
             
@@ -129,7 +130,7 @@ function SuccessPageContent() {
             doc.setFontSize(10);
             const terms = [
                 '1. The customer agrees to pay the stated total for digital services.',
-                '2. Aone.no will deliver services according to the selected package specifications.',
+                '2. Aone Kumarasamy will deliver services according to the selected package specifications.',
                 '3. This agreement is legally binding once payment is processed or selection is secured.'
             ];
             doc.text(terms, 20, 175);
@@ -144,7 +145,7 @@ function SuccessPageContent() {
                 'A comprehensive Master Service Agreement (MSA) and',
                 'detailed Project Plan will be signed during kick-off.',
                 'Service starts only after full initial payment.',
-                '© Aone.no Digital Agency'
+                '© Aone Kumarasamy, org. nr. 922 103 682'
             ];
             doc.text(footer, 20, 225);
             

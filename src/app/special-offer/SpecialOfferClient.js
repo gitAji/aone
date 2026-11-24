@@ -16,7 +16,7 @@ const AGREEMENT_TEXT = {
     clauses: [
       {
         title: "1. Scope",
-        body: "Aone.no delivers a managed website, hosting, an Admin Panel (text/menu/price edits), and daily technical maintenance, per the selected package. The domain is not included -- the Client points their own domain to Aone.no within 5 business days.",
+        body: "Aone Kumarasamy (org. nr. 922 103 682), operating the website under the name Aone.no, delivers a managed website, hosting, an Admin Panel (text/menu/price edits), and daily technical maintenance, per the selected package. The domain is not included -- the Client points their own domain to Aone.no within 5 business days.",
       },
       {
         title: "2. Hosting & Source Code",
@@ -28,7 +28,7 @@ const AGREEMENT_TEXT = {
       },
       {
         title: "4. Liability & Law",
-        body: "The Service runs via third-party providers; Aone.no accepts no liability for downtime, data loss, or third-party failures, except where caused by Aone.no's gross negligence or willful misconduct. Governed by Norwegian law.",
+        body: "The Service runs via third-party providers; Aone Kumarasamy accepts no liability for downtime, data loss, or third-party failures, except where caused by Aone Kumarasamy's gross negligence or willful misconduct. Governed by Norwegian law.",
       },
       {
         title: "5. Business Customers Only",
@@ -41,7 +41,7 @@ const AGREEMENT_TEXT = {
     clauses: [
       {
         title: "1. Omfang",
-        body: "Aone.no leverer en administrativt styrt nettside, hosting, et Admin Panel (redigering av tekst/meny/priser) og daglig teknisk vedlikehold, i henhold til valgt pakke. Domene er ikke inkludert -- Kunden peker eget domene til Aone.no innen 5 virkedager.",
+        body: "Aone Kumarasamy (org.nr. 922 103 682), som driver nettsiden under navnet Aone.no, leverer en administrativt styrt nettside, hosting, et Admin Panel (redigering av tekst/meny/priser) og daglig teknisk vedlikehold, i henhold til valgt pakke. Domene er ikke inkludert -- Kunden peker eget domene til Aone.no innen 5 virkedager.",
       },
       {
         title: "2. Hosting & kildekode",
@@ -53,7 +53,7 @@ const AGREEMENT_TEXT = {
       },
       {
         title: "4. Ansvar & lovvalg",
-        body: "Tjenesten driftes via tredjepartsleverandører; Aone.no påtar seg intet ansvar for nedetid, datatap eller tredjepartsfeil, med mindre dette skyldes grov uaktsomhet eller forsett fra Aone.no sin side. Reguleres av norsk rett.",
+        body: "Tjenesten driftes via tredjepartsleverandører; Aone Kumarasamy påtar seg intet ansvar for nedetid, datatap eller tredjepartsfeil, med mindre dette skyldes grov uaktsomhet eller forsett fra Aone Kumarasamy sin side. Reguleres av norsk rett.",
       },
       {
         title: "5. Kun næringsdrivende",

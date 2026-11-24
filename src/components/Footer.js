@@ -159,7 +159,7 @@ const Footer = () => {
 
         <div className="footer-bottom mt-12 pt-8 border-t border-slate-800 text-center">
           <p className="text-slate-500 text-xs tracking-wide">
-            &copy; {new Date().getFullYear()} Aone.no. {t('footer.rights')}
+            &copy; {new Date().getFullYear()} Aone. {t('footer.rights')}
           </p>
         </div>
       </motion.div>

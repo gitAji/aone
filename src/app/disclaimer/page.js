@@ -29,7 +29,7 @@ const DisclaimerPage = () => {
     <div className="bg-slate-50 dark:bg-[#020617] min-h-screen pb-32">
       <HeroSection 
         title="Disclaimer" 
-        subtitle="The information provided on Aone.no is for general informational purposes only." 
+        subtitle="The information provided on Aone.no is for general informational purposes only."
       />
       
       <main className="container mx-auto px-6 mt-12">

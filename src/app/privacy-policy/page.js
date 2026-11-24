@@ -87,7 +87,7 @@ const PrivacyPolicyPage = () => {
       doc.setFontSize(10);
       doc.text('Last Updated: October 2, 2025', marginX, y);
       y += 6;
-      doc.text('Aone.no - Norway', marginX, y);
+      doc.text('Aone Kumarasamy - Org. nr. 922 103 682 - Norway', marginX, y);
       y += 6;
       doc.line(marginX, y, 190, y);
       y += 10;
@@ -178,7 +178,7 @@ const PrivacyPolicyPage = () => {
           <div className="flex-1 max-w-4xl">
             <div className="mb-12">
               <p className="text-xl text-slate-500 dark:text-slate-300 leading-relaxed mb-12 italic">
-                Aone.no is committed to protecting the privacy of our users. This policy explains how we handle your information with the same precision and care we apply to our digital projects.
+                Aone Kumarasamy (org. nr. 922 103 682), operating the website Aone.no, is committed to protecting the privacy of our users. This policy explains how we handle your information with the same precision and care we apply to our digital projects.
               </p>
               <div className="flex flex-wrap gap-4 items-center mb-12 lg:hidden">
                 <button
