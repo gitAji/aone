@@ -4,7 +4,7 @@ import { verifyAdminSession, ADMIN_COOKIE_NAME } from '@/lib/adminAuth';
 import SubmissionsClient from './SubmissionsClient';
 
 export const metadata = {
-  title: 'Submissions & Orders | Aone Admin',
+  title: 'Submissions & Orders | Aone.no Admin',
   robots: { index: false, follow: false },
 };
 

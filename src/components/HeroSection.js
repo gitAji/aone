@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLanguage } from "@/context/LanguageContext";
-import { FaArrowRight, FaChevronDown } from "react-icons/fa";
+import { FaArrowRight, FaChevronDown, FaShieldAlt } from "react-icons/fa";
 import AnimatedGrid from "./AnimatedGrid";
 
 // Helper to highlight the marked character (preceded by |)
@@ -159,6 +159,18 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
                   <FaArrowRight className="text-sm transition-transform duration-200 group-hover/link:translate-x-1" />
                 </Link>
               </div>
+
+              {/* Risk-reversal + social proof directly under the CTA --
+                  reduces the perceived risk of clicking and backs the pitch
+                  with real numbers already shown elsewhere (About page
+                  stats), instead of asking for trust on copy alone. */}
+              <p className="mt-6 flex items-center justify-center gap-2 text-sm font-medium text-slate-500 dark:text-slate-400">
+                <FaShieldAlt className="text-rose-500 text-xs shrink-0" />
+                {t('hero.riskReversal')}
+              </p>
+              <p className="mt-2 text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-600">
+                {t('hero.trustStats')}
+              </p>
             </>
           ) : (
             <>

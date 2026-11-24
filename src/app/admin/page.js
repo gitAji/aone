@@ -8,7 +8,7 @@ import AdminDashboardClient from './AdminDashboardClient';
 // rank. middleware.js keeps it out of reach of anyone without a session,
 // but a disallowed/noindex page is still worth being explicit about.
 export const metadata = {
-  title: 'Admin Dashboard | Aone',
+  title: 'Admin Dashboard | Aone.no',
   robots: { index: false, follow: false },
 };
 

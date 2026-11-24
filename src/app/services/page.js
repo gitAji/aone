@@ -5,7 +5,7 @@ export const metadata = {
   description: "Comprehensive AI and digital services. From web development to AI agents, we build the digital core of modern businesses in Norway.",
   keywords: "Digital agency Bergen, AI services Norway, Web development Oslo, Custom AI chatbots, AI search optimization, branding agency Bergen",
   openGraph: {
-    title: "Elite AI & Digital Services | Aone",
+    title: "Elite AI & Digital Services | Aone.no",
     description: "Explore our comprehensive suite of AI-native services designed to scale your business.",
     url: "https://aone.no/services",
   },

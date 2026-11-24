@@ -87,7 +87,7 @@ const PrivacyPolicyPage = () => {
       doc.setFontSize(10);
       doc.text('Last Updated: October 2, 2025', marginX, y);
       y += 6;
-      doc.text('Aone - Norway', marginX, y);
+      doc.text('Aone.no - Norway', marginX, y);
       y += 6;
       doc.line(marginX, y, 190, y);
       y += 10;

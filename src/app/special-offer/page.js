@@ -1,8 +1,8 @@
 import SpecialOfferClient from './SpecialOfferClient';
 
 export const metadata = {
-  title: "Special Offer | Aone",
-  description: "Exclusive pricing for select Aone customers.",
+  title: "Special Offer | Aone.no",
+  description: "Exclusive pricing for select Aone.no customers.",
   robots: {
     index: false,
     follow: false,

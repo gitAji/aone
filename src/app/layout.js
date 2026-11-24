@@ -34,7 +34,7 @@ export const viewport = {
 
 export const metadata = {
   metadataBase: new URL('https://aone.no'),
-  title: "Aone | Webdesign Bergen, Webutvikling & AI-byrå Norge",
+  title: "Aone.no | Webdesign Bergen, Webutvikling & AI-byrå Norge",
   description: "Ledende AI-drevet digitalt byrå i Bergen. Vi leverer premium webdesign, webutvikling (Next.js) og forretnings-AI (chatbots & automatisering) i Norge.",
   keywords:
     "AI Agency Norway, Web Design Bergen, Web Designer Bergen, Web Designers in Bergen Norway, Digital Designer Bergen, Digital Solutions Norway, AI Solutions Norway, AI Automation Norway, Custom AI Chatbots Bergen, GEO SEO, Generative Engine Optimization, SGE Optimization, High Performance Websites Norway, Next.js Development Norway, Digital Transformation Bergen, AI Business Solutions Oslo, Webutvikling Bergen, Webdesigner Bergen, Webdesignere i Bergen, Nettbyrå Bergen, Nettsider Bergen, Digital Designer, Digitale Løsninger, AI-løsninger, AI-automatisering Bergen, Digitalbyrå Bergen, Digital Marketing Bergen, AI-drevet markedsføring, Kunstig intelligens firma Norge, GEO-optimalisering Norge, LLM implementering",
@@ -59,10 +59,10 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: "Aone | Webdesign Bergen, Webutvikling & AI-byrå Norge",
+    title: "Aone.no | Webdesign Bergen, Webutvikling & AI-byrå Norge",
     description: "Ledende AI-drevet digitalt byrå i Bergen. Vi leverer premium webdesign, webutvikling (Next.js) og forretnings-AI (chatbots & automatisering) i Norge.",
     url: "https://aone.no",
-    siteName: "Aone",
+    siteName: "Aone.no",
     locale: "nb_NO",
     type: "website",
     images: [
@@ -70,13 +70,13 @@ export const metadata = {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Aone | AI-drevet digitalt byrå i Bergen",
+        alt: "Aone.no | AI-drevet digitalt byrå i Bergen",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aone | Webdesign Bergen, Webutvikling & AI-byrå Norge",
+    title: "Aone.no | Webdesign Bergen, Webutvikling & AI-byrå Norge",
     description: "Ledende AI-drevet digitalt byrå i Bergen. Premium webdesign, webutvikling og forretnings-AI for norske bedrifter.",
     images: ["/images/og-image.png"],
   },
@@ -169,7 +169,7 @@ export default function RootLayout({ children }) {
                   {
                     "@type": "Organization",
                     "@id": "https://aone.no/#organization",
-                    "name": "Aone",
+                    "name": "Aone.no",
                     "url": "https://aone.no",
                     "logo": {
                       "@type": "ImageObject",
@@ -218,7 +218,7 @@ export default function RootLayout({ children }) {
                   {
                     "@type": "ProfessionalService",
                     "@id": "https://aone.no/#service",
-                    "name": "Aone",
+                    "name": "Aone.no",
                     "image": "https://aone.no/images/logo.png",
                     "url": "https://aone.no",
                     "telephone": "+4740071654",
@@ -252,7 +252,7 @@ export default function RootLayout({ children }) {
                     "@type": "WebSite",
                     "@id": "https://aone.no/#website",
                     "url": "https://aone.no",
-                    "name": "Aone",
+                    "name": "Aone.no",
                     "publisher": {
                       "@id": "https://aone.no/#organization"
                     },

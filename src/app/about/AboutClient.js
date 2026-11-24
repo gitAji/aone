@@ -28,13 +28,13 @@ const TESTIMONIALS = [
     name: "K&P Accountants",
     logo: "/images/clients/kp-accountants.png",
     review:
-      "Aone gave our practice a presence that finally matches how we work -- the navy and gold branding ties our office and website together, and clients take us seriously from the first click.",
+      "Aone.no gave our practice a presence that finally matches how we work -- the navy and gold branding ties our office and website together, and clients take us seriously from the first click.",
   },
   {
     name: "Thai Ubon Take-Away",
     logo: "/images/clients/thai-ubon.png",
     review:
-      "The photography and branding Aone created make our food look as good online as it tastes in the restaurant -- we've seen a real jump in take-away orders since launch.",
+      "The photography and branding Aone.no created make our food look as good online as it tastes in the restaurant -- we've seen a real jump in take-away orders since launch.",
   },
   {
     name: "Rent My Property UK",
