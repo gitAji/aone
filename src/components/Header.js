@@ -41,16 +41,16 @@ const Header = () => {
 
         <div className="flex items-center gap-2 sm:gap-3">
           {/* Secondary CTA -- a lighter-weight, lower-commitment conversion
-              path next to the primary one. Hidden below sm: the mobile row
-              is already tight with the primary CTA + theme/language
-              switches + hamburger, so a second full button there would
-              crowd it; reachable from the hamburger menu on mobile instead. */}
+              path next to the primary one. Kept visible at every breakpoint
+              (including mobile) rather than tucked in the hamburger menu, so
+              it's reachable in one tap on any device; text drops on the
+              narrowest phones (icon-only) to keep the row from crowding. */}
           <Link
             href="/free-seo-audit"
-            className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider rounded-full border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-rose-500 hover:text-rose-500 dark:hover:border-rose-500 dark:hover:text-rose-400 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 whitespace-nowrap shrink-0"
+            className="inline-flex items-center gap-1.5 px-2.5 sm:px-4 py-2 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider rounded-full border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-rose-500 hover:text-rose-500 dark:hover:border-rose-500 dark:hover:text-rose-400 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 whitespace-nowrap shrink-0"
           >
             <FaSearch className="text-[9px]" />
-            <span>{t('freeSeoAuditCta')}</span>
+            <span className="hidden min-[400px]:inline">{t('freeSeoAuditCta')}</span>
           </Link>
           {/* Visible at every breakpoint -- a direct conversion action should
               be reachable in 1 click from any page, not just on desktop. */}
