@@ -70,7 +70,7 @@ const TermsAndConditionsPage = () => {
             <div className="h-[1px] w-full bg-slate-200 dark:bg-slate-800 mb-12"></div>
 
             <Section id="intro" title="1. Introduction">
-              <p>These terms and conditions govern your use of Aone.no. They constitute a legally binding agreement between you and Aone. If you do not agree with any part of these terms, please discontinue use immediately.</p>
+              <p>These terms and conditions govern your use of Aone.no. They constitute a legally binding agreement between you and Aone.no. If you do not agree with any part of these terms, please discontinue use immediately.</p>
             </Section>
 
             <Section id="intellectual" title="2. Intellectual Property Rights">
@@ -97,16 +97,16 @@ const TermsAndConditionsPage = () => {
             </Section>
 
             <Section id="content" title="4. Your Content">
-              <p className="mb-4">&quot;Your Content&quot; refers to any text, images, or audio you choose to display on the Site. By displaying it, you grant Aone a non-exclusive license to adapt and distribute it across our platforms.</p>
+              <p className="mb-4">&quot;Your Content&quot; refers to any text, images, or audio you choose to display on the Site. By displaying it, you grant Aone.no a non-exclusive license to adapt and distribute it across our platforms.</p>
               <p className="font-bold border-l-4 border-rose-500 pl-4 py-2 bg-rose-500/5">Your content must be your own and must not infringe on any third-party rights. We reserve the right to remove any content without notice.</p>
             </Section>
 
             <Section id="warranties" title="5. No Warranties">
-              <p>This Website is provided &quot;as is,&quot; with all faults, and Aone makes no express or implied representations or warranties of any kind related to this Website or the materials contained on it. Nothing on this website constitutes professional consultancy or legal advice.</p>
+              <p>This Website is provided &quot;as is,&quot; with all faults, and Aone.no makes no express or implied representations or warranties of any kind related to this Website or the materials contained on it. Nothing on this website constitutes professional consultancy or legal advice.</p>
             </Section>
 
             <Section id="liability" title="6. Limitation of Liability">
-              <p>In no event shall Aone, nor any of its officers or employees, be held liable for anything arising out of or in any way connected with your use of this website, whether such liability is under contract or tort.</p>
+              <p>In no event shall Aone.no, nor any of its officers or employees, be held liable for anything arising out of or in any way connected with your use of this website, whether such liability is under contract or tort.</p>
             </Section>
 
             <Section id="jurisdiction" title="7. Governing Law & Jurisdiction">

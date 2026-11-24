@@ -2,7 +2,7 @@
 // export metadata directly -- same pattern as the other client-component
 // routes in this app (see privacy-policy/layout.js etc).
 export const metadata = {
-  title: 'Admin Login | Aone',
+  title: 'Admin Login | Aone.no',
   robots: { index: false, follow: false },
 };
 

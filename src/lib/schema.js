@@ -1,7 +1,7 @@
 /**
  * Firestore Database Schema Reference
  * 
- * This file documents the structure of the collections used in Aone.
+ * This file documents the structure of the collections used in Aone.no.
  * These are created automatically when documents are added via the API routes.
  */
 

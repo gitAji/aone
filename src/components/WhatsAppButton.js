@@ -5,14 +5,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaWhatsapp, FaTimes, FaPaperPlane } from "react-icons/fa";
 import { useLanguage } from "@/context/LanguageContext";
 
-// Aone's existing published business number (same one in the footer/header
+// Aone.no's existing published business number (same one in the footer/header
 // and the site's schema.org JSON-LD) -- confirmed with the business owner
 // as the number to use for WhatsApp too.
 const WHATSAPP_NUMBER = "4740071654";
 
 const PREFILLED_MESSAGE = {
-  en: "Hi Aone! I'd like to talk about a project.",
-  no: "Hei Aone! Jeg ønsker å snakke om et prosjekt.",
+  en: "Hi Aone.no! I'd like to talk about a project.",
+  no: "Hei Aone.no! Jeg ønsker å snakke om et prosjekt.",
 };
 
 const WELCOME_TEXT = {

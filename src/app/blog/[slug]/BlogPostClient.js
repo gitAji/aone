@@ -66,7 +66,7 @@ const BlogPostClient = ({ post }) => {
                                                 {t('blog.architect') || "Architect"}
                                             </p>
                                             <p className="text-sm font-bold">
-                                                {t('blog.team') || "Aone Team"}
+                                                {t('blog.team') || "Aone.no Team"}
                                             </p>
                                         </div>
                                     </div>

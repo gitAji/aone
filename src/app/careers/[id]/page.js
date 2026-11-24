@@ -8,7 +8,7 @@ export async function generateMetadata({ params }) {
 
   if (!vacancy) {
     return {
-      title: "Role Not Found | Aone Careers",
+      title: "Role Not Found | Aone.no Careers",
     };
   }
 
@@ -17,8 +17,8 @@ export async function generateMetadata({ params }) {
   const summary = vacancy.summary.no || vacancy.summary.en;
 
   return {
-    title: `${title} | Aone Careers`,
-    description: `Join Aone as a ${title} in ${location}. ${summary.slice(0, 100)}...`,
+    title: `${title} | Aone.no Careers`,
+    description: `Join Aone.no as a ${title} in ${location}. ${summary.slice(0, 100)}...`,
   };
 }
 

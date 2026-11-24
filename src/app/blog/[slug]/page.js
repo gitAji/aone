@@ -21,7 +21,7 @@ export async function generateMetadata({ params }) {
   const { post } = await fetchPostBySlug(slug);
 
   if (!post) {
-    return { title: 'Innlegg ikke funnet | Aone Blogg' };
+    return { title: 'Innlegg ikke funnet | Aone.no Blogg' };
   }
 
   const title = stripHtml(post.title?.rendered);
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }) {
   const url = `https://aone.no/blog/${slug}`;
 
   return {
-    title: `${title} | Aone Blogg`,
+    title: `${title} | Aone.no Blogg`,
     description,
     alternates: { canonical: url },
     openGraph: {
@@ -72,10 +72,10 @@ export default async function BlogPostPage({ params }) {
     datePublished: post.date,
     dateModified: post.modified || post.date,
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-    author: { '@type': 'Organization', name: 'Aone' },
+    author: { '@type': 'Organization', name: 'Aone.no' },
     publisher: {
       '@type': 'Organization',
-      name: 'Aone',
+      name: 'Aone.no',
       logo: { '@type': 'ImageObject', url: 'https://aone.no/images/logo.png' },
     },
   };

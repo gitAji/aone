@@ -337,7 +337,7 @@ function OrderPageContent() {
             doc.setFontSize(10);
             const terms = [
                 '1. The customer agrees to pay the stated total for digital services.',
-                '2. Aone will deliver services according to the selected package specifications.',
+                '2. Aone.no will deliver services according to the selected package specifications.',
                 '3. This agreement is legally binding once payment is processed or selection is secured.'
             ];
             doc.text(terms, 20, 170);
@@ -351,7 +351,7 @@ function OrderPageContent() {
                 'binding commitment period. A comprehensive Master Service',
                 'Agreement (MSA) and detailed Project Plan will be signed',
                 'during kick-off. Service starts only after full initial payment.',
-                '© Aone Digital Agency'
+                '© Aone.no Digital Agency'
             ];
             doc.text(footer, 20, 225);
             
@@ -846,12 +846,12 @@ function OrderPageContent() {
                                                 <div className="bg-slate-100 rounded-[2rem] p-8 mb-8 border border-slate-200 shadow-inner max-h-48 overflow-y-auto scrollbar-thin scrollbar-thumb-slate-300">
                                                     <div className="text-xs text-slate-600 leading-relaxed font-bold space-y-4">                                                         <h5 className="font-black text-slate-900 uppercase">1. Scope of Agreement</h5>
                                                          <p className="text-sm leading-relaxed text-slate-600 mb-6">
-                                                             This Agreement is entered into between {formData.businessName || "the Client"} and Aone Digital Agency. By proceeding, the Client agrees to the selected {selectedPack?.name} package, billed monthly or yearly with no fixed binding period -- the Client may cancel at any time before the next billing date.
+                                                             This Agreement is entered into between {formData.businessName || "the Client"} and Aone.no Digital Agency. By proceeding, the Client agrees to the selected {selectedPack?.name} package, billed monthly or yearly with no fixed binding period -- the Client may cancel at any time before the next billing date.
                                                          </p>
 
                                                          <h5 className="font-black text-slate-900 uppercase">2. Service Commencement, Hosting & Source Code</h5>
                                                          <p className="text-sm leading-relaxed text-slate-600 mb-6 font-bold italic">
-                                                             Services begin officially once the initial payment is cleared. The website is hosted and operated on Aone&apos;s own service, pointed to the Client&apos;s domain, for as long as the subscription is active -- the Client is not given direct access to the source code or hosting panel. A full transfer of the website files, backups (including any database), and the admin panel is available as a separate, additional paid service upon request or at termination.
+                                                             Services begin officially once the initial payment is cleared. The website is hosted and operated on Aone.no&apos;s own service, pointed to the Client&apos;s domain, for as long as the subscription is active -- the Client is not given direct access to the source code or hosting panel. A full transfer of the website files, backups (including any database), and the admin panel is available as a separate, additional paid service upon request or at termination.
                                                          </p>
 
                                                          <h5 className="font-black text-slate-900 uppercase">3. Maintenance & Support (Monthly)</h5>

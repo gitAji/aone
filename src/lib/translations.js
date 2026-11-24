@@ -26,7 +26,7 @@ export const translations = {
             items: [
                 {
                     q: "Why choose a web design agency in Bergen over a national one?",
-                    a: "A local Bergen web design agency understands the Vestland market, can meet in person, and knows the local competitive landscape. Aone combines that local knowledge with AI-driven solutions most traditional agencies don't offer.",
+                    a: "A local Bergen web design agency understands the Vestland market, can meet in person, and knows the local competitive landscape. Aone.no combines that local knowledge with AI-driven solutions most traditional agencies don't offer.",
                 },
                 {
                     q: "What does web design in Bergen cost?",
@@ -51,6 +51,8 @@ export const translations = {
             inspire: "2026.",
             subtitle: "From AI chatbots to lightning-fast websites, we create digital experiences that drive real business results for Norwegian and international clients.",
             cta: "Get a Quote",
+            trustStats: "15+ years of experience · 200+ happy clients · 250+ projects delivered",
+            riskReversal: "No obligation — we respond within 24 hours.",
             phrases: [
                 "Web Design & |AI Solutions in Bergen.",
                 "Leading |Web Designers in Bergen.",
@@ -236,7 +238,7 @@ export const translations = {
             factSheetTitle: "AI Directory Fact Sheet",
             factSheetDesc: "Structured company information curated for semantic indexing and AI generative search engines.",
             agencyNameLabel: "Agency Name",
-            agencyNameVal: "Aone",
+            agencyNameVal: "Aone.no",
             primaryFocusLabel: "Primary Focus",
             primaryFocusVal: "AI-Native Web Design & Development, Search Engine Optimization (SEO), WordPress Development with user-managed CMS, Digital Branding, Custom Business Workflows, and Generative Engine Optimization (GEO)",
             serviceFormatLabel: "Service Format",
@@ -421,7 +423,7 @@ export const translations = {
             errorTitle: "Connection Lost",
             tryAgain: "Try Reconnecting",
             minRead: "5 Min Read",
-            team: "Aone Team",
+            team: "Aone.no Team",
             notFoundTitle: "Post Not Found",
             notFoundDesc: "The digital trail you're following seems to have gone cold. It might have been relocated or archived.",
             returnToRepository: "Return to Repository",
@@ -436,9 +438,9 @@ export const translations = {
             pageOf: "Page {current} of {total}",
         },
         careers: {
-            title: "Join the Aone Team",
+            title: "Join the Aone.no Team",
             subtitle: "Help us shape the future of AI-native digital experiences.",
-            whyTitle: "Why Aone?",
+            whyTitle: "Why Aone.no?",
             whyHeader: "Work where ambition meets craft.",
             whyDesc: "We are a lean, elite digital agency building next-generation experiences. Every person here has an outsized impact.",
             perks: {
@@ -473,12 +475,12 @@ export const translations = {
         },
         apply: {
             title: "Apply Today",
-            subtitle: "Embark on your journey with Aone. Complete the form below to start your application.",
+            subtitle: "Embark on your journey with Aone.no. Complete the form below to start your application.",
             toastSuccess: "Thank you for reaching out! We have received your details and will contact you soon.",
             toastError: "Failed to submit application. Please try again.",
             toastUnexpected: "An unexpected error occurred. Please try again later.",
             messageReceived: "Message Received!",
-            messageReceivedDesc: "Thank you for reaching out to join the Aone team. We've received your details and will review them carefully. If your profile matches our requirements, we'll be in touch within 5-7 business days.",
+            messageReceivedDesc: "Thank you for reaching out to join the Aone.no team. We've received your details and will review them carefully. If your profile matches our requirements, we'll be in touch within 5-7 business days.",
             backToCareers: "Back to Careers",
             contactUs: "Contact Us",
             gdprText: "Confidentiality Guaranteed. We respect your privacy and handle all data in accordance with our GDPR policy.",
@@ -497,7 +499,7 @@ export const translations = {
             portfolioPlaceholder: "https://",
             cvLink: "Resume / CV Link",
             cvPlaceholder: "Shared Drive Link",
-            coverLetter: "Cover Letter / Why Aone?",
+            coverLetter: "Cover Letter / Why Aone.no?",
             coverLetterPlaceholder: "Tell us about yourself and why you're a good fit...",
             submitting: "Submitting...",
             sendBtn: "Send Application",
@@ -509,7 +511,7 @@ export const translations = {
                 step3Title: "Assessment",
                 step3Desc: "Practical task evaluation.",
                 step4Title: "Offer",
-                step4Desc: "Welcome to the Aone crew.",
+                step4Desc: "Welcome to the Aone.no crew.",
             }
         }
     },
@@ -540,7 +542,7 @@ export const translations = {
             items: [
                 {
                     q: "Hvorfor velge et webdesign-byrå i Bergen fremfor et nasjonalt byrå?",
-                    a: "Et lokalt webdesign-byrå i Bergen kjenner Vestland-markedet, kan møtes fysisk, og forstår den lokale konkurransen. Aone kombinerer denne lokalkunnskapen med AI-drevne løsninger som de fleste tradisjonelle byråer ikke tilbyr.",
+                    a: "Et lokalt webdesign-byrå i Bergen kjenner Vestland-markedet, kan møtes fysisk, og forstår den lokale konkurransen. Aone.no kombinerer denne lokalkunnskapen med AI-drevne løsninger som de fleste tradisjonelle byråer ikke tilbyr.",
                 },
                 {
                     q: "Hva koster webdesign i Bergen?",
@@ -565,6 +567,8 @@ export const translations = {
             inspire: "2026.",
             subtitle: "Fra AI-chatbots til lynraske nettsteder, vi skaper digitale opplevelser som gir ekte forretningsresultater for bedrifter i Bergen og resten av Norge.",
             cta: "Få et tilbud",
+            trustStats: "15+ års erfaring · 200+ fornøyde kunder · 250+ leverte prosjekter",
+            riskReversal: "Ingen forpliktelser — vi svarer innen 24 timer.",
             phrases: [
                 "Webdesign i |Bergen som konverterer.",
                 "Ledende |webdesignere i Bergen.",
@@ -750,7 +754,7 @@ export const translations = {
             factSheetTitle: "Faktaark for AI-søk",
             factSheetDesc: "Strukturert bedriftsinformasjon tilrettelagt for semantisk indeksering og AI-baserte søkemotorer.",
             agencyNameLabel: "Byrånavn",
-            agencyNameVal: "Aone",
+            agencyNameVal: "Aone.no",
             primaryFocusLabel: "Primærfokus",
             primaryFocusVal: "AI-native nettsystemer og webdesign, søkemotoroptimalisering (SEO), WordPress-utvikling med brukerstyrt CMS-innholdshåndtering, digital merkevarebygging, skreddersydde arbeidsflyter og Generative Engine Optimization (GEO)",
             serviceFormatLabel: "Tjenesteformat",
@@ -935,7 +939,7 @@ export const translations = {
             errorTitle: "Tilkobling avbrutt",
             tryAgain: "Prøv å koble til på nytt",
             minRead: "5 min lesning",
-            team: "Aone-teamet",
+            team: "Aone.no-teamet",
             notFoundTitle: "Innlegget ble ikke funnet",
             notFoundDesc: "Det digitale sporet du følger ser ut til å ha blitt kaldt. Det kan ha blitt flyttet eller arkivert.",
             returnToRepository: "Gå tilbake til arkiv",
@@ -950,9 +954,9 @@ export const translations = {
             pageOf: "Side {current} av {total}",
         },
         careers: {
-            title: "Bli en del av Aone-teamet",
+            title: "Bli en del av Aone.no-teamet",
             subtitle: "Hjelp oss med å forme fremtiden for AI-native digitale opplevelser.",
-            whyTitle: "Hvorfor Aone?",
+            whyTitle: "Hvorfor Aone.no?",
             whyHeader: "Jobb der ambisjon møter håndverk.",
             whyDesc: "Vi er et slankt, elite digitalt byrå som bygger neste generasjons opplevelser. Hver person her har en enorm innvirkning.",
             perks: {
@@ -987,12 +991,12 @@ export const translations = {
         },
         apply: {
             title: "Søk i dag",
-            subtitle: "Start din reise med Aone. Fyll ut skjemaet under for å starte søknaden din.",
+            subtitle: "Start din reise med Aone.no. Fyll ut skjemaet under for å starte søknaden din.",
             toastSuccess: "Takk for at du tok kontakt! Vi har mottatt opplysningene dine og vil kontakte deg snart.",
             toastError: "Kunne ikke sende søknaden. Prøv igjen.",
             toastUnexpected: "En uventet feil oppstod. Prøv igjen senere.",
             messageReceived: "Søknad mottatt!",
-            messageReceivedDesc: "Takk for at du søkte på jobb hos Aone. Vi har mottatt opplysningene dine og vil vurdere dem nøye. Hvis profilen din passer våre behov, tar vi kontakt innen 5-7 virkedager.",
+            messageReceivedDesc: "Takk for at du søkte på jobb hos Aone.no. Vi har mottatt opplysningene dine og vil vurdere dem nøye. Hvis profilen din passer våre behov, tar vi kontakt innen 5-7 virkedager.",
             backToCareers: "Tilbake til karrierer",
             contactUs: "Kontakt oss",
             gdprText: "Konfidensialitet garantert. Vi respekterer personvernet ditt og behandler alle data i samsvar med vår GDPR-policy.",
@@ -1011,7 +1015,7 @@ export const translations = {
             portfolioPlaceholder: "https://",
             cvLink: "CV-lenke",
             cvPlaceholder: "Delt stasjonslenke (f.eks. Google Drive)",
-            coverLetter: "Søknadsbrev / Hvorfor Aone?",
+            coverLetter: "Søknadsbrev / Hvorfor Aone.no?",
             coverLetterPlaceholder: "Fortell oss om deg selv og hvorfor du passer til rollen...",
             submitting: "Sender inn...",
             sendBtn: "Send søknad",
@@ -1023,7 +1027,7 @@ export const translations = {
                 step3Title: "Evaluering",
                 step3Desc: "Praktisk oppgaveevaluering.",
                 step4Title: "Tilbud",
-                step4Desc: "Velkommen til Aone-teamet.",
+                step4Desc: "Velkommen til Aone.no-teamet.",
             }
         }
     },

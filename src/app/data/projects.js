@@ -20,8 +20,8 @@ const projects = [
     location: { en: "Bergen, Norway", no: "Bergen, Norge" },
     overview: {
       description1: {
-        en: "Clean Masters Renhold is a professional cleaning company based in Bergen, Norway. Aone designed and developed a clean, modern, and trustworthy website built to generate leads and make it effortless for Bergen homeowners and businesses to request a quote or book a cleaning service.",
-        no: "Clean Masters Renhold er et profesjonelt rengjøringsbyrå med base i Bergen. Aone designet og utviklet en ren, moderne og tillitvekkende nettside bygget for å generere leads og gjøre det enkelt for huseiere og bedrifter i Bergen å be om et tilbud eller bestille en rengjøringstjeneste.",
+        en: "Clean Masters Renhold is a professional cleaning company based in Bergen, Norway. Aone.no designed and developed a clean, modern, and trustworthy website built to generate leads and make it effortless for Bergen homeowners and businesses to request a quote or book a cleaning service.",
+        no: "Clean Masters Renhold er et profesjonelt rengjøringsbyrå med base i Bergen. Aone.no designet og utviklet en ren, moderne og tillitvekkende nettside bygget for å generere leads og gjøre det enkelt for huseiere og bedrifter i Bergen å be om et tilbud eller bestille en rengjøringstjeneste.",
       },
       description2: {
         en: "We focused on creating a user-friendly experience with clear calls-to-action, detailed service descriptions, and a simple contact form, combined with local SEO targeting Bergen-area search terms such as \"rengjøringsbyrå Bergen\" and \"rengjøringstjenester Bergen.\" The website was designed to be fully responsive and optimized for search engines to attract local customers across Bergen and Vestland.",
@@ -711,8 +711,8 @@ const projects = [
     location: { en: "Bergen, Norway", no: "Bergen, Norge" },
     overview: {
       description1: {
-        en: "Thai Ubon Take-Away is an authentic Thai restaurant in the heart of Bergen. Aone was brought in to build a warm, appetizing brand identity and a seasonal content campaign that would get locals ordering on cold Bergen evenings, not just walking past.",
-        no: "Thai Ubon Take-Away er en autentisk thairestaurant midt i Bergen sentrum. Aone ble hentet inn for å bygge en varm og appetittvekkende merkevareidentitet, samt en sesongbasert innholdskampanje som skulle få bergensere til å bestille på kalde kvelder, ikke bare gå forbi.",
+        en: "Thai Ubon Take-Away is an authentic Thai restaurant in the heart of Bergen. Aone.no was brought in to build a warm, appetizing brand identity and a seasonal content campaign that would get locals ordering on cold Bergen evenings, not just walking past.",
+        no: "Thai Ubon Take-Away er en autentisk thairestaurant midt i Bergen sentrum. Aone.no ble hentet inn for å bygge en varm og appetittvekkende merkevareidentitet, samt en sesongbasert innholdskampanje som skulle få bergensere til å bestille på kalde kvelder, ikke bare gå forbi.",
       },
       description2: {
         en: "The work spanned packaging and in-store branding, professional food and interior photography, and a short-form video campaign built around the comfort of piping-hot curry on a snowy Bergen street. Every touchpoint, from the take-away bag to the social feed, was tied together under one cohesive, premium-feeling identity.",
@@ -777,8 +777,8 @@ const projects = [
     location: { en: "Hemel Hempstead, UK", no: "Hemel Hempstead, Storbritannia" },
     overview: {
       description1: {
-        en: "K&P Accountants is a UK accounting and tax advisory practice founded in 2011, based in Hemel Hempstead. Aone was brought in to translate their established, fixed-fee practice — covering VAT, CIS, PAYE, Self Assessment, year-end accounts, bookkeeping, company formation, and property tax/CGT — into a cohesive brand across both their physical office and their digital presence.",
-        no: "K&P Accountants er et britisk regnskaps- og skatterådgivningsfirma grunnlagt i 2011, med base i Hemel Hempstead. Aone ble hentet inn for å omsette deres etablerte virksomhet med faste priser — som dekker MVA, CIS, lønn, selvangivelse, årsregnskap, bokføring, selskapsetablering og eiendomsskatt — til en helhetlig merkevare på tvers av både det fysiske kontoret og den digitale tilstedeværelsen.",
+        en: "K&P Accountants is a UK accounting and tax advisory practice founded in 2011, based in Hemel Hempstead. Aone.no was brought in to translate their established, fixed-fee practice — covering VAT, CIS, PAYE, Self Assessment, year-end accounts, bookkeeping, company formation, and property tax/CGT — into a cohesive brand across both their physical office and their digital presence.",
+        no: "K&P Accountants er et britisk regnskaps- og skatterådgivningsfirma grunnlagt i 2011, med base i Hemel Hempstead. Aone.no ble hentet inn for å omsette deres etablerte virksomhet med faste priser — som dekker MVA, CIS, lønn, selvangivelse, årsregnskap, bokføring, selskapsetablering og eiendomsskatt — til en helhetlig merkevare på tvers av både det fysiske kontoret og den digitale tilstedeværelsen.",
       },
       description2: {
         en: "The brief: accounting can feel intimidating or transactional, so the brand needed to project chartered authority and precision while staying approachable for the SMEs, contractors, tradespeople, landlords, and freelancers K&P serves. We paired a deep navy and warm gold palette — anchored by the circular K&P emblem — with natural wood and glass, carrying the same system from the office reception wall through to the website's service pages and self-service HMRC/Companies House resource hub.",

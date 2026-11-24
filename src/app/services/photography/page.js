@@ -6,7 +6,7 @@ export const metadata = {
   keywords: "Bedriftsfotografering Bergen, Brand photography Norway, produktfotografering Bergen, fotograf Bergen bedrift, commercial photography Norway, merkevarefotografering",
   alternates: { canonical: "https://aone.no/services/photography" },
   openGraph: {
-    title: "Bedriftsfotografering Bergen | Aone",
+    title: "Bedriftsfotografering Bergen | Aone.no",
     description: "Profesjonell merkevarefotografering som forteller din unike historie med høy-impact organiske bilder.",
     url: "https://aone.no/services/photography",
     images: [
@@ -14,7 +14,7 @@ export const metadata = {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Aone Brand Photography Bergen",
+        alt: "Aone.no Brand Photography Bergen",
       },
     ],
   },

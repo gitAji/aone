@@ -16,11 +16,11 @@ const AGREEMENT_TEXT = {
     clauses: [
       {
         title: "1. Scope",
-        body: "Aone delivers a managed website, hosting, an Admin Panel (text/menu/price edits), and daily technical maintenance, per the selected package. The domain is not included -- the Client points their own domain to Aone within 5 business days.",
+        body: "Aone.no delivers a managed website, hosting, an Admin Panel (text/menu/price edits), and daily technical maintenance, per the selected package. The domain is not included -- the Client points their own domain to Aone.no within 5 business days.",
       },
       {
         title: "2. Hosting & Source Code",
-        body: "The site is hosted and operated on Aone's own service, pointed to the Client's domain, for as long as the subscription is active. The Client is not given direct access to source code, repositories, or the hosting panel. A full transfer of website files, backups (including any database), and the Admin Panel is available as a separate paid service (NOK 4,890) upon request or at termination.",
+        body: "The site is hosted and operated on Aone.no's own service, pointed to the Client's domain, for as long as the subscription is active. The Client is not given direct access to source code, repositories, or the hosting panel. A full transfer of website files, backups (including any database), and the Admin Panel is available as a separate paid service (NOK 4,890) upon request or at termination.",
       },
       {
         title: "3. Billing",
@@ -28,7 +28,7 @@ const AGREEMENT_TEXT = {
       },
       {
         title: "4. Liability & Law",
-        body: "The Service runs via third-party providers; Aone accepts no liability for downtime, data loss, or third-party failures, except where caused by Aone's gross negligence or willful misconduct. Governed by Norwegian law.",
+        body: "The Service runs via third-party providers; Aone.no accepts no liability for downtime, data loss, or third-party failures, except where caused by Aone.no's gross negligence or willful misconduct. Governed by Norwegian law.",
       },
       {
         title: "5. Business Customers Only",
@@ -41,11 +41,11 @@ const AGREEMENT_TEXT = {
     clauses: [
       {
         title: "1. Omfang",
-        body: "Aone leverer en administrativt styrt nettside, hosting, et Admin Panel (redigering av tekst/meny/priser) og daglig teknisk vedlikehold, i henhold til valgt pakke. Domene er ikke inkludert -- Kunden peker eget domene til Aone innen 5 virkedager.",
+        body: "Aone.no leverer en administrativt styrt nettside, hosting, et Admin Panel (redigering av tekst/meny/priser) og daglig teknisk vedlikehold, i henhold til valgt pakke. Domene er ikke inkludert -- Kunden peker eget domene til Aone.no innen 5 virkedager.",
       },
       {
         title: "2. Hosting & kildekode",
-        body: "Nettsiden driftes via Aones eget tjeneste, pekende mot Kundens domene, så lenge abonnementet er aktivt. Kunden får ikke direkte tilgang til kildekode, repositorier eller hosting-kontrollpanel. Full overføring av nettsidefiler, sikkerhetskopier (inkl. database) og Admin Panel er tilgjengelig som en separat betalt tjeneste (NOK 4 890) ved forespørsel eller ved ophør.",
+        body: "Nettsiden driftes via Aone.no sin egen tjeneste, pekende mot Kundens domene, så lenge abonnementet er aktivt. Kunden får ikke direkte tilgang til kildekode, repositorier eller hosting-kontrollpanel. Full overføring av nettsidefiler, sikkerhetskopier (inkl. database) og Admin Panel er tilgjengelig som en separat betalt tjeneste (NOK 4 890) ved forespørsel eller ved ophør.",
       },
       {
         title: "3. Fakturering",
@@ -53,7 +53,7 @@ const AGREEMENT_TEXT = {
       },
       {
         title: "4. Ansvar & lovvalg",
-        body: "Tjenesten driftes via tredjepartsleverandører; Aone påtar seg intet ansvar for nedetid, datatap eller tredjepartsfeil, med mindre dette skyldes grov uaktsomhet eller forsett fra Aones side. Reguleres av norsk rett.",
+        body: "Tjenesten driftes via tredjepartsleverandører; Aone.no påtar seg intet ansvar for nedetid, datatap eller tredjepartsfeil, med mindre dette skyldes grov uaktsomhet eller forsett fra Aone.no sin side. Reguleres av norsk rett.",
       },
       {
         title: "5. Kun næringsdrivende",

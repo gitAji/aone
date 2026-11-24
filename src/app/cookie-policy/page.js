@@ -38,7 +38,7 @@ const CookiePolicy = () => {
           <div className="flex-1 max-w-4xl">
             <div className="mb-12">
               <p className="text-xl text-slate-500 dark:text-slate-300 leading-relaxed mb-12 italic">
-                This Cookie Policy explains how Aone uses cookies and similar technologies to recognize you when you visit our website. It explains what these technologies are and why we use them, as well as your rights to control our use of them.
+                This Cookie Policy explains how Aone.no uses cookies and similar technologies to recognize you when you visit our website. It explains what these technologies are and why we use them, as well as your rights to control our use of them.
               </p>
               <div className="h-[1px] w-full bg-slate-200 dark:bg-slate-800"></div>
             </div>

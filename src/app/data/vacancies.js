@@ -23,8 +23,8 @@ export const vacancies = [
       no: "Utføre direkte markedsføringsstrategier og digital oppsøkende virksomhet for å skalere våre SaaS-produkter. Fokus på e-post, telefon og lokalt kundeengasjement."
     },
     description: {
-      en: "Aone is seeking a Marketing & SaaS Growth Officer who can drive direct results. You will be responsible for reaching out to local customers directly, managing email marketing campaigns, and utilizing modern AI tools to accelerate our growth in the SaaS space.",
-      no: "Aone søker en markedsførings- og SaaS-vekstansvarlig som kan drive direkte resultater. Du vil være ansvarlig for å henvende deg direkte til lokale kunder, administrere e-postmarkedsføringskampanjer og bruke moderne AI-verktøy for å akselerere vår vekst innen SaaS."
+      en: "Aone.no is seeking a Marketing & SaaS Growth Officer who can drive direct results. You will be responsible for reaching out to local customers directly, managing email marketing campaigns, and utilizing modern AI tools to accelerate our growth in the SaaS space.",
+      no: "Aone.no søker en markedsførings- og SaaS-vekstansvarlig som kan drive direkte resultater. Du vil være ansvarlig for å henvende deg direkte til lokale kunder, administrere e-postmarkedsføringskampanjer og bruke moderne AI-verktøy for å akselerere vår vekst innen SaaS."
     },
     responsibilities: {
       en: [

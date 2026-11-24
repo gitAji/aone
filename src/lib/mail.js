@@ -12,9 +12,9 @@ export async function sendAdminNotification({ subject, text, html }) {
     const adminEmail = process.env.ADMIN_EMAIL || 'kontaktaone@gmail.com';
 
     const mailOptions = {
-        from: `"Aone Website" <${process.env.SMTP_USER}>`,
+        from: `"Aone.no Website" <${process.env.SMTP_USER}>`,
         to: adminEmail,
-        subject: `[Aone Form] ${subject}`,
+        subject: `[Aone.no Form] ${subject}`,
         text,
         html: html || `<div style="font-family: sans-serif; padding: 20px;">${text.replace(/\n/g, '<br>')}</div>`,
     };
@@ -30,9 +30,9 @@ export async function sendAdminNotification({ subject, text, html }) {
 
 export async function sendClientEmail({ to, subject, html }) {
     const mailOptions = {
-        from: `"Aone Team" <${process.env.SMTP_USER}>`,
+        from: `"Aone.no Team" <${process.env.SMTP_USER}>`,
         to,
-        subject: `[Aone] ${subject}`,
+        subject: `[Aone.no] ${subject}`,
         html: html,
     };
 

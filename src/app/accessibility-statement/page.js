@@ -37,20 +37,20 @@ const AccessibilityStatement = () => {
           <div className="flex-1 max-w-4xl">
             <div className="mb-12">
               <p className="text-xl text-slate-500 dark:text-slate-300 leading-relaxed mb-12 italic">
-                Aone is committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone and applying the relevant accessibility standards.
+                Aone.no is committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone and applying the relevant accessibility standards.
               </p>
               <div className="h-[1px] w-full bg-slate-200 dark:bg-slate-800"></div>
             </div>
 
             <Section title="Conformance Status">
               <p>
-                The Web Content Accessibility Guidelines (WCAG) defines requirements for designers and developers to improve accessibility for people with disabilities. It defines three levels of conformance: Level A, Level AA, and Level AAA. Aone is partially conformant with WCAG 2.1 level AA. Partially conformant means that some parts of the content do not fully conform to the accessibility standard.
+                The Web Content Accessibility Guidelines (WCAG) defines requirements for designers and developers to improve accessibility for people with disabilities. It defines three levels of conformance: Level A, Level AA, and Level AAA. Aone.no is partially conformant with WCAG 2.1 level AA. Partially conformant means that some parts of the content do not fully conform to the accessibility standard.
               </p>
             </Section>
 
             <Section title="Feedback">
               <p>
-                We welcome your feedback on the accessibility of Aone. Please let us know if you encounter accessibility barriers on Aone:
+                We welcome your feedback on the accessibility of Aone.no. Please let us know if you encounter accessibility barriers on Aone.no:
               </p>
               <ul className="list-none p-0 mt-4 space-y-2">
                 <li><strong>Phone:</strong> 400 71 654</li>
@@ -64,7 +64,7 @@ const AccessibilityStatement = () => {
 
             <Section title="Technical Specifications">
               <p>
-                Accessibility of Aone relies on the following technologies to work with the particular combination of web browser and any assistive technologies or plugins installed on your computer:
+                Accessibility of Aone.no relies on the following technologies to work with the particular combination of web browser and any assistive technologies or plugins installed on your computer:
               </p>
               <ul className="list-disc pl-6 mt-4 space-y-2">
                 <li>HTML</li>
@@ -76,7 +76,7 @@ const AccessibilityStatement = () => {
 
             <Section title="Assessment Approach">
               <p>
-                Aone assessed the accessibility of Aone by the following approaches:
+                Aone.no assessed the accessibility of Aone.no by the following approaches:
               </p>
               <ul className="list-disc pl-6 mt-4 space-y-2">
                 <li>Self-evaluation</li>

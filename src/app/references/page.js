@@ -7,11 +7,11 @@ const SSR_LANG = 'no';
 
 export const metadata = {
   title: "Våre Prosjekter | Webdesign & AI-referanser fra Bergen og Norge",
-  description: "Se hvordan Aone har hjulpet bedrifter i Bergen og i hele Norge med webdesign, AI-automatisering og merkevarebygging som gir ekte resultater.",
-  keywords: "Webdesign referanser Bergen, Aone prosjekter, AI-byrå portefølje Norge, nettside rengjøringsbyrå Bergen, case study webdesign Bergen, digitalbyrå kundeprosjekter Norge",
+  description: "Se hvordan Aone.no har hjulpet bedrifter i Bergen og i hele Norge med webdesign, AI-automatisering og merkevarebygging som gir ekte resultater.",
+  keywords: "Webdesign referanser Bergen, Aone.no prosjekter, AI-byrå portefølje Norge, nettside rengjøringsbyrå Bergen, case study webdesign Bergen, digitalbyrå kundeprosjekter Norge",
   alternates: { canonical: "https://aone.no/references" },
   openGraph: {
-    title: "Våre Prosjekter | Aone Webdesign & AI-referanser",
+    title: "Våre Prosjekter | Aone.no Webdesign & AI-referanser",
     description: "Utforsk vår portefølje av webdesign- og AI-prosjekter for bedrifter i Bergen og i hele Norge.",
     url: "https://aone.no/references",
     type: "website",
@@ -20,7 +20,7 @@ export const metadata = {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Aone Portfolio – Webdesign Bergen & Norge",
+        alt: "Aone.no Portfolio – Webdesign Bergen & Norge",
       },
     ],
   },
@@ -30,11 +30,11 @@ export default function Page() {
   const itemListJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Aone – Prosjekter og kundereferanser',
+    name: 'Aone.no – Prosjekter og kundereferanser',
     url: 'https://aone.no/references',
     about: {
       '@type': 'Organization',
-      name: 'Aone',
+      name: 'Aone.no',
     },
     mainEntity: {
       '@type': 'ItemList',

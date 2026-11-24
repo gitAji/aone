@@ -129,7 +129,7 @@ function SuccessPageContent() {
             doc.setFontSize(10);
             const terms = [
                 '1. The customer agrees to pay the stated total for digital services.',
-                '2. Aone will deliver services according to the selected package specifications.',
+                '2. Aone.no will deliver services according to the selected package specifications.',
                 '3. This agreement is legally binding once payment is processed or selection is secured.'
             ];
             doc.text(terms, 20, 175);
@@ -144,7 +144,7 @@ function SuccessPageContent() {
                 'A comprehensive Master Service Agreement (MSA) and',
                 'detailed Project Plan will be signed during kick-off.',
                 'Service starts only after full initial payment.',
-                '© Aone Digital Agency'
+                '© Aone.no Digital Agency'
             ];
             doc.text(footer, 20, 225);
             
