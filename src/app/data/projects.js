@@ -769,8 +769,9 @@ const projects = [
       en: "Brand identity, office environment & website for a UK accounting and tax advisory firm.",
       no: "Merkevareidentitet, kontormiljø & nettside for et britisk regnskaps- og skatterådgivningsfirma.",
     },
-    // TODO(images): process-step and results screenshots still pending
-    // real content from the client.
+    // TODO(images): process-step screenshots still pending real content
+    // from the client. results.imageUrl below is a real screenshot of the
+    // live site (a local-SEO location landing page).
     imageUrl: "/images/projects/kp-accountants/office-reception.jpg",
     projectLink: "/references/kp-accountants",
     featured: true,
@@ -835,6 +836,7 @@ const projects = [
       { en: "Low-friction free-consultation booking & direct contact CTAs", no: "Lavterskel booking av gratis konsultasjon & direkte kontakt-CTA-er" },
       { en: "Audited, accurately attributed client testimonials", no: "Gjennomgåtte kundeomtaler med korrekt tilskrivelse" },
       { en: "WCAG AA+ accessible navy & gold brand system, office to web", no: "WCAG AA+-tilgjengelig merkevaresystem i marineblått & gull, fra kontor til nett" },
+      { en: "Dedicated local-SEO landing pages for every town K&P serves (Watford, St Albans, Kings Langley)", no: "Egne lokale SEO-landingssider for hver by K&P betjener (Watford, St Albans, Kings Langley)" },
     ],
     technologies: ["Next.js", "React", "CMS", "GDPR Compliance", "WCAG AA+"],
     results: {
@@ -842,7 +844,7 @@ const projects = [
         en: "K&P Accountants now presents one consistent, chartered-authority brand from the office reception wall through to the website — clear fixed-fee pricing, accurate testimonials, and a self-service compliance toolkit that gives SMEs, contractors, and landlords a straightforward path from browsing services to booking a free consultation.",
         no: "K&P Accountants fremstår nå med én helhetlig, faglig tung merkevare — fra resepsjonsveggen på kontoret til nettsiden — med tydelige faste priser, korrekte kundeomtaler og et selvbetjent regelverksverktøy som gir SMB-er, entreprenører og utleiere en enkel vei fra å utforske tjenester til å booke en gratis konsultasjon.",
       },
-      imageUrl: "/images/projects/kp-accountants/office-reception.jpg",
+      imageUrl: "/images/projects/kp-accountants/watford-landing-page.jpg",
     },
   },
 ];
