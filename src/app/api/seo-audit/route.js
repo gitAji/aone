@@ -58,7 +58,7 @@ export async function POST(request) {
     // email delivery shouldn't block or fail the request.
     sendClientEmail({
       to: email,
-      subject: `Your Free SEO Audit Report for ${url}`,
+      subject: `Your Free SEO & GEO Audit Report for ${url}`,
       html: buildReportEmailHtml(report),
     }).catch((err) => console.error('Failed to email SEO audit report:', err));
 

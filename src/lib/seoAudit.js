@@ -26,14 +26,69 @@ const FIXES = {
   imageAlt: 'Add descriptive alt text to every image -- it helps search engines understand your content and makes the page accessible to screen readers.',
   lang: 'Add a lang attribute to the <html> tag (e.g. lang="en" or lang="no") so search engines and screen readers know the page\'s language.',
   openGraph: 'Add og:title, og:description and og:image meta tags so links to this page look right when shared on social media.',
-  structuredData: 'Add JSON-LD structured data (Organization, LocalBusiness, Article, etc.) to help search engines and AI assistants understand your content.',
   robots: 'Add a robots.txt file at your domain root to guide search engine crawlers.',
   sitemap: 'Add an XML sitemap and reference it in robots.txt so search engines can discover every page on the site.',
   brokenLinks: 'Fix or remove the broken internal links so visitors and search engines don\'t hit dead ends.',
+  structuredData: 'Add JSON-LD structured data (Organization, LocalBusiness, Article, etc.) -- this is the main signal AI assistants (ChatGPT, Claude, Perplexity, Google AI Overviews) use to understand and cite your content.',
+  faqSchema: 'Add FAQPage structured data to a page with common questions and direct answers -- this is one of the strongest signals for getting cited in AI-generated answers.',
+  aiCrawlers: 'Remove the Disallow rules blocking AI crawlers in robots.txt (unless blocking them is intentional) -- otherwise tools like ChatGPT, Claude and Perplexity can\'t read your site to cite it.',
+  llmsTxt: 'Add an llms.txt file at your domain root -- an emerging standard that gives AI assistants a clean, curated summary of your site, similar to how robots.txt and sitemap.xml work for search engines.',
 };
 
-function check(id, label, status, detail) {
-  return { id, label, status, detail, fix: status === 'pass' ? null : FIXES[id] || null };
+function check(id, label, status, detail, category = 'seo') {
+  return { id, label, status, detail, category, fix: status === 'pass' ? null : FIXES[id] || null };
+}
+
+// Well-known AI crawler user-agents. A site blocking these (intentionally
+// or by an accidental `Disallow: /` left over from staging) can't be read
+// or cited by ChatGPT, Claude, Perplexity and similar AI-search tools --
+// a GEO (Generative Engine Optimization) concern distinct from classic SEO.
+const AI_BOTS = [
+  'GPTBot', 'ChatGPT-User', 'Google-Extended', 'Claude-Web', 'ClaudeBot',
+  'anthropic-ai', 'PerplexityBot', 'CCBot', 'Bytespider', 'Applebot-Extended',
+];
+
+function parseBlockedAiCrawlers(robotsText) {
+  const lines = robotsText.split(/\r?\n/);
+  let currentAgents = [];
+  let groupHasDirective = false;
+  const blocked = new Set();
+
+  for (const rawLine of lines) {
+    const line = rawLine.split('#')[0].trim();
+    if (!line) {
+      currentAgents = [];
+      groupHasDirective = false;
+      continue;
+    }
+    const uaMatch = line.match(/^user-agent:\s*(.+)$/i);
+    if (uaMatch) {
+      if (groupHasDirective) {
+        currentAgents = [];
+        groupHasDirective = false;
+      }
+      currentAgents.push(uaMatch[1].trim());
+      continue;
+    }
+    const disallowMatch = line.match(/^disallow:\s*(.*)$/i);
+    if (disallowMatch) {
+      groupHasDirective = true;
+      if (disallowMatch[1].trim() === '/') {
+        currentAgents.forEach((agent) => {
+          if (agent === '*') {
+            AI_BOTS.forEach((bot) => blocked.add(bot));
+          } else {
+            const hit = AI_BOTS.find((bot) => bot.toLowerCase() === agent.toLowerCase());
+            if (hit) blocked.add(hit);
+          }
+        });
+      }
+      continue;
+    }
+    groupHasDirective = true;
+  }
+
+  return Array.from(blocked);
 }
 
 async function checkRobotsAndSitemap(origin) {
@@ -47,8 +102,16 @@ async function checkRobotsAndSitemap(origin) {
       checks.push(check('robots', 'robots.txt', 'pass', 'robots.txt is reachable.'));
       const match = text.match(/sitemap:\s*(\S+)/i);
       if (match) sitemapUrlFromRobots = match[1];
+
+      const blockedBots = parseBlockedAiCrawlers(text);
+      checks.push(
+        blockedBots.length === 0
+          ? check('aiCrawlers', 'AI crawler access', 'pass', 'No major AI crawlers (ChatGPT, Claude, Perplexity, etc.) are blocked in robots.txt.', 'geo')
+          : check('aiCrawlers', 'AI crawler access', 'warn', `Blocking: ${blockedBots.join(', ')}.`, 'geo')
+      );
     } else {
       checks.push(check('robots', 'robots.txt', 'warn', `robots.txt returned HTTP ${res.status}.`));
+      checks.push(check('aiCrawlers', 'AI crawler access', 'pass', 'No robots.txt found, so no AI crawlers are blocked by default.', 'geo'));
     }
   } catch {
     checks.push(check('robots', 'robots.txt', 'warn', 'robots.txt could not be reached.'));
@@ -64,6 +127,17 @@ async function checkRobotsAndSitemap(origin) {
     );
   } catch {
     checks.push(check('sitemap', 'XML sitemap', 'warn', 'Sitemap could not be reached.'));
+  }
+
+  try {
+    const res = await fetchWithTimeout(`${origin}/llms.txt`, {}, SUPPORT_FETCH_TIMEOUT_MS);
+    checks.push(
+      res.ok
+        ? check('llmsTxt', 'llms.txt (AI summary file)', 'pass', 'Found -- gives AI assistants a curated summary of the site.', 'geo')
+        : check('llmsTxt', 'llms.txt (AI summary file)', 'warn', 'Not found. This is a new, still-rare standard -- having one is a differentiator, not yet an expectation.', 'geo')
+    );
+  } catch {
+    checks.push(check('llmsTxt', 'llms.txt (AI summary file)', 'warn', 'Could not be reached.', 'geo'));
   }
 
   return checks;
@@ -201,16 +275,49 @@ export async function runOnPageAudit(targetUrl) {
         )
   );
 
-  const structuredDataCount = $('script[type="application/ld+json"]').length;
+  const jsonLdBlocks = $('script[type="application/ld+json"]');
+  const structuredDataCount = jsonLdBlocks.length;
   checks.push(
     structuredDataCount > 0
-      ? check('structuredData', 'Structured data (JSON-LD)', 'pass', `${structuredDataCount} JSON-LD block(s) found.`)
+      ? check(
+          'structuredData',
+          'Structured data (JSON-LD)',
+          'pass',
+          `${structuredDataCount} JSON-LD block(s) found -- the main signal AI assistants use to read and cite your content.`,
+          'geo'
+        )
       : check(
           'structuredData',
           'Structured data (JSON-LD)',
           'warn',
-          'No JSON-LD structured data found -- helps search engines and AI assistants understand the page.'
+          'No JSON-LD structured data found -- this is the main signal AI assistants (ChatGPT, Claude, Perplexity) use to understand and cite a page.',
+          'geo'
         )
+  );
+
+  // Checked separately from generic JSON-LD presence -- FAQPage/Question
+  // schema specifically is one of the strongest signals for being quoted
+  // directly in AI-generated answers, not just a generic SEO rich-snippet.
+  let hasFaqSchema = false;
+  jsonLdBlocks.each((_, el) => {
+    try {
+      const data = JSON.parse($(el).contents().text());
+      const nodes = Array.isArray(data) ? data : [data, ...(data['@graph'] || [])];
+      if (nodes.some((node) => {
+        const type = node?.['@type'];
+        const types = Array.isArray(type) ? type : [type];
+        return types.includes('FAQPage') || types.includes('Question');
+      })) {
+        hasFaqSchema = true;
+      }
+    } catch {
+      // malformed JSON-LD -- ignore rather than fail the whole audit over it
+    }
+  });
+  checks.push(
+    hasFaqSchema
+      ? check('faqSchema', 'FAQ / Q&A structured data', 'pass', 'FAQPage or Question schema found.', 'geo')
+      : check('faqSchema', 'FAQ / Q&A structured data', 'warn', 'No FAQPage or Question schema found.', 'geo')
   );
 
   const [supportChecks, brokenLinkChecks] = await Promise.all([
@@ -289,11 +396,8 @@ const SEO_CARE_PITCH_HTML = `
     </a>
   </div>`;
 
-export function buildReportEmailHtml(report, { tier = 'summary' } = {}) {
-  const { url, overallScore, onPageChecks, performance } = report;
-  const detailed = tier === 'detailed';
-
-  const rows = onPageChecks
+function renderCheckRows(items, detailed) {
+  return items
     .map(
       (c) => `
         <tr>
@@ -304,6 +408,22 @@ export function buildReportEmailHtml(report, { tier = 'summary' } = {}) {
         </tr>`
     )
     .join('');
+}
+
+function renderCheckTable(title, items, detailed) {
+  return `
+    <h2 style="font-size:16px;color:#0f172a;margin:24px 0 12px;">${title}</h2>
+    <table style="width:100%;border-collapse:collapse;font-size:14px;">
+      ${detailed ? `<thead><tr><th align="left" style="padding:0 12px 8px;font-size:11px;text-transform:uppercase;color:#94a3b8;">Check</th><th align="left" style="padding:0 12px 8px;font-size:11px;text-transform:uppercase;color:#94a3b8;">Status</th><th align="left" style="padding:0 12px 8px;font-size:11px;text-transform:uppercase;color:#94a3b8;">Detail</th><th align="left" style="padding:0 12px 8px;font-size:11px;text-transform:uppercase;color:#94a3b8;">How to fix it</th></tr></thead>` : ''}
+      <tbody>${renderCheckRows(items, detailed)}</tbody>
+    </table>`;
+}
+
+export function buildReportEmailHtml(report, { tier = 'summary' } = {}) {
+  const { url, overallScore, onPageChecks, performance } = report;
+  const detailed = tier === 'detailed';
+  const seoChecks = onPageChecks.filter((c) => c.category !== 'geo');
+  const geoChecks = onPageChecks.filter((c) => c.category === 'geo');
 
   const perfSection = performance?.available
     ? `
@@ -323,17 +443,14 @@ export function buildReportEmailHtml(report, { tier = 'summary' } = {}) {
 
   return `
   <div style="font-family:Arial,Helvetica,sans-serif;max-width:640px;margin:0 auto;padding:24px;color:#0f172a;">
-    <h1 style="font-size:22px;margin:0 0 4px;">Your Free SEO Audit Report</h1>
+    <h1 style="font-size:22px;margin:0 0 4px;">Your Free SEO &amp; GEO Audit Report</h1>
     <p style="color:#475569;margin:0 0 24px;">${url}</p>
     <div style="background:#0f172a;color:#fff;border-radius:16px;padding:20px;text-align:center;margin-bottom:24px;">
       <div style="font-size:12px;text-transform:uppercase;letter-spacing:2px;opacity:0.7;">Overall Score</div>
       <div style="font-size:40px;font-weight:900;">${overallScore ?? 'N/A'}<span style="font-size:18px;">/100</span></div>
     </div>
-    <h2 style="font-size:16px;color:#0f172a;margin:0 0 12px;">${detailed ? 'Your Full Action Plan' : 'On-Page SEO Checks'}</h2>
-    <table style="width:100%;border-collapse:collapse;font-size:14px;">
-      ${detailed ? `<thead><tr><th align="left" style="padding:0 12px 8px;font-size:11px;text-transform:uppercase;color:#94a3b8;">Check</th><th align="left" style="padding:0 12px 8px;font-size:11px;text-transform:uppercase;color:#94a3b8;">Status</th><th align="left" style="padding:0 12px 8px;font-size:11px;text-transform:uppercase;color:#94a3b8;">Detail</th><th align="left" style="padding:0 12px 8px;font-size:11px;text-transform:uppercase;color:#94a3b8;">How to fix it</th></tr></thead>` : ''}
-      <tbody>${rows}</tbody>
-    </table>
+    ${renderCheckTable(detailed ? 'Your Full Action Plan -- On-Page SEO' : 'On-Page SEO Checks', seoChecks, detailed)}
+    ${renderCheckTable('GEO / AI Search Readiness (ChatGPT, Claude, Perplexity)', geoChecks, detailed)}
     ${perfSection}
     <p style="margin-top:28px;color:#475569;font-size:13px;">
       Want help fixing what's flagged above? <a href="https://aone.no/request-quote" style="color:#e11d48;font-weight:700;">Request a free quote</a> and we'll take it from here.

@@ -14,6 +14,7 @@ import {
     FaTimesCircle,
     FaSpinner,
     FaArrowRight,
+    FaRobot,
 } from 'react-icons/fa';
 
 // Accepts "example.com", "www.example.com", or a full "https://example.com"
@@ -140,8 +141,18 @@ const ReportView = ({ report, email, onReset }) => {
             )}
 
             <h3 className="text-sm font-black uppercase tracking-widest text-slate-400 mb-2">On-Page SEO Checks</h3>
+            <div className="max-h-80 overflow-y-auto rounded-2xl border border-slate-100 dark:border-slate-800 mb-6">
+                {onPageChecks.filter((item) => item.category !== 'geo').map((item) => (
+                    <CheckRow key={item.id} item={item} unlocked={unlocked} />
+                ))}
+            </div>
+
+            <h3 className="text-sm font-black uppercase tracking-widest text-slate-400 mb-2 flex items-center gap-2">
+                GEO / AI Search Readiness
+                <span className="text-[9px] font-black normal-case tracking-normal bg-rose-500/10 text-rose-500 px-2 py-0.5 rounded-full">ChatGPT / Claude / Perplexity</span>
+            </h3>
             <div className="max-h-80 overflow-y-auto rounded-2xl border border-slate-100 dark:border-slate-800">
-                {onPageChecks.map((item) => (
+                {onPageChecks.filter((item) => item.category === 'geo').map((item) => (
                     <CheckRow key={item.id} item={item} unlocked={unlocked} />
                 ))}
             </div>
@@ -265,7 +276,7 @@ const FreeSeoAuditClient = () => {
         <div className="bg-slate-50 dark:bg-[#020617] min-h-screen">
             <HeroSection
                 title="Free SEO Audit"
-                subtitle="Get an instant, automated scan of your website's SEO and performance -- no waiting, no sales call required."
+                subtitle="Get an instant, automated scan of your website's SEO, GEO (AI search) readiness and performance -- no waiting, no sales call required."
             />
 
             <main className="container mx-auto px-6 py-20">
@@ -285,6 +296,11 @@ const FreeSeoAuditClient = () => {
                                     icon: <FaSearch className="text-2xl text-rose-500" />,
                                     title: "On-Page SEO Checks",
                                     desc: "Titles, meta descriptions, headings, alt text, canonical tags, structured data, sitemap & robots.txt."
+                                },
+                                {
+                                    icon: <FaRobot className="text-2xl text-rose-500" />,
+                                    title: "GEO / AI Search Readiness",
+                                    desc: "Whether ChatGPT, Claude and Perplexity can actually read and cite your site -- AI crawler access, structured data, FAQ schema & llms.txt."
                                 },
                                 {
                                     icon: <FaChartBar className="text-2xl text-rose-500" />,
