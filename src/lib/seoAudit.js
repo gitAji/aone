@@ -16,8 +16,24 @@ async function fetchWithTimeout(url, options = {}, timeoutMs = FETCH_TIMEOUT_MS)
   }
 }
 
+const FIXES = {
+  https: 'Move your site to HTTPS by installing an SSL certificate (most hosts offer this for free) and redirecting all HTTP traffic to HTTPS.',
+  title: 'Rewrite the title tag to 50-60 characters, including your main keyword and brand name near the front.',
+  metaDescription: 'Write a meta description of 120-158 characters that summarizes the page and includes a reason to click -- this directly affects click-through rate from search results.',
+  canonical: 'Add a <link rel="canonical"> tag pointing to the preferred URL for this page to avoid duplicate-content issues.',
+  viewport: 'Add <meta name="viewport" content="width=device-width, initial-scale=1"> to the page head so it renders correctly on mobile.',
+  h1: 'Use exactly one H1 heading per page that clearly states the page\'s main topic -- use H2/H3 for subheadings.',
+  imageAlt: 'Add descriptive alt text to every image -- it helps search engines understand your content and makes the page accessible to screen readers.',
+  lang: 'Add a lang attribute to the <html> tag (e.g. lang="en" or lang="no") so search engines and screen readers know the page\'s language.',
+  openGraph: 'Add og:title, og:description and og:image meta tags so links to this page look right when shared on social media.',
+  structuredData: 'Add JSON-LD structured data (Organization, LocalBusiness, Article, etc.) to help search engines and AI assistants understand your content.',
+  robots: 'Add a robots.txt file at your domain root to guide search engine crawlers.',
+  sitemap: 'Add an XML sitemap and reference it in robots.txt so search engines can discover every page on the site.',
+  brokenLinks: 'Fix or remove the broken internal links so visitors and search engines don\'t hit dead ends.',
+};
+
 function check(id, label, status, detail) {
-  return { id, label, status, detail };
+  return { id, label, status, detail, fix: status === 'pass' ? null : FIXES[id] || null };
 }
 
 async function checkRobotsAndSitemap(origin) {
@@ -261,8 +277,21 @@ export function computeOverallScore(onPageChecks, psi) {
 const STATUS_LABEL = { pass: 'Pass', warn: 'Needs attention', fail: 'Failed' };
 const STATUS_COLOR = { pass: '#16a34a', warn: '#d97706', fail: '#dc2626' };
 
-export function buildReportEmailHtml(report) {
+const SEO_CARE_PITCH_HTML = `
+  <div style="margin-top:28px;background:linear-gradient(135deg,#fff1f2,#fffbeb);border:1px solid #fecdd3;border-radius:16px;padding:20px;">
+    <h2 style="font-size:16px;color:#0f172a;margin:0 0 6px;">Want this handled for you, every month?</h2>
+    <p style="color:#475569;font-size:13px;margin:0 0 14px;">
+      <strong>SEO Care</strong> is our ongoing plan: we re-scan your site every month, fix what's flagged, and send you a progress
+      report showing your score improving over time. Billed monthly, <strong>no fixed binding period -- cancel anytime</strong>.
+    </p>
+    <a href="https://aone.no/request-quote" style="display:inline-block;background:#e11d48;color:#fff;font-weight:700;font-size:13px;padding:10px 20px;border-radius:999px;text-decoration:none;">
+      Ask about SEO Care
+    </a>
+  </div>`;
+
+export function buildReportEmailHtml(report, { tier = 'summary' } = {}) {
   const { url, overallScore, onPageChecks, performance } = report;
+  const detailed = tier === 'detailed';
 
   const rows = onPageChecks
     .map(
@@ -271,6 +300,7 @@ export function buildReportEmailHtml(report) {
           <td style="padding:10px 12px;border-bottom:1px solid #eee;font-weight:700;color:#0f172a;">${c.label}</td>
           <td style="padding:10px 12px;border-bottom:1px solid #eee;color:${STATUS_COLOR[c.status]};font-weight:700;white-space:nowrap;">${STATUS_LABEL[c.status]}</td>
           <td style="padding:10px 12px;border-bottom:1px solid #eee;color:#475569;">${c.detail}</td>
+          ${detailed ? `<td style="padding:10px 12px;border-bottom:1px solid #eee;color:#0f172a;">${c.fix || '—'}</td>` : ''}
         </tr>`
     )
     .join('');
@@ -299,13 +329,15 @@ export function buildReportEmailHtml(report) {
       <div style="font-size:12px;text-transform:uppercase;letter-spacing:2px;opacity:0.7;">Overall Score</div>
       <div style="font-size:40px;font-weight:900;">${overallScore ?? 'N/A'}<span style="font-size:18px;">/100</span></div>
     </div>
-    <h2 style="font-size:16px;color:#0f172a;margin:0 0 12px;">On-Page SEO Checks</h2>
+    <h2 style="font-size:16px;color:#0f172a;margin:0 0 12px;">${detailed ? 'Your Full Action Plan' : 'On-Page SEO Checks'}</h2>
     <table style="width:100%;border-collapse:collapse;font-size:14px;">
+      ${detailed ? `<thead><tr><th align="left" style="padding:0 12px 8px;font-size:11px;text-transform:uppercase;color:#94a3b8;">Check</th><th align="left" style="padding:0 12px 8px;font-size:11px;text-transform:uppercase;color:#94a3b8;">Status</th><th align="left" style="padding:0 12px 8px;font-size:11px;text-transform:uppercase;color:#94a3b8;">Detail</th><th align="left" style="padding:0 12px 8px;font-size:11px;text-transform:uppercase;color:#94a3b8;">How to fix it</th></tr></thead>` : ''}
       <tbody>${rows}</tbody>
     </table>
     ${perfSection}
     <p style="margin-top:28px;color:#475569;font-size:13px;">
       Want help fixing what's flagged above? <a href="https://aone.no/request-quote" style="color:#e11d48;font-weight:700;">Request a free quote</a> and we'll take it from here.
     </p>
+    ${detailed ? SEO_CARE_PITCH_HTML : ''}
   </div>`;
 }

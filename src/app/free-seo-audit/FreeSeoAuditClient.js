@@ -61,9 +61,10 @@ const ScoreGauge = ({ label, score }) => (
     </div>
 );
 
-const CheckRow = ({ item }) => {
+const CheckRow = ({ item, unlocked }) => {
     const meta = STATUS_META[item.status] || STATUS_META.warn;
     const Icon = meta.icon;
+    const hasFix = item.status !== 'pass' && item.fix;
     return (
         <div className="flex items-start gap-3 px-3 py-4 border-b border-slate-100 dark:border-slate-800 last:border-0">
             <Icon className={`${meta.className} mt-0.5 shrink-0`} />
@@ -73,6 +74,17 @@ const CheckRow = ({ item }) => {
                     <span className={`text-[10px] font-black uppercase tracking-widest ${meta.className}`}>{meta.label}</span>
                 </div>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 break-words">{item.detail}</p>
+                {hasFix && unlocked && (
+                    <p className="text-xs text-rose-600 dark:text-rose-400 mt-1.5 break-words">
+                        <span className="font-black uppercase tracking-widest text-[10px]">Fix: </span>
+                        {item.fix}
+                    </p>
+                )}
+                {hasFix && !unlocked && (
+                    <p className="text-[11px] text-slate-400 italic mt-1.5">
+                        🔒 Unlock your full action plan to see exactly how to fix this.
+                    </p>
+                )}
             </div>
         </div>
     );
@@ -80,6 +92,28 @@ const CheckRow = ({ item }) => {
 
 const ReportView = ({ report, email, onReset }) => {
     const { overallScore, onPageChecks, performance, url } = report;
+    const [unlocked, setUnlocked] = useState(false);
+    const [unlocking, setUnlocking] = useState(false);
+    const issueCount = onPageChecks.filter((c) => c.status !== 'pass').length;
+
+    const handleUnlock = async () => {
+        if (unlocking || unlocked) return;
+        setUnlocking(true);
+        try {
+            await fetch('/api/seo-audit/unlock', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, report }),
+            });
+        } catch {
+            // Non-critical -- the fixes still unlock on-screen even if the
+            // follow-up email/notification request fails.
+        } finally {
+            setUnlocking(false);
+            setUnlocked(true);
+        }
+    };
+
     return (
         <div>
             <div className="bg-slate-900 dark:bg-black text-white rounded-2xl p-6 text-center mb-6">
@@ -108,9 +142,24 @@ const ReportView = ({ report, email, onReset }) => {
             <h3 className="text-sm font-black uppercase tracking-widest text-slate-400 mb-2">On-Page SEO Checks</h3>
             <div className="max-h-80 overflow-y-auto rounded-2xl border border-slate-100 dark:border-slate-800">
                 {onPageChecks.map((item) => (
-                    <CheckRow key={item.id} item={item} />
+                    <CheckRow key={item.id} item={item} unlocked={unlocked} />
                 ))}
             </div>
+
+            {!unlocked && issueCount > 0 && (
+                <button
+                    onClick={handleUnlock}
+                    disabled={unlocking}
+                    className="w-full mt-4 flex items-center justify-center gap-2 bg-slate-900 dark:bg-white text-white dark:text-slate-950 font-black py-3.5 rounded-xl uppercase tracking-widest text-sm hover:opacity-90 transition-all disabled:opacity-60"
+                >
+                    {unlocking ? 'Unlocking...' : `Unlock My Full Action Plan (${issueCount} fixes)`}
+                </button>
+            )}
+            {unlocked && (
+                <p className="mt-4 text-xs text-green-600 dark:text-green-400 font-bold text-center flex items-center justify-center gap-1.5">
+                    <FaCheckCircle className="text-[10px]" /> Full action plan unlocked above -- and emailed to {email}.
+                </p>
+            )}
 
             <div className="mt-8 bg-gradient-to-br from-rose-500/10 to-amber-500/10 border border-rose-500/20 rounded-2xl p-6 text-center">
                 <h4 className="font-black text-slate-900 dark:text-white uppercase tracking-tight mb-1.5">
@@ -125,6 +174,23 @@ const ReportView = ({ report, email, onReset }) => {
                 >
                     Request a Free Quote
                     <FaArrowRight className="text-xs" />
+                </Link>
+            </div>
+
+            <div className="mt-4 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 text-center">
+                <h4 className="font-black text-slate-900 dark:text-white uppercase tracking-tight mb-1.5">
+                    Prefer it handled continuously?
+                </h4>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
+                    <strong>SEO Care</strong>{' '}
+                    is our ongoing plan: we re-scan your site every month, fix what&apos;s flagged, and send you a
+                    progress report as your score improves. Billed monthly -- no fixed binding period, cancel anytime.
+                </p>
+                <Link
+                    href="/request-quote"
+                    className="inline-flex items-center justify-center gap-2 border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 font-black py-3 px-6 rounded-xl uppercase tracking-widest text-xs hover:border-rose-500 hover:text-rose-500 transition-all"
+                >
+                    Ask About SEO Care
                 </Link>
             </div>
 
