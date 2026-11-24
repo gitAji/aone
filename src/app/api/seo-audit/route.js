@@ -39,20 +39,20 @@ export async function POST(request) {
       scannedAt: new Date().toISOString(),
     };
 
-    let docId = null;
-    try {
-      const docRef = await addDoc(collection(db, 'seo_audit_requests'), {
-        url,
-        email,
-        status: 'completed',
-        overallScore,
-        report,
-        created_at: serverTimestamp(),
-      });
-      docId = docRef.id;
-    } catch (err) {
-      console.error('Failed to save SEO audit report:', err);
-    }
+    // Fire-and-forget, same as the emails below -- a Firestore failure (e.g.
+    // security rules not deployed for this collection) must never affect
+    // the response the visitor sees; the audit result doesn't depend on
+    // whether the lead was successfully logged.
+    addDoc(collection(db, 'seo_audit_requests'), {
+      url,
+      email,
+      status: 'completed',
+      overallScore,
+      report,
+      created_at: serverTimestamp(),
+    }).catch((err) =>
+      console.error('Failed to save SEO audit report (check Firestore rules are deployed for seo_audit_requests):', err)
+    );
 
     // Fire-and-forget -- the visitor already has the report in the response,
     // email delivery shouldn't block or fail the request.
@@ -67,7 +67,7 @@ export async function POST(request) {
       text: `A free SEO audit completed for ${url} (requested by ${email}). Overall score: ${overallScore ?? 'N/A'}.`,
     }).catch((err) => console.error('Failed to notify admin:', err));
 
-    return NextResponse.json({ message: 'Audit complete.', id: docId, report }, { status: 200 });
+    return NextResponse.json({ message: 'Audit complete.', report }, { status: 200 });
   } catch (error) {
     console.error('Error processing SEO audit request:', error);
     return NextResponse.json({ error: 'An unexpected error occurred while scanning your website.' }, { status: 500 });
