@@ -55,7 +55,7 @@ export default function CareersClient() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white">
       <HeroSection
-        title={t("careers.title") || "Join the Aone.no Team"}
+        title={t("careers.title") || "Join the Aone Team"}
         subtitle={t("careers.subtitle") || "Help us shape the future of AI-native digital experiences."}
       />
 
@@ -69,7 +69,7 @@ export default function CareersClient() {
           className="text-center mb-16"
         >
           <span className="text-[10px] uppercase tracking-[0.4em] text-rose-500 font-black">
-            {t("careers.whyTitle") || "Why Aone.no?"}
+            {t("careers.whyTitle") || "Why Aone?"}
           </span>
           <h2 className="text-4xl md:text-5xl font-black mt-3 mb-4">
             {t("careers.whyHeader") || "Work where ambition meets craft."}

@@ -9,7 +9,7 @@ export const mockPosts = [
             'wp:featuredmedia': [
                 { source_url: '/images/placeholders/project1.jpeg' }
             ],
-            author: [{ name: 'Aone.no Team' }],
+            author: [{ name: 'Aone Team' }],
             'wp:term': [[], [{ id: 1, name: 'Web Design' }, { id: 2, name: 'UI/UX' }]]
         }
     },
@@ -23,7 +23,7 @@ export const mockPosts = [
             'wp:featuredmedia': [
                 { source_url: '/images/placeholders/project2.jpeg' }
             ],
-            author: [{ name: 'Aone.no Team' }],
+            author: [{ name: 'Aone Team' }],
             'wp:term': [[], [{ id: 3, name: 'SEO' }, { id: 4, name: 'Marketing' }]]
         }
     },
@@ -37,7 +37,7 @@ export const mockPosts = [
             'wp:featuredmedia': [
                 { source_url: '/images/placeholders/project3.jpeg' }
             ],
-            author: [{ name: 'Aone.no Team' }],
+            author: [{ name: 'Aone Team' }],
             'wp:term': [[], [{ id: 5, name: 'Cloud' }, { id: 6, name: 'Automation' }]]
         }
     },
@@ -49,7 +49,7 @@ export const mockPosts = [
         content: { rendered: '<p>Discover the top trends in digital marketing...</p>' },
         _embedded: {
             'wp:featuredmedia': [{ source_url: '/images/placeholders/project1.jpeg' }],
-            author: [{ name: 'Aone.no Team' }],
+            author: [{ name: 'Aone Team' }],
             'wp:term': [[], [{ id: 7, name: 'Marketing' }, { id: 8, name: 'Trends' }]]
         }
     },
@@ -61,7 +61,7 @@ export const mockPosts = [
         content: { rendered: '<p>User experience is the key to customer retention...</p>' },
         _embedded: {
             'wp:featuredmedia': [{ source_url: '/images/placeholders/project2.jpeg' }],
-            author: [{ name: 'Aone.no Team' }],
+            author: [{ name: 'Aone Team' }],
             'wp:term': [[], [{ id: 9, name: 'UI/UX' }, { id: 10, name: 'Design' }]]
         }
     },
@@ -73,7 +73,7 @@ export const mockPosts = [
         content: { rendered: '<p>Choosing the right platform for your website...</p>' },
         _embedded: {
             'wp:featuredmedia': [{ source_url: '/images/placeholders/project3.jpeg' }],
-            author: [{ name: 'Aone.no Team' }],
+            author: [{ name: 'Aone Team' }],
             'wp:term': [[], [{ id: 11, name: 'Development' }, { id: 12, name: 'WordPress' }]]
         }
     },
@@ -85,7 +85,7 @@ export const mockPosts = [
         content: { rendered: '<p>Artificial Intelligence is revolutionizing how we build websites...</p>' },
         _embedded: {
             'wp:featuredmedia': [{ source_url: '/images/placeholders/project1.jpeg' }],
-            author: [{ name: 'Aone.no Team' }],
+            author: [{ name: 'Aone Team' }],
             'wp:term': [[], [{ id: 13, name: 'AI' }, { id: 14, name: 'Technology' }]]
         }
     },
@@ -97,7 +97,7 @@ export const mockPosts = [
         content: { rendered: '<p>Tips to grow your online store in a competitive market...</p>' },
         _embedded: {
             'wp:featuredmedia': [{ source_url: '/images/placeholders/project2.jpeg' }],
-            author: [{ name: 'Aone.no Team' }],
+            author: [{ name: 'Aone Team' }],
             'wp:term': [[], [{ id: 15, name: 'E-commerce' }, { id: 16, name: 'Growth' }]]
         }
     }

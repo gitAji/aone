@@ -18,7 +18,7 @@ export async function generateMetadata({ params }) {
   const project = projects.find((p) => p.id === slug);
 
   if (!project) {
-    return { title: 'Prosjekt ikke funnet | Aone.no' };
+    return { title: 'Prosjekt ikke funnet | Aone' };
   }
 
   const title = tr(project.title, SSR_LANG);
@@ -26,11 +26,11 @@ export async function generateMetadata({ params }) {
   const url = `https://aone.no/references/${slug}`;
 
   return {
-    title: `${title} | Kundecase – Aone.no`,
+    title: `${title} | Kundecase – Aone`,
     description,
     alternates: { canonical: url },
     openGraph: {
-      title: `${title} | Aone.no`,
+      title: `${title} | Aone`,
       description,
       type: 'article',
       url,
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${title} | Aone.no`,
+      title: `${title} | Aone`,
       description,
       images: [project.imageUrl],
     },
@@ -64,7 +64,7 @@ export default async function ProjectDetailPage({ params }) {
     description: tr(project.overview?.description1, SSR_LANG) || tr(project.description, SSR_LANG),
     image: project.imageUrl,
     url: `https://aone.no/references/${slug}`,
-    creator: { '@type': 'Organization', name: 'Aone.no' },
+    creator: { '@type': 'Organization', name: 'Aone' },
     ...(project.location ? { locationCreated: { '@type': 'Place', name: tr(project.location, SSR_LANG) } } : {}),
   };
 

@@ -19,24 +19,24 @@ export async function generateMetadata({ searchParams }) {
   const page = Math.max(1, parseInt(params?.page, 10) || 1);
   const canonical = page > 1 ? `https://aone.no/blog?page=${page}` : 'https://aone.no/blog';
   const title = page > 1
-    ? `Blogg – Side ${page} | Webdesign, AI & Digital Markedsføring Innsikt – Aone.no`
-    : "Blogg | Webdesign, AI & Digital Markedsføring Innsikt – Aone.no";
+    ? `Blogg – Side ${page} | Webdesign, AI & Digital Markedsføring Innsikt – Aone`
+    : "Blogg | Webdesign, AI & Digital Markedsføring Innsikt – Aone";
 
   return {
     title,
-    description: "Artikler om webdesign, AI-automatisering, SEO og digital markedsføring fra Aone.no i Bergen. Hold deg oppdatert på teknologitrender i Norge.",
-    keywords: "Aone.no blogg, webdesign artikler Norge, AI-innsikt Bergen, digital markedsføring blogg, teknologitrender Norge",
+    description: "Artikler om webdesign, AI-automatisering, SEO og digital markedsføring fra Aone i Bergen. Hold deg oppdatert på teknologitrender i Norge.",
+    keywords: "Aone blogg, webdesign artikler Norge, AI-innsikt Bergen, digital markedsføring blogg, teknologitrender Norge",
     alternates: { canonical },
     openGraph: {
-      title: "Blogg | Aone.no",
-      description: "Innsikt om webdesign, AI og digital markedsføring fra Aone.no i Bergen.",
+      title: "Blogg | Aone",
+      description: "Innsikt om webdesign, AI og digital markedsføring fra Aone i Bergen.",
       url: canonical,
       images: [
         {
           url: "/images/og-image.png",
           width: 1200,
           height: 630,
-          alt: "Aone.no Blog",
+          alt: "Aone Blog",
         },
       ],
     },

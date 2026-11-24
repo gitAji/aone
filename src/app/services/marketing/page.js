@@ -1,12 +1,12 @@
 import MarketingClient from './MarketingClient';
 
 export const metadata = {
-  title: "Marketing, SEO & GEO | AI-Driven Growth | Aone.no",
+  title: "Marketing, SEO & GEO | AI-Driven Growth | Aone",
   description: "Digital marketing, SEO, and Generative Engine Optimization (GEO) in one package -- grow your visibility across Google and AI search alike.",
-  keywords: "Digital marketing Norway, SEO Bergen, GEO AI search optimization, GEO-optimalisering Norge, social media marketing, content marketing, paid advertising, søkemotoroptimalisering Bergen, Aone.no",
+  keywords: "Digital marketing Norway, SEO Bergen, GEO AI search optimization, GEO-optimalisering Norge, social media marketing, content marketing, paid advertising, søkemotoroptimalisering Bergen, Aone",
   alternates: { canonical: "https://aone.no/services/marketing" },
   openGraph: {
-    title: "Marketing, SEO & GEO | Aone.no",
+    title: "Marketing, SEO & GEO | Aone",
     description: "Grow your visibility across Google and AI search alike.",
     url: "https://aone.no/services/marketing",
     images: [
@@ -14,7 +14,7 @@ export const metadata = {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Aone.no Marketing",
+        alt: "Aone Marketing",
       },
     ],
   },

@@ -7,7 +7,7 @@ const Logo = ({ responsive = false }) => {
       <Link href="/" className="cursor-pointer transition-all hover:opacity-80 block">
         <Image
           src="/images/logo.png"
-          alt="Aone.no Logo"
+          alt="Aone Logo"
           height={120}
           width={200}
           priority

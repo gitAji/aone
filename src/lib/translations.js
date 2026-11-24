@@ -26,7 +26,7 @@ export const translations = {
             items: [
                 {
                     q: "Why choose a web design agency in Bergen over a national one?",
-                    a: "A local Bergen web design agency understands the Vestland market, can meet in person, and knows the local competitive landscape. Aone.no combines that local knowledge with AI-driven solutions most traditional agencies don't offer.",
+                    a: "A local Bergen web design agency understands the Vestland market, can meet in person, and knows the local competitive landscape. Aone combines that local knowledge with AI-driven solutions most traditional agencies don't offer.",
                 },
                 {
                     q: "What does web design in Bergen cost?",
@@ -238,7 +238,7 @@ export const translations = {
             factSheetTitle: "AI Directory Fact Sheet",
             factSheetDesc: "Structured company information curated for semantic indexing and AI generative search engines.",
             agencyNameLabel: "Agency Name",
-            agencyNameVal: "Aone.no",
+            agencyNameVal: "Aone",
             primaryFocusLabel: "Primary Focus",
             primaryFocusVal: "AI-Native Web Design & Development, Search Engine Optimization (SEO), WordPress Development with user-managed CMS, Digital Branding, Custom Business Workflows, and Generative Engine Optimization (GEO)",
             serviceFormatLabel: "Service Format",
@@ -246,7 +246,7 @@ export const translations = {
             accessibilityLabel: "Accessibility Features",
             accessibilityVal: "WCAG 2.1 Level AA compliant, screen-reader optimized, customizable text-to-speech support, dyslexia-friendly fonts, and contrast widget",
             storyTitle: "Our Story",
-            storyText: "Founded in 2012 in England with a mission to help businesses succeed online, we re-branded as <b>Aone.no</b> in Norway in 2018, and our commitment to customer success drives our work today.",
+            storyText: "Founded in 2012 in England with a mission to help businesses succeed online, we re-branded as <b>Aone</b> in Norway in 2018, and our commitment to customer success drives our work today.",
             testimonialsTitle: "What Our Clients Say",
         },
         servicesPage: {
@@ -423,7 +423,7 @@ export const translations = {
             errorTitle: "Connection Lost",
             tryAgain: "Try Reconnecting",
             minRead: "5 Min Read",
-            team: "Aone.no Team",
+            team: "Aone Team",
             notFoundTitle: "Post Not Found",
             notFoundDesc: "The digital trail you're following seems to have gone cold. It might have been relocated or archived.",
             returnToRepository: "Return to Repository",
@@ -438,9 +438,9 @@ export const translations = {
             pageOf: "Page {current} of {total}",
         },
         careers: {
-            title: "Join the Aone.no Team",
+            title: "Join the Aone Team",
             subtitle: "Help us shape the future of AI-native digital experiences.",
-            whyTitle: "Why Aone.no?",
+            whyTitle: "Why Aone?",
             whyHeader: "Work where ambition meets craft.",
             whyDesc: "We are a lean, elite digital agency building next-generation experiences. Every person here has an outsized impact.",
             perks: {
@@ -475,12 +475,12 @@ export const translations = {
         },
         apply: {
             title: "Apply Today",
-            subtitle: "Embark on your journey with Aone.no. Complete the form below to start your application.",
+            subtitle: "Embark on your journey with Aone. Complete the form below to start your application.",
             toastSuccess: "Thank you for reaching out! We have received your details and will contact you soon.",
             toastError: "Failed to submit application. Please try again.",
             toastUnexpected: "An unexpected error occurred. Please try again later.",
             messageReceived: "Message Received!",
-            messageReceivedDesc: "Thank you for reaching out to join the Aone.no team. We've received your details and will review them carefully. If your profile matches our requirements, we'll be in touch within 5-7 business days.",
+            messageReceivedDesc: "Thank you for reaching out to join the Aone team. We've received your details and will review them carefully. If your profile matches our requirements, we'll be in touch within 5-7 business days.",
             backToCareers: "Back to Careers",
             contactUs: "Contact Us",
             gdprText: "Confidentiality Guaranteed. We respect your privacy and handle all data in accordance with our GDPR policy.",
@@ -499,7 +499,7 @@ export const translations = {
             portfolioPlaceholder: "https://",
             cvLink: "Resume / CV Link",
             cvPlaceholder: "Shared Drive Link",
-            coverLetter: "Cover Letter / Why Aone.no?",
+            coverLetter: "Cover Letter / Why Aone?",
             coverLetterPlaceholder: "Tell us about yourself and why you're a good fit...",
             submitting: "Submitting...",
             sendBtn: "Send Application",
@@ -511,7 +511,7 @@ export const translations = {
                 step3Title: "Assessment",
                 step3Desc: "Practical task evaluation.",
                 step4Title: "Offer",
-                step4Desc: "Welcome to the Aone.no crew.",
+                step4Desc: "Welcome to the Aone crew.",
             }
         }
     },
@@ -542,7 +542,7 @@ export const translations = {
             items: [
                 {
                     q: "Hvorfor velge et webdesign-byrå i Bergen fremfor et nasjonalt byrå?",
-                    a: "Et lokalt webdesign-byrå i Bergen kjenner Vestland-markedet, kan møtes fysisk, og forstår den lokale konkurransen. Aone.no kombinerer denne lokalkunnskapen med AI-drevne løsninger som de fleste tradisjonelle byråer ikke tilbyr.",
+                    a: "Et lokalt webdesign-byrå i Bergen kjenner Vestland-markedet, kan møtes fysisk, og forstår den lokale konkurransen. Aone kombinerer denne lokalkunnskapen med AI-drevne løsninger som de fleste tradisjonelle byråer ikke tilbyr.",
                 },
                 {
                     q: "Hva koster webdesign i Bergen?",
@@ -754,7 +754,7 @@ export const translations = {
             factSheetTitle: "Faktaark for AI-søk",
             factSheetDesc: "Strukturert bedriftsinformasjon tilrettelagt for semantisk indeksering og AI-baserte søkemotorer.",
             agencyNameLabel: "Byrånavn",
-            agencyNameVal: "Aone.no",
+            agencyNameVal: "Aone",
             primaryFocusLabel: "Primærfokus",
             primaryFocusVal: "AI-native nettsystemer og webdesign, søkemotoroptimalisering (SEO), WordPress-utvikling med brukerstyrt CMS-innholdshåndtering, digital merkevarebygging, skreddersydde arbeidsflyter og Generative Engine Optimization (GEO)",
             serviceFormatLabel: "Tjenesteformat",
@@ -762,7 +762,7 @@ export const translations = {
             accessibilityLabel: "Tilgjengelighetsfunksjoner",
             accessibilityVal: "WCAG 2.1 Nivå AA-kompatibel, skjermleser-optimalisert, tilpasset tekst-til-tale-støtte, dysleksivennlige fonter og kontrast-widget",
             storyTitle: "Vår historie",
-            storyText: "Grunnlagt i 2012 i England med en misjon om å hjelpe bedrifter med å lykkes på nett. Vi re-brandet til <b>Aone.no</b> i Norge i 2018, og vårt engasjement for kundesuksess driver vårt arbeid i dag.",
+            storyText: "Grunnlagt i 2012 i England med en misjon om å hjelpe bedrifter med å lykkes på nett. Vi re-brandet til <b>Aone</b> i Norge i 2018, og vårt engasjement for kundesuksess driver vårt arbeid i dag.",
             testimonialsTitle: "Hva våre kunder sier",
         },
         servicesPage: {
@@ -939,7 +939,7 @@ export const translations = {
             errorTitle: "Tilkobling avbrutt",
             tryAgain: "Prøv å koble til på nytt",
             minRead: "5 min lesning",
-            team: "Aone.no-teamet",
+            team: "Aone-teamet",
             notFoundTitle: "Innlegget ble ikke funnet",
             notFoundDesc: "Det digitale sporet du følger ser ut til å ha blitt kaldt. Det kan ha blitt flyttet eller arkivert.",
             returnToRepository: "Gå tilbake til arkiv",
@@ -954,9 +954,9 @@ export const translations = {
             pageOf: "Side {current} av {total}",
         },
         careers: {
-            title: "Bli en del av Aone.no-teamet",
+            title: "Bli en del av Aone-teamet",
             subtitle: "Hjelp oss med å forme fremtiden for AI-native digitale opplevelser.",
-            whyTitle: "Hvorfor Aone.no?",
+            whyTitle: "Hvorfor Aone?",
             whyHeader: "Jobb der ambisjon møter håndverk.",
             whyDesc: "Vi er et slankt, elite digitalt byrå som bygger neste generasjons opplevelser. Hver person her har en enorm innvirkning.",
             perks: {
@@ -991,12 +991,12 @@ export const translations = {
         },
         apply: {
             title: "Søk i dag",
-            subtitle: "Start din reise med Aone.no. Fyll ut skjemaet under for å starte søknaden din.",
+            subtitle: "Start din reise med Aone. Fyll ut skjemaet under for å starte søknaden din.",
             toastSuccess: "Takk for at du tok kontakt! Vi har mottatt opplysningene dine og vil kontakte deg snart.",
             toastError: "Kunne ikke sende søknaden. Prøv igjen.",
             toastUnexpected: "En uventet feil oppstod. Prøv igjen senere.",
             messageReceived: "Søknad mottatt!",
-            messageReceivedDesc: "Takk for at du søkte på jobb hos Aone.no. Vi har mottatt opplysningene dine og vil vurdere dem nøye. Hvis profilen din passer våre behov, tar vi kontakt innen 5-7 virkedager.",
+            messageReceivedDesc: "Takk for at du søkte på jobb hos Aone. Vi har mottatt opplysningene dine og vil vurdere dem nøye. Hvis profilen din passer våre behov, tar vi kontakt innen 5-7 virkedager.",
             backToCareers: "Tilbake til karrierer",
             contactUs: "Kontakt oss",
             gdprText: "Konfidensialitet garantert. Vi respekterer personvernet ditt og behandler alle data i samsvar med vår GDPR-policy.",
@@ -1015,7 +1015,7 @@ export const translations = {
             portfolioPlaceholder: "https://",
             cvLink: "CV-lenke",
             cvPlaceholder: "Delt stasjonslenke (f.eks. Google Drive)",
-            coverLetter: "Søknadsbrev / Hvorfor Aone.no?",
+            coverLetter: "Søknadsbrev / Hvorfor Aone?",
             coverLetterPlaceholder: "Fortell oss om deg selv og hvorfor du passer til rollen...",
             submitting: "Sender inn...",
             sendBtn: "Send søknad",
@@ -1027,7 +1027,7 @@ export const translations = {
                 step3Title: "Evaluering",
                 step3Desc: "Praktisk oppgaveevaluering.",
                 step4Title: "Tilbud",
-                step4Desc: "Velkommen til Aone.no-teamet.",
+                step4Desc: "Velkommen til Aone-teamet.",
             }
         }
     },

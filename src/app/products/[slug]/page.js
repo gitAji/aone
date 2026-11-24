@@ -11,17 +11,17 @@ export async function generateMetadata({ params }) {
   const product = products.find((p) => p.id === slug);
 
   if (!product) {
-    return { title: 'Produkt ikke funnet | Aone.no' };
+    return { title: 'Produkt ikke funnet | Aone' };
   }
 
   const url = `https://aone.no/products/${slug}`;
 
   return {
-    title: `${product.title} | Aone.no Produkter`,
+    title: `${product.title} | Aone Produkter`,
     description: product.description,
     alternates: { canonical: url },
     openGraph: {
-      title: `${product.title} | Aone.no`,
+      title: `${product.title} | Aone`,
       description: product.description,
       type: 'website',
       url,
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${product.title} | Aone.no`,
+      title: `${product.title} | Aone`,
       description: product.description,
       images: [product.imageUrl],
     },
@@ -55,7 +55,7 @@ export default async function ProductDetailPage({ params }) {
     description: product.description,
     image: product.imageUrl,
     url: `https://aone.no/products/${slug}`,
-    brand: { '@type': 'Organization', name: 'Aone.no' },
+    brand: { '@type': 'Organization', name: 'Aone' },
   };
 
   return (

@@ -64,7 +64,7 @@ function AdminLoginForm() {
           <FaLock />
         </div>
         <h1 className="text-2xl font-black text-slate-900 dark:text-white mb-1.5 text-center uppercase tracking-tight">Admin Login</h1>
-        <p className="text-sm text-slate-500 dark:text-slate-400 mb-8 text-center">Restricted access &mdash; Aone.no team only</p>
+        <p className="text-sm text-slate-500 dark:text-slate-400 mb-8 text-center">Restricted access &mdash; Aone team only</p>
 
         {error && (
           <div className="mb-6 px-4 py-3 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 text-sm font-medium break-words">

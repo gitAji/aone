@@ -89,7 +89,7 @@ function ApplyForm() {
             {t("apply.messageReceived") || "Message Received!"}
           </h2>
           <p className="text-slate-600 dark:text-slate-400 mb-10 leading-relaxed text-lg font-medium">
-            {t("apply.messageReceivedDesc") || "Thank you for reaching out to join the Aone.no team. We've received your details and will review them carefully. If your profile matches our requirements, we'll be in touch within 5-7 business days."}
+            {t("apply.messageReceivedDesc") || "Thank you for reaching out to join the Aone team. We've received your details and will review them carefully. If your profile matches our requirements, we'll be in touch within 5-7 business days."}
           </p>
           <Link href="/careers" className="inline-block bg-slate-800 hover:bg-slate-700 text-white font-bold px-8 py-4 rounded-full transition-all duration-300">
             {t("apply.backToCareers") || "Back to Careers"}
@@ -105,7 +105,7 @@ function ApplyForm() {
       
       <HeroSection 
         title={t("apply.title") || "Apply Today"} 
-        subtitle={t("apply.subtitle") || "Embark on your journey with Aone.no. Complete the form below to start your application."} 
+        subtitle={t("apply.subtitle") || "Embark on your journey with Aone. Complete the form below to start your application."} 
       />
 
       <div className="container mx-auto px-4 pt-40 pb-28">
@@ -126,7 +126,7 @@ function ApplyForm() {
                   { step: "01", title: t("apply.steps.step1Title") || "Review", desc: t("apply.steps.step1Desc") || "Our HR team reviews your profile." },
                   { step: "02", title: t("apply.steps.step2Title") || "Interview", desc: t("apply.steps.step2Desc") || "Technical or creative discussion." },
                   { step: "03", title: t("apply.steps.step3Title") || "Assessment", desc: t("apply.steps.step3Desc") || "Practical task evaluation." },
-                  { step: "04", title: t("apply.steps.step4Title") || "Offer", desc: t("apply.steps.step4Desc") || "Welcome to the Aone.no crew." },
+                  { step: "04", title: t("apply.steps.step4Title") || "Offer", desc: t("apply.steps.step4Desc") || "Welcome to the Aone crew." },
                 ].map(item => (
                   <li key={item.step} className="flex gap-4">
                     <span className="text-rose-700 dark:text-rose-400 font-black text-xs mt-1">{item.step}</span>
@@ -258,7 +258,7 @@ function ApplyForm() {
             {/* Message */}
             <div className="space-y-2">
               <label className="text-xs font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 flex items-center gap-2">
-                {t("apply.coverLetter") || "Cover Letter / Why Aone.no?"}
+                {t("apply.coverLetter") || "Cover Letter / Why Aone?"}
               </label>
               <textarea
                 name="message"

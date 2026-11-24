@@ -106,7 +106,7 @@ export async function POST(request) {
       <div style="font-family: sans-serif; color: #333;">
           <h1 style="color: #f43f5e;">Agreement Received</h1>
           <p>Hi ${formData.name},</p>
-          <p>Thank you for choosing Aone.no!</p>
+          <p>Thank you for choosing Aone!</p>
 
           <div style="background: #f1f5f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h3 style="margin-top:0;">Agreement Details</h3>
@@ -117,7 +117,7 @@ export async function POST(request) {
           </div>
 
           <p>We will contact you shortly to arrange payment and get started.</p>
-          <p>Best regards,<br>The Aone.no Team</p>
+          <p>Best regards,<br>The Aone Team</p>
       </div>
     `;
 

@@ -6,7 +6,7 @@ export const metadata = {
   keywords: "Videoproduksjon Bergen, bedriftsvideo Norge, videograf Bergen, brand video Norway, video marketing Bergen, filmproduksjon bedrift",
   alternates: { canonical: "https://aone.no/services/videography" },
   openGraph: {
-    title: "Videoproduksjon Bergen | Aone.no",
+    title: "Videoproduksjon Bergen | Aone",
     description: "Fengslende videoinnhold og merkevarehistorier designet for høyt engasjement og digital konvertering.",
     url: "https://aone.no/services/videography",
     images: [
@@ -14,7 +14,7 @@ export const metadata = {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Aone.no Videography Services Bergen",
+        alt: "Aone Videography Services Bergen",
       },
     ],
   },
