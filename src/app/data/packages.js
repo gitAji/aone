@@ -50,7 +50,7 @@ export const packages = [
             'E-Commerce & Stripe Integration',
             'SaaS Features & User Auth',
             'AI Chat & Custom Workflows',
-            'CMS & Admin Dashboard Access',
+            'Edit Your Own Website in Under a Minute',
             'Database & Custom API Design',
             'Maintenance & Basic Updates (Monthly)'
         ],
