@@ -157,10 +157,16 @@ const Footer = () => {
 
         </div>
 
-        <div className="footer-bottom mt-12 pt-8 border-t border-slate-800 text-center">
+        <div className="footer-bottom mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 text-center">
           <p className="text-slate-500 text-xs tracking-wide">
             &copy; {new Date().getFullYear()} Aone. {t('footer.rights')}
           </p>
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-slate-800 bg-slate-900 text-[11px] text-slate-400">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#f38020" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            <span>Protected by <strong className="font-bold text-slate-300">Cloudflare</strong></span>
+          </div>
         </div>
       </motion.div>
     </footer>
