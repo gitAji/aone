@@ -171,6 +171,13 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
               <p className="mt-2 text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-600">
                 {t('hero.trustStats')}
               </p>
+
+              <div className="mt-4 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-[11px] text-slate-600 dark:text-slate-400">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#f38020" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                <span>Protected by <strong className="font-bold text-slate-700 dark:text-slate-300">Cloudflare</strong></span>
+              </div>
             </>
           ) : (
             <>

@@ -205,11 +205,12 @@ export default function PricingPage() {
                         {addonPackages.map((addon, i) => (
                             <motion.div
                                 key={addon.id}
+                                id={addon.id}
                                 initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                                className="group bg-white dark:bg-slate-900/50 p-6 rounded-3xl border border-slate-100 dark:border-slate-800 hover:border-rose-500/20 transition-all duration-300 flex items-center justify-between shadow-sm hover:shadow-lg"
+                                className="group scroll-mt-32 bg-white dark:bg-slate-900/50 p-6 rounded-3xl border border-slate-100 dark:border-slate-800 hover:border-rose-500/20 transition-all duration-300 flex items-center justify-between shadow-sm hover:shadow-lg"
                             >
                                 <div className="flex flex-col gap-1">
                                     <div className="flex items-center gap-2">
