@@ -89,10 +89,10 @@ const Footer = () => {
               fit its content's intrinsic width -- a long one-word heading
               like "Locations"/"Lokasjoner" (no space to wrap at) then
               blows out its own track and paints over the next column's
-              heading instead of wrapping. break-words gives it somewhere
-              to go once the track width is actually enforced. */}
+              heading. A smaller size + tighter tracking than the other
+              headings keeps this one word on a single line instead. */}
           <div className="footer-section locations-links flex-1 min-w-0">
-            <h3 className="text-[10px] uppercase tracking-[0.3em] font-black mb-8 text-white break-words">{t('footer.locations') || 'Locations'}</h3>
+            <h3 className="text-[8px] uppercase tracking-normal font-black mb-8 text-white whitespace-nowrap">{t('footer.locations') || 'Locations'}</h3>
             <ul className="space-y-3">
               {locations.map((location) => (
                 <li key={location.slug}>
