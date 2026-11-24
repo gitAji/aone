@@ -6,9 +6,11 @@ import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
 import Logo from "./Logo";
 import ConstellationField from "./ConstellationField";
+import locations from "@/app/data/locations";
+import { tr } from "@/lib/projectText";
 
 const Footer = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   return (
     <footer className="footer overflow-hidden relative border-t border-slate-900 bg-slate-950 pb-10">
       
@@ -82,15 +84,27 @@ const Footer = () => {
             <p className="text-slate-400/50 text-[7px] uppercase tracking-[0.25em] font-medium mt-4 whitespace-nowrap">Org nr: 922 103 682</p>
           </div>
           
-          {/* Column 2: Positions */}
+          {/* Column 2: Positions + Locations -- grouped in one column
+              rather than adding a 6th grid column, since both lists are
+              short (keeps the xl:grid-cols-5 layout intact). */}
           <div className="footer-section careers-links flex-1">
             <h3 className="text-[10px] uppercase tracking-[0.3em] font-black mb-8 text-white">{t('footer.careers') || 'Careers'}</h3>
             <ul className="space-y-3">
               <li><Link href="/careers/ai-automation-specialist" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">AI & Automation</Link></li>
               <li><Link href="/careers/marketing-saas-growth-officer" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">Marketing Growth</Link></li>
             </ul>
+            <h3 className="text-[10px] uppercase tracking-[0.3em] font-black mb-8 mt-10 text-white">{t('footer.locations') || 'Locations'}</h3>
+            <ul className="space-y-3">
+              {locations.map((location) => (
+                <li key={location.slug}>
+                  <Link href={`/locations/${location.slug}`} className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">
+                    {tr(location.city, language)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
-          
+
           {/* Column 3: Quick Links */}
           <div className="footer-section quick-links flex-1">
             <h3 className="text-[10px] uppercase tracking-[0.3em] font-black mb-8 text-white">{t('footer.quickLinks')}</h3>

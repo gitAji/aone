@@ -186,7 +186,7 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter leading-tight bg-clip-text text-transparent bg-gradient-to-r from-rose-500 via-rose-400 to-amber-500 uppercase drop-shadow-sm font-satoshi mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter leading-tight bg-clip-text text-transparent bg-gradient-to-r from-rose-500 via-rose-400 to-amber-500 uppercase drop-shadow-sm font-satoshi mb-6 break-words"
               >
                 {title}
               </motion.h1>
