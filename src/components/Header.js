@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Logo from './Logo';
 import HamburgerMenu from './HamburgerMenu';
 import { useLanguage } from '@/context/LanguageContext';
-import { FaArrowRight } from 'react-icons/fa';
+import { FaArrowRight, FaSearch } from 'react-icons/fa';
 
 const Header = () => {
   const { t } = useLanguage();
@@ -40,6 +40,18 @@ const Header = () => {
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3">
+          {/* Secondary CTA -- a lighter-weight, lower-commitment conversion
+              path next to the primary one. Hidden below sm: the mobile row
+              is already tight with the primary CTA + theme/language
+              switches + hamburger, so a second full button there would
+              crowd it; reachable from the hamburger menu on mobile instead. */}
+          <Link
+            href="/free-seo-audit"
+            className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider rounded-full border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-rose-500 hover:text-rose-500 dark:hover:border-rose-500 dark:hover:text-rose-400 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 whitespace-nowrap shrink-0"
+          >
+            <FaSearch className="text-[9px]" />
+            <span>{t('freeSeoAuditCta')}</span>
+          </Link>
           {/* Visible at every breakpoint -- a direct conversion action should
               be reachable in 1 click from any page, not just on desktop. */}
           <Link
