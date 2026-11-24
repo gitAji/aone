@@ -468,6 +468,25 @@ body.no-scroll {
   animation: marquee 25s linear infinite;
 }
 
+/* Continuous right-to-left scroll for a duplicated track (two identical
+   copies of the content placed side by side) -- translating exactly -50%
+   always lands on the start of the second copy, so the loop is seamless
+   regardless of how many items fit on screen at once. Distinct from
+   .animate-marquee above (a single banner sliding fully off-screen),
+   which this doesn't reuse/alter. */
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-scroll-left {
+  animation: scrollLeft 45s linear infinite;
+}
+
+.animate-scroll-left:hover {
+  animation-play-state: paused;
+}
+
 /* Color Bomb Orb Floating Animations */
 @keyframes orbFloat1 {
   0%, 100% {

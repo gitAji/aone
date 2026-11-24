@@ -119,29 +119,33 @@ const BlogListClient = ({ posts, currentPage, totalPages }) => {
                 {/* Pagination -- real links to /blog?page=N, crawlable and
                     bookmarkable, not a client-only "load more" fetch. */}
                 {totalPages > 1 && (
-                    <nav className="mt-20 flex items-center justify-center gap-3" aria-label="Blog pagination">
-                        {currentPage > 1 && (
+                    <nav className="mt-20 mb-24 flex items-center justify-center gap-4" aria-label="Blog pagination">
+                        {currentPage > 1 ? (
                             <Link
                                 href={currentPage === 2 ? '/blog' : `/blog?page=${currentPage - 1}`}
-                                className="flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-200 dark:border-slate-800 text-sm font-bold text-slate-600 dark:text-slate-300 hover:border-rose-500/50 hover:text-rose-500 transition-colors"
+                                className="flex items-center gap-2 px-6 py-3 rounded-full border border-slate-200 dark:border-slate-800 text-sm font-bold text-slate-600 dark:text-slate-300 hover:border-rose-500/50 hover:text-rose-500 hover:-translate-y-0.5 transition-all duration-300 shadow-sm"
                             >
                                 <FaChevronLeft className="text-xs" /> {t('blog.previous') || 'Forrige'}
                             </Link>
+                        ) : (
+                            <span className="w-[120px]" />
                         )}
 
-                        <span className="px-4 py-3 text-sm font-bold text-slate-400">
+                        <span className="px-5 py-2.5 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">
                             {(t('blog.pageOf') || 'Side {current} av {total}')
                                 .replace('{current}', currentPage)
                                 .replace('{total}', totalPages)}
                         </span>
 
-                        {currentPage < totalPages && (
+                        {currentPage < totalPages ? (
                             <Link
                                 href={`/blog?page=${currentPage + 1}`}
-                                className="flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-950 text-sm font-bold hover:opacity-90 transition-opacity"
+                                className="flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-rose-500 to-amber-500 text-white text-sm font-bold shadow-lg shadow-rose-500/20 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
                             >
                                 {t('blog.next') || 'Neste'} <FaChevronRight className="text-xs" />
                             </Link>
+                        ) : (
+                            <span className="w-[120px]" />
                         )}
                     </nav>
                 )}

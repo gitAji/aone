@@ -12,7 +12,7 @@ const Logo = ({ responsive = false }) => {
           width={200}
           priority
           {...(responsive
-            ? { className: 'logo-img h-11 sm:h-12 md:h-[120px] w-auto block' }
+            ? { className: 'logo-img h-14 sm:h-16 md:h-[120px] w-auto block' }
             : {
                 className: 'logo-img',
                 style: { height: '120px', width: 'auto', display: 'block' },

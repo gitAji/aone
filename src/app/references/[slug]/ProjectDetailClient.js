@@ -137,14 +137,14 @@ const ProjectDetailClient = ({ project, prevProject, nextProject }) => {
         </div>
       </section>
 
-      <section className="cta py-16 bg-gray-200 text-gray-800 text-center">
+      <section className="cta py-16 bg-gray-200 dark:bg-slate-900 text-gray-800 dark:text-white text-center">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-8">
+          <h2 className="text-4xl font-bold text-gray-800 dark:text-white mb-8">
             {t('projectDetail.ctaTitle')}
           </h2>
           <Link
             href={`/free-consultation`}
-            className="inline-block bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 ease-in-out text-lg font-semibold shadow-lg"
+            className="inline-block bg-gray-800 dark:bg-white text-white dark:text-slate-900 py-3 px-8 rounded-full hover:bg-gray-700 dark:hover:bg-slate-100 transition duration-300 ease-in-out text-lg font-semibold shadow-lg"
           >
             {t('projectDetail.ctaButton')}
           </Link>

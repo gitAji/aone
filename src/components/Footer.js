@@ -87,8 +87,6 @@ const Footer = () => {
             <h3 className="text-[10px] uppercase tracking-[0.3em] font-black mb-8 text-white">{t('footer.careers') || 'Careers'}</h3>
             <ul className="space-y-3">
               <li><Link href="/careers/ai-automation-specialist" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">AI & Automation</Link></li>
-              <li><Link href="/careers/ux-ui-designer" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">UX/UI Designer</Link></li>
-              <li><Link href="/careers/backend-nextjs-developer" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">Backend Developer</Link></li>
               <li><Link href="/careers/marketing-saas-growth-officer" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">Marketing Growth</Link></li>
             </ul>
           </div>
