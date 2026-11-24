@@ -46,6 +46,7 @@ const HamburgerMenu = () => {
     { num: "04", name: t('nav.about'), href: '/about', desc: t('nav.desc.about') || "Our story, team values, and mission statement" },
     { num: "05", name: t('nav.blog'), href: '/blog', desc: t('nav.desc.blog') || "Insights, technology guides & industry news" },
     { num: "06", name: t('nav.contact'), href: '/contact', desc: t('nav.desc.contact') || "Get in touch or schedule a virtual discovery call" },
+    { num: "07", name: t('nav.freeSeoAudit') || "Free SEO Audit", href: '/free-seo-audit', desc: t('nav.desc.freeSeoAudit') || "Instant, automated SEO & GEO scan of your site" },
   ];
 
   return (

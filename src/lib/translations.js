@@ -9,6 +9,7 @@ export const translations = {
             contact: "Contact",
             pricing: "Pricing",
             clientLogin: "Client Login",
+            freeSeoAudit: "Free SEO Audit",
             desc: {
                 services: "Tailored web design & business AI automation",
                 pricing: "Transparent packages & custom enterprise quotes",
@@ -17,6 +18,7 @@ export const translations = {
                 about: "Our story, team values, and mission statement",
                 blog: "Insights, technology guides & industry news",
                 contact: "Get in touch or schedule a virtual discovery call",
+                freeSeoAudit: "Instant, automated SEO & GEO scan of your site",
             }
         },
         requestQuote: "Request Quote",
@@ -526,6 +528,7 @@ export const translations = {
             contact: "Kontakt",
             pricing: "Priser",
             clientLogin: "Kundeportal",
+            freeSeoAudit: "Gratis SEO-sjekk",
             desc: {
                 services: "Skreddersydd webdesign og forretnings-AI",
                 pricing: "Transparente prispakker og skreddersydde tilbud",
@@ -534,6 +537,7 @@ export const translations = {
                 about: "Vår historie, verdier og misjonserklæring",
                 blog: "Innsikt, teknologiguider og bransjenyheter",
                 contact: "Ta kontakt eller avtal et virtuelt møte",
+                freeSeoAudit: "Umiddelbar, automatisk SEO- og GEO-skanning av nettsiden din",
             }
         },
         requestQuote: "Få et tilbud",
