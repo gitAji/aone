@@ -39,33 +39,45 @@ export async function POST(request) {
       scannedAt: new Date().toISOString(),
     };
 
-    // Fire-and-forget, same as the emails below -- a Firestore failure (e.g.
-    // security rules not deployed for this collection) must never affect
-    // the response the visitor sees; the audit result doesn't depend on
-    // whether the lead was successfully logged.
-    addDoc(collection(db, 'seo_audit_requests'), {
-      url,
-      email,
-      status: 'completed',
-      overallScore,
-      report,
-      created_at: serverTimestamp(),
-    }).catch((err) =>
-      console.error('Failed to save SEO audit report (check Firestore rules are deployed for seo_audit_requests):', err)
-    );
+    // Each awaited individually, each wrapped in its own try/catch -- a
+    // failure in any one (Firestore rules not deployed, bad SMTP creds,
+    // etc.) must never crash the response the visitor sees, but it also
+    // must not be a true fire-and-forget: on a serverless platform the
+    // function's execution context can be torn down right after the
+    // response is sent, killing an un-awaited network call before it
+    // completes. Awaiting (with try/catch) is what every other form route
+    // in this app does for the same reason.
+    try {
+      await addDoc(collection(db, 'seo_audit_requests'), {
+        url,
+        email,
+        status: 'completed',
+        overallScore,
+        report,
+        created_at: serverTimestamp(),
+      });
+    } catch (err) {
+      console.error('Failed to save SEO audit report (check Firestore rules are deployed for seo_audit_requests):', err);
+    }
 
-    // Fire-and-forget -- the visitor already has the report in the response,
-    // email delivery shouldn't block or fail the request.
-    sendClientEmail({
-      to: email,
-      subject: `Your Free SEO & GEO Audit Report for ${url}`,
-      html: buildReportEmailHtml(report),
-    }).catch((err) => console.error('Failed to email SEO audit report:', err));
+    try {
+      await sendClientEmail({
+        to: email,
+        subject: `Your Free SEO & GEO Audit Report for ${url}`,
+        html: buildReportEmailHtml(report),
+      });
+    } catch (err) {
+      console.error('Failed to email SEO audit report:', err);
+    }
 
-    sendAdminNotification({
-      subject: `SEO Audit completed: ${url}`,
-      text: `A free SEO audit completed for ${url} (requested by ${email}). Overall score: ${overallScore ?? 'N/A'}.`,
-    }).catch((err) => console.error('Failed to notify admin:', err));
+    try {
+      await sendAdminNotification({
+        subject: `SEO Audit completed: ${url}`,
+        text: `A free SEO audit completed for ${url} (requested by ${email}). Overall score: ${overallScore ?? 'N/A'}.`,
+      });
+    } catch (err) {
+      console.error('Failed to notify admin:', err);
+    }
 
     return NextResponse.json({ message: 'Audit complete.', report }, { status: 200 });
   } catch (error) {
