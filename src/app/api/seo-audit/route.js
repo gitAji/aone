@@ -1,7 +1,13 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { sendAdminNotification } from '@/lib/mail';
+import { sendAdminNotification, sendClientEmail } from '@/lib/mail';
+import { runOnPageAudit, runPageSpeedAudit, computeOverallScore, buildReportEmailHtml } from '@/lib/seoAudit';
+
+// Netlify/Vercel both honor this where supported -- the scan can take up to
+// ~20s (on-page checks + a best-effort PageSpeed Insights call), longer than
+// a typical default function timeout.
+export const maxDuration = 60;
 
 export async function POST(request) {
   try {
@@ -11,29 +17,59 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Website URL and email are required.' }, { status: 400 });
     }
 
-    const docRef = await addDoc(collection(db, 'seo_audit_requests'), {
+    let onPageChecks;
+    try {
+      onPageChecks = await runOnPageAudit(url);
+    } catch (err) {
+      return NextResponse.json({ error: err.message || 'Could not scan that website.' }, { status: 422 });
+    }
+
+    // Best-effort -- never lets a slow/unavailable PageSpeed Insights call
+    // fail the whole audit, since on-page checks alone are still a useful
+    // report on their own.
+    const performance = await runPageSpeedAudit(url);
+    const overallScore = computeOverallScore(onPageChecks, performance);
+
+    const report = {
       url,
       email,
-      status: 'new',
-      created_at: serverTimestamp(),
-    });
+      overallScore,
+      onPageChecks,
+      performance,
+      scannedAt: new Date().toISOString(),
+    };
 
-    await sendAdminNotification({
-      subject: `New Free SEO Audit Request: ${url}`,
-      text: `
-        A new free SEO audit was requested.
+    let docId = null;
+    try {
+      const docRef = await addDoc(collection(db, 'seo_audit_requests'), {
+        url,
+        email,
+        status: 'completed',
+        overallScore,
+        report,
+        created_at: serverTimestamp(),
+      });
+      docId = docRef.id;
+    } catch (err) {
+      console.error('Failed to save SEO audit report:', err);
+    }
 
-        Website: ${url}
-        Email: ${email}
-      `,
-    });
+    // Fire-and-forget -- the visitor already has the report in the response,
+    // email delivery shouldn't block or fail the request.
+    sendClientEmail({
+      to: email,
+      subject: `Your Free SEO Audit Report for ${url}`,
+      html: buildReportEmailHtml(report),
+    }).catch((err) => console.error('Failed to email SEO audit report:', err));
 
-    return NextResponse.json({
-      message: 'SEO audit request received successfully!',
-      id: docRef.id,
-    }, { status: 200 });
+    sendAdminNotification({
+      subject: `SEO Audit completed: ${url}`,
+      text: `A free SEO audit completed for ${url} (requested by ${email}). Overall score: ${overallScore ?? 'N/A'}.`,
+    }).catch((err) => console.error('Failed to notify admin:', err));
+
+    return NextResponse.json({ message: 'Audit complete.', id: docId, report }, { status: 200 });
   } catch (error) {
     console.error('Error processing SEO audit request:', error);
-    return NextResponse.json({ error: 'An unexpected error occurred.' }, { status: 500 });
+    return NextResponse.json({ error: 'An unexpected error occurred while scanning your website.' }, { status: 500 });
   }
 }
