@@ -74,7 +74,7 @@ const Footer = () => {
       >
         <div className="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-x-8 gap-y-10">
           {/* Column 1: Brand */}
-          <div className="footer-section brand-column flex-1">
+          <div className="footer-section brand-column flex-1 min-w-0">
             <div className="mb-6 scale-90 origin-left">
               <Logo />
             </div>
@@ -84,16 +84,15 @@ const Footer = () => {
             <p className="text-slate-400/50 text-[7px] uppercase tracking-[0.25em] font-medium mt-4 whitespace-nowrap">Org nr: 922 103 682</p>
           </div>
           
-          {/* Column 2: Positions + Locations -- grouped in one column
-              rather than adding a 6th grid column, since both lists are
-              short (keeps the xl:grid-cols-5 layout intact). */}
-          <div className="footer-section careers-links flex-1">
-            <h3 className="text-[10px] uppercase tracking-[0.3em] font-black mb-8 text-white">{t('footer.careers') || 'Careers'}</h3>
-            <ul className="space-y-3">
-              <li><Link href="/careers/ai-automation-specialist" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">AI & Automation</Link></li>
-              <li><Link href="/careers/marketing-saas-growth-officer" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">Marketing Growth</Link></li>
-            </ul>
-            <h3 className="text-[10px] uppercase tracking-[0.3em] font-black mb-8 mt-10 text-white">{t('footer.locations') || 'Locations'}</h3>
+          {/* Column 2: Locations. min-w-0 is load-bearing here: without it,
+              a CSS grid item defaults to min-width:auto and stretches to
+              fit its content's intrinsic width -- a long one-word heading
+              like "Locations"/"Lokasjoner" (no space to wrap at) then
+              blows out its own track and paints over the next column's
+              heading instead of wrapping. break-words gives it somewhere
+              to go once the track width is actually enforced. */}
+          <div className="footer-section locations-links flex-1 min-w-0">
+            <h3 className="text-[10px] uppercase tracking-[0.3em] font-black mb-8 text-white break-words">{t('footer.locations') || 'Locations'}</h3>
             <ul className="space-y-3">
               {locations.map((location) => (
                 <li key={location.slug}>
@@ -106,7 +105,7 @@ const Footer = () => {
           </div>
 
           {/* Column 3: Quick Links */}
-          <div className="footer-section quick-links flex-1">
+          <div className="footer-section quick-links flex-1 min-w-0">
             <h3 className="text-[10px] uppercase tracking-[0.3em] font-black mb-8 text-white">{t('footer.quickLinks')}</h3>
             <ul className="space-y-3">
               <li><Link href="/references" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('nav.references')}</Link></li>
@@ -121,7 +120,7 @@ const Footer = () => {
           </div>
 
           {/* Column 3: Legal */}
-          <div className="footer-section legal-links flex-1">
+          <div className="footer-section legal-links flex-1 min-w-0">
             <h3 className="text-[10px] uppercase tracking-[0.3em] font-black mb-8 text-white">{t('footer.legal') || 'Legal'}</h3>
             <ul className="space-y-3">
               <li><Link href="/privacy-policy" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.privacy')}</Link></li>
@@ -145,7 +144,7 @@ const Footer = () => {
           </div>
 
           {/* Column 4: Contact */}
-          <div className="footer-section contact-info flex-1">
+          <div className="footer-section contact-info flex-1 min-w-0">
             <h3 className="text-[10px] uppercase tracking-[0.3em] font-black mb-8 text-white">Contact</h3>
             <div className="space-y-4">
               <a href="mailto:info@aone.no" className="flex items-center gap-3 text-white group">
