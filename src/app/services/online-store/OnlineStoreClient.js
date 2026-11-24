@@ -30,7 +30,7 @@ const OnlineStoreClient = () => {
         <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-16 max-w-3xl mx-auto font-medium">
           Shopify and WooCommerce are the fastest proven path from idea to selling online -- whether you're stocking your own products or running a dropshipping business.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {[
             {
               icon: <FaBolt className="text-5xl text-rose-500 mb-6" />,
@@ -75,7 +75,7 @@ const OnlineStoreClient = () => {
           >
             Everything In The Online Store
           </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {[
               { icon: <FaShoppingBag className="text-4xl text-rose-500 mb-4" />, title: "Shopify Setup", desc: "Full store build on Shopify, from theme to product catalog to go-live." },
               { icon: <FaStoreAlt className="text-4xl text-rose-500 mb-4" />, title: "WooCommerce Setup", desc: "A WordPress-based store on WooCommerce for full ownership and flexibility." },

@@ -54,7 +54,7 @@ const MarketingClient = () => {
         <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-16 max-w-3xl mx-auto font-medium">
           Reaching the right people means showing up everywhere they look -- Google search, social feeds, and now AI assistants. We cover all three under one strategy.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {[
             {
               icon: <FaUsers className="text-5xl text-rose-500 mb-6" />,

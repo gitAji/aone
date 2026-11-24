@@ -33,7 +33,7 @@ const PhotographyPage = () => {
                     In a world saturated with visuals, elite-quality photography is crucial for making a lasting impact. 
                     We transform ordinary scenes into extraordinary visual narratives.
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                     {[
                         {
                             icon: <FaImage className="text-5xl text-rose-500 mb-6" />,
@@ -78,7 +78,7 @@ const PhotographyPage = () => {
                     >
                         Elite Photography Services
                     </motion.h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                         {[
                             { icon: <FaCameraRetro className="text-4xl text-rose-500 mb-4" />, title: "Product Mastery", desc: "Showcasing your products with crisp, enticing imagery that mirrors your brand quality." },
                             { icon: <FaUsers className="text-4xl text-rose-500 mb-4" />, title: "Corporate Portraits", desc: "Professional headshots that radiate confidence, reliability, and approachability." },

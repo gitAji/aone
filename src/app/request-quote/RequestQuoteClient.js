@@ -128,71 +128,69 @@ const RequestQuoteClient = () => {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div>
-                <label htmlFor="name" className={labelClass}>
-                  {t('quote.fullName')} <span className="text-rose-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                  className={inputClass}
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className={labelClass}>
-                  {t('quote.emailAddress')} <span className="text-rose-500">*</span>
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className={inputClass}
-                />
-              </div>
+            <div>
+              <label htmlFor="name" className={labelClass}>
+                {t('quote.fullName')} <span className="text-rose-500">*</span>
+              </label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                required
+                value={formData.name}
+                onChange={handleChange}
+                className={inputClass}
+              />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div>
-                <label htmlFor="phone" className={labelClass}>
-                  {t('quote.phoneNumber')} {optionalTag}
-                </label>
-                <input
-                  type="tel"
-                  name="phone"
-                  id="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className={inputClass}
-                />
-              </div>
-              <div>
-                <label htmlFor="company" className={labelClass}>
-                  {t('quote.companyName')} {optionalTag}
-                </label>
-                <input
-                  type="text"
-                  name="company"
-                  id="company"
-                  value={formData.company}
-                  onChange={handleChange}
-                  className={inputClass}
-                />
-              </div>
+            <div>
+              <label htmlFor="email" className={labelClass}>
+                {t('quote.emailAddress')} <span className="text-rose-500">*</span>
+              </label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                required
+                value={formData.email}
+                onChange={handleChange}
+                className={inputClass}
+              />
+            </div>
+
+            <div>
+              <label htmlFor="phone" className={labelClass}>
+                {t('quote.phoneNumber')} {optionalTag}
+              </label>
+              <input
+                type="tel"
+                name="phone"
+                id="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                className={inputClass}
+              />
+            </div>
+
+            <div>
+              <label htmlFor="company" className={labelClass}>
+                {t('quote.companyName')} {optionalTag}
+              </label>
+              <input
+                type="text"
+                name="company"
+                id="company"
+                value={formData.company}
+                onChange={handleChange}
+                className={inputClass}
+              />
             </div>
 
             <div>
               <label className={labelClass}>
                 {t('quote.servicesOfInterest')} {optionalTag}
               </label>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-3 py-1">
                 {services.map((service) => {
                   const selected = formData.services.includes(service.label);
                   return (
@@ -201,7 +199,7 @@ const RequestQuoteClient = () => {
                       key={service.key}
                       onClick={() => toggleService(service.label)}
                       aria-pressed={selected}
-                      className={`flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-bold border transition-all ${
+                      className={`flex items-center gap-1.5 px-5 py-2.5 rounded-full text-xs font-bold border transition-all ${
                         selected
                           ? 'bg-rose-500 border-rose-500 text-white shadow-md shadow-rose-500/20'
                           : 'bg-slate-50 dark:bg-slate-800 border-gray-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-rose-300 dark:hover:border-rose-500/50'
@@ -231,45 +229,44 @@ const RequestQuoteClient = () => {
               ></textarea>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div>
-                <label htmlFor="budget" className={labelClass}>
-                  {t('quote.estimatedBudget')} {optionalTag}
-                </label>
-                <select
-                  id="budget"
-                  name="budget"
-                  value={formData.budget}
-                  onChange={handleChange}
-                  className={inputClass}
-                >
-                  <option value="">{t('quote.selectBudget')}</option>
-                  {budgetOptions.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label htmlFor="timeline" className={labelClass}>
-                  {t('quote.desiredTimeline')} {optionalTag}
-                </label>
-                <select
-                  id="timeline"
-                  name="timeline"
-                  value={formData.timeline}
-                  onChange={handleChange}
-                  className={inputClass}
-                >
-                  <option value="">{t('quote.selectTimeline')}</option>
-                  {timelineOptions.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-              </div>
+            <div>
+              <label htmlFor="budget" className={labelClass}>
+                {t('quote.estimatedBudget')} {optionalTag}
+              </label>
+              <select
+                id="budget"
+                name="budget"
+                value={formData.budget}
+                onChange={handleChange}
+                className={inputClass}
+              >
+                <option value="">{t('quote.selectBudget')}</option>
+                {budgetOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label htmlFor="timeline" className={labelClass}>
+                {t('quote.desiredTimeline')} {optionalTag}
+              </label>
+              <select
+                id="timeline"
+                name="timeline"
+                value={formData.timeline}
+                onChange={handleChange}
+                className={inputClass}
+              >
+                <option value="">{t('quote.selectTimeline')}</option>
+                {timelineOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div className="pt-2">

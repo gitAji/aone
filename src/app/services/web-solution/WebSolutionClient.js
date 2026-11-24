@@ -39,7 +39,7 @@ const WebSolutionClient = () => {
         <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-16 max-w-3xl mx-auto font-medium">
           Your website, your identity, and your interface are one experience to a visitor -- not three separate vendors. We design and build them together, so nothing is left mismatched or out of sync.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {[
             {
               icon: <FaMobileAlt className="text-5xl text-rose-500 mb-6" />,
@@ -84,7 +84,7 @@ const WebSolutionClient = () => {
           >
             Everything in the Web Solution
           </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {[
               { icon: <FaLaptopCode className="text-4xl text-rose-500 mb-4" />, title: "Custom Web Development", desc: "Deeply custom websites and web apps built for your specific business logic and workflows." },
               { icon: <FaShoppingCart className="text-4xl text-rose-500 mb-4" />, title: "Custom E-Commerce", desc: "Fully bespoke online stores built from scratch when Shopify or WooCommerce can't do what you need." },

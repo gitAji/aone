@@ -30,7 +30,7 @@ const AISolutionClient = () => {
         <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-16 max-w-3xl mx-auto font-medium">
           Static forms and manual processes are dead. Chatbots, automations, and agents work together around the clock -- qualifying leads, answering questions, and completing tasks without waiting on a human.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {[
             {
               icon: <FaHeadset className="text-5xl text-rose-500 mb-6" />,
@@ -75,7 +75,7 @@ const AISolutionClient = () => {
           >
             Everything in the AI Solution
           </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {[
               { icon: <FaHeadset className="text-4xl text-rose-500 mb-4" />, title: "AI Chatbots & Virtual Agents", desc: "24/7 conversational support trained on your business data, for sales, support, and lead qualification." },
               { icon: <FaRobot className="text-4xl text-rose-500 mb-4" />, title: "Autonomous AI Agents", desc: "Agents that complete multi-step tasks on their own, not just answer questions." },
