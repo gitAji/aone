@@ -28,7 +28,7 @@ export async function POST(request) {
     // fail the whole audit, since on-page checks alone are still a useful
     // report on their own.
     const performance = await runPageSpeedAudit(url);
-    const overallScore = computeOverallScore(onPageChecks, performance);
+    const overallScore = computeOverallScore(onPageChecks);
 
     const report = {
       url,

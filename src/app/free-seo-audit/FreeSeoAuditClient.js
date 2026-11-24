@@ -127,12 +127,17 @@ const ReportView = ({ report, email, onReset }) => {
             </div>
 
             {performance?.available && (
-                <div className="grid grid-cols-4 gap-3 mb-6">
-                    <ScoreGauge label="Performance" score={performance.scores.performance} />
-                    <ScoreGauge label="SEO" score={performance.scores.seo} />
-                    <ScoreGauge label="A11y" score={performance.scores.accessibility} />
-                    <ScoreGauge label="Best Practices" score={performance.scores.bestPractices} />
-                </div>
+                <>
+                    <div className="grid grid-cols-4 gap-3 mb-2">
+                        <ScoreGauge label="Performance" score={performance.scores.performance} />
+                        <ScoreGauge label="SEO" score={performance.scores.seo} />
+                        <ScoreGauge label="A11y" score={performance.scores.accessibility} />
+                        <ScoreGauge label="Best Practices" score={performance.scores.bestPractices} />
+                    </div>
+                    <p className="text-[10px] text-slate-400 italic mb-6 text-center">
+                        Live Google PageSpeed Insights snapshot -- these can vary slightly between scans, same as Google&apos;s own tool. The Overall Score above does not include them.
+                    </p>
+                </>
             )}
             {!performance?.available && (
                 <p className="text-xs text-slate-400 italic mb-6 text-center">
