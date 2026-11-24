@@ -13,8 +13,7 @@ const ENGINES = ["ChatGPT", "Claude", "Gemini"];
 
 // Small, rule-based canned-reply set for the demo chat below -- not a real
 // AI integration (no API call, no cost), just enough pattern-matching on
-// the visitor's own typed text to make the mockup feel alive. Mirrors the
-// bilingual hardcoded-text pattern used in WhatsAppButton.js.
+// the visitor's own typed text to make the mockup feel alive.
 const GREETING_WORDS = {
   en: ["hi", "hello", "hey", "hiya", "good morning", "good afternoon", "good evening", "yo"],
   no: ["hei", "hallo", "morn", "god morgen", "god dag", "god kveld", "tja"],

@@ -132,9 +132,6 @@ export default function CookieConsentManager() {
         // that reason: its hit area covers the *entire* bottom edge while
         // open, so it blocked the SettingsFab icon on the left too, which
         // this boxed layout (confined to the right) never did.
-        // WhatsAppButton.js is instead hidden for the same brief
-        // pre-answer window as SettingsFab's "Cookie Preferences" menu item
-        // -- see hasAnsweredConsent in LayoutClientWrapper.js.
         consentModal: {
           layout: "box",
           position: "bottom right",
