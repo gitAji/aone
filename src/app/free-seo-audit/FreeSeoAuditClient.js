@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import HeroSection from '@/components/HeroSection';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -12,6 +13,7 @@ import {
     FaExclamationTriangle,
     FaTimesCircle,
     FaSpinner,
+    FaArrowRight,
 } from 'react-icons/fa';
 
 // Accepts "example.com", "www.example.com", or a full "https://example.com"
@@ -53,9 +55,9 @@ function scoreColor(score) {
 }
 
 const ScoreGauge = ({ label, score }) => (
-    <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border border-slate-100 dark:border-slate-800">
+    <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-5 sm:p-6 text-center border border-slate-100 dark:border-slate-800">
         <div className={`text-3xl font-black ${scoreColor(score)}`}>{score ?? '—'}</div>
-        <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-1">{label}</div>
+        <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-1.5">{label}</div>
     </div>
 );
 
@@ -63,14 +65,14 @@ const CheckRow = ({ item }) => {
     const meta = STATUS_META[item.status] || STATUS_META.warn;
     const Icon = meta.icon;
     return (
-        <div className="flex items-start gap-3 py-3 border-b border-slate-100 dark:border-slate-800 last:border-0">
+        <div className="flex items-start gap-3 px-3 py-4 border-b border-slate-100 dark:border-slate-800 last:border-0">
             <Icon className={`${meta.className} mt-0.5 shrink-0`} />
             <div className="min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">
                     <span className="font-bold text-sm text-slate-900 dark:text-white">{item.label}</span>
                     <span className={`text-[10px] font-black uppercase tracking-widest ${meta.className}`}>{meta.label}</span>
                 </div>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 break-words">{item.detail}</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 break-words">{item.detail}</p>
             </div>
         </div>
     );
@@ -104,10 +106,26 @@ const ReportView = ({ report, email, onReset }) => {
             )}
 
             <h3 className="text-sm font-black uppercase tracking-widest text-slate-400 mb-2">On-Page SEO Checks</h3>
-            <div className="max-h-80 overflow-y-auto pr-1">
+            <div className="max-h-80 overflow-y-auto rounded-2xl border border-slate-100 dark:border-slate-800">
                 {onPageChecks.map((item) => (
                     <CheckRow key={item.id} item={item} />
                 ))}
+            </div>
+
+            <div className="mt-8 bg-gradient-to-br from-rose-500/10 to-amber-500/10 border border-rose-500/20 rounded-2xl p-6 text-center">
+                <h4 className="font-black text-slate-900 dark:text-white uppercase tracking-tight mb-1.5">
+                    Want this fixed for you?
+                </h4>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
+                    Our team can act on everything flagged above -- no obligation, free quote within 24 hours.
+                </p>
+                <Link
+                    href="/request-quote"
+                    className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-rose-500 to-amber-500 text-white font-black py-3.5 px-8 rounded-xl uppercase tracking-widest text-sm hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-rose-500/25"
+                >
+                    Request a Free Quote
+                    <FaArrowRight className="text-xs" />
+                </Link>
             </div>
 
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-6 text-center">
