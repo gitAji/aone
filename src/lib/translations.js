@@ -20,6 +20,7 @@ export const translations = {
             }
         },
         requestQuote: "Request Quote",
+        freeSeoAuditCta: "Free SEO Audit",
         homeFaq: {
             title: "Frequently Asked Questions",
             subtitle: "Common questions about working with a web design agency in Bergen.",
@@ -536,6 +537,7 @@ export const translations = {
             }
         },
         requestQuote: "Få et tilbud",
+        freeSeoAuditCta: "Gratis SEO-sjekk",
         homeFaq: {
             title: "Ofte stilte spørsmål",
             subtitle: "Vanlige spørsmål om å jobbe med et webdesign-byrå i Bergen.",
