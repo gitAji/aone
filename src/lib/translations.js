@@ -431,6 +431,9 @@ export const translations = {
             readTime: "8 Min Read",
             filedUnder: "Filed Under:",
             exclusiveSubtitle: "Exclusive Deep-Dive & Strategic Insights",
+            previous: "Previous",
+            next: "Next",
+            pageOf: "Page {current} of {total}",
         },
         careers: {
             title: "Join the Aone Team",
@@ -942,6 +945,9 @@ export const translations = {
             readTime: "8 min lesning",
             filedUnder: "Kategorisert under:",
             exclusiveSubtitle: "Eksklusivt dypdykk og strategisk innsikt",
+            previous: "Forrige",
+            next: "Neste",
+            pageOf: "Side {current} av {total}",
         },
         careers: {
             title: "Bli en del av Aone-teamet",
