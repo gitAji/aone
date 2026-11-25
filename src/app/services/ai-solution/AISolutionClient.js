@@ -101,6 +101,11 @@ const AISolutionClient = () => {
               </motion.div>
             ))}
           </div>
+          <div className="text-center mt-12">
+            <Link href="/ai-automatisering" className="inline-flex items-center gap-2 text-sm font-bold text-rose-400 hover:text-rose-300 transition-colors">
+              Explore our full AI automation deep-dive <FaCogs className="text-xs" />
+            </Link>
+          </div>
         </div>
       </section>
 

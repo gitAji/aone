@@ -119,6 +119,20 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
           {isHomePage ? (
             <>
 
+              {/* Small, seasonal-only marking -- removable each year by
+                  deleting this block, kept in the site's own rose palette
+                  (not literal red/green) so it reads as festive without
+                  clashing with the brand. */}
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold tracking-wide"
+              >
+                <span aria-hidden="true">🎄</span>
+                {t('hero.xmasBadge')}
+              </motion.div>
+
               {/* Typewriter Title */}
               <div className="h-20 md:h-28 flex items-center justify-center mb-6">
                 <AnimatePresence mode="wait">
@@ -186,7 +200,7 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter leading-tight bg-clip-text text-transparent bg-gradient-to-r from-rose-500 via-rose-400 to-amber-500 uppercase drop-shadow-sm font-satoshi mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter leading-tight bg-clip-text text-transparent bg-gradient-to-r from-rose-500 via-rose-400 to-amber-500 uppercase drop-shadow-sm font-satoshi mb-6 break-words"
               >
                 {title}
               </motion.h1>

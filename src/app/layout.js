@@ -170,6 +170,8 @@ export default function RootLayout({ children }) {
                     "@type": "Organization",
                     "@id": "https://aone.no/#organization",
                     "name": "Aone",
+                    "legalName": "Aone Kumarasamy",
+                    "taxID": "922 103 682",
                     "url": "https://aone.no",
                     "logo": {
                       "@type": "ImageObject",
@@ -186,6 +188,20 @@ export default function RootLayout({ children }) {
                       "https://www.facebook.com/profile.php?id=100063719223439",
                       "https://www.instagram.com/aone.no/"
                     ],
+                    "hasOfferCatalog": {
+                      "@type": "OfferCatalog",
+                      "name": "Aone Services",
+                      "itemListElement": [
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Solution", "url": "https://aone.no/services/web-solution" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Solution", "url": "https://aone.no/services/ai-solution" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Marketing, SEO & GEO", "url": "https://aone.no/services/marketing" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO", "url": "https://aone.no/seo" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Automation", "url": "https://aone.no/ai-automatisering" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Online Store", "url": "https://aone.no/services/online-store" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Photography", "url": "https://aone.no/services/photography" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Videography", "url": "https://aone.no/services/videography" } }
+                      ]
+                    },
                     "knowsAbout": [
                       "Artificial Intelligence",
                       "Web Development",

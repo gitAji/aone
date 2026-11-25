@@ -108,14 +108,19 @@ const MarketingClient = () => {
                 { icon: <FaBullhorn />, title: "Paid Performance", desc: "Maximize performance with precisely targeted pay-per-click campaigns." },
               ]}
             />
-            <PillarGroup
-              title="SEO"
-              items={[
-                { icon: <FaSearch />, title: "Keyword & On-Page Strategy", desc: "High-impact keyword research and on-page optimization for crawlability." },
-                { icon: <FaCogs />, title: "Technical & Local SEO", desc: "A flawless technical foundation plus hyper-targeted local SEO." },
-                { icon: <FaMapMarkerAlt />, title: "Authority Building", desc: "Premium backlinks that build your domain's reputation." },
-              ]}
-            />
+            <div>
+              <PillarGroup
+                title="SEO"
+                items={[
+                  { icon: <FaSearch />, title: "Keyword & On-Page Strategy", desc: "High-impact keyword research and on-page optimization for crawlability." },
+                  { icon: <FaCogs />, title: "Technical & Local SEO", desc: "A flawless technical foundation plus hyper-targeted local SEO." },
+                  { icon: <FaMapMarkerAlt />, title: "Authority Building", desc: "Premium backlinks that build your domain's reputation." },
+                ]}
+              />
+              <Link href="/seo" className="mt-4 flex items-center justify-center gap-2 text-sm font-bold text-rose-400 hover:text-rose-300 transition-colors">
+                Read our full SEO guide <FaSearch className="text-xs" />
+              </Link>
+            </div>
             <PillarGroup
               title="GEO (AI Search)"
               items={[

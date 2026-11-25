@@ -1,5 +1,6 @@
 import projects from "@/app/data/projects";
 import products from "@/app/data/products";
+import locations from "@/app/data/locations";
 import { vacancies } from "@/app/data/vacancies";
 import { fetchAllPostSlugs } from "@/lib/wordpress-server";
 
@@ -22,6 +23,8 @@ export default async function sitemap() {
     "/services/online-store",
     "/services/photography",
     "/services/videography",
+    "/seo",
+    "/ai-automatisering",
     "/references",
     "/products",
     "/blog",
@@ -38,12 +41,14 @@ export default async function sitemap() {
   const projectPages = projects.map((project) => project.projectLink);
   const productPages = products.map((product) => product.projectLink);
   const vacancyPages = vacancies.map((vacancy) => `/careers/${vacancy.id}`);
+  const locationPages = locations.map((location) => `/locations/${location.slug}`);
 
   const allStaticPages = [
     ...staticPages,
     ...projectPages,
     ...productPages,
     ...vacancyPages,
+    ...locationPages,
   ];
 
   const staticUrls = allStaticPages.map((page) => ({

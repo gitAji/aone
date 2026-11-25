@@ -64,6 +64,7 @@ export const translations = {
             cta: "Get a Quote",
             trustStats: "15+ years of experience · 200+ happy clients · 250+ projects delivered",
             riskReversal: "No obligation — we respond within 24 hours.",
+            xmasBadge: "Happy Holidays from Aone",
             phrases: [
                 "Web Design & |AI Solutions in Bergen.",
                 "Leading |Web Designers in Bergen.",
@@ -94,6 +95,14 @@ export const translations = {
             marketing: {
                 title: "AI-Driven Marketing",
                 description: "Digital marketing, SEO, and Generative Engine Optimization (GEO) together -- predictive analytics and AI-driven visibility across Google and AI search alike.",
+            },
+            seoAgency: {
+                title: "SEO Agency Helping Businesses Get More Customers From Google",
+                description: "Technical SEO, keyword strategy, content and local optimization -- built to turn organic search into qualified enquiries, not just traffic.",
+            },
+            aiAutomation: {
+                title: "Automate Your Business With Smart AI Workflows",
+                description: "AI automation that handles repetitive work, qualifies leads, and connects your tools together -- so your team spends time on what actually grows the business.",
             },
             onlineStore: {
                 title: "Online Store",
@@ -154,6 +163,7 @@ export const translations = {
             followUs: "Social",
             social: "Social",
             careers: "Careers",
+            locations: "Locations",
             privacy: "Privacy Policy",
             terms: "Terms & Conditions",
             accessibility: "Accessibility Statement",
@@ -591,6 +601,7 @@ export const translations = {
             cta: "Få et tilbud",
             trustStats: "15+ års erfaring · 200+ fornøyde kunder · 250+ leverte prosjekter",
             riskReversal: "Ingen forpliktelser — vi svarer innen 24 timer.",
+            xmasBadge: "God jul fra Aone",
             phrases: [
                 "Webdesign i |Bergen som konverterer.",
                 "Ledende |webdesignere i Bergen.",
@@ -621,6 +632,14 @@ export const translations = {
             marketing: {
                 title: "AI-drevet Markedsføring",
                 description: "Digital markedsføring, SEO og Generative Engine Optimization (GEO) samlet -- prediktiv analyse og AI-drevet synlighet på tvers av Google og AI-søk.",
+            },
+            seoAgency: {
+                title: "SEO Byrå som Hjelper Bedrifter å Få Flere Kunder fra Google",
+                description: "Teknisk SEO, søkeordsstrategi, innhold og lokal optimalisering -- bygget for å gjøre organisk søk til kvalifiserte henvendelser, ikke bare trafikk.",
+            },
+            aiAutomation: {
+                title: "Automatiser Bedriften med Smarte AI-arbeidsflyter",
+                description: "AI-automatisering som tar seg av repeterende arbeid, kvalifiserer leads og kobler sammen verktøyene dine -- slik at teamet bruker tiden på det som faktisk gir vekst.",
             },
             onlineStore: {
                 title: "Nettbutikk",
@@ -681,6 +700,7 @@ export const translations = {
             followUs: "Sosialt",
             social: "Sosialt",
             careers: "Karriere",
+            locations: "Lokasjoner",
             privacy: "Personvernerklæring",
             terms: "Vilkår og betingelser",
             accessibility: "Tilgjengelighetserklæring",

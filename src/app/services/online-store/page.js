@@ -20,6 +20,21 @@ export const metadata = {
   },
 };
 
+const serviceJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Online Store',
+  serviceType: 'Shopify and WooCommerce e-commerce setup and management',
+  provider: { '@id': 'https://aone.no/#organization' },
+  areaServed: { '@type': 'Country', name: 'Norway' },
+  url: 'https://aone.no/services/online-store',
+};
+
 export default function Page() {
-  return <OnlineStoreClient />;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <OnlineStoreClient />
+    </>
+  );
 }
