@@ -11,7 +11,7 @@ export const metadata = {
     url: "https://aone.no/services/web-solution",
     images: [
       {
-        url: "/images/web-dev-og.png",
+        url: "/images/og-image.png",
         width: 1200,
         height: 630,
         alt: "Aone Web Solution",
@@ -20,6 +20,21 @@ export const metadata = {
   },
 };
 
+const serviceJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Web Solution',
+  serviceType: 'Web design, development, UI/UX, logo and branding',
+  provider: { '@id': 'https://aone.no/#organization' },
+  areaServed: { '@type': 'Country', name: 'Norway' },
+  url: 'https://aone.no/services/web-solution',
+};
+
 export default function Page() {
-  return <WebSolutionClient />;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <WebSolutionClient />
+    </>
+  );
 }

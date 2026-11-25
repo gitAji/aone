@@ -56,7 +56,7 @@ export default async function LocationPage({ params }) {
     '@context': 'https://schema.org',
     '@type': 'Service',
     serviceType: 'Web design, SEO/GEO and AI automation',
-    provider: { '@type': 'Organization', name: 'Aone', url: 'https://aone.no' },
+    provider: { '@id': 'https://aone.no/#organization' },
     areaServed: { '@type': 'Place', name: cityName },
     url,
   };

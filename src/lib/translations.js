@@ -96,6 +96,14 @@ export const translations = {
                 title: "AI-Driven Marketing",
                 description: "Digital marketing, SEO, and Generative Engine Optimization (GEO) together -- predictive analytics and AI-driven visibility across Google and AI search alike.",
             },
+            seoAgency: {
+                title: "SEO Agency Helping Businesses Get More Customers From Google",
+                description: "Technical SEO, keyword strategy, content and local optimization -- built to turn organic search into qualified enquiries, not just traffic.",
+            },
+            aiAutomation: {
+                title: "Automate Your Business With Smart AI Workflows",
+                description: "AI automation that handles repetitive work, qualifies leads, and connects your tools together -- so your team spends time on what actually grows the business.",
+            },
             onlineStore: {
                 title: "Online Store",
                 description: "Shopify and WooCommerce solutions for online businesses and dropshipping -- store setup, custom theming, and ongoing management.",
@@ -624,6 +632,14 @@ export const translations = {
             marketing: {
                 title: "AI-drevet Markedsføring",
                 description: "Digital markedsføring, SEO og Generative Engine Optimization (GEO) samlet -- prediktiv analyse og AI-drevet synlighet på tvers av Google og AI-søk.",
+            },
+            seoAgency: {
+                title: "SEO Byrå som Hjelper Bedrifter å Få Flere Kunder fra Google",
+                description: "Teknisk SEO, søkeordsstrategi, innhold og lokal optimalisering -- bygget for å gjøre organisk søk til kvalifiserte henvendelser, ikke bare trafikk.",
+            },
+            aiAutomation: {
+                title: "Automatiser Bedriften med Smarte AI-arbeidsflyter",
+                description: "AI-automatisering som tar seg av repeterende arbeid, kvalifiserer leads og kobler sammen verktøyene dine -- slik at teamet bruker tiden på det som faktisk gir vekst.",
             },
             onlineStore: {
                 title: "Nettbutikk",

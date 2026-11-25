@@ -5,7 +5,6 @@ import {
   FaPhone,
   FaEnvelope,
   FaFacebook,
-  FaLinkedin,
   FaInstagram,
 } from "react-icons/fa";
 import CountUp from "react-countup";
@@ -174,20 +173,17 @@ const ContactPage = () => {
                 </h3>
                 <div className="flex justify-center space-x-6">
                   <a
-                    href="#"
+                    href="https://www.facebook.com/profile.php?id=100063719223439"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-gray-800 dark:text-white hover:text-rose-500 dark:hover:text-rose-400 transition duration-300 ease-in-out"
                   >
                     <FaFacebook className="text-4xl" />
                   </a>
-
                   <a
-                    href="#"
-                    className="text-gray-800 dark:text-white hover:text-rose-500 dark:hover:text-rose-400 transition duration-300 ease-in-out"
-                  >
-                    <FaLinkedin className="text-4xl" />
-                  </a>
-                  <a
-                    href="#"
+                    href="https://www.instagram.com/aone.no/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-gray-800 dark:text-white hover:text-rose-500 dark:hover:text-rose-400 transition duration-300 ease-in-out"
                   >
                     <FaInstagram className="text-4xl" />

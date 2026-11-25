@@ -23,6 +23,8 @@ export default async function sitemap() {
     "/services/online-store",
     "/services/photography",
     "/services/videography",
+    "/seo",
+    "/ai-automatisering",
     "/references",
     "/products",
     "/blog",

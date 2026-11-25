@@ -20,6 +20,21 @@ export const metadata = {
   },
 };
 
+const serviceJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Brand Photography',
+  serviceType: 'Professional brand and product photography',
+  provider: { '@id': 'https://aone.no/#organization' },
+  areaServed: { '@type': 'City', name: 'Bergen' },
+  url: 'https://aone.no/services/photography',
+};
+
 export default function Page() {
-  return <PhotographyClient />;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <PhotographyClient />
+    </>
+  );
 }

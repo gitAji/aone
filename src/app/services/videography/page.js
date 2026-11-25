@@ -20,6 +20,21 @@ export const metadata = {
   },
 };
 
+const serviceJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Videography',
+  serviceType: 'Cinematic brand video production',
+  provider: { '@id': 'https://aone.no/#organization' },
+  areaServed: { '@type': 'City', name: 'Bergen' },
+  url: 'https://aone.no/services/videography',
+};
+
 export default function Page() {
-  return <VideographyClient />;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <VideographyClient />
+    </>
+  );
 }
