@@ -183,9 +183,8 @@ export default function CookieConsentManager() {
         // forces its own UI to an extreme max z-index (see its CSS --
         // --cc-z-index: 2147483647), so nothing we render can ever appear
         // above it. A full-width bar was tried and rejected for exactly
-        // that reason: its hit area covers the *entire* bottom edge while
-        // open, so it blocked the SettingsFab icon on the left too, which
-        // this boxed layout (confined to the right) never did.
+        // that reason: its hit area covered the *entire* bottom edge while
+        // open, which this boxed layout (confined to the right) avoids.
         consentModal: {
           layout: "box",
           position: "bottom right",
@@ -269,9 +268,8 @@ export default function CookieConsentManager() {
       },
       onConsent: () => {
         // Fires once consent is first given AND on every later page load for
-        // a returning visitor with stored consent -- covers both cases for
-        // revealing the "Cookie Preferences" item in SettingsFab's menu,
-        // which listens for this same event.
+        // a returning visitor with stored consent -- LayoutClientWrapper
+        // listens for this same event to gate the Tawk.to chat widget.
         window.dispatchEvent(new Event("cc:consentChange"));
       },
       onChange: () => {
@@ -292,10 +290,8 @@ export default function CookieConsentManager() {
   }, [language]);
 
   // No UI of its own -- the consent engine (banner + preferences modal) is
-  // all injected directly into the DOM by CookieConsent.run() above. The
-  // floating "reopen preferences" control that used to live here is now its
-  // own dedicated icon (see CookieSettingsButton.js), which calls
-  // CookieConsent.showPreferences() itself and listens for the same
-  // cc:consentChange event this component dispatches.
+  // all injected directly into the DOM by CookieConsent.run() above. Reopening
+  // preferences is a plain "Cookie Settings" link in Footer.js, which calls
+  // CookieConsent.showPreferences() directly.
   return null;
 }

@@ -8,6 +8,7 @@ import Logo from "./Logo";
 import ConstellationField from "./ConstellationField";
 import locations from "@/app/data/locations";
 import { tr } from "@/lib/projectText";
+import SettingsFab from "./SettingsFab";
 
 const Footer = () => {
   const { t, language } = useLanguage();
@@ -136,6 +137,7 @@ const Footer = () => {
                   {t('footer.cookieSettings') || 'Cookie Settings'}
                 </button>
               </li>
+              <li><SettingsFab /></li>
               <li><Link href="/disclaimer" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.disclaimer')}</Link></li>
               <li><Link href="/design-requirements" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.requirements')}</Link></li>
               <li><Link href="/support" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.support')}</Link></li>
