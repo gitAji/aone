@@ -12,7 +12,15 @@ const Logo = ({ responsive = false }) => {
           width={200}
           priority
           {...(responsive
-            ? { className: 'logo-img h-14 sm:h-16 md:h-[120px] w-auto block' }
+            ? {
+                className: 'logo-img h-14 sm:h-16 md:h-[120px] block',
+                // Next's dev-mode aspect-ratio check reads the element's
+                // inline style, not the computed value a CSS class like
+                // Tailwind's w-auto resolves to (getComputedStyle never
+                // returns the literal string "auto") -- an explicit style
+                // prop is required for it to recognize width as unset.
+                style: { width: 'auto' },
+              }
             : {
                 className: 'logo-img',
                 style: { height: '120px', width: 'auto', display: 'block' },

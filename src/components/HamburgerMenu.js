@@ -75,7 +75,8 @@ const HamburgerMenu = () => {
               alt="English"
               width={16}
               height={12}
-              className={`w-4 h-auto rounded-[1px] transition-all duration-300 ${language === 'en' ? 'opacity-100 scale-105 shadow-sm' : 'opacity-40 group-hover:opacity-75'}`}
+              className={`w-4 rounded-[1px] transition-all duration-300 ${language === 'en' ? 'opacity-100 scale-105 shadow-sm' : 'opacity-40 group-hover:opacity-75'}`}
+              style={{ height: 'auto' }}
               unoptimized
             />
             <span className={`text-[10px] font-bold tracking-wider transition-colors duration-300 ${language === 'en' ? 'text-rose-700 dark:text-rose-400' : 'text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white'}`}>
@@ -95,7 +96,8 @@ const HamburgerMenu = () => {
               alt="Norsk"
               width={16}
               height={12}
-              className={`w-4 h-auto rounded-[1px] transition-all duration-300 ${language === 'no' ? 'opacity-100 scale-105 shadow-sm' : 'opacity-40 group-hover:opacity-75'}`}
+              className={`w-4 rounded-[1px] transition-all duration-300 ${language === 'no' ? 'opacity-100 scale-105 shadow-sm' : 'opacity-40 group-hover:opacity-75'}`}
+              style={{ height: 'auto' }}
               unoptimized
             />
             <span className={`text-[10px] font-bold tracking-wider transition-colors duration-300 ${language === 'no' ? 'text-rose-700 dark:text-rose-400' : 'text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white'}`}>
