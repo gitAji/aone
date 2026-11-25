@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
-  FaSlidersH, FaUniversalAccess,
+  FaUniversalAccess,
   FaTextHeight, FaEye, FaFont, FaLink, FaRunning, FaSyncAlt
 } from 'react-icons/fa';
 import { useLanguage } from '@/context/LanguageContext';
@@ -11,6 +11,9 @@ import { useLanguage } from '@/context/LanguageContext';
 // behind a combined menu here, but now have their own dedicated icon (see
 // CookieSettingsButton.js) stacked above this one, so each control is a
 // single, clearly labeled click instead of being buried in a submenu.
+// z-[100000] (one above CookieSettingsButton's z-[99999]) so the opened
+// accessibility panel -- tall enough to cover that button's position --
+// always paints above it rather than behind it.
 const SettingsFab = () => {
   const { language } = useLanguage();
   const isNo = language === 'no';
@@ -88,14 +91,14 @@ const SettingsFab = () => {
   };
 
   return (
-    <div ref={rootRef} className="fixed bottom-6 left-6 z-[99999] select-none font-sans">
+    <div ref={rootRef} className="fixed bottom-6 left-6 z-[100000] select-none font-sans">
       <button
         onClick={() => setView(view === 'closed' ? 'a11y' : 'closed')}
         className="w-10 h-10 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-950 flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 border border-slate-800 dark:border-slate-200"
         aria-label={isNo ? 'Tilgjengelighet' : 'Accessibility'}
         aria-expanded={view !== 'closed'}
       >
-        <FaSlidersH className="text-sm" />
+        <FaUniversalAccess className="text-sm" />
       </button>
 
       <AnimatePresence>
