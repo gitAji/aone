@@ -47,7 +47,12 @@ export default function LayoutClientWrapper({ children }) {
     }, 2000); // 2-second delay
 
     const handleConsentChange = () => {
-      setHasChatConsent(CookieConsent.acceptedCategory('marketing'));
+      // Checks the specific "tawkto" service, not the whole "marketing"
+      // category -- a visitor can now accept Google Ads tracking while
+      // declining live chat (or vice versa) via two independent toggles in
+      // the preferences modal, so only the service this script actually
+      // needs should gate it.
+      setHasChatConsent(CookieConsent.acceptedService('tawkto', 'marketing'));
       setHasAnsweredConsent(CookieConsent.validConsent());
     };
 
@@ -100,10 +105,11 @@ export default function LayoutClientWrapper({ children }) {
             privacy gate (see above), keeping it from sitting underneath
             the still-open consent banner. */}
         {hasAnsweredConsent && <CallButton />}
-        {/* Gated on marketing consent (hasChatConsent, above) -- Tawk.to sets
-            third-party cookies, so it shouldn't load until a visitor has
-            actually consented, same as Clarity/GTM elsewhere on this site.
-            Also desktop-only (isDesktop) so its script never loads on mobile. */}
+        {/* Gated on the "tawkto" service specifically (hasChatConsent,
+            above) -- Tawk.to sets third-party cookies, so it shouldn't load
+            until a visitor has actually consented to that one service, same
+            as Clarity/GTM elsewhere on this site. Also desktop-only
+            (isDesktop) so its script never loads on mobile. */}
         {hasChatConsent && isDesktop && <DynamicTawkToMessenger />}
       </ThemeProvider>
     </LanguageProvider>
