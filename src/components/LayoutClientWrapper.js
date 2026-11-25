@@ -10,6 +10,7 @@ import CallButton from "@/components/CallButton";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import SettingsFab from "@/components/SettingsFab";
+import CookieSettingsButton from "@/components/CookieSettingsButton";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
 
 const DynamicReferralPopup = dynamic(() =>
@@ -81,11 +82,14 @@ export default function LayoutClientWrapper({ children }) {
           {/* {showReferralPopup && <DynamicReferralPopup />} */}
           <Footer />
         </ClientLayoutWrapper>
-        {/* Single bottom-left "site preferences" button covering both
-            accessibility settings and (once answered) cookie preferences --
-            replaces what used to be two separate icons next to each other
-            in the same corner. */}
+        {/* Bottom-left accessibility icon, with a dedicated cookie-settings
+            icon stacked directly above it (same bottom-6/bottom-24 vertical
+            stack CallButton uses on the right) -- each control gets its own
+            clearly labeled one-click icon instead of a combined menu.
+            Cookie icon only shown once the initial consent banner has been
+            answered, same spatial gating CallButton uses. */}
         <SettingsFab />
+        {hasAnsweredConsent && <CookieSettingsButton />}
         {/* Desktop-only exit-intent CTA -- fires once per session when the
             cursor crosses the top of the viewport heading for the tab bar.
             Owns its own trigger/session-guard logic internally (see

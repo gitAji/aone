@@ -1,32 +1,23 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import * as CookieConsent from 'vanilla-cookieconsent';
 import {
-  FaSlidersH, FaUniversalAccess, FaCookieBite, FaChevronLeft,
+  FaSlidersH, FaUniversalAccess,
   FaTextHeight, FaEye, FaFont, FaLink, FaRunning, FaSyncAlt
 } from 'react-icons/fa';
 import { useLanguage } from '@/context/LanguageContext';
 
-// Single floating "site preferences" button, replacing what used to be two
-// separate icons (accessibility + cookie reopen) sitting side by side in the
-// same corner -- easy to mistake for each other and visually cluttered.
-// Opens a small menu with both options; "Accessibility" expands in place
-// into the same settings panel this used to render directly, "Cookie
-// preferences" just hands off to the library's own modal (CookieConsent.
-// showPreferences()), same as the old dedicated icon did.
+// Floating accessibility-settings button. Cookie preferences used to live
+// behind a combined menu here, but now have their own dedicated icon (see
+// CookieSettingsButton.js) stacked above this one, so each control is a
+// single, clearly labeled click instead of being buried in a submenu.
 const SettingsFab = () => {
   const { language } = useLanguage();
   const isNo = language === 'no';
   const rootRef = useRef(null);
 
-  // 'closed' | 'menu' | 'a11y'
+  // 'closed' | 'a11y'
   const [view, setView] = useState('closed');
-  // Mirrors CookieConsentManager's own hasAnswered tracking -- the "Cookie
-  // preferences" menu item only makes sense once a visitor has answered the
-  // consent banner (same gating the old standalone icon used), otherwise
-  // this is the visitor's only prompt and it shouldn't be duplicated here.
-  const [hasAnsweredConsent, setHasAnsweredConsent] = useState(false);
 
   // Accessibility settings state (unchanged from the old AccessibilityWidget)
   const [textSize, setTextSize] = useState('md');
@@ -34,13 +25,6 @@ const SettingsFab = () => {
   const [dyslexicFont, setDyslexicFont] = useState(false);
   const [highlightLinks, setHighlightLinks] = useState(false);
   const [stopAnimations, setStopAnimations] = useState(false);
-
-  useEffect(() => {
-    setHasAnsweredConsent(CookieConsent.validConsent());
-    const handleConsentChange = () => setHasAnsweredConsent(CookieConsent.validConsent());
-    window.addEventListener('cc:consentChange', handleConsentChange);
-    return () => window.removeEventListener('cc:consentChange', handleConsentChange);
-  }, []);
 
   useEffect(() => {
     const savedTextSize = localStorage.getItem('a11y-text-size') || 'md';
@@ -103,50 +87,18 @@ const SettingsFab = () => {
     setStopAnimations(false);
   };
 
-  const openCookiePreferences = () => {
-    setView('closed');
-    CookieConsent.showPreferences();
-  };
-
   return (
     <div ref={rootRef} className="fixed bottom-6 left-6 z-[99999] select-none font-sans">
       <button
-        onClick={() => setView(view === 'closed' ? 'menu' : 'closed')}
+        onClick={() => setView(view === 'closed' ? 'a11y' : 'closed')}
         className="w-10 h-10 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-950 flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 border border-slate-800 dark:border-slate-200"
-        aria-label={isNo ? 'Innstillinger' : 'Site preferences'}
+        aria-label={isNo ? 'Tilgjengelighet' : 'Accessibility'}
         aria-expanded={view !== 'closed'}
       >
         <FaSlidersH className="text-sm" />
       </button>
 
       <AnimatePresence>
-        {view === 'menu' && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 8 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 8 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 28 }}
-            className="absolute bottom-16 left-0 w-64 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg rounded-2xl p-2 shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden"
-          >
-            <button
-              onClick={() => setView('a11y')}
-              className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm font-bold text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-            >
-              <FaUniversalAccess className="text-rose-500" />
-              {isNo ? 'Tilgjengelighet' : 'Accessibility'}
-            </button>
-            {hasAnsweredConsent && (
-              <button
-                onClick={openCookiePreferences}
-                className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm font-bold text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-              >
-                <FaCookieBite className="text-rose-500" />
-                {isNo ? 'Informasjonskapsler' : 'Cookie Preferences'}
-              </button>
-            )}
-          </motion.div>
-        )}
-
         {view === 'a11y' && (
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 8 }}
@@ -156,14 +108,10 @@ const SettingsFab = () => {
             className="absolute bottom-16 left-0 w-80 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg rounded-3xl p-6 shadow-2xl border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-white max-h-[80vh] overflow-y-auto"
           >
             <div className="flex items-center justify-between mb-6 pb-3 border-b border-slate-200 dark:border-slate-800">
-              <button
-                onClick={() => setView('menu')}
-                className="flex items-center gap-2 font-clash text-lg font-bold hover:text-rose-500 transition-colors"
-                aria-label={isNo ? 'Tilbake' : 'Back'}
-              >
-                <FaChevronLeft className="text-sm" />
+              <span className="flex items-center gap-2 font-clash text-lg font-bold">
+                <FaUniversalAccess className="text-sm text-rose-500" />
                 {isNo ? 'Tilgjengelighet' : 'Accessibility'}
-              </button>
+              </span>
               <button
                 onClick={resetAll}
                 className="text-[10px] text-rose-500 hover:text-rose-600 font-bold uppercase tracking-wider flex items-center gap-1"
