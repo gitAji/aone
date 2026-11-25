@@ -167,28 +167,31 @@ const Footer = () => {
             &copy; {new Date().getFullYear()} Aone. {t('footer.rights')}
           </p>
 
-          {/* Accessibility + cookie preference controls: one clearly
-              labeled icon button each, inline in the footer (never
-              floating over the page), so visitors can always find and
-              change these settings regardless of which page they're on. */}
-          <div className="flex items-center gap-3">
-            <SettingsFab />
-            <button
-              type="button"
-              onClick={() => CookieConsent.showPreferences()}
-              title={t('footer.cookieSettings') || 'Cookie Settings'}
-              aria-label={t('footer.cookieSettings') || 'Cookie Settings'}
-              className="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center border border-slate-700 hover:bg-rose-500 hover:border-rose-500 transition-all group"
-            >
-              <FaCookieBite className="text-sm text-slate-400 group-hover:text-white transition-colors" />
-            </button>
-          </div>
+          {/* Accessibility + cookie preference controls grouped right next
+              to the Cloudflare badge -- one clearly labeled icon button
+              each, inline in the footer (never floating over the page), so
+              visitors can always find and change these settings regardless
+              of which page they're on. */}
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
+              <SettingsFab />
+              <button
+                type="button"
+                onClick={() => CookieConsent.showPreferences()}
+                title={t('footer.cookieSettings') || 'Cookie Settings'}
+                aria-label={t('footer.cookieSettings') || 'Cookie Settings'}
+                className="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center border border-slate-700 hover:bg-rose-500 hover:border-rose-500 transition-all group"
+              >
+                <FaCookieBite className="text-sm text-slate-400 group-hover:text-white transition-colors" />
+              </button>
+            </div>
 
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-slate-800 bg-slate-900 text-[11px] text-slate-400">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#f38020" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-            </svg>
-            <span>Protected by <strong className="font-bold text-slate-300">Cloudflare</strong></span>
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-slate-800 bg-slate-900 text-[11px] text-slate-400">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#f38020" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              <span>Protected by <strong className="font-bold text-slate-300">Cloudflare</strong></span>
+            </div>
           </div>
         </div>
       </motion.div>

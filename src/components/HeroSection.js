@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { useLanguage } from "@/context/LanguageContext";
 import { FaArrowRight, FaChevronDown, FaShieldAlt } from "react-icons/fa";
 import AnimatedGrid from "./AnimatedGrid";
-import ProjectsTicker from "./ProjectsTicker";
+import ProjectsShowcase from "./ProjectsShowcase";
 
 // Helper to highlight the marked character (preceded by |)
 const HighlightedText = ({ text }) => {
@@ -99,7 +99,7 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
   }, [isHomePage, phrases.length]);
 
   return (
-    <section className={`relative flex items-center justify-center overflow-hidden ${isHomePage ? 'min-h-[100vh]' : 'min-h-[60vh] pt-32'} bg-slate-50 dark:bg-[#020617]`}>
+    <section className={`relative flex items-center justify-center overflow-hidden ${isHomePage ? 'min-h-[100vh] pt-28 md:pt-40 pb-32' : 'min-h-[60vh] pt-32'} bg-slate-50 dark:bg-[#020617]`}>
       
       {/* Refined Background Elements - Very subtle and professional */}
       <AnimatedGrid />
@@ -180,7 +180,7 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
                 <span>Protected by <strong className="font-bold text-slate-700 dark:text-slate-300">Cloudflare</strong></span>
               </div>
 
-              <ProjectsTicker />
+              <ProjectsShowcase />
             </>
           ) : (
             <>

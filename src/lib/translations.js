@@ -64,7 +64,6 @@ export const translations = {
             cta: "Get a Quote",
             trustStats: "15+ years of experience · 200+ happy clients · 250+ projects delivered",
             riskReversal: "No obligation — we respond within 24 hours.",
-            latestWork: "Our Latest Work",
             phrases: [
                 "Web Design & |AI Solutions in Bergen.",
                 "Leading |Web Designers in Bergen.",
@@ -601,7 +600,6 @@ export const translations = {
             cta: "Få et tilbud",
             trustStats: "15+ års erfaring · 200+ fornøyde kunder · 250+ leverte prosjekter",
             riskReversal: "Ingen forpliktelser — vi svarer innen 24 timer.",
-            latestWork: "Våre siste prosjekter",
             phrases: [
                 "Webdesign i |Bergen som konverterer.",
                 "Ledende |webdesignere i Bergen.",
