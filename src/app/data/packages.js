@@ -1,7 +1,7 @@
 // Single source of truth for the site-wide "flash sale" rate shown on every
 // pricing card in PricingClient.js. Both the marketing components and the
-// price-calculating code (checkout/stripe, order/create, OrderClient) import
-// this one constant so they can't drift apart. Set to 0 -- public pricing
+// price-calculating code (checkout/stripe, OrderClient) import this one
+// constant so they can't drift apart. Set to 0 -- public pricing
 // shows full price, no discount -- per request; raise it again to run a
 // site-wide sale.
 export const SITE_WIDE_DISCOUNT_RATE = 0;
@@ -17,8 +17,8 @@ export const PROMO_CODE = 'AONE';
 // after claiming it from ExitIntentPopup.js -- that component writes this
 // exact code into sessionStorage, and OrderClient.js reads it back to
 // pre-fill the voucher field. Kept as a real voucher code (not a separate
-// code path) so the checkout/stripe and order/create routes validate it the
-// same way as any other code, with no separate trust path to keep in sync.
+// code path) so the checkout/stripe route validates it the same way as any
+// other code, with no separate trust path to keep in sync.
 export const EXIT_INTENT_DISCOUNT_RATE = 0.10;
 export const EXIT_INTENT_PROMO_CODE = 'WELCOME10';
 

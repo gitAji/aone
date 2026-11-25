@@ -80,9 +80,9 @@ function OrderPageContent() {
         const oneTimeSubtotal = baseOneTime + addonsOneTime;
         const monthlySubtotal = baseMonthly + addonsMonthly;
 
-        // Matches checkout/stripe and order/create: the site-wide flash-sale
-        // rate applies automatically, a voucher code overrides (not stacks)
-        // with a larger rate.
+        // Matches checkout/stripe: the site-wide flash-sale rate applies
+        // automatically, a voucher code overrides (not stacks) with a
+        // larger rate.
         const enteredCode = promoCode.trim().toUpperCase();
         const discountRate = enteredCode === PROMO_CODE
             ? PROMO_CODE_DISCOUNT_RATE
@@ -370,7 +370,14 @@ function OrderPageContent() {
         }
     };
 
-    const submitOrder = async (method = 'card') => {
+    // Card payment via Stripe only -- there used to be a second "sign the
+    // deal now, pay later" path (method === 'later') that created a signed
+    // agreement record and emailed the customer a copy before any money had
+    // changed hands. The sales agreement must only go out once a payment has
+    // actually succeeded (see the paymentStatus === 'success' handling
+    // above, which generates and uploads it then), so that path -- and its
+    // server route, /api/order/create -- has been removed entirely.
+    const submitOrder = async () => {
         if (!agreedToTerms) {
             setToast({ message: 'Please accept the Digital Sales Agreement before proceeding.', type: 'error' });
             return;
@@ -384,60 +391,35 @@ function OrderPageContent() {
         await syncState({ status: 'awaiting_payment' });
 
         try {
-            if (method === 'card') {
-                // Dynamic Trial Calculation
-                let subscription_data = {};
-                if (billingInterval === 'monthly') {
-                    const trialDays = formData.trialPeriod === 'none' ? 0 : parseInt(formData.trialPeriod);
-                    const preferredDate = formData.startDate ? new Date(formData.startDate) : new Date();
-                    
-                    // In Stripe, trial_end must be at least 48 hours in the future to show as a trial
-                    // If they want to start on a future date, we set trial_end to that date
-                    const futureStartTimestamp = Math.floor(preferredDate.getTime() / 1000);
-                    const nowTimestamp = Math.floor(Date.now() / 1000);
-                    
-                    // Add extra trial days if selected
-                    let actualTrialEnd = Math.max(futureStartTimestamp, nowTimestamp + (48 * 3600));
-                    if (trialDays > 0) {
-                        actualTrialEnd += (trialDays * 24 * 3600);
-                    }
+            // Dynamic Trial Calculation
+            let subscription_data = {};
+            if (billingInterval === 'monthly') {
+                const trialDays = formData.trialPeriod === 'none' ? 0 : parseInt(formData.trialPeriod);
+                const preferredDate = formData.startDate ? new Date(formData.startDate) : new Date();
 
-                    // Only apply trial if it's actually in the future and requested
-                    if (trialDays > 0 || formData.startDate) {
-                        subscription_data = {
-                            trial_end: actualTrialEnd,
-                            metadata: {
-                                trialDays: trialDays.toString()
-                            }
-                        };
-                    }
+                // In Stripe, trial_end must be at least 48 hours in the future to show as a trial
+                // If they want to start on a future date, we set trial_end to that date
+                const futureStartTimestamp = Math.floor(preferredDate.getTime() / 1000);
+                const nowTimestamp = Math.floor(Date.now() / 1000);
+
+                // Add extra trial days if selected
+                let actualTrialEnd = Math.max(futureStartTimestamp, nowTimestamp + (48 * 3600));
+                if (trialDays > 0) {
+                    actualTrialEnd += (trialDays * 24 * 3600);
                 }
 
-                const res = await fetch('/api/checkout/stripe', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        orderId,
-                        package: selectedPack,
-                        addons,
-                        formData,
-                        billingInterval,
-                        appliedDiscount: calculateTotal().discount,
-                        discountCode: promoCode,
-                        subscription_data: Object.keys(subscription_data).length > 0 ? subscription_data : undefined // Pass trial data if present
-                    })
-                });
-                const data = await res.json();
-                if (data.url) {
-                    window.location.href = data.url;
-                    return;
+                // Only apply trial if it's actually in the future and requested
+                if (trialDays > 0 || formData.startDate) {
+                    subscription_data = {
+                        trial_end: actualTrialEnd,
+                        metadata: {
+                            trialDays: trialDays.toString()
+                        }
+                    };
                 }
-                setToast({ message: data.error || 'Failed to initialize payment session', type: 'error' });
-                setIsSubmitting(false);
-                return;
             }
 
-            const res = await fetch('/api/order/create', {
+            const res = await fetch('/api/checkout/stripe', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -446,45 +428,21 @@ function OrderPageContent() {
                     addons,
                     formData,
                     billingInterval,
-                    paymentMethod: method,
                     appliedDiscount: calculateTotal().discount,
                     discountCode: promoCode,
-                    agreementUrl: null // will update in background
+                    subscription_data: Object.keys(subscription_data).length > 0 ? subscription_data : undefined // Pass trial data if present
                 })
             });
-
-            if (res.ok) {
-                await syncState({ step: 4, status: 'completed' });
-                setStep(4);
-                
-                // Background PDF upload
-                generateAgreementPDF(false).then(async (pdfBlob) => {
-                    if (pdfBlob) {
-                        const { storage } = await import('@/lib/firebase');
-                        const { ref, uploadBytes, getDownloadURL } = await import('firebase/storage');
-                        const agreementRef = ref(storage, `agreements/${orderId}.pdf`);
-                        await uploadBytes(agreementRef, pdfBlob);
-                        const pdfUrl = await getDownloadURL(agreementRef);
-                        
-                        await fetch('/api/order/sync', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                orderId,
-                                agreementUrl: pdfUrl
-                            })
-                        });
-                    }
-                }).catch(e => {
-                    console.error("Failed to upload agreement in background", e);
-                });
-            } else {
-                setToast({ message: 'Something went wrong. Please try again.', type: 'error' });
+            const data = await res.json();
+            if (data.url) {
+                window.location.href = data.url;
+                return;
             }
+            setToast({ message: data.error || 'Failed to initialize payment session', type: 'error' });
+            setIsSubmitting(false);
         } catch (err) {
             console.error(err);
             setToast({ message: err.message || 'Error submitting order', type: 'error' });
-        } finally {
             setIsSubmitting(false);
         }
     };
@@ -1037,7 +995,7 @@ function OrderPageContent() {
                                                 <motion.button
                                                     whileHover={agreedToTerms ? { scale: 1.02 } : {}}
                                                     whileTap={agreedToTerms ? { scale: 0.98 } : {}}
-                                                    onClick={() => submitOrder('card')}
+                                                    onClick={() => submitOrder()}
                                                     disabled={isSubmitting || !agreedToTerms}
                                                     className={`w-full py-6 bg-slate-950 dark:bg-white text-white dark:text-slate-950 rounded-2xl font-black text-xs uppercase tracking-widest flex items-center justify-center gap-4 transition-all shadow-xl shadow-black/10 ${!agreedToTerms ? 'opacity-20 cursor-not-allowed' : 'hover:bg-slate-900 dark:hover:bg-slate-100 active:scale-95'}`}
                                                 >
@@ -1056,14 +1014,6 @@ function OrderPageContent() {
                                                 <p className="text-[10px] font-bold text-center text-slate-400 dark:text-slate-500 lowercase tracking-wide">
                                                     pay with <span className="text-slate-800 font-extrabold dark:text-white">cards</span>, <span className="text-slate-800 font-extrabold dark:text-white">klarna</span>, or <span className="text-slate-800 font-extrabold dark:text-white">apple pay</span> at checkout
                                                 </p>
-
-                                                <button
-                                                    onClick={() => submitOrder('later')}
-                                                    disabled={isSubmitting || !agreedToTerms}
-                                                    className={`w-full py-4 border-2 border-slate-200 dark:border-slate-700 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] transition-all ${!agreedToTerms ? 'opacity-10 cursor-not-allowed' : 'text-slate-400 dark:text-slate-500 hover:text-slate-950 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800'}`}
-                                                >
-                                                    Secure Selection & Sign Deal First
-                                                </button>
 
                                                 {!agreedToTerms && (
                                                     <p className="text-[9px] font-black text-center text-rose-500 uppercase tracking-widest animate-pulse">
