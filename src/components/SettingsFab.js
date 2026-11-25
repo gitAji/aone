@@ -2,18 +2,18 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
-  FaUniversalAccess,
+  FaAdjust, FaUniversalAccess,
   FaTextHeight, FaEye, FaFont, FaLink, FaRunning, FaSyncAlt, FaTimes
 } from 'react-icons/fa';
 import { useLanguage } from '@/context/LanguageContext';
 
 // Accessibility settings control. Used to be its own floating corner button
-// with an anchored flyout panel; now it's a plain text trigger rendered
-// inside Footer.js's Legal column (next to Cookie Settings), opening this
-// panel as a centered modal instead -- a trigger position in the document
-// flow has nowhere sensible to anchor a flyout to. All the underlying
-// state/localStorage/documentElement-class logic is unchanged from the
-// original floating version.
+// with an anchored flyout panel; now it's a circular contrast-icon button
+// rendered inline in Footer.js's bottom row (next to the cookie-settings
+// icon), opening this panel as a centered modal instead -- a trigger
+// position in the document flow has nowhere sensible to anchor a flyout
+// to. All the underlying state/localStorage/documentElement-class logic is
+// unchanged from the original floating version.
 const SettingsFab = () => {
   const { language } = useLanguage();
   const isNo = language === 'no';
@@ -94,10 +94,11 @@ const SettingsFab = () => {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors text-left"
+        title={isNo ? 'Tilgjengelighetsinnstillinger' : 'Accessibility Settings'}
+        aria-label={isNo ? 'Tilgjengelighetsinnstillinger' : 'Accessibility Settings'}
+        className="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center border border-slate-700 hover:bg-rose-500 hover:border-rose-500 transition-all group"
       >
-        <FaUniversalAccess className="text-xs text-slate-500 group-hover:text-rose-400 transition-colors" />
-        {isNo ? 'Tilgjengelighetsinnstillinger' : 'Accessibility Settings'}
+        <FaAdjust className="text-sm text-slate-400 group-hover:text-white transition-colors" />
       </button>
 
       <AnimatePresence>

@@ -1,5 +1,5 @@
 import React from "react";
-import { FaEnvelope, FaPhone, FaArrowRight, FaMapMarkerAlt } from "react-icons/fa";
+import { FaEnvelope, FaPhone, FaArrowRight, FaMapMarkerAlt, FaCookieBite } from "react-icons/fa";
 import Link from "next/link";
 import * as CookieConsent from "vanilla-cookieconsent";
 import { useLanguage } from "@/context/LanguageContext";
@@ -128,16 +128,6 @@ const Footer = () => {
               <li><Link href="/terms-and-conditions" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.terms')}</Link></li>
               <li><Link href="/accessibility-statement" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.accessibility')}</Link></li>
               <li><Link href="/cookie-policy" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.cookie')}</Link></li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => CookieConsent.showPreferences()}
-                  className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors text-left"
-                >
-                  {t('footer.cookieSettings') || 'Cookie Settings'}
-                </button>
-              </li>
-              <li><SettingsFab /></li>
               <li><Link href="/disclaimer" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.disclaimer')}</Link></li>
               <li><Link href="/design-requirements" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.requirements')}</Link></li>
               <li><Link href="/support" className="text-sm text-white hover:text-rose-400 flex items-center gap-2 group transition-colors">{t('footer.support')}</Link></li>
@@ -172,10 +162,28 @@ const Footer = () => {
 
         </div>
 
-        <div className="footer-bottom mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 text-center">
+        <div className="footer-bottom mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-6 text-center">
           <p className="text-slate-500 text-xs tracking-wide">
             &copy; {new Date().getFullYear()} Aone. {t('footer.rights')}
           </p>
+
+          {/* Accessibility + cookie preference controls: one clearly
+              labeled icon button each, inline in the footer (never
+              floating over the page), so visitors can always find and
+              change these settings regardless of which page they're on. */}
+          <div className="flex items-center gap-3">
+            <SettingsFab />
+            <button
+              type="button"
+              onClick={() => CookieConsent.showPreferences()}
+              title={t('footer.cookieSettings') || 'Cookie Settings'}
+              aria-label={t('footer.cookieSettings') || 'Cookie Settings'}
+              className="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center border border-slate-700 hover:bg-rose-500 hover:border-rose-500 transition-all group"
+            >
+              <FaCookieBite className="text-sm text-slate-400 group-hover:text-white transition-colors" />
+            </button>
+          </div>
+
           <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-slate-800 bg-slate-900 text-[11px] text-slate-400">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#f38020" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
