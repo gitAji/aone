@@ -9,13 +9,15 @@ import projects from "@/app/data/projects";
 // Small rotating cluster of recent-project pills for the homepage hero --
 // replaces an earlier infinite-scroll marquee ticker (rejected as dated/
 // "marquee behaviour"). A group of 3 oval/pill cards -- same rounded-full
-// shape as every button and icon control elsewhere on the site, so it
-// doesn't read as a visually jarring one-off -- cascades in, holds, then
-// cascades out and is replaced by the next group of 3, cycling through
-// every featured project. Sits in normal document flow (no full-bleed
-// breakout, unlike the old ticker), centered and wrapping on narrow
-// viewports, so it can never collide with the hero's other content or the
-// scroll-down affordance below it.
+// shape as every button and icon control elsewhere on the site, all a
+// fixed, identical width (longer project names truncate with an ellipsis
+// rather than stretching their own card) so the row reads as one deliberate,
+// evenly-sized set instead of a ragged line of differently-sized pills --
+// cascades in, holds, then cascades out and is replaced by the next group
+// of 3, cycling through every featured project. Sits in normal document
+// flow (no full-bleed breakout, unlike the old ticker), centered and
+// wrapping on narrow viewports, so it can never collide with the hero's
+// other content or the scroll-down affordance below it.
 const GROUP_SIZE = 3;
 const CYCLE_MS = 4200;
 
@@ -68,7 +70,7 @@ const ProjectsShowcase = () => {
           <motion.div key={project.id} custom={i} variants={cardVariants} initial="enter" animate="center" exit="exit">
             <Link
               href={project.projectLink}
-              className="group inline-flex items-center gap-3 pl-2 pr-5 py-2 rounded-full bg-white shadow-[0_10px_28px_rgba(15,23,42,0.16)] ring-1 ring-black/5 hover:-translate-y-1 transition-transform duration-300"
+              className="group flex items-center gap-3 w-48 sm:w-56 pl-2 pr-4 py-2 rounded-full bg-white shadow-[0_10px_28px_rgba(15,23,42,0.16)] ring-1 ring-black/5 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(15,23,42,0.22)] transition-all duration-300"
             >
               <span className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden shrink-0 bg-slate-100">
                 <Image
@@ -79,7 +81,7 @@ const ProjectsShowcase = () => {
                   sizes="44px"
                 />
               </span>
-              <span className="text-xs sm:text-sm font-bold text-slate-800 whitespace-nowrap group-hover:text-rose-500 transition-colors">
+              <span className="min-w-0 flex-1 text-xs sm:text-sm font-bold text-slate-800 truncate group-hover:text-rose-500 transition-colors">
                 {project.title?.[language] || project.title?.en}
               </span>
             </Link>

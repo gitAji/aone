@@ -241,7 +241,17 @@ function OrderPageContent() {
                 if (pkg) {
                     setSelectedPack(pkg);
                     setStep(2);
+                } else {
+                    // Unknown package_id -- nothing to check out with.
+                    router.replace('/pricing');
+                    return;
                 }
+            } else {
+                // No package chosen and no existing order to resume --
+                // Pricing is the one place packages are browsed/selected, so
+                // this page never shows its own copy of that list.
+                router.replace('/pricing');
+                return;
             }
             if (billing) {
                 setBillingInterval(billing);
@@ -268,15 +278,6 @@ function OrderPageContent() {
     }, [step, selectedPack, addons, formData, billingInterval, syncState]);
 
     // --- handlers ---
-
-    const handlePackageSelect = (pkg) => {
-        if (pkg.isCustom) {
-            router.push('/contact');
-            return;
-        }
-        setSelectedPack(pkg);
-        setStep(2);
-    };
 
     const toggleAddon = (addonId) => {
         setAddons(prev => prev.includes(addonId) ? prev.filter(id => id !== addonId) : [...prev, addonId]);
@@ -461,6 +462,11 @@ function OrderPageContent() {
                         <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Package</p>
                         <p className="font-bold text-slate-900 dark:text-white">{selectedPack?.name || 'None selected'}</p>
                     </div>
+                    {step < 3 && (
+                        <Link href="/pricing" className="text-xs font-bold text-rose-500 hover:text-rose-600 transition-colors shrink-0">
+                            Change
+                        </Link>
+                    )}
                 </div>
 
                 {addons.length > 0 && (
@@ -517,27 +523,35 @@ function OrderPageContent() {
             <div className="max-w-6xl mx-auto">
                 {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
 
-                {/* Simplified Progress Bar */}
+                {/* Simplified Progress Bar -- package choice itself now only
+                    happens on the Pricing page (this page never shows its
+                    own copy of that list), so there are just two remaining
+                    stages here: customize add-ons, then checkout. Keeps the
+                    underlying `step` values (2/3/4) unchanged everywhere
+                    else in this file; only the display here is renumbered. */}
                 <div className={`max-w-2xl mx-auto mb-16 ${step === 4 ? 'hidden' : ''}`}>
                     <div className="flex justify-between items-center relative">
                         <div className="absolute left-0 top-1/2 w-full h-0.5 bg-slate-100 dark:bg-slate-800 -translate-y-1/2 z-0">
-                            <motion.div 
+                            <motion.div
                                 className="h-full bg-slate-900 dark:bg-white"
                                 initial={{ width: '0%' }}
-                                animate={{ width: `${(step - 1) * 50}%` }}
+                                animate={{ width: `${step > 2 ? 100 : 0}%` }}
                                 transition={{ duration: 0.5, ease: "easeInOut" }}
                             />
                         </div>
-                        {[1, 2, 3].map((s) => (
-                            <div key={s} className="relative z-10 flex flex-col items-center gap-2">
+                        {[
+                            { value: 2, label: 'Add-ons' },
+                            { value: 3, label: 'Checkout' },
+                        ].map((stg, idx) => (
+                            <div key={stg.value} className="relative z-10 flex flex-col items-center gap-2">
                                 <div
-                                    className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 ${step >= s ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-lg' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
+                                    className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 ${step >= stg.value ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-lg' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
                                         }`}
                                 >
-                                    {step > s ? <FaCheck className="text-xs" /> : s}
+                                    {step > stg.value ? <FaCheck className="text-xs" /> : idx + 1}
                                 </div>
-                                <span className={`text-[10px] font-bold uppercase tracking-widest ${step >= s ? 'text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-400'}`}>
-                                    {s === 1 ? 'Package' : s === 2 ? 'Add-ons' : 'Checkout'}
+                                <span className={`text-[10px] font-bold uppercase tracking-widest ${step >= stg.value ? 'text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-400'}`}>
+                                    {stg.label}
                                 </span>
                             </div>
                         ))}
@@ -553,70 +567,6 @@ function OrderPageContent() {
                             exit={{ opacity: 0, y: -10 }}
                             transition={{ duration: 0.3 }}
                         >
-                            {step === 1 && (
-                                <div className="space-y-12">
-                                    <div className="text-center space-y-4 max-w-2xl mx-auto">
-                                        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight">
-                                            Choose Your Plan
-                                        </h1>
-                                        <p className="text-slate-500 dark:text-slate-400">
-                                            Select the perfect base for your digital project. You can customize details in the next step.
-                                        </p>
-
-                                        <div className="flex justify-center pt-8">
-                                            <div className="bg-slate-50 dark:bg-slate-900 p-1 rounded-xl flex border border-slate-200 dark:border-slate-800">
-                                                <button
-                                                    onClick={() => setBillingInterval('once')}
-                                                    className={`px-8 py-2.5 rounded-lg text-xs font-bold transition-all ${billingInterval === 'once' ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 dark:text-slate-400'}`}
-                                                >
-                                                    One-time
-                                                </button>
-                                                <button
-                                                    onClick={() => setBillingInterval('monthly')}
-                                                    className={`px-8 py-2.5 rounded-lg text-xs font-bold transition-all ${billingInterval === 'monthly' ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 dark:text-slate-400'}`}
-                                                >
-                                                    Monthly
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                        {packages.filter(p => !p.isAddon).map(pkg => (
-                                            <div
-                                                key={pkg.id}
-                                                onClick={() => handlePackageSelect(pkg)}
-                                                className={`p-10 rounded-3xl cursor-pointer border-2 transition-all flex flex-col h-full relative group ${selectedPack?.id === pkg.id ? 'border-slate-900 dark:border-white' : 'border-slate-100 dark:border-slate-800 hover:border-slate-200'}`}
-                                            >
-                                                {pkg.recommended && (
-                                                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[10px] font-bold px-4 py-1 rounded-full uppercase tracking-widest z-20">
-                                                        Recommended
-                                                    </div>
-                                                )}
-
-                                                <h3 className="font-bold text-xl mb-2 text-slate-900 dark:text-white">{pkg.name}</h3>
-                                                <div className="text-3xl font-bold text-slate-900 dark:text-white mb-6">
-                                                    {pkg.isCustom ? 'Contact' : `${billingInterval === 'monthly' ? pkg.monthlyPrice : pkg.price} NOK`}
-                                                    {!pkg.isCustom && <span className="text-sm text-slate-500 dark:text-slate-400 font-normal ml-1">/{billingInterval === 'monthly' ? 'mo' : 'once'}</span>}
-                                                </div>
-
-                                                <ul className="space-y-4 mb-8 flex-grow">
-                                                    {pkg.features.slice(0, 5).map((f, i) => (
-                                                        <li key={i} className="text-sm text-slate-600 dark:text-slate-400 flex items-center gap-3">
-                                                            <FaCheck className="text-emerald-500 text-xs" /> {f}
-                                                        </li>
-                                                    ))}
-                                                </ul>
-
-                                                <button className={`w-full py-4 rounded-xl font-bold text-sm transition-all ${selectedPack?.id === pkg.id ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900' : 'bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white'}`}>
-                                                    {pkg.isCustom ? 'Contact Us' : 'Select Plan'}
-                                                </button>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-
                             {step === 2 && (
                                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-5xl mx-auto pt-12">
                                     <div className="lg:col-span-2 space-y-8">
