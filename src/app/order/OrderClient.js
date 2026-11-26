@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { packages, SITE_WIDE_DISCOUNT_RATE, PROMO_CODE_DISCOUNT_RATE, PROMO_CODE, EXIT_INTENT_DISCOUNT_RATE, EXIT_INTENT_PROMO_CODE } from '../data/packages';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { FaLaptopCode, FaCheck, FaCrown, FaCameraRetro, FaSearch, FaTools, FaPenNib, FaUsers, FaBullhorn, FaPencilRuler, FaVideo, FaInfoCircle, FaTruck, FaSpinner, FaCreditCard, FaLock, FaCalendarAlt, FaShieldAlt, FaStripe, FaCcVisa, FaCcMastercard, FaCcPaypal, FaBolt, FaFileInvoice, FaCube, FaPuzzlePiece, FaTag, FaClock, FaCalendarCheck, FaChartLine } from 'react-icons/fa';
+import { FaLaptopCode, FaCheck, FaCrown, FaCameraRetro, FaSearch, FaTools, FaPenNib, FaUsers, FaUser, FaEnvelope, FaBuilding, FaHashtag, FaBullhorn, FaPencilRuler, FaVideo, FaInfoCircle, FaTruck, FaSpinner, FaCreditCard, FaLock, FaCalendarAlt, FaShieldAlt, FaStripe, FaCcVisa, FaCcMastercard, FaCcPaypal, FaBolt, FaFileInvoice, FaCube, FaPuzzlePiece, FaTag, FaClock, FaCalendarCheck, FaChartLine } from 'react-icons/fa';
 import Toast from '@/components/Toast';
 
 const roundPrice = (value) => {
@@ -80,9 +80,9 @@ function OrderPageContent() {
         const oneTimeSubtotal = baseOneTime + addonsOneTime;
         const monthlySubtotal = baseMonthly + addonsMonthly;
 
-        // Matches checkout/stripe and order/create: the site-wide flash-sale
-        // rate applies automatically, a voucher code overrides (not stacks)
-        // with a larger rate.
+        // Matches checkout/stripe: the site-wide flash-sale rate applies
+        // automatically, a voucher code overrides (not stacks) with a
+        // larger rate.
         const enteredCode = promoCode.trim().toUpperCase();
         const discountRate = enteredCode === PROMO_CODE
             ? PROMO_CODE_DISCOUNT_RATE
@@ -241,7 +241,17 @@ function OrderPageContent() {
                 if (pkg) {
                     setSelectedPack(pkg);
                     setStep(2);
+                } else {
+                    // Unknown package_id -- nothing to check out with.
+                    router.replace('/pricing');
+                    return;
                 }
+            } else {
+                // No package chosen and no existing order to resume --
+                // Pricing is the one place packages are browsed/selected, so
+                // this page never shows its own copy of that list.
+                router.replace('/pricing');
+                return;
             }
             if (billing) {
                 setBillingInterval(billing);
@@ -268,15 +278,6 @@ function OrderPageContent() {
     }, [step, selectedPack, addons, formData, billingInterval, syncState]);
 
     // --- handlers ---
-
-    const handlePackageSelect = (pkg) => {
-        if (pkg.isCustom) {
-            router.push('/contact');
-            return;
-        }
-        setSelectedPack(pkg);
-        setStep(2);
-    };
 
     const toggleAddon = (addonId) => {
         setAddons(prev => prev.includes(addonId) ? prev.filter(id => id !== addonId) : [...prev, addonId]);
@@ -370,7 +371,14 @@ function OrderPageContent() {
         }
     };
 
-    const submitOrder = async (method = 'card') => {
+    // Card payment via Stripe only -- there used to be a second "sign the
+    // deal now, pay later" path (method === 'later') that created a signed
+    // agreement record and emailed the customer a copy before any money had
+    // changed hands. The sales agreement must only go out once a payment has
+    // actually succeeded (see the paymentStatus === 'success' handling
+    // above, which generates and uploads it then), so that path -- and its
+    // server route, /api/order/create -- has been removed entirely.
+    const submitOrder = async () => {
         if (!agreedToTerms) {
             setToast({ message: 'Please accept the Digital Sales Agreement before proceeding.', type: 'error' });
             return;
@@ -384,60 +392,35 @@ function OrderPageContent() {
         await syncState({ status: 'awaiting_payment' });
 
         try {
-            if (method === 'card') {
-                // Dynamic Trial Calculation
-                let subscription_data = {};
-                if (billingInterval === 'monthly') {
-                    const trialDays = formData.trialPeriod === 'none' ? 0 : parseInt(formData.trialPeriod);
-                    const preferredDate = formData.startDate ? new Date(formData.startDate) : new Date();
-                    
-                    // In Stripe, trial_end must be at least 48 hours in the future to show as a trial
-                    // If they want to start on a future date, we set trial_end to that date
-                    const futureStartTimestamp = Math.floor(preferredDate.getTime() / 1000);
-                    const nowTimestamp = Math.floor(Date.now() / 1000);
-                    
-                    // Add extra trial days if selected
-                    let actualTrialEnd = Math.max(futureStartTimestamp, nowTimestamp + (48 * 3600));
-                    if (trialDays > 0) {
-                        actualTrialEnd += (trialDays * 24 * 3600);
-                    }
+            // Dynamic Trial Calculation
+            let subscription_data = {};
+            if (billingInterval === 'monthly') {
+                const trialDays = formData.trialPeriod === 'none' ? 0 : parseInt(formData.trialPeriod);
+                const preferredDate = formData.startDate ? new Date(formData.startDate) : new Date();
 
-                    // Only apply trial if it's actually in the future and requested
-                    if (trialDays > 0 || formData.startDate) {
-                        subscription_data = {
-                            trial_end: actualTrialEnd,
-                            metadata: {
-                                trialDays: trialDays.toString()
-                            }
-                        };
-                    }
+                // In Stripe, trial_end must be at least 48 hours in the future to show as a trial
+                // If they want to start on a future date, we set trial_end to that date
+                const futureStartTimestamp = Math.floor(preferredDate.getTime() / 1000);
+                const nowTimestamp = Math.floor(Date.now() / 1000);
+
+                // Add extra trial days if selected
+                let actualTrialEnd = Math.max(futureStartTimestamp, nowTimestamp + (48 * 3600));
+                if (trialDays > 0) {
+                    actualTrialEnd += (trialDays * 24 * 3600);
                 }
 
-                const res = await fetch('/api/checkout/stripe', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        orderId,
-                        package: selectedPack,
-                        addons,
-                        formData,
-                        billingInterval,
-                        appliedDiscount: calculateTotal().discount,
-                        discountCode: promoCode,
-                        subscription_data: Object.keys(subscription_data).length > 0 ? subscription_data : undefined // Pass trial data if present
-                    })
-                });
-                const data = await res.json();
-                if (data.url) {
-                    window.location.href = data.url;
-                    return;
+                // Only apply trial if it's actually in the future and requested
+                if (trialDays > 0 || formData.startDate) {
+                    subscription_data = {
+                        trial_end: actualTrialEnd,
+                        metadata: {
+                            trialDays: trialDays.toString()
+                        }
+                    };
                 }
-                setToast({ message: data.error || 'Failed to initialize payment session', type: 'error' });
-                setIsSubmitting(false);
-                return;
             }
 
-            const res = await fetch('/api/order/create', {
+            const res = await fetch('/api/checkout/stripe', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -446,45 +429,21 @@ function OrderPageContent() {
                     addons,
                     formData,
                     billingInterval,
-                    paymentMethod: method,
                     appliedDiscount: calculateTotal().discount,
                     discountCode: promoCode,
-                    agreementUrl: null // will update in background
+                    subscription_data: Object.keys(subscription_data).length > 0 ? subscription_data : undefined // Pass trial data if present
                 })
             });
-
-            if (res.ok) {
-                await syncState({ step: 4, status: 'completed' });
-                setStep(4);
-                
-                // Background PDF upload
-                generateAgreementPDF(false).then(async (pdfBlob) => {
-                    if (pdfBlob) {
-                        const { storage } = await import('@/lib/firebase');
-                        const { ref, uploadBytes, getDownloadURL } = await import('firebase/storage');
-                        const agreementRef = ref(storage, `agreements/${orderId}.pdf`);
-                        await uploadBytes(agreementRef, pdfBlob);
-                        const pdfUrl = await getDownloadURL(agreementRef);
-                        
-                        await fetch('/api/order/sync', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                orderId,
-                                agreementUrl: pdfUrl
-                            })
-                        });
-                    }
-                }).catch(e => {
-                    console.error("Failed to upload agreement in background", e);
-                });
-            } else {
-                setToast({ message: 'Something went wrong. Please try again.', type: 'error' });
+            const data = await res.json();
+            if (data.url) {
+                window.location.href = data.url;
+                return;
             }
+            setToast({ message: data.error || 'Failed to initialize payment session', type: 'error' });
+            setIsSubmitting(false);
         } catch (err) {
             console.error(err);
             setToast({ message: err.message || 'Error submitting order', type: 'error' });
-        } finally {
             setIsSubmitting(false);
         }
     };
@@ -503,6 +462,11 @@ function OrderPageContent() {
                         <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Package</p>
                         <p className="font-bold text-slate-900 dark:text-white">{selectedPack?.name || 'None selected'}</p>
                     </div>
+                    {step < 3 && (
+                        <Link href="/pricing" className="text-xs font-bold text-rose-500 hover:text-rose-600 transition-colors shrink-0">
+                            Change
+                        </Link>
+                    )}
                 </div>
 
                 {addons.length > 0 && (
@@ -559,27 +523,35 @@ function OrderPageContent() {
             <div className="max-w-6xl mx-auto">
                 {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
 
-                {/* Simplified Progress Bar */}
+                {/* Simplified Progress Bar -- package choice itself now only
+                    happens on the Pricing page (this page never shows its
+                    own copy of that list), so there are just two remaining
+                    stages here: customize add-ons, then checkout. Keeps the
+                    underlying `step` values (2/3/4) unchanged everywhere
+                    else in this file; only the display here is renumbered. */}
                 <div className={`max-w-2xl mx-auto mb-16 ${step === 4 ? 'hidden' : ''}`}>
                     <div className="flex justify-between items-center relative">
                         <div className="absolute left-0 top-1/2 w-full h-0.5 bg-slate-100 dark:bg-slate-800 -translate-y-1/2 z-0">
-                            <motion.div 
+                            <motion.div
                                 className="h-full bg-slate-900 dark:bg-white"
                                 initial={{ width: '0%' }}
-                                animate={{ width: `${(step - 1) * 50}%` }}
+                                animate={{ width: `${step > 2 ? 100 : 0}%` }}
                                 transition={{ duration: 0.5, ease: "easeInOut" }}
                             />
                         </div>
-                        {[1, 2, 3].map((s) => (
-                            <div key={s} className="relative z-10 flex flex-col items-center gap-2">
+                        {[
+                            { value: 2, label: 'Add-ons' },
+                            { value: 3, label: 'Checkout' },
+                        ].map((stg, idx) => (
+                            <div key={stg.value} className="relative z-10 flex flex-col items-center gap-2">
                                 <div
-                                    className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 ${step >= s ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-lg' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
+                                    className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 ${step >= stg.value ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-lg' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
                                         }`}
                                 >
-                                    {step > s ? <FaCheck className="text-xs" /> : s}
+                                    {step > stg.value ? <FaCheck className="text-xs" /> : idx + 1}
                                 </div>
-                                <span className={`text-[10px] font-bold uppercase tracking-widest ${step >= s ? 'text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-400'}`}>
-                                    {s === 1 ? 'Package' : s === 2 ? 'Add-ons' : 'Checkout'}
+                                <span className={`text-[10px] font-bold uppercase tracking-widest ${step >= stg.value ? 'text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-400'}`}>
+                                    {stg.label}
                                 </span>
                             </div>
                         ))}
@@ -595,70 +567,6 @@ function OrderPageContent() {
                             exit={{ opacity: 0, y: -10 }}
                             transition={{ duration: 0.3 }}
                         >
-                            {step === 1 && (
-                                <div className="space-y-12">
-                                    <div className="text-center space-y-4 max-w-2xl mx-auto">
-                                        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight">
-                                            Choose Your Plan
-                                        </h1>
-                                        <p className="text-slate-500 dark:text-slate-400">
-                                            Select the perfect base for your digital project. You can customize details in the next step.
-                                        </p>
-
-                                        <div className="flex justify-center pt-8">
-                                            <div className="bg-slate-50 dark:bg-slate-900 p-1 rounded-xl flex border border-slate-200 dark:border-slate-800">
-                                                <button
-                                                    onClick={() => setBillingInterval('once')}
-                                                    className={`px-8 py-2.5 rounded-lg text-xs font-bold transition-all ${billingInterval === 'once' ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 dark:text-slate-400'}`}
-                                                >
-                                                    One-time
-                                                </button>
-                                                <button
-                                                    onClick={() => setBillingInterval('monthly')}
-                                                    className={`px-8 py-2.5 rounded-lg text-xs font-bold transition-all ${billingInterval === 'monthly' ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 dark:text-slate-400'}`}
-                                                >
-                                                    Monthly
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                        {packages.filter(p => !p.isAddon).map(pkg => (
-                                            <div
-                                                key={pkg.id}
-                                                onClick={() => handlePackageSelect(pkg)}
-                                                className={`p-10 rounded-3xl cursor-pointer border-2 transition-all flex flex-col h-full relative group ${selectedPack?.id === pkg.id ? 'border-slate-900 dark:border-white' : 'border-slate-100 dark:border-slate-800 hover:border-slate-200'}`}
-                                            >
-                                                {pkg.recommended && (
-                                                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[10px] font-bold px-4 py-1 rounded-full uppercase tracking-widest z-20">
-                                                        Recommended
-                                                    </div>
-                                                )}
-
-                                                <h3 className="font-bold text-xl mb-2 text-slate-900 dark:text-white">{pkg.name}</h3>
-                                                <div className="text-3xl font-bold text-slate-900 dark:text-white mb-6">
-                                                    {pkg.isCustom ? 'Contact' : `${billingInterval === 'monthly' ? pkg.monthlyPrice : pkg.price} NOK`}
-                                                    {!pkg.isCustom && <span className="text-sm text-slate-500 dark:text-slate-400 font-normal ml-1">/{billingInterval === 'monthly' ? 'mo' : 'once'}</span>}
-                                                </div>
-
-                                                <ul className="space-y-4 mb-8 flex-grow">
-                                                    {pkg.features.slice(0, 5).map((f, i) => (
-                                                        <li key={i} className="text-sm text-slate-600 dark:text-slate-400 flex items-center gap-3">
-                                                            <FaCheck className="text-emerald-500 text-xs" /> {f}
-                                                        </li>
-                                                    ))}
-                                                </ul>
-
-                                                <button className={`w-full py-4 rounded-xl font-bold text-sm transition-all ${selectedPack?.id === pkg.id ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900' : 'bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white'}`}>
-                                                    {pkg.isCustom ? 'Contact Us' : 'Select Plan'}
-                                                </button>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-
                             {step === 2 && (
                                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-5xl mx-auto pt-12">
                                     <div className="lg:col-span-2 space-y-8">
@@ -752,121 +660,135 @@ function OrderPageContent() {
                                 <div className="space-y-12 mb-24">
                                     {/* Full Width Section: Selection Area */}
                                     <div className="space-y-12">
-                                        <div className="bg-slate-50 border border-slate-200 p-10 rounded-[2.5rem] shadow-xl">
+                                        <div className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-10 rounded-3xl shadow-xl">
                                             <div className="flex items-center gap-4 mb-10">
-                                                <div className="w-12 h-12 bg-slate-900 rounded-2xl flex items-center justify-center text-white shadow-lg">
+                                                <div className="w-12 h-12 bg-slate-900 dark:bg-white rounded-2xl flex items-center justify-center text-white dark:text-slate-900 shadow-lg">
                                                     <FaUsers className="text-xl" />
                                                 </div>
                                                 <div>
-                                                    <h3 className="font-black text-2xl text-slate-900 tracking-tight uppercase">Customer Information</h3>
-                                                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Provide your business details for billing and agreement.</p>
+                                                    <h3 className="font-black text-2xl text-slate-900 dark:text-white tracking-tight uppercase">Customer Information</h3>
+                                                    <p className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">Provide your business details for billing and agreement.</p>
                                                 </div>
                                             </div>
 
                                             <div className="space-y-6">
                                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-[10px] font-black uppercase tracking-widest">
                                                     <div className="space-y-2">
-                                                        <label htmlFor="name-input" className="text-slate-500 ml-1">Contact Name</label>
-                                                        <input 
-                                                            id="name-input"
-                                                            name="name" 
-                                                            value={formData.name} 
-                                                            onChange={handleInputChange} 
-                                                            className="w-full px-5 py-3 rounded-xl bg-white border border-slate-200 shadow-sm focus:ring-2 focus:ring-slate-900 transition-all text-sm font-bold text-slate-900 placeholder:text-slate-300" 
-                                                            placeholder="Full Name" 
-                                                        />
+                                                        <label htmlFor="name-input" className="text-slate-500 dark:text-slate-400 ml-1">Contact Name</label>
+                                                        <div className="relative">
+                                                            <FaUser className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 dark:text-slate-600 text-sm" />
+                                                            <input
+                                                                id="name-input"
+                                                                name="name"
+                                                                value={formData.name}
+                                                                onChange={handleInputChange}
+                                                                className="w-full pl-11 pr-5 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all text-sm font-bold text-slate-900 dark:text-white placeholder:text-slate-300 dark:placeholder:text-slate-500"
+                                                                placeholder="Full Name"
+                                                            />
+                                                        </div>
                                                     </div>
                                                     <div className="space-y-2">
-                                                        <label htmlFor="email-input" className="text-slate-500 ml-1">Work Email</label>
-                                                        <input 
-                                                            id="email-input"
-                                                            name="email" 
-                                                            value={formData.email} 
-                                                            onChange={handleInputChange} 
-                                                            className="w-full px-5 py-3 rounded-xl bg-white border border-slate-200 shadow-sm focus:ring-2 focus:ring-slate-900 transition-all text-sm font-bold text-slate-900 placeholder:text-slate-300" 
-                                                            placeholder="Email address" 
-                                                            type="email" 
-                                                        />
+                                                        <label htmlFor="email-input" className="text-slate-500 dark:text-slate-400 ml-1">Work Email</label>
+                                                        <div className="relative">
+                                                            <FaEnvelope className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 dark:text-slate-600 text-sm" />
+                                                            <input
+                                                                id="email-input"
+                                                                name="email"
+                                                                value={formData.email}
+                                                                onChange={handleInputChange}
+                                                                className="w-full pl-11 pr-5 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all text-sm font-bold text-slate-900 dark:text-white placeholder:text-slate-300 dark:placeholder:text-slate-500"
+                                                                placeholder="Email address"
+                                                                type="email"
+                                                            />
+                                                        </div>
                                                     </div>
                                                 </div>
 
                                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-[10px] font-black uppercase tracking-widest">
                                                     <div className="space-y-2">
-                                                        <label htmlFor="business-input" className="text-slate-500 ml-1">Company Name</label>
-                                                        <input 
-                                                            id="business-input"
-                                                            name="businessName" 
-                                                            value={formData.businessName} 
-                                                            onChange={handleInputChange} 
-                                                            className="w-full px-5 py-3 rounded-xl bg-white border border-slate-200 shadow-sm focus:ring-2 focus:ring-slate-900 transition-all text-sm font-bold text-slate-900 placeholder:text-slate-300" 
-                                                            placeholder="AS / LLC name" 
-                                                        />
+                                                        <label htmlFor="business-input" className="text-slate-500 dark:text-slate-400 ml-1">Company Name</label>
+                                                        <div className="relative">
+                                                            <FaBuilding className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 dark:text-slate-600 text-sm" />
+                                                            <input
+                                                                id="business-input"
+                                                                name="businessName"
+                                                                value={formData.businessName}
+                                                                onChange={handleInputChange}
+                                                                className="w-full pl-11 pr-5 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all text-sm font-bold text-slate-900 dark:text-white placeholder:text-slate-300 dark:placeholder:text-slate-500"
+                                                                placeholder="AS / LLC name"
+                                                            />
+                                                        </div>
                                                     </div>
                                                     <div className="space-y-2">
-                                                        <label htmlFor="org-input" className="text-slate-500 ml-1">Org. Number (Optional)</label>
-                                                        <input 
-                                                            id="org-input"
-                                                            name="orgNumber" 
-                                                            value={formData.orgNumber} 
-                                                            onChange={handleInputChange} 
-                                                            className="w-full px-5 py-3 rounded-xl bg-white border border-slate-200 shadow-sm focus:ring-2 focus:ring-slate-900 transition-all text-sm font-bold text-slate-900 placeholder:text-slate-300" 
-                                                            placeholder="000 000 000" 
-                                                        />
+                                                        <label htmlFor="org-input" className="text-slate-500 dark:text-slate-400 ml-1">Org. Number (Optional)</label>
+                                                        <div className="relative">
+                                                            <FaHashtag className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 dark:text-slate-600 text-sm" />
+                                                            <input
+                                                                id="org-input"
+                                                                name="orgNumber"
+                                                                value={formData.orgNumber}
+                                                                onChange={handleInputChange}
+                                                                className="w-full pl-11 pr-5 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all text-sm font-bold text-slate-900 dark:text-white placeholder:text-slate-300 dark:placeholder:text-slate-500"
+                                                                placeholder="000 000 000"
+                                                            />
+                                                        </div>
                                                     </div>
                                                 </div>
 
-                                                <div className="grid grid-cols-1 gap-6 text-[10px] font-black uppercase tracking-widest pt-6 border-t border-slate-200">
+                                                <div className="grid grid-cols-1 gap-6 text-[10px] font-black uppercase tracking-widest pt-6 border-t border-slate-200 dark:border-slate-800">
                                                     <div className="space-y-2">
-                                                        <label htmlFor="start-date-input" className="text-slate-500 ml-1 flex items-center gap-1.5 animate-pulse">
+                                                        <label htmlFor="start-date-input" className="text-slate-500 dark:text-slate-400 ml-1 flex items-center gap-1.5">
                                                             <FaCalendarAlt className="text-rose-500" /> Start Date
                                                         </label>
-                                                        <input
-                                                            id="start-date-input"
-                                                            name="startDate"
-                                                            type="date"
-                                                            value={formData.startDate}
-                                                            onChange={handleInputChange}
-                                                            className="w-full px-5 py-3 rounded-xl bg-white border border-slate-200 shadow-sm focus:ring-2 focus:ring-slate-900 transition-all text-sm font-bold text-slate-900 outline-none"
-                                                        />
+                                                        <div className="relative">
+                                                            <input
+                                                                id="start-date-input"
+                                                                name="startDate"
+                                                                type="date"
+                                                                value={formData.startDate}
+                                                                onChange={handleInputChange}
+                                                                className="w-full px-5 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all text-sm font-bold text-slate-900 dark:text-white [color-scheme:light] dark:[color-scheme:dark]"
+                                                            />
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             {/* Digital Sales Agreement Section */}
-                                            <div className="mt-12 pt-12 border-t border-slate-200">
+                                            <div className="mt-12 pt-12 border-t border-slate-200 dark:border-slate-800">
                                                 <div className="flex items-center gap-4 mb-6">
-                                                    <div className="w-10 h-10 bg-slate-900 rounded-xl flex items-center justify-center text-white shadow-lg">
+                                                    <div className="w-10 h-10 bg-slate-900 dark:bg-white rounded-xl flex items-center justify-center text-white dark:text-slate-900 shadow-lg">
                                                         <FaPenNib className="text-lg" />
                                                     </div>
                                                     <div>
-                                                        <h4 className="font-black text-lg text-slate-900 tracking-tight uppercase">Digital Sales Agreement</h4>
-                                                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Mandatory legal contract before payment</p>
+                                                        <h4 className="font-black text-lg text-slate-900 dark:text-white tracking-tight uppercase">Digital Sales Agreement</h4>
+                                                        <p className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">Mandatory legal contract before payment</p>
                                                     </div>
                                                 </div>
 
-                                                <div className="bg-slate-100 rounded-[2rem] p-8 mb-8 border border-slate-200 shadow-inner max-h-48 overflow-y-auto scrollbar-thin scrollbar-thumb-slate-300">
-                                                    <div className="text-xs text-slate-600 leading-relaxed font-bold space-y-4">                                                         <h5 className="font-black text-slate-900 uppercase">1. Scope of Agreement</h5>
-                                                         <p className="text-sm leading-relaxed text-slate-600 mb-6">
+                                                <div className="bg-slate-100 dark:bg-slate-950 rounded-3xl p-8 mb-8 border border-slate-200 dark:border-slate-800 shadow-inner max-h-48 overflow-y-auto scrollbar-thin scrollbar-thumb-slate-300">
+                                                    <div className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-bold space-y-4">                                                         <h5 className="font-black text-slate-900 dark:text-white uppercase">1. Scope of Agreement</h5>
+                                                         <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400 mb-6">
                                                              This Agreement is entered into between {formData.businessName || "the Client"} and Aone Kumarasamy (org. nr. 922 103 682), operating the website under the name Aone.no. By proceeding, the Client agrees to the selected {selectedPack?.name} package, billed monthly or yearly with no fixed binding period -- the Client may cancel at any time before the next billing date.
                                                          </p>
 
-                                                         <h5 className="font-black text-slate-900 uppercase">2. Service Commencement, Hosting & Source Code</h5>
-                                                         <p className="text-sm leading-relaxed text-slate-600 mb-6 font-bold italic">
+                                                         <h5 className="font-black text-slate-900 dark:text-white uppercase">2. Service Commencement, Hosting & Source Code</h5>
+                                                         <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400 mb-6 font-bold italic">
                                                              Services begin officially once the initial payment is cleared. The website is hosted and operated on Aone.no&apos;s own service, pointed to the Client&apos;s domain, for as long as the subscription is active -- the Client is not given direct access to the source code or hosting panel. A full transfer of the website files, backups (including any database), and the admin panel is available as a separate, additional paid service upon request or at termination.
                                                          </p>
 
-                                                         <h5 className="font-black text-slate-900 uppercase">3. Maintenance & Support (Monthly)</h5>
-                                                         <p className="text-sm leading-relaxed text-slate-600 mb-6 font-bold">
+                                                         <h5 className="font-black text-slate-900 dark:text-white uppercase">3. Maintenance & Support (Monthly)</h5>
+                                                         <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400 mb-6 font-bold">
                                                              Monthly billing includes professional site maintenance: regular backups, security oversight, hosting monitoring, and &quot;Small Adjustments&quot; (e.g., price changes or minor text edits) at no extra cost.
                                                          </p>
 
-                                                         <h5 className="font-black text-slate-900 uppercase">4. Major Improvements & Hourly Work</h5>
-                                                         <p className="text-sm leading-relaxed text-slate-600 mb-6">
+                                                         <h5 className="font-black text-slate-900 dark:text-white uppercase">4. Major Improvements & Hourly Work</h5>
+                                                         <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400 mb-6">
                                                              Structural improvements or major feature updates require separate pricing. Work on such improvements will be billed at an agreed-upon fixed price or hourly rate, with written approval required before work starts.
                                                          </p>
 
-                                                         <h5 className="font-black text-slate-900 uppercase">5. Future Terms & MSA</h5>
-                                                         <p className="text-sm leading-relaxed text-slate-600 mb-6">
+                                                         <h5 className="font-black text-slate-900 dark:text-white uppercase">5. Future Terms & MSA</h5>
+                                                         <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400 mb-6">
                                                              This digital agreement covers the purchase intent. A formal <strong>Master Service Agreement (MSA)</strong> and a comprehensive <strong>Project Plan</strong> (milestones, delivery timelines) will be finalized during the kick-off meeting.
                                                          </p>
                                                     </div>
@@ -875,17 +797,17 @@ function OrderPageContent() {
                                                 <div className="flex flex-wrap gap-4 items-center justify-between">
                                                     <label className="flex items-center gap-4 cursor-pointer group">
                                                         <div className="relative">
-                                                            <input 
-                                                                type="checkbox" 
-                                                                checked={agreedToTerms} 
-                                                                onChange={() => setAgreedToTerms(!agreedToTerms)} 
-                                                                className="sr-only" 
+                                                            <input
+                                                                type="checkbox"
+                                                                checked={agreedToTerms}
+                                                                onChange={() => setAgreedToTerms(!agreedToTerms)}
+                                                                className="sr-only"
                                                             />
-                                                            <div className={`w-8 h-8 rounded-xl border-2 transition-all flex items-center justify-center ${agreedToTerms ? 'bg-slate-900 border-slate-900 shadow-md' : 'border-slate-200 group-hover:border-slate-400'}`}>
-                                                                {agreedToTerms && <FaCheck className="text-white text-xs stroke-[4]" />}
+                                                            <div className={`w-8 h-8 rounded-xl border-2 transition-all flex items-center justify-center ${agreedToTerms ? 'bg-slate-900 dark:bg-white border-slate-900 dark:border-white shadow-md' : 'border-slate-200 dark:border-slate-700 group-hover:border-slate-400 dark:group-hover:border-slate-500'}`}>
+                                                                {agreedToTerms && <FaCheck className="text-white dark:text-slate-900 text-xs stroke-[4]" />}
                                                             </div>
                                                         </div>
-                                                        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 group-hover:text-slate-900 transition-colors">
+                                                        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
                                                             I AGREE TO THE SALES AGREEMENT
                                                         </span>
                                                     </label>
@@ -893,8 +815,8 @@ function OrderPageContent() {
                                             </div>
 
                                             <div className="mt-12 group">
-                                                <button onClick={() => setStep(2)} className="text-[10px] font-black uppercase tracking-widest text-slate-500 flex items-center gap-2 hover:text-white transition-all">
-                                                    <span className="w-5 h-5 rounded-full border border-white/10 flex items-center justify-center group-hover:-translate-x-1 transition-transform">←</span>
+                                                <button onClick={() => setStep(2)} className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 flex items-center gap-2 hover:text-slate-900 dark:hover:text-white transition-all">
+                                                    <span className="w-5 h-5 rounded-full border border-slate-300 dark:border-slate-700 flex items-center justify-center group-hover:-translate-x-1 transition-transform">←</span>
                                                     Review configurations
                                                 </button>
                                             </div>
@@ -903,30 +825,30 @@ function OrderPageContent() {
 
                                     {/* Wide Row: Order Summary & Checkout */}
                                     <div className="w-full">
-                                        <div className="bg-white border border-slate-100 p-8 md:p-12 rounded-[3.5rem] text-slate-950 shadow-2xl shadow-black/5">
+                                        <div className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-8 md:p-12 rounded-3xl text-slate-950 dark:text-white shadow-2xl shadow-black/5">
                                             <div className="grid lg:grid-cols-2 gap-12 items-start">
                                                 {/* Left Side: Summary Details */}
                                                 <div>
-                                                    <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-100 rounded-full mb-8">
-                                                        <FaFileInvoice className="text-slate-500 text-xs" />
-                                                        <span className="text-[10px] font-black text-slate-600 uppercase tracking-widest">Invoice Breakdown</span>
+                                                    <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-full mb-8">
+                                                        <FaFileInvoice className="text-slate-500 dark:text-slate-400 text-xs" />
+                                                        <span className="text-[10px] font-black text-slate-600 dark:text-slate-300 uppercase tracking-widest">Invoice Breakdown</span>
                                                     </div>
-                                                    
+
                                                     <div className="flex flex-col gap-2 mb-10 items-start">
-                                                        <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1 shadow-sm">Amount Due Today</p>
-                                                        <h3 className="text-7xl font-black tracking-tighter text-slate-950 drop-shadow-sm">
+                                                        <p className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1 shadow-sm">Amount Due Today</p>
+                                                        <h3 className="text-7xl font-black tracking-tighter text-slate-950 dark:text-white drop-shadow-sm">
                                                             {calculateTotal().total} <span className="text-2xl font-bold opacity-30 tracking-widest ml-1">NOK</span>
                                                         </h3>
                                                         {billingInterval === 'monthly' && calculateTotal().monthly > 0 && (
-                                                            <p className="text-sm font-bold text-slate-400">then {calculateTotal().monthly} NOK/mo</p>
+                                                            <p className="text-sm font-bold text-slate-400 dark:text-slate-500">then {calculateTotal().monthly} NOK/mo</p>
                                                         )}
                                                         {billingInterval === 'monthly' && (
                                                             <div className="flex flex-wrap items-center gap-3 mt-4">
-                                                                <span className="text-[9px] font-black text-emerald-600 uppercase tracking-widest bg-emerald-50 px-3 py-1.5 rounded-md border border-emerald-100 flex items-center gap-1.5">
+                                                                <span className="text-[9px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest bg-emerald-50 dark:bg-emerald-500/10 px-3 py-1.5 rounded-md border border-emerald-100 dark:border-emerald-500/20 flex items-center gap-1.5">
                                                                     <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Monthly Billing
                                                                 </span>
                                                                 {formData.trialPeriod !== 'none' && (
-                                                                    <span className="text-[9px] font-black text-blue-600 uppercase tracking-widest bg-blue-50 px-3 py-1.5 rounded-md border border-blue-100 flex items-center gap-1.5">
+                                                                    <span className="text-[9px] font-black text-blue-600 dark:text-blue-400 uppercase tracking-widest bg-blue-50 dark:bg-blue-500/10 px-3 py-1.5 rounded-md border border-blue-100 dark:border-blue-500/20 flex items-center gap-1.5">
                                                                         <FaClock className="text-blue-500" /> {formData.trialPeriod} Days Trial
                                                                     </span>
                                                                 )}
@@ -934,43 +856,43 @@ function OrderPageContent() {
                                                         )}
                                                     </div>
 
-                                                    <div className="bg-slate-50/70 rounded-3xl p-6 border border-slate-100">
+                                                    <div className="bg-slate-50/70 dark:bg-slate-800/40 rounded-3xl p-6 border border-slate-100 dark:border-slate-800">
                                                         <div className="space-y-4">
-                                                            <div className="flex justify-between items-center text-sm font-bold text-slate-600">
+                                                            <div className="flex justify-between items-center text-sm font-bold text-slate-600 dark:text-slate-400">
                                                                 <span className="flex items-center gap-3">
-                                                                    <div className="w-8 h-8 rounded-lg bg-white shadow-sm flex items-center justify-center border border-slate-100">
+                                                                    <div className="w-8 h-8 rounded-lg bg-white dark:bg-slate-900 shadow-sm flex items-center justify-center border border-slate-100 dark:border-slate-700">
                                                                         <FaCube className="text-slate-400 text-xs" />
                                                                     </div>
                                                                     {selectedPack?.name} Plan
                                                                 </span>
-                                                                <span className="text-slate-900">{billingInterval === 'monthly' ? selectedPack?.monthlyPrice : selectedPack?.price} NOK</span>
+                                                                <span className="text-slate-900 dark:text-white">{billingInterval === 'monthly' ? selectedPack?.monthlyPrice : selectedPack?.price} NOK</span>
                                                             </div>
                                                             {addons.length > 0 && calculateTotal().addons > 0 && (
-                                                                <div className="flex justify-between items-center text-sm font-bold text-slate-600">
+                                                                <div className="flex justify-between items-center text-sm font-bold text-slate-600 dark:text-slate-400">
                                                                     <span className="flex items-center gap-3">
-                                                                        <div className="w-8 h-8 rounded-lg bg-white shadow-sm flex items-center justify-center border border-slate-100">
+                                                                        <div className="w-8 h-8 rounded-lg bg-white dark:bg-slate-900 shadow-sm flex items-center justify-center border border-slate-100 dark:border-slate-700">
                                                                             <FaPuzzlePiece className="text-slate-400 text-xs" />
                                                                         </div>
                                                                         Service Add-ons ({addons.length}) - Setup
                                                                     </span>
-                                                                    <span className="text-slate-900">+{calculateTotal().addons} NOK</span>
+                                                                    <span className="text-slate-900 dark:text-white">+{calculateTotal().addons} NOK</span>
                                                             </div>
                                                             )}
                                                             {addons.length > 0 && calculateTotal().addonsMonthly > 0 && (
-                                                                <div className="flex justify-between items-center text-sm font-bold text-slate-600">
+                                                                <div className="flex justify-between items-center text-sm font-bold text-slate-600 dark:text-slate-400">
                                                                     <span className="flex items-center gap-3">
-                                                                        <div className="w-8 h-8 rounded-lg bg-white shadow-sm flex items-center justify-center border border-slate-100">
+                                                                        <div className="w-8 h-8 rounded-lg bg-white dark:bg-slate-900 shadow-sm flex items-center justify-center border border-slate-100 dark:border-slate-700">
                                                                             <FaPuzzlePiece className="text-slate-400 text-xs" />
                                                                         </div>
                                                                         Service Add-ons - Monthly
                                                                     </span>
-                                                                    <span className="text-slate-900">+{calculateTotal().addonsMonthly} NOK/mo</span>
+                                                                    <span className="text-slate-900 dark:text-white">+{calculateTotal().addonsMonthly} NOK/mo</span>
                                                             </div>
                                                             )}
                                                             {calculateTotal().discount > 0 && (
-                                                                <div className="flex justify-between items-center text-sm font-bold text-emerald-600">
+                                                                <div className="flex justify-between items-center text-sm font-bold text-emerald-600 dark:text-emerald-400">
                                                                     <span className="flex items-center gap-3">
-                                                                        <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center border border-emerald-100">
+                                                                        <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center border border-emerald-100 dark:border-emerald-500/20">
                                                                             <FaTag className="text-emerald-500 text-xs" />
                                                                         </div>
                                                                         Promotional Discount
@@ -980,30 +902,30 @@ function OrderPageContent() {
                                                             )}
                                                         </div>
                                                         {formData.startDate && (
-                                                            <div className="mt-6 pt-6 border-t border-slate-200/60 flex justify-between items-center text-xs font-black uppercase tracking-widest text-slate-900">
-                                                                <span className="flex items-center gap-2 text-slate-500">
+                                                            <div className="mt-6 pt-6 border-t border-slate-200/60 dark:border-slate-700/60 flex justify-between items-center text-xs font-black uppercase tracking-widest text-slate-900 dark:text-white">
+                                                                <span className="flex items-center gap-2 text-slate-500 dark:text-slate-400">
                                                                     <FaCalendarCheck className="text-slate-400 text-sm" />
                                                                     Project Kick-off
                                                                 </span>
-                                                                <span className="bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-sm">{formData.startDate}</span>
+                                                                <span className="bg-white dark:bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm">{formData.startDate}</span>
                                                             </div>
                                                         )}
                                                     </div>
                                                 </div>
 
                                                 {/* Right Side: Actions */}
-                                                <div className="bg-slate-50 rounded-[2.5rem] p-8 md:p-10 border border-slate-100">
+                                                <div className="bg-slate-50 dark:bg-slate-800/40 rounded-3xl p-8 md:p-10 border border-slate-100 dark:border-slate-800">
                                             <div className="mb-10 group">
                                                 <div className="flex items-center gap-3 mb-4">
-                                                    <div className="h-[1px] flex-grow bg-slate-100" />
-                                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Voucher Code</span>
-                                                    <div className="h-[1px] flex-grow bg-slate-100" />
+                                                    <div className="h-[1px] flex-grow bg-slate-200 dark:bg-slate-700" />
+                                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500">Voucher Code</span>
+                                                    <div className="h-[1px] flex-grow bg-slate-200 dark:bg-slate-700" />
                                                 </div>
-                                                <div className="flex gap-2 p-2 bg-slate-50 rounded-2xl border border-slate-100 focus-within:ring-2 focus-within:ring-slate-200 transition-all">
-                                                    <input 
+                                                <div className="flex gap-2 p-2 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 focus-within:ring-2 focus-within:ring-rose-500 transition-all">
+                                                    <input
                                                         value={promoCode}
                                                         onChange={(e) => setPromoCode(e.target.value)}
-                                                        className="flex-grow bg-transparent border-none rounded-lg text-xs px-4 py-3 text-slate-950 placeholder:text-slate-300 font-bold" 
+                                                        className="flex-grow bg-transparent border-none rounded-lg text-xs px-4 py-3 text-slate-950 dark:text-white placeholder:text-slate-300 dark:placeholder:text-slate-500 font-bold focus:outline-none"
                                                         placeholder="Enter promotional code"
                                                     />
                                                 </div>
@@ -1023,60 +945,52 @@ function OrderPageContent() {
                                                 <motion.button
                                                     whileHover={agreedToTerms ? { scale: 1.02 } : {}}
                                                     whileTap={agreedToTerms ? { scale: 0.98 } : {}}
-                                                    onClick={() => submitOrder('card')}
+                                                    onClick={() => submitOrder()}
                                                     disabled={isSubmitting || !agreedToTerms}
-                                                    className={`w-full py-6 bg-slate-950 text-white rounded-[1.5rem] font-black text-xs uppercase tracking-widest flex items-center justify-center gap-4 transition-all shadow-xl shadow-black/10 ${!agreedToTerms ? 'opacity-20 cursor-not-allowed' : 'hover:bg-slate-900 active:scale-95'}`}
+                                                    className={`w-full py-6 bg-slate-950 dark:bg-white text-white dark:text-slate-950 rounded-2xl font-black text-xs uppercase tracking-widest flex items-center justify-center gap-4 transition-all shadow-xl shadow-black/10 ${!agreedToTerms ? 'opacity-20 cursor-not-allowed' : 'hover:bg-slate-900 dark:hover:bg-slate-100 active:scale-95'}`}
                                                 >
                                                     {isSubmitting ? (
                                                         <FaSpinner className="animate-spin text-lg" />
                                                     ) : (
                                                         <>
-                                                            <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
-                                                                <FaCreditCard className="text-white" />
+                                                            <div className="w-8 h-8 rounded-lg bg-white/10 dark:bg-slate-950/10 flex items-center justify-center">
+                                                                <FaCreditCard className="text-white dark:text-slate-950" />
                                                             </div>
                                                             Quick Pay
                                                         </>
                                                     )}
                                                 </motion.button>
-                                                
-                                                <p className="text-[10px] font-bold text-center text-slate-400 lowercase tracking-wide">
+
+                                                <p className="text-[10px] font-bold text-center text-slate-400 dark:text-slate-500 lowercase tracking-wide">
                                                     pay with <span className="text-slate-800 font-extrabold dark:text-white">cards</span>, <span className="text-slate-800 font-extrabold dark:text-white">klarna</span>, or <span className="text-slate-800 font-extrabold dark:text-white">apple pay</span> at checkout
                                                 </p>
-                                                
-                                                <button
-                                                    onClick={() => submitOrder('later')}
-                                                    disabled={isSubmitting || !agreedToTerms}
-                                                    className={`w-full py-4 border-2 border-slate-100 rounded-[1.2rem] text-[10px] font-black uppercase tracking-[0.2em] transition-all ${!agreedToTerms ? 'opacity-10 cursor-not-allowed' : 'text-slate-400 hover:text-slate-950 hover:bg-slate-50'}`}
-                                                >
-                                                    Secure Selection & Sign Deal First
-                                                </button>
-                                                
+
                                                 {!agreedToTerms && (
                                                     <p className="text-[9px] font-black text-center text-rose-500 uppercase tracking-widest animate-pulse">
                                                         Agree to the Sales Terms to Unlock
                                                     </p>
                                                 )}
                                             </div>
-                                            
-                                            <div className="flex flex-col items-center gap-6 pt-8 border-t border-slate-50">
+
+                                            <div className="flex flex-col items-center gap-6 pt-8 border-t border-slate-200 dark:border-slate-700">
                                                 <div className="text-center px-4">
-                                                    <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest italic">
+                                                    <p className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest italic">
                                                         Processed securely
                                                     </p>
                                                 </div>
 
                                                 <div className="flex items-center gap-6 text-2xl opacity-40 grayscale group-hover:grayscale-0 transition-all">
                                                     <FaStripe className="text-4xl text-slate-400" />
-                                                    <div className="w-[1px] h-6 bg-slate-100" />
+                                                    <div className="w-[1px] h-6 bg-slate-200 dark:bg-slate-700" />
                                                     <FaCcVisa className="text-slate-400" />
                                                     <FaCcMastercard className="text-slate-400" />
                                                     <FaCcPaypal className="text-slate-400" />
                                                 </div>
-                                                
+
                                                 <div className="flex items-center gap-6">
                                                     <div className="flex items-center gap-2">
                                                         <FaShieldAlt className="text-emerald-400 text-xs" />
-                                                        <span className="text-[9px] font-black uppercase tracking-widest text-slate-400 whitespace-nowrap">Secure checkout</span>
+                                                        <span className="text-[9px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 whitespace-nowrap">Secure checkout</span>
                                                     </div>
                                                 </div>
                                             </div>

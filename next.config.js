@@ -7,6 +7,11 @@ const nextConfig = {
     authInterrupts: true,
   },
   images: {
+    // Next.js 16 only serves quality values listed here; several <Image>
+    // uses across the project pass quality={80} (e.g. Projects.js) on top
+    // of the 75 default, so both need to be declared or those requests
+    // 400 at build/runtime.
+    qualities: [75, 80],
     localPatterns: [
       {
         pathname: '/api/image-proxy',

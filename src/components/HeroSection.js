@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { useLanguage } from "@/context/LanguageContext";
 import { FaArrowRight, FaChevronDown, FaShieldAlt } from "react-icons/fa";
 import AnimatedGrid from "./AnimatedGrid";
+import ProjectsShowcase from "./ProjectsShowcase";
 
 // Helper to highlight the marked character (preceded by |)
 const HighlightedText = ({ text }) => {
@@ -98,7 +99,7 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
   }, [isHomePage, phrases.length]);
 
   return (
-    <section className={`relative flex items-center justify-center overflow-hidden ${isHomePage ? 'min-h-[100vh]' : 'min-h-[60vh] pt-32'} bg-slate-50 dark:bg-[#020617]`}>
+    <section className={`relative flex items-center justify-center overflow-hidden ${isHomePage ? 'min-h-[100vh] pt-28 md:pt-40 pb-32' : 'min-h-[60vh] pt-32'} bg-slate-50 dark:bg-[#020617]`}>
       
       {/* Refined Background Elements - Very subtle and professional */}
       <AnimatedGrid />
@@ -118,20 +119,6 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
         >
           {isHomePage ? (
             <>
-
-              {/* Small, seasonal-only marking -- removable each year by
-                  deleting this block, kept in the site's own rose palette
-                  (not literal red/green) so it reads as festive without
-                  clashing with the brand. */}
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold tracking-wide"
-              >
-                <span aria-hidden="true">🎄</span>
-                {t('hero.xmasBadge')}
-              </motion.div>
 
               {/* Typewriter Title */}
               <div className="h-20 md:h-28 flex items-center justify-center mb-6">
@@ -192,6 +179,8 @@ const HeroSection = ({ isHomePage = false, title, subtitle }) => {
                 </svg>
                 <span>Protected by <strong className="font-bold text-slate-700 dark:text-slate-300">Cloudflare</strong></span>
               </div>
+
+              <ProjectsShowcase />
             </>
           ) : (
             <>

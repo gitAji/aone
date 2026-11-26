@@ -94,7 +94,13 @@ export default function ExitIntentPopup() {
                 : "Order now and get 10% off your order — the discount is applied automatically at checkout."}
             </p>
 
-            <Link href="/order" onClick={claimDiscount} className="block">
+            {/* Sends them to the Pricing page -- the one place packages are
+                browsed/compared -- rather than straight to the Order page's
+                own package list, so there's only one package-selection UI
+                on the site. The 10% code is stashed in sessionStorage above
+                and auto-applied once they reach checkout (see OrderClient.js),
+                after picking a package on Pricing. */}
+            <Link href="/pricing" onClick={claimDiscount} className="block">
               <button className="w-full flex items-center justify-center gap-3 bg-rose-600 hover:bg-rose-700 text-white font-black py-4 rounded-xl shadow-lg shadow-rose-500/20 transition-all duration-300 transform hover:-translate-y-0.5">
                 <span>{isNo ? "Få 10% rabatt" : "Claim 10% discount"}</span>
                 <FaArrowRight className="text-sm" />

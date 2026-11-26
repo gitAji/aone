@@ -12,6 +12,54 @@ import { useLanguage } from "@/context/LanguageContext";
 // production, where effects only run once anyway.
 let didInit = false;
 
+// Service labels are plain strings on the category config below (not part
+// of the translations file), so they aren't re-synced on a later language
+// switch the way section text is -- using the actual third-party product
+// names (Microsoft Clarity, Tawk.to, Google Ads) sidesteps that entirely,
+// since those aren't translated either way, and naming the real vendor is
+// itself better disclosure practice than a generic "Analytics" label.
+const COOKIE_TABLE_HEADERS = {
+  en: { name: "Cookie", provider: "Provider", expiry: "Expiry", purpose: "Purpose" },
+  no: { name: "Informasjonskapsel", provider: "Leverandør", expiry: "Utløper", purpose: "Formål" },
+};
+
+const NECESSARY_TABLE = {
+  en: [{ name: "aone_cc_cookie", provider: "Aone", expiry: "1 year", purpose: "Stores your cookie consent choices." }],
+  no: [{ name: "aone_cc_cookie", provider: "Aone", expiry: "1 år", purpose: "Lagrer dine valg for informasjonskapsler." }],
+};
+
+// Microsoft's own documented purposes for Clarity's cookies:
+// https://learn.microsoft.com/en-us/clarity/setup-and-installation/cookie-list
+const CLARITY_TABLE = {
+  en: [
+    { name: "_clck", provider: "Microsoft Clarity", expiry: "1 year", purpose: "Persists the Clarity user ID and preferences, unique to this site, so behavior on later visits is linked to the same visitor." },
+    { name: "_clsk", provider: "Microsoft Clarity", expiry: "1 day", purpose: "Connects multiple page views into a single session recording." },
+    { name: "CLID", provider: "Microsoft Clarity", expiry: "1 year", purpose: "Identifies the first time Clarity saw this user on any site using Clarity." },
+    { name: "ANONCHK, MR, MUID, SM", provider: "Microsoft Clarity / Bing", expiry: "10 minutes to 1 year", purpose: "Supporting cookies Clarity's underlying Microsoft infrastructure uses to synchronize and refresh the visitor identifier." },
+  ],
+  no: [
+    { name: "_clck", provider: "Microsoft Clarity", expiry: "1 år", purpose: "Lagrer Clarity-bruker-ID-en og preferanser, unike for denne siden, slik at atferd ved senere besøk knyttes til samme besøkende." },
+    { name: "_clsk", provider: "Microsoft Clarity", expiry: "1 dag", purpose: "Kobler sammen flere sidevisninger til én samlet øktopptak." },
+    { name: "CLID", provider: "Microsoft Clarity", expiry: "1 år", purpose: "Identifiserer første gang Clarity så denne brukeren på et nettsted som bruker Clarity." },
+    { name: "ANONCHK, MR, MUID, SM", provider: "Microsoft Clarity / Bing", expiry: "10 minutter til 1 år", purpose: "Støttecookies som Claritys underliggende Microsoft-infrastruktur bruker til å synkronisere og fornye besøks-ID-en." },
+  ],
+};
+
+const MARKETING_TABLE = {
+  en: [
+    { name: "tawkUUID", provider: "Tawk.to", expiry: "Persistent", purpose: "Recognizes returning visitors to keep live-chat conversation history." },
+    { name: "TawkConnectionTime", provider: "Tawk.to", expiry: "Session", purpose: "Maintains the live-chat connection during your visit." },
+    { name: "_ga", provider: "Google Ads", expiry: "2 years", purpose: "Distinguishes unique visitors for conversion tracking." },
+    { name: "_gcl", provider: "Google Ads", expiry: "90 days", purpose: "Stores ad-click information to attribute a conversion to the right campaign." },
+  ],
+  no: [
+    { name: "tawkUUID", provider: "Tawk.to", expiry: "Vedvarende", purpose: "Gjenkjenner tilbakevendende besøkende for å beholde live chat-historikken." },
+    { name: "TawkConnectionTime", provider: "Tawk.to", expiry: "Økt", purpose: "Opprettholder live chat-tilkoblingen under besøket ditt." },
+    { name: "_ga", provider: "Google Ads", expiry: "2 år", purpose: "Skiller unike besøkende for konverteringssporing." },
+    { name: "_gcl", provider: "Google Ads", expiry: "90 dager", purpose: "Lagrer annonseklikk-informasjon for å tilskrive en konvertering til riktig kampanje." },
+  ],
+};
+
 const translations = {
   en: {
     consentModal: {
@@ -35,25 +83,28 @@ const translations = {
         {
           title: "Your privacy choices",
           description:
-            "We use three kinds of cookies. Necessary cookies are always on; you choose whether to allow statistics and marketing cookies, and can change your mind at any time via the preferences icon in the corner of the screen.",
+            "We use three kinds of cookies. Necessary cookies are always on; you choose whether to allow statistics and marketing cookies -- down to the individual service -- and can change your mind at any time via the preferences icon in the corner of the screen.",
         },
         {
           title: "Necessary",
           description:
-            "Required for the site to function correctly (e.g. remembering your theme and language choice). These don't track you and can't be switched off.",
+            "Required for the site to function correctly (e.g. remembering your theme and language choice, and this consent choice itself). These don't track you and can't be switched off.",
           linkedCategory: "necessary",
+          cookieTable: { headers: COOKIE_TABLE_HEADERS.en, body: NECESSARY_TABLE.en },
         },
         {
           title: "Statistics",
           description:
-            "Lets us see anonymized, aggregate usage patterns (via Microsoft Clarity) so we can understand what's working and improve the site. No ad targeting.",
+            "Lets us see anonymized, aggregate usage patterns so we can understand what's working and improve the site. No ad targeting.",
           linkedCategory: "analytics",
+          cookieTable: { headers: COOKIE_TABLE_HEADERS.en, body: CLARITY_TABLE.en },
         },
         {
           title: "Marketing",
           description:
-            "Powers live chat support and lets us measure which ads actually bring customers (Google Ads conversion tracking).",
+            "Two independent services -- turn either on or off without affecting the other.",
           linkedCategory: "marketing",
+          cookieTable: { headers: COOKIE_TABLE_HEADERS.en, body: MARKETING_TABLE.en },
         },
       ],
     },
@@ -80,25 +131,28 @@ const translations = {
         {
           title: "Dine personvernvalg",
           description:
-            "Vi bruker tre typer informasjonskapsler. Nødvendige er alltid på; du velger selv om du vil tillate statistikk og markedsføring, og kan når som helst endre valget via innstillinger-ikonet nederst i skjermhjørnet.",
+            "Vi bruker tre typer informasjonskapsler. Nødvendige er alltid på; du velger selv om du vil tillate statistikk og markedsføring -- helt ned til den enkelte tjeneste -- og kan når som helst endre valget via innstillinger-ikonet nederst i skjermhjørnet.",
         },
         {
           title: "Nødvendige",
           description:
-            "Kreves for at nettsiden skal fungere korrekt (f.eks. å huske tema- og språkvalg). Disse sporer deg ikke og kan ikke slås av.",
+            "Kreves for at nettsiden skal fungere korrekt (f.eks. å huske tema- og språkvalg, og selve dette samtykkevalget). Disse sporer deg ikke og kan ikke slås av.",
           linkedCategory: "necessary",
+          cookieTable: { headers: COOKIE_TABLE_HEADERS.no, body: NECESSARY_TABLE.no },
         },
         {
           title: "Statistikk",
           description:
-            "Lar oss se anonymisert, samlet bruksmønster (via Microsoft Clarity) slik at vi kan forstå og forbedre nettsiden. Ingen annonsemålretting.",
+            "Lar oss se anonymisert, samlet bruksmønster slik at vi kan forstå og forbedre nettsiden. Ingen annonsemålretting.",
           linkedCategory: "analytics",
+          cookieTable: { headers: COOKIE_TABLE_HEADERS.no, body: CLARITY_TABLE.no },
         },
         {
           title: "Markedsføring",
           description:
-            "Driver live chat-support og lar oss måle hvilke annonser som faktisk gir kunder (Google Ads konverteringssporing).",
+            "To uavhengige tjenester -- slå av eller på hver for seg uten at det påvirker den andre.",
           linkedCategory: "marketing",
+          cookieTable: { headers: COOKIE_TABLE_HEADERS.no, body: MARKETING_TABLE.no },
         },
       ],
     },
@@ -129,9 +183,8 @@ export default function CookieConsentManager() {
         // forces its own UI to an extreme max z-index (see its CSS --
         // --cc-z-index: 2147483647), so nothing we render can ever appear
         // above it. A full-width bar was tried and rejected for exactly
-        // that reason: its hit area covers the *entire* bottom edge while
-        // open, so it blocked the SettingsFab icon on the left too, which
-        // this boxed layout (confined to the right) never did.
+        // that reason: its hit area covered the *entire* bottom edge while
+        // open, which this boxed layout (confined to the right) avoids.
         consentModal: {
           layout: "box",
           position: "bottom right",
@@ -147,8 +200,27 @@ export default function CookieConsentManager() {
           enabled: true,
           readOnly: true,
         },
-        // Microsoft Clarity only -- pure behavioral analytics, no ad targeting.
+        // Microsoft Clarity only -- pure behavioral analytics, no ad
+        // targeting. Modeled as its own service (rather than just a bare
+        // category) so the preferences modal shows it as a named,
+        // individually-countable item -- consistent with marketing below,
+        // and ready if a second analytics tool is ever added alongside it.
         analytics: {
+          services: {
+            clarity: {
+              label: "Microsoft Clarity",
+              cookies: [
+                { name: /^_clck/ },
+                { name: /^_clsk/ },
+                { name: "_cltk" },
+                { name: "CLID" },
+                { name: "ANONCHK" },
+                { name: "MR" },
+                { name: "MUID" },
+                { name: "SM" },
+              ],
+            },
+          },
           autoClear: {
             cookies: [
               { name: /^_clck/ },
@@ -162,9 +234,20 @@ export default function CookieConsentManager() {
             ],
           },
         },
-        // Google Tag Manager (hosting the Google Ads conversion tags
-        // configured in the GTM dashboard) and the Tawk.to live chat widget.
+        // Two independently togglable services -- a visitor can allow Tawk
+        // live chat while still declining Google Ads conversion tracking,
+        // or vice versa, instead of an all-or-nothing "Marketing" switch.
         marketing: {
+          services: {
+            tawkto: {
+              label: "Tawk.to",
+              cookies: [{ name: "tawkUUID" }, { name: /^TawkConnectionTime/ }],
+            },
+            googleAds: {
+              label: "Google Ads",
+              cookies: [{ name: /^_ga/ }, { name: /^_gcl/ }],
+            },
+          },
           autoClear: {
             cookies: [
               { name: /^_ga/ },
@@ -185,9 +268,8 @@ export default function CookieConsentManager() {
       },
       onConsent: () => {
         // Fires once consent is first given AND on every later page load for
-        // a returning visitor with stored consent -- covers both cases for
-        // revealing the "Cookie Preferences" item in SettingsFab's menu,
-        // which listens for this same event.
+        // a returning visitor with stored consent -- LayoutClientWrapper
+        // listens for this same event to gate the Tawk.to chat widget.
         window.dispatchEvent(new Event("cc:consentChange"));
       },
       onChange: () => {
@@ -208,10 +290,8 @@ export default function CookieConsentManager() {
   }, [language]);
 
   // No UI of its own -- the consent engine (banner + preferences modal) is
-  // all injected directly into the DOM by CookieConsent.run() above. The
-  // floating "reopen preferences" control that used to live here is now the
-  // "Cookie Preferences" item inside SettingsFab's menu, which calls
-  // CookieConsent.showPreferences() itself and listens for the same
-  // cc:consentChange event this component dispatches.
+  // all injected directly into the DOM by CookieConsent.run() above. Reopening
+  // preferences is a plain "Cookie Settings" link in Footer.js, which calls
+  // CookieConsent.showPreferences() directly.
   return null;
 }

@@ -122,6 +122,7 @@ export default function RootLayout({ children }) {
           id="gtm-script"
           type="text/plain"
           data-category="marketing"
+          data-service="googleAds"
           dangerouslySetInnerHTML={{
             __html: `
               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -136,6 +137,7 @@ export default function RootLayout({ children }) {
           id="ms-clarity"
           type="text/plain"
           data-category="analytics"
+          data-service="clarity"
           dangerouslySetInnerHTML={{
             __html: `
               (function(c,l,a,r,i,t,y){

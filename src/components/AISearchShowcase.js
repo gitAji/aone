@@ -87,6 +87,11 @@ const AISearchShowcase = () => {
   const bottomRef = useRef(null);
 
   useEffect(() => {
+    // Guard against the initial mount: with an empty `messages` array there's
+    // nothing new to reveal, so scrolling here would pull the whole window
+    // down to this demo on every page load (this chat has no scrollable
+    // container of its own, so scrollIntoView moves the entire document).
+    if (messages.length === 0) return;
     bottomRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [messages, isTyping]);
 

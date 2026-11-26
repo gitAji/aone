@@ -19,10 +19,12 @@ const roundPrice = (value) => {
     }
 };
 
-const PricingCard = ({ pkg, billingInterval, index, isHovered }) => {
+const PricingCard = ({ pkg, billingInterval, index }) => {
     const { t } = useLanguage();
-    // If isHovered is provided, use it, otherwise fallback to the hardcoded pkg.recommended
-    const isRecommended = isHovered !== undefined ? isHovered : pkg.recommended;
+    // Always the package data's own flag -- "Most Popular" stays fixed on
+    // the Standard pack (the only one with recommended: true in
+    // data/packages.js), regardless of which card the visitor hovers.
+    const isRecommended = pkg.recommended;
     
     // Determine the price to display
     const originalPrice = billingInterval === 'once' ? pkg.price : pkg.monthlyPrice;
@@ -132,7 +134,6 @@ const PricingCard = ({ pkg, billingInterval, index, isHovered }) => {
 export default function PricingPage() {
     const { t } = useLanguage();
     const [billingInterval, setBillingInterval] = useState('monthly');
-    const [hoveredIndex, setHoveredIndex] = useState(1); // Defaults to Growth package
 
     const mainPackages = packages.filter(p => !p.isAddon);
     const addonPackages = packages.filter(p => p.isAddon);
@@ -175,17 +176,10 @@ export default function PricingPage() {
                 </div>
 
                 {/* Pricing Grid */}
-                <div
-                  className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-32 max-w-7xl mx-auto"
-                  onMouseLeave={() => setHoveredIndex(1)} // Reset back to middle card when mouse leaves grid
-                >
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-32 max-w-7xl mx-auto">
                     {mainPackages.map((pkg, i) => (
-                        <div 
-                          key={pkg.id}
-                          className="w-full h-full"
-                          onMouseEnter={() => setHoveredIndex(i)}
-                        >
-                          <PricingCard pkg={pkg} billingInterval={billingInterval} index={i} isHovered={hoveredIndex === i} />
+                        <div key={pkg.id} className="w-full h-full">
+                          <PricingCard pkg={pkg} billingInterval={billingInterval} index={i} />
                         </div>
                     ))}
                 </div>

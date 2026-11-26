@@ -4,10 +4,11 @@ import { getAdminDb } from '@/lib/firebaseAdmin';
 // Statuses the client is allowed to set while a customer is still filling
 // out the multi-step order form. 'completed' is deliberately excluded --
 // only the Stripe webhook (checkout.session.completed, which has actually
-// verified payment) may set that. 'agreement_signed' is excluded too --
-// only order/create sets that, alongside the signed agreement record.
-// Without this allowlist, anyone could POST here directly with
-// status:'completed' and mark an arbitrary order paid.
+// verified payment) may set that; the sales agreement itself is only
+// generated and sent once that webhook fires (see OrderClient.js's
+// paymentStatus === 'success' handling), never before. Without this
+// allowlist, anyone could POST here directly with status:'completed' and
+// mark an arbitrary order paid.
 const CLIENT_SETTABLE_STATUSES = new Set(['draft', 'awaiting_payment', 'cancelled']);
 
 export async function POST(req) {
