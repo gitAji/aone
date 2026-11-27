@@ -1,8 +1,30 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { FaComments, FaTimes, FaPaperPlane, FaCheckCircle } from "react-icons/fa";
+import { FaComments, FaTimes, FaPaperPlane, FaCheckCircle, FaArrowRight } from "react-icons/fa";
 import { useLanguage } from "@/context/LanguageContext";
+
+// The agent is instructed (see the n8n workflow's system prompt) to end a
+// reply with a bare path alone, e.g. "/pricing", when it has a relevant next
+// step to offer -- never inline, never bracketed. We still tolerate a
+// leftover [bracket]/(paren) wrapper here in case the model doesn't follow
+// that formatting perfectly, since a weaker local model's instruction-
+// following isn't perfectly reliable.
+const CTA_LABELS = {
+  "/request-quote": { en: "Get a Quote", no: "Få et tilbud" },
+  "/free-consultation": { en: "Book Free Consultation", no: "Book gratis konsultasjon" },
+  "/pricing": { en: "View Pricing", no: "Se priser" },
+  "/support": { en: "Contact Support", no: "Kontakt support" },
+};
+const CTA_PATTERN = /[\[(]?(\/(?:request-quote|free-consultation|pricing|support))[\])]?\s*$/;
+
+function splitReply(raw) {
+  const text = (raw || "").trim();
+  const match = text.match(CTA_PATTERN);
+  if (!match) return { text, cta: null };
+  return { text: text.slice(0, match.index).trim(), cta: match[1] };
+}
 
 // Floating support-chat widget. Talks to /api/chat, which proxies to the
 // n8n "Aone Support Chat Agent" webhook (local Ollama + knowledge base) --
@@ -85,8 +107,9 @@ const ChatWidget = () => {
 
       if (!res.ok) throw new Error("offline");
       const data = await res.json();
+      const { text: replyText, cta } = splitReply(data.reply);
 
-      setMessages((prev) => [...prev, { role: "agent", text: data.reply }]);
+      setMessages((prev) => [...prev, { role: "agent", text: replyText, cta }]);
     } catch {
       setView("offline-form");
     } finally {
@@ -170,7 +193,7 @@ const ChatWidget = () => {
                     </div>
                   </div>
                   {messages.map((m, i) => (
-                    <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
+                    <div key={i} className={`flex flex-col ${m.role === "user" ? "items-end" : "items-start"} gap-1.5`}>
                       <div
                         className={`max-w-[85%] text-sm px-4 py-2.5 whitespace-pre-wrap ${
                           m.role === "user"
@@ -180,6 +203,15 @@ const ChatWidget = () => {
                       >
                         {m.text}
                       </div>
+                      {m.cta && CTA_LABELS[m.cta] && (
+                        <Link
+                          href={m.cta}
+                          className="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-gradient-to-r from-rose-500 to-amber-500 rounded-full px-4 py-2 hover:opacity-90 transition-opacity"
+                        >
+                          {CTA_LABELS[m.cta][isNo ? "no" : "en"]}
+                          <FaArrowRight className="text-[10px]" />
+                        </Link>
+                      )}
                     </div>
                   ))}
                   {isSending && (
