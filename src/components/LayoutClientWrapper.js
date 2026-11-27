@@ -9,6 +9,7 @@ import CookieConsentManager from "@/components/CookieConsentManager";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
+import ChatWidget from "@/components/ChatWidget";
 
 const DynamicReferralPopup = dynamic(() =>
   import("@/components/ReferralPopup").then((mod) => mod.default)
@@ -80,6 +81,11 @@ export default function LayoutClientWrapper({ children }) {
             Owns its own trigger/session-guard logic internally (see
             ExitIntentPopup.js), so it needs nothing from this wrapper. */}
         <ExitIntentPopup />
+        {/* First-party support chat -- talks only to our own /api/chat route
+            (which proxies server-side to the n8n support agent), so it sets
+            no third-party cookies and needs no consent gating, unlike
+            Tawk.to below. */}
+        <ChatWidget />
         {/* Gated on the "tawkto" service specifically (hasChatConsent,
             above) -- Tawk.to sets third-party cookies, so it shouldn't load
             until a visitor has actually consented to that one service, same
